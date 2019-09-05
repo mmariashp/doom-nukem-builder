@@ -211,7 +211,6 @@ typedef struct					s_t
 {
 	t_grid						grid;
 	t_vec2d						active[2];
-	char 						**nodes;
 }								t_t;
 
 typedef struct 					s_button

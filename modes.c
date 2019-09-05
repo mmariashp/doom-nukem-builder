@@ -189,10 +189,10 @@ unsigned short			editor_buttons(t_button *buttons, int n)
 		buttons[i].background = DARK_PURPLE;
 		i++;
 	}
-	buttons[0].text = ft_strdup("PREVIEW");
-	buttons[1].text = ft_strdup("VERTICES");
-	buttons[2].text = ft_strdup("WALLS");
-	buttons[3].text = ft_strdup("SECTORS");
+	buttons[0].text = ft_strdup("VIEW");
+	buttons[1].text = ft_strdup("DRAW");
+	buttons[2].text = ft_strdup("MOVE");
+	buttons[3].text = ft_strdup("DELETE");
 	return (SUCCESS);
 }
 

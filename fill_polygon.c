@@ -19,7 +19,6 @@ void				fillpoly(t_vec2d *p, int polyCorners, int **screen, int color)
 //  Loop through the rows of the image.
 	for (pixelY = IMAGE_TOP; pixelY < IMAGE_BOT; pixelY++)
 	{
-
 		//  Build a list of nodes.
 		nodes = 0;
 		j = polyCorners - 1;

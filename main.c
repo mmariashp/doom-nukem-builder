@@ -643,11 +643,15 @@ void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 	if ((sdl->move.x || sdl->move.y) && sdl->button_lit != -1) // when pressing an on screen button
 	{
 		sdl->button_on = sdl->button_lit;
+		t->active[0].x = -1;
+		t->active[0].y = -1;
+		t->active[1].x = -1;
+		t->active[1].y = -1;
 		return ;
 	}
 	if (light_button(sdl) == SUCCESS) // when mouse is over a button
 		return ;
-	if (sdl->button_on == 1) // vertices mode
+	if (sdl->button_on == 1) // draw mode
 	{
 		if ((sdl->move.x || sdl->move.y) && mouse_over(t->grid.box, sdl->mouse))
 		{
@@ -662,7 +666,57 @@ void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 			sdl->move.y = 0;
 		}
 	}
-	if (sdl->zoom != 0 && sdl->features[F_ZOOM] == 1)
+	else if (sdl->button_on == 2 ) // move mode
+	{
+		static int id = -1;
+		static t_vec2d to_erase = (t_vec2d){ -1, -1 };
+		if ((sdl->move.x || sdl->move.y))
+		{
+			if (mouse_over(t->grid.box, sdl->mouse))
+			{
+				if (t->active[0].x == -1)
+				{
+					find_node(sdl->mouse.x, sdl->mouse.y, t, 0);
+					if (t->grid.nodes[t->active[0].x][t->active[0].y] == NODE_FULL)
+						id = find_vector(media->worlds[world_id].vertices, t->active[0], media->worlds[world_id].n_vectors);
+					if (id == -1)
+					{
+						t->active[0].x = -1;
+						t->active[0].y = -1;
+					}
+					to_erase = t->active[0];
+				}
+				else
+				{
+					if (to_erase.x != -1)
+						t->grid.nodes[to_erase.x][to_erase.y] = NODE_EMPTY;
+					find_node(sdl->mouse.x, sdl->mouse.y, t, 1);
+					if (id >= 0)
+					{
+						media->worlds[world_id].vertices[id] = t->active[1];
+						t->grid.nodes[t->active[1].x][t->active[1].y] = NODE_FULL;
+					}
+					to_erase = t->active[1];
+				}
+				sdl->move.x = sdl->mouse.x;
+				sdl->move.y = sdl->mouse.y;
+				sdl->features[F_REDRAW] = 1;
+			}
+			else
+			{
+				sdl->move.x = 0;
+				sdl->move.y = 0;
+			}
+		}
+		else
+		{
+			t->active[0].x = -1;
+			t->active[0].y = -1;
+			id = -1;
+		}
+
+	}
+	if (sdl->zoom != 0)
 	{
 		if (mouse_over(t->grid.box, sdl->mouse))
 		{
@@ -677,10 +731,11 @@ void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 		}
 		sdl->zoom = 0;
 	}
-	if ((sdl->move.x || sdl->move.y) && sdl->features[F_MOVE_GRID] == 1)
+	if ((sdl->move.x || sdl->move.y) && sdl->button_on == 0) // view mode
 	{
 		if (mouse_over(t->grid.box, sdl->mouse))
 		{
+			printf("here %d, %d\n",sdl->mouse.x , sdl->mouse.y);
 			t->grid.box.x += sdl->mouse.x - sdl->move.x;
 			t->grid.box.y += sdl->mouse.y - sdl->move.y;
 			sdl->move.x = sdl->mouse.x;
@@ -749,7 +804,6 @@ int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media)
 			}
 			else if (event.key.keysym.sym == ' ')
 			{
-				sdl->features[F_ZOOM] = 0;
 				printf("%c\n", event.key.keysym.sym);
 			}
 			else if (event.key.keysym.sym == SDLK_ESCAPE)

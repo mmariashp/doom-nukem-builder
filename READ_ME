@@ -1,0 +1,11 @@
+Reads the file "asset_paths.txt", and all of the files listed there under "Levels".
+For now, changes to "asset_paths.txt" are saved to "test.txt", and level maps to ./media/test/ for bug-testing.
+
+Sectors are highlighted red if they're concave, green - if convex.
+
+Inside editor, can zoom in/out with mouse wheel to current mouse location.
+
+On "VIEW" mode can move map around by dragging.
+On "DRAW" mode click anywhere to start drawing a sector.
+On "MOVE" mode select an existing vector and move it to a different location.
+"DELETE" not working yet.
