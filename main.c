@@ -609,6 +609,53 @@ void					update_sector_status(t_sector *sectors, t_wall *walls, t_vec2d *vertice
 	}
 }
 
+void					delete_vector(int id, t_world *world)
+{
+	t_vec2d				*new;
+	int 				i;
+	int 				j;
+
+	if (!world || id < 0 || id >= world->n_vectors)
+		return ;
+	new = (t_vec2d *)ft_memalloc(sizeof(t_vec2d) * (world->n_vectors - 1));
+	if (!new)
+		return ;
+	i = 0;
+	j = 0;
+	while (j < world->n_vectors)
+	{
+		if (j == id)
+			j++;
+		new[i] = world->vertices[j];
+		i++;
+		j++;
+	}
+	world->n_vectors--;
+	free(world->vertices);
+	world->vertices = new;
+	i = 0;
+	while (i < world->n_walls)
+	{
+		if (world->walls[i].v1 > id)
+			world->walls[i].v1--;
+		if (world->walls[i].v2 > id)
+			world->walls[i].v2--;
+		i++;
+	}
+	i = 0;
+	while (i < world->n_sectors)
+	{
+		j = 0;
+		while (j < world->sectors[i].n_walls)
+		{
+			if (world->sectors[i].v[j] > id)
+				world->sectors[i].v[j]--;
+			j++;
+		}
+		i++;
+	}
+}
+
 void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 {
 	float				new;
@@ -716,6 +763,48 @@ void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 		}
 
 	}
+	else if (sdl->button_on == 0) // view mode
+	{
+		if (sdl->move.x || sdl->move.y)
+		{
+			if (mouse_over(t->grid.box, sdl->mouse))
+			{
+				t->grid.box.x += sdl->mouse.x - sdl->move.x;
+				t->grid.box.y += sdl->mouse.y - sdl->move.y;
+				sdl->move.x = sdl->mouse.x;
+				sdl->move.y = sdl->mouse.y;
+				sdl->features[F_REDRAW] = 1;
+			}
+			else
+			{
+				sdl->move.x = 0;
+				sdl->move.y = 0;
+			}
+		}
+	}
+	else if (sdl->button_on == 3) // delete mode
+	{
+		if (sdl->move.x || sdl->move.y)
+		{
+			if (mouse_over(t->grid.box, sdl->mouse))
+			{
+				int m = -1;
+				find_node(sdl->mouse.x, sdl->mouse.y, t, 0);
+				if (t->grid.nodes[t->active[0].x][t->active[0].y] == NODE_FULL)
+					m = find_vector(media->worlds[world_id].vertices, t->active[0], media->worlds[world_id].n_vectors);
+				delete_vector(m, &media->worlds[world_id]);
+				t->grid.nodes[t->active[0].x][t->active[0].y] = NODE_EMPTY;
+				sdl->move.x = 0;
+				sdl->move.y = 0;
+				sdl->features[F_REDRAW] = 1;
+			}
+			else
+			{
+				sdl->move.x = 0;
+				sdl->move.y = 0;
+			}
+		}
+	}
 	if (sdl->zoom != 0)
 	{
 		if (mouse_over(t->grid.box, sdl->mouse))
@@ -731,23 +820,7 @@ void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 		}
 		sdl->zoom = 0;
 	}
-	if ((sdl->move.x || sdl->move.y) && sdl->button_on == 0) // view mode
-	{
-		if (mouse_over(t->grid.box, sdl->mouse))
-		{
-			printf("here %d, %d\n",sdl->mouse.x , sdl->mouse.y);
-			t->grid.box.x += sdl->mouse.x - sdl->move.x;
-			t->grid.box.y += sdl->mouse.y - sdl->move.y;
-			sdl->move.x = sdl->mouse.x;
-			sdl->move.y = sdl->mouse.y;
-			sdl->features[F_REDRAW] = 1;
-		}
-		else
-		{
-			sdl->move.x = 0;
-			sdl->move.y = 0;
-		}
-	}
+
 	if (t->active[0].x != -1 && t->active[1].x == -1)
 		sdl->features[F_REDRAW] = 1;
 	update_sector_status(media->worlds[world_id].sectors, media->worlds[world_id].walls, media->worlds[world_id].vertices, media->worlds[world_id].n_sectors);
