@@ -1,0 +1,17 @@
+Count Vectors: 0
+Count Walls: 0
+Count Sectors: 0
+Count Textures: 0
+
+Textures
+
+Vectors
+
+Walls
+
+Sectors
+
+Player
+0) -624920176,22090 start
+1) 0,0 end
+

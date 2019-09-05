@@ -1,0 +1,37 @@
+# Levels
+Path: ./media/maps/
+Extension: .txt
+File Names: 
+0. level_0
+1. level_1
+2. level_2
+###
+
+# Textures
+Path: ./media/textures/
+Extension: .jpg
+File Names: 
+0. brick
+1. stone
+2. clover
+3. grass1
+###
+
+# Sounds
+Path: ./media/sounds/
+Extension: .wav
+File Names: 
+0. 
+1. 
+2. 
+3. 
+###
+
+# Fonts
+Path: ./media/fonts/
+Extension: .ttf
+File Names: 
+0. 
+1. 
+###
+
