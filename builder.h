@@ -187,15 +187,6 @@ typedef struct                  s_rec
 	int 						y;
 	int 						w;
 	int 						h;
-
-
-	t_vec2d                     one;
-	t_vec2d                     two;
-	t_vec2d                     three;
-	t_vec2d                     four;
-
-	t_vec2d						size;
-	t_vec2d						pos;
 }                               t_rec;
 
 typedef struct 					s_grid
@@ -203,8 +194,6 @@ typedef struct 					s_grid
 	t_rec						box;
 	char 						nodes[GRID_SIZE][GRID_SIZE];
 	float 						scale;
-	int 						node_r;
-	int 						lit_node_r;
 }								t_grid;
 
 typedef struct					s_t

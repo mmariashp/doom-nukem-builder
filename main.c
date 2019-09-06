@@ -83,13 +83,7 @@ void					render_button(t_button *button, t_sdl *sdl)
 
 	if (!button || !sdl->rend)
 		return ;
-	if (button->texture)
-	{
-		rect = (SDL_Rect){ button->box.x, button->box.y,
-						   button->box.w, button->box.h };
-		SDL_RenderCopy(sdl->rend, button->texture, NULL, &rect);
-	}
-	else if (button->background != -1)
+	if (button->background != -1)
 	{
 		int x = 0;
 		int y = button->box.y;
@@ -103,6 +97,12 @@ void					render_button(t_button *button, t_sdl *sdl)
 			}
 			y++;
 		}
+	}
+	if (button->texture)
+	{
+		rect = (SDL_Rect){ button->box.x + button->box.w * 0.1, button->box.y + button->box.h * 0.1,
+						   button->box.w * 0.8, button->box.h * 0.8 };
+		SDL_RenderCopy(sdl->rend, button->texture, NULL, &rect);
 	}
 	if (button->text)
 	{
@@ -127,7 +127,7 @@ void					render_buttons(t_button *buttons, t_sdl *sdl)
 	i = 0;
 
 	if (sdl->button_on >= 0)
-		buttons[sdl->button_on].background = 0;
+		buttons[sdl->button_on].background = DARK_GRAY;
 
 	while (i < sdl->modes[sdl->mode_id].n_buttons)
 	{
@@ -137,7 +137,7 @@ void					render_buttons(t_button *buttons, t_sdl *sdl)
 	if (sdl->button_lit >= 0)
 		render_frame(buttons[sdl->button_lit].box, LIT_COLOR, sdl->rend);
 	if (sdl->button_on >= 0)
-		buttons[sdl->button_on].background = DARK_PURPLE;
+		buttons[sdl->button_on].background = GRAY;
 }
 
 void					render_screen(t_sdl *sdl)
@@ -197,15 +197,14 @@ t_vec2d					find_in_grid(int p_x, int p_y, t_grid grid)
 	return (res);
 }
 
-void					find_node(int p_x, int p_y, t_t *t, int i)
+t_vec2d					find_node(int p_x, int p_y, t_t *t)
 {
 	float				mapx;
 	float				mapy;
 
 	mapx = (float)(p_x - t->grid.box.x) / t->grid.scale;
 	mapy = (float)(p_y - t->grid.box.y) / t->grid.scale;
-	t->active[i].x = round(mapx);
-	t->active[i].y = round(mapy);
+	return ((t_vec2d){ round(mapx), round(mapy) });
 }
 
 void					zoom_displace(int *gridx, int *gridy, t_vec2d p, float old_scale, float new_scale)
@@ -656,131 +655,171 @@ void					delete_vector(int id, t_world *world)
 	}
 }
 
-void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
+void					fill_grid(int n_vectors, t_vec2d *vertices, t_grid *grid)
+{
+	int 				i;
+
+	if (!vertices || !grid || n_vectors < 1)
+		return ;
+	i = 0;
+	while (i < n_vectors)
+	{
+		grid->nodes[vertices[i].x][vertices[i].y] = NODE_FULL;
+		i++;
+	}
+}
+
+void					clean_grid(t_grid *grid)
+{
+	int					i;
+	int					j;
+
+	if (!grid)
+		return ;
+	i = 0;
+	while (i < GRID_SIZE)
+	{
+		j = 0;
+		while (j < GRID_SIZE)
+			grid->nodes[i][j++] = NODE_EMPTY;
+		i++;
+	}
+}
+
+void					zoom_grid(t_sdl *sdl, t_grid *grid)
 {
 	float				new;
 	static float		min_scale = 1;
 	float 				old_scale;
+
+	if (!sdl || !grid)
+		return ;
+	if (mouse_over(grid->box, sdl->mouse))
+	{
+		old_scale = grid->scale;
+		if (min_scale == 1)
+			editor_clamp(&min_scale);
+		new = grid->scale + grid->scale * 0.3f * sdl->zoom;
+		grid->scale = clamp_f(new, min_scale, 100);
+		zoom_displace(&grid->box.x, &grid->box.y, sdl->mouse, old_scale, grid->scale );
+		sdl->features[F_REDRAW] = 1;
+	}
+	sdl->zoom = 0;
+}
+
+void					move_grid(t_sdl *sdl, t_grid *grid)
+{
+	if (!sdl || !grid)
+		return ;
+	if (mouse_over(grid->box, sdl->mouse))
+	{
+		grid->box.x += sdl->mouse.x - sdl->move.x;
+		grid->box.y += sdl->mouse.y - sdl->move.y;
+		sdl->move = sdl->mouse;
+		sdl->features[F_REDRAW] = 1;
+	}
+	else
+		sdl->move = (t_vec2d){ 0, 0 };
+}
+
+void					move_vector(t_sdl *sdl, t_t *t, t_world *world)
+{
+	static int			id = -1;
+	static t_vec2d		to_erase = { -1, -1 };
+
+	if (!sdl || !t || !world)
+		return ;
+	if (sdl->move.x || sdl->move.y)
+	{
+		if (mouse_over(t->grid.box, sdl->mouse))
+		{
+			if (t->active[0].x == -1)
+			{
+				t->active[0] = find_node(sdl->mouse.x, sdl->mouse.y, t);
+				if (t->active[0].x >= 0 && t->active[0].y >= 0 &&
+				t->grid.nodes[t->active[0].x][t->active[0].y] == NODE_FULL)
+					id = find_vector(world->vertices, t->active[0], world->n_vectors);
+				if (id == -1)
+					t->active[0] = (t_vec2d){ -1, -1 };
+				to_erase = t->active[0];
+			}
+			else if (id >= 0)
+			{
+				if (to_erase.x != -1)
+					t->grid.nodes[to_erase.x][to_erase.y] = NODE_EMPTY;
+				t->active[1] = find_node(sdl->mouse.x, sdl->mouse.y, t);
+				world->vertices[id] = t->active[1];
+				t->grid.nodes[t->active[1].x][t->active[1].y] = NODE_FULL;
+				to_erase = t->active[1];
+			}
+			sdl->move = sdl->mouse;
+			sdl->features[F_REDRAW] = 1;
+		}
+		else
+			sdl->move = (t_vec2d){ 0, 0 };
+	}
+	else
+	{
+		t->active[0] = (t_vec2d){ -1, -1 };
+		id = -1;
+	}
+}
+
+void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
+{
 	static short 		world_id = -1;
 
 	if (!sdl || !media || !t)
 		return;
-	if (world_id != media->world_id) // when opening a map
-	{
-		world_id = media->world_id;
-		if (media->world_id >= media->n_worlds)
-		{
-			add_world(&media->worlds, media->n_worlds);
-			media->n_worlds++;
-			return ;
-		}
-		int i = 0;
-		while (i < media->worlds[media->world_id].n_vectors)
-		{
-			t->grid.nodes[media->worlds[media->world_id].vertices[i].x][media->worlds[media->world_id].vertices[i].y] = NODE_FULL;
-			i++;
-		}
-	}
 	if (sdl->save == 1) // when saving
 	{
 		rewrite_media(media);
 		sdl->save = 0;
 		return ;
 	}
-	if ((sdl->move.x || sdl->move.y) && sdl->button_lit != -1) // when pressing an on screen button
+	if (sdl->button_lit != -1 && (sdl->move.x || sdl->move.y)) // when pressing an on screen button
 	{
 		sdl->button_on = sdl->button_lit;
-		t->active[0].x = -1;
-		t->active[0].y = -1;
-		t->active[1].x = -1;
-		t->active[1].y = -1;
+		t->active[0] = (t_vec2d){ -1, -1 };
+		t->active[1] = (t_vec2d){ -1, -1 };
 		return ;
 	}
 	if (light_button(sdl) == SUCCESS) // when mouse is over a button
 		return ;
+	if (world_id != media->world_id) // when opening a map
+	{
+		world_id = media->world_id;
+		clean_grid(&t->grid);
+		if (media->world_id >= media->n_worlds && add_world(&media->worlds, media->n_worlds) == SUCCESS) // if ADD WORLD chosen
+			media->n_worlds++;
+		fill_grid(media->worlds[world_id].n_vectors, media->worlds[world_id].vertices, &t->grid);
+		sdl->features[F_REDRAW] = 1;
+		update_sector_status(media->worlds[world_id].sectors, media->worlds[world_id].walls, media->worlds[world_id].vertices, media->worlds[world_id].n_sectors);
+		return ;
+	}
 	if (sdl->button_on == 1) // draw mode
 	{
 		if ((sdl->move.x || sdl->move.y) && mouse_over(t->grid.box, sdl->mouse))
 		{
 			if (t->active[0].x == -1)
-				find_node(sdl->mouse.x, sdl->mouse.y, t, 0);
+				t->active[0] = find_node(sdl->mouse.x, sdl->mouse.y, t);
 			else if (t->active[1].x == -1)
-				find_node(sdl->mouse.x, sdl->mouse.y, t, 1);
+				t->active[1] = find_node(sdl->mouse.x, sdl->mouse.y, t);
 			if (t->active[0].x != -1)
 				add_to_media(t, media);
 			sdl->features[F_REDRAW] = 1;
 			sdl->move.x = 0;
 			sdl->move.y = 0;
 		}
+		else if (t->active[0].x != -1 && t->active[1].x == -1)
+			sdl->features[F_REDRAW] = 1;
 	}
 	else if (sdl->button_on == 2 ) // move mode
-	{
-		static int id = -1;
-		static t_vec2d to_erase = (t_vec2d){ -1, -1 };
-		if ((sdl->move.x || sdl->move.y))
-		{
-			if (mouse_over(t->grid.box, sdl->mouse))
-			{
-				if (t->active[0].x == -1)
-				{
-					find_node(sdl->mouse.x, sdl->mouse.y, t, 0);
-					if (t->grid.nodes[t->active[0].x][t->active[0].y] == NODE_FULL)
-						id = find_vector(media->worlds[world_id].vertices, t->active[0], media->worlds[world_id].n_vectors);
-					if (id == -1)
-					{
-						t->active[0].x = -1;
-						t->active[0].y = -1;
-					}
-					to_erase = t->active[0];
-				}
-				else
-				{
-					if (to_erase.x != -1)
-						t->grid.nodes[to_erase.x][to_erase.y] = NODE_EMPTY;
-					find_node(sdl->mouse.x, sdl->mouse.y, t, 1);
-					if (id >= 0)
-					{
-						media->worlds[world_id].vertices[id] = t->active[1];
-						t->grid.nodes[t->active[1].x][t->active[1].y] = NODE_FULL;
-					}
-					to_erase = t->active[1];
-				}
-				sdl->move.x = sdl->mouse.x;
-				sdl->move.y = sdl->mouse.y;
-				sdl->features[F_REDRAW] = 1;
-			}
-			else
-			{
-				sdl->move.x = 0;
-				sdl->move.y = 0;
-			}
-		}
-		else
-		{
-			t->active[0].x = -1;
-			t->active[0].y = -1;
-			id = -1;
-		}
-
-	}
+		move_vector(sdl, t, &media->worlds[world_id]);
 	else if (sdl->button_on == 0) // view mode
 	{
 		if (sdl->move.x || sdl->move.y)
-		{
-			if (mouse_over(t->grid.box, sdl->mouse))
-			{
-				t->grid.box.x += sdl->mouse.x - sdl->move.x;
-				t->grid.box.y += sdl->mouse.y - sdl->move.y;
-				sdl->move.x = sdl->mouse.x;
-				sdl->move.y = sdl->mouse.y;
-				sdl->features[F_REDRAW] = 1;
-			}
-			else
-			{
-				sdl->move.x = 0;
-				sdl->move.y = 0;
-			}
-		}
+			move_grid(sdl, &t->grid);
 	}
 	else if (sdl->button_on == 3) // delete mode
 	{
@@ -789,42 +828,24 @@ void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 			if (mouse_over(t->grid.box, sdl->mouse))
 			{
 				int m = -1;
-				find_node(sdl->mouse.x, sdl->mouse.y, t, 0);
+				t->active[0] = find_node(sdl->mouse.x, sdl->mouse.y, t);
 				if (t->grid.nodes[t->active[0].x][t->active[0].y] == NODE_FULL)
 					m = find_vector(media->worlds[world_id].vertices, t->active[0], media->worlds[world_id].n_vectors);
 				delete_vector(m, &media->worlds[world_id]);
 				t->grid.nodes[t->active[0].x][t->active[0].y] = NODE_EMPTY;
-				sdl->move.x = 0;
-				sdl->move.y = 0;
+				sdl->move = (t_vec2d){ 0, 0 };
 				sdl->features[F_REDRAW] = 1;
 			}
 			else
-			{
-				sdl->move.x = 0;
-				sdl->move.y = 0;
-			}
+				sdl->move = (t_vec2d){ 0, 0 };
 		}
 	}
 	if (sdl->zoom != 0)
-	{
-		if (mouse_over(t->grid.box, sdl->mouse))
-		{
-			old_scale = t->grid.scale;
-			if (min_scale == 1)
-				editor_clamp(&min_scale);
-			new = t->grid.scale * 0.3f;
-			new = t->grid.scale + new * sdl->zoom;
-			t->grid.scale = clamp_f(new, min_scale, 100);
-			zoom_displace(&t->grid.box.x, &t->grid.box.y, sdl->mouse, old_scale, t->grid.scale );
-			sdl->features[F_REDRAW] = 1;
-		}
-		sdl->zoom = 0;
-	}
-
-	if (t->active[0].x != -1 && t->active[1].x == -1)
-		sdl->features[F_REDRAW] = 1;
+		zoom_grid(sdl, &t->grid);
 	update_sector_status(media->worlds[world_id].sectors, media->worlds[world_id].walls, media->worlds[world_id].vertices, media->worlds[world_id].n_sectors);
 }
+
+
 
 int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media)
 {
@@ -896,6 +917,14 @@ int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media)
 		{
 			if(event.type == SDL_MOUSEBUTTONDOWN)
 			{
+				if (sdl->button_lit == 4)
+				{
+					sdl->mode_id = MODE_SUMMARY;
+					sdl->button_lit = -1;
+					sdl->button_on = -1;
+					media->world_id = -1;
+					return (quit);
+				}
 				sdl->move.x = sdl->mouse.x;
 				sdl->move.y = sdl->mouse.y;
 			}
@@ -923,8 +952,7 @@ void					game_loop(t_sdl *sdl, t_media *media)
 	t->grid.box.h = GRID_SIZE * t->grid.scale;
 	t->grid.box.x = (WIN_W - t->grid.box.w) / 2;
 	t->grid.box.y = (WIN_H - t->grid.box.h) / 2;
-	t->grid.node_r = t->grid.box.w * 0.001;
-	t->grid.lit_node_r = t->grid.box.w * 0.002;
+
 
 	sdl->move = (t_vec2d){ 0, 0 };
 	sdl->button_on = 0;
@@ -952,19 +980,7 @@ void					game_loop(t_sdl *sdl, t_media *media)
 	}
 
 	sdl->save = 0;
-	int i = 0;
-	int j;
-
-	while (i < GRID_SIZE)
-	{
-		j = 0;
-		while (j < GRID_SIZE)
-		{
-			t->grid.nodes[i][j] = NODE_EMPTY;
-			j++;
-		}
-		i++;
-	}
+	clean_grid(&t->grid);
 	while (sdl->modes[sdl->mode_id].input(sdl, &t->grid.scale, media) == FALSE)
 	{
 		sdl->modes[sdl->mode_id].update(sdl, t,  media);
@@ -988,8 +1004,6 @@ unsigned 				load_sdl_media(t_media *media, t_sdl *sdl)
 	}
 	return (SUCCESS);
 }
-
-
 
 int						main(void)
 {

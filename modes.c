@@ -169,15 +169,15 @@ unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_world
 	return (SUCCESS);
 }
 
-unsigned short			editor_buttons(t_button *buttons, int n)
+unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 {
 	t_rec				box;
 	int 				i;
 
 	if (!buttons)
 		return (FAIL);
-	box.h = WIN_H * 0.03;
-	box.w = box.h * 4 * n;
+	box.h = WIN_H * 0.07;
+	box.w = box.h  * n;
 	box.x = 10;
 	box.y = 0;
 	distribute_buttons_h(buttons, n , box, 3);
@@ -186,13 +186,27 @@ unsigned short			editor_buttons(t_button *buttons, int n)
 	{
 		buttons[i].text_color = WHITE;
 		buttons[i].is_lit = FALSE;
-		buttons[i].background = DARK_PURPLE;
+		buttons[i].background = GRAY;
 		i++;
 	}
-	buttons[0].text = ft_strdup("VIEW");
-	buttons[1].text = ft_strdup("DRAW");
-	buttons[2].text = ft_strdup("MOVE");
-	buttons[3].text = ft_strdup("DELETE");
+//	buttons[0].text = ft_strdup("VIEW");
+	buttons[0].text = NULL;
+	buttons[1].text = NULL;
+	buttons[2].text = NULL;
+	buttons[3].text = NULL;
+//	buttons[4].text = NULL;
+
+
+	buttons[0].texture = load_texture("cursor.png", sdl);
+	buttons[1].texture = load_texture("pencil.png", sdl);
+	buttons[2].texture = load_texture("distort.png", sdl);
+	buttons[3].texture = load_texture("delete.png", sdl);
+
+
+//	buttons[1].text = ft_strdup("DRAW");
+//	buttons[2].text = ft_strdup("MOVE");
+//	buttons[3].text = ft_strdup("DELETE");
+	buttons[4].text = ft_strdup("BACK");
 	return (SUCCESS);
 }
 
@@ -223,7 +237,7 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media)
 
 	sdl->modes[MODE_MAIN_MENU].n_buttons = N_MM_BUTTONS;
 	sdl->modes[MODE_SUMMARY].n_buttons = media->n_worlds + 1;
-	sdl->modes[MODE_EDITOR].n_buttons = 4;
+	sdl->modes[MODE_EDITOR].n_buttons = 5;
 	printf("////%d\n", sdl->modes[MODE_SUMMARY].n_buttons);
 	i = 0;
 	while (i < N_MODES)
@@ -234,6 +248,6 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media)
 	}
 	main_menu_buttons(sdl->modes[MODE_MAIN_MENU].buttons);
 	summary_buttons(sdl->modes[MODE_SUMMARY].buttons, media->worlds, media->n_worlds);
-	editor_buttons(sdl->modes[MODE_EDITOR].buttons, sdl->modes[MODE_EDITOR].n_buttons);
+	editor_buttons(sdl->modes[MODE_EDITOR].buttons, sdl->modes[MODE_EDITOR].n_buttons, sdl);
 	return (SUCCESS);
 }
