@@ -95,13 +95,13 @@ void					render_button(t_button *button, t_sdl *sdl)
 			y++;
 		}
 	}
-	if (button->is_lit == 0 && button->back)
+	if (button->vis_lit_on[1] == FALSE && button->vis_lit_on[2] == FALSE && button->back)
 	{
 		rect = (SDL_Rect){ button->box.x, button->box.y,
 						   button->box.w, button->box.h };
 		SDL_RenderCopy(sdl->rend, button->back, NULL, &rect);
 	}
-	else if (button->is_lit == 1 && button->lit_back)
+	else if ((button->vis_lit_on[1] == TRUE || button->vis_lit_on[2] == TRUE) && button->lit_back)
 	{
 		rect = (SDL_Rect){ button->box.x, button->box.y,
 						   button->box.w, button->box.h };
@@ -117,7 +117,7 @@ void					render_button(t_button *button, t_sdl *sdl)
 	{
 		rect = (SDL_Rect){ button->box.x + button->box.w * 0.05, button->box.y + button->box.h * 0.05,
 						   button->box.w * 0.9, button->box.h * 0.8 };
-		if (button->is_lit)
+		if (button->vis_lit_on[1] == TRUE)
 			get_rgb(&r, &g, &b, LIT_COLOR);
 		else
 			get_rgb(&r, &g, &b, button->text_color);
@@ -137,7 +137,7 @@ void					render_buttons(t_button *buttons, t_sdl *sdl)
 
 	while (i < sdl->modes[sdl->mode_id].n_buttons)
 	{
-		if (buttons[i].visible == 1)
+		if (buttons[i].vis_lit_on[0] == TRUE)
 			render_button(&buttons[i], sdl);
 		i++;
 	}
@@ -149,6 +149,7 @@ void					render_sector_menu(t_sdl *sdl, t_t *t, t_sector *sector)
 	SDL_Texture			*back;
 	SDL_Rect			rect;
 	t_rec				box;
+	int 				text_color = DARK_GRAY;
 
 	if (!sdl || !t)
 		return ;
@@ -156,23 +157,25 @@ void					render_sector_menu(t_sdl *sdl, t_t *t, t_sector *sector)
 	box.h = WIN_H * 0.8;
 	box.x = WIN_W * 0.6;
 	box.y = WIN_H * 0.1;
-	back = load_texture("blue_panel.png", sdl);
+	back = load_texture("grey_panel.png", sdl);
 	rect = (SDL_Rect){ box.x, box.y,
 					   box.w, box.h };
 	SDL_RenderCopy(sdl->rend, back, NULL, &rect);
 
 	write_text(ft_strjoin("Sector ", ft_itoa(t->active[0].x)), sdl, box.w, box.h * 0.07,
-			(t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.05 }, WHITE);
+			(t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.05 }, text_color);
 	write_text(ft_strjoin("Floor height ", ft_itoa(sector->floor)), sdl, box.w, box.h * 0.07,
-			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.15 }, WHITE);
+			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.15 }, text_color);
 	write_text(ft_strjoin("Ceiling height ", ft_itoa(sector->ceiling)), sdl, box.w, box.h * 0.07,
-			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.25 }, WHITE);
+			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.25 }, text_color);
 	write_text(ft_strjoin("Floor texture ", ft_itoa(sector->floor_txtr)), sdl, box.w, box.h * 0.07,
-			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.35 }, WHITE);
+			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.35 }, text_color);
 	write_text(ft_strjoin("Ceiling texture ", ft_itoa(sector->ceil_txtr)), sdl, box.w, box.h * 0.07,
-			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.45 }, WHITE);
+			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.45 }, text_color);
 	write_text(ft_strjoin("Wall texture ", ft_itoa(sector->floor_txtr)), sdl, box.w, box.h * 0.07,
-			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.55 }, WHITE);
+			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.55 }, text_color);
+
+	sdl->modes[sdl->mode_id].buttons[DESELECT_SEC_BUTTON].box = (t_rec){ box.x + box.w, box.y, 30, 30 };
 }
 
 void					render_screen(t_sdl *sdl)
@@ -198,12 +201,15 @@ void					render_editor(t_sdl *sdl, t_t *t, t_media *media)
 {
 	if (!sdl || !media || !t || sdl->features[F_REDRAW] == 0)
 		return ;
+	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
+
 	SDL_RenderClear(sdl->rend);
+
 	render_grid(media->worlds[media->world_id], t, sdl);
 	render_screen(sdl);
+	if (t->active[0].y >= 0 && t->active[0].y < media->worlds[media->world_id].n_sectors)
+		render_sector_menu(sdl, t, &media->worlds[media->world_id].sectors[t->active[0].y]);
 	render_buttons(sdl->modes[sdl->mode_id].buttons, sdl);
-	if (t->active[0].x >= 0 && t->active[0].x < media->worlds[media->world_id].n_sectors)
-		render_sector_menu(sdl, t, &media->worlds[media->world_id].sectors[t->active[0].x]);
 	SDL_RenderPresent(sdl->rend);
 	sdl->features[F_REDRAW] = 0;
 }
@@ -242,16 +248,16 @@ unsigned short			light_button(t_sdl *sdl)
 	{
 		if (mouse_over(sdl->modes[sdl->mode_id].buttons[i].box, sdl->mouse) == TRUE)
 		{
-			sdl->modes[sdl->mode_id].buttons[i].is_lit = TRUE;
+			sdl->modes[sdl->mode_id].buttons[i].vis_lit_on[1] = TRUE;
 			sdl->button_lit = i;
 			sdl->features[F_REDRAW] = 1;
 			res = SUCCESS;
 		}
 		else
 		{
-			if (sdl->modes[sdl->mode_id].buttons[i].is_lit == TRUE)
+			if (sdl->modes[sdl->mode_id].buttons[i].vis_lit_on[1] == TRUE)
 				sdl->features[F_REDRAW] = 1;
-			sdl->modes[sdl->mode_id].buttons[i].is_lit = FALSE;
+			sdl->modes[sdl->mode_id].buttons[i].vis_lit_on[1] = FALSE;
 		}
 		i++;
 	}
@@ -852,16 +858,21 @@ void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 
 	if (!sdl || !media || !t)
 		return;
-	if (sdl->save == 1) // when saving
+	if (sdl->save == 1 || sdl->button_on == SAVE_BUTTON) // when saving
 	{
 		rewrite_media(media);
 		sdl->save = 0;
+		sdl->button_on = DRAG_BUTTON;
+		sdl->modes[sdl->mode_id].buttons[sdl->button_on].vis_lit_on[2] = TRUE;
+		sdl->modes[sdl->mode_id].buttons[SAVE_BUTTON].vis_lit_on[2] = FALSE;
 		return ;
 	}
-
 	if (sdl->button_lit != -1 && (sdl->move.x || sdl->move.y)) // when pressing an on screen button
 	{
+		if (sdl->button_on != -1)
+			sdl->modes[sdl->mode_id].buttons[sdl->button_on].vis_lit_on[2] = FALSE;
 		sdl->button_on = sdl->button_lit;
+		sdl->modes[sdl->mode_id].buttons[sdl->button_on].vis_lit_on[2] = TRUE;
 		t->active[0] = (t_vec2d){ -1, -1 };
 		t->active[1] = (t_vec2d){ -1, -1 };
 		return ;
@@ -879,7 +890,7 @@ void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 		update_sector_status(media->worlds[world_id].sectors, media->worlds[world_id].walls, media->worlds[world_id].vertices, media->worlds[world_id].n_sectors);
 		return ;
 	}
-	if (sdl->button_on == 1) // draw mode
+	if (sdl->button_on == DRAW_BUTTON) // draw mode
 	{
 		if ((sdl->move.x || sdl->move.y) && mouse_over(t->grid.box, sdl->mouse))
 		{
@@ -896,14 +907,14 @@ void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 		else if (t->active[0].x != -1 && t->active[1].x == -1)
 			sdl->features[F_REDRAW] = 1;
 	}
-	else if (sdl->button_on == 2 ) // move mode
+	else if (sdl->button_on == DISTORT_BUTTON ) // move mode
 		move_vector(sdl, t, &media->worlds[world_id]);
-	else if (sdl->button_on == 0) // view mode
+	else if (sdl->button_on == DRAG_BUTTON) // view mode
 	{
 		if (sdl->move.x || sdl->move.y)
 			move_grid(sdl, &t->grid);
 	}
-	else if (sdl->button_on == 3) // delete mode
+	else if (sdl->button_on == DELETE_BUTTON) // delete mode
 	{
 		if (sdl->move.x || sdl->move.y)
 		{
@@ -922,7 +933,7 @@ void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 				sdl->move = (t_vec2d){ 0, 0 };
 		}
 	}
-	else if (sdl->button_on == 6 && s == -1) // sector mode
+	else if (sdl->button_on == SECTOR_BUTTON && s == -1) // sector mode
 	{
 		int k;
 		t->active[0] = (t_vec2d){ -1, -1 };
@@ -931,25 +942,28 @@ void					update_editor(t_sdl *sdl, t_t *t, t_media *media)
 		{
 			t->active[0].x = k;
 			if (sdl->move.x || sdl->move.y)
+			{
 				s = k;
+				t->active[0].y = s;
+			}
 		}
 		sdl->features[F_REDRAW] = 1;
 
 	}
-	else if (sdl->button_on == 7 && s != -1) // sector mode
+	else if (sdl->button_on == DESELECT_SEC_BUTTON && s != -1) // sector mode
 	{
 		s = -1;
 		sdl->features[F_REDRAW] = 1;
-		sdl->button_on = 6;
+		sdl->modes[sdl->mode_id].buttons[sdl->button_on].vis_lit_on[2] = FALSE;
+		sdl->button_on = SECTOR_BUTTON;
+		sdl->modes[sdl->mode_id].buttons[sdl->button_on].vis_lit_on[2] = TRUE;
 
 	}
-	sdl->modes[sdl->mode_id].buttons[7].visible = (sdl->button_on == 6 && s != -1) ? 1 : 0;
+	sdl->modes[sdl->mode_id].buttons[7].vis_lit_on[0] = (sdl->button_on == SECTOR_BUTTON && s != -1) ? TRUE : FALSE;
 	if (sdl->zoom != 0)
 		zoom_grid(sdl, &t->grid);
 	update_sector_status(media->worlds[world_id].sectors, media->worlds[world_id].walls, media->worlds[world_id].vertices, media->worlds[world_id].n_sectors);
 }
-
-
 
 int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media)
 {
@@ -1021,7 +1035,7 @@ int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media)
 		{
 			if(event.type == SDL_MOUSEBUTTONDOWN)
 			{
-				if (sdl->button_lit == 4)
+				if (sdl->button_lit == BACK_BUTTON)
 				{
 					sdl->mode_id = MODE_SUMMARY;
 					sdl->button_lit = -1;

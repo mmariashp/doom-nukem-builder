@@ -50,7 +50,7 @@ sys/types.h
 ./libft/libft.h
 /home/moosh/CLionProjects/builder/./libft/libft.h
 
-/home/moosh/CLionProjects/builder/main.c
+/home/moosh/CLionProjects/builder/modes.c
 builder.h
 /home/moosh/CLionProjects/builder/builder.h
 

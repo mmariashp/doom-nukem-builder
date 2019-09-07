@@ -8,7 +8,11 @@ void					render_main_menu(t_sdl *sdl, t_t *t, t_media *media)
 //	SDL_SetRenderDrawColor(sdl->rend, 0, 0, 0, 255);
 	SDL_RenderClear(sdl->rend);
 //	SDL_FillRect(sdl->surf, NULL, 0x00);
+	static SDL_Texture *f = NULL;
+	if (f == NULL)
+		f = load_texture("grey_panel.png", sdl);
 
+	SDL_RenderCopy(sdl->rend, f, 0, 0);
 	render_buttons(sdl->modes[sdl->mode_id].buttons, sdl);
 
 //	sdl->t = SDL_CreateTextureFromSurface(sdl->rend, sdl->surf);

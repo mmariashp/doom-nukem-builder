@@ -54,7 +54,15 @@
 # define NAVY					0x000080
 # define GREEN					0x4AA21E
 
+# define SOFT_ORANGE			0xF4511E
+# define SOFT_TEAL				0x00897B
+
 # define LIT_COLOR				0x5A982B   //green
+
+# define CONVEX_COLOR			SOFT_ORANGE
+# define CONCAVE_COLOR			SOFT_TEAL
+# define ACTIVE_SECTOR_COLOR	0x3949AB
+# define INACTIVE_SECTOR_COLOR	DARK_GRAY
 
 /*
 ** STR = PRINTS OUT NAME OF MACRO; XSTR = PRINTS OUT VALUE OF MACRO
@@ -153,6 +161,16 @@
 # define N_SUMM_BUTTONS		3
 # define N_EDIT_BUTTONS		3
 
+# define DRAG_BUTTON		0
+# define DRAW_BUTTON		1
+# define DISTORT_BUTTON		2
+# define DELETE_BUTTON		3
+# define SECTOR_BUTTON		4
+# define SAVE_BUTTON		5
+# define BACK_BUTTON		6
+# define DESELECT_SEC_BUTTON		7
+
+
 # define GRID_SIZE			150
 
 
@@ -205,9 +223,8 @@ typedef struct					s_t
 
 typedef struct 					s_button
 {
-	char 						visible;
+	char 						vis_lit_on[3];
 	t_rec						box;
-	unsigned short				is_lit;
 	int 						text_color;
 	char 						*text;
 	SDL_Texture					*texture;

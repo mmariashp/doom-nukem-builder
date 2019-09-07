@@ -51,6 +51,10 @@ void					render_summary(t_sdl *sdl, t_t *t, t_media *media)
 	if (!sdl || !t || !media)
 		return ;
 	SDL_RenderClear(sdl->rend);
+	static SDL_Texture *f = NULL;
+	if (f == NULL)
+		f = load_texture("grey_panel.png", sdl);
+	SDL_RenderCopy(sdl->rend, f, 0, 0);
 	render_buttons(sdl->modes[sdl->mode_id].buttons, sdl);
 	SDL_RenderPresent(sdl->rend);
 }

@@ -319,15 +319,15 @@ void					fill_sector(t_world world, t_t *t, int **screen, int sec, int button)
 		p[i].y = (int)(t->grid.box.y + p[i].y * t->grid.scale);
 		i++;
 	}
-	if (button == 6 || button == 7)
+	if (button == SECTOR_BUTTON || button == DESELECT_SEC_BUTTON)
 	{
 		if (sec == t->active[0].x)
-			color = YELLOW;
+			color = ACTIVE_SECTOR_COLOR;
 		else
-			color = NAVY;
+			color = world.sectors[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
 	}
 	else
-		color = world.sectors[j].status == SEC_CONVEX_CLOSED ? GREEN : RED;
+		color = world.sectors[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
 	fillpoly(p, world.sectors[j].n_walls, screen, color);
 }
 
@@ -360,7 +360,7 @@ void					render_grid(t_world world, t_t *t, t_sdl *sdl)
 	render_grid_nodes(sdl, t);
 	render_walls(world, t->grid, sdl->screen);
 	place_player(world, t->grid, sdl->screen, radius2);
-	if (sdl->button_on == 1) // draw mode
+	if (sdl->button_on == DRAW_BUTTON) // draw mode
 	{
 		if (t->active[0].x != -1 && t->active[0].y != -1)
 		{

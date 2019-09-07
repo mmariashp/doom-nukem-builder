@@ -129,9 +129,10 @@ unsigned short			main_menu_buttons(t_button *buttons, t_sdl *sdl)
 	i = 0;
 	while (i < N_MM_BUTTONS)
 	{
-		buttons[i].visible = 1;
+		buttons[i].vis_lit_on[0] = TRUE;
+		buttons[i].vis_lit_on[1] = FALSE;
+		buttons[i].vis_lit_on[2] = FALSE;
 		buttons[i].text_color = WHITE;
-		buttons[i].is_lit = FALSE;
 		buttons[i].back = load_texture("blue_button00.png", sdl);
 		buttons[i].lit_back = load_texture("blue_button13.png", sdl);
 		i++;
@@ -158,7 +159,7 @@ unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_world
 	s = NULL;
 	while (i < n_worlds + 1)
 	{
-		buttons[i].visible = 1;
+		buttons[i].vis_lit_on[0] = TRUE;
 		s = ft_strjoin(ft_itoa(i), ". ");
 		if (i == n_worlds)
 			buttons[i].text = ft_strjoin(s, " ADD LEVEL");
@@ -167,7 +168,6 @@ unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_world
 		buttons[i].back = load_texture("blue_button00.png", sdl);
 		buttons[i].lit_back = load_texture("blue_button13.png", sdl);
 		buttons[i].text_color = WHITE;
-		buttons[i].is_lit = FALSE;
 		i++;
 	}
 	if (s)
@@ -190,39 +190,24 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 	i = 0;
 	while (i < n)
 	{
-		buttons[i].visible = 1;
-		buttons[i].text_color = WHITE;
-		buttons[i].is_lit = FALSE;
-		buttons[i].back = load_texture("blue_button07.png", sdl);
-		buttons[i].lit_back = load_texture("blue_button06.png", sdl);
+		buttons[i].vis_lit_on[0] = TRUE;
+		buttons[i].vis_lit_on[1] = FALSE;
+		buttons[i].vis_lit_on[2] = FALSE;
+		buttons[i].text_color = 0;
+		buttons[i].back = load_texture("grey_button10.png", sdl);
+		buttons[i].lit_back = load_texture("blue_button07.png", sdl);
+		buttons[0].text = NULL;
 		i++;
 	}
-//	buttons[0].text = ft_strdup("VIEW");
-	buttons[0].text = NULL;
-	buttons[1].text = NULL;
-	buttons[2].text = NULL;
-	buttons[3].text = NULL;
-//	buttons[4].text = NULL;
-
-
-	buttons[0].front = load_texture("move.svg", sdl);
-	buttons[1].front = load_texture("pencil.svg", sdl);
-	buttons[2].front = load_texture("distort.png", sdl);
-	buttons[3].front = load_texture("delete.png", sdl);
-	buttons[4].front = load_texture("left.png", sdl);
-	buttons[5].front = load_texture("save.svg", sdl);
-
-
-	buttons[7].visible = 0;
-	buttons[7].front = load_texture("cross.png", sdl);
-
-
-
-//	buttons[1].text = ft_strdup("DRAW");
-//	buttons[2].text = ft_strdup("MOVE");
-//	buttons[3].text = ft_strdup("DELETE");
-//	buttons[4].text = ft_strdup("BACK");
-	buttons[6].text = ft_strdup("SEC");
+	buttons[DRAG_BUTTON].front = load_texture("move.png", sdl);
+	buttons[DRAW_BUTTON].front = load_texture("draw.png", sdl);
+	buttons[DISTORT_BUTTON].front = load_texture("distort.png", sdl);
+	buttons[DELETE_BUTTON].front = load_texture("delete.png", sdl);
+	buttons[BACK_BUTTON].front = load_texture("back2.png", sdl);
+	buttons[SAVE_BUTTON].front = load_texture("save.png", sdl);
+	buttons[SECTOR_BUTTON].front = load_texture("sector2.png", sdl);
+	buttons[DESELECT_SEC_BUTTON].vis_lit_on[0] = FALSE;
+	buttons[DESELECT_SEC_BUTTON].front = load_texture("cross.png", sdl);
 	return (SUCCESS);
 }
 
@@ -254,7 +239,6 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media)
 	sdl->modes[MODE_MAIN_MENU].n_buttons = N_MM_BUTTONS;
 	sdl->modes[MODE_SUMMARY].n_buttons = media->n_worlds + 1;
 	sdl->modes[MODE_EDITOR].n_buttons = 8;
-	printf("////%d\n", sdl->modes[MODE_SUMMARY].n_buttons);
 	i = 0;
 	while (i < N_MODES)
 	{
