@@ -80,6 +80,7 @@
 
 # define WIN_NAME				"DOOM-NUKEM BUILDER"
 # define FONT_NAME              "VCR_OSD_MONO_1.001.ttf"
+//# define FONT_NAME "LibreBaskerville-Regular.ttf"
 
 # define LEVELS					"Levels"
 # define TEXTURES				"Textures"
@@ -165,15 +166,15 @@ typedef struct					s_vec2d
 	int							y;
 }								t_vec2d;
 
-typedef struct		s_poly
+typedef struct					s_poly
 {
-	int 			area;
-	int 			color;
-	t_vec2d			*a;
-	t_vec2d			*b;
-	t_vec2d			*c;
-	t_vec2d			*d;
-}					t_poly;
+	int 						area;
+	int 						color;
+	t_vec2d						*a;
+	t_vec2d						*b;
+	t_vec2d						*c;
+	t_vec2d						*d;
+}								t_poly;
 
 typedef struct                  s_line
 {
@@ -204,11 +205,15 @@ typedef struct					s_t
 
 typedef struct 					s_button
 {
+	char 						visible;
 	t_rec						box;
 	unsigned short				is_lit;
 	int 						text_color;
 	char 						*text;
 	SDL_Texture					*texture;
+	SDL_Texture					*back;
+	SDL_Texture					*lit_back;
+	SDL_Texture					*front;
 	int 						background;
 }								t_button;
 
@@ -232,7 +237,7 @@ typedef struct					s_sdl
 	short 						button_on;
 	short 						zoom;
 	t_vec2d						move;
-	char 						redraw;
+
 	char 						features[10];
 	char 						save;
 }								t_sdl;
@@ -347,7 +352,7 @@ int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media);
 void					update_editor(t_sdl *sdl, t_t *t,  t_media *media);
 void					render_editor(t_sdl *sdl, t_t *t, t_media *media);
 
-void					write_text(char *str, t_sdl *sdl, t_vec2d pos, int color);
+void					write_text(char *str, t_sdl *sdl, int max_w, int h, t_vec2d pos, int color);
 
 int						clamp(int n, int min, int max);
 float					clamp_f(float n, float min, float max);

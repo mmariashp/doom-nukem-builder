@@ -83,27 +83,7 @@ void					render_walls(t_world world, t_grid grid, int **screen)
 	}
 }
 
-unsigned short			dot_inside_sector(int x, int y, t_vec2d *p, int n)
-{
-	int 				i;
-	int 				j;
-	unsigned short		odd;
 
-	i = 0;
-	j = n - 1;
-	odd = FALSE;
-	while(i < n)
-	{
-		if ((p[i].y < y && p[j].y >= y) || (p[j].y < y && p[i].y >= y) )
-		{
-			if (p[i].x + (y - p[i].y) / (p[j].y - p[i].y) * (p[j].x - p[i].x) < x)
-				odd = odd == FALSE ? TRUE : FALSE;
-		}
-		j = i;
-		i++;
-	}
-	return (odd);
-}
 
 //void					flood_fill(int **screen, t_vec2d *p, int n, int x, int y, int new, int *count)
 //{
@@ -323,7 +303,7 @@ unsigned short			dot_inside_sector(int x, int y, t_vec2d *p, int n)
 //	return (TRUE);
 //}
 
-void					fill_sector(t_world world, t_t *t, int **screen, int sec)
+void					fill_sector(t_world world, t_t *t, int **screen, int sec, int button)
 {
 	int					i = 0;
 	int					j = sec;
@@ -339,8 +319,30 @@ void					fill_sector(t_world world, t_t *t, int **screen, int sec)
 		p[i].y = (int)(t->grid.box.y + p[i].y * t->grid.scale);
 		i++;
 	}
-	color = world.sectors[j].status == SEC_CONVEX_CLOSED ? GREEN : RED;
+	if (button == 6 || button == 7)
+	{
+		if (sec == t->active[0].x)
+			color = YELLOW;
+		else
+			color = NAVY;
+	}
+	else
+		color = world.sectors[j].status == SEC_CONVEX_CLOSED ? GREEN : RED;
 	fillpoly(p, world.sectors[j].n_walls, screen, color);
+}
+
+void					clean_screen(int **screen)
+{
+	int					i;
+
+	if (!screen)
+		return ;
+	i = 0;
+	while (i < WIN_W)
+	{
+		ft_memset(screen[i], 0, sizeof(int) * WIN_H);
+		i++;
+	}
 }
 
 void					render_grid(t_world world, t_t *t, t_sdl *sdl)
@@ -350,20 +352,15 @@ void					render_grid(t_world world, t_t *t, t_sdl *sdl)
 	int 				radius1;
 	int 				radius2;
 
-	radius1 = t->grid.box.w * 0.001;
-	radius2 = t->grid.box.w * 0.002;
 	if (!t || !sdl || world.n_sectors == 100)
 		return;
-	int k = 0;
-	while (k < WIN_W)
-	{
-		ft_memset(sdl->screen[k], 0, sizeof(int) * WIN_H);
-		k++;
-	}
+	clean_screen(sdl->screen);
+	radius1 = t->grid.box.w * 0.001;
+	radius2 = t->grid.box.w * 0.002;
 	render_grid_nodes(sdl, t);
 	render_walls(world, t->grid, sdl->screen);
 	place_player(world, t->grid, sdl->screen, radius2);
-	if (sdl->button_on == 1)
+	if (sdl->button_on == 1) // draw mode
 	{
 		if (t->active[0].x != -1 && t->active[0].y != -1)
 		{
@@ -381,11 +378,11 @@ void					render_grid(t_world world, t_t *t, t_sdl *sdl)
 				draw_line((t_line){ node, sdl->mouse }, BABY_PINK, sdl->rend);
 		}
 	}
-	k = 0;
+	int k = 0;
 	while (k < world.n_sectors)
 	{
 		if (world.sectors[k].status != SEC_OPEN)
-			fill_sector(world, t, sdl->screen, k);
+			fill_sector(world, t, sdl->screen, k, sdl->button_on);
 		k++;
 	}
 
