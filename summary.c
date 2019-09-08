@@ -46,29 +46,30 @@ void					render_txtr_box(t_vec2d size, t_vec2d pos, SDL_Texture *t, SDL_Renderer
 //
 //}
 
-void					render_summary(t_sdl *sdl, t_t *t, t_media *media)
+void					render_summary(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog)
 {
 	if (!sdl || !t || !media)
 		return ;
+	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
-	static SDL_Texture *f = NULL;
-	if (f == NULL)
-		f = load_texture("grey_panel.png", sdl);
-	SDL_RenderCopy(sdl->rend, f, 0, 0);
-	render_buttons(sdl->modes[sdl->mode_id].buttons, sdl);
+//	static SDL_Texture *f = NULL;
+//	if (f == NULL)
+//		f = load_texture("grey_panel.png", sdl);
+//	SDL_RenderCopy(sdl->rend, f, 0, 0);
+	render_buttons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons);
 	SDL_RenderPresent(sdl->rend);
 }
 
-void					update_summary(t_sdl *sdl, t_t *t, t_media *media)
+void					update_summary(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog)
 {
-	if (!sdl || !t || !media || !sdl->modes || !sdl->modes[sdl->mode_id].buttons)
+	if (!sdl || !t || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
 		return;
-	if (light_button(sdl) == SUCCESS)
+	if (light_button(sdl, prog->modes[prog->mode_id].buttons,  prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
 		return ;
-	sdl->button_lit = -1;
+	prog->button_lit = -1;
 }
 
-int						input_summary(t_sdl *sdl, float *grid_scale, t_media *media)
+int						input_summary(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog)
 {
 	int					quit;
 	SDL_Event			event;
@@ -99,17 +100,17 @@ int						input_summary(t_sdl *sdl, float *grid_scale, t_media *media)
 			SDL_GetMouseState(&sdl->mouse.x, &sdl->mouse.y);
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
-				if (sdl->button_lit != -1)
+				if (prog->button_lit != -1)
 				{
 					mode = 1;
-					level = sdl->button_lit;
+					level = prog->button_lit;
 				}
 			}
 		}
 	}
 	if (mode == 1)
 	{
-		sdl->mode_id = LEVEL_EDIT;
+		prog->mode_id = LEVEL_EDIT;
 		media->world_id = level;
 	}
 	return (quit);

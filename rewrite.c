@@ -212,31 +212,26 @@ void					rewrite_levels(t_media *media)
 
 	if (!media)
 		return ;
-	i = 0;
-	while (i < media->n_worlds)
+	i = -1;
+	while (++i < media->n_worlds)
 	{
-		printf("writing file %s\n", ft_strjoin("./media/test/", media->worlds[i].filename) );
-		if (open_for_write(ft_strjoin(ft_strjoin("./media/test/", media->worlds[i].filename), ".txt"), &fd) == FAIL)
+		if (open_for_write(media->worlds[i].full_path, &fd) == FAIL)
 		{
-			ft_putstr("Couldn't open the file for writing");
-			ft_putstr(ASSET_FILE);
-			ft_putstr(". Must be in the root folder and have write permissions.\n");
+			ft_putstr("Couldn't open the file for writing: ");
+			ft_putendl(media->worlds[i].full_path);
 			return ;
 		}
 		if (write_level(fd, media->worlds[i]) == FAIL)
 		{
-			ft_putendl("error in writing assets\n");
+			ft_putendl("error in saving progress\n");
 			return ;
 		}
-		ft_putendl("Wrote level\n");
 		if (close_file(fd) == FAIL)
 		{
-			ft_putstr("Couldn't close the file");
-			ft_putstr(ASSET_FILE);
-			ft_putstr(".\n");
+			ft_putstr("Couldn't close the file: ");
+			ft_putendl(media->worlds[i].full_path);
 			return ;
 		}
-		i++;
 	}
 }
 

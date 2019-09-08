@@ -12,7 +12,7 @@ void					draw_player(t_vec2d c, int r, int color, int **screen)
 	draw_circle_fill2(c, r * 0.5, WHITE, screen);
 }
 
-void					render_grid_nodes(t_sdl *sdl, t_t *t)
+void					render_grid_nodes(int **screen, t_t *t)
 {
 	int 				x;
 	int 				y;
@@ -35,9 +35,9 @@ void					render_grid_nodes(t_sdl *sdl, t_t *t)
 		{
 			node.x = (int)(t->grid.box.x + (x * t->grid.scale));
 			if (t->grid.nodes[x][y] == NODE_FULL)
-				draw_node(node, radius2, BROWN, sdl->screen);
+				draw_node(node, radius2, BROWN, screen);
 			else
-				draw_node(node, radius1, DARK_GRAY, sdl->screen);
+				draw_node(node, radius1, DARK_GRAY, screen);
 			x++;
 		}
 		y++;
@@ -345,44 +345,44 @@ void					clean_screen(int **screen)
 	}
 }
 
-void					render_grid(t_world world, t_t *t, t_sdl *sdl)
+void					render_grid(t_world world, t_t *t, t_prog *prog, t_vec2d mouse)
 {
 	t_vec2d				node;
 	t_vec2d				node2;
 	int 				radius1;
 	int 				radius2;
 
-	if (!t || !sdl || world.n_sectors == 100)
+	if (!t || !prog || world.n_sectors == 100)
 		return;
-	clean_screen(sdl->screen);
+	clean_screen(prog->screen);
 	radius1 = t->grid.box.w * 0.001;
 	radius2 = t->grid.box.w * 0.002;
-	render_grid_nodes(sdl, t);
-	render_walls(world, t->grid, sdl->screen);
-	place_player(world, t->grid, sdl->screen, radius2);
-	if (sdl->button_on == DRAW_BUTTON) // draw mode
+	render_grid_nodes(prog->screen, t);
+	render_walls(world, t->grid, prog->screen);
+	place_player(world, t->grid, prog->screen, radius2);
+	if (prog->button_on == DRAW_BUTTON) // draw mode
 	{
 		if (t->active[0].x != -1 && t->active[0].y != -1)
 		{
 			node.x = (int)(t->grid.box.x + t->active[0].x * t->grid.scale);
 			node.y = (int)(t->grid.box.y + t->active[0].y * t->grid.scale);
-			draw_node(node, radius2, BABY_PINK, sdl->screen);
+			draw_node(node, radius2, BABY_PINK, prog->screen);
 			if (t->active[1].x != -1 && t->active[1].y != -1)
 			{
 				node2.x = (int)(t->grid.box.x + t->active[1].x * t->grid.scale);
 				node2.y = (int)(t->grid.box.y + t->active[1].y * t->grid.scale);
-				draw_node(node2, radius1, BABY_PINK, sdl->screen);
-				draw_line((t_line){ node, node2 }, BABY_PINK, sdl->rend);
+				draw_node(node2, radius1, BABY_PINK, prog->screen);
+				draw_line2((t_line){ node, node2 }, BABY_PINK, prog->screen);
 			}
 			else
-				draw_line((t_line){ node, sdl->mouse }, BABY_PINK, sdl->rend);
+				draw_line2((t_line){ node, mouse }, BABY_PINK, prog->screen);
 		}
 	}
 	int k = 0;
 	while (k < world.n_sectors)
 	{
 		if (world.sectors[k].status != SEC_OPEN)
-			fill_sector(world, t, sdl->screen, k, sdl->button_on);
+			fill_sector(world, t, prog->screen, k, prog->button_on);
 		k++;
 	}
 

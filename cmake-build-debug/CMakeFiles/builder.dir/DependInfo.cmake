@@ -4,6 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/moosh/CLionProjects/builder/add_to_media.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/add_to_media.c.o"
+  "/home/moosh/CLionProjects/builder/buttons.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/buttons.c.o"
+  "/home/moosh/CLionProjects/builder/editor.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/editor.c.o"
   "/home/moosh/CLionProjects/builder/fill_polygon.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/fill_polygon.c.o"
   "/home/moosh/CLionProjects/builder/get_assets.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/get_assets.c.o"
   "/home/moosh/CLionProjects/builder/get_next_line.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/get_next_line.c.o"
@@ -12,11 +15,13 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/moosh/CLionProjects/builder/main_menu.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/main_menu.c.o"
   "/home/moosh/CLionProjects/builder/math.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/math.c.o"
   "/home/moosh/CLionProjects/builder/modes.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/modes.c.o"
+  "/home/moosh/CLionProjects/builder/prog.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/prog.c.o"
   "/home/moosh/CLionProjects/builder/render.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/render.c.o"
   "/home/moosh/CLionProjects/builder/render_grid.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/render_grid.c.o"
   "/home/moosh/CLionProjects/builder/rewrite.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/rewrite.c.o"
   "/home/moosh/CLionProjects/builder/sdl_fun.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/sdl_fun.c.o"
   "/home/moosh/CLionProjects/builder/summary.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/summary.c.o"
+  "/home/moosh/CLionProjects/builder/zoom.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/zoom.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

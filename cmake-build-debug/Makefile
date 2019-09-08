@@ -136,6 +136,87 @@ builder/fast:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/build
 .PHONY : builder/fast
 
+add_to_media.o: add_to_media.c.o
+
+.PHONY : add_to_media.o
+
+# target to build an object file
+add_to_media.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/add_to_media.c.o
+.PHONY : add_to_media.c.o
+
+add_to_media.i: add_to_media.c.i
+
+.PHONY : add_to_media.i
+
+# target to preprocess a source file
+add_to_media.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/add_to_media.c.i
+.PHONY : add_to_media.c.i
+
+add_to_media.s: add_to_media.c.s
+
+.PHONY : add_to_media.s
+
+# target to generate assembly for a file
+add_to_media.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/add_to_media.c.s
+.PHONY : add_to_media.c.s
+
+buttons.o: buttons.c.o
+
+.PHONY : buttons.o
+
+# target to build an object file
+buttons.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/buttons.c.o
+.PHONY : buttons.c.o
+
+buttons.i: buttons.c.i
+
+.PHONY : buttons.i
+
+# target to preprocess a source file
+buttons.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/buttons.c.i
+.PHONY : buttons.c.i
+
+buttons.s: buttons.c.s
+
+.PHONY : buttons.s
+
+# target to generate assembly for a file
+buttons.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/buttons.c.s
+.PHONY : buttons.c.s
+
+editor.o: editor.c.o
+
+.PHONY : editor.o
+
+# target to build an object file
+editor.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/editor.c.o
+.PHONY : editor.c.o
+
+editor.i: editor.c.i
+
+.PHONY : editor.i
+
+# target to preprocess a source file
+editor.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/editor.c.i
+.PHONY : editor.c.i
+
+editor.s: editor.c.s
+
+.PHONY : editor.s
+
+# target to generate assembly for a file
+editor.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/editor.c.s
+.PHONY : editor.c.s
+
 fill_polygon.o: fill_polygon.c.o
 
 .PHONY : fill_polygon.o
@@ -2188,6 +2269,33 @@ modes.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/modes.c.s
 .PHONY : modes.c.s
 
+prog.o: prog.c.o
+
+.PHONY : prog.o
+
+# target to build an object file
+prog.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/prog.c.o
+.PHONY : prog.c.o
+
+prog.i: prog.c.i
+
+.PHONY : prog.i
+
+# target to preprocess a source file
+prog.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/prog.c.i
+.PHONY : prog.c.i
+
+prog.s: prog.c.s
+
+.PHONY : prog.s
+
+# target to generate assembly for a file
+prog.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/prog.c.s
+.PHONY : prog.c.s
+
 render.o: render.c.o
 
 .PHONY : render.o
@@ -2323,6 +2431,33 @@ summary.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/summary.c.s
 .PHONY : summary.c.s
 
+zoom.o: zoom.c.o
+
+.PHONY : zoom.o
+
+# target to build an object file
+zoom.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/zoom.c.o
+.PHONY : zoom.c.o
+
+zoom.i: zoom.c.i
+
+.PHONY : zoom.i
+
+# target to preprocess a source file
+zoom.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/zoom.c.i
+.PHONY : zoom.c.i
+
+zoom.s: zoom.c.s
+
+.PHONY : zoom.s
+
+# target to generate assembly for a file
+zoom.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/zoom.c.s
+.PHONY : zoom.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2333,6 +2468,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... ft"
 	@echo "... builder"
+	@echo "... add_to_media.o"
+	@echo "... add_to_media.i"
+	@echo "... add_to_media.s"
+	@echo "... buttons.o"
+	@echo "... buttons.i"
+	@echo "... buttons.s"
+	@echo "... editor.o"
+	@echo "... editor.i"
+	@echo "... editor.s"
 	@echo "... fill_polygon.o"
 	@echo "... fill_polygon.i"
 	@echo "... fill_polygon.s"
@@ -2561,6 +2705,9 @@ help:
 	@echo "... modes.o"
 	@echo "... modes.i"
 	@echo "... modes.s"
+	@echo "... prog.o"
+	@echo "... prog.i"
+	@echo "... prog.s"
 	@echo "... render.o"
 	@echo "... render.i"
 	@echo "... render.s"
@@ -2576,6 +2723,9 @@ help:
 	@echo "... summary.o"
 	@echo "... summary.i"
 	@echo "... summary.s"
+	@echo "... zoom.o"
+	@echo "... zoom.i"
+	@echo "... zoom.s"
 .PHONY : help
 
 

@@ -59,8 +59,8 @@
 
 # define LIT_COLOR				0x5A982B   //green
 
-# define CONVEX_COLOR			SOFT_ORANGE
-# define CONCAVE_COLOR			SOFT_TEAL
+# define CONVEX_COLOR			SOFT_TEAL
+# define CONCAVE_COLOR			SOFT_ORANGE
 # define ACTIVE_SECTOR_COLOR	0x3949AB
 # define INACTIVE_SECTOR_COLOR	DARK_GRAY
 
@@ -95,6 +95,8 @@
 # define SOUNDS					"Sounds"
 # define FONTS					"Fonts"
 # define TOTAL_SECTIONS			4
+
+# define MAX_LEVELS				5
 
 # define R_VECTORS				1
 # define R_WALLS				2
@@ -169,6 +171,10 @@
 # define SAVE_BUTTON		5
 # define BACK_BUTTON		6
 # define DESELECT_SEC_BUTTON		7
+# define F_UP_BUTTON		8
+# define F_DOWN_BUTTON		9
+# define C_UP_BUTTON		8
+# define C_DOWN_BUTTON		9
 
 
 # define GRID_SIZE			150
@@ -227,11 +233,10 @@ typedef struct 					s_button
 	t_rec						box;
 	int 						text_color;
 	char 						*text;
-	SDL_Texture					*texture;
 	SDL_Texture					*back;
 	SDL_Texture					*lit_back;
 	SDL_Texture					*front;
-	int 						background;
+	SDL_Texture					*lit;
 }								t_button;
 
 # define F_ZOOM					0
@@ -245,19 +250,21 @@ typedef struct					s_sdl
 	TTF_Font                    *font;
 	SDL_Window					*window;
 	SDL_Renderer				*rend;
-
-	int 						**screen;
 	t_vec2d						mouse;
+}								t_sdl;
+
+typedef struct					s_prog
+{
+	int 						**screen;
 	int 						mode_id;
 	struct s_mode				*modes;
 	short 						button_lit;
 	short 						button_on;
 	short 						zoom;
 	t_vec2d						move;
-
 	char 						features[10];
 	char 						save;
-}								t_sdl;
+}								t_prog;
 
 typedef struct                  s_wall
 {
@@ -343,9 +350,9 @@ typedef struct					s_mode
 {
 	unsigned short				n_buttons;
 	t_button					*buttons;
-	int							(*input)(t_sdl*, float*, t_media *);
-	void						(*update)(t_sdl*, t_t*, t_media *);
-	void						(*render)(t_sdl*, t_t*, t_media *);
+	int							(*input)(t_sdl*, float*, t_media *, t_prog *);
+	void						(*update)(t_sdl*, t_t*, t_media *, t_prog *);
+	void						(*render)(t_sdl*, t_t*, t_media *, t_prog *);
 }								t_mode;
 
 int						start_sdl(t_sdl *sdl);
@@ -358,16 +365,16 @@ void					error(char *reason);
 void					my_error(char *reason);
 void					end(char *reason);
 
-void					render_main_menu(t_sdl *sdl, t_t *t, t_media *media);
-void					update_main_menu(t_sdl *sdl, t_t *t, t_media *media);
-int						input_main_menu(t_sdl *sdl, float *grid_scale, t_media *media);
-void					render_summary(t_sdl *sdl, t_t *t, t_media *media);
-void					update_summary(t_sdl *sdl, t_t *t, t_media *media);
-int						input_summary(t_sdl *sdl, float *grid_scale, t_media *media);
+void					render_main_menu(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog);
+void					update_main_menu(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog);
+int						input_main_menu(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog);
+void					render_summary(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog);
+void					update_summary(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog);
+int						input_summary(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog);
 
-int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media);
-void					update_editor(t_sdl *sdl, t_t *t,  t_media *media);
-void					render_editor(t_sdl *sdl, t_t *t, t_media *media);
+int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog);
+void					update_editor(t_sdl *sdl, t_t *t,  t_media *media, t_prog *prog);
+void					render_editor(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog);
 
 void					write_text(char *str, t_sdl *sdl, int max_w, int h, t_vec2d pos, int color);
 
@@ -382,28 +389,23 @@ unsigned 				close_file(int fd);
 void					free_media(t_media *media);
 void					rewrite_media(t_media *media);
 
-//void					draw_dot_surf(int x, int y, int color, SDL_Surface *surf);
-//void				    draw_line_surf(t_line l, int color, SDL_Surface *surf);
-//void					draw_circle_fill_surf(t_vec2d c, int radius, int color, SDL_Surface *surf);
-
 void					draw_dot(int x, int y, int color, SDL_Renderer *rend);
 void					draw_circle_fill(t_vec2d c, int radius, int color, SDL_Renderer *rend);
 void				    get_rgb(unsigned char *r, unsigned char *g, unsigned char *b, int color);
 void				    draw_line(t_line l, int color, SDL_Renderer *rend);
 
-unsigned short			init_modes(t_sdl *sdl, t_media *media);
-void					free_modes(t_mode *modes);
+unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog);
+void					free_modes(t_mode *modes, t_sdl *sdl);
 
-void					render_buttons(t_button *buttons, t_sdl *sdl);
+void					render_buttons(t_button *buttons, t_sdl *sdl, int n_buttons);
 void					render_button(t_button *button, t_sdl *sdl);
-unsigned short			distribute_buttons(t_button *buttons, int nb, t_rec box);
 unsigned short			mouse_over(t_rec box, t_vec2d mouse);
 
 void					render_frame(t_rec rec, int color, SDL_Renderer *rend);
 
-unsigned short			light_button(t_sdl *sdl);
+unsigned short			light_button(t_sdl *sdl, t_button *buttons, int n_buttons, t_prog *prog);
 
-void					render_grid(t_world world, t_t *t, t_sdl *sdl);
+void					render_grid(t_world world, t_t *t, t_prog *prog, t_vec2d mouse);
 
 
 void					draw_dot2(int x, int y, int color, int **screen);
@@ -411,10 +413,41 @@ void				    draw_line2(t_line l, int color, int **screen);
 void					draw_circle_fill2(t_vec2d c, int radius, int color, int **screen);
 
 
-void fillpoly(t_vec2d *p, int polyCorners, int **screen, int color);
+void					fillpoly(t_vec2d *p, int polyCorners, int **screen, int color);
 
 int 					fill_sector_v(t_sector *sector, t_wall *walls, int n);
 int 					sector_closed(int *tmp, int n);
 void					pair_sort(int *a, int n);
+
+SDL_Texture				*button_back(int id, int set_get_free, t_sdl *sdl);
+
+void					free_int_tab(int **tab, int size);
+
+void 					free_prog(t_prog *prog, t_sdl *sdl);
+t_prog					*get_prog(void);
+
+short 					find_vector(t_vec2d *vertices, t_vec2d p, int n);
+short 					find_wall(short one, short two, t_wall *walls, short n_walls);
+
+void					render_screen(SDL_Renderer *rend, int **screen);
+void					render_sector_menu(t_sdl *sdl, t_t *t, t_sector *sector);
+
+void					fill_grid(int n_vectors, t_vec2d *vertices, t_grid *grid);
+void					clean_grid(t_grid *grid);
+
+void					add_to_media(t_t *t, t_media *media);
+unsigned short			add_world(t_world **worlds, short n_worlds);
+
+void					update_sector_status(t_sector *sectors, t_wall *walls, t_vec2d *vertices, int n_sectors);
+int 					in_sector(t_vec2d p, t_world *world, t_t *t);
+
+void					delete_vector(int id, t_world *world);
+
+void					move_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
+void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
+
+void					move_vector(t_prog *prog, t_vec2d mouse, t_t *t, t_world *world);
+
+t_vec2d					find_node(int p_x, int p_y, t_t *t);
 
 #endif

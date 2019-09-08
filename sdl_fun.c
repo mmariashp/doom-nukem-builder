@@ -7,9 +7,20 @@ void					quit_sdl(void)
 	if (TTF_WasInit())
 		TTF_Quit();
 	IMG_Quit();
-	if(SDL_WasInit(SDL_INIT_AUDIO))
-		SDL_AudioQuit();
 	SDL_Quit();
+	ft_putendl("out of quit_sdl");
+}
+
+void					free_int_tab(int **tab, int size)
+{
+	int					i;
+
+	if(!tab)
+		return ;
+	i = 0;
+	while(i < size && tab[i] != NULL)
+		ft_memdel((void **)&tab[i++]);
+	ft_memdel((void **)&tab);
 }
 
 void					free_sdl(t_sdl *sdl)
@@ -21,20 +32,25 @@ void					free_sdl(t_sdl *sdl)
 	{
 		SDL_DestroyRenderer(sdl->rend);
 		sdl->rend = NULL;
+		ft_putendl("destroyed renderer");
 	}
 	if (sdl->window)
 	{
 		SDL_DestroyWindow(sdl->window);
 		sdl->window = NULL;
+		ft_putendl("destroyed window");
+
 	}
 	if (sdl->font)
 	{
 		TTF_CloseFont( sdl->font );
 		sdl->font = NULL;
+		ft_putendl("closed font");
+
 	}
-	if (sdl->modes)
-		free_modes(sdl->modes);
-	ft_memdel((void**)&sdl);
+	free(sdl);
+	ft_putendl("out of free sdl");
+	quit_sdl();
 }
 
 SDL_Surface             *load_image(char *name)
@@ -67,21 +83,13 @@ SDL_Texture             *load_texture(char *name, t_sdl *sdl)
 	return (texture);
 }
 
-//SDL_Surface				*get_surf(int w, int h)
-//{
-////	return(SDL_CreateRGBSurface(0, w, h, 32, RMASK, GMASK, BMASK, 0));
-//
-//	return(SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0));
-//
-//}
-
 int						start_sdl(t_sdl *sdl)
 {
 	int					img_flag;
 
 	img_flag = IMG_INIT_PNG;
-	atexit(quit_sdl);
-	if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
+	printf("in start sdl\n");
+	if(SDL_Init(SDL_INIT_VIDEO) != 0)
 		return(FAIL);
 	if (!(IMG_Init(img_flag) & img_flag))
 		return (FAIL);
@@ -89,11 +97,11 @@ int						start_sdl(t_sdl *sdl)
 		return(FAIL);
 	if (!(sdl->window = SDL_CreateWindow(WIN_NAME, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_W, WIN_H, SDL_WINDOW_SHOWN | SDL_WINDOW_MOUSE_FOCUS)))
 		return(FAIL);
-	if (!(sdl->rend = SDL_CreateRenderer(sdl->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE)))
+	if (!(sdl->rend = SDL_CreateRenderer(sdl->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)))
 		return(FAIL);
-	sdl->font = TTF_OpenFont( FONT_NAME, 28 );
-	if (!sdl->font)
+	if (!(sdl->font = TTF_OpenFont( FONT_NAME, 28 )))
 		return (FAIL);
+	printf("out of start sdl\n");
 	return (SUCCESS);
 }
 
@@ -103,15 +111,15 @@ t_sdl					*get_sdl(void)
 
 	if (!(sdl = (t_sdl*)ft_memalloc(sizeof(t_sdl))))
 		return (NULL);
-	*sdl = (__typeof__(*sdl)){ };
+	*sdl = (t_sdl){ };
+	sdl->window = NULL;
+	sdl->rend = NULL;
 	if (start_sdl(sdl) == FAIL)
 	{
 		ft_putendl("couldn't start sdl");
 		free_sdl(sdl);
 		return (NULL);
 	}
-	sdl->mouse = (__typeof__(sdl->mouse)){ 0, 0 };
-	sdl->mode_id = MAIN_MENU;
-	sdl->zoom = 0;
+	sdl->mouse = (t_vec2d){ 0, 0 };
 	return (sdl);
 }

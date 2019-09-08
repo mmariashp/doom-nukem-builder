@@ -1,19 +1,19 @@
 
 #include "builder.h"
 
-void					render_main_menu(t_sdl *sdl, t_t *t, t_media *media)
+void					render_main_menu(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog)
 {
-	if (!sdl || !t || !media || !sdl->modes || !sdl->modes[sdl->mode_id].buttons)
+	if (!sdl || !sdl->rend || !t || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
 		return ;
-//	SDL_SetRenderDrawColor(sdl->rend, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
 //	SDL_FillRect(sdl->surf, NULL, 0x00);
-	static SDL_Texture *f = NULL;
-	if (f == NULL)
-		f = load_texture("grey_panel.png", sdl);
+//	static SDL_Texture *f = NULL;
+//	if (f == NULL)
+//		f = load_texture("grey_panel.png", sdl);
 
-	SDL_RenderCopy(sdl->rend, f, 0, 0);
-	render_buttons(sdl->modes[sdl->mode_id].buttons, sdl);
+//	SDL_RenderCopy(sdl->rend, f, 0, 0);
+	render_buttons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons) ;
 
 //	sdl->t = SDL_CreateTextureFromSurface(sdl->rend, sdl->surf);
 //	SDL_RenderCopy(sdl->rend, sdl->t, NULL, NULL);
@@ -30,16 +30,16 @@ unsigned short			mouse_over(t_rec box, t_vec2d mouse)
 	return (TRUE);
 }
 
-void					update_main_menu(t_sdl *sdl, t_t *t, t_media *media)
+void					update_main_menu(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog)
 {
-	if (!sdl || !t || !media || !sdl->modes || !sdl->modes[sdl->mode_id].buttons)
+	if (!sdl || !t || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
 		return;
-	if (light_button(sdl) == SUCCESS)
+	if (light_button(sdl, prog->modes[prog->mode_id].buttons,  prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
 		return ;
-	sdl->button_lit = -1;
+	prog->button_lit = -1;
 }
 
-int						input_main_menu(t_sdl *sdl, float *grid_scale, t_media *media)
+int						input_main_menu(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog)
 {
 	int					quit;
 	SDL_Event			event;
@@ -104,9 +104,9 @@ int						input_main_menu(t_sdl *sdl, float *grid_scale, t_media *media)
 			SDL_GetMouseState(&sdl->mouse.x, &sdl->mouse.y);
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
-				if (sdl->button_lit == 0)
+				if (prog->button_lit == 0)
 					mode = 1;
-				else if (sdl->button_lit == 1)
+				else if (prog->button_lit == 1)
 				{
 					quit = TRUE;
 					break ;
@@ -116,7 +116,7 @@ int						input_main_menu(t_sdl *sdl, float *grid_scale, t_media *media)
 		}
 	}
 	if (mode == 1)
-		sdl->mode_id = SUMMARY;
-	sdl->button_lit = -1;
+		prog->mode_id = SUMMARY;
+	prog->button_lit = -1;
 	return (quit);
 }

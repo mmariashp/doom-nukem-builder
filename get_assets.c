@@ -169,7 +169,10 @@ void 					refresh_section(t_section *section)
 		ft_memdel((void **)&section->extension);
 	if (section->tab)
 		free_tab(section->tab, section->n_files);
+	if (section->names)
+		free_tab(section->names, section->n_files);
 	section->tab = NULL;
+	section->names = NULL;
 	section->id = -1;
 	section->path = NULL;
 	section->extension = NULL;
@@ -528,6 +531,15 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 	}
 	if (status == R_SECTORS && s_count < world->n_sectors)
 	{
+		world->sectors[s_count].sec_walls = NULL;
+		world->sectors[s_count].v = NULL;
+		world->sectors[s_count].sec_walls = NULL;
+		world->sectors[s_count].floor = 0;
+		world->sectors[s_count].ceiling = 0;
+		world->sectors[s_count].floor_txtr = 0;
+		world->sectors[s_count].ceil_txtr = 0;
+		world->sectors[s_count].n_walls = 0;
+		world->sectors[s_count].status = 0;
 		if (get_sector_fl_ceil(&world->sectors[s_count], line, world->n_textures) == FAIL)
 		{
 			ft_putstr("Incorrect floor or ceiling for sector ");
@@ -733,6 +745,8 @@ unsigned				read_textures(t_media *media, t_section *section)
 	ft_bzero(media->txtrs, sizeof(media->txtrs));
 	while (i < section->n_files)
 	{
+		media->txtrs[i].full_path = NULL;
+		media->txtrs[i].name = NULL;
 		if (!(media->txtrs[i].full_path = ft_strdup(section->tab[i])))
 			return (FAIL);
 		if (!(media->txtrs[i].name = ft_strdup(section->names[i])))
@@ -747,20 +761,30 @@ unsigned				read_levels(t_media *media, t_section *section)
 {
 	short 				i;
 
-	if (!media || !section || !section->tab || media->worlds)
+	if (!media || !section || !section->tab || media->worlds || section->n_files < 1 || section->n_files > MAX_LEVELS)
 		return (FAIL);
-	i = 0;
 	if (!(media->worlds = (t_world *)ft_memalloc(sizeof(t_world) * section->n_files)))
 		return (FAIL);
+	i = 0;
 	ft_putendl("allocated media world\n");
 	media->n_worlds = section->n_files;
 	ft_bzero(media->worlds, sizeof(media->worlds));
 	while (i < section->n_files)
 	{
+		if (!section->tab[i] || !section->names[i])
+			return (FAIL);
 		ft_putendl("reading a level file\n");
 		ft_bzero(&media->worlds[i], sizeof(media->worlds[i]));
 		media->worlds[i].full_path = ft_strdup(section->tab[i]);
 		media->worlds[i].filename = ft_strdup(section->names[i]);
+		media->worlds[i].textures = NULL;
+		media->worlds[i].sectors = NULL;
+		media->worlds[i].walls = NULL;
+		media->worlds[i].vertices = NULL;
+		media->worlds[i].n_sectors = 0;
+		media->worlds[i].n_vectors = 0;
+		media->worlds[i].n_walls = 0;
+		media->worlds[i].n_textures = 0;
 		printf("NAME %s\n", media->worlds[i].filename);
 		if (get_map(&media->worlds[i], i) == FAIL)
 		{
@@ -796,6 +820,8 @@ void					free_sector(t_sector *sector)
 	if (!sector)
 		return ;
 	free_sector_walls(sector->sec_walls);
+	if (sector->v)
+		free(sector->v);
 }
 
 void					free_media(t_media *media)
@@ -812,6 +838,8 @@ void					free_media(t_media *media)
 		{
 			if (media->worlds[j].filename)
 				free(media->worlds[j].filename);
+			if (media->worlds[j].full_path)
+				free(media->worlds[j].full_path);
 			if (media->worlds[j].sectors)
 			{
 				i = 0;
@@ -881,6 +909,21 @@ void					free_section(t_section * section)
 		free_tab(section->names, section->n_files);
 }
 
+void					init_media(t_media *media)
+{
+	if (!media)
+		return ;
+	media->world_id = -1;
+	media->txtrs = NULL;
+	media->fonts = NULL;
+	media->sounds = NULL;
+	media->worlds = NULL;
+	media->n_worlds = 0;
+	media->n_textures = 0;
+	media->n_fonts = 0;
+	media->n_sounds = 0;
+}
+
 t_media					*read_assets(int fd)
 {
 	t_section			section;
@@ -899,6 +942,7 @@ t_media					*read_assets(int fd)
 	section.names = NULL;
 	if (!(media = (t_media *)ft_memalloc(sizeof(t_media))))
 		return (NULL);
+	init_media(media);
 	ft_putendl("allocated media\n");
 	while ((ret = get_next_line(fd, &(line))) == 1)
 	{
@@ -913,7 +957,6 @@ t_media					*read_assets(int fd)
 					if (section.tab || !(tab = (char **)ft_memalloc(sizeof(char *) * 1)) ||
 					!(names = (char **)ft_memalloc(sizeof(char *) * 1)))
 					{
-						free_media(media);
 						free_section(&section);
 						ft_strdel(&line);
 						return (NULL);
@@ -930,7 +973,6 @@ t_media					*read_assets(int fd)
 					}
 					else
 					{
-						free_media(media);
 						free_section(&section);
 						ft_strdel(&line);
 						return (NULL);

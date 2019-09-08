@@ -118,7 +118,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/moosh/CLionProjects/builder/add_to_media.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/builder.h">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/buttons.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/editor.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/fill_polygon.c">
@@ -352,6 +361,9 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/modes.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/prog.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/render.c">
 			<Option target="builder"/>
 		</Unit>
@@ -365,6 +377,9 @@
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/summary.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/zoom.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/CMakeLists.txt">

@@ -5,7 +5,6 @@ set(CMAKE_C_STANDARD 99)
 
 find_library(libsdl SDL2)
 find_library(libsdl_img SDL2_image)
-find_library(libsdl_mixer SDL2_mixer)
 find_library(libsdl_ttf SDL2_ttf)
 
 set(LIB_PATH   ./)
@@ -20,7 +19,7 @@ aux_source_directory( ${SRC_PATH} PROJECT_SOURCE_FILES)
 add_library(   ${LFT_NAME} STATIC ${LFT_SRC})
 
 add_executable(${PROJECT_NAME}
-        ${PROJECT_SOURCE_FILES} builder.h sdl_fun.c main_menu.c summary.c get_assets.c get_next_line.c get_next_line.h render.c modes.c level_edit.c math.c rewrite.c render_grid.c fill_polygon.c)
+        ${PROJECT_SOURCE_FILES} builder.h sdl_fun.c main_menu.c summary.c get_assets.c get_next_line.c get_next_line.h render.c modes.c level_edit.c math.c rewrite.c render_grid.c fill_polygon.c editor.c prog.c add_to_media.c buttons.c zoom.c)
 
 set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror")
 #set(GCC_COVERAGE_COMPILE_FLAGS "-fsanitize=\"address\" -g -fno-omit-frame-pointer")
@@ -30,7 +29,6 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )
 target_link_libraries(${PROJECT_NAME} ${LFT_NAME}
         ${libsdl}
         ${libsdl_img}
-        ${libsdl_mixer}
         ${libsdl_ttf}
         -lm
         )
