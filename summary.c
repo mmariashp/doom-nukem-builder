@@ -110,7 +110,7 @@ int						input_summary(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *pr
 	}
 	if (mode == 1)
 	{
-		prog->mode_id = LEVEL_EDIT;
+		prog->mode_id = MODE_EDITOR;
 		media->world_id = level;
 	}
 	return (quit);

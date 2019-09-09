@@ -7,6 +7,10 @@ find_library(libsdl SDL2)
 find_library(libsdl_img SDL2_image)
 find_library(libsdl_ttf SDL2_ttf)
 
+include_directories(/Users/mshpakov/Library/Frameworks/SDL2.framework/Headers)
+include_directories(/Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers)
+include_directories(/Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers  )
+
 set(LIB_PATH   ./)
 set(SRC_PATH   ./)
 set(INC_PATH   ./)

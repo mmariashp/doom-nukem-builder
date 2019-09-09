@@ -293,6 +293,30 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 	return (SUCCESS);
 }
 
+void                    refresh_level_list(t_media *media, t_mode *mode, t_sdl *sdl)
+{
+    int                 j;
+
+    if (mode->n_buttons == media->n_worlds + 1)
+        return ;
+    if (mode->buttons)
+    {
+        j = 0;
+        while (j < mode->n_buttons)
+        {
+            free_button(&mode->buttons[j]);
+            j++;
+        }
+        free(mode->buttons);
+        mode->buttons = NULL;
+    }
+    mode->n_buttons = media->n_worlds + 1;
+    mode->buttons = init_buttons(mode->n_buttons);
+    if (!mode->buttons)
+        return ;
+    summary_buttons(mode->buttons, media->worlds, media->n_worlds, sdl);
+}
+
 unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
 {
 	t_mode				*modes;

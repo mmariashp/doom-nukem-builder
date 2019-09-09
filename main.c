@@ -68,9 +68,9 @@ void					render_sector_menu(t_sdl *sdl, t_t *t, t_sector *sector)
 		return ;
 	back = button_back(2, 1, sdl);
 	title = button_back(0, 1, sdl);
-	box.w = WIN_W * 0.4;
+	box.w = WIN_W * 0.35;
 	box.h = box.w;
-	box.x = WIN_W - box.w - 40;
+	box.x = WIN_W * 0.6;
 	box.y = WIN_H * 0.1;
 
 	title_box.w = box.w * 0.9;
@@ -85,18 +85,37 @@ void					render_sector_menu(t_sdl *sdl, t_t *t, t_sector *sector)
 					   title_box.w, title_box.h };
 	SDL_RenderCopy(sdl->rend, title, NULL, &rect);
 
-	write_text(ft_strjoin("SECTOR ", ft_itoa(t->active[0].x)), sdl, box.w, box.h * 0.07,
+	char *str;
+	str = ft_strjoin("SECTOR ", ft_itoa(t->active[0].x));
+	write_text(str, sdl, box.w, box.h * 0.07,
 			(t_vec2d){ box.x + box.w * 0.08, box.y + box.h * 0.05 }, text_color);
-	write_text(ft_strjoin("Floor height ", ft_itoa(sector->floor)), sdl, box.w, box.h * 0.07,
+	if (str)
+	    free(str);
+    str = ft_strjoin("Floor height ", ft_itoa(sector->floor));
+	write_text(str, sdl, box.w, box.h * 0.07,
 			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.15 }, text_color);
-	write_text(ft_strjoin("Ceiling height ", ft_itoa(sector->ceiling)), sdl, box.w, box.h * 0.07,
+    if (str)
+        free(str);
+    str = ft_strjoin("Ceiling height ", ft_itoa(sector->ceiling));
+	write_text(str, sdl, box.w, box.h * 0.07,
 			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.25 }, text_color);
-	write_text(ft_strjoin("Floor texture ", ft_itoa(sector->floor_txtr)), sdl, box.w, box.h * 0.07,
+    if (str)
+        free(str);
+    str = ft_strjoin("Floor texture ", ft_itoa(sector->floor_txtr));
+	write_text(str, sdl, box.w, box.h * 0.07,
 			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.35 }, text_color);
-	write_text(ft_strjoin("Ceiling texture ", ft_itoa(sector->ceil_txtr)), sdl, box.w, box.h * 0.07,
+    if (str)
+        free(str);
+    str = ft_strjoin("Ceiling texture ", ft_itoa(sector->ceil_txtr));
+	write_text(str, sdl, box.w, box.h * 0.07,
 			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.45 }, text_color);
-	write_text(ft_strjoin("Wall texture ", ft_itoa(sector->floor_txtr)), sdl, box.w, box.h * 0.07,
+    if (str)
+        free(str);
+    str = ft_strjoin("Wall texture ", ft_itoa(sector->floor_txtr));
+	write_text(str, sdl, box.w, box.h * 0.07,
 			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.55 }, text_color);
+    if (str)
+        free(str);
 }
 
 void					render_screen(SDL_Renderer *rend, int **screen)
@@ -111,11 +130,34 @@ void					render_screen(SDL_Renderer *rend, int **screen)
 		while (y < WIN_H)
 		{
 			if (screen[x][y] != 0)
-				draw_dot(x, y, screen[x][y], rend);
+			    draw_dot(x, y, screen[x][y], rend);
 			y++;
 		}
 		x++;
 	}
+}
+
+void					render_screen_iso(SDL_Renderer *rend, int **screen)
+{
+    int 				x;
+    int					y;
+    t_vec2d p;
+
+    x = 0;
+    while (x < WIN_W)
+    {
+        y = 0;
+        while (y < WIN_H)
+        {
+            if (screen[x][y] != 0)
+            {
+                p = make_iso(x, y, 0);
+                draw_dot(p.x, p.y, screen[x][y], rend);
+            }
+            y++;
+        }
+        x++;
+    }
 }
 
 t_vec2d					find_node(int p_x, int p_y, t_t *t)
@@ -176,12 +218,10 @@ unsigned short 			sec_is_convex(t_vec2d *vertices, int *v, int n)
 		double dx2 = vertices[v[i]].x - vertices[v[(i + 1) % n]].x;
 		double dy2 = vertices[v[i]].y - vertices[v[(i + 1) % n]].y;
 		double zcrossproduct = dx1 * dy2 - dy1 * dx2;
-
 		if (zcrossproduct > 0)
 			pos = 1;
 		if (zcrossproduct < 0)
 			neg = 1;
-
 		if (pos && neg)
 			return (FALSE);
 	}
@@ -192,23 +232,30 @@ unsigned short 			sec_is_convex(t_vec2d *vertices, int *v, int n)
 char 					sector_status(t_sector sector, t_wall *walls, t_vec2d *vertices, int n)
 {
 	int					i;
+    int					k;
 	int					j;
 	int 				tmp[n];
 
 	if (!walls || !vertices)
 		return (FAIL);
 	ft_memset(tmp, -1, sizeof(int) * n);
-	i = -1;
+	i = 0;
 	j = 0;
-	while (++i < sector.n_walls)
+	k = 0;
+	while (k < sector.n_v && i < sector.n_walls)
 	{
-		tmp[j++] = walls[sector.sec_walls[i]].v1;
-		tmp[j++] = walls[sector.sec_walls[i]].v2;
+	    if (walls[sector.sec_walls[i]].type != WALL_DOOR)
+        {
+	        k++;
+            tmp[j++] = walls[sector.sec_walls[i]].v1;
+            tmp[j++] = walls[sector.sec_walls[i]].v2;
+        }
+        i++;
 	}
 	pair_sort(tmp, n);
 	if (sector_closed(tmp, n) == FALSE)
 		return (SEC_OPEN);
-	else if (sec_is_convex(vertices, sector.v, sector.n_walls) == FALSE)
+	else if (sec_is_convex(vertices, sector.v, sector.n_v) == FALSE)
 		return(SEC_CONCAVE_CLOSED);
 	return(SEC_CONVEX_CLOSED);
 }
@@ -222,7 +269,7 @@ void					update_sector_status(t_sector *sectors, t_wall *walls, t_vec2d *vertice
 		return ;
 	while (i < n_sectors)
 	{
-		sectors[i].status = sector_status(sectors[i], walls, vertices, sectors[i].n_walls * 2);
+		sectors[i].status = sector_status(sectors[i], walls, vertices, sectors[i].n_v * 2);
 		i++;
 	}
 }
@@ -488,8 +535,7 @@ int						main(void)
 		ft_putstr("\x1b[32mSdl is NULL, Returning fail from main function.\x1b[0m\n");
 		return (FAIL);
 	}
-//	if (!(media = get_assets()) || load_sdl_media(media, sdl) == FAIL)
-		if (!(media = get_assets()))
+	if (!(media = get_assets()))
 	{
 		ft_putstr("\x1b[32mMedia is NULL, Returning fail from main function.\x1b[0m\n");
 		free_media(media);
@@ -497,9 +543,10 @@ int						main(void)
 		return (FAIL);
 	}
 	game_loop(sdl, media);
-	rewrite_media(media);
+//	rewrite_media(media);
 	free_media(media);
 	free_sdl(sdl);
 	ft_putstr("\x1b[32mReturning success from main function.\x1b[0m\n");
+//	system("leaks -q builder");
 	return (SUCCESS);
 }

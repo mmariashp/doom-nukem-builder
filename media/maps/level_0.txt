@@ -1,5 +1,5 @@
-Count Vectors: 51
-Count Walls: 63
+Count Vectors: 48
+Count Walls: 62
 Count Sectors: 15
 Count Textures: 3
 
@@ -20,7 +20,7 @@ Vectors
 8) 30,1
 9) 50,1
 10) 50,25
-11) 50,45
+11) 49,52
 12) 28,45
 13) 30,25
 14) 8,45
@@ -46,20 +46,17 @@ Vectors
 34) 79,20
 35) 93,1
 36) 99,16
-37) 92,39
-38) 86,43
-39) 103,31
-40) 103,57
-41) 80,57
-42) 72,46
-43) 36,65
-44) 30,77
-45) 45,80
-46) 44,68
-47) 90,81
-48) 80,103
-49) 97,115
-50) 104,88
+37) 92,35
+38) 84,39
+39) 103,57
+40) 80,57
+41) 42,60
+42) 30,84
+43) 57,101
+44) 75,76
+45) 26,55
+46) 21,70
+47) 38,57
 
 Walls
 0) 0-1 filled 0
@@ -113,18 +110,17 @@ Walls
 48) 37-38 empty 0
 49) 38-34 filled 0
 50) 37-39 filled 0
-51) 39-40 filled 0
-52) 40-41 filled 0
-53) 41-42 filled 0
-54) 42-38 filled 0
-55) 43-44 filled 0
-56) 44-45 filled 0
-57) 45-46 filled 0
-58) 46-43 filled 0
-59) 47-48 filled 0
-60) 48-49 filled 0
-61) 49-50 filled 1
-62) 50-47 filled 0
+51) 39-39 filled 0
+52) 39-40 filled 0
+53) 40-41 filled 0
+54) 41-38 filled 0
+55) 41-42 filled 0
+56) 42-43 filled 2045
+57) 43-44 filled 0
+58) 44-41 filled 29561
+59) 45-46 filled 0
+60) 46-47 filled 32767
+61) 47-45 filled 112
 
 Sectors
 0) floor(1 2) ceil(20 1) walls '0 1 2 3 4 5 ' items '' enemies ''
@@ -141,7 +137,7 @@ Sectors
 11) floor(12 2) ceil(25 1) walls '47 48 49 42 ' items '' enemies ''
 12) floor(14 2) ceil(35 1) walls '50 51 52 53 54 48 ' items '' enemies ''
 13) floor(0 0) ceil(0 0) walls '55 56 57 58 ' items '' enemies ''
-14) floor(0 0) ceil(0 0) walls '59 60 61 62 ' items '' enemies ''
+14) floor(0 0) ceil(0 0) walls '59 60 61 ' items '' enemies ''
 
 Player
 0) 5,10 start

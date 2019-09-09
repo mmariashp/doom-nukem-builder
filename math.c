@@ -5,6 +5,20 @@ t_vec2d					add(t_vec2d one, t_vec2d two);
 t_vec2d					mult(t_vec2d one, t_vec2d two);
 t_vec2d					scale(t_vec2d vec, int scale);
 
+int                     get_max(int one, int two)
+{
+    if (one > two)
+        return (one);
+    return (two);
+}
+
+int                     get_min(int one, int two)
+{
+    if (one < two)
+        return (one);
+    return (two);
+}
+
 int						clamp(int n, int min, int max)
 {
 	if (n < min)

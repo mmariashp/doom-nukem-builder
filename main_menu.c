@@ -116,7 +116,7 @@ int						input_main_menu(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *
 		}
 	}
 	if (mode == 1)
-		prog->mode_id = SUMMARY;
+		prog->mode_id = MODE_SUMMARY;
 	prog->button_lit = -1;
 	return (quit);
 }

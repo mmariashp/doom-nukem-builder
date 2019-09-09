@@ -1,15 +1,6 @@
 
 #include "builder.h"
 
-//int						clamp(int n, int min, int max)
-//{
-//	if (n < min)
-//		return (min);
-//	else if (n > max)
-//		return (max);
-//	return (n);
-//}
-
 unsigned 				close_file(int fd)
 {
 	if (close(fd) == -1)
@@ -357,20 +348,39 @@ int 					fill_sector_v(t_sector *sector, t_wall *walls, int n)
 		sector->status = SEC_CONCAVE_CLOSED;
 	i = -1;
 	j = 0;
+//    printf("//\n");
+//    while (++i < n)
+//    {
+//        printf("%d\n", tmp[i]);
+//    }
+//    printf("//\n");
+//    i = -1;
+
 	while (++i < n)
 	{
-		if (exists_in_array(sector->v, j, tmp[i]) == FALSE)
-			sector->v[j++] = tmp[i];
+
+		if (exists_in_array(tmp, j, tmp[i]) == FALSE)
+			tmp[j++] = tmp[i];
 	}
+
+    if (!(sector->v = (int *)ft_memalloc(sizeof(int) * j)))
+        return (FAIL);
+    sector->n_v = j;
+    ft_memset(sector->v, -1, sizeof(int) * sector->n_v);
+    i = 0;
+    while (i < sector->n_v)
+    {
+        sector->v[i] = tmp[i];
+        printf("-%d\n", sector->v[i]);
+        i++;
+    }
 	return (SUCCESS);
 }
 
 int 					get_sector_v(t_sector *sector, t_wall *walls)
 {
-	if (!sector || !walls ||
-	!(sector->v = (int *)ft_memalloc(sizeof(int) * sector->n_walls)))
+	if (!sector || !walls)
 		return (FAIL);
-	ft_memset(sector->v, -1, sizeof(int) * sector->n_walls);
 	return (fill_sector_v(sector, walls, sector->n_walls * 2));
 }
 
@@ -533,12 +543,12 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 	{
 		world->sectors[s_count].sec_walls = NULL;
 		world->sectors[s_count].v = NULL;
-		world->sectors[s_count].sec_walls = NULL;
 		world->sectors[s_count].floor = 0;
 		world->sectors[s_count].ceiling = 0;
 		world->sectors[s_count].floor_txtr = 0;
 		world->sectors[s_count].ceil_txtr = 0;
 		world->sectors[s_count].n_walls = 0;
+        world->sectors[s_count].n_v = 0;
 		world->sectors[s_count].status = 0;
 		if (get_sector_fl_ceil(&world->sectors[s_count], line, world->n_textures) == FAIL)
 		{

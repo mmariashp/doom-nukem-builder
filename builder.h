@@ -6,10 +6,14 @@
 # include "./libft/libft.h"
 # include "get_next_line.h"
 
-# include <SDL2/SDL.h>
-# include <SDL2/SDL_image.h>
-# include <SDL2/SDL_ttf.h>
-# include <SDL2/SDL_mixer.h>
+//# include <SDL2/SDL.h>
+//# include <SDL2/SDL_image.h>
+//# include <SDL2/SDL_ttf.h>
+//# include <SDL2/SDL_mixer.h>
+
+# include <SDL.h>
+# include <SDL_image.h>
+# include <SDL_ttf.h>
 
 # include <stdlib.h>
 # include <stdio.h> // TO DELETE AFTER
@@ -59,10 +63,9 @@
 
 # define LIT_COLOR				0x5A982B   //green
 
-# define CONVEX_COLOR			SOFT_TEAL
-# define CONCAVE_COLOR			SOFT_ORANGE
+# define CONVEX_COLOR			0x207561
+# define CONCAVE_COLOR			0xDA4302
 # define ACTIVE_SECTOR_COLOR	0x3949AB
-# define INACTIVE_SECTOR_COLOR	DARK_GRAY
 
 /*
 ** STR = PRINTS OUT NAME OF MACRO; XSTR = PRINTS OUT VALUE OF MACRO
@@ -145,11 +148,7 @@
 
 # define NODE_EMPTY			0
 # define NODE_FULL			1
-
-# define MAIN_MENU			0
-# define SUMMARY			1
-# define LEVEL_EDIT			2
-# define SMTH				3
+# define NODE_SECTOR		2
 
 # define MENU_TXT_H			25
 # define MAX_MENU_TXT_W		200
@@ -283,6 +282,7 @@ typedef struct                  s_sector
 	short 						floor_txtr;
 	short 						ceil_txtr;
 	unsigned short				n_walls;
+    unsigned short				n_v;
 	char 						status;
 }                               t_sector;
 
@@ -383,6 +383,8 @@ float					clamp_f(float n, float min, float max);
 t_vec2d					add(t_vec2d one, t_vec2d two);
 t_vec2d					mult(t_vec2d one, t_vec2d two);
 t_vec2d					scale(t_vec2d vec, int scale);
+int                     get_max(int one, int two);
+int                     get_min(int one, int two);
 
 t_media					*get_assets(void);
 unsigned 				close_file(int fd);
@@ -396,6 +398,7 @@ void				    draw_line(t_line l, int color, SDL_Renderer *rend);
 
 unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog);
 void					free_modes(t_mode *modes, t_sdl *sdl);
+void                    refresh_level_list(t_media *media, t_mode *mode, t_sdl *sdl);
 
 void					render_buttons(t_button *buttons, t_sdl *sdl, int n_buttons);
 void					render_button(t_button *button, t_sdl *sdl);
@@ -411,7 +414,7 @@ void					render_grid(t_world world, t_t *t, t_prog *prog, t_vec2d mouse);
 void					draw_dot2(int x, int y, int color, int **screen);
 void				    draw_line2(t_line l, int color, int **screen);
 void					draw_circle_fill2(t_vec2d c, int radius, int color, int **screen);
-
+void					draw_node(t_vec2d c, int r, int color, int **screen);
 
 void					fillpoly(t_vec2d *p, int polyCorners, int **screen, int color);
 
@@ -445,9 +448,12 @@ void					delete_vector(int id, t_world *world);
 
 void					move_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
 void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
+void                    zoom_to_sector(t_sector *sector, t_vec2d *vertices, t_t *t, t_prog *prog);
 
 void					move_vector(t_prog *prog, t_vec2d mouse, t_t *t, t_world *world);
 
 t_vec2d					find_node(int p_x, int p_y, t_t *t);
+
+t_vec2d                  make_iso(int x, int y, int z);
 
 #endif
