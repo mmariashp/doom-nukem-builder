@@ -46,9 +46,9 @@ void					render_txtr_box(t_vec2d size, t_vec2d pos, SDL_Texture *t, SDL_Renderer
 //
 //}
 
-void					render_summary(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog)
+void					render_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
-	if (!sdl || !t || !media)
+	if (!sdl || !grid || !media)
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
@@ -60,9 +60,9 @@ void					render_summary(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog)
 	SDL_RenderPresent(sdl->rend);
 }
 
-void					update_summary(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog)
+void					update_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
-	if (!sdl || !t || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
+	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
 		return;
 	if (light_button(sdl, prog->modes[prog->mode_id].buttons,  prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
 		return ;
@@ -73,11 +73,9 @@ int						input_summary(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *pr
 {
 	int					quit;
 	SDL_Event			event;
-	int 				mode;
-	int 				level;
+
 
 	quit = FALSE;
-	mode = 0;
 	if (!sdl || !grid_scale || !media)
 		return (TRUE);
 	while(SDL_PollEvent(&event))
@@ -102,16 +100,14 @@ int						input_summary(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *pr
 			{
 				if (prog->button_lit != -1)
 				{
-					mode = 1;
-					level = prog->button_lit;
+                    prog->mode_id = MODE_EDITOR;
+                    media->world_id = prog->button_lit;
+                    prog->button_on = DRAG_BUTTON;
+                    prog->modes[prog->mode_id].buttons[DRAG_BUTTON].vis_lit_on[2] = TRUE;
+                    return (quit);
 				}
 			}
 		}
-	}
-	if (mode == 1)
-	{
-		prog->mode_id = MODE_EDITOR;
-		media->world_id = level;
 	}
 	return (quit);
 }

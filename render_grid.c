@@ -21,7 +21,7 @@ void					draw_player(t_vec2d c, int r, int color, int **screen)
 	draw_circle_fill2(c, r * 0.5, WHITE, screen);
 }
 
-void					render_grid_nodes(int **screen, t_t *t)
+void					render_grid_nodes(int **screen, t_grid *grid)
 {
 	int 				x;
 	int 				y;
@@ -29,23 +29,23 @@ void					render_grid_nodes(int **screen, t_t *t)
 	int 				radius1;
 	int 				radius2;
 
-	t->grid.box.w = GRID_SIZE * t->grid.scale;
-	t->grid.box.h = GRID_SIZE * t->grid.scale;
-//	render_frame(t->grid.box, PURPLE, sdl->rend);
-	radius1 = t->grid.box.w * 0.001;
-	radius2 = t->grid.box.w * 0.002;
+	grid->box.w = GRID_SIZE * grid->scale;
+	grid->box.h = GRID_SIZE * grid->scale;
+//	render_frame(grid->box, PURPLE, sdl->rend);
+	radius1 = grid->box.w * 0.001;
+	radius2 = grid->box.w * 0.002;
 	y = 0;
 	while (y < GRID_SIZE)
 	{
 		x = 0;
-		node.y = (int)(t->grid.box.y + (y * t->grid.scale));
+		node.y = (int)(grid->box.y + (y * grid->scale));
 
 		while (x < GRID_SIZE)
 		{
-			node.x = (int)(t->grid.box.x + (x * t->grid.scale));
-			if (t->grid.nodes[x][y] == NODE_FULL)
+			node.x = (int)(grid->box.x + (x * grid->scale));
+			if (grid->nodes[x][y] == NODE_FULL)
 				draw_node(node, radius2, BROWN, screen);
-            else if (t->grid.nodes[x][y] == NODE_SECTOR)
+            else if (grid->nodes[x][y] == NODE_SECTOR)
                 draw_node(node, radius2, YELLOW, screen);
 			else
 				draw_node(node, radius1, DARK_GRAY, screen);
@@ -55,20 +55,20 @@ void					render_grid_nodes(int **screen, t_t *t)
 	}
 }
 
-void					place_player(t_world world, t_grid grid, int **screen, int radius)
+void					place_player(t_world world, t_grid *grid, int **screen, int radius)
 {
 	t_vec2d				node;
 
-	node.x = (int)(grid.box.x + world.p_start.x * grid.scale);
-	node.y = (int)(grid.box.y + world.p_start.y * grid.scale);
+	node.x = (int)(grid->box.x + world.p_start.x * grid->scale);
+	node.y = (int)(grid->box.y + world.p_start.y * grid->scale);
 	draw_player(node, radius * 1.5, PURPLE, screen);
 
-	node.x = (int)(grid.box.x + world.p_end.x * grid.scale);
-	node.y = (int)(grid.box.y + world.p_end.y * grid.scale);
+	node.x = (int)(grid->box.x + world.p_end.x * grid->scale);
+	node.y = (int)(grid->box.y + world.p_end.y * grid->scale);
 	draw_player(node, radius * 1.5, YELLOW, screen);
 }
 
-void					render_walls(t_world world, t_grid grid, int **screen)
+void					render_walls(t_world world, t_grid *grid, int **screen)
 {
 	int					i = 0;
 	t_vec2d				v1;
@@ -79,10 +79,10 @@ void					render_walls(t_world world, t_grid grid, int **screen)
 		v1 = world.vertices[world.walls[i].v1];
 		v2 = world.vertices[world.walls[i].v2];
 
-		v1.x = (int)(grid.box.x + v1.x * grid.scale);
-		v1.y = (int)(grid.box.y + v1.y * grid.scale);
-		v2.x = (int)(grid.box.x + v2.x * grid.scale);
-		v2.y = (int)(grid.box.y + v2.y * grid.scale);
+		v1.x = (int)(grid->box.x + v1.x * grid->scale);
+		v1.y = (int)(grid->box.y + v1.y * grid->scale);
+		v2.x = (int)(grid->box.x + v2.x * grid->scale);
+		v2.y = (int)(grid->box.y + v2.y * grid->scale);
 
 //		if (world.walls[i].type == WALL_EMPTY)
 //			draw_line2((t_line){ v1, v2 }, YELLOW, screen);
@@ -135,7 +135,7 @@ void					render_walls(t_world world, t_grid grid, int **screen)
 //	return (TRUE);
 //}
 
-void					fill_sector(t_world world, t_t *t, int **screen, int sec, int button)
+void					fill_sector(t_world world, t_grid *grid, int **screen, int sec, int button)
 {
 	int					i = 0;
 	int					j = sec;
@@ -147,13 +147,13 @@ void					fill_sector(t_world world, t_t *t, int **screen, int sec, int button)
 	while (i < world.sectors[j].n_v)
 	{
 		p[i] = world.vertices[world.sectors[j].v[i]];
-		p[i].x = (int)(t->grid.box.x + p[i].x * t->grid.scale);
-		p[i].y = (int)(t->grid.box.y + p[i].y * t->grid.scale);
+		p[i].x = (int)(grid->box.x + p[i].x * grid->scale);
+		p[i].y = (int)(grid->box.y + p[i].y * grid->scale);
 		i++;
 	}
 	if (button == SECTOR_BUTTON || button == DESELECT_SEC_BUTTON)
 	{
-		if (sec == t->active[0].x)
+		if (sec == grid->active[0].x)
 			color = ACTIVE_SECTOR_COLOR;
 		else
 			color = world.sectors[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
@@ -177,34 +177,32 @@ void					clean_screen(int **screen)
 	}
 }
 
-void					render_grid(t_world world, t_t *t, t_prog *prog, t_vec2d mouse)
+void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 {
 	t_vec2d				node;
 	t_vec2d				node2;
 	int 				radius1;
 	int 				radius2;
 
-	if (!t || !prog || world.n_sectors == 100)
+	if (!grid || !prog || world.n_sectors == 100)
 		return;
 	clean_screen(prog->screen);
-//	if (prog->button_on == SECTOR_BUTTON)
-//        zoom_to_sector(&world.sectors[t->active[0].x], world.vertices, t, prog);
-	radius1 = t->grid.box.w * 0.001;
-	radius2 = t->grid.box.w * 0.002;
-	render_grid_nodes(prog->screen, t);
-	render_walls(world, t->grid, prog->screen);
-	place_player(world, t->grid, prog->screen, radius2);
+	radius1 = grid->box.w * 0.001;
+	radius2 = grid->box.w * 0.002;
+	render_grid_nodes(prog->screen, grid);
+	render_walls(world, grid, prog->screen);
+	place_player(world, grid, prog->screen, radius2);
 	if (prog->button_on == DRAW_BUTTON) // draw mode
 	{
-		if (t->active[0].x != -1 && t->active[0].y != -1)
+		if (grid->active[0].x != -1 && grid->active[0].y != -1)
 		{
-			node.x = (int)(t->grid.box.x + t->active[0].x * t->grid.scale);
-			node.y = (int)(t->grid.box.y + t->active[0].y * t->grid.scale);
+			node.x = (int)(grid->box.x + grid->active[0].x * grid->scale);
+			node.y = (int)(grid->box.y + grid->active[0].y * grid->scale);
 			draw_node(node, radius2, BABY_PINK, prog->screen);
-			if (t->active[1].x != -1 && t->active[1].y != -1)
+			if (grid->active[1].x != -1 && grid->active[1].y != -1)
 			{
-				node2.x = (int)(t->grid.box.x + t->active[1].x * t->grid.scale);
-				node2.y = (int)(t->grid.box.y + t->active[1].y * t->grid.scale);
+				node2.x = (int)(grid->box.x + grid->active[1].x * grid->scale);
+				node2.y = (int)(grid->box.y + grid->active[1].y * grid->scale);
 				draw_node(node2, radius1, BABY_PINK, prog->screen);
 				draw_line2((t_line){ node, node2 }, BABY_PINK, prog->screen);
 			}
@@ -216,7 +214,7 @@ void					render_grid(t_world world, t_t *t, t_prog *prog, t_vec2d mouse)
 	while (k < world.n_sectors)
 	{
 		if (world.sectors[k].status != SEC_OPEN)
-			fill_sector(world, t, prog->screen, k, prog->button_on);
+			fill_sector(world, grid, prog->screen, k, prog->button_on);
 		k++;
 	}
 

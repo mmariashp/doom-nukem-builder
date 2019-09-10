@@ -1,9 +1,9 @@
 
 #include "builder.h"
 
-void					render_main_menu(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog)
+void					render_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
-	if (!sdl || !sdl->rend || !t || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
+	if (!sdl || !sdl->rend || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
@@ -30,9 +30,9 @@ unsigned short			mouse_over(t_rec box, t_vec2d mouse)
 	return (TRUE);
 }
 
-void					update_main_menu(t_sdl *sdl, t_t *t, t_media *media, t_prog *prog)
+void					update_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
-	if (!sdl || !t || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
+	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
 		return;
 	if (light_button(sdl, prog->modes[prog->mode_id].buttons,  prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
 		return ;

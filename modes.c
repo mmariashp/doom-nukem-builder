@@ -91,7 +91,7 @@ unsigned short			distribute_buttons_h(t_button *buttons, int from, int nb, t_rec
 	return (SUCCESS);
 }
 
-unsigned short			distribute_buttons_v(t_button *buttons, int from, int nb, t_rec box)
+unsigned short			distribute_buttons_v(t_button *buttons, int from, int to, t_rec box, int padding)
 {
 	t_vec2d				b;
 	int 				y;
@@ -100,20 +100,45 @@ unsigned short			distribute_buttons_v(t_button *buttons, int from, int nb, t_rec
 
 	if (!buttons)
 		return (FAIL);
-	b = (t_vec2d){ box.w, box.h / nb };
-	y = box.y;
+	b = (t_vec2d){ box.w, box.h / (to - from) - padding };
+    y = box.y;
 	i = from;
-	while (i < nb)
+	while (i < to)
 	{
 		buttons[i].box.w = b.x;
 		buttons[i].box.h = b.y;
 		buttons[i].box.x = box.x;
 		buttons[i].box.y = y;
-		y += b.y;
+
+        printf("in distr button n%d; %d, %d, %d, %d\n", i, buttons[i].box.w, buttons[i].box.h, buttons[i].box.x, buttons[i].box.y);
+		y += b.y + padding;
 		i++;
 	}
-
 	return (SUCCESS);
+}
+
+unsigned short			distribute_buttons_v2(t_button *buttons, int from, int to, t_rec box, t_vec2d button_size)
+{
+    int 				y;
+    unsigned short		i;
+    int                 padding = (box.h - (button_size.y * (to - from))) / to - from + 1;
+
+
+    if (!buttons)
+        return (FAIL);
+    y = box.y;
+    i = from;
+    while (i < to)
+    {
+        y += padding;
+        buttons[i].box.w = button_size.x;
+        buttons[i].box.h = button_size.y;
+        buttons[i].box.x = box.x;
+        buttons[i].box.y = y;
+        y += button_size.y;
+        i++;
+    }
+    return (SUCCESS);
 }
 
 # define N_BUTTON_BACKS		3
@@ -168,9 +193,9 @@ unsigned short			main_menu_buttons(t_button *buttons, t_sdl *sdl)
 		return (FAIL);
 	box.w = WIN_W / 3;
 	box.h = WIN_H / 3;
-	box.x = WIN_W / 3;
-	box.y = WIN_H / 3;
-	distribute_buttons_v(buttons, 0, N_MM_BUTTONS ,box);
+	box.x = (WIN_W  - box.w) / 2;
+	box.y = (WIN_H  - box.h) / 2;
+	distribute_buttons_v(buttons, 0, N_MM_BUTTONS ,box, 20);
 	i = 0;
 
 	while (i < N_MM_BUTTONS)
@@ -197,11 +222,11 @@ unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_world
 
 	if (!buttons || !worlds)
 		return (FAIL);
-	box.w = WIN_W / 3;
-	box.h = box.w * n_worlds / 4;
-	box.x = WIN_W / 4;
-	box.y = WIN_H / 3;
-	distribute_buttons_v(buttons, 0, n_worlds + 1 ,box);
+	box.w = WIN_W / 4;
+	box.h = (box.w + 20) * (n_worlds + 1) / 3;
+	box.x = (WIN_W  - box.w) / 2;
+	box.y = (WIN_H  - box.h) / 2;
+	distribute_buttons_v(buttons, 0, n_worlds + 1 , box, 20);
 	i = 0;
 	s = NULL;
 	while (i < n_worlds + 1)
@@ -273,7 +298,7 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 
 	buttons[F_UP_BUTTON].front = load_texture("up2.png", sdl);
 	buttons[F_DOWN_BUTTON].front = load_texture("down2.png", sdl);
-	buttons[F_UP_BUTTON].vis_lit_on[0] = TRUE;
+	buttons[F_UP_BUTTON].vis_lit_on[0] = FALSE;
 	buttons[F_DOWN_BUTTON].vis_lit_on[0] = FALSE;
 
 	buttons[C_UP_BUTTON].front = load_texture("up2.png", sdl);
@@ -281,15 +306,24 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 	buttons[C_UP_BUTTON].vis_lit_on[0] = FALSE;
 	buttons[C_DOWN_BUTTON].vis_lit_on[0] = FALSE;
 
-	box.w = WIN_W * 0.4;
-	box.h = box.w;
-	box.x = WIN_W - box.w - 40;
-	box.y = WIN_H * 0.1;
-	buttons[DESELECT_SEC_BUTTON].box = (t_rec){ box.x + box.w, box.y, 30, 30 };
-	buttons[F_UP_BUTTON].box =   (t_rec){ box.x + box.w * 0.7, box.y, 30, 30 };
-	buttons[F_DOWN_BUTTON].box = (t_rec){ box.x + box.w * 0.7, box.y + 40, 30, 30 };
-	buttons[C_UP_BUTTON].box =   (t_rec){ box.x + box.w * 0.7, box.y + 80, 30, 30 };
-	buttons[C_DOWN_BUTTON].box = (t_rec){ box.x + box.w * 0.7, box.y + 120, 30, 30 };
+
+	box = sector_menu(0, 0);
+	buttons[DESELECT_SEC_BUTTON].box =  (t_rec){ box.x + box.w,         box.y,          30, 30 };
+    buttons[F_UP_BUTTON].box = sector_menu(3, 0);
+    buttons[F_DOWN_BUTTON].box = sector_menu(4, 0);
+    buttons[C_UP_BUTTON].box = sector_menu(3, 1);
+    buttons[C_DOWN_BUTTON].box = sector_menu(4, 1);
+//    box.x = box.x + box.w * 0.9;
+//    box.w = box.w / 10;
+//    t_rec box2 = sector_menu(2, 0);
+//    box.y = box2.y;
+//    printf("here\n");
+//    distribute_buttons_v2(buttons, F_UP_BUTTON, C_DOWN_BUTTON + 1, box, (t_vec2d){ 30 , 30 });
+//    printf("button %d, %d, %d, %d\n", buttons[F_UP_BUTTON].box.w, buttons[F_UP_BUTTON].box.h, buttons[F_UP_BUTTON].box.x, buttons[F_UP_BUTTON].box.y);
+//	buttons[F_UP_BUTTON].box =          (t_rec){ box.x + box.w * 0.7,   box.y,          30, 30 };
+//	buttons[F_DOWN_BUTTON].box =        (t_rec){ box.x + box.w * 0.7,   box.y + 40,     30, 30 };
+//	buttons[C_UP_BUTTON].box =          (t_rec){ box.x + box.w * 0.7,   box.y + 80,     30, 30 };
+//	buttons[C_DOWN_BUTTON].box =        (t_rec){ box.x + box.w * 0.7,   box.y + 120,    30, 30 };
 	return (SUCCESS);
 }
 

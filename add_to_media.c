@@ -117,15 +117,15 @@ t_vec2d					*realloc_vertices(t_vec2d *vertices, int n)
 	return (new);
 }
 
-unsigned short			add_vector(t_vec2d **vertices, short n_vectors, t_t *t, short i)
+unsigned short			add_vector(t_vec2d **vertices, short n_vectors, t_grid *grid, short i)
 {
-	if (!t)
+	if (!grid)
 		return (FAIL);
 	*vertices = realloc_vertices(*vertices, n_vectors + 1);
 	if (!*vertices)
 		return (FAIL);
-	(*vertices)[n_vectors] = t->active[i];
-	t->grid.nodes[t->active[i].x][t->active[i].y] = NODE_FULL;
+	(*vertices)[n_vectors] = grid->active[i];
+	grid->nodes[grid->active[i].x][grid->active[i].y] = NODE_FULL;
 	return (SUCCESS);
 }
 
@@ -149,6 +149,7 @@ unsigned short			add_sector(t_sector **sectors, short n_sectors)
 	(*sectors)[n_sectors].floor_txtr = 0;
 	(*sectors)[n_sectors].ceil_txtr = 0;
 	(*sectors)[n_sectors].n_walls = 0;
+    (*sectors)[n_sectors].n_v = 0;
 	return (SUCCESS);
 }
 
@@ -158,6 +159,7 @@ unsigned short			add_wall(t_wall **walls, short n_walls, int one, int two)
 	if (!*walls)
 		return (FAIL);
 	(*walls)[n_walls].type = WALL_FILLED;
+    (*walls)[n_walls].txtr = 0;
 	(*walls)[n_walls].v1 = one;
 	(*walls)[n_walls].v2 = two;
 	return (SUCCESS);
@@ -192,7 +194,7 @@ unsigned short			add_world(t_world **worlds, short n_worlds)
 	return (SUCCESS);
 }
 
-void					add_to_media(t_t *t, t_media *media)
+void					add_to_media(t_grid *grid, t_media *media)
 {
 	static short 		first_vector = -1;
 	static short 		sector = -1;
@@ -201,36 +203,37 @@ void					add_to_media(t_t *t, t_media *media)
 	short 				id;
 	short 				done;
 
-	if (!media || !t)
+	if (!media || !grid)
 		return ;
 	id = -1;
 	done = FALSE;
 	wall = -1;
-	if (t->active[1].x == -1)
+	if (grid->active[1].x == -1)
 	{
-		if (t->grid.nodes[t->active[0].x][t->active[0].y] == NODE_FULL)
-			id = find_vector(media->worlds[media->world_id].vertices, t->active[0], media->worlds[media->world_id].n_vectors);
+		if (grid->nodes[grid->active[0].x][grid->active[0].y] == NODE_FULL)
+			id = find_vector(media->worlds[media->world_id].vertices, grid->active[0], media->worlds[media->world_id].n_vectors);
 		if (id == -1)
 		{
-			if (add_vector(&media->worlds[media->world_id].vertices, media->worlds[media->world_id].n_vectors, t, 0) == FAIL)
+			if (add_vector(&media->worlds[media->world_id].vertices, media->worlds[media->world_id].n_vectors, grid, 0) == FAIL)
 				return ;
 			id = media->worlds[media->world_id].n_vectors++;
 		}
 		if (add_sector(&media->worlds[media->world_id].sectors, media->worlds[media->world_id].n_sectors) == FAIL)
 			return ;
 		sector = media->worlds[media->world_id].n_sectors++;
-		if (add_sector_v(&media->worlds[media->world_id].sectors[sector].v, media->worlds[media->world_id].sectors[sector].n_walls, id) == FAIL)
+		if (add_sector_v(&media->worlds[media->world_id].sectors[sector].v, media->worlds[media->world_id].sectors[sector].n_v, id) == FAIL)
 			return ;
+        media->worlds[media->world_id].sectors[sector].n_v++;
 		last_id = id;
 		first_vector = id;
 	}
 	else
 	{
-		if (t->grid.nodes[t->active[1].x][t->active[1].y] == NODE_FULL)
-			id = find_vector(media->worlds[media->world_id].vertices, t->active[1], media->worlds[media->world_id].n_vectors);
+		if (grid->nodes[grid->active[1].x][grid->active[1].y] == NODE_FULL)
+			id = find_vector(media->worlds[media->world_id].vertices, grid->active[1], media->worlds[media->world_id].n_vectors);
 		if (id == -1)
 		{
-			if (add_vector(&media->worlds[media->world_id].vertices, media->worlds[media->world_id].n_vectors, t, 1) == FAIL)
+			if (add_vector(&media->worlds[media->world_id].vertices, media->worlds[media->world_id].n_vectors, grid, 1) == FAIL)
 				return ;
 			id = media->worlds[media->world_id].n_vectors++;
 		}
@@ -238,8 +241,8 @@ void					add_to_media(t_t *t, t_media *media)
 		{
 			if (id == first_vector)
 				done = TRUE;
-			else if (t->grid.nodes[media->worlds[media->world_id].vertices[last_id].x][media->worlds[media->world_id].vertices[last_id].y] == NODE_FULL &&
-					 t->grid.nodes[media->worlds[media->world_id].vertices[id].x][media->worlds[media->world_id].vertices[id].y] == NODE_FULL)
+			else if (grid->nodes[media->worlds[media->world_id].vertices[last_id].x][media->worlds[media->world_id].vertices[last_id].y] == NODE_FULL &&
+					 grid->nodes[media->worlds[media->world_id].vertices[id].x][media->worlds[media->world_id].vertices[id].y] == NODE_FULL)
 				wall = find_wall(last_id, id, media->worlds[media->world_id].walls, media->worlds[media->world_id].n_walls);
 		}
 		if (wall == -1)
@@ -251,16 +254,17 @@ void					add_to_media(t_t *t, t_media *media)
 		if (add_secwall(&media->worlds[media->world_id].sectors[sector].sec_walls, media->worlds[media->world_id].sectors[sector].n_walls, wall) == FAIL)
 			return ;
 		media->worlds[media->world_id].sectors[sector].n_walls++;
-		if (add_sector_v(&media->worlds[media->world_id].sectors[sector].v, media->worlds[media->world_id].sectors[sector].n_walls, id) == FAIL)
+		if (add_sector_v(&media->worlds[media->world_id].sectors[sector].v, media->worlds[media->world_id].sectors[sector].n_v, id) == FAIL)
 			return ;
-		t->active[0] = t->active[1];
-		t->active[1] = (t_vec2d){ -1, -1 };
+        media->worlds[media->world_id].sectors[sector].n_v++;
+		grid->active[0] = grid->active[1];
+		grid->active[1] = (t_vec2d){ -1, -1 };
 		last_id = id;
 	}
 	if (done == TRUE)
 	{
-		t->active[0] = (t_vec2d){ -1, -1 };
-		t->active[1] = (t_vec2d){ -1, -1 };
+		grid->active[0] = (t_vec2d){ -1, -1 };
+		grid->active[1] = (t_vec2d){ -1, -1 };
 		last_id = -1;
 	}
 }

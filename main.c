@@ -35,7 +35,7 @@
 //	exit(EXIT_FAILURE);
 //}
 
-void					write_text(char *str, t_sdl *sdl, int max_w, int h, t_vec2d pos, int color)
+void					write_text(char *str, t_sdl *sdl, t_rec rec, int color)
 {
 	unsigned char		r;
 	unsigned char		g;
@@ -48,35 +48,48 @@ void					write_text(char *str, t_sdl *sdl, int max_w, int h, t_vec2d pos, int co
 	SDL_Surface* textSurface = TTF_RenderText_Solid(sdl->font, str, textColor);
 	SDL_Texture* text = SDL_CreateTextureFromSurface(sdl->rend, textSurface);
 	ratio = textSurface->h ? (float)textSurface->w / textSurface->h : 1.f;
-	w = clamp(textSurface->h * ratio, 0, max_w);
+	w = clamp(textSurface->h * ratio, 0, rec.w);
 	SDL_FreeSurface(textSurface);
-	SDL_Rect renderQuad = { pos.x, pos.y, w, h };
+	SDL_Rect renderQuad = { rec.x, rec.y, w, rec.h };
 	SDL_RenderCopy(sdl->rend, text, NULL, &renderQuad);
 	SDL_DestroyTexture(text);
 }
 
-void					render_sector_menu(t_sdl *sdl, t_t *t, t_sector *sector)
+
+t_rec                    sector_menu(char i, char n)
 {
-	SDL_Texture	*back;
-	SDL_Texture	*title;
+    static t_rec        main = { .w = WIN_W * 0.34, .h = WIN_W * 0.34, .x = WIN_W * 0.6,.y = WIN_H * 0.1 };
+    static t_rec        title = { .w = WIN_W * 0.3, .h = WIN_H * 0.05, .x = WIN_W * 0.62,.y = WIN_H * 0.12 };
+    static t_rec        line = { .w = WIN_W * 0.3, .h = WIN_H * 0.03, .x = WIN_W * 0.62,.y = WIN_H * 0.2 };
+
+    if (i == 0)
+        return (main);
+    if (i == 1)
+        return (title);
+    if (i == 2)
+        return ((t_rec){ line.x, line.y + n * (line.h + 20), line.w, line.h });
+    if (i == 3)
+        return ((t_rec){ line.x + line.w * 0.95, (line.y + n * (line.h + 20)) - 10, line.h * 0.9, line.h * 0.9 });
+    if (i == 4)
+        return ((t_rec){ line.x + line.w * 0.95, (line.y + n * (line.h + 20)) + 10, line.h * 0.9, line.h * 0.9 });
+    return (line);
+}
+
+void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector)
+{
+	SDL_Texture         *back;
+	SDL_Texture         *title;
 	SDL_Rect			rect;
 	t_rec				box;
 	t_rec				title_box;
 	int 				text_color = DARK_GRAY;
 
-	if (!sdl || !t)
+	if (!sdl || !grid)
 		return ;
 	back = button_back(2, 1, sdl);
 	title = button_back(0, 1, sdl);
-	box.w = WIN_W * 0.35;
-	box.h = box.w;
-	box.x = WIN_W * 0.6;
-	box.y = WIN_H * 0.1;
-
-	title_box.w = box.w * 0.9;
-	title_box.h = box.h * 0.1;
-	title_box.x = box.x + (box.w - title_box.w) / 2;
-	title_box.y = box.y + 20;
+	box = sector_menu(0, 0);
+    title_box = sector_menu(1, 0);
 
 	rect = (SDL_Rect){ box.x, box.y,
 					   box.w, box.h };
@@ -86,34 +99,33 @@ void					render_sector_menu(t_sdl *sdl, t_t *t, t_sector *sector)
 	SDL_RenderCopy(sdl->rend, title, NULL, &rect);
 
 	char *str;
-	str = ft_strjoin("SECTOR ", ft_itoa(t->active[0].x));
-	write_text(str, sdl, box.w, box.h * 0.07,
-			(t_vec2d){ box.x + box.w * 0.08, box.y + box.h * 0.05 }, text_color);
+	str = ft_strjoin("SECTOR ", ft_itoa(grid->active[0].x));
+	write_text(str, sdl, title_box, text_color);
 	if (str)
 	    free(str);
     str = ft_strjoin("Floor height ", ft_itoa(sector->floor));
-	write_text(str, sdl, box.w, box.h * 0.07,
-			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.15 }, text_color);
+    title_box = sector_menu(2, 0);
+	write_text(str, sdl, title_box, text_color);
     if (str)
         free(str);
     str = ft_strjoin("Ceiling height ", ft_itoa(sector->ceiling));
-	write_text(str, sdl, box.w, box.h * 0.07,
-			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.25 }, text_color);
+    title_box = sector_menu(2, 1);
+	write_text(str, sdl, title_box, text_color);
     if (str)
         free(str);
     str = ft_strjoin("Floor texture ", ft_itoa(sector->floor_txtr));
-	write_text(str, sdl, box.w, box.h * 0.07,
-			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.35 }, text_color);
+    title_box = sector_menu(2, 2);
+	write_text(str, sdl, title_box, text_color);
     if (str)
         free(str);
     str = ft_strjoin("Ceiling texture ", ft_itoa(sector->ceil_txtr));
-	write_text(str, sdl, box.w, box.h * 0.07,
-			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.45 }, text_color);
+    title_box = sector_menu(2, 3);
+	write_text(str, sdl, title_box, text_color);
     if (str)
         free(str);
     str = ft_strjoin("Wall texture ", ft_itoa(sector->floor_txtr));
-	write_text(str, sdl, box.w, box.h * 0.07,
-			   (t_vec2d){ box.x + box.w * 0.05, box.y + box.h * 0.55 }, text_color);
+    title_box = sector_menu(2, 4);
+	write_text(str, sdl, title_box, text_color);
     if (str)
         free(str);
 }
@@ -160,13 +172,13 @@ void					render_screen_iso(SDL_Renderer *rend, int **screen)
     }
 }
 
-t_vec2d					find_node(int p_x, int p_y, t_t *t)
+t_vec2d					find_node(int p_x, int p_y, t_grid *grid)
 {
 	float				mapx;
 	float				mapy;
 
-	mapx = (float)(p_x - t->grid.box.x) / t->grid.scale;
-	mapy = (float)(p_y - t->grid.box.y) / t->grid.scale;
+	mapx = (float)(p_x - grid->box.x) / grid->scale;
+	mapy = (float)(p_y - grid->box.y) / grid->scale;
 	return ((t_vec2d){ round(mapx), round(mapy) });
 }
 
@@ -206,58 +218,85 @@ short 					find_wall(short one, short two, t_wall *walls, short n_walls)
 
 unsigned short 			sec_is_convex(t_vec2d *vertices, int *v, int n)
 {
-	char 			pos = 0;
-	char 			neg = 0;
+	char            pos_neg[2];
+	t_vec2d_d       diff1;
+	t_vec2d_d       diff2;
+    int             i;
+    int             j;
+    int             k;
+
 	if (n < 4)
 		return (TRUE);
-
-	for(int i = 0; i < n; i++)
-	{
-		double dx1 = vertices[v[(i + 2) % n]].x - vertices[v[(i + 1) % n]].x;
-		double dy1 = vertices[v[(i + 2) % n]].y - vertices[v[(i + 1) % n]].y;
-		double dx2 = vertices[v[i]].x - vertices[v[(i + 1) % n]].x;
-		double dy2 = vertices[v[i]].y - vertices[v[(i + 1) % n]].y;
-		double zcrossproduct = dx1 * dy2 - dy1 * dx2;
-		if (zcrossproduct > 0)
-			pos = 1;
-		if (zcrossproduct < 0)
-			neg = 1;
-		if (pos && neg)
-			return (FALSE);
-	}
-
+    pos_neg[0] = FALSE;
+    pos_neg[1] = FALSE;
+    i = -1;
+    while (++i < n)
+    {
+        if (v[i] != -2)
+        {
+            j = i + 1;
+            diff2.x = vertices[v[i]].x - vertices[v[(j) % n]].x;
+            diff2.y = vertices[v[i]].y - vertices[v[(j) % n]].y;
+            k = j + 1;
+            diff1.x = vertices[v[(k) % n]].x - vertices[v[(j) % n]].x;
+            diff1.y = vertices[v[(k) % n]].y - vertices[v[(j) % n]].y;
+            diff1.x = diff1.x * diff2.y - diff1.y * diff2.x;
+            if (diff1.x > 0)
+                pos_neg[0] = TRUE;
+            else if (diff1.x < 0)
+                pos_neg[1] = TRUE;
+            if (pos_neg[0] == TRUE && pos_neg[1] == TRUE)
+                return (FALSE);
+        }
+    }
 	return (TRUE);
 }
 
 char 					sector_status(t_sector sector, t_wall *walls, t_vec2d *vertices, int n)
 {
 	int					i;
-    int					k;
 	int					j;
 	int 				tmp[n];
+	int                 *w;
+	char                status;
 
 	if (!walls || !vertices)
-		return (FAIL);
+		return (SEC_OPEN);
 	ft_memset(tmp, -1, sizeof(int) * n);
-	i = 0;
+	i = -1;
 	j = 0;
-	k = 0;
-	while (k < sector.n_v && i < sector.n_walls)
+	while (++i < sector.n_walls)
 	{
 	    if (walls[sector.sec_walls[i]].type != WALL_DOOR)
         {
-	        k++;
             tmp[j++] = walls[sector.sec_walls[i]].v1;
             tmp[j++] = walls[sector.sec_walls[i]].v2;
         }
-        i++;
 	}
-	pair_sort(tmp, n);
-	if (sector_closed(tmp, n) == FALSE)
-		return (SEC_OPEN);
+    i = -1;
+    j = 0;
+    while (++i < n)
+    {
+        if (tmp[i] >= 0)
+            tmp[j++] = tmp[i];
+    }
+    if (!(w = (int *)ft_memalloc(sizeof(int) * j)))
+        return (SEC_OPEN);
+    i = 0;
+    while (i < j && i < n)
+    {
+        w[i] = tmp[i];
+        i++;
+    }
+	pair_sort(w, j);
+    if (sector_closed(w, j) == FALSE)
+        status = SEC_OPEN;
 	else if (sec_is_convex(vertices, sector.v, sector.n_v) == FALSE)
-		return(SEC_CONCAVE_CLOSED);
-	return(SEC_CONVEX_CLOSED);
+	    status = SEC_CONCAVE_CLOSED;
+	else
+	    status = SEC_CONVEX_CLOSED;
+    free(w);
+	return(status);
 }
 
 void					update_sector_status(t_sector *sectors, t_wall *walls, t_vec2d *vertices, int n_sectors)
@@ -269,7 +308,7 @@ void					update_sector_status(t_sector *sectors, t_wall *walls, t_vec2d *vertice
 		return ;
 	while (i < n_sectors)
 	{
-		sectors[i].status = sector_status(sectors[i], walls, vertices, sectors[i].n_v * 2);
+		sectors[i].status = sector_status(sectors[i], walls, vertices, sectors[i].n_walls * 2);
 		i++;
 	}
 }
@@ -367,35 +406,35 @@ void					move_grid(t_prog *prog, t_vec2d mouse, t_grid *grid)
 		prog->move = (t_vec2d){ 0, 0 };
 }
 
-void					move_vector(t_prog *prog, t_vec2d mouse, t_t *t, t_world *world)
+void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
 {
 	static int			id = -1;
 	static t_vec2d		to_erase = { -1, -1 };
 
-	if (!prog || !t || !world)
+	if (!prog || !grid || !world)
 		return ;
 	if (prog->move.x || prog->move.y)
 	{
-		if (mouse_over(t->grid.box, mouse))
+		if (mouse_over(grid->box, mouse))
 		{
-			if (t->active[0].x == -1)
+			if (grid->active[0].x == -1)
 			{
-				t->active[0] = find_node(mouse.x, mouse.y, t);
-				if (t->active[0].x >= 0 && t->active[0].y >= 0 &&
-				t->grid.nodes[t->active[0].x][t->active[0].y] == NODE_FULL)
-					id = find_vector(world->vertices, t->active[0], world->n_vectors);
+				grid->active[0] = find_node(mouse.x, mouse.y, grid);
+				if (grid->active[0].x >= 0 && grid->active[0].y >= 0 &&
+				grid->nodes[grid->active[0].x][grid->active[0].y] == NODE_FULL)
+					id = find_vector(world->vertices, grid->active[0], world->n_vectors);
 				if (id == -1)
-					t->active[0] = (t_vec2d){ -1, -1 };
-				to_erase = t->active[0];
+					grid->active[0] = (t_vec2d){ -1, -1 };
+				to_erase = grid->active[0];
 			}
 			else if (id >= 0)
 			{
 				if (to_erase.x != -1)
-					t->grid.nodes[to_erase.x][to_erase.y] = NODE_EMPTY;
-				t->active[1] = find_node(mouse.x, mouse.y, t);
-				world->vertices[id] = t->active[1];
-				t->grid.nodes[t->active[1].x][t->active[1].y] = NODE_FULL;
-				to_erase = t->active[1];
+					grid->nodes[to_erase.x][to_erase.y] = NODE_EMPTY;
+				grid->active[1] = find_node(mouse.x, mouse.y, grid);
+				world->vertices[id] = grid->active[1];
+				grid->nodes[grid->active[1].x][grid->active[1].y] = NODE_FULL;
+				to_erase = grid->active[1];
 			}
 			prog->move = mouse;
 			prog->features[F_REDRAW] = 1;
@@ -405,7 +444,7 @@ void					move_vector(t_prog *prog, t_vec2d mouse, t_t *t, t_world *world)
 	}
 	else
 	{
-		t->active[0] = (t_vec2d){ -1, -1 };
+		grid->active[0] = (t_vec2d){ -1, -1 };
 		id = -1;
 	}
 }
@@ -423,7 +462,7 @@ unsigned short			dot_inside_sector(int x, int y, t_vec2d *p, int n)
 	{
 		if ((p[i].y < y && p[j].y >= y) || (p[j].y < y && p[i].y >= y) )
 		{
-			if (p[i].x + (y - p[i].y) / (p[j].y - p[i].y) * (p[j].x - p[i].x) < x)
+			if (p[i].x + (float)(y - p[i].y) / (p[j].y - p[i].y) * (p[j].x - p[i].x) < x)
 				odd = odd == FALSE ? TRUE : FALSE;
 		}
 		j = i;
@@ -432,16 +471,16 @@ unsigned short			dot_inside_sector(int x, int y, t_vec2d *p, int n)
 	return (odd);
 }
 
-t_vec2d					find_in_grid(int p_x, int p_y, t_grid grid)
+t_vec2d					find_in_grid(int p_x, int p_y, t_grid *grid)
 {
 	t_vec2d				res;
 
-	res.x = (float)(p_x - grid.box.x) / grid.scale;
-	res.y = (float)(p_y - grid.box.y) / grid.scale;
+	res.x = (float)(p_x - grid->box.x) / grid->scale;
+	res.y = (float)(p_y - grid->box.y) / grid->scale;
 	return (res);
 }
 
-int 					in_sector(t_vec2d p, t_world *world, t_t *t)
+int 					in_sector(t_vec2d p, t_world *world, t_grid *grid)
 {
 	int 				id;
 	t_vec2d				map_p;
@@ -449,24 +488,26 @@ int 					in_sector(t_vec2d p, t_world *world, t_t *t)
 	int 				i;
 	int 				j;
 
-	if (!world || !t || mouse_over(t->grid.box, p) == FALSE)
+	if (!world || !grid || mouse_over(grid->box, p) == FALSE)
 		return (-1);
 	id = -1;
-	map_p = find_in_grid(p.x, p.y, t->grid);
+	map_p = find_in_grid(p.x, p.y, grid);
 	i = 0;
 	while (i < world->n_sectors)
 	{
 		if ( world->sectors[i].status != SEC_OPEN)
 		{
-			if (!(v = ft_memalloc(sizeof(t_vec2d) * world->sectors[i].n_walls)))
+			if (!(v = ft_memalloc(sizeof(t_vec2d) * world->sectors[i].n_v)))
 				return (-1);
 			j = 0;
-			while (j < world->sectors[i].n_walls)
+			while (j < world->sectors[i].n_v)
 			{
+			    if (world->sectors[i].v[j] < 0 || world->sectors[i].v[j] >= world->n_vectors)
+                    return (-1);
 				v[j] = world->vertices[world->sectors[i].v[j]];
 				j++;
 			}
-			if (dot_inside_sector(map_p.x, map_p.y, v, world->sectors[i].n_walls) == TRUE)
+			if (dot_inside_sector(map_p.x, map_p.y, v, world->sectors[i].n_v) == TRUE)
 				id = i;
 			free(v);
 		}
@@ -475,35 +516,43 @@ int 					in_sector(t_vec2d p, t_world *world, t_t *t)
 	return (id);
 }
 
+t_grid                  *get_grid(void)
+{
+    t_grid					*grid;
+
+    if (!(grid = (t_grid *)ft_memalloc(sizeof(t_grid))))
+        return (NULL);
+    grid->scale = WIN_H / GRID_SIZE;
+    grid->box.w = GRID_SIZE * grid->scale;
+    grid->box.h = GRID_SIZE * grid->scale;
+    grid->box.x = (WIN_W - grid->box.w) / 2;
+    grid->box.y = (WIN_H - grid->box.h) / 2;
+    grid->active[0] = (t_vec2d){ -1, -1 };
+    grid->active[1] = (t_vec2d){ -1, -1 };
+    clean_grid(grid);
+    return (grid);
+}
+
 void					game_loop(t_sdl *sdl, t_media *media)
 {
-	if (!sdl || !media)
-		return ;
-	t_t					*t;
+	t_grid				*grid;
 	t_prog				*prog;
 
+    if (!sdl || !media)
+        return ;
 	prog = NULL;
-	if (!(t = ft_memalloc(sizeof(t_t))))
-		return ;
-	if (!(prog = get_prog()) ||  init_modes(sdl, media, prog) == FAIL)
+    grid = NULL;
+	if (!(prog = get_prog()) || init_modes(sdl, media, prog) == FAIL || !(grid = get_grid()))
 	{
-		ft_putstr("\x1b[32mProg is NULL, Returning fail from main function.\x1b[0m\n");
+		ft_putstr("\x1b[32mReturning fail from game loop.\x1b[0m\n");
 		return ;
 	}
-	t->grid.scale = WIN_H / GRID_SIZE;
-	t->grid.box.w = GRID_SIZE * t->grid.scale;
-	t->grid.box.h = GRID_SIZE * t->grid.scale;
-	t->grid.box.x = (WIN_W - t->grid.box.w) / 2;
-	t->grid.box.y = (WIN_H - t->grid.box.h) / 2;
-	t->active[0] = (t_vec2d){ -1, -1 };
-	t->active[1] = (t_vec2d){ -1, -1 };
-	clean_grid(&t->grid);
-	while (prog->modes[prog->mode_id].input(sdl, &t->grid.scale, media, prog) == FALSE)
+	while (prog->modes[prog->mode_id].input(sdl, &grid->scale, media, prog) == FALSE)
 	{
-		prog->modes[prog->mode_id].update(sdl, t,  media, prog);
-		prog->modes[prog->mode_id].render(sdl, t, media, prog);
+		prog->modes[prog->mode_id].update(sdl, grid,  media, prog);
+		prog->modes[prog->mode_id].render(sdl, grid, media, prog);
 	}
-	free(t);
+	free(grid);
 	free_prog(prog, sdl);
 }
 
@@ -543,7 +592,7 @@ int						main(void)
 		return (FAIL);
 	}
 	game_loop(sdl, media);
-//	rewrite_media(media);
+	rewrite_media(media);
 	free_media(media);
 	free_sdl(sdl);
 	ft_putstr("\x1b[32mReturning success from main function.\x1b[0m\n");
