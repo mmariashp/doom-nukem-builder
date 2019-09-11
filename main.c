@@ -41,7 +41,6 @@ void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center)
 	unsigned char		g;
 	unsigned char		b;
 	int					w;
-	int                 h;
 	float 				ratio;
     SDL_Rect            renderQuad;
 
@@ -51,7 +50,6 @@ void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center)
 	SDL_Texture* text = SDL_CreateTextureFromSurface(sdl->rend, textSurface);
 	ratio = textSurface->h ? (float)textSurface->w / textSurface->h : 1.f;
 	w = clamp(textSurface->h * ratio, 0, rec.w);
-	h = clamp(textSurface->h, 0, rec.h);
 	SDL_FreeSurface(textSurface);
     renderQuad = (SDL_Rect){ rec.x, rec.y, w, rec.h };
 	if (h_center == TRUE)
@@ -65,14 +63,14 @@ void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center)
 
 t_rec                    sector_menu(char i, char n)
 {
-    static t_rec        main =  { .x = WIN_W * 0.6,  .y = WIN_H * 0.1  , .w = WIN_W * 0.34, .h = WIN_W * 0.34 };
+    static t_rec        outer =  { .x = WIN_W * 0.6,  .y = WIN_H * 0.1  , .w = WIN_W * 0.34, .h = WIN_W * 0.34 };
     static t_rec        title = { .x = WIN_W * 0.62, .y = WIN_H * 0.12 , .w = WIN_W * 0.3,  .h = WIN_H * 0.05 };
     static t_rec        line =  { .x = WIN_W * 0.62, .y = WIN_H * 0.2  , .w = WIN_W * 0.24, .h = WIN_H * 0.03 };
     static t_rec        value = { .x = WIN_W * 0.87, .y = WIN_H * 0.2  , .w = WIN_W * 0.04, .h = WIN_H * 0.03 };
 
 
     if (i == 0)
-        return (main);
+        return (outer);
     if (i == 1)
         return (title);
     if (i == 2) //lines like height
@@ -548,8 +546,6 @@ void					game_loop(t_sdl *sdl, t_media *media)
 	t_grid				*grid;
 	t_prog				*prog;
 
-    if (!sdl || !media)
-        return ;
 	prog = NULL;
     grid = NULL;
 	if (!(prog = get_prog()) || init_modes(sdl, media, prog) == FAIL || !(grid = get_grid()))

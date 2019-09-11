@@ -145,7 +145,8 @@ int                     clip_line(t_line *l) //Cohen-Sutherland algorithm
 		else
 		{
 			int     code_out;
-			double  x, y;
+			double  x = 0;
+			double y = 0;
 			if (code1 != 0)
 				code_out = code1;
 			else

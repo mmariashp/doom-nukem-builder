@@ -1,0 +1,4 @@
+/home/moosh/CLionProjects/builder/CMakeFiles/rebuild_cache.dir
+/home/moosh/CLionProjects/builder/CMakeFiles/edit_cache.dir
+/home/moosh/CLionProjects/builder/CMakeFiles/ft.dir
+/home/moosh/CLionProjects/builder/CMakeFiles/builder.dir
