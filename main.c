@@ -35,13 +35,15 @@
 //	exit(EXIT_FAILURE);
 //}
 
-void					write_text(char *str, t_sdl *sdl, t_rec rec, int color)
+void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center)
 {
 	unsigned char		r;
 	unsigned char		g;
 	unsigned char		b;
 	int					w;
+	int                 h;
 	float 				ratio;
+    SDL_Rect            renderQuad;
 
 	get_rgb(&r, &g, &b, color);
 	SDL_Color textColor = { r, g, b, 0 };
@@ -49,8 +51,13 @@ void					write_text(char *str, t_sdl *sdl, t_rec rec, int color)
 	SDL_Texture* text = SDL_CreateTextureFromSurface(sdl->rend, textSurface);
 	ratio = textSurface->h ? (float)textSurface->w / textSurface->h : 1.f;
 	w = clamp(textSurface->h * ratio, 0, rec.w);
+	h = clamp(textSurface->h, 0, rec.h);
 	SDL_FreeSurface(textSurface);
-	SDL_Rect renderQuad = { rec.x, rec.y, w, rec.h };
+    renderQuad = (SDL_Rect){ rec.x, rec.y, w, rec.h };
+	if (h_center == TRUE)
+        renderQuad.x = rec.x + (rec.w - w) / 2;
+	else
+        renderQuad.x = rec.x + rec.w * 0.05;
 	SDL_RenderCopy(sdl->rend, text, NULL, &renderQuad);
 	SDL_DestroyTexture(text);
 }
@@ -58,24 +65,30 @@ void					write_text(char *str, t_sdl *sdl, t_rec rec, int color)
 
 t_rec                    sector_menu(char i, char n)
 {
-    static t_rec        main = { .w = WIN_W * 0.34, .h = WIN_W * 0.34, .x = WIN_W * 0.6,.y = WIN_H * 0.1 };
-    static t_rec        title = { .w = WIN_W * 0.3, .h = WIN_H * 0.05, .x = WIN_W * 0.62,.y = WIN_H * 0.12 };
-    static t_rec        line = { .w = WIN_W * 0.3, .h = WIN_H * 0.03, .x = WIN_W * 0.62,.y = WIN_H * 0.2 };
+    static t_rec        main =  { .x = WIN_W * 0.6,  .y = WIN_H * 0.1  , .w = WIN_W * 0.34, .h = WIN_W * 0.34 };
+    static t_rec        title = { .x = WIN_W * 0.62, .y = WIN_H * 0.12 , .w = WIN_W * 0.3,  .h = WIN_H * 0.05 };
+    static t_rec        line =  { .x = WIN_W * 0.62, .y = WIN_H * 0.2  , .w = WIN_W * 0.24, .h = WIN_H * 0.03 };
+    static t_rec        value = { .x = WIN_W * 0.87, .y = WIN_H * 0.2  , .w = WIN_W * 0.04, .h = WIN_H * 0.03 };
+
 
     if (i == 0)
         return (main);
     if (i == 1)
         return (title);
-    if (i == 2)
+    if (i == 2) //lines like height
         return ((t_rec){ line.x, line.y + n * (line.h + 20), line.w, line.h });
-    if (i == 3)
-        return ((t_rec){ line.x + line.w * 0.95, (line.y + n * (line.h + 20)) - 10, line.h * 0.9, line.h * 0.9 });
-    if (i == 4)
-        return ((t_rec){ line.x + line.w * 0.95, (line.y + n * (line.h + 20)) + 10, line.h * 0.9, line.h * 0.9 });
+    if (i == 3) //arrows up
+        return ((t_rec){ line.x + title.w * 0.95, (line.y + n * (line.h + 20)) - 10, line.h * 0.9, line.h * 0.9 });
+    if (i == 4) // arrows down
+        return ((t_rec){ line.x + title.w * 0.95, (line.y + n * (line.h + 20)) + 10, line.h * 0.9, line.h * 0.9 });
+    if (i == 5) // values column
+        return ((t_rec){ value.x, (value.y + n * (value.h + 20)), value.w, value.h });
+    if (i == 6) // values edit
+        return ((t_rec){ line.x + title.w * 0.95, (value.y + n * (value.h + 20)), line.h * 0.9, line.h * 0.9 });
     return (line);
 }
 
-void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector)
+void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector, t_texture *textures, int n_textures)
 {
 	SDL_Texture         *back;
 	SDL_Texture         *title;
@@ -83,51 +96,48 @@ void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector)
 	t_rec				box;
 	t_rec				title_box;
 	int 				text_color = DARK_GRAY;
+    char                *str;
+    int                 i = 0;
+	int                 n = 5;
+	static char         line[5][20] = { "Floor height ", "Ceiling height ", "Floor texture ", "Ceiling texture ", "Wall texture " };
+    int                 value[5] = { sector->floor, sector->ceiling, sector->floor_txtr, sector->ceil_txtr,  sector->floor_txtr};
 
-	if (!sdl || !grid)
+	if (!sdl || !grid || !sector || !textures || n_textures < 0)
 		return ;
 	back = button_back(2, 1, sdl);
 	title = button_back(0, 1, sdl);
 	box = sector_menu(0, 0);
     title_box = sector_menu(1, 0);
 
-	rect = (SDL_Rect){ box.x, box.y,
-					   box.w, box.h };
+	rect = (SDL_Rect){ box.x, box.y, box.w, box.h };
 	SDL_RenderCopy(sdl->rend, back, NULL, &rect);
-	rect = (SDL_Rect){ title_box.x, title_box.y,
-					   title_box.w, title_box.h };
+    rect = (SDL_Rect){ title_box.x, title_box.y, title_box.w, title_box.h };
 	SDL_RenderCopy(sdl->rend, title, NULL, &rect);
 
-	char *str;
 	str = ft_strjoin("SECTOR ", ft_itoa(grid->active[0].x));
-	write_text(str, sdl, title_box, text_color);
+	write_text(str, sdl, title_box, text_color, FALSE);
 	if (str)
 	    free(str);
-    str = ft_strjoin("Floor height ", ft_itoa(sector->floor));
-    title_box = sector_menu(2, 0);
-	write_text(str, sdl, title_box, text_color);
-    if (str)
-        free(str);
-    str = ft_strjoin("Ceiling height ", ft_itoa(sector->ceiling));
-    title_box = sector_menu(2, 1);
-	write_text(str, sdl, title_box, text_color);
-    if (str)
-        free(str);
-    str = ft_strjoin("Floor texture ", ft_itoa(sector->floor_txtr));
-    title_box = sector_menu(2, 2);
-	write_text(str, sdl, title_box, text_color);
-    if (str)
-        free(str);
-    str = ft_strjoin("Ceiling texture ", ft_itoa(sector->ceil_txtr));
-    title_box = sector_menu(2, 3);
-	write_text(str, sdl, title_box, text_color);
-    if (str)
-        free(str);
-    str = ft_strjoin("Wall texture ", ft_itoa(sector->floor_txtr));
-    title_box = sector_menu(2, 4);
-	write_text(str, sdl, title_box, text_color);
-    if (str)
-        free(str);
+    title = button_back(1, 1, sdl);
+    title_box = sector_menu(2, i);
+    rect = (SDL_Rect){ title_box.x, title_box.y, title_box.w, title_box.h };
+	while (i < n)
+    {
+        title_box = sector_menu(2, i);
+        rect.y = title_box.y;
+        SDL_RenderCopy(sdl->rend, title, NULL, &rect);
+        write_text(line[i], sdl, title_box, text_color, FALSE);
+        title_box = sector_menu(5, i);
+        write_text(ft_itoa(value[i]), sdl, title_box, text_color, FALSE);
+        if (i > 1 && textures[value[i]].sdl_t && value[i] >= 0 && value[i] < n_textures)
+        {
+            SDL_Rect rect2 = (SDL_Rect){ title_box.x, title_box.y, title_box.h, title_box.h };
+            SDL_Rect rect3 = (SDL_Rect){ textures[value[i]].size.x / 4, textures[value[i]].size.y / 4,
+                                         textures[value[i]].size.x / 3, textures[value[i]].size.y / 3 };
+            SDL_RenderCopy(sdl->rend, textures[value[i]].sdl_t, &rect3, &rect2);
+        }
+	    i++;
+    }
 }
 
 void					render_screen(SDL_Renderer *rend, int **screen)
@@ -565,7 +575,7 @@ unsigned 				load_sdl_media(t_media *media, t_sdl *sdl)
 	i = 0;
 	while (i < media->n_textures)
 	{
-		media->txtrs[i].sdl_t = load_texture(media->txtrs[i].full_path, sdl);
+		media->txtrs[i].sdl_t = load_texture(media->txtrs[i].full_path, sdl->rend, &media->txtrs[i].size);
 		if (!media->txtrs[i].sdl_t)
 			return (FAIL);
 		i++;
@@ -584,7 +594,7 @@ int						main(void)
 		ft_putstr("\x1b[32mSdl is NULL, Returning fail from main function.\x1b[0m\n");
 		return (FAIL);
 	}
-	if (!(media = get_assets()))
+	if (!(media = get_assets()) || load_sdl_media(media, sdl) == FAIL)
 	{
 		ft_putstr("\x1b[32mMedia is NULL, Returning fail from main function.\x1b[0m\n");
 		free_media(media);

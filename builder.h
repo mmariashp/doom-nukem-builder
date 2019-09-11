@@ -90,7 +90,7 @@
 #endif
 
 # define WIN_NAME				"DOOM-NUKEM BUILDER"
-# define FONT_NAME              "VCR_OSD_MONO_1.001.ttf"
+# define FONT_NAME              "BebasNeue-Regular.ttf"
 //# define FONT_NAME "LibreBaskerville-Regular.ttf"
 
 # define LEVELS					"Levels"
@@ -153,10 +153,11 @@
 # define MENU_TXT_H			25
 # define MAX_MENU_TXT_W		200
 
-# define N_MODES			3
+# define N_MODES			4
 # define MODE_MAIN_MENU		0
 # define MODE_SUMMARY		1
 # define MODE_EDITOR		2
+# define MODE_TEXTURES		3
 
 # define N_MM_BUTTONS		2
 # define N_SUMM_BUTTONS		3
@@ -174,6 +175,9 @@
 # define F_DOWN_BUTTON		9
 # define C_UP_BUTTON		10
 # define C_DOWN_BUTTON		11
+# define FT_EDIT_BUTTON		12
+# define CT_EDIT_BUTTON		13
+# define WT_EDIT_BUTTON		14
 
 
 # define GRID_SIZE			150
@@ -304,6 +308,7 @@ typedef struct                  s_texture
 	char 						*name;
 	char 						*full_path;
 	SDL_Texture					*sdl_t;
+	t_vec2d                     size;
 }                               t_texture;
 
 typedef struct					s_world
@@ -358,7 +363,7 @@ typedef struct					s_mode
 
 int						start_sdl(t_sdl *sdl);
 t_sdl					*get_sdl(void);
-SDL_Texture             *load_texture(char *name, t_sdl *sdl);
+SDL_Texture             *load_texture(char *name, SDL_Renderer *rend, t_vec2d *size);
 SDL_Surface             *load_image(char *name);
 void					free_sdl(t_sdl *sdl);
 void					quit_sdl(void);
@@ -377,7 +382,11 @@ int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *pro
 void					update_editor(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
-void					write_text(char *str, t_sdl *sdl, t_rec rec, int color);
+int						input_textures(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog);
+void					update_textures(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
+void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+
+void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center);
 
 int						clamp(int n, int min, int max);
 float					clamp_f(float n, float min, float max);
@@ -434,7 +443,6 @@ short 					find_vector(t_vec2d *vertices, t_vec2d p, int n);
 short 					find_wall(short one, short two, t_wall *walls, short n_walls);
 
 void					render_screen(SDL_Renderer *rend, int **screen);
-void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector);
 
 void					fill_grid(int n_vectors, t_vec2d *vertices, t_grid *grid);
 void					clean_grid(t_grid *grid);
@@ -459,6 +467,7 @@ t_vec2d                 make_iso(int x, int y, int z);
 
 void                    zoom_to_map(int n_vectors, t_vec2d *v, t_grid *grid);
 
-t_rec                    sector_menu(char i, char n);
+t_rec                   sector_menu(char i, char n);
+void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector, t_texture *textures, int n_textures);
 
 #endif

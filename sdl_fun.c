@@ -67,16 +67,18 @@ SDL_Surface             *load_image(char *name)
 	return (image);
 }
 
-SDL_Texture             *load_texture(char *name, t_sdl *sdl)
+SDL_Texture             *load_texture(char *name, SDL_Renderer *rend, t_vec2d *size)
 {
 	SDL_Texture		*texture;
 	SDL_Surface     *image;
 
 	texture = NULL;
 	image = load_image(name);
+	if (size)
+	    *size = (t_vec2d){ image->w, image->h };
 	if (image == NULL)
 		return (NULL);
-	texture = SDL_CreateTextureFromSurface(sdl->rend, image);
+	texture = SDL_CreateTextureFromSurface(rend, image);
 	if (texture == NULL)
 		ft_putendl(SDL_GetError());
 	SDL_FreeSurface(image);
@@ -99,7 +101,7 @@ int						start_sdl(t_sdl *sdl)
 		return(FAIL);
 	if (!(sdl->rend = SDL_CreateRenderer(sdl->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)))
 		return(FAIL);
-	if (!(sdl->font = TTF_OpenFont( FONT_NAME, 28 )))
+	if (!(sdl->font = TTF_OpenFont( FONT_NAME, 30 )))
 		return (FAIL);
 	printf("out of start sdl\n");
 	return (SUCCESS);

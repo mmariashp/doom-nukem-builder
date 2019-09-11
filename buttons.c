@@ -4,12 +4,12 @@
 void					render_button(t_button *button, t_sdl *sdl)
 {
 	SDL_Rect			rect;
-	SDL_Color			sdl_color;
-	SDL_Surface			*surf;
-	SDL_Texture			*txtr;
-	unsigned char		r;
-	unsigned char		g;
-	unsigned char		b;
+//	SDL_Color			sdl_color;
+//	SDL_Surface			*surf;
+//	SDL_Texture			*txtr;
+//	unsigned char		r;
+//	unsigned char		g;
+//	unsigned char		b;
 
 	if (!button || !sdl->rend)
 		return ;
@@ -35,18 +35,10 @@ void					render_button(t_button *button, t_sdl *sdl)
 	}
 	if (button->text)
 	{
-		rect = (SDL_Rect){ button->box.x + button->box.w * 0.05, button->box.y + button->box.h * 0.05,
-						   button->box.w * 0.9, button->box.h * 0.8 };
-		if (button->vis_lit_on[1] == TRUE)
-			get_rgb(&r, &g, &b, LIT_COLOR);
-		else
-			get_rgb(&r, &g, &b, button->text_color);
-		sdl_color = (SDL_Color){ r, g, b, 0 };
-		surf = TTF_RenderText_Solid(sdl->font, button->text, sdl_color);
-		txtr = SDL_CreateTextureFromSurface(sdl->rend, surf);
-		SDL_FreeSurface(surf);
-		SDL_RenderCopy(sdl->rend, txtr, NULL, &rect);
-		SDL_DestroyTexture(txtr);
+        if (button->vis_lit_on[1] == TRUE)
+            write_text(button->text, sdl, button->box, LIT_COLOR, TRUE);
+        else
+            write_text(button->text, sdl, button->box, button->text_color, TRUE);
 	}
 }
 

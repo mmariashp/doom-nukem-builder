@@ -21,6 +21,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/rewrite.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/rewrite.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/sdl_fun.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/sdl_fun.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/summary.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/summary.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/textures.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/textures.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/zoom.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/zoom.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")

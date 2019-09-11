@@ -44,13 +44,13 @@ sys/stat.h
 sys/types.h
 -
 
-/Users/mshpakov/Desktop/doom-nukem-builder/editor.c
-builder.h
-/Users/mshpakov/Desktop/doom-nukem-builder/builder.h
-
 /Users/mshpakov/Desktop/doom-nukem-builder/get_next_line.h
 ./libft/libft.h
 /Users/mshpakov/Desktop/doom-nukem-builder/./libft/libft.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/modes.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/builder.h
 
 /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
 SDL_main.h

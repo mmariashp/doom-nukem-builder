@@ -2431,6 +2431,33 @@ summary.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/summary.c.s
 .PHONY : summary.c.s
 
+textures.o: textures.c.o
+
+.PHONY : textures.o
+
+# target to build an object file
+textures.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/textures.c.o
+.PHONY : textures.c.o
+
+textures.i: textures.c.i
+
+.PHONY : textures.i
+
+# target to preprocess a source file
+textures.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/textures.c.i
+.PHONY : textures.c.i
+
+textures.s: textures.c.s
+
+.PHONY : textures.s
+
+# target to generate assembly for a file
+textures.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/textures.c.s
+.PHONY : textures.c.s
+
 zoom.o: zoom.c.o
 
 .PHONY : zoom.o
@@ -2723,6 +2750,9 @@ help:
 	@echo "... summary.o"
 	@echo "... summary.i"
 	@echo "... summary.s"
+	@echo "... textures.o"
+	@echo "... textures.i"
+	@echo "... textures.s"
 	@echo "... zoom.o"
 	@echo "... zoom.i"
 	@echo "... zoom.s"

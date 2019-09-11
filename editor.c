@@ -11,8 +11,8 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 
 	render_grid(media->worlds[media->world_id], grid, prog, sdl->mouse);
 	render_screen(sdl->rend, prog->screen);
-	if (prog->button_on >= SECTOR_BUTTON && grid->active[0].y >= 0 && grid->active[0].y < media->worlds[media->world_id].n_sectors)
-		render_sector_menu(sdl, grid, &media->worlds[media->world_id].sectors[grid->active[0].y]);
+	if (prog->button_on == SECTOR_BUTTON && grid->active[0].y >= 0 && grid->active[0].y < media->worlds[media->world_id].n_sectors)
+	    render_sector_menu(sdl, grid, &media->worlds[media->world_id].sectors[grid->active[0].y], media->txtrs, media->n_textures);
 	render_buttons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons);
 	SDL_RenderPresent(sdl->rend);
 	prog->features[F_REDRAW] = 0;
@@ -27,6 +27,7 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		return;
 	if (prog->save == 1 || prog->button_on == SAVE_BUTTON) // when saving
 	{
+        printf("in update, pressed save\n");
 		rewrite_media(media);
 		prog->save = 0;
 		prog->button_on = DRAG_BUTTON;
@@ -40,8 +41,11 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 			prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 		prog->button_on = prog->button_lit;
 		prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
-		grid->active[0] = (t_vec2d){ -1, -1 };
-		grid->active[1] = (t_vec2d){ -1, -1 };
+		if (prog->button_on < SECTOR_BUTTON || prog->button_on == DESELECT_SEC_BUTTON)
+        {
+            grid->active[0] = (t_vec2d){ -1, -1 };
+            grid->active[1] = (t_vec2d){ -1, -1 };
+        }
         prog->features[F_REDRAW] = 1;
 	}
 	if (light_button(sdl, prog->modes[prog->mode_id].buttons,  prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
@@ -106,9 +110,11 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	else if (prog->button_on == SECTOR_BUTTON && s == -1) // sector mode
 	{
 		int k;
-		grid->active[0] = (t_vec2d){ -1, -1 };
-		k = in_sector(sdl->mouse, &media->worlds[world_id], grid);
-		if (k != -1)
+		if (s == -1)
+		{
+            grid->active[0] = (t_vec2d) {-1, -1};
+        }
+		if ((k = in_sector(sdl->mouse, &media->worlds[world_id], grid)) != -1)
 		{
 			grid->active[0].x = k;
 			if (prog->move.x || prog->move.y)
@@ -119,20 +125,19 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
                 fill_grid(media->worlds[world_id].n_vectors, media->worlds[world_id].vertices, grid);
                 zoom_to_sector(&media->worlds[media->world_id].sectors[s], media->worlds[media->world_id].vertices, grid, prog);
                 int i = 7;
-                while ( i < 12)
+                while ( i < 15)
                     prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = TRUE;
                 i = 0;
                 while ( i < 7)
                     prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
 			}
 		}
-
 		prog->features[F_REDRAW] = 1;
 	}
 	else if (prog->button_on == DESELECT_SEC_BUTTON && s != -1) // sector mode
 	{
         int i = 7;
-        while ( i < 12)
+        while ( i < 15)
             prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
         i = 0;
         while ( i < 7)
@@ -148,10 +153,11 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
     }
     else if (prog->button_on == F_UP_BUTTON && s != -1) // sector mode
     {
-
+//        printf("went here, active = %d, %d\n", )
         prog->features[F_REDRAW] = 1;
         prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
-        prog->button_on = -1;
+        prog->button_on = SECTOR_BUTTON;
+        prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
         media->worlds[media->world_id].sectors[s].floor++;
     }
     else if (prog->button_on == F_DOWN_BUTTON && s != -1) // sector mode
@@ -159,7 +165,8 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 
         prog->features[F_REDRAW] = 1;
         prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
-        prog->button_on = -1;
+        prog->button_on = SECTOR_BUTTON;
+        prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
         media->worlds[media->world_id].sectors[s].floor--;
     }
     else if (prog->button_on == C_UP_BUTTON && s != -1) // sector mode
@@ -167,7 +174,8 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 
         prog->features[F_REDRAW] = 1;
         prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
-        prog->button_on = -1;
+        prog->button_on = SECTOR_BUTTON;
+        prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
         media->worlds[media->world_id].sectors[s].ceiling++;
     }
     else if (prog->button_on == C_DOWN_BUTTON && s != -1) // sector mode
@@ -175,7 +183,8 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 
         prog->features[F_REDRAW] = 1;
         prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
-        prog->button_on = -1;
+        prog->button_on = SECTOR_BUTTON;
+        prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
         media->worlds[media->world_id].sectors[s].ceiling--;
     }
 	if (prog->zoom != 0)
@@ -201,42 +210,7 @@ int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *pro
 		}
 		else if (event.type == SDL_KEYUP || event.type == SDL_KEYDOWN)
 		{
-			if (event.key.keysym.sym == 'w')
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == 's')
-			{
-				printf("%c\n", event.key.keysym.sym);
-				prog->save = 1;
-				break ;
-			}
-			else if (event.key.keysym.sym == 'a')
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == 'd')
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == 'q')
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == 'e')
-			{
-				SDL_ShowSimpleMessageBox(0, "Mouse", "Left button was pressed!", sdl->window);
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == SDLK_RCTRL)
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == ' ')
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == SDLK_ESCAPE)
+			if (event.key.keysym.sym == SDLK_ESCAPE)
 			{
 				quit = TRUE;
 				break ;
@@ -252,21 +226,28 @@ int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *pro
 		if( event.type == SDL_MOUSEMOTION || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP )
 		{
 			if(event.type == SDL_MOUSEBUTTONDOWN)
-			{
-				if (prog->button_lit == BACK_BUTTON)
-				{
-					prog->mode_id = MODE_SUMMARY;
-					prog->button_lit = -1;
-					prog->button_on = -1;
-					media->world_id = -1;
-                    refresh_level_list(media, &prog->modes[MODE_SUMMARY], sdl);
-					return (quit);
-				}
-				prog->move.x = sdl->mouse.x;
-				prog->move.y = sdl->mouse.y;
-			}
+				prog->move = sdl->mouse;
 			if(event.type == SDL_MOUSEBUTTONUP)
 			{
+                if (prog->button_lit == BACK_BUTTON)
+                {
+                    prog->mode_id = MODE_SUMMARY;
+                    prog->button_lit = -1;
+                    prog->button_on = -1;
+                    media->world_id = -1;
+                    refresh_level_list(media, &prog->modes[MODE_SUMMARY], sdl);
+                    return (quit);
+                }
+                if (prog->button_lit == FT_EDIT_BUTTON)
+                {
+                    printf("here\n");
+                    prog->features[F_REDRAW] = 1;
+                    prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
+                    prog->mode_id = MODE_TEXTURES;
+                    prog->button_lit = -1;
+                    prog->button_on = -1;
+                    return (quit);
+                }
 				prog->move.x = 0;
 				prog->move.y = 0;
 			}

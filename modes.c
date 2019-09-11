@@ -98,7 +98,7 @@ unsigned short			distribute_buttons_v(t_button *buttons, int from, int to, t_rec
 	unsigned short		i;
 
 
-	if (!buttons)
+	if (!buttons || from >= to)
 		return (FAIL);
 	b = (t_vec2d){ box.w, box.h / (to - from) - padding };
     y = box.y;
@@ -117,6 +117,44 @@ unsigned short			distribute_buttons_v(t_button *buttons, int from, int to, t_rec
 	return (SUCCESS);
 }
 
+unsigned short			distribute_buttons_grid(t_button *buttons, int from, int to, t_rec box, int padding)
+{
+    t_vec2d				b;
+    int 				y;
+    unsigned short		i;
+    int x;
+
+
+    if (!buttons || from >= to)
+        return (FAIL);
+    int area = box.w * box.h;
+
+    int area2 = area / (to - from);
+    b = (t_vec2d){ floor(sqrt(area2)), floor(sqrt(area2)) - padding * 2 };
+    printf("box w = %d, box h = %d\n", box.w, box.h);
+    printf("n = %d, all area = %d, box area = %d, side = %d\n", (to-from), area, area2, b.x);
+
+    y = box.y;
+    i = from;
+    while (i < to)
+    {
+        y += padding;
+        x = box.x;
+        while (x  + b.x < box.x + box.w)
+        {
+            x += padding;
+            buttons[i].box.w = b.x;
+            buttons[i].box.h = b.y;
+            buttons[i].box.x = x;
+            buttons[i].box.y = y;
+            x += b.x;
+        }
+        y += b.y;
+        i++;
+    }
+    return (SUCCESS);
+}
+
 unsigned short			distribute_buttons_v2(t_button *buttons, int from, int to, t_rec box, t_vec2d button_size)
 {
     int 				y;
@@ -124,7 +162,7 @@ unsigned short			distribute_buttons_v2(t_button *buttons, int from, int to, t_re
     int                 padding = (box.h - (button_size.y * (to - from))) / to - from + 1;
 
 
-    if (!buttons)
+    if (!buttons || from >= to)
         return (FAIL);
     y = box.y;
     i = from;
@@ -156,9 +194,9 @@ SDL_Texture				*button_back(int id, int set_get_free, t_sdl *sdl)
 		printf("back textures to be set\n");
 		if (!(back = (SDL_Texture **)ft_memalloc(sizeof(SDL_Texture *) * N_BUTTON_BACKS)))
 			return (NULL);
-		back[0] = load_texture("blue_button00.png", sdl);
-		back[1] = load_texture("blue_button13.png", sdl);
-		back[2] = load_texture("grey_panel.png", sdl);
+		back[0] = load_texture("blue_button00.png", sdl->rend, 0);
+		back[1] = load_texture("blue_button13.png", sdl->rend, 0);
+		back[2] = load_texture("grey_panel.png", sdl->rend, 0);
 		init = 1;
 		printf("back textures were set\n");
 		return (NULL);
@@ -182,8 +220,6 @@ SDL_Texture				*button_back(int id, int set_get_free, t_sdl *sdl)
 	return (NULL);
 }
 
-
-
 unsigned short			main_menu_buttons(t_button *buttons, t_sdl *sdl)
 {
 	t_rec				box;
@@ -191,8 +227,8 @@ unsigned short			main_menu_buttons(t_button *buttons, t_sdl *sdl)
 
 	if (!buttons)
 		return (FAIL);
-	box.w = WIN_W / 3;
-	box.h = WIN_H / 3;
+    box.w = WIN_W / 4;
+    box.h = (box.w + 20) * N_MM_BUTTONS / 3;
 	box.x = (WIN_W  - box.w) / 2;
 	box.y = (WIN_H  - box.h) / 2;
 	distribute_buttons_v(buttons, 0, N_MM_BUTTONS ,box, 20);
@@ -249,6 +285,29 @@ unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_world
 	return (SUCCESS);
 }
 
+unsigned short			textures_buttons(t_button *buttons, t_texture *textures, int n_textures, t_sdl *sdl)
+{
+    t_rec				box;
+    int 				i;
+
+    if (!buttons || !textures || !sdl)
+        return (FAIL);
+    box.w = WIN_W * 0.9;
+    box.h = WIN_H * 0.9;
+    box.x = (WIN_W  - box.w) / 2;
+    box.y = (WIN_H  - box.h) / 2;
+    distribute_buttons_grid(buttons, 0, n_textures , box, 20);
+    i = 0;
+    while (i < n_textures)
+    {
+        buttons[i].vis_lit_on[0] = TRUE;
+        buttons[i].back = button_back(0, 1, sdl);
+        buttons[i].lit_back = button_back(1, 1, sdl);
+        i++;
+    }
+    return (SUCCESS);
+}
+
 unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 {
 	t_rec				box;
@@ -273,38 +332,46 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 		buttons[0].text = NULL;
 		i++;
 	}
-	buttons[DRAG_BUTTON].front = load_texture("move2.png", sdl);
-	buttons[DRAW_BUTTON].front = load_texture("add2.png", sdl);
-	buttons[DISTORT_BUTTON].front = load_texture("distort2.png", sdl);
-	buttons[DELETE_BUTTON].front = load_texture("delete2.png", sdl);
-	buttons[BACK_BUTTON].front = load_texture("back22.png", sdl);
-	buttons[SAVE_BUTTON].front = load_texture("save2.png", sdl);
-	buttons[SECTOR_BUTTON].front = load_texture("sector22.png", sdl);
-	buttons[DESELECT_SEC_BUTTON].vis_lit_on[0] = FALSE;
-	buttons[DESELECT_SEC_BUTTON].front = load_texture("cross2.png", sdl);
+	buttons[DRAG_BUTTON].front =            load_texture("move2.png", sdl->rend, 0);
+	buttons[DRAW_BUTTON].front =            load_texture("add2.png", sdl->rend, 0);
+	buttons[DISTORT_BUTTON].front =         load_texture("distort2.png", sdl->rend, 0);
+	buttons[DELETE_BUTTON].front =          load_texture("delete2.png", sdl->rend, 0);
+	buttons[BACK_BUTTON].front =            load_texture("back22.png", sdl->rend, 0);
+	buttons[SAVE_BUTTON].front =            load_texture("save2.png", sdl->rend, 0);
+	buttons[SECTOR_BUTTON].front =          load_texture("sector22.png", sdl->rend, 0);
+	buttons[DESELECT_SEC_BUTTON].front =    load_texture("cross2.png", sdl->rend, 0);
+    buttons[F_UP_BUTTON].front =            load_texture("up2.png", sdl->rend, 0);
+    buttons[F_DOWN_BUTTON].front =          load_texture("down2.png", sdl->rend, 0);
 
-	buttons[DRAG_BUTTON].lit = load_texture("move3.png", sdl);
-	buttons[DRAW_BUTTON].lit = load_texture("add3.png", sdl);
-	buttons[DISTORT_BUTTON].lit = load_texture("distort3.png", sdl);
-	buttons[DELETE_BUTTON].lit = load_texture("delete3.png", sdl);
-	buttons[BACK_BUTTON].lit = load_texture("back3.png", sdl);
-	buttons[SAVE_BUTTON].lit = load_texture("save3.png", sdl);
-	buttons[SECTOR_BUTTON].lit = load_texture("sector3.png", sdl);
-	buttons[DESELECT_SEC_BUTTON].lit = load_texture("cross3.png", sdl);
-	buttons[F_UP_BUTTON].lit = load_texture("up3.png", sdl);
-	buttons[F_DOWN_BUTTON].lit = load_texture("down3.png", sdl);
-	buttons[C_UP_BUTTON].lit = load_texture("up3.png", sdl);
-	buttons[C_DOWN_BUTTON].lit = load_texture("down3.png", sdl);
+    buttons[FT_EDIT_BUTTON].front =         load_texture("edit.png", sdl->rend, 0);
 
-	buttons[F_UP_BUTTON].front = load_texture("up2.png", sdl);
-	buttons[F_DOWN_BUTTON].front = load_texture("down2.png", sdl);
+
+	buttons[DRAG_BUTTON].lit =              load_texture("move3.png", sdl->rend, 0);
+	buttons[DRAW_BUTTON].lit =              load_texture("add3.png", sdl->rend, 0);
+	buttons[DISTORT_BUTTON].lit =           load_texture("distort3.png", sdl->rend, 0);
+	buttons[DELETE_BUTTON].lit =            load_texture("delete3.png", sdl->rend, 0);
+	buttons[BACK_BUTTON].lit =              load_texture("back3.png", sdl->rend, 0);
+	buttons[SAVE_BUTTON].lit =              load_texture("save3.png", sdl->rend, 0);
+	buttons[SECTOR_BUTTON].lit =            load_texture("sector3.png", sdl->rend, 0);
+	buttons[DESELECT_SEC_BUTTON].lit =      load_texture("cross3.png", sdl->rend, 0);
+	buttons[F_UP_BUTTON].lit =              load_texture("up3.png", sdl->rend, 0);
+	buttons[F_DOWN_BUTTON].lit =            load_texture("down3.png", sdl->rend, 0);
+    buttons[FT_EDIT_BUTTON].lit =           load_texture("editlit.png", sdl->rend, 0);
+
+
+    buttons[C_UP_BUTTON] =            buttons[F_UP_BUTTON];
+    buttons[C_DOWN_BUTTON] =          buttons[F_DOWN_BUTTON];
+    buttons[CT_EDIT_BUTTON] =         buttons[FT_EDIT_BUTTON];
+    buttons[WT_EDIT_BUTTON] =         buttons[FT_EDIT_BUTTON];
+
+    buttons[DESELECT_SEC_BUTTON].vis_lit_on[0] = FALSE;
 	buttons[F_UP_BUTTON].vis_lit_on[0] = FALSE;
 	buttons[F_DOWN_BUTTON].vis_lit_on[0] = FALSE;
-
-	buttons[C_UP_BUTTON].front = load_texture("up2.png", sdl);
-	buttons[C_DOWN_BUTTON].front = load_texture("down2.png", sdl);
 	buttons[C_UP_BUTTON].vis_lit_on[0] = FALSE;
 	buttons[C_DOWN_BUTTON].vis_lit_on[0] = FALSE;
+    buttons[FT_EDIT_BUTTON].vis_lit_on[0] = FALSE;
+    buttons[CT_EDIT_BUTTON].vis_lit_on[0] = FALSE;
+    buttons[WT_EDIT_BUTTON].vis_lit_on[0] = FALSE;
 
 
 	box = sector_menu(0, 0);
@@ -313,17 +380,10 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
     buttons[F_DOWN_BUTTON].box = sector_menu(4, 0);
     buttons[C_UP_BUTTON].box = sector_menu(3, 1);
     buttons[C_DOWN_BUTTON].box = sector_menu(4, 1);
-//    box.x = box.x + box.w * 0.9;
-//    box.w = box.w / 10;
-//    t_rec box2 = sector_menu(2, 0);
-//    box.y = box2.y;
-//    printf("here\n");
-//    distribute_buttons_v2(buttons, F_UP_BUTTON, C_DOWN_BUTTON + 1, box, (t_vec2d){ 30 , 30 });
-//    printf("button %d, %d, %d, %d\n", buttons[F_UP_BUTTON].box.w, buttons[F_UP_BUTTON].box.h, buttons[F_UP_BUTTON].box.x, buttons[F_UP_BUTTON].box.y);
-//	buttons[F_UP_BUTTON].box =          (t_rec){ box.x + box.w * 0.7,   box.y,          30, 30 };
-//	buttons[F_DOWN_BUTTON].box =        (t_rec){ box.x + box.w * 0.7,   box.y + 40,     30, 30 };
-//	buttons[C_UP_BUTTON].box =          (t_rec){ box.x + box.w * 0.7,   box.y + 80,     30, 30 };
-//	buttons[C_DOWN_BUTTON].box =        (t_rec){ box.x + box.w * 0.7,   box.y + 120,    30, 30 };
+    buttons[FT_EDIT_BUTTON].box = sector_menu(6, 2);
+    buttons[CT_EDIT_BUTTON].box = sector_menu(6, 3);
+    buttons[WT_EDIT_BUTTON].box = sector_menu(6, 4);
+
 	return (SUCCESS);
 }
 
@@ -376,9 +436,14 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
 	prog->modes[MODE_EDITOR].update = &update_editor;
 	prog->modes[MODE_EDITOR].render = &render_editor;
 
+    prog->modes[MODE_TEXTURES].input =   &input_textures;
+    prog->modes[MODE_TEXTURES].update = &update_textures;
+    prog->modes[MODE_TEXTURES].render = &render_textures;
+
 	prog->modes[MODE_MAIN_MENU].n_buttons = N_MM_BUTTONS;
 	prog->modes[MODE_SUMMARY].n_buttons = media->n_worlds + 1;
-	prog->modes[MODE_EDITOR].n_buttons = 12;
+	prog->modes[MODE_EDITOR].n_buttons = 15;
+    prog->modes[MODE_TEXTURES].n_buttons = media->n_textures;
 	i = 0;
 	while (i < N_MODES)
 	{
@@ -390,5 +455,6 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
 	main_menu_buttons(prog->modes[MODE_MAIN_MENU].buttons, sdl);
 	summary_buttons(prog->modes[MODE_SUMMARY].buttons, media->worlds, media->n_worlds, sdl);
 	editor_buttons(prog->modes[MODE_EDITOR].buttons, prog->modes[MODE_EDITOR].n_buttons, sdl);
+    textures_buttons(prog->modes[MODE_TEXTURES].buttons, media->txtrs, media->n_textures, sdl);
 	return (SUCCESS);
 }
