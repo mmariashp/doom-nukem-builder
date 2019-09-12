@@ -263,6 +263,7 @@ typedef struct					s_prog
 {
 	int 						**screen;
 	int 						mode_id;
+	int 						last_mode_id;
 	struct s_mode				*modes;
 	short 						button_lit;
 	short 						button_on;

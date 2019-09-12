@@ -231,6 +231,7 @@ int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 			{
                 if (prog->button_lit == BACK_BUTTON)
                 {
+					prog->last_mode_id = prog->mode_id;
                     prog->mode_id = MODE_SUMMARY;
                     prog->button_lit = -1;
                     prog->button_on = -1;
@@ -243,6 +244,7 @@ int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
                     printf("here\n");
                     prog->features[F_REDRAW] = 1;
                     prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
+					prog->last_mode_id = prog->mode_id;
                     prog->mode_id = MODE_TEXTURES;
                     prog->button_lit = -1;
                     if (grid->active[0].y >= 0 && grid->active[0].y < media->n_textures)

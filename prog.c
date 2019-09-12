@@ -33,6 +33,7 @@ t_prog					*get_prog(void)
 		k++;
 	}
 	prog->mode_id = 0;
+	prog->last_mode_id = 0;
 	prog->modes = NULL;
 	prog->button_lit = -1;
 	prog->button_on = -1;

@@ -77,6 +77,8 @@ int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
             {
                 if (prog->button_lit != -1)
                 {
+                	grid->active[1].x = prog->button_on;
+					prog->last_mode_id = prog->mode_id;
                     prog->mode_id = MODE_EDITOR;
                     prog->button_on = SECTOR_BUTTON;
                     prog->modes[prog->mode_id].buttons[SECTOR_BUTTON].vis_lit_on[2] = TRUE;
