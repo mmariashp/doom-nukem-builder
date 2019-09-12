@@ -178,11 +178,12 @@ unsigned short			add_secwall(int **secwalls, short n_secwalls, int wall)
 
 unsigned short			add_world(t_world **worlds, short n_worlds)
 {
+	static int i = 0;
 	*worlds = realloc_worlds(*worlds, n_worlds + 1);
 	if (!*worlds)
 		return (FAIL);
-	(*worlds)[n_worlds].filename = ft_strdup("F.txt");
-	(*worlds)[n_worlds].full_path = ft_strdup("./media/maps/");
+	(*worlds)[n_worlds].filename = ft_strdup(ft_strjoin("new_level_", ft_itoa(i)));
+	(*worlds)[n_worlds].full_path = ft_strdup(ft_strjoin("./media/maps/", (*worlds)[n_worlds].filename));
 	(*worlds)[n_worlds].textures = NULL;
 	(*worlds)[n_worlds].n_textures = 0;
 	(*worlds)[n_worlds].sectors = NULL;
@@ -191,6 +192,9 @@ unsigned short			add_world(t_world **worlds, short n_worlds)
 	(*worlds)[n_worlds].n_walls = 0;
 	(*worlds)[n_worlds].vertices = NULL;
 	(*worlds)[n_worlds].n_vectors = 0;
+	(*worlds)[n_worlds].p_start = (t_vec2d){ 1, 1 };
+	(*worlds)[n_worlds].p_end = (t_vec2d){ 1, 3 };
+	i++;
 	return (SUCCESS);
 }
 

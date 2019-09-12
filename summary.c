@@ -100,8 +100,10 @@ int						input_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 			{
 				if (prog->button_lit != -1)
 				{
+					prog->modes[prog->mode_id].buttons[prog->button_lit].vis_lit_on[2] = FALSE;
                     prog->mode_id = MODE_EDITOR;
                     media->world_id = prog->button_lit;
+					prog->button_lit = -1;
                     prog->button_on = DRAG_BUTTON;
                     prog->modes[prog->mode_id].buttons[DRAG_BUTTON].vis_lit_on[2] = TRUE;
                     return (quit);

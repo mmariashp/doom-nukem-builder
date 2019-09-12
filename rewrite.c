@@ -136,7 +136,7 @@ unsigned short			write_level(int fd, t_world world)
 unsigned short			write_section(int fd, t_media *media, int section)
 {
 	static char 		title[TOTAL_SECTIONS][9] = { "Levels", "Textures", "Sounds", "Fonts" };
-	static char 		prefix[5][13] = {	"# ",
+	static char 		prefix[5][13] = {	"#",
 											"Path: ",
 											"Extension: ",
 											"File Names: ",
@@ -241,7 +241,7 @@ void					rewrite_media(t_media *media)
 
 	if (!media)
 		return ;
-	if (open_for_write("test.txt", &fd) == FAIL)
+	if (open_for_write(ASSET_FILE, &fd) == FAIL)
 	{
 		ft_putstr("Couldn't open the file for writing");
 		ft_putstr(ASSET_FILE);

@@ -109,8 +109,6 @@ unsigned short			distribute_buttons_v(t_button *buttons, int from, int to, t_rec
 		buttons[i].box.h = b.y;
 		buttons[i].box.x = box.x;
 		buttons[i].box.y = y;
-
-        printf("in distr button n%d; %d, %d, %d, %d\n", i, buttons[i].box.w, buttons[i].box.h, buttons[i].box.x, buttons[i].box.y);
 		y += b.y + padding;
 		i++;
 	}
@@ -132,7 +130,6 @@ int distr(int x, int y, int n)
 		sy=x/ceil(x*py/y);
 	else
 		sy=y/py;
-	printf("%f",MAX(sx,sy));
 	res = MAX(sx,sy);
 	return (res);
 }
@@ -150,17 +147,14 @@ unsigned short			distribute_buttons_grid(t_button *buttons, int from, int to, t_
     int side = distr(box.w, box.h, to-from);
 
     b = (t_vec2d){ side, side };
-	printf("box w %d, h %d, x %d, y %d\n", box.w, box.h, box.x, box.y);
     y = box.y;
     i = from;
     while (i < to)
     {
-		printf("i %d, y %d, x %d\n", i, y, x);
 //        y += padding;
         x = box.x;
         while (i < to && x  + b.x < box.x + box.w)
         {
-			printf("i %d, y %d, x %d\n", i, y, x);
 //            x += padding;
             buttons[i].box.w = b.x;
             buttons[i].box.h = b.y;
@@ -211,20 +205,17 @@ SDL_Texture				*button_back(int id, int set_get_free, t_sdl *sdl)
 		return (NULL);
 	if (set_get_free == 0 && back == NULL && init == 0)
 	{
-		printf("back textures to be set\n");
 		if (!(back = (SDL_Texture **)ft_memalloc(sizeof(SDL_Texture *) * N_BUTTON_BACKS)))
 			return (NULL);
 		back[0] = load_texture("blue_button00.png", sdl->rend, 0);
 		back[1] = load_texture("blue_button13.png", sdl->rend, 0);
 		back[2] = load_texture("grey_panel.png", sdl->rend, 0);
 		init = 1;
-		printf("back textures were set\n");
 		return (NULL);
 	}
 	if (init == 1 && set_get_free == 2 && back != NULL)
 	{
 		i = 0;
-		printf("textures freed\n");
 		while (i < N_BUTTON_BACKS)
 		{
 //			if (back[i])

@@ -31,7 +31,6 @@ void					render_grid_nodes(int **screen, t_grid *grid)
 
 	grid->box.w = GRID_SIZE * grid->scale;
 	grid->box.h = GRID_SIZE * grid->scale;
-//	render_frame(grid->box, PURPLE, sdl->rend);
 	radius1 = grid->box.w * 0.001;
 	radius2 = grid->box.w * 0.002;
 	y = 0;
@@ -217,5 +216,4 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 			fill_sector(world, grid, prog->screen, k, prog->button_on);
 		k++;
 	}
-
 }

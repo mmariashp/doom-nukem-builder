@@ -557,6 +557,7 @@ void					game_loop(t_sdl *sdl, t_media *media)
 	{
 		prog->modes[prog->mode_id].update(sdl, grid,  media, prog);
 		prog->modes[prog->mode_id].render(sdl, grid, media, prog);
+		SDL_Delay(100);
 	}
 	free(grid);
 	free_prog(prog, sdl);

@@ -1,9 +1,7 @@
-﻿Instructions: 
-
 #Levels
 Path: ./media/maps/
 Extension: .txt
-File Names:
+File Names: 
 0. level_0
 1. level_1
 2. level_2
@@ -12,17 +10,17 @@ File Names:
 #Textures
 Path: ./media/textures/
 Extension: .png
-File Names:
-0.  Tileable1t
-1.  Tileable1u
-2.  Tileable2t
-3.  Tileable3t
-4.  Tileable3u
-5.  Tileable4t
-6.  Tileable5t
-7.  Tileable6t
-8.  Tileable7t
-9.  Tileable8g
+File Names: 
+0. Tileable1t
+1. Tileable1u
+2. Tileable2t
+3. Tileable3t
+4. Tileable3u
+5. Tileable4t
+6. Tileable5t
+7. Tileable6t
+8. Tileable7t
+9. Tileable8g
 10. Tileable9t
 11. Tileable10t
 12. tile
@@ -32,17 +30,18 @@ File Names:
 #Sounds
 Path: ./media/sounds/
 Extension: .wav
-File Names:
-0. shoot
-1. background
-2. steps
-3. death
+File Names: 
+0. 
+1. 
+2. 
+3. 
 ###
 
 #Fonts
 Path: ./media/fonts/
 Extension: .ttf
-File Names:
-0. menu
-1. messages
+File Names: 
+0. 
+1. 
 ###
+

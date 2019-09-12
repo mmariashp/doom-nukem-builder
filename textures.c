@@ -7,14 +7,20 @@ void					render_texture_icons(t_button *buttons, t_sdl *sdl, int n_buttons, t_te
 	if (!buttons || n_buttons < 1 || !sdl || !txtrs)
 		return ;
 	SDL_Rect rect;
+	t_rec				text;
 	int i = 0;
 
 	while (i < n_buttons)
 	{
-		rect = (SDL_Rect){ buttons[i].box.x + buttons[i].box.w * 0.1, buttons[i].box.y + buttons[i].box.h * 0.1,
+		text = buttons[i].box;
+		text.h /= 6;
+
+		rect = (SDL_Rect){ buttons[i].box.x + buttons[i].box.w * 0.1, buttons[i].box.y + buttons[i].box.h * 0.15,
 						   buttons[i].box.w * 0.8, buttons[i].box.h * 0.8 };
 		if (txtrs[i].sdl_t)
 			SDL_RenderCopy(sdl->rend, txtrs[i].sdl_t, NULL, &rect);
+		if (txtrs[i].name)
+			write_text(txtrs[i].name, sdl, text, 0, TRUE);
 		i++;
 	}
 
@@ -27,9 +33,6 @@ void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
         return ;
     SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
     SDL_RenderClear(sdl->rend);
-
-//    render_grid(media->worlds[media->world_id], grid, prog, sdl->mouse);
-//    render_screen(sdl->rend, prog->screen);
     render_buttons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons);
     render_texture_icons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons, media->txtrs);
     SDL_RenderPresent(sdl->rend);
@@ -42,6 +45,7 @@ void					update_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
         return;
     if (light_button(sdl, prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
     {
+		printf("in textures mode lit button %d\n", prog->button_lit);
         return ;
     }
     prog->button_lit = -1;
@@ -73,11 +77,14 @@ int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
         }
         if( event.type == SDL_MOUSEMOTION || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP )
         {
+
             if(event.type == SDL_MOUSEBUTTONUP)
             {
                 if (prog->button_lit != -1)
                 {
-                	grid->active[1].x = prog->button_on;
+//					printf("in textures mode pressed button %d\n", prog->button_lit);
+//                	printf("in textures mode pressed button %d\n", prog->button_on);
+                	grid->active[1].x = prog->button_lit;
 					prog->last_mode_id = prog->mode_id;
                     prog->mode_id = MODE_EDITOR;
                     prog->button_on = SECTOR_BUTTON;

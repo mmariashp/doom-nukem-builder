@@ -348,13 +348,6 @@ int 					fill_sector_v(t_sector *sector, t_wall *walls, int n)
 		sector->status = SEC_CONCAVE_CLOSED;
 	i = -1;
 	j = 0;
-//    printf("//\n");
-//    while (++i < n)
-//    {
-//        printf("%d\n", tmp[i]);
-//    }
-//    printf("//\n");
-//    i = -1;
 
 	while (++i < n)
 	{
@@ -371,7 +364,6 @@ int 					fill_sector_v(t_sector *sector, t_wall *walls, int n)
     while (i < sector->n_v)
     {
         sector->v[i] = tmp[i];
-        printf("-%d\n", sector->v[i]);
         i++;
     }
 	return (SUCCESS);
@@ -669,7 +661,6 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 	i = 0;
 	while (i < world->n_sectors)
 	{
-		printf("%d \n", i);
 		get_sector_v(&world->sectors[i++], world->walls);
 	}
 	return (SUCCESS);
@@ -812,7 +803,6 @@ unsigned				update_media(t_media *media, t_section *section)
 
 	if (!media || !section)
 		return (FAIL);
-	printf("SECTION %d\n", section->id);
 	ft_strcpy(media->paths[section->id], section->path);
 	ft_strcpy(media->extensions[section->id], section->extension);
 	return (update_section[section->id](media, section));
