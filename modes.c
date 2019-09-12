@@ -117,6 +117,26 @@ unsigned short			distribute_buttons_v(t_button *buttons, int from, int to, t_rec
 	return (SUCCESS);
 }
 
+#define MAX(x,y)    (x)>(y)?(x):(y)
+int distr(int x, int y, int n)
+{
+	int res;
+	double px=ceil(sqrt(n*x/y));
+	double sx,sy;
+	if(floor(px*y/x)*px<n)  //does not fit, y/(x/px)=px*y/x
+		sx=y/ceil(px*y/x);
+	else
+		sx= x/px;
+	double py=ceil(sqrt(n*y/x));
+	if(floor(py*x/y)*py<n)  //does not fit
+		sy=x/ceil(x*py/y);
+	else
+		sy=y/py;
+	printf("%f",MAX(sx,sy));
+	res = MAX(sx,sy);
+	return (res);
+}
+
 unsigned short			distribute_buttons_grid(t_button *buttons, int from, int to, t_rec box, int padding)
 {
     t_vec2d				b;
@@ -125,32 +145,32 @@ unsigned short			distribute_buttons_grid(t_button *buttons, int from, int to, t_
     int x;
 
 
-    if (!buttons || from >= to)
+    if (!buttons || from >= to || padding == -1)
         return (FAIL);
-    int area = box.w * box.h;
+    int side = distr(box.w, box.h, to-from);
 
-    int area2 = area / (to - from);
-    b = (t_vec2d){ floor(sqrt(area2)), floor(sqrt(area2)) - padding * 2 };
-    printf("box w = %d, box h = %d\n", box.w, box.h);
-    printf("n = %d, all area = %d, box area = %d, side = %d\n", (to-from), area, area2, b.x);
-
+    b = (t_vec2d){ side, side };
+	printf("box w %d, h %d, x %d, y %d\n", box.w, box.h, box.x, box.y);
     y = box.y;
     i = from;
     while (i < to)
     {
-        y += padding;
+		printf("i %d, y %d, x %d\n", i, y, x);
+//        y += padding;
         x = box.x;
-        while (x  + b.x < box.x + box.w)
+        while (i < to && x  + b.x < box.x + box.w)
         {
-            x += padding;
+			printf("i %d, y %d, x %d\n", i, y, x);
+//            x += padding;
             buttons[i].box.w = b.x;
             buttons[i].box.h = b.y;
             buttons[i].box.x = x;
             buttons[i].box.y = y;
             x += b.x;
+            i++;
         }
         y += b.y;
-        i++;
+
     }
     return (SUCCESS);
 }
@@ -239,9 +259,9 @@ unsigned short			main_menu_buttons(t_button *buttons, t_sdl *sdl)
 		buttons[i].vis_lit_on[0] = TRUE;
 		buttons[i].vis_lit_on[1] = FALSE;
 		buttons[i].vis_lit_on[2] = FALSE;
-		buttons[i].text_color = WHITE;
-		buttons[i].back = button_back(0, 1, sdl);
-		buttons[i].lit_back = button_back(1, 1, sdl);
+		buttons[i].text_color = 0;
+		buttons[i].back = button_back(1, 1, sdl);
+		buttons[i].lit_back = button_back(0, 1, sdl);
 		i++;
 	}
 	buttons[0].text = ft_strdup("START");
@@ -277,9 +297,9 @@ unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_world
 			buttons[i].text = ft_strjoin(s, worlds[i].filename);
 		if (s)
 			free(s);
-		buttons[i].back = button_back(0, 1, sdl);
-		buttons[i].lit_back = button_back(1, 1, sdl);
-		buttons[i].text_color = WHITE;
+		buttons[i].back = button_back(1, 1, sdl);
+		buttons[i].lit_back = button_back(0, 1, sdl);
+		buttons[i].text_color = 0;
 		i++;
 	}
 	return (SUCCESS);
@@ -301,8 +321,8 @@ unsigned short			textures_buttons(t_button *buttons, t_texture *textures, int n_
     while (i < n_textures)
     {
         buttons[i].vis_lit_on[0] = TRUE;
-        buttons[i].back = button_back(0, 1, sdl);
-        buttons[i].lit_back = button_back(1, 1, sdl);
+        buttons[i].back = button_back(2, 1, sdl);
+        buttons[i].lit_back = button_back(0, 1, sdl);
         i++;
     }
     return (SUCCESS);

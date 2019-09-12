@@ -192,13 +192,13 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	update_sector_status(media->worlds[world_id].sectors, media->worlds[world_id].walls, media->worlds[world_id].vertices, media->worlds[world_id].n_sectors);
 }
 
-int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog)
+int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int					quit;
 	SDL_Event			event;
 
 	quit = FALSE;
-	if (!sdl || !media || !grid_scale)
+	if (!sdl || !media || !grid)
 		return (TRUE);
 	while(SDL_PollEvent(&event))
 	{
@@ -245,7 +245,13 @@ int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *pro
                     prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
                     prog->mode_id = MODE_TEXTURES;
                     prog->button_lit = -1;
-                    prog->button_on = -1;
+                    if (grid->active[0].y >= 0 && grid->active[0].y < media->n_textures)
+					{
+                    	prog->button_on = grid->active[0].y;
+						prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
+					}
+                    else
+						prog->button_on = -1;
                     return (quit);
                 }
 				prog->move.x = 0;

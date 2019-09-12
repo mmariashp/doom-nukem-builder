@@ -1,6 +1,26 @@
 
 #include "builder.h"
 
+
+void					render_texture_icons(t_button *buttons, t_sdl *sdl, int n_buttons, t_texture *txtrs)
+{
+	if (!buttons || n_buttons < 1 || !sdl || !txtrs)
+		return ;
+	SDL_Rect rect;
+	int i = 0;
+
+	while (i < n_buttons)
+	{
+		rect = (SDL_Rect){ buttons[i].box.x + buttons[i].box.w * 0.1, buttons[i].box.y + buttons[i].box.h * 0.1,
+						   buttons[i].box.w * 0.8, buttons[i].box.h * 0.8 };
+		if (txtrs[i].sdl_t)
+			SDL_RenderCopy(sdl->rend, txtrs[i].sdl_t, NULL, &rect);
+		i++;
+	}
+
+
+}
+
 void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
     if (!sdl || !media || !grid || prog->features[F_REDRAW] == 0)
@@ -11,6 +31,7 @@ void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 //    render_grid(media->worlds[media->world_id], grid, prog, sdl->mouse);
 //    render_screen(sdl->rend, prog->screen);
     render_buttons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons);
+    render_texture_icons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons, media->txtrs);
     SDL_RenderPresent(sdl->rend);
     prog->features[F_REDRAW] = 1;
 }
@@ -26,13 +47,13 @@ void					update_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
     prog->button_lit = -1;
 }
 
-int						input_textures(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog)
+int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
     int					quit;
     SDL_Event			event;
 
     quit = FALSE;
-    if (!sdl || !media || !grid_scale)
+    if (!sdl || !media || !grid)
         return (TRUE);
     while(SDL_PollEvent(&event))
     {

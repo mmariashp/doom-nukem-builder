@@ -553,7 +553,7 @@ void					game_loop(t_sdl *sdl, t_media *media)
 		ft_putstr("\x1b[32mReturning fail from game loop.\x1b[0m\n");
 		return ;
 	}
-	while (prog->modes[prog->mode_id].input(sdl, &grid->scale, media, prog) == FALSE)
+	while (prog->modes[prog->mode_id].input(sdl, grid, media, prog) == FALSE)
 	{
 		prog->modes[prog->mode_id].update(sdl, grid,  media, prog);
 		prog->modes[prog->mode_id].render(sdl, grid, media, prog);

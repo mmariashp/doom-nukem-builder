@@ -74,6 +74,8 @@ SDL_Texture             *load_texture(char *name, SDL_Renderer *rend, t_vec2d *s
 
 	texture = NULL;
 	image = load_image(name);
+	if (!image)
+		return (NULL);
 	if (size)
 	    *size = (t_vec2d){ image->w, image->h };
 	if (image == NULL)

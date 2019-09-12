@@ -63,7 +63,7 @@
 # define SOFT_ORANGE			0xF4511E
 # define SOFT_TEAL				0x00897B
 
-# define LIT_COLOR				0x5A982B   //green
+# define LIT_COLOR				WHITE
 
 # define CONVEX_COLOR			0x207561
 # define CONCAVE_COLOR			0xDA4302
@@ -358,7 +358,7 @@ typedef struct					s_mode
 {
 	unsigned short				n_buttons;
 	t_button					*buttons;
-	int							(*input)(t_sdl*, float*, t_media *, t_prog *);
+	int							(*input)(t_sdl*, t_grid*, t_media *, t_prog *);
 	void						(*update)(t_sdl*, t_grid*, t_media *, t_prog *);
 	void						(*render)(t_sdl*, t_grid*, t_media *, t_prog *);
 }								t_mode;
@@ -375,16 +375,16 @@ void					end(char *reason);
 
 void					render_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 void					update_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-int						input_main_menu(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog);
+int						input_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 void					render_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 void					update_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-int						input_summary(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog);
+int						input_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
-int						input_editor(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog);
+int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 void					update_editor(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
-int						input_textures(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog);
+int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 void					update_textures(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 

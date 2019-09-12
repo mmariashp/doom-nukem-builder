@@ -11,12 +11,22 @@ File Names:
 
 #Textures
 Path: ./media/textures/
-Extension: .jpg
+Extension: .png
 File Names:
-0. brick
-1. stone
-2. clover
-3. grass1
+0.  Tileable1t
+1.  Tileable1u
+2.  Tileable2t
+3.  Tileable3t
+4.  Tileable3u
+5.  Tileable4t
+6.  Tileable5t
+7.  Tileable6t
+8.  Tileable7t
+9.  Tileable8g
+10. Tileable9t
+11. Tileable10t
+12. tile
+13. wood_floor
 ###
 
 #Sounds

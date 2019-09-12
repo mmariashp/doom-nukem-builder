@@ -39,7 +39,7 @@ void					update_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 	prog->button_lit = -1;
 }
 
-int						input_main_menu(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *prog)
+int						input_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int					quit;
 	SDL_Event			event;
@@ -47,7 +47,7 @@ int						input_main_menu(t_sdl *sdl, float *grid_scale, t_media *media, t_prog *
 
 	quit = FALSE;
 	mode = 0;
-	if (!sdl || !grid_scale || !media)
+	if (!sdl || !grid || !media)
 		return (TRUE);
 	while(SDL_PollEvent(&event))
 	{
