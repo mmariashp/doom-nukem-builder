@@ -155,11 +155,12 @@
 # define MENU_TXT_H			25
 # define MAX_MENU_TXT_W		200
 
-# define N_MODES			4
+# define N_MODES			5
 # define MODE_MAIN_MENU		0
 # define MODE_SUMMARY		1
 # define MODE_EDITOR		2
 # define MODE_TEXTURES		3
+# define MODE_WALLS			4
 
 # define N_MM_BUTTONS		2
 # define N_SUMM_BUTTONS		3
@@ -170,16 +171,19 @@
 # define DISTORT_BUTTON		2
 # define DELETE_BUTTON		3
 # define SECTOR_BUTTON		4
-# define SAVE_BUTTON		5
-# define BACK_BUTTON		6
-# define DESELECT_SEC_BUTTON		7
-# define F_UP_BUTTON		8
-# define F_DOWN_BUTTON		9
-# define C_UP_BUTTON		10
-# define C_DOWN_BUTTON		11
-# define FT_EDIT_BUTTON		12
-# define CT_EDIT_BUTTON		13
-# define WT_EDIT_BUTTON		14
+# define WALL_BUTTON		5
+# define SAVE_BUTTON		6
+# define BACK_BUTTON		7
+# define DESELECT_SEC_BUTTON		8
+# define F_UP_BUTTON		9
+# define F_DOWN_BUTTON		10
+# define C_UP_BUTTON		11
+# define C_DOWN_BUTTON		12
+# define FT_EDIT_BUTTON		13
+# define CT_EDIT_BUTTON		14
+# define WT_EDIT_BUTTON		15
+
+# define W_BACK_BUTTON		0
 
 
 # define GRID_SIZE			150
@@ -388,6 +392,11 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 void					update_textures(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+
+int						input_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+void					update_walls(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
+void					render_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+
 
 void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center);
 

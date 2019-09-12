@@ -1,7 +1,6 @@
 
 #include "builder.h"
 
-
 void					render_texture_icons(t_button *buttons, t_sdl *sdl, int n_buttons, t_texture *txtrs)
 {
 	if (!buttons || n_buttons < 1 || !sdl || !txtrs)
@@ -23,8 +22,6 @@ void					render_texture_icons(t_button *buttons, t_sdl *sdl, int n_buttons, t_te
 			write_text(txtrs[i].name, sdl, text, 0, TRUE);
 		i++;
 	}
-
-
 }
 
 void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
@@ -44,10 +41,7 @@ void					update_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
     if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
         return;
     if (light_button(sdl, prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
-    {
-		printf("in textures mode lit button %d\n", prog->button_lit);
         return ;
-    }
     prog->button_lit = -1;
 }
 
@@ -77,13 +71,10 @@ int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
         }
         if( event.type == SDL_MOUSEMOTION || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP )
         {
-
             if(event.type == SDL_MOUSEBUTTONUP)
             {
                 if (prog->button_lit != -1)
                 {
-//					printf("in textures mode pressed button %d\n", prog->button_lit);
-//                	printf("in textures mode pressed button %d\n", prog->button_on);
                 	grid->active[1].x = prog->button_lit;
 					prog->last_mode_id = prog->mode_id;
                     prog->mode_id = MODE_EDITOR;

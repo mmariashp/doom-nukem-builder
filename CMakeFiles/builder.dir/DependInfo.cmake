@@ -22,6 +22,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/moosh/CLionProjects/builder/sdl_fun.c" "/home/moosh/CLionProjects/builder/CMakeFiles/builder.dir/sdl_fun.c.o"
   "/home/moosh/CLionProjects/builder/summary.c" "/home/moosh/CLionProjects/builder/CMakeFiles/builder.dir/summary.c.o"
   "/home/moosh/CLionProjects/builder/textures.c" "/home/moosh/CLionProjects/builder/CMakeFiles/builder.dir/textures.c.o"
+  "/home/moosh/CLionProjects/builder/walls.c" "/home/moosh/CLionProjects/builder/CMakeFiles/builder.dir/walls.c.o"
   "/home/moosh/CLionProjects/builder/zoom.c" "/home/moosh/CLionProjects/builder/CMakeFiles/builder.dir/zoom.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

@@ -319,6 +319,32 @@ unsigned short			textures_buttons(t_button *buttons, t_texture *textures, int n_
     return (SUCCESS);
 }
 
+
+unsigned short			walls_buttons(t_button *buttons, int n_buttons, t_sdl *sdl)
+{
+	t_rec				box;
+	int 				i;
+
+	if (!buttons || !sdl)
+		return (FAIL);
+	box.h = WIN_H * 0.07;
+	box.w = box.h  * n_buttons;
+	box.x = 10;
+	box.y = 0;
+	distribute_buttons_h(buttons, 0, n_buttons , box, 3);
+	i = 0;
+	while (i < n_buttons)
+	{
+		buttons[i].vis_lit_on[0] = TRUE;
+		buttons[i].back = button_back(2, 1, sdl);
+		buttons[i].lit_back = button_back(0, 1, sdl);
+		i++;
+	}
+	buttons[W_BACK_BUTTON].front = load_texture("back22.png", sdl->rend, 0);
+	buttons[W_BACK_BUTTON].lit = load_texture("back3.png", sdl->rend, 0);
+	return (SUCCESS);
+}
+
 unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 {
 	t_rec				box;
@@ -327,10 +353,10 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 	if (!sdl || !buttons)
 		return (FAIL);
 	box.h = WIN_H * 0.07;
-	box.w = box.h  * 7;
+	box.w = box.h  * DESELECT_SEC_BUTTON;
 	box.x = 10;
 	box.y = 0;
-	distribute_buttons_h(buttons, 0,  7 , box, 3);
+	distribute_buttons_h(buttons, DRAG_BUTTON,  DESELECT_SEC_BUTTON, box, 3);
 	i = 0;
 	while (i < n)
 	{
@@ -338,8 +364,8 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 		buttons[i].vis_lit_on[1] = FALSE;
 		buttons[i].vis_lit_on[2] = FALSE;
 		buttons[i].text_color = 0;
-		buttons[i].back = button_back(0, 1, sdl);
-		buttons[i].lit_back = button_back(1, 1, sdl);
+		buttons[i].back = NULL;
+		buttons[i].lit_back = NULL;
 		buttons[0].text = NULL;
 		i++;
 	}
@@ -350,6 +376,7 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 	buttons[BACK_BUTTON].front =            load_texture("back22.png", sdl->rend, 0);
 	buttons[SAVE_BUTTON].front =            load_texture("save2.png", sdl->rend, 0);
 	buttons[SECTOR_BUTTON].front =          load_texture("sector22.png", sdl->rend, 0);
+	buttons[WALL_BUTTON].front =          	load_texture("wall2.png", sdl->rend, 0);
 	buttons[DESELECT_SEC_BUTTON].front =    load_texture("cross2.png", sdl->rend, 0);
     buttons[F_UP_BUTTON].front =            load_texture("up2.png", sdl->rend, 0);
     buttons[F_DOWN_BUTTON].front =          load_texture("down2.png", sdl->rend, 0);
@@ -364,6 +391,7 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 	buttons[BACK_BUTTON].lit =              load_texture("back3.png", sdl->rend, 0);
 	buttons[SAVE_BUTTON].lit =              load_texture("save3.png", sdl->rend, 0);
 	buttons[SECTOR_BUTTON].lit =            load_texture("sector3.png", sdl->rend, 0);
+	buttons[WALL_BUTTON].lit =          	load_texture("wall3.png", sdl->rend, 0);
 	buttons[DESELECT_SEC_BUTTON].lit =      load_texture("cross3.png", sdl->rend, 0);
 	buttons[F_UP_BUTTON].lit =              load_texture("up3.png", sdl->rend, 0);
 	buttons[F_DOWN_BUTTON].lit =            load_texture("down3.png", sdl->rend, 0);
@@ -451,10 +479,15 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
     prog->modes[MODE_TEXTURES].update = &update_textures;
     prog->modes[MODE_TEXTURES].render = &render_textures;
 
+	prog->modes[MODE_WALLS].input =   &input_walls;
+	prog->modes[MODE_WALLS].update = &update_walls;
+	prog->modes[MODE_WALLS].render = &render_walls;
+
 	prog->modes[MODE_MAIN_MENU].n_buttons = N_MM_BUTTONS;
 	prog->modes[MODE_SUMMARY].n_buttons = media->n_worlds + 1;
-	prog->modes[MODE_EDITOR].n_buttons = 15;
+	prog->modes[MODE_EDITOR].n_buttons = 16;
     prog->modes[MODE_TEXTURES].n_buttons = media->n_textures;
+	prog->modes[MODE_WALLS].n_buttons = 3;
 	i = 0;
 	while (i < N_MODES)
 	{
@@ -467,5 +500,6 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
 	summary_buttons(prog->modes[MODE_SUMMARY].buttons, media->worlds, media->n_worlds, sdl);
 	editor_buttons(prog->modes[MODE_EDITOR].buttons, prog->modes[MODE_EDITOR].n_buttons, sdl);
     textures_buttons(prog->modes[MODE_TEXTURES].buttons, media->txtrs, media->n_textures, sdl);
+	walls_buttons(prog->modes[MODE_WALLS].buttons, prog->modes[MODE_WALLS].n_buttons, sdl);
 	return (SUCCESS);
 }

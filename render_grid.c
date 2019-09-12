@@ -67,7 +67,7 @@ void					place_player(t_world world, t_grid *grid, int **screen, int radius)
 	draw_player(node, radius * 1.5, YELLOW, screen);
 }
 
-void					render_walls(t_world world, t_grid *grid, int **screen)
+void					draw_walls(t_world world, t_grid *grid, int **screen)
 {
 	int					i = 0;
 	t_vec2d				v1;
@@ -189,7 +189,7 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 	radius1 = grid->box.w * 0.001;
 	radius2 = grid->box.w * 0.002;
 	render_grid_nodes(prog->screen, grid);
-	render_walls(world, grid, prog->screen);
+	draw_walls(world, grid, prog->screen);
 	place_player(world, grid, prog->screen, radius2);
 	if (prog->button_on == DRAW_BUTTON) // draw mode
 	{
@@ -210,10 +210,13 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 		}
 	}
 	int k = 0;
-	while (k < world.n_sectors)
+	if (prog->mode_id == MODE_EDITOR)
 	{
-		if (world.sectors[k].status != SEC_OPEN)
-			fill_sector(world, grid, prog->screen, k, prog->button_on);
-		k++;
+		while (k < world.n_sectors)
+		{
+			if (world.sectors[k].status != SEC_OPEN)
+				fill_sector(world, grid, prog->screen, k, prog->button_on);
+			k++;
+		}
 	}
 }

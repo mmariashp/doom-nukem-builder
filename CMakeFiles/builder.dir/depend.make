@@ -90,6 +90,11 @@ CMakeFiles/builder.dir/textures.c.o: builder.h
 CMakeFiles/builder.dir/textures.c.o: get_next_line.h
 CMakeFiles/builder.dir/textures.c.o: textures.c
 
+CMakeFiles/builder.dir/walls.c.o: ./libft/libft.h
+CMakeFiles/builder.dir/walls.c.o: builder.h
+CMakeFiles/builder.dir/walls.c.o: get_next_line.h
+CMakeFiles/builder.dir/walls.c.o: walls.c
+
 CMakeFiles/builder.dir/zoom.c.o: ./libft/libft.h
 CMakeFiles/builder.dir/zoom.c.o: builder.h
 CMakeFiles/builder.dir/zoom.c.o: get_next_line.h

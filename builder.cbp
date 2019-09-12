@@ -358,6 +358,9 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/textures.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/walls.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/zoom.c">
 			<Option target="builder"/>
 		</Unit>

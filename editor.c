@@ -140,11 +140,11 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
                 clean_grid(grid);
                 fill_grid(media->worlds[world_id].n_vectors, media->worlds[world_id].vertices, grid);
                 zoom_to_sector(&media->worlds[media->world_id].sectors[s], media->worlds[media->world_id].vertices, grid, prog);
-                int i = 7;
-                while ( i < 15)
+                int i = DESELECT_SEC_BUTTON;
+                while ( i < WT_EDIT_BUTTON + 1)
                     prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = TRUE;
                 i = 0;
-                while ( i < 7)
+                while ( i < DESELECT_SEC_BUTTON)
                     prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
 			}
 		}
@@ -152,11 +152,11 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	}
 	else if (prog->button_on == DESELECT_SEC_BUTTON && s != -1) // sector mode
 	{
-        int i = 7;
-        while ( i < 15)
+        int i = DESELECT_SEC_BUTTON;
+        while ( i < WT_EDIT_BUTTON + 1)
             prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
         i = 0;
-        while ( i < 7)
+        while ( i < DESELECT_SEC_BUTTON)
             prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = TRUE;
 		s = -1;
 		prog->features[F_REDRAW] = 1;
@@ -273,6 +273,18 @@ int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 						prog->button_on = -1;
                     return (quit);
                 }
+				if (prog->button_lit == WALL_BUTTON)
+				{
+					prog->features[F_REDRAW] = 1;
+					prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
+					prog->last_mode_id = prog->mode_id;
+					prog->mode_id = MODE_WALLS;
+					prog->button_lit = -1;
+					prog->button_on = -1;
+					prog->move.x = 0;
+					prog->move.y = 0;
+					return (quit);
+				}
 				prog->move.x = 0;
 				prog->move.y = 0;
 			}

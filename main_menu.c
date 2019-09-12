@@ -43,10 +43,8 @@ int						input_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int					quit;
 	SDL_Event			event;
-	int 				mode;
 
 	quit = FALSE;
-	mode = 0;
 	if (!sdl || !grid || !media)
 		return (TRUE);
 	while(SDL_PollEvent(&event))
@@ -58,42 +56,7 @@ int						input_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		}
 		else if (event.type == SDL_KEYUP)
 		{
-			if (event.key.keysym.sym == 'w')
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == 's')
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == 'a')
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == 'd')
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == 'q')
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == 'e')
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == SDLK_RCTRL)
-			{
-				printf("%c\n", event.key.keysym.sym);
-			}
-			else if (event.key.keysym.sym == ' ')
-			{
-				printf("MAIN HEREEEEE\n");
-				mode = 1;
-				printf("%c\n", event.key.keysym.sym);
-
-			}
-			else if (event.key.keysym.sym == SDLK_ESCAPE)
+			if (event.key.keysym.sym == SDLK_ESCAPE)
 			{
 				quit = TRUE;
 				break ;
@@ -105,18 +68,13 @@ int						input_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
 				if (prog->button_lit == 0)
-					mode = 1;
+					prog->mode_id = MODE_SUMMARY;
 				else if (prog->button_lit == 1)
-				{
 					quit = TRUE;
-					break ;
-				}
-
+				return (quit);
 			}
 		}
 	}
-	if (mode == 1)
-		prog->mode_id = MODE_SUMMARY;
 	prog->button_lit = -1;
 	return (quit);
 }

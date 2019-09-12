@@ -90,6 +90,11 @@ CMakeFiles/builder.dir/textures.c.o
  /home/moosh/CLionProjects/builder/builder.h
  /home/moosh/CLionProjects/builder/get_next_line.h
  /home/moosh/CLionProjects/builder/textures.c
+CMakeFiles/builder.dir/walls.c.o
+ /home/moosh/CLionProjects/builder/./libft/libft.h
+ /home/moosh/CLionProjects/builder/builder.h
+ /home/moosh/CLionProjects/builder/get_next_line.h
+ /home/moosh/CLionProjects/builder/walls.c
 CMakeFiles/builder.dir/zoom.c.o
  /home/moosh/CLionProjects/builder/./libft/libft.h
  /home/moosh/CLionProjects/builder/builder.h
