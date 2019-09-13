@@ -17,6 +17,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/sdl_fun.c.o"
   "CMakeFiles/builder.dir/summary.c.o"
   "CMakeFiles/builder.dir/textures.c.o"
+  "CMakeFiles/builder.dir/walls.c.o"
   "CMakeFiles/builder.dir/zoom.c.o"
   "builder.pdb"
   "builder"

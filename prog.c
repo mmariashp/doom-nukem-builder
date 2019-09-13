@@ -38,7 +38,8 @@ t_prog					*get_prog(void)
 	prog->button_lit = -1;
 	prog->button_on = -1;
 	prog->zoom = 0;
-	prog->move = (t_vec2d){ 0, 0 };
+	prog->click = (t_vec2d){ 0, 0 };
+    prog->move = (t_vec2d){ 0, 0 };
 	prog->features[F_ZOOM] = 1;
 	prog->features[F_MOVE_GRID] = 1;
 	prog->features[F_SELECT_NODE] = 0;

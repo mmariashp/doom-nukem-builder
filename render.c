@@ -270,6 +270,48 @@ void				    draw_line(t_line l, int color, SDL_Renderer *rend)
 		draw_dot(l.p0.x + i, l.p0.y + (int)(i / d), color, rend);
 }
 
+
+//void					draw_dot_grid(int x, int y, int color, char **nodes)
+//{
+//    if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE)
+//        nodes[x][y] = color;
+//}
+
+void				    draw_line_grid(t_line l, char c, signed char nodes[GRID_SIZE][GRID_SIZE])
+{
+    int				len;
+    int				i_value;
+    double			d;
+    int				i;
+
+    if (!clip_line(&l))
+        return ;
+    get_len(&d, &len, &i, l);
+    i_value = len < 0 ? -1 : 1;
+    if (!nodes || d == 0)
+        return ;
+    if (i)
+    {
+        i = -i_value;
+        while ((i += i_value) != len)
+        {
+            int x = l.p0.x + (int)(i / d);
+            int y = l.p0.y + i;
+            if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE)
+                nodes[x][y] = c;
+        }
+        return ;
+    }
+    i = -i_value;
+    while ((i += i_value) != len)
+    {
+        int x = l.p0.x + i;
+        int y = l.p0.y + (int)(i / d);
+        if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE)
+            nodes[x][y] = c;
+    }
+}
+
 void					draw_circle_fill(t_vec2d c, int radius, int color, SDL_Renderer *rend)
 {
 	t_vec2d				p;

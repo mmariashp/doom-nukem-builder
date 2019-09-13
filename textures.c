@@ -75,13 +75,30 @@ int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
             {
                 if (prog->button_lit != -1)
                 {
+                    int tmp = prog->last_mode_id;
                 	grid->active[1].x = prog->button_lit;
+
+                    int i = 0;
+                    while (i < prog->modes[prog->mode_id].n_buttons)
+                    {
+                        prog->modes[prog->mode_id].buttons[i].vis_lit_on[1] = FALSE;
+                        prog->modes[prog->mode_id].buttons[i].vis_lit_on[2] = FALSE;
+                        i++;
+                    }
 					prog->last_mode_id = prog->mode_id;
-                    prog->mode_id = MODE_EDITOR;
-                    prog->button_on = SECTOR_BUTTON;
-                    prog->modes[prog->mode_id].buttons[SECTOR_BUTTON].vis_lit_on[2] = TRUE;
-                    prog->move.x = 0;
-                    prog->move.y = 0;
+                    prog->mode_id = tmp;
+                    if (prog->mode_id == MODE_EDITOR)
+                    {
+                        prog->button_on = SECTOR_BUTTON;
+                        prog->modes[prog->mode_id].buttons[SECTOR_BUTTON].vis_lit_on[2] = TRUE;
+                    }
+                    else
+                    {
+                        prog->button_lit = -1;
+                        prog->button_on = -1;
+                    }
+                    prog->click.x = 0;
+                    prog->click.y = 0;
                     return (quit);
                 }
             }

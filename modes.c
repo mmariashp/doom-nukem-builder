@@ -336,12 +336,31 @@ unsigned short			walls_buttons(t_button *buttons, int n_buttons, t_sdl *sdl)
 	while (i < n_buttons)
 	{
 		buttons[i].vis_lit_on[0] = TRUE;
-		buttons[i].back = button_back(2, 1, sdl);
-		buttons[i].lit_back = button_back(0, 1, sdl);
+		buttons[i].back = NULL;
+		buttons[i].lit_back = NULL;
 		i++;
 	}
 	buttons[W_BACK_BUTTON].front = load_texture("back22.png", sdl->rend, 0);
 	buttons[W_BACK_BUTTON].lit = load_texture("back3.png", sdl->rend, 0);
+    buttons[W_DESELECT_BUTTON].front =      load_texture("cross2.png", sdl->rend, 0);
+    buttons[W_DESELECT_BUTTON].lit =      load_texture("cross3.png", sdl->rend, 0);
+    buttons[WT_BUTTON].front =            load_texture("edit.png", sdl->rend, 0);
+    buttons[WT_BUTTON].lit =                load_texture("editlit.png", sdl->rend, 0);
+    buttons[W_PORTAL_BUTTON].front =        buttons[WT_BUTTON].front;
+    buttons[W_PORTAL_BUTTON].lit =          buttons[WT_BUTTON].lit;
+    buttons[W_DOOR_BUTTON].front =          buttons[WT_BUTTON].front;
+    buttons[W_DOOR_BUTTON].lit =            buttons[WT_BUTTON].lit;
+
+    box = sector_menu(0, 0);
+    buttons[W_DESELECT_BUTTON].box =  (t_rec){ box.x + box.w,         box.y,          30, 30 };
+    buttons[WT_BUTTON].box = sector_menu(6, 0);
+    buttons[W_PORTAL_BUTTON].box = sector_menu(6, 1);
+    buttons[W_DOOR_BUTTON].box = sector_menu(6, 2);
+
+    buttons[W_DESELECT_BUTTON].vis_lit_on[0] = FALSE;
+    buttons[WT_BUTTON].vis_lit_on[0] = FALSE;
+    buttons[W_PORTAL_BUTTON].vis_lit_on[0] = FALSE;
+    buttons[W_DOOR_BUTTON].vis_lit_on[0] = FALSE;
 	return (SUCCESS);
 }
 
@@ -383,7 +402,6 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 
     buttons[FT_EDIT_BUTTON].front =         load_texture("edit.png", sdl->rend, 0);
 
-
 	buttons[DRAG_BUTTON].lit =              load_texture("move3.png", sdl->rend, 0);
 	buttons[DRAW_BUTTON].lit =              load_texture("add3.png", sdl->rend, 0);
 	buttons[DISTORT_BUTTON].lit =           load_texture("distort3.png", sdl->rend, 0);
@@ -397,11 +415,9 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 	buttons[F_DOWN_BUTTON].lit =            load_texture("down3.png", sdl->rend, 0);
     buttons[FT_EDIT_BUTTON].lit =           load_texture("editlit.png", sdl->rend, 0);
 
-
     buttons[C_UP_BUTTON] =            buttons[F_UP_BUTTON];
     buttons[C_DOWN_BUTTON] =          buttons[F_DOWN_BUTTON];
     buttons[CT_EDIT_BUTTON] =         buttons[FT_EDIT_BUTTON];
-    buttons[WT_EDIT_BUTTON] =         buttons[FT_EDIT_BUTTON];
 
     buttons[DESELECT_SEC_BUTTON].vis_lit_on[0] = FALSE;
 	buttons[F_UP_BUTTON].vis_lit_on[0] = FALSE;
@@ -410,7 +426,6 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 	buttons[C_DOWN_BUTTON].vis_lit_on[0] = FALSE;
     buttons[FT_EDIT_BUTTON].vis_lit_on[0] = FALSE;
     buttons[CT_EDIT_BUTTON].vis_lit_on[0] = FALSE;
-    buttons[WT_EDIT_BUTTON].vis_lit_on[0] = FALSE;
 
 
 	box = sector_menu(0, 0);
@@ -421,7 +436,6 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
     buttons[C_DOWN_BUTTON].box = sector_menu(4, 1);
     buttons[FT_EDIT_BUTTON].box = sector_menu(6, 2);
     buttons[CT_EDIT_BUTTON].box = sector_menu(6, 3);
-    buttons[WT_EDIT_BUTTON].box = sector_menu(6, 4);
 
 	return (SUCCESS);
 }
@@ -485,9 +499,9 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
 
 	prog->modes[MODE_MAIN_MENU].n_buttons = N_MM_BUTTONS;
 	prog->modes[MODE_SUMMARY].n_buttons = media->n_worlds + 1;
-	prog->modes[MODE_EDITOR].n_buttons = 16;
+	prog->modes[MODE_EDITOR].n_buttons = 15;
     prog->modes[MODE_TEXTURES].n_buttons = media->n_textures;
-	prog->modes[MODE_WALLS].n_buttons = 3;
+	prog->modes[MODE_WALLS].n_buttons = 5;
 	i = 0;
 	while (i < N_MODES)
 	{

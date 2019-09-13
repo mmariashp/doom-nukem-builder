@@ -7,7 +7,7 @@ find_library(libsdl SDL2)
 find_library(libsdl_img SDL2_image)
 find_library(libsdl_ttf SDL2_ttf)
 
-IF(APPLE)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     include_directories(/Users/mshpakov/Library/Frameworks/SDL2.framework/Headers)
     include_directories(/Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers)
     include_directories(/Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers  )

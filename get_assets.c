@@ -444,6 +444,7 @@ void 					get_walls(t_wall *wall, char *line, t_vec2d p, int n_txtrs)
 		line++;
 	wall->type = get_wall_type(*line);
 	wall->txtr = get_wall_txtr(line, 0, n_txtrs - 1);
+	wall->door = -1;
 }
 
 unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned short world_no)
@@ -758,6 +759,36 @@ unsigned				read_textures(t_media *media, t_section *section)
 	return (SUCCESS);
 }
 
+
+unsigned short          find_doors(int n, t_wall *walls)
+{
+    int                 i;
+    int                 j;
+    int                 wall;
+
+    i = -1;
+    while (++i < n)
+    {
+        if (walls[i].type == WALL_DOOR)
+        {
+            j = -1;
+            wall = -1;
+            while ( ++j < n )
+            {
+                if (j != i && ((walls[j].v1 == walls[i].v1 && walls[j].v2 == walls[i].v2) ||
+                               (walls[j].v1 == walls[i].v2 && walls[j].v2 == walls[i].v1)) )
+                {
+                    if (walls[j].type != WALL_EMPTY || walls[j].door != -1 || wall != -1)
+                        return (FAIL);
+                    walls[j].door = i;
+                    wall = j;
+                }
+            }
+        }
+    }
+    return (SUCCESS);
+}
+
 unsigned				read_levels(t_media *media, t_section *section)
 {
 	short 				i;
@@ -792,6 +823,12 @@ unsigned				read_levels(t_media *media, t_section *section)
 			ft_putendl("failed to get map\n");
 			return (FAIL);
 		}
+		if (find_doors(media->worlds[i].n_walls, media->worlds[i].walls) == FAIL)
+        {
+            ft_putstr("Errors in doors in level: ");
+            ft_putendl(media->worlds[i].filename);
+		    return (FAIL);
+        }
 		i++;
 	}
 	return (SUCCESS);

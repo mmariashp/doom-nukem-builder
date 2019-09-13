@@ -116,7 +116,7 @@
 # define MAX_VERTEX_ID			200
 
 # define MIN_N_WALLS			3
-# define MAX_N_WALLS			100
+# define MAX_N_WALLS			127
 
 # define MIN_N_SECTORS			1
 # define MAX_N_SECTORS			50
@@ -148,9 +148,10 @@
 # define REGION_BOTTOM      (int)4 // 0100
 # define REGION_TOP         (int)8    // 1000
 
-# define NODE_EMPTY			0
-# define NODE_FULL			1
-# define NODE_SECTOR		2
+# define NODE_EMPTY			-1
+# define NODE_FULL			-2
+# define NODE_SECTOR		-3
+# define NODE_WALL  		-4
 
 # define MENU_TXT_H			25
 # define MAX_MENU_TXT_W		200
@@ -181,9 +182,13 @@
 # define C_DOWN_BUTTON		12
 # define FT_EDIT_BUTTON		13
 # define CT_EDIT_BUTTON		14
-# define WT_EDIT_BUTTON		15
+
 
 # define W_BACK_BUTTON		0
+# define W_DESELECT_BUTTON  1
+# define WT_BUTTON          2
+# define W_PORTAL_BUTTON    3
+# define W_DOOR_BUTTON      4
 
 
 # define GRID_SIZE			150
@@ -232,7 +237,7 @@ typedef struct                  s_rec
 typedef struct 					s_grid
 {
 	t_rec						box;
-	char 						nodes[GRID_SIZE][GRID_SIZE];
+	signed char 				nodes[GRID_SIZE][GRID_SIZE];
 	float 						scale;
     t_vec2d						active[2];
 }								t_grid;
@@ -272,7 +277,8 @@ typedef struct					s_prog
 	short 						button_lit;
 	short 						button_on;
 	short 						zoom;
-	t_vec2d						move;
+    t_vec2d						move;
+	t_vec2d						click;
 	char 						features[10];
 	char 						save;
 }								t_prog;
@@ -281,8 +287,9 @@ typedef struct                  s_wall
 {
 	int 						v1;
 	int 						v2;
-	int 						type;
+	signed char 				type;
 	short						txtr;
+	signed char                 door;
 }                               t_wall;
 
 typedef struct                  s_sector
@@ -418,6 +425,9 @@ void					draw_circle_fill(t_vec2d c, int radius, int color, SDL_Renderer *rend);
 void				    get_rgb(unsigned char *r, unsigned char *g, unsigned char *b, int color);
 void				    draw_line(t_line l, int color, SDL_Renderer *rend);
 
+void				    draw_line_grid(t_line l, char c, signed char nodes[GRID_SIZE][GRID_SIZE]);
+//void					draw_dot_grid(int x, int y, int color, char **nodes);
+
 unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog);
 void					free_modes(t_mode *modes, t_sdl *sdl);
 void                    refresh_level_list(t_media *media, t_mode *mode, t_sdl *sdl);
@@ -458,6 +468,7 @@ void					render_screen(SDL_Renderer *rend, int **screen);
 
 void					fill_grid(int n_vectors, t_vec2d *vertices, t_grid *grid);
 void					clean_grid(t_grid *grid);
+void                    fill_grid_walls(int n_walls, t_wall *walls, int n_vectors, t_vec2d *vertices, t_grid *grid);
 
 void					add_to_media(t_grid *grid, t_media *media);
 unsigned short			add_world(t_world **worlds, short n_worlds);
@@ -467,7 +478,8 @@ int 					in_sector(t_vec2d p, t_world *world, t_grid *grid);
 
 void					delete_vector(int id, t_world *world);
 
-void					move_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
+void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid);
+void					move_grid_keys(t_prog *prog, t_grid *grid);
 void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
 void                    zoom_to_sector(t_sector *sector, t_vec2d *vertices, t_grid *grid, t_prog *prog);
 
@@ -480,6 +492,10 @@ t_vec2d                 make_iso(int x, int y, int z);
 void                    zoom_to_map(int n_vectors, t_vec2d *v, t_grid *grid);
 
 t_rec                   sector_menu(char i, char n);
-void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector, t_texture *textures, int n_textures);
+void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector, t_media *media);
 
+int                      texture_in_world(int id, t_world world);
+int					    *realloc_textures(int *textures, int n);
+unsigned short			add_texture(int **textures, short n_textures, int id);
+unsigned short			add_wall(t_wall **walls, short n_walls, int one, int two);
 #endif

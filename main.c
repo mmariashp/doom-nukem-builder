@@ -86,7 +86,7 @@ t_rec                    sector_menu(char i, char n)
     return (line);
 }
 
-void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector, t_texture *textures, int n_textures)
+void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector, t_media *media)
 {
 	SDL_Texture         *back;
 	SDL_Texture         *title;
@@ -96,11 +96,11 @@ void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector, t_textur
 	int 				text_color = DARK_GRAY;
     char                *str;
     int                 i = 0;
-	int                 n = 5;
-	static char         line[5][20] = { "Floor height ", "Ceiling height ", "Floor texture ", "Ceiling texture ", "Wall texture " };
-    int                 value[5] = { sector->floor, sector->ceiling, sector->floor_txtr, sector->ceil_txtr,  sector->floor_txtr};
+	int                 n = 4;
+	static char         line[4][20] = { "Floor height ", "Ceiling height ", "Floor texture ", "Ceiling texture " };
+    int                 value[4] = { sector->floor, sector->ceiling, sector->floor_txtr, sector->ceil_txtr};
 
-	if (!sdl || !grid || !sector || !textures || n_textures < 0)
+	if (!sdl || !grid || !sector || !media->txtrs || media->n_textures < 0)
 		return ;
 	back = button_back(2, 1, sdl);
 	title = button_back(0, 1, sdl);
@@ -127,12 +127,17 @@ void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector, t_textur
         write_text(line[i], sdl, title_box, text_color, FALSE);
         title_box = sector_menu(5, i);
         write_text(ft_itoa(value[i]), sdl, title_box, text_color, FALSE);
-        if (i > 1 && textures[value[i]].sdl_t && value[i] >= 0 && value[i] < n_textures)
+        if (i > 1 && media->txtrs[value[i]].sdl_t && value[i] >= 0 && value[i] < media->n_textures)
         {
-            SDL_Rect rect2 = (SDL_Rect){ title_box.x, title_box.y, title_box.h, title_box.h };
-            SDL_Rect rect3 = (SDL_Rect){ textures[value[i]].size.x / 4, textures[value[i]].size.y / 4,
-                                         textures[value[i]].size.x / 3, textures[value[i]].size.y / 3 };
-            SDL_RenderCopy(sdl->rend, textures[value[i]].sdl_t, &rect3, &rect2);
+            int k;
+            k = media->worlds[media->world_id].textures[value[i]];
+            if (k >= 0 && k < media->n_textures)
+            {
+                SDL_Rect rect2 = (SDL_Rect){ title_box.x, title_box.y, title_box.h, title_box.h };
+                SDL_Rect rect3 = (SDL_Rect){ media->txtrs[k].size.x / 4, media->txtrs[k].size.y / 4,
+                                             media->txtrs[k].size.x / 3, media->txtrs[k].size.y / 3 };
+                SDL_RenderCopy(sdl->rend, media->txtrs[k].sdl_t, &rect3, &rect2);
+            }
         }
 	    i++;
     }
@@ -368,6 +373,27 @@ void					delete_vector(int id, t_world *world)
 	}
 }
 
+void                    fill_grid_walls(int n_walls, t_wall *walls, int n_vectors, t_vec2d *vertices, t_grid *grid)
+{
+    int                 wall_i;
+    int                 v1;
+    int                 v2;
+
+    if (!walls || !vertices || !grid || n_walls < 1 || n_vectors < 2 || n_walls >= MAX_N_WALLS)
+        return ;
+    wall_i = 0;
+    while (wall_i < n_walls)
+    {
+        v1 = walls[wall_i].v1;
+        v2 = walls[wall_i].v2;
+        if (walls[wall_i].type != WALL_DOOR && v1 >= 0 && v1 < n_vectors && v2 >= 0 && v2 < n_vectors)
+        {
+            draw_line_grid((t_line){ vertices[v1], vertices[v2] }, (signed char)wall_i, grid->nodes);
+        }
+        wall_i++;
+    }
+}
+
 void					fill_grid(int n_vectors, t_vec2d *vertices, t_grid *grid)
 {
 	int 				i;
@@ -399,19 +425,36 @@ void					clean_grid(t_grid *grid)
 	}
 }
 
-void					move_grid(t_prog *prog, t_vec2d mouse, t_grid *grid)
+void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid);
+void					move_grid_keys(t_prog *prog, t_grid *grid);
+
+
+void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid)
 {
 	if (!prog || !grid)
 		return ;
 	if (mouse_over(grid->box, mouse))
 	{
-		grid->box.x += mouse.x - prog->move.x;
-		grid->box.y += mouse.y - prog->move.y;
-		prog->move = mouse;
+		grid->box.x += mouse.x - prog->click.x;
+		grid->box.y += mouse.y - prog->click.y;
+		prog->click = mouse;
 		prog->features[F_REDRAW] = 1;
 	}
 	else
-		prog->move = (t_vec2d){ 0, 0 };
+		prog->click = (t_vec2d){ 0, 0 };
+}
+
+void					move_grid_keys(t_prog *prog, t_grid *grid)
+{
+    if (!prog || !grid)
+        return ;
+    if (prog->move.x || prog->move.y)
+    {
+        grid->box.x += prog->move.x;
+        grid->box.y += prog->move.y;
+        prog->move = (t_vec2d){ 0, 0 };
+        prog->features[F_REDRAW] = 1;
+    }
 }
 
 void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
@@ -421,7 +464,7 @@ void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
 
 	if (!prog || !grid || !world)
 		return ;
-	if (prog->move.x || prog->move.y)
+	if (prog->click.x || prog->click.y)
 	{
 		if (mouse_over(grid->box, mouse))
 		{
@@ -444,11 +487,11 @@ void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
 				grid->nodes[grid->active[1].x][grid->active[1].y] = NODE_FULL;
 				to_erase = grid->active[1];
 			}
-			prog->move = mouse;
+			prog->click = mouse;
 			prog->features[F_REDRAW] = 1;
 		}
 		else
-			prog->move = (t_vec2d){ 0, 0 };
+			prog->click = (t_vec2d){ 0, 0 };
 	}
 	else
 	{
@@ -557,7 +600,7 @@ void					game_loop(t_sdl *sdl, t_media *media)
 	{
 		prog->modes[prog->mode_id].update(sdl, grid,  media, prog);
 		prog->modes[prog->mode_id].render(sdl, grid, media, prog);
-		SDL_Delay(100);
+		SDL_Delay(10);
 	}
 	free(grid);
 	free_prog(prog, sdl);

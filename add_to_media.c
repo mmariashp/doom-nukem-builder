@@ -162,6 +162,7 @@ unsigned short			add_wall(t_wall **walls, short n_walls, int one, int two)
     (*walls)[n_walls].txtr = 0;
 	(*walls)[n_walls].v1 = one;
 	(*walls)[n_walls].v2 = two;
+    (*walls)[n_walls].door = -1;
 	return (SUCCESS);
 }
 
