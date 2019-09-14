@@ -15,6 +15,7 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	    render_sector_menu(sdl, grid, &media->worlds[media->world_id].sectors[grid->active[0].y], media);
 
 	render_buttons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons);
+	write_text(ft_itoa(selected_item(1, STATE_SELECT, -1)), sdl, (t_rec){ 400, 100, 50, 50 }, WHITE, TRUE);
 	SDL_RenderPresent(sdl->rend);
 	prog->features[F_REDRAW] = 0;
 
@@ -62,23 +63,32 @@ unsigned short			add_texture(int **textures, short n_textures, int id)
     return (SUCCESS);
 }
 
-void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
+unsigned short			save_media(t_media *media, t_prog *prog)
+{
+	rewrite_media(media);
+	prog->save = 0;
+	prog->button_on = DRAG_BUTTON;
+	prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
+	prog->modes[prog->mode_id].buttons[SAVE_BUTTON].vis_lit_on[2] = FALSE;
+	return (SUCCESS);
+}
+
+unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	static short 		world_id = -1;
 	static				int s = -1;
 	int                 texture;
 
 	if (!sdl || !media || !grid)
-		return;
+		return (FAIL);
 	if (prog->last_mode_id == MODE_TEXTURES)
 	{
-
 		if (grid->active[1].x >= 0 && grid->active[1].x < media->n_textures)
 		{
 		    if ((texture = texture_in_world(grid->active[1].x, media->worlds[media->world_id])) == -1)
             {
 		        if (add_texture(&media->worlds[media->world_id].textures, media->worlds[media->world_id].n_textures, grid->active[1].x) == FAIL)
-                    return ;
+                    return (FAIL);
 		        texture = media->worlds[media->world_id].n_textures;
                 media->worlds[media->world_id].n_textures++;
             }
@@ -96,16 +106,12 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
     if (prog->move.x || prog->move.y)
     {
         move_grid_keys(prog, grid);
-        return ;
+        return (SUCCESS);
     }
 	if (prog->save == 1 || prog->button_on == SAVE_BUTTON) // when saving
 	{
-		rewrite_media(media);
-		prog->save = 0;
-		prog->button_on = DRAG_BUTTON;
-		prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
-		prog->modes[prog->mode_id].buttons[SAVE_BUTTON].vis_lit_on[2] = FALSE;
-		return ;
+		save_media(media, prog);
+		return (SUCCESS);
 	}
 	if (prog->button_lit != -1 && (prog->click.x || prog->click.y)) // when pressing an on screen button
 	{
@@ -118,13 +124,23 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
             grid->active[0] = (t_vec2d){ -1, -1 };
             grid->active[1] = (t_vec2d){ -1, -1 };
         }
+		printf("button on is %d\n", prog->button_on);
+		if (prog->button_on == SECTOR_BUTTON || prog->button_on == DESELECT_SEC_BUTTON)
+		{
+			selected_item(0, STATE_SELECT, SECTOR_SEARCH);
+			return (SUCCESS);
+			printf("here state %d\n", selected_item(1, STATE_SELECT, -1));
+		}
+//		else if (prog->button_on == DESELECT_SEC_BUTTON)
+//			selected_item(0, STATE_SELECT, SECTOR_SEARCH);
+
         prog->features[F_REDRAW] = 1;
 	}
 	if (light_button(sdl, prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
     {
 		prog->features[F_REDRAW] = 1;
 		if (prog->button_on != DESELECT_SEC_BUTTON)
-		    return ;
+		    return (SUCCESS);
     }
 	if (world_id != media->world_id) // when opening a map
 	{
@@ -137,7 +153,18 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
         fill_grid(media->worlds[world_id].n_vectors, media->worlds[world_id].vertices, grid);
 		prog->features[F_REDRAW] = 1;
 		update_sector_status(media->worlds[world_id].sectors, media->worlds[world_id].walls, media->worlds[world_id].vertices, media->worlds[world_id].n_sectors);
-		return ;
+		return (SUCCESS);
+	}
+	if (selected_item(1, STATE_SELECT, -1) == SECTOR_SEARCH)
+	{
+		int			sector;
+		sector = lit_item(0, S_SELECT, in_sector(sdl->mouse, &media->worlds[world_id], grid));
+		if ((prog->click.x || prog->click.y) && is_within_excl(sector, -1, media->worlds[media->world_id].n_sectors) == TRUE)
+		{
+			selected_item(0, S_SELECT, sector);
+			selected_item(0, STATE_SELECT, SECTOR_EDIT);
+		}
+		prog->features[F_REDRAW] = 1;
 	}
 	if (prog->button_on == DRAW_BUTTON) // draw mode
 	{
@@ -187,6 +214,10 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	}
 	else if (prog->button_on == SECTOR_BUTTON && s == -1) // sector mode
 	{
+
+
+
+
 		int k;
 		if (s == -1)
 		{
@@ -195,10 +226,14 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		if ((k = in_sector(sdl->mouse, &media->worlds[world_id], grid)) != -1)
 		{
 			grid->active[0].x = k;
+			lit_item(0, S_SELECT, k);
 			if (prog->click.x || prog->click.y)
 			{
 				s = k;
 				grid->active[0].y = s;
+
+
+				selected_item(0, S_SELECT, k);
                 clean_grid(grid);
                 fill_grid(media->worlds[world_id].n_vectors, media->worlds[world_id].vertices, grid);
 
@@ -267,6 +302,7 @@ void					update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
     }
 
 	update_sector_status(media->worlds[world_id].sectors, media->worlds[world_id].walls, media->worlds[world_id].vertices, media->worlds[world_id].n_sectors);
+	return (SUCCESS);
 }
 
 int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)

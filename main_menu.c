@@ -30,13 +30,14 @@ unsigned short			mouse_over(t_rec box, t_vec2d mouse)
 	return (TRUE);
 }
 
-void					update_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
+unsigned short			update_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
-		return;
+		return (FAIL);
 	if (light_button(sdl, prog->modes[prog->mode_id].buttons,  prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
-		return ;
+		return (SUCCESS);
 	prog->button_lit = -1;
+	return (SUCCESS);
 }
 
 int						input_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)

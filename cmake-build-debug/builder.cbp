@@ -8,403 +8,390 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug"/>
+				<Option working_dir="/home/moosh/CLionProjects/builder/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug"/>
+				<Option working_dir="/home/moosh/CLionProjects/builder/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug"/>
+				<Option working_dir="/home/moosh/CLionProjects/builder/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="builder">
-				<Option output="/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/builder" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2.framework/Headers"/>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers"/>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
-					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 builder"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="builder/fast">
-				<Option output="/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/builder" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2.framework/Headers"/>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers"/>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
-					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 builder/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ft">
-				<Option output="/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/libft.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug"/>
+				<Option output="/home/moosh/CLionProjects/builder/cmake-build-debug/libft.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/moosh/CLionProjects/builder/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2.framework/Headers"/>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers"/>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ft/fast">
-				<Option output="/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/libft.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug"/>
+				<Option output="/home/moosh/CLionProjects/builder/cmake-build-debug/libft.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/moosh/CLionProjects/builder/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2.framework/Headers"/>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers"/>
-					<Add directory="/Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="builder">
+				<Option output="/home/moosh/CLionProjects/builder/cmake-build-debug/builder" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/moosh/CLionProjects/builder/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 builder"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="builder/fast">
+				<Option output="/home/moosh/CLionProjects/builder/cmake-build-debug/builder" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/moosh/CLionProjects/builder/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 builder/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/moosh/CLionProjects/builder/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/add_to_media.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/add_to_media.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/builder.h">
+		<Unit filename="/home/moosh/CLionProjects/builder/builder.h">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/buttons.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/buttons.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/editor.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/editor.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/fill_polygon.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/fill_polygon.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/get_assets.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/get_assets.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/get_next_line.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/get_next_line.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/get_next_line.h">
+		<Unit filename="/home/moosh/CLionProjects/builder/get_next_line.h">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/level_edit.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/level_edit.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_abs_cut.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_abs_cut.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_atoi.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_atoi.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_bzero.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_bzero.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_count_words.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_count_words.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_digittoint.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_digittoint.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isalnum.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_isalnum.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isalpha.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_isalpha.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isascii.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_isascii.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isdigit.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_isdigit.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_islower.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_islower.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isprint.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_isprint.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isspace.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_isspace.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isupper.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_isupper.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_iswhspace.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_iswhspace.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isxdigit.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_isxdigit.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_itoa.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_itoa.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_lstadd.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_lstadd.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_lstdel.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_lstdel.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_lstdelone.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_lstdelone.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_lstiter.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_lstiter.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_lstmap.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_lstmap.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_lstnew.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_lstnew.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_memalloc.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_memalloc.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_memccpy.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_memccpy.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_memchr.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_memchr.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_memcmp.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_memcmp.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_memcpy.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_memcpy.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_memdel.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_memdel.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_memmove.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_memmove.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_memset.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_memset.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_putchar.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_putchar.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_putchar_fd.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_putchar_fd.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_putendl.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_putendl.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_putendl_fd.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_putendl_fd.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_putnbr.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_putnbr.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_putnbr_fd.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_putnbr_fd.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_putstr.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_putstr.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_putstr_fd.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_putstr_fd.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strcasecmp.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strcasecmp.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strcat.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strcat.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strchr.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strchr.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strclr.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strclr.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strcmp.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strcmp.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strcpy.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strcpy.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strdel.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strdel.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strdup.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strdup.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strequ.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strequ.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_striter.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_striter.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_striteri.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_striteri.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strjoin.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strjoin.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strlcat.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strlcat.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strlen.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strlen.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strmap.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strmap.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strmapi.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strmapi.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strncat.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strncat.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strncmp.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strncmp.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strncpy.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strncpy.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strnequ.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strnequ.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strnew.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strnew.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strnstr.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strnstr.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strrchr.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strrchr.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strsplit.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strsplit.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strstr.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strstr.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strsub.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strsub.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strtrim.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strtrim.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strulen.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_strulen.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_tolower.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_tolower.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_toupper.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/libft/ft_toupper.c">
 			<Option target="ft"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/main.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/main.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/main_menu.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/main_menu.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/math.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/math.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/modes.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/modes.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/prog.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/prog.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/render.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/render.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/render_grid.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/render_grid.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/rewrite.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/rewrite.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/sdl_fun.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/sdl_fun.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/summary.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/summary.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/textures.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/textures.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/walls.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/useful.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/zoom.c">
+		<Unit filename="/home/moosh/CLionProjects/builder/walls.c">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/CMakeLists.txt">
+		<Unit filename="/home/moosh/CLionProjects/builder/zoom.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

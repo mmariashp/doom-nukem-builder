@@ -68,7 +68,8 @@ SRC =	main.c \
         render_grid.c \
         textures.c \
         add_to_media.c \
-        walls.c
+        walls.c \
+        useful.c
 
 OBJ =	$(SRC:.c=.o)
 

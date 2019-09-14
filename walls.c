@@ -171,19 +171,22 @@ void					render_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	SDL_RenderClear(sdl->rend);
 	render_grid(media->worlds[media->world_id], grid, prog, sdl->mouse);
 	render_screen(sdl->rend, prog->screen);
-    if (prog->button_on == -1 && grid->active[1].y >= 0 && grid->active[1].y < media->worlds[media->world_id].n_walls)
-        render_wall_menu(sdl, grid, media, &media->worlds[media->world_id].walls[grid->active[1].y]);
+    if (prog->button_on == -1)
+	{
+		if (grid->active[1].y >= 0 && grid->active[1].y < media->worlds[media->world_id].n_walls)
+    		render_wall_menu(sdl, grid, media, &media->worlds[media->world_id].walls[grid->active[1].y]);
+	}
 	render_buttons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons);
 	SDL_RenderPresent(sdl->rend);
 	prog->features[F_REDRAW] = 0;
 
 }
 
-void					update_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
+unsigned short			update_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
     static int          door = -1;
 	if (!sdl || !media || !grid)
-		return;
+		return (FAIL);
 	if (prog->last_mode_id == MODE_EDITOR)
     {
         fill_grid_walls(media->worlds[media->world_id].n_walls, media->worlds[media->world_id].walls,
@@ -199,7 +202,7 @@ void					update_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
             if ((texture = texture_in_world(grid->active[1].x, media->worlds[media->world_id])) == -1)
             {
                 if (add_texture(&media->worlds[media->world_id].textures, media->worlds[media->world_id].n_textures, grid->active[1].x) == FAIL)
-                    return ;
+                    return (FAIL);
                 texture = media->worlds[media->world_id].n_textures;
                 media->worlds[media->world_id].n_textures++;
             }
@@ -217,7 +220,7 @@ void					update_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		prog->button_on = prog->button_lit;
 		prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
 		prog->features[F_REDRAW] = 1;
-		return ;
+		return (SUCCESS);
 	}
 	if (light_button(sdl, prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
 	{
@@ -230,7 +233,7 @@ void					update_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
     if (prog->move.x || prog->move.y)
     {
         move_grid_keys(prog, grid);
-        return ;
+        return (SUCCESS);
     }
     if (mouse_over(grid->box, sdl->mouse) && prog->button_on == -1)
     {
@@ -311,6 +314,7 @@ void					update_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
                         media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
     }
 	update_sector_status(media->worlds[media->world_id].sectors, media->worlds[media->world_id].walls, media->worlds[media->world_id].vertices, media->worlds[media->world_id].n_sectors);
+	return (SUCCESS);
 }
 
 int						input_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)

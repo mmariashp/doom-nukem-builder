@@ -100,7 +100,7 @@ void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector, t_media 
 	static char         line[4][20] = { "Floor height ", "Ceiling height ", "Floor texture ", "Ceiling texture " };
     int                 value[4] = { sector->floor, sector->ceiling, sector->floor_txtr, sector->ceil_txtr};
 
-	if (!sdl || !grid || !sector || !media->txtrs || media->n_textures < 0)
+	if (!sdl || !grid || !sector || !media->txtrs)
 		return ;
 	back = button_back(2, 1, sdl);
 	title = button_back(0, 1, sdl);
@@ -448,13 +448,10 @@ void					move_grid_keys(t_prog *prog, t_grid *grid)
 {
     if (!prog || !grid)
         return ;
-    if (prog->move.x || prog->move.y)
-    {
-        grid->box.x += prog->move.x;
-        grid->box.y += prog->move.y;
-        prog->move = (t_vec2d){ 0, 0 };
-        prog->features[F_REDRAW] = 1;
-    }
+    grid->box.x += prog->move.x;
+    grid->box.y += prog->move.y;
+    prog->move = (t_vec2d){ 0, 0 };
+    prog->features[F_REDRAW] = 1;
 }
 
 void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
@@ -584,6 +581,8 @@ t_grid                  *get_grid(void)
     return (grid);
 }
 
+
+
 void					game_loop(t_sdl *sdl, t_media *media)
 {
 	t_grid				*grid;
@@ -598,7 +597,8 @@ void					game_loop(t_sdl *sdl, t_media *media)
 	}
 	while (prog->modes[prog->mode_id].input(sdl, grid, media, prog) == FALSE)
 	{
-		prog->modes[prog->mode_id].update(sdl, grid,  media, prog);
+		if (prog->modes[prog->mode_id].update(sdl, grid,  media, prog) == FAIL)
+			return ;
 		prog->modes[prog->mode_id].render(sdl, grid, media, prog);
 		SDL_Delay(10);
 	}

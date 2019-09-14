@@ -48,10 +48,10 @@ void					render_grid_nodes(int **screen, t_grid *grid)
                 draw_node(node, radius2, YELLOW, screen);
             else if (grid->nodes[x][y] == NODE_EMPTY)
                 draw_node(node, radius1, DARK_GRAY, screen);
-//            else
-//            {
-//                draw_node(node, radius2, RED, screen);
-//            }
+            else
+            {
+                draw_node(node, radius2, RED, screen);
+            }
 			x++;
 		}
 		y++;

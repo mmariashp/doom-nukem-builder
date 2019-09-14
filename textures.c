@@ -36,13 +36,14 @@ void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
     prog->features[F_REDRAW] = 1;
 }
 
-void					update_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
+unsigned short			update_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
     if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
-        return;
+        return (FAIL);
     if (light_button(sdl, prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
-        return ;
+        return (SUCCESS);
     prog->button_lit = -1;
+	return (SUCCESS);
 }
 
 int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)

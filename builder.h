@@ -259,6 +259,19 @@ typedef struct 					s_button
 # define F_SELECT_NODE			2
 # define F_REDRAW				3
 
+// for selected function
+
+# define V_SELECT		0
+# define W_SELECT		1
+# define S_SELECT		2
+# define T_SELECT		3
+# define BUTT_SELECT	4
+# define STATE_SELECT	5
+# define O_SELECT		6
+
+// states
+# define SECTOR_SEARCH			0
+# define SECTOR_EDIT			1
 
 typedef struct					s_sdl
 {
@@ -371,7 +384,7 @@ typedef struct					s_mode
 	unsigned short				n_buttons;
 	t_button					*buttons;
 	int							(*input)(t_sdl*, t_grid*, t_media *, t_prog *);
-	void						(*update)(t_sdl*, t_grid*, t_media *, t_prog *);
+	unsigned short				(*update)(t_sdl*, t_grid*, t_media *, t_prog *);
 	void						(*render)(t_sdl*, t_grid*, t_media *, t_prog *);
 }								t_mode;
 
@@ -386,22 +399,22 @@ void					my_error(char *reason);
 void					end(char *reason);
 
 void					render_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-void					update_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+unsigned short					update_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 int						input_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 void					render_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-void					update_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+unsigned short					update_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 int						input_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
 int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-void					update_editor(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
+unsigned short					update_editor(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
 int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-void					update_textures(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
+unsigned short					update_textures(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
 int						input_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-void					update_walls(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
+unsigned short					update_walls(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					render_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
 
@@ -498,4 +511,11 @@ int                      texture_in_world(int id, t_world world);
 int					    *realloc_textures(int *textures, int n);
 unsigned short			add_texture(int **textures, short n_textures, int id);
 unsigned short			add_wall(t_wall **walls, short n_walls, int one, int two);
+
+
+unsigned short			is_within_excl(int value, int min, int max);
+unsigned short			is_within_incl(int value, int min, int max);
+int 					selected_item(char set_get_unset, unsigned short id, int value);
+int 					lit_item(char set_get_unset, unsigned short id, int value);
+
 #endif
