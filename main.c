@@ -61,7 +61,7 @@ void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center)
 }
 
 
-t_rec                    sector_menu(char i, char n)
+t_rec                    layout_menu(char i, char n)
 {
     static t_rec        outer =  { .x = WIN_W * 0.6,  .y = WIN_H * 0.1  , .w = WIN_W * 0.34, .h = WIN_W * 0.34 };
     static t_rec        title = { .x = WIN_W * 0.62, .y = WIN_H * 0.12 , .w = WIN_W * 0.3,  .h = WIN_H * 0.05 };
@@ -86,61 +86,126 @@ t_rec                    sector_menu(char i, char n)
     return (line);
 }
 
-void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector, t_media *media)
+char 					*menu_lines(int id, int i)
 {
-	SDL_Texture         *back;
-	SDL_Texture         *title;
+	static short 		n_s_lines = 4;
+	static short 		n_w_lines = 3;
+	static char         sector_lines[4][20] = { "Floor height ", "Ceiling height ", "Floor texture ", "Ceiling texture " };
+	static char         wall_lines[3][20] = { "Texture ", "Portal ", "Door " };
+
+	if (id == SECTOR_EDIT && is_within_excl(i, -1, n_s_lines))
+		return (sector_lines[i]);
+	else if (id == WALL_EDIT && is_within_excl(i, -1, n_w_lines))
+		return (wall_lines[i]);
+	else
+		return (NULL);
+}
+
+# define EDIT_TEXT_COLOR	DARK_GRAY
+
+void					render_box(t_rec box, SDL_Texture *t, SDL_Renderer *rend)
+{
 	SDL_Rect			rect;
-	t_rec				box;
-	t_rec				title_box;
-	int 				text_color = DARK_GRAY;
-    char                *str;
-    int                 i = 0;
-	int                 n = 4;
-	static char         line[4][20] = { "Floor height ", "Ceiling height ", "Floor texture ", "Ceiling texture " };
-    int                 value[4] = { sector->floor, sector->ceiling, sector->floor_txtr, sector->ceil_txtr};
 
-	if (!sdl || !grid || !sector || !media->txtrs)
+	if (!t || !rend || is_within_excl(box.x, -1, WIN_W) == FALSE ||
+	is_within_excl(box.y, -1, WIN_H) == FALSE || box.w < 1 || box.y < 1)
 		return ;
-	back = button_back(2, 1, sdl);
-	title = button_back(0, 1, sdl);
-	box = sector_menu(0, 0);
-    title_box = sector_menu(1, 0);
-
 	rect = (SDL_Rect){ box.x, box.y, box.w, box.h };
-	SDL_RenderCopy(sdl->rend, back, NULL, &rect);
-    rect = (SDL_Rect){ title_box.x, title_box.y, title_box.w, title_box.h };
-	SDL_RenderCopy(sdl->rend, title, NULL, &rect);
+	SDL_RenderCopy(rend, t, NULL, &rect);
+}
 
-	str = ft_strjoin("SECTOR ", ft_itoa(grid->active[0].x));
-	write_text(str, sdl, title_box, text_color, FALSE);
-	if (str)
-	    free(str);
-    title = button_back(1, 1, sdl);
-    title_box = sector_menu(2, i);
-    rect = (SDL_Rect){ title_box.x, title_box.y, title_box.w, title_box.h };
-	while (i < n)
+
+int 					*get_sector_values(int *n, t_sector *sector)
+{
+	static int 			nb = 4;
+	int 				*new;
+
+	if (!sector)
+		return (NULL);
+	*n = nb;
+	new = ft_memalloc(sizeof(int) * *n);
+	if (!new)
+		return (NULL);
+	new[0] = sector->floor;
+	new[1] = sector->ceiling;
+	new[2] = sector->floor_txtr;
+	new[3] = sector->ceil_txtr;
+	return (new);
+}
+
+int 					*get_wall_values(int *n, t_wall *wall)
+{
+	static int 			nb = 3;
+	int 				*new;
+
+	if (!wall)
+		return (NULL);
+	*n = nb;
+	new = ft_memalloc(sizeof(int) * *n);
+	if (!new)
+		return (NULL);
+	new[0] = wall->txtr;
+	new[1] = wall->type;
+	new[2] = 0;
+	return (new);
+}
+
+void					render_edit_menu(t_sdl *sdl, t_grid *grid, t_media *media)
+{
+	int					state = selected_item(1, STATE_SELECT, -1);
+	int 				target;
+	t_rec				line_box;
+    char                *str;
+    int                 i;
+	int                 n;
+	int					t;
+    int                 *values;
+
+	if (!sdl || !grid || !media->txtrs)
+		return ;
+	if (state == SECTOR_EDIT)
+	{
+		target = selected_item(1, S_SELECT, -1);
+		if (is_within_excl(target, -1, media->worlds[media->world_id].n_sectors) == FALSE ||
+				!(values = get_sector_values(&n, &media->worlds[media->world_id].sectors[target])))
+			return ;
+		if (!(str = ft_strjoin("SECTOR ", ft_itoa(target))))
+			return ;
+	}
+	else if (state == WALL_EDIT)
+	{
+		target = selected_item(1, W_SELECT, -1);
+		if (is_within_excl(target, 0, media->worlds[media->world_id].n_walls) == FALSE ||
+			!(values = get_wall_values(&n, &media->worlds[media->world_id].walls[target])))
+			return ;
+		if (!(str = ft_strjoin("WALL ", ft_itoa(target))))
+			return ;
+	}
+	else
+		return ;
+	render_box(layout_menu(0, 0), button_back(2, 1, sdl), sdl->rend);
+	line_box = layout_menu(1, 0);
+	render_box(line_box, button_back(0, 1, sdl), sdl->rend);
+	write_text(str, sdl, line_box, EDIT_TEXT_COLOR, FALSE);
+	free(str);
+	i = -1;
+	n = clamp(n, 0, 255);
+	while (++i < n)
     {
-        title_box = sector_menu(2, i);
-        rect.y = title_box.y;
-        SDL_RenderCopy(sdl->rend, title, NULL, &rect);
-        write_text(line[i], sdl, title_box, text_color, FALSE);
-        title_box = sector_menu(5, i);
-        write_text(ft_itoa(value[i]), sdl, title_box, text_color, FALSE);
-        if (i > 1 && media->txtrs[value[i]].sdl_t && value[i] >= 0 && value[i] < media->n_textures)
+		line_box = layout_menu(2, (char)i);
+        render_box(line_box, button_back(1, 1, sdl), sdl->rend);
+        write_text(menu_lines(state, i), sdl, line_box, EDIT_TEXT_COLOR, FALSE);
+		line_box = layout_menu(5, (char)i);
+        write_text(ft_itoa(values[i]), sdl, line_box, EDIT_TEXT_COLOR, FALSE);
+        if (i > 1 && media->txtrs[values[i]].sdl_t && is_within_excl(values[i], -1, media->worlds[media->world_id].n_textures))
         {
-            int k;
-            k = media->worlds[media->world_id].textures[value[i]];
-            if (k >= 0 && k < media->n_textures)
-            {
-                SDL_Rect rect2 = (SDL_Rect){ title_box.x, title_box.y, title_box.h, title_box.h };
-                SDL_Rect rect3 = (SDL_Rect){ media->txtrs[k].size.x / 4, media->txtrs[k].size.y / 4,
-                                             media->txtrs[k].size.x / 3, media->txtrs[k].size.y / 3 };
-                SDL_RenderCopy(sdl->rend, media->txtrs[k].sdl_t, &rect3, &rect2);
-            }
+			line_box.w = line_box.h;
+            if (is_within_excl((t = media->worlds[media->world_id].textures[values[i]]), -1, media->n_textures))
+            	render_box(line_box, media->txtrs[t].sdl_t, sdl->rend);
         }
-	    i++;
     }
+	free(values);
+	values = NULL;
 }
 
 void					render_screen(SDL_Renderer *rend, int **screen)
@@ -197,7 +262,7 @@ t_vec2d					find_node(int p_x, int p_y, t_grid *grid)
 
 short 					find_vector(t_vec2d *vertices, t_vec2d p, int n)
 {
-	int 				i;
+	short 				i;
 
 	if (!vertices)
 		return (-1);
@@ -423,35 +488,6 @@ void					clean_grid(t_grid *grid)
 			grid->nodes[i][j++] = NODE_EMPTY;
 		i++;
 	}
-}
-
-void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid);
-void					move_grid_keys(t_prog *prog, t_grid *grid);
-
-
-void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid)
-{
-	if (!prog || !grid)
-		return ;
-	if (mouse_over(grid->box, mouse))
-	{
-		grid->box.x += mouse.x - prog->click.x;
-		grid->box.y += mouse.y - prog->click.y;
-		prog->click = mouse;
-		prog->features[F_REDRAW] = 1;
-	}
-	else
-		prog->click = (t_vec2d){ 0, 0 };
-}
-
-void					move_grid_keys(t_prog *prog, t_grid *grid)
-{
-    if (!prog || !grid)
-        return ;
-    grid->box.x += prog->move.x;
-    grid->box.y += prog->move.y;
-    prog->move = (t_vec2d){ 0, 0 };
-    prog->features[F_REDRAW] = 1;
 }
 
 void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)

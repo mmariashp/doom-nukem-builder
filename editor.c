@@ -3,6 +3,8 @@
 
 void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
+	int			state = selected_item(1, STATE_SELECT, -1);
+
 	if (!sdl || !media || !grid || prog->features[F_REDRAW] == 0)
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
@@ -11,11 +13,18 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	render_grid(media->worlds[media->world_id], grid, prog, sdl->mouse);
 	render_screen(sdl->rend, prog->screen);
 
-	if (prog->button_on == SECTOR_BUTTON && grid->active[0].y >= 0 && grid->active[0].y < media->worlds[media->world_id].n_sectors)
-	    render_sector_menu(sdl, grid, &media->worlds[media->world_id].sectors[grid->active[0].y], media);
+	if (state == SECTOR_EDIT || state == WALL_EDIT)
+		render_edit_menu(sdl, grid, media);
 
 	render_buttons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons);
-	write_text(ft_itoa(selected_item(1, STATE_SELECT, -1)), sdl, (t_rec){ 400, 100, 50, 50 }, WHITE, TRUE);
+	write_text(ft_strjoin("STATE is ", ft_itoa(selected_item(1, STATE_SELECT, -1))), sdl,
+			(t_rec){ 400, 10, 250, 50 }, WHITE, TRUE);
+	write_text(ft_strjoin("SECT is ", ft_itoa(selected_item(1, S_SELECT, -1))), sdl,
+			   (t_rec){ 400, 50, 250, 50 }, WHITE, TRUE);
+	write_text(ft_strjoin("VECT is ", ft_itoa(selected_item(1, V_SELECT, -1))), sdl,
+			   (t_rec){ 400, 90, 250, 50 }, WHITE, TRUE);
+	write_text(ft_strjoin("WALL is ", ft_itoa(selected_item(1, W_SELECT, -1))), sdl,
+			   (t_rec){ 400, 130, 250, 50 }, WHITE, TRUE);
 	SDL_RenderPresent(sdl->rend);
 	prog->features[F_REDRAW] = 0;
 
@@ -65,11 +74,34 @@ unsigned short			add_texture(int **textures, short n_textures, int id)
 
 unsigned short			save_media(t_media *media, t_prog *prog)
 {
-	rewrite_media(media);
+	if (!media || !prog || !prog->modes || !prog->modes[prog->mode_id].buttons)
+		return (FAIL);
+	if (rewrite_media(media) == FAIL)
+		return (FAIL);
 	prog->save = 0;
 	prog->button_on = DRAG_BUTTON;
 	prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
 	prog->modes[prog->mode_id].buttons[SAVE_BUTTON].vis_lit_on[2] = FALSE;
+	return (SUCCESS);
+}
+
+unsigned short			open_level(t_media *media, t_prog* prog, t_grid *grid)
+{
+	if (!media || !prog || !grid || is_within_excl(media->world_id, -1, media->n_worlds + 1) == FALSE)
+		return (FAIL);
+	clean_grid(grid);
+	if (media->world_id == media->n_worlds) // if ADD WORLD chosen
+	{
+		if (add_world(&media->worlds, media->n_worlds) == FAIL)
+			return (FAIL);
+		media->n_worlds++;
+	}
+	else
+		zoom_to_map(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
+	fill_grid(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
+	update_sector_status(media->worlds[media->world_id].sectors, media->worlds[media->world_id].walls,
+			media->worlds[media->world_id].vertices, media->worlds[media->world_id].n_sectors);
+	prog->features[F_REDRAW] = 1;
 	return (SUCCESS);
 }
 
@@ -100,22 +132,17 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
         prog->last_mode_id = prog->mode_id;
 	}
     if (prog->zoom != 0)
-    {
         zoom_grid(prog, sdl->mouse, grid);
-    }
     if (prog->move.x || prog->move.y)
     {
         move_grid_keys(prog, grid);
         return (SUCCESS);
     }
 	if (prog->save == 1 || prog->button_on == SAVE_BUTTON) // when saving
-	{
-		save_media(media, prog);
-		return (SUCCESS);
-	}
+		return (save_media(media, prog));
 	if (prog->button_lit != -1 && (prog->click.x || prog->click.y)) // when pressing an on screen button
 	{
-		if (prog->button_on != -1)
+		if (is_within_excl(prog->button_on, -1, prog->modes[prog->mode_id].n_buttons) == TRUE)
 			prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 		prog->button_on = prog->button_lit;
 		prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
@@ -128,36 +155,40 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 		if (prog->button_on == SECTOR_BUTTON || prog->button_on == DESELECT_SEC_BUTTON)
 		{
 			selected_item(0, STATE_SELECT, SECTOR_SEARCH);
+			if (prog->button_on == DESELECT_SEC_BUTTON)
+				selected_item(0, S_SELECT, -1);
 			return (SUCCESS);
-			printf("here state %d\n", selected_item(1, STATE_SELECT, -1));
 		}
-//		else if (prog->button_on == DESELECT_SEC_BUTTON)
-//			selected_item(0, STATE_SELECT, SECTOR_SEARCH);
-
+		if (prog->button_on == DRAG_BUTTON)
+		{
+			selected_item(0, STATE_SELECT, VECTOR_SEARCH);
+			return (SUCCESS);
+		}
+		if (prog->button_on == WALL_BUTTON)
+		{
+			selected_item(0, STATE_SELECT, WALL_SEARCH);
+			fill_grid_walls(media->worlds[media->world_id].n_walls, media->worlds[media->world_id].walls,
+							media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
+			return (SUCCESS);
+		}
         prog->features[F_REDRAW] = 1;
 	}
 	if (light_button(sdl, prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
-    {
 		prog->features[F_REDRAW] = 1;
-		if (prog->button_on != DESELECT_SEC_BUTTON)
-		    return (SUCCESS);
-    }
 	if (world_id != media->world_id) // when opening a map
 	{
 		world_id = media->world_id;
-		clean_grid(grid);
-		if (media->world_id >= media->n_worlds && add_world(&media->worlds, media->n_worlds) == SUCCESS) // if ADD WORLD chosen
-			media->n_worlds++;
-		else
-			zoom_to_map(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
-        fill_grid(media->worlds[world_id].n_vectors, media->worlds[world_id].vertices, grid);
-		prog->features[F_REDRAW] = 1;
-		update_sector_status(media->worlds[world_id].sectors, media->worlds[world_id].walls, media->worlds[world_id].vertices, media->worlds[world_id].n_sectors);
-		return (SUCCESS);
+		return(open_level(media, prog, grid));
 	}
-	if (selected_item(1, STATE_SELECT, -1) == SECTOR_SEARCH)
+
+	int			state = selected_item(1, STATE_SELECT, -1);
+	int			sector;
+	int			vector;
+	int 		wall;
+	t_vec2d		grid_node;
+
+	if (state == SECTOR_SEARCH)
 	{
-		int			sector;
 		sector = lit_item(0, S_SELECT, in_sector(sdl->mouse, &media->worlds[world_id], grid));
 		if ((prog->click.x || prog->click.y) && is_within_excl(sector, -1, media->worlds[media->world_id].n_sectors) == TRUE)
 		{
@@ -166,6 +197,51 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 		}
 		prog->features[F_REDRAW] = 1;
 	}
+	else if (state == SECTOR_EDIT)
+	{
+
+	}
+	else if (state == VECTOR_SEARCH)
+	{
+		if (mouse_over(grid->box, sdl->mouse) == TRUE)
+		{
+			grid_node = find_node(sdl->mouse.x, sdl->mouse.y, grid);
+			vector = lit_item(0, V_SELECT, find_vector(media->worlds[media->world_id].vertices, grid_node, media->worlds[media->world_id].n_vectors));
+			if ((prog->click.x || prog->click.y) && is_within_excl(vector, -1, media->worlds[media->world_id].n_vectors) == TRUE)
+			{
+				selected_item(0, V_SELECT, vector);
+				selected_item(0, STATE_SELECT, VECTOR_EDIT);
+			}
+			prog->features[F_REDRAW] = 1;
+		}
+	}
+	else if (state == VECTOR_EDIT)
+	{
+
+	}
+	else if (state == WALL_SEARCH)
+	{
+		if (mouse_over(grid->box, sdl->mouse) == TRUE)
+		{
+			grid_node = find_node(sdl->mouse.x, sdl->mouse.y, grid);
+			if (is_within_excl(grid_node.x, -1, GRID_SIZE) && is_within_excl(grid_node.y, -1, GRID_SIZE))
+			{
+				wall = lit_item(0, W_SELECT, grid->nodes[grid_node.x][grid_node.y]);
+				if ((prog->click.x || prog->click.y) && is_within_excl(wall, -1, media->worlds[media->world_id].n_walls) == TRUE)
+				{
+					selected_item(0, W_SELECT, wall);
+					selected_item(0, STATE_SELECT, WALL_EDIT);
+				}
+				prog->features[F_REDRAW] = 1;
+			}
+		}
+	}
+	else if (state == WALL_EDIT)
+	{
+
+	}
+
+
 	if (prog->button_on == DRAW_BUTTON) // draw mode
 	{
 		if ((prog->click.x || prog->click.y) && mouse_over(grid->box, sdl->mouse))
@@ -187,14 +263,10 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 	{
 		move_vector(prog, sdl->mouse, grid, &media->worlds[world_id]);
 	}
-	else if (prog->button_on == DRAG_BUTTON) // view mode
-	{
-		if (prog->click.x || prog->click.y)
-			move_grid_drag(prog, sdl->mouse, grid);
-	}
+	else if (prog->button_on == DRAG_BUTTON && (prog->click.x || prog->click.y)) // view mode
+		move_grid_drag(prog, sdl->mouse, grid);
 	else if (prog->button_on == DELETE_BUTTON) // delete mode
 	{
-
 		if (prog->click.x || prog->click.y)
 		{
 			if (mouse_over(grid->box, sdl->mouse))
@@ -214,10 +286,6 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 	}
 	else if (prog->button_on == SECTOR_BUTTON && s == -1) // sector mode
 	{
-
-
-
-
 		int k;
 		if (s == -1)
 		{
@@ -231,10 +299,7 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 			{
 				s = k;
 				grid->active[0].y = s;
-
-
-				selected_item(0, S_SELECT, k);
-                clean_grid(grid);
+				clean_grid(grid);
                 fill_grid(media->worlds[world_id].n_vectors, media->worlds[world_id].vertices, grid);
 
                 zoom_to_sector(&media->worlds[media->world_id].sectors[s], media->worlds[media->world_id].vertices, grid, prog);
@@ -381,17 +446,17 @@ int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 					}
                     return (quit);
                 }
-				if (prog->button_lit == WALL_BUTTON)
-				{
-					prog->features[F_REDRAW] = 1;
-					prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
-					prog->last_mode_id = prog->mode_id;
-					prog->mode_id = MODE_WALLS;
-					prog->button_lit = -1;
-					prog->button_on = -1;
-                    prog->click = (t_vec2d){ 0, 0 };
-					return (quit);
-				}
+//				if (prog->button_lit == WALL_BUTTON)
+//				{
+//					prog->features[F_REDRAW] = 1;
+//					prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
+//					prog->last_mode_id = prog->mode_id;
+//					prog->mode_id = MODE_WALLS;
+//					prog->button_lit = -1;
+//					prog->button_on = -1;
+//                    prog->click = (t_vec2d){ 0, 0 };
+//					return (quit);
+//				}
                 prog->click = (t_vec2d){ 0, 0 };
 			}
 		}

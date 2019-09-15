@@ -56,7 +56,7 @@ sys/types.h
 ./libft/libft.h
 /home/moosh/CLionProjects/builder/./libft/libft.h
 
-/home/moosh/CLionProjects/builder/render_grid.c
+/home/moosh/CLionProjects/builder/main.c
 builder.h
 /home/moosh/CLionProjects/builder/builder.h
 

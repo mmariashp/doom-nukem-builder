@@ -2269,6 +2269,33 @@ modes.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/modes.c.s
 .PHONY : modes.c.s
 
+move.o: move.c.o
+
+.PHONY : move.o
+
+# target to build an object file
+move.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/move.c.o
+.PHONY : move.c.o
+
+move.i: move.c.i
+
+.PHONY : move.i
+
+# target to preprocess a source file
+move.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/move.c.i
+.PHONY : move.c.i
+
+move.s: move.c.s
+
+.PHONY : move.s
+
+# target to generate assembly for a file
+move.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/move.c.s
+.PHONY : move.c.s
+
 prog.o: prog.c.o
 
 .PHONY : prog.o
@@ -2786,6 +2813,9 @@ help:
 	@echo "... modes.o"
 	@echo "... modes.i"
 	@echo "... modes.s"
+	@echo "... move.o"
+	@echo "... move.i"
+	@echo "... move.s"
 	@echo "... prog.o"
 	@echo "... prog.i"
 	@echo "... prog.s"

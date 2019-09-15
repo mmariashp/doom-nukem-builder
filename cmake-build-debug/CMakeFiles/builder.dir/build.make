@@ -200,9 +200,22 @@ CMakeFiles/builder.dir/modes.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/modes.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/modes.c -o CMakeFiles/builder.dir/modes.c.s
 
+CMakeFiles/builder.dir/move.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/move.c.o: ../move.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/builder.dir/move.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/move.c.o   -c /home/moosh/CLionProjects/builder/move.c
+
+CMakeFiles/builder.dir/move.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/move.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/move.c > CMakeFiles/builder.dir/move.c.i
+
+CMakeFiles/builder.dir/move.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/move.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/move.c -o CMakeFiles/builder.dir/move.c.s
+
 CMakeFiles/builder.dir/prog.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/prog.c.o: ../prog.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/builder.dir/prog.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/builder.dir/prog.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/prog.c.o   -c /home/moosh/CLionProjects/builder/prog.c
 
 CMakeFiles/builder.dir/prog.c.i: cmake_force
@@ -215,7 +228,7 @@ CMakeFiles/builder.dir/prog.c.s: cmake_force
 
 CMakeFiles/builder.dir/render.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/render.c.o: ../render.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/builder.dir/render.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/builder.dir/render.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/render.c.o   -c /home/moosh/CLionProjects/builder/render.c
 
 CMakeFiles/builder.dir/render.c.i: cmake_force
@@ -228,7 +241,7 @@ CMakeFiles/builder.dir/render.c.s: cmake_force
 
 CMakeFiles/builder.dir/render_grid.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/render_grid.c.o: ../render_grid.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/builder.dir/render_grid.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/builder.dir/render_grid.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/render_grid.c.o   -c /home/moosh/CLionProjects/builder/render_grid.c
 
 CMakeFiles/builder.dir/render_grid.c.i: cmake_force
@@ -241,7 +254,7 @@ CMakeFiles/builder.dir/render_grid.c.s: cmake_force
 
 CMakeFiles/builder.dir/rewrite.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/rewrite.c.o: ../rewrite.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/builder.dir/rewrite.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/builder.dir/rewrite.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/rewrite.c.o   -c /home/moosh/CLionProjects/builder/rewrite.c
 
 CMakeFiles/builder.dir/rewrite.c.i: cmake_force
@@ -254,7 +267,7 @@ CMakeFiles/builder.dir/rewrite.c.s: cmake_force
 
 CMakeFiles/builder.dir/sdl_fun.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/sdl_fun.c.o: ../sdl_fun.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/builder.dir/sdl_fun.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/builder.dir/sdl_fun.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/sdl_fun.c.o   -c /home/moosh/CLionProjects/builder/sdl_fun.c
 
 CMakeFiles/builder.dir/sdl_fun.c.i: cmake_force
@@ -267,7 +280,7 @@ CMakeFiles/builder.dir/sdl_fun.c.s: cmake_force
 
 CMakeFiles/builder.dir/summary.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/summary.c.o: ../summary.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/builder.dir/summary.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/builder.dir/summary.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/summary.c.o   -c /home/moosh/CLionProjects/builder/summary.c
 
 CMakeFiles/builder.dir/summary.c.i: cmake_force
@@ -280,7 +293,7 @@ CMakeFiles/builder.dir/summary.c.s: cmake_force
 
 CMakeFiles/builder.dir/textures.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/textures.c.o: ../textures.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/builder.dir/textures.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/builder.dir/textures.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/textures.c.o   -c /home/moosh/CLionProjects/builder/textures.c
 
 CMakeFiles/builder.dir/textures.c.i: cmake_force
@@ -293,7 +306,7 @@ CMakeFiles/builder.dir/textures.c.s: cmake_force
 
 CMakeFiles/builder.dir/useful.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/useful.c.o: ../useful.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/builder.dir/useful.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/builder.dir/useful.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/useful.c.o   -c /home/moosh/CLionProjects/builder/useful.c
 
 CMakeFiles/builder.dir/useful.c.i: cmake_force
@@ -306,7 +319,7 @@ CMakeFiles/builder.dir/useful.c.s: cmake_force
 
 CMakeFiles/builder.dir/walls.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/walls.c.o: ../walls.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/builder.dir/walls.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/builder.dir/walls.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/walls.c.o   -c /home/moosh/CLionProjects/builder/walls.c
 
 CMakeFiles/builder.dir/walls.c.i: cmake_force
@@ -319,7 +332,7 @@ CMakeFiles/builder.dir/walls.c.s: cmake_force
 
 CMakeFiles/builder.dir/zoom.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/zoom.c.o: ../zoom.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/builder.dir/zoom.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/builder.dir/zoom.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/zoom.c.o   -c /home/moosh/CLionProjects/builder/zoom.c
 
 CMakeFiles/builder.dir/zoom.c.i: cmake_force
@@ -343,6 +356,7 @@ builder_OBJECTS = \
 "CMakeFiles/builder.dir/main_menu.c.o" \
 "CMakeFiles/builder.dir/math.c.o" \
 "CMakeFiles/builder.dir/modes.c.o" \
+"CMakeFiles/builder.dir/move.c.o" \
 "CMakeFiles/builder.dir/prog.c.o" \
 "CMakeFiles/builder.dir/render.c.o" \
 "CMakeFiles/builder.dir/render_grid.c.o" \
@@ -368,6 +382,7 @@ builder: CMakeFiles/builder.dir/main.c.o
 builder: CMakeFiles/builder.dir/main_menu.c.o
 builder: CMakeFiles/builder.dir/math.c.o
 builder: CMakeFiles/builder.dir/modes.c.o
+builder: CMakeFiles/builder.dir/move.c.o
 builder: CMakeFiles/builder.dir/prog.c.o
 builder: CMakeFiles/builder.dir/render.c.o
 builder: CMakeFiles/builder.dir/render_grid.c.o
@@ -384,7 +399,7 @@ builder: /usr/lib/x86_64-linux-gnu/libSDL2.so
 builder: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
 builder: /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
 builder: CMakeFiles/builder.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking C executable builder"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Linking C executable builder"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/builder.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

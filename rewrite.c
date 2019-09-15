@@ -205,13 +205,13 @@ unsigned short			write_assets(int fd, t_media *media)
 	return (SUCCESS);
 }
 
-void					rewrite_levels(t_media *media)
+unsigned short			rewrite_levels(t_media *media)
 {
 	int					fd;
 	int 				i;
 
-	if (!media)
-		return ;
+	if (!media || !media->worlds)
+		return (FAIL);
 	i = -1;
 	while (++i < media->n_worlds)
 	{
@@ -219,39 +219,40 @@ void					rewrite_levels(t_media *media)
 		{
 			ft_putstr("Couldn't open the file for writing: ");
 			ft_putendl(media->worlds[i].full_path);
-			return ;
+			return (FAIL);
 		}
 		if (write_level(fd, media->worlds[i]) == FAIL)
 		{
 			ft_putendl("error in saving progress\n");
-			return ;
+			return (FAIL);
 		}
 		if (close_file(fd) == FAIL)
 		{
 			ft_putstr("Couldn't close the file: ");
 			ft_putendl(media->worlds[i].full_path);
-			return ;
+			return (FAIL);
 		}
 	}
+	return (SUCCESS);
 }
 
-void					rewrite_media(t_media *media)
+unsigned short			rewrite_media(t_media *media)
 {
 	int					fd;
 
 	if (!media)
-		return ;
+		return (FAIL);
 	if (open_for_write(ASSET_FILE, &fd) == FAIL)
 	{
 		ft_putstr("Couldn't open the file for writing");
 		ft_putstr(ASSET_FILE);
 		ft_putstr(". Must be in the root folder and have write permissions.\n");
-		return ;
+		return (FAIL);
 	}
 	if (write_assets(fd, media) == FAIL)
 	{
 		ft_putendl("error in writing assets\n");
-		return ;
+		return (FAIL);
 	}
 	ft_putendl("Wrote assets\n");
 	if (close_file(fd) == FAIL)
@@ -259,7 +260,9 @@ void					rewrite_media(t_media *media)
 		ft_putstr("Couldn't close the file");
 		ft_putstr(ASSET_FILE);
 		ft_putstr(".\n");
-		return ;
+		return (FAIL);
 	}
 	rewrite_levels(media);
+	return (SUCCESS);
 }
+

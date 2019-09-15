@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/main_menu.c.o"
   "CMakeFiles/builder.dir/math.c.o"
   "CMakeFiles/builder.dir/modes.c.o"
+  "CMakeFiles/builder.dir/move.c.o"
   "CMakeFiles/builder.dir/prog.c.o"
   "CMakeFiles/builder.dir/render.c.o"
   "CMakeFiles/builder.dir/render_grid.c.o"

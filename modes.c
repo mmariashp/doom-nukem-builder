@@ -351,11 +351,11 @@ unsigned short			walls_buttons(t_button *buttons, int n_buttons, t_sdl *sdl)
     buttons[W_DOOR_BUTTON].front =          buttons[WT_BUTTON].front;
     buttons[W_DOOR_BUTTON].lit =            buttons[WT_BUTTON].lit;
 
-    box = sector_menu(0, 0);
+    box = layout_menu(0, 0);
     buttons[W_DESELECT_BUTTON].box =  (t_rec){ box.x + box.w,         box.y,          30, 30 };
-    buttons[WT_BUTTON].box = sector_menu(6, 0);
-    buttons[W_PORTAL_BUTTON].box = sector_menu(6, 1);
-    buttons[W_DOOR_BUTTON].box = sector_menu(6, 2);
+    buttons[WT_BUTTON].box = layout_menu(6, 0);
+    buttons[W_PORTAL_BUTTON].box = layout_menu(6, 1);
+    buttons[W_DOOR_BUTTON].box = layout_menu(6, 2);
 
     buttons[W_DESELECT_BUTTON].vis_lit_on[0] = FALSE;
     buttons[WT_BUTTON].vis_lit_on[0] = FALSE;
@@ -428,14 +428,14 @@ unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
     buttons[CT_EDIT_BUTTON].vis_lit_on[0] = FALSE;
 
 
-	box = sector_menu(0, 0);
+	box = layout_menu(0, 0);
 	buttons[DESELECT_SEC_BUTTON].box =  (t_rec){ box.x + box.w,         box.y,          30, 30 };
-    buttons[F_UP_BUTTON].box = sector_menu(3, 0);
-    buttons[F_DOWN_BUTTON].box = sector_menu(4, 0);
-    buttons[C_UP_BUTTON].box = sector_menu(3, 1);
-    buttons[C_DOWN_BUTTON].box = sector_menu(4, 1);
-    buttons[FT_EDIT_BUTTON].box = sector_menu(6, 2);
-    buttons[CT_EDIT_BUTTON].box = sector_menu(6, 3);
+    buttons[F_UP_BUTTON].box = layout_menu(3, 0);
+    buttons[F_DOWN_BUTTON].box = layout_menu(4, 0);
+    buttons[C_UP_BUTTON].box = layout_menu(3, 1);
+    buttons[C_DOWN_BUTTON].box = layout_menu(4, 1);
+    buttons[FT_EDIT_BUTTON].box = layout_menu(6, 2);
+    buttons[CT_EDIT_BUTTON].box = layout_menu(6, 3);
 
 	return (SUCCESS);
 }

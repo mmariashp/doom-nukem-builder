@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/moosh/CLionProjects/builder/main_menu.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/main_menu.c.o"
   "/home/moosh/CLionProjects/builder/math.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/math.c.o"
   "/home/moosh/CLionProjects/builder/modes.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/modes.c.o"
+  "/home/moosh/CLionProjects/builder/move.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/move.c.o"
   "/home/moosh/CLionProjects/builder/prog.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/prog.c.o"
   "/home/moosh/CLionProjects/builder/render.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/render.c.o"
   "/home/moosh/CLionProjects/builder/render_grid.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/render_grid.c.o"

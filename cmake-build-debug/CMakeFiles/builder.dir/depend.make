@@ -55,6 +55,11 @@ CMakeFiles/builder.dir/modes.c.o: ../builder.h
 CMakeFiles/builder.dir/modes.c.o: ../get_next_line.h
 CMakeFiles/builder.dir/modes.c.o: ../modes.c
 
+CMakeFiles/builder.dir/move.c.o: .././libft/libft.h
+CMakeFiles/builder.dir/move.c.o: ../builder.h
+CMakeFiles/builder.dir/move.c.o: ../get_next_line.h
+CMakeFiles/builder.dir/move.c.o: ../move.c
+
 CMakeFiles/builder.dir/prog.c.o: .././libft/libft.h
 CMakeFiles/builder.dir/prog.c.o: ../builder.h
 CMakeFiles/builder.dir/prog.c.o: ../get_next_line.h

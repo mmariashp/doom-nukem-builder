@@ -361,6 +361,9 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/modes.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/move.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/prog.c">
 			<Option target="builder"/>
 		</Unit>

@@ -55,6 +55,11 @@ CMakeFiles/builder.dir/modes.c.o
  /home/moosh/CLionProjects/builder/builder.h
  /home/moosh/CLionProjects/builder/get_next_line.h
  /home/moosh/CLionProjects/builder/modes.c
+CMakeFiles/builder.dir/move.c.o
+ /home/moosh/CLionProjects/builder/./libft/libft.h
+ /home/moosh/CLionProjects/builder/builder.h
+ /home/moosh/CLionProjects/builder/get_next_line.h
+ /home/moosh/CLionProjects/builder/move.c
 CMakeFiles/builder.dir/prog.c.o
  /home/moosh/CLionProjects/builder/./libft/libft.h
  /home/moosh/CLionProjects/builder/builder.h

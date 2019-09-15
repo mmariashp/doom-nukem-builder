@@ -115,8 +115,8 @@ void					render_wall_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_wall *wall
         return ;
     back = button_back(2, 1, sdl);
     title = button_back(0, 1, sdl);
-    box = sector_menu(0, 0);
-    title_box = sector_menu(1, 0);
+    box = layout_menu(0, 0);
+    title_box = layout_menu(1, 0);
 
     rect = (SDL_Rect){ box.x, box.y, box.w, box.h };
     SDL_RenderCopy(sdl->rend, back, NULL, &rect);
@@ -128,14 +128,14 @@ void					render_wall_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_wall *wall
     if (str)
         free(str);
     title = button_back(1, 1, sdl);
-    title_box = sector_menu(2, i);
+    title_box = layout_menu(2, i);
     rect = (SDL_Rect){ title_box.x, title_box.y, title_box.w, title_box.h };
     int k;
     k = media->worlds[media->world_id].textures[value[0]];
 
     while (i < n)
     {
-        title_box = sector_menu(2, i);
+        title_box = layout_menu(2, i);
 
         if (i != 2 || value[1] == WALL_EMPTY)
         {
@@ -143,7 +143,7 @@ void					render_wall_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_wall *wall
             SDL_RenderCopy(sdl->rend, title, NULL, &rect);
             write_text(line[i], sdl, title_box, text_color, FALSE);
         }
-        title_box = sector_menu(5, i);
+        title_box = layout_menu(5, i);
         if (i == 0 && k >= 0 && k < media->n_textures && media->txtrs[k].sdl_t)
         {
            SDL_Rect rect2 = (SDL_Rect){ title_box.x, title_box.y, title_box.h, title_box.h };

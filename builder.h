@@ -272,6 +272,10 @@ typedef struct 					s_button
 // states
 # define SECTOR_SEARCH			0
 # define SECTOR_EDIT			1
+# define VECTOR_SEARCH			2
+# define VECTOR_EDIT			3
+# define WALL_SEARCH			4
+# define WALL_EDIT				5
 
 typedef struct					s_sdl
 {
@@ -431,7 +435,8 @@ int                     get_min(int one, int two);
 t_media					*get_assets(void);
 unsigned 				close_file(int fd);
 void					free_media(t_media *media);
-void					rewrite_media(t_media *media);
+unsigned short			rewrite_media(t_media *media);
+unsigned short			rewrite_levels(t_media *media);
 
 void					draw_dot(int x, int y, int color, SDL_Renderer *rend);
 void					draw_circle_fill(t_vec2d c, int radius, int color, SDL_Renderer *rend);
@@ -504,8 +509,8 @@ t_vec2d                 make_iso(int x, int y, int z);
 
 void                    zoom_to_map(int n_vectors, t_vec2d *v, t_grid *grid);
 
-t_rec                   sector_menu(char i, char n);
-void					render_sector_menu(t_sdl *sdl, t_grid *grid, t_sector *sector, t_media *media);
+t_rec                   layout_menu(char i, char n);
+void					render_edit_menu(t_sdl *sdl, t_grid *grid, t_media *media);
 
 int                      texture_in_world(int id, t_world world);
 int					    *realloc_textures(int *textures, int n);
@@ -517,5 +522,7 @@ unsigned short			is_within_excl(int value, int min, int max);
 unsigned short			is_within_incl(int value, int min, int max);
 int 					selected_item(char set_get_unset, unsigned short id, int value);
 int 					lit_item(char set_get_unset, unsigned short id, int value);
+
+char 					*menu_lines(int id, int i);
 
 #endif
