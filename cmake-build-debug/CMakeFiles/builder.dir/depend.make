@@ -11,6 +11,11 @@ CMakeFiles/builder.dir/buttons.c.o: ../builder.h
 CMakeFiles/builder.dir/buttons.c.o: ../buttons.c
 CMakeFiles/builder.dir/buttons.c.o: ../get_next_line.h
 
+CMakeFiles/builder.dir/edit_menu.c.o: .././libft/libft.h
+CMakeFiles/builder.dir/edit_menu.c.o: ../builder.h
+CMakeFiles/builder.dir/edit_menu.c.o: ../edit_menu.c
+CMakeFiles/builder.dir/edit_menu.c.o: ../get_next_line.h
+
 CMakeFiles/builder.dir/editor.c.o: .././libft/libft.h
 CMakeFiles/builder.dir/editor.c.o: ../builder.h
 CMakeFiles/builder.dir/editor.c.o: ../editor.c
@@ -20,6 +25,11 @@ CMakeFiles/builder.dir/fill_polygon.c.o: .././libft/libft.h
 CMakeFiles/builder.dir/fill_polygon.c.o: ../builder.h
 CMakeFiles/builder.dir/fill_polygon.c.o: ../fill_polygon.c
 CMakeFiles/builder.dir/fill_polygon.c.o: ../get_next_line.h
+
+CMakeFiles/builder.dir/font.c.o: .././libft/libft.h
+CMakeFiles/builder.dir/font.c.o: ../builder.h
+CMakeFiles/builder.dir/font.c.o: ../font.c
+CMakeFiles/builder.dir/font.c.o: ../get_next_line.h
 
 CMakeFiles/builder.dir/get_assets.c.o: .././libft/libft.h
 CMakeFiles/builder.dir/get_assets.c.o: ../builder.h
@@ -99,6 +109,11 @@ CMakeFiles/builder.dir/useful.c.o: .././libft/libft.h
 CMakeFiles/builder.dir/useful.c.o: ../builder.h
 CMakeFiles/builder.dir/useful.c.o: ../get_next_line.h
 CMakeFiles/builder.dir/useful.c.o: ../useful.c
+
+CMakeFiles/builder.dir/values.c.o: .././libft/libft.h
+CMakeFiles/builder.dir/values.c.o: ../builder.h
+CMakeFiles/builder.dir/values.c.o: ../get_next_line.h
+CMakeFiles/builder.dir/values.c.o: ../values.c
 
 CMakeFiles/builder.dir/walls.c.o: .././libft/libft.h
 CMakeFiles/builder.dir/walls.c.o: ../builder.h

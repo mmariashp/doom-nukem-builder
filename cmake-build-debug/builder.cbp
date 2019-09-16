@@ -127,10 +127,16 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/buttons.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/edit_menu.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/editor.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/fill_polygon.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/font.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/get_assets.c">
@@ -386,6 +392,9 @@
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/useful.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/values.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/walls.c">

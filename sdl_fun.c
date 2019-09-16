@@ -41,13 +41,6 @@ void					free_sdl(t_sdl *sdl)
 		ft_putendl("destroyed window");
 
 	}
-	if (sdl->font)
-	{
-		TTF_CloseFont( sdl->font );
-		sdl->font = NULL;
-		ft_putendl("closed font");
-
-	}
 	free(sdl);
 	ft_putendl("out of free sdl");
 	quit_sdl();
@@ -103,8 +96,6 @@ int						start_sdl(t_sdl *sdl)
 		return(FAIL);
 	if (!(sdl->rend = SDL_CreateRenderer(sdl->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)))
 		return(FAIL);
-	if (!(sdl->font = TTF_OpenFont( FONT_NAME, 30 )))
-		return (FAIL);
 	printf("out of start sdl\n");
 	return (SUCCESS);
 }

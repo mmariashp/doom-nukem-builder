@@ -213,12 +213,12 @@ int 					get_wall_type(char c)
 	return (-1);
 }
 
-unsigned				get_fl_ceil(char *line, int *level, short *txtr, unsigned short max_txtr)
+unsigned				get_fl_ceil(char *line, int *h, short *txtr, unsigned short max_txtr)
 {
 	unsigned short		level_found;
 	int 				tmp;
 
-	if (!line || !level || !txtr)
+	if (!line || !h || !txtr)
 		return (FAIL);
 	level_found = FALSE;
 	while (*line)
@@ -227,8 +227,10 @@ unsigned				get_fl_ceil(char *line, int *level, short *txtr, unsigned short max_
 		{
 			if (level_found == FALSE)
 			{
-				*level = clamp(ft_atoi(line), MIN_HEIGHT, MAX_HEIGHT);
+				*h = clamp(ft_atoi(line), MIN_HEIGHT, MAX_HEIGHT);
 				level_found = TRUE;
+				if (*line == '-')
+					line++;
 				while (*line && ft_isdigit(*line))
 					line++;
 				continue ;
@@ -496,7 +498,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 			p.y = ft_atoi(line);
 		}
 	}
-	if (status == R_TEXTURES && t_count < world->n_textures)
+	if (status == R_TEXTURES && t_count < world->n_txtrs)
 	{
 		world->textures[t_count] = p.x;
 		t_count++;
@@ -515,7 +517,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 			p.y < MIN_VERTEX_ID || p.y > MAX_VERTEX_ID || p.y > (int)v_count) {
 			return (FAIL);
 		}
-		get_walls(&world->walls[w_count], line, p, world->n_textures);
+		get_walls(&world->walls[w_count], line, p, world->n_txtrs);
 		if (*line == '\0' || world->walls[w_count].type == -1)
 		{
 			ft_putstr("Incorrect wall type for wall ");
@@ -532,18 +534,18 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		}
 		w_count++;
 	}
-	if (status == R_SECTORS && s_count < world->n_sectors)
+	if (status == R_SECTORS && s_count < world->n_sec)
 	{
-		world->sectors[s_count].sec_walls = NULL;
-		world->sectors[s_count].v = NULL;
-		world->sectors[s_count].floor = 0;
-		world->sectors[s_count].ceiling = 0;
-		world->sectors[s_count].floor_txtr = 0;
-		world->sectors[s_count].ceil_txtr = 0;
-		world->sectors[s_count].n_walls = 0;
-        world->sectors[s_count].n_v = 0;
-		world->sectors[s_count].status = 0;
-		if (get_sector_fl_ceil(&world->sectors[s_count], line, world->n_textures) == FAIL)
+		world->sec[s_count].sec_walls = NULL;
+		world->sec[s_count].v = NULL;
+		world->sec[s_count].floor = 0;
+		world->sec[s_count].ceiling = 0;
+		world->sec[s_count].floor_txtr = 0;
+		world->sec[s_count].ceil_txtr = 0;
+		world->sec[s_count].n_walls = 0;
+        world->sec[s_count].n_v = 0;
+		world->sec[s_count].status = 0;
+		if (get_sector_fl_ceil(&world->sec[s_count], line, world->n_txtrs) == FAIL)
 		{
 			ft_putstr("Incorrect floor or ceiling for sector ");
 			ft_putnbr(s_count);
@@ -553,7 +555,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		line = ft_strchr(line, 'w');
 		if (!line)
 			return (FAIL);
-		if (get_sector_walls(&world->sectors[s_count], line) == FAIL)
+		if (get_sector_walls(&world->sec[s_count], line) == FAIL)
 		{
 			ft_putstr("Incorrect walls for sector ");
 			ft_putnbr(s_count);
@@ -591,7 +593,7 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 	ft_strcpy(tab, "0VWSPT");
 	world->walls = NULL;
 	world->vertices = NULL;
-	world->sectors = NULL;
+	world->sec = NULL;
 	world->textures = NULL;
 	line = NULL;
 	while ((ret = get_next_line(fd, &(line))) == 1)
@@ -615,17 +617,17 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 		}
 		else if (i == 2)
 		{
-			if (!(world->n_sectors = get_n(line, MIN_N_SECTORS, MAX_N_SECTORS)))
+			if (!(world->n_sec = get_n(line, MIN_N_SECTORS, MAX_N_SECTORS)))
 				return (FAIL);
-			if (!(world->sectors = (t_sector *)malloc(sizeof(t_sector) * world->n_sectors)))
+			if (!(world->sec = (t_sector *)malloc(sizeof(t_sector) * world->n_sec)))
 				return (FAIL);
-			ft_bzero(world->sectors, sizeof(world->sectors));
+			ft_bzero(world->sec, sizeof(world->sec));
 		}
 		else if (i == 3)
 		{
-			if (!(world->n_textures = get_n(line, MIN_N_TEXTURES, MAX_N_TEXTURES)))
+			if (!(world->n_txtrs = get_n(line, MIN_n_txtrs, MAX_n_txtrs)))
 				return (FAIL);
-			if (!(world->textures = (int *)malloc(sizeof(int) * world->n_textures)))
+			if (!(world->textures = (int *)malloc(sizeof(int) * world->n_txtrs)))
 				return (FAIL);
 			ft_bzero(world->textures, sizeof(world->textures));
 		}
@@ -660,9 +662,9 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 		free(line);
 	line = NULL;
 	i = 0;
-	while (i < world->n_sectors)
+	while (i < world->n_sec)
 	{
-		get_sector_v(&world->sectors[i++], world->walls);
+		get_sector_v(&world->sec[i++], world->walls);
 	}
 	return (SUCCESS);
 }
@@ -743,7 +745,7 @@ unsigned				read_textures(t_media *media, t_section *section)
 	i = 0;
 	if (!(media->txtrs = (t_texture *)ft_memalloc(sizeof(t_texture) * section->n_files)))
 		return (FAIL);
-	media->n_textures = section->n_files;
+	media->n_txtrs = section->n_files;
 	ft_bzero(media->txtrs, sizeof(media->txtrs));
 	while (i < section->n_files)
 	{
@@ -810,13 +812,13 @@ unsigned				read_levels(t_media *media, t_section *section)
 		media->worlds[i].full_path = ft_strdup(section->tab[i]);
 		media->worlds[i].filename = ft_strdup(section->names[i]);
 		media->worlds[i].textures = NULL;
-		media->worlds[i].sectors = NULL;
+		media->worlds[i].sec = NULL;
 		media->worlds[i].walls = NULL;
 		media->worlds[i].vertices = NULL;
-		media->worlds[i].n_sectors = 0;
+		media->worlds[i].n_sec = 0;
 		media->worlds[i].n_vectors = 0;
 		media->worlds[i].n_walls = 0;
-		media->worlds[i].n_textures = 0;
+		media->worlds[i].n_txtrs = 0;
 		printf("NAME %s\n", media->worlds[i].filename);
 		if (get_map(&media->worlds[i], i) == FAIL)
 		{
@@ -877,12 +879,12 @@ void					free_media(t_media *media)
 				free(media->worlds[j].filename);
 			if (media->worlds[j].full_path)
 				free(media->worlds[j].full_path);
-			if (media->worlds[j].sectors)
+			if (media->worlds[j].sec)
 			{
 				i = 0;
-				while (i < media->worlds[j].n_sectors)
-					free_sector(&media->worlds[j].sectors[i++]);
-				free(media->worlds[j].sectors);
+				while (i < media->worlds[j].n_sec)
+					free_sector(&media->worlds[j].sec[i++]);
+				free(media->worlds[j].sec);
 			}
 			if (media->worlds[j].vertices)
 				free(media->worlds[j].vertices);
@@ -897,7 +899,7 @@ void					free_media(t_media *media)
 	if (media->txtrs)
 	{
 		i = 0;
-		while (i < media->n_textures)
+		while (i < media->n_txtrs)
 		{
 			if (media->txtrs[i].full_path)
 				free(media->txtrs[i].full_path);
@@ -956,7 +958,7 @@ void					init_media(t_media *media)
 	media->sounds = NULL;
 	media->worlds = NULL;
 	media->n_worlds = 0;
-	media->n_textures = 0;
+	media->n_txtrs = 0;
 	media->n_fonts = 0;
 	media->n_sounds = 0;
 }

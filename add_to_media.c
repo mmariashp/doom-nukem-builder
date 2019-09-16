@@ -20,7 +20,7 @@ t_world					*realloc_worlds(t_world *world, int n)
 	return (new);
 }
 
-t_sector				*realloc_sectors(t_sector *sectors, int n)
+t_sector				*realloc_sec(t_sector *sec, int n)
 {
 	t_sector			*new;
 	int					j;
@@ -32,10 +32,10 @@ t_sector				*realloc_sectors(t_sector *sectors, int n)
 		return (NULL);
 	while (j < n - 1)
 	{
-		new[j] = sectors[j];
+		new[j] = sec[j];
 		j++;
 	}
-	free(sectors);
+	free(sec);
 	return (new);
 }
 
@@ -138,18 +138,18 @@ unsigned short			add_sector_v(int **v, short n_v, int id)
 	return (SUCCESS);
 }
 
-unsigned short			add_sector(t_sector **sectors, short n_sectors)
+unsigned short			add_sector(t_sector **sec, short n_sec)
 {
-	*sectors = realloc_sectors(*sectors, n_sectors + 1);
-	if (!*sectors)
+	*sec = realloc_sec(*sec, n_sec + 1);
+	if (!*sec)
 		return (FAIL);
-	(*sectors)[n_sectors].sec_walls = NULL;
-	(*sectors)[n_sectors].floor = 0;
-	(*sectors)[n_sectors].ceiling = 0;
-	(*sectors)[n_sectors].floor_txtr = 0;
-	(*sectors)[n_sectors].ceil_txtr = 0;
-	(*sectors)[n_sectors].n_walls = 0;
-    (*sectors)[n_sectors].n_v = 0;
+	(*sec)[n_sec].sec_walls = NULL;
+	(*sec)[n_sec].floor = 0;
+	(*sec)[n_sec].ceiling = 0;
+	(*sec)[n_sec].floor_txtr = 0;
+	(*sec)[n_sec].ceil_txtr = 0;
+	(*sec)[n_sec].n_walls = 0;
+    (*sec)[n_sec].n_v = 0;
 	return (SUCCESS);
 }
 
@@ -186,9 +186,9 @@ unsigned short			add_world(t_world **worlds, short n_worlds)
 	(*worlds)[n_worlds].filename = ft_strdup(ft_strjoin("new_level_", ft_itoa(i)));
 	(*worlds)[n_worlds].full_path = ft_strdup(ft_strjoin("./media/maps/", (*worlds)[n_worlds].filename));
 	(*worlds)[n_worlds].textures = NULL;
-	(*worlds)[n_worlds].n_textures = 0;
-	(*worlds)[n_worlds].sectors = NULL;
-	(*worlds)[n_worlds].n_sectors = 0;
+	(*worlds)[n_worlds].n_txtrs = 0;
+	(*worlds)[n_worlds].sec = NULL;
+	(*worlds)[n_worlds].n_sec = 0;
 	(*worlds)[n_worlds].walls = NULL;
 	(*worlds)[n_worlds].n_walls = 0;
 	(*worlds)[n_worlds].vertices = NULL;
@@ -223,12 +223,12 @@ void					add_to_media(t_grid *grid, t_media *media)
 				return ;
 			id = media->worlds[media->world_id].n_vectors++;
 		}
-		if (add_sector(&media->worlds[media->world_id].sectors, media->worlds[media->world_id].n_sectors) == FAIL)
+		if (add_sector(&media->worlds[media->world_id].sec, media->worlds[media->world_id].n_sec) == FAIL)
 			return ;
-		sector = media->worlds[media->world_id].n_sectors++;
-		if (add_sector_v(&media->worlds[media->world_id].sectors[sector].v, media->worlds[media->world_id].sectors[sector].n_v, id) == FAIL)
+		sector = media->worlds[media->world_id].n_sec++;
+		if (add_sector_v(&media->worlds[media->world_id].sec[sector].v, media->worlds[media->world_id].sec[sector].n_v, id) == FAIL)
 			return ;
-        media->worlds[media->world_id].sectors[sector].n_v++;
+        media->worlds[media->world_id].sec[sector].n_v++;
 		last_id = id;
 		first_vector = id;
 	}
@@ -256,12 +256,12 @@ void					add_to_media(t_grid *grid, t_media *media)
 				return ;
 			wall = media->worlds[media->world_id].n_walls++;
 		}
-		if (add_secwall(&media->worlds[media->world_id].sectors[sector].sec_walls, media->worlds[media->world_id].sectors[sector].n_walls, wall) == FAIL)
+		if (add_secwall(&media->worlds[media->world_id].sec[sector].sec_walls, media->worlds[media->world_id].sec[sector].n_walls, wall) == FAIL)
 			return ;
-		media->worlds[media->world_id].sectors[sector].n_walls++;
-		if (add_sector_v(&media->worlds[media->world_id].sectors[sector].v, media->worlds[media->world_id].sectors[sector].n_v, id) == FAIL)
+		media->worlds[media->world_id].sec[sector].n_walls++;
+		if (add_sector_v(&media->worlds[media->world_id].sec[sector].v, media->worlds[media->world_id].sec[sector].n_v, id) == FAIL)
 			return ;
-        media->worlds[media->world_id].sectors[sector].n_v++;
+        media->worlds[media->world_id].sec[sector].n_v++;
 		grid->active[0] = grid->active[1];
 		grid->active[1] = (t_vec2d){ -1, -1 };
 		last_id = id;

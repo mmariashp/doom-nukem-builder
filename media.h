@@ -32,8 +32,8 @@
 # define MIN_N_SECTORS			1
 # define MAX_N_SECTORS			50
 
-# define MIN_N_TEXTURES			1
-# define MAX_N_TEXTURES			50
+# define MIN_n_txtrs			1
+# define MAX_n_txtrs			50
 
 # define MIN_HEIGHT				-100
 # define MAX_HEIGHT				100
@@ -95,15 +95,15 @@ typedef struct					s_world
 	char 						*filename;
 	char 						*full_path;
 	int							*textures;
-	t_sector					*sectors;
+	t_sector					*sec;
 	t_wall						*walls;
 	t_vec2d						*vertices;
 	t_vec2d						p_start;
 	t_vec2d						p_end;
-	short unsigned				n_sectors;
+	short unsigned				n_sec;
 	short unsigned				n_vectors;
 	short unsigned				n_walls;
-	short unsigned				n_textures;
+	short unsigned				n_txtrs;
 }								t_world;
 
 typedef struct 					s_section
@@ -123,7 +123,7 @@ typedef struct 					s_media
 	char						**sounds;
 	t_world						*worlds;
 	short unsigned				n_worlds;
-	short unsigned				n_textures;
+	short unsigned				n_txtrs;
 	short unsigned				n_fonts;
 	short unsigned				n_sounds;
 }								t_media;

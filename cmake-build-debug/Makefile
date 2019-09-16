@@ -190,6 +190,33 @@ buttons.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/buttons.c.s
 .PHONY : buttons.c.s
 
+edit_menu.o: edit_menu.c.o
+
+.PHONY : edit_menu.o
+
+# target to build an object file
+edit_menu.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/edit_menu.c.o
+.PHONY : edit_menu.c.o
+
+edit_menu.i: edit_menu.c.i
+
+.PHONY : edit_menu.i
+
+# target to preprocess a source file
+edit_menu.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/edit_menu.c.i
+.PHONY : edit_menu.c.i
+
+edit_menu.s: edit_menu.c.s
+
+.PHONY : edit_menu.s
+
+# target to generate assembly for a file
+edit_menu.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/edit_menu.c.s
+.PHONY : edit_menu.c.s
+
 editor.o: editor.c.o
 
 .PHONY : editor.o
@@ -243,6 +270,33 @@ fill_polygon.s: fill_polygon.c.s
 fill_polygon.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/fill_polygon.c.s
 .PHONY : fill_polygon.c.s
+
+font.o: font.c.o
+
+.PHONY : font.o
+
+# target to build an object file
+font.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/font.c.o
+.PHONY : font.c.o
+
+font.i: font.c.i
+
+.PHONY : font.i
+
+# target to preprocess a source file
+font.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/font.c.i
+.PHONY : font.c.i
+
+font.s: font.c.s
+
+.PHONY : font.s
+
+# target to generate assembly for a file
+font.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/font.c.s
+.PHONY : font.c.s
 
 get_assets.o: get_assets.c.o
 
@@ -2512,6 +2566,33 @@ useful.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/useful.c.s
 .PHONY : useful.c.s
 
+values.o: values.c.o
+
+.PHONY : values.o
+
+# target to build an object file
+values.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/values.c.o
+.PHONY : values.c.o
+
+values.i: values.c.i
+
+.PHONY : values.i
+
+# target to preprocess a source file
+values.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/values.c.i
+.PHONY : values.c.i
+
+values.s: values.c.s
+
+.PHONY : values.s
+
+# target to generate assembly for a file
+values.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/values.c.s
+.PHONY : values.c.s
+
 walls.o: walls.c.o
 
 .PHONY : walls.o
@@ -2582,12 +2663,18 @@ help:
 	@echo "... buttons.o"
 	@echo "... buttons.i"
 	@echo "... buttons.s"
+	@echo "... edit_menu.o"
+	@echo "... edit_menu.i"
+	@echo "... edit_menu.s"
 	@echo "... editor.o"
 	@echo "... editor.i"
 	@echo "... editor.s"
 	@echo "... fill_polygon.o"
 	@echo "... fill_polygon.i"
 	@echo "... fill_polygon.s"
+	@echo "... font.o"
+	@echo "... font.i"
+	@echo "... font.s"
 	@echo "... get_assets.o"
 	@echo "... get_assets.i"
 	@echo "... get_assets.s"
@@ -2840,6 +2927,9 @@ help:
 	@echo "... useful.o"
 	@echo "... useful.i"
 	@echo "... useful.s"
+	@echo "... values.o"
+	@echo "... values.i"
+	@echo "... values.s"
 	@echo "... walls.o"
 	@echo "... walls.i"
 	@echo "... walls.s"

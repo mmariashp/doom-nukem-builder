@@ -19,7 +19,7 @@ void					render_texture_icons(t_button *buttons, t_sdl *sdl, int n_buttons, t_te
 		if (txtrs[i].sdl_t)
 			SDL_RenderCopy(sdl->rend, txtrs[i].sdl_t, NULL, &rect);
 		if (txtrs[i].name)
-			write_text(txtrs[i].name, sdl, text, 0, TRUE);
+			write_text(txtrs[i].name, sdl->rend, text, 0, TRUE);
 		i++;
 	}
 }
@@ -30,7 +30,7 @@ void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
         return ;
     SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
     SDL_RenderClear(sdl->rend);
-    render_buttons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons);
+    render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons);
     render_texture_icons(prog->modes[prog->mode_id].buttons, sdl, prog->modes[prog->mode_id].n_buttons, media->txtrs);
     SDL_RenderPresent(sdl->rend);
     prog->features[F_REDRAW] = 1;
@@ -76,9 +76,7 @@ int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
             {
                 if (prog->button_lit != -1)
                 {
-                    int tmp = prog->last_mode_id;
-                	grid->active[1].x = prog->button_lit;
-
+					selected_item(0, T_SELECT, prog->button_lit);
                     int i = 0;
                     while (i < prog->modes[prog->mode_id].n_buttons)
                     {
@@ -87,17 +85,8 @@ int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
                         i++;
                     }
 					prog->last_mode_id = prog->mode_id;
-                    prog->mode_id = tmp;
-                    if (prog->mode_id == MODE_EDITOR)
-                    {
-                        prog->button_on = SECTOR_BUTTON;
-                        prog->modes[prog->mode_id].buttons[SECTOR_BUTTON].vis_lit_on[2] = TRUE;
-                    }
-                    else
-                    {
-                        prog->button_lit = -1;
-                        prog->button_on = -1;
-                    }
+                    prog->mode_id = MODE_EDITOR;
+
                     prog->click.x = 0;
                     prog->click.y = 0;
                     return (quit);

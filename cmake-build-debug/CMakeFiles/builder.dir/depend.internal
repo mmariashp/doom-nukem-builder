@@ -11,6 +11,11 @@ CMakeFiles/builder.dir/buttons.c.o
  /home/moosh/CLionProjects/builder/builder.h
  /home/moosh/CLionProjects/builder/buttons.c
  /home/moosh/CLionProjects/builder/get_next_line.h
+CMakeFiles/builder.dir/edit_menu.c.o
+ /home/moosh/CLionProjects/builder/./libft/libft.h
+ /home/moosh/CLionProjects/builder/builder.h
+ /home/moosh/CLionProjects/builder/edit_menu.c
+ /home/moosh/CLionProjects/builder/get_next_line.h
 CMakeFiles/builder.dir/editor.c.o
  /home/moosh/CLionProjects/builder/./libft/libft.h
  /home/moosh/CLionProjects/builder/builder.h
@@ -20,6 +25,11 @@ CMakeFiles/builder.dir/fill_polygon.c.o
  /home/moosh/CLionProjects/builder/./libft/libft.h
  /home/moosh/CLionProjects/builder/builder.h
  /home/moosh/CLionProjects/builder/fill_polygon.c
+ /home/moosh/CLionProjects/builder/get_next_line.h
+CMakeFiles/builder.dir/font.c.o
+ /home/moosh/CLionProjects/builder/./libft/libft.h
+ /home/moosh/CLionProjects/builder/builder.h
+ /home/moosh/CLionProjects/builder/font.c
  /home/moosh/CLionProjects/builder/get_next_line.h
 CMakeFiles/builder.dir/get_assets.c.o
  /home/moosh/CLionProjects/builder/./libft/libft.h
@@ -100,6 +110,11 @@ CMakeFiles/builder.dir/useful.c.o
  /home/moosh/CLionProjects/builder/builder.h
  /home/moosh/CLionProjects/builder/get_next_line.h
  /home/moosh/CLionProjects/builder/useful.c
+CMakeFiles/builder.dir/values.c.o
+ /home/moosh/CLionProjects/builder/./libft/libft.h
+ /home/moosh/CLionProjects/builder/builder.h
+ /home/moosh/CLionProjects/builder/get_next_line.h
+ /home/moosh/CLionProjects/builder/values.c
 CMakeFiles/builder.dir/walls.c.o
  /home/moosh/CLionProjects/builder/./libft/libft.h
  /home/moosh/CLionProjects/builder/builder.h

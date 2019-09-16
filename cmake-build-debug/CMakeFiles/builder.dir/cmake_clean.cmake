@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/add_to_media.c.o"
   "CMakeFiles/builder.dir/buttons.c.o"
+  "CMakeFiles/builder.dir/edit_menu.c.o"
   "CMakeFiles/builder.dir/editor.c.o"
   "CMakeFiles/builder.dir/fill_polygon.c.o"
+  "CMakeFiles/builder.dir/font.c.o"
   "CMakeFiles/builder.dir/get_assets.c.o"
   "CMakeFiles/builder.dir/get_next_line.c.o"
   "CMakeFiles/builder.dir/level_edit.c.o"
@@ -19,6 +21,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/summary.c.o"
   "CMakeFiles/builder.dir/textures.c.o"
   "CMakeFiles/builder.dir/useful.c.o"
+  "CMakeFiles/builder.dir/values.c.o"
   "CMakeFiles/builder.dir/walls.c.o"
   "CMakeFiles/builder.dir/zoom.c.o"
   "builder.pdb"

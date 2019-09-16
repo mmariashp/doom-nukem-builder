@@ -187,32 +187,32 @@ void					draw_walls(t_world world, t_grid *grid, int **screen, int lit, int on)
 //	return (TRUE);
 //}
 
-void					fill_sector(t_world world, t_grid *grid, int **screen, int sec, int button)
+void					fill_sector(t_world world, t_grid *grid, int **screen, int sec, int state)
 {
 	int					i = 0;
 	int					j = sec;
 	int					color;
-	t_vec2d				p[world.sectors[j].n_v];
+	t_vec2d				p[world.sec[j].n_v];
 
-	if (world.sectors[j].n_v < 3)
+	if (world.sec[j].n_v < 3)
 		return ;
-	while (i < world.sectors[j].n_v)
+	while (i < world.sec[j].n_v)
 	{
-		p[i] = world.vertices[world.sectors[j].v[i]];
+		p[i] = world.vertices[world.sec[j].v[i]];
 		p[i].x = (int)(grid->box.x + p[i].x * grid->scale);
 		p[i].y = (int)(grid->box.y + p[i].y * grid->scale);
 		i++;
 	}
-	if (button == SECTOR_BUTTON || button == DESELECT_SEC_BUTTON)
+	if (state == SECTOR_SEARCH || state == SECTOR_EDIT)
 	{
-		if (sec == grid->active[0].x)
+		if (sec == lit_item(1, S_SELECT, 0))
 			color = ACTIVE_SECTOR_COLOR;
 		else
-			color = world.sectors[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
+			color = world.sec[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
 	}
 	else
-		color = world.sectors[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
-	fillpoly(p, world.sectors[j].n_v, screen, color);
+		color = world.sec[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
+	fillpoly(p, world.sec[j].n_v, screen, color);
 }
 
 void					clean_screen(int **screen)
@@ -238,11 +238,11 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 	int                 lit_wall;
     int                 on_wall;
 
-	if (!grid || !prog || world.n_sectors == 100)
+	if (!grid || !prog || world.n_sec == 100)
 		return;
 	lit_wall = -1;
     on_wall = -1;
-    if (prog->mode_id == MODE_WALLS)
+    if (selected_item(1, 0, 0) == WALL_SEARCH)
     {
         lit_wall = grid->active[1].x;
         on_wall = grid->active[1].y;
@@ -274,10 +274,10 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 	int k = 0;
 	if (prog->mode_id == MODE_EDITOR)
 	{
-		while (k < world.n_sectors)
+		while (k < world.n_sec)
 		{
-			if (world.sectors[k].status != SEC_OPEN)
-				fill_sector(world, grid, prog->screen, k, prog->button_on);
+			if (world.sec[k].status != SEC_OPEN)
+				fill_sector(world, grid, prog->screen, k, selected_item(1, STATE_SELECT, 0));
 			k++;
 		}
 	}

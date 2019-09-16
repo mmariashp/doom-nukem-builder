@@ -6,8 +6,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/home/moosh/CLionProjects/builder/add_to_media.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/add_to_media.c.o"
   "/home/moosh/CLionProjects/builder/buttons.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/buttons.c.o"
+  "/home/moosh/CLionProjects/builder/edit_menu.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/edit_menu.c.o"
   "/home/moosh/CLionProjects/builder/editor.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/editor.c.o"
   "/home/moosh/CLionProjects/builder/fill_polygon.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/fill_polygon.c.o"
+  "/home/moosh/CLionProjects/builder/font.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/font.c.o"
   "/home/moosh/CLionProjects/builder/get_assets.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/get_assets.c.o"
   "/home/moosh/CLionProjects/builder/get_next_line.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/get_next_line.c.o"
   "/home/moosh/CLionProjects/builder/level_edit.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/level_edit.c.o"
@@ -24,6 +26,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/moosh/CLionProjects/builder/summary.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/summary.c.o"
   "/home/moosh/CLionProjects/builder/textures.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/textures.c.o"
   "/home/moosh/CLionProjects/builder/useful.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/useful.c.o"
+  "/home/moosh/CLionProjects/builder/values.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/values.c.o"
   "/home/moosh/CLionProjects/builder/walls.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/walls.c.o"
   "/home/moosh/CLionProjects/builder/zoom.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/zoom.c.o"
   )

@@ -20,13 +20,13 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 
 	ft_putendl_fd(title[section], fd);
 	if (section == 0)
-		n = world.n_textures;
+		n = world.n_txtrs;
 	else if (section == 1)
 		n = world.n_vectors;
 	else if (section == 2)
 		n = world.n_walls;
 	else if (section == 3)
-		n = world.n_sectors;
+		n = world.n_sec;
 	else if (section == 4)
 		n = 2;
 	else
@@ -60,19 +60,19 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 		else if (section == 3)
 		{
 			ft_putstr_fd("floor(", fd);
-			ft_putnbr_fd(world.sectors[i].floor, fd);
+			ft_putnbr_fd(world.sec[i].floor, fd);
 			ft_putstr_fd(" ", fd);
-			ft_putnbr_fd(world.sectors[i].floor_txtr, fd);
+			ft_putnbr_fd(world.sec[i].floor_txtr, fd);
 			ft_putstr_fd(") ceil(", fd);
-			ft_putnbr_fd(world.sectors[i].ceiling, fd);
+			ft_putnbr_fd(world.sec[i].ceiling, fd);
 			ft_putstr_fd(" ", fd);
-			ft_putnbr_fd(world.sectors[i].ceil_txtr, fd);
+			ft_putnbr_fd(world.sec[i].ceil_txtr, fd);
 
 			ft_putstr_fd(") walls '", fd);
 			int j = 0;
-			while (j < world.sectors[i].n_walls)
+			while (j < world.sec[i].n_walls)
 			{
-				ft_putnbr_fd(world.sectors[i].sec_walls[j], fd);
+				ft_putnbr_fd(world.sec[i].sec_walls[j], fd);
 				ft_putstr_fd(" ", fd);
 				j++;
 			}
@@ -117,9 +117,9 @@ unsigned short			write_level(int fd, t_world world)
 		else if (i == 1)
 			ft_putnbr_fd(world.n_walls, fd);
 		else if (i == 2)
-			ft_putnbr_fd(world.n_sectors, fd);
+			ft_putnbr_fd(world.n_sec, fd);
 		else if (i == 3)
-			ft_putnbr_fd(world.n_textures, fd);
+			ft_putnbr_fd(world.n_txtrs, fd);
 		ft_putchar_fd('\n', fd);
 		i++;
 	}
@@ -163,7 +163,7 @@ unsigned short			write_section(int fd, t_media *media, int section)
 	if (section == 0)
 		n_files = media->n_worlds;
 	else if (section == 1)
-		n_files = media->n_textures;
+		n_files = media->n_txtrs;
 	else if (section == 2)
 		n_files = media->n_sounds;
 	else if (section == 3)

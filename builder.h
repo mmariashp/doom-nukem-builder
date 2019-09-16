@@ -94,6 +94,7 @@
 # define WIN_NAME				"DOOM-NUKEM BUILDER"
 # define FONT_NAME              "BebasNeue-Regular.ttf"
 //# define FONT_NAME "LibreBaskerville-Regular.ttf"
+# define EDIT_TEXT_COLOR		DARK_GRAY
 
 # define LEVELS					"Levels"
 # define TEXTURES				"Textures"
@@ -121,8 +122,8 @@
 # define MIN_N_SECTORS			1
 # define MAX_N_SECTORS			50
 
-# define MIN_N_TEXTURES			1
-# define MAX_N_TEXTURES			50
+# define MIN_n_txtrs			1
+# define MAX_n_txtrs			50
 
 # define MIN_HEIGHT				-100
 # define MAX_HEIGHT				100
@@ -156,12 +157,11 @@
 # define MENU_TXT_H			25
 # define MAX_MENU_TXT_W		200
 
-# define N_MODES			5
+# define N_MODES			4
 # define MODE_MAIN_MENU		0
 # define MODE_SUMMARY		1
 # define MODE_EDITOR		2
 # define MODE_TEXTURES		3
-# define MODE_WALLS			4
 
 # define N_MM_BUTTONS		2
 # define N_SUMM_BUTTONS		3
@@ -175,20 +175,18 @@
 # define WALL_BUTTON		5
 # define SAVE_BUTTON		6
 # define BACK_BUTTON		7
-# define DESELECT_SEC_BUTTON		8
-# define F_UP_BUTTON		9
-# define F_DOWN_BUTTON		10
-# define C_UP_BUTTON		11
-# define C_DOWN_BUTTON		12
-# define FT_EDIT_BUTTON		13
-# define CT_EDIT_BUTTON		14
 
+# define DESELECT_BUTTON	0
+# define F_UP_BUTTON		1
+# define F_DOWN_BUTTON		2
+# define C_UP_BUTTON		3
+# define C_DOWN_BUTTON		4
+# define FT_EDIT_BUTTON		5
+# define CT_EDIT_BUTTON		6
 
-# define W_BACK_BUTTON		0
-# define W_DESELECT_BUTTON  1
-# define WT_BUTTON          2
-# define W_PORTAL_BUTTON    3
-# define W_DOOR_BUTTON      4
+# define WT_EDIT_BUTTON		1
+# define W_PORTAL_BUTTON    2
+# define W_DOOR_BUTTON      3
 
 
 # define GRID_SIZE			150
@@ -248,9 +246,7 @@ typedef struct 					s_button
 	t_rec						box;
 	int 						text_color;
 	char 						*text;
-	SDL_Texture					*back;
-	SDL_Texture					*lit_back;
-	SDL_Texture					*front;
+	SDL_Texture					*txtr;
 	SDL_Texture					*lit;
 }								t_button;
 
@@ -270,6 +266,7 @@ typedef struct 					s_button
 # define O_SELECT		6
 
 // states
+# define NORMAL					-1
 # define SECTOR_SEARCH			0
 # define SECTOR_EDIT			1
 # define VECTOR_SEARCH			2
@@ -279,7 +276,6 @@ typedef struct 					s_button
 
 typedef struct					s_sdl
 {
-	TTF_Font                    *font;
 	SDL_Window					*window;
 	SDL_Renderer				*rend;
 	t_vec2d						mouse;
@@ -347,15 +343,15 @@ typedef struct					s_world
 	char 						*filename;
 	char 						*full_path;
 	int							*textures;
-	t_sector					*sectors;
+	t_sector					*sec;
 	t_wall						*walls;
 	t_vec2d						*vertices;
 	t_vec2d						p_start;
 	t_vec2d						p_end;
-	short unsigned				n_sectors;
+	short unsigned				n_sec;
 	short unsigned				n_vectors;
 	short unsigned				n_walls;
-	short unsigned				n_textures;
+	short unsigned				n_txtrs;
 }								t_world;
 
 typedef struct 					s_section
@@ -378,7 +374,7 @@ typedef struct 					s_media
 	char						**sounds;
 	t_world						*worlds;
 	short unsigned				n_worlds;
-	short unsigned				n_textures;
+	short unsigned				n_txtrs;
 	short unsigned				n_fonts;
 	short unsigned				n_sounds;
 }								t_media;
@@ -391,6 +387,12 @@ typedef struct					s_mode
 	unsigned short				(*update)(t_sdl*, t_grid*, t_media *, t_prog *);
 	void						(*render)(t_sdl*, t_grid*, t_media *, t_prog *);
 }								t_mode;
+
+typedef struct 					s_value
+{
+	char 						*text;
+	SDL_Texture					*texture;
+}								t_value;
 
 int						start_sdl(t_sdl *sdl);
 t_sdl					*get_sdl(void);
@@ -422,7 +424,7 @@ unsigned short					update_walls(t_sdl *sdl, t_grid *grid,  t_media *media, t_pro
 void					render_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
 
-void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center);
+void					write_text(char *str, SDL_Renderer *rend, t_rec rec, int color, char h_center);
 
 int						clamp(int n, int min, int max);
 float					clamp_f(float n, float min, float max);
@@ -450,8 +452,8 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog);
 void					free_modes(t_mode *modes, t_sdl *sdl);
 void                    refresh_level_list(t_media *media, t_mode *mode, t_sdl *sdl);
 
-void					render_buttons(t_button *buttons, t_sdl *sdl, int n_buttons);
-void					render_button(t_button *button, t_sdl *sdl);
+void					render_buttons(t_button *buttons, SDL_Renderer *rend, int n_buttons);
+void					render_button(t_button *button, SDL_Renderer *rend);
 unsigned short			mouse_over(t_rec box, t_vec2d mouse);
 
 void					render_frame(t_rec rec, int color, SDL_Renderer *rend);
@@ -472,7 +474,7 @@ int 					fill_sector_v(t_sector *sector, t_wall *walls, int n);
 int 					sector_closed(int *tmp, int n);
 void					pair_sort(int *a, int n);
 
-SDL_Texture				*button_back(int id, int set_get_free, t_sdl *sdl);
+SDL_Texture				*button_back(int id, int set_get_free, SDL_Renderer *rend);
 
 void					free_int_tab(int **tab, int size);
 
@@ -491,7 +493,7 @@ void                    fill_grid_walls(int n_walls, t_wall *walls, int n_vector
 void					add_to_media(t_grid *grid, t_media *media);
 unsigned short			add_world(t_world **worlds, short n_worlds);
 
-void					update_sector_status(t_sector *sectors, t_wall *walls, t_vec2d *vertices, int n_sectors);
+void					update_sector_status(t_sector *sec, t_wall *walls, t_vec2d *vertices, int n_sec);
 int 					in_sector(t_vec2d p, t_world *world, t_grid *grid);
 
 void					delete_vector(int id, t_world *world);
@@ -509,20 +511,38 @@ t_vec2d                 make_iso(int x, int y, int z);
 
 void                    zoom_to_map(int n_vectors, t_vec2d *v, t_grid *grid);
 
-t_rec                   layout_menu(char i, char n);
-void					render_edit_menu(t_sdl *sdl, t_grid *grid, t_media *media);
+
 
 int                      texture_in_world(int id, t_world world);
 int					    *realloc_textures(int *textures, int n);
-unsigned short			add_texture(int **textures, short n_textures, int id);
+unsigned short			add_texture(int **textures, short n_txtrs, int id);
 unsigned short			add_wall(t_wall **walls, short n_walls, int one, int two);
 
-
-unsigned short			is_within_excl(int value, int min, int max);
-unsigned short			is_within_incl(int value, int min, int max);
+//useful
+unsigned short			within(int value, int min, int max);
 int 					selected_item(char set_get_unset, unsigned short id, int value);
 int 					lit_item(char set_get_unset, unsigned short id, int value);
 
+
+// edit menu
 char 					*menu_lines(int id, int i);
+void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int state);
+t_rec                   layout_menu(char i, char n);
+
+//font
+TTF_Font				*set_get_free_font(char set_get_free);
+
+//values
+void					render_values(int state, int n, t_value *values, SDL_Renderer *rend);
+void					free_values(t_value *values, int n);
+t_value					*init_values(int n);
+
+void					render_box(t_rec box, SDL_Texture *t, SDL_Renderer *rend);
+
+// buttons
+t_button				*init_buttons(int n_buttons);
+void					free_buttons(t_button *buttons, int n);
+t_button				*set_get_free_buttons(char set_get_free, int *n, int state);
+unsigned short			distribute_buttons_h(t_button *buttons, int from, int nb, t_rec box, int padding);
 
 #endif
