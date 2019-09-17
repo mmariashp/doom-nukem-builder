@@ -92,9 +92,10 @@
 
 # define LEVELS					"Levels"
 # define TEXTURES				"Textures"
+# define ITEMS					"Items"
 # define SOUNDS					"Sounds"
 # define FONTS					"Fonts"
-# define TOTAL_SECTIONS			4
+# define TOTAL_SECTIONS			5
 
 # define MAX_LEVELS				5
 
@@ -303,6 +304,12 @@ typedef struct                  s_wall
 	signed char                 door;
 }                               t_wall;
 
+typedef struct					s_item
+{
+	t_vec2d						p;
+	int 						id;
+}								t_item;
+
 typedef struct                  s_sector
 {
 	int 						*sec_walls;
@@ -311,6 +318,8 @@ typedef struct                  s_sector
 	int						    ceiling;
 	short 						floor_txtr;
 	short 						ceil_txtr;
+	t_item						*items;
+	unsigned short				n_items;
 	unsigned short				n_walls;
     unsigned short				n_v;
 	char 						status;
@@ -362,6 +371,13 @@ typedef struct 					s_section
 	char 						**names;
 }								t_section;
 
+typedef struct					s_itemfull
+{
+	char 						*filename;
+	char 						*full_path;
+	int 						type;
+}								t_itemfull;
+
 typedef struct 					s_media
 {
 	short 						world_id;
@@ -371,6 +387,8 @@ typedef struct 					s_media
 	char						**fonts;
 	char						**sounds;
 	t_world						*worlds;
+	t_itemfull					*itemfull;
+	short unsigned				n_itemfull;
 	short unsigned				n_worlds;
 	short unsigned				n_txtrs;
 	short unsigned				n_fonts;
@@ -498,7 +516,7 @@ int 					in_sector(t_vec2d p, t_world *world, t_grid *grid);
 void					delete_vector(int id, t_world *world);
 
 void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid);
-void					move_grid_keys(t_prog *prog, t_grid *grid);
+unsigned short			move_grid_keys(t_prog *prog, t_grid *grid);
 void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
 void                    zoom_to_sector(t_sector *sector, t_vec2d *vertices, t_grid *grid, t_prog *prog);
 void                    zoom_to_map(int n_vectors, t_vec2d *v, t_grid *grid);
@@ -554,5 +572,7 @@ void					delete_wall(int id, t_world *world);
 unsigned short			add_wall_in_secs(t_world *world, int to_add, int find);
 
 void					move_player(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
+
+void					grid_refresh(t_grid *grid, t_media *media);
 
 #endif

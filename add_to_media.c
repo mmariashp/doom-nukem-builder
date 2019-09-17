@@ -144,11 +144,13 @@ unsigned short			add_sector(t_sector **sec, short n_sec)
 	if (!*sec)
 		return (FAIL);
 	(*sec)[n_sec].sec_walls = NULL;
+	(*sec)[n_sec].items = NULL;
 	(*sec)[n_sec].floor = 0;
 	(*sec)[n_sec].ceiling = 0;
 	(*sec)[n_sec].floor_txtr = 0;
 	(*sec)[n_sec].ceil_txtr = 0;
 	(*sec)[n_sec].n_walls = 0;
+	(*sec)[n_sec].n_items = 0;
     (*sec)[n_sec].n_v = 0;
 	return (SUCCESS);
 }

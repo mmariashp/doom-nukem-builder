@@ -76,7 +76,7 @@ char 					*identify_path(const char *line)
 
 short 					identify_section(const char *line)
 {
-	static const char 	sections[TOTAL_SECTIONS][16] = { LEVELS, TEXTURES, SOUNDS, FONTS};
+	static const char 	sections[TOTAL_SECTIONS][16] = { LEVELS, TEXTURES, ITEMS, SOUNDS, FONTS};
 	short 				id;
 	short 				i;
 
@@ -340,8 +340,10 @@ int 					fill_sector_v(t_sector *sector, t_wall *walls, int n)
 	j = 0;
 	while (++i < sector->n_walls)
 	{
-		tmp[j++] = walls[sector->sec_walls[i]].v1;
-		tmp[j++] = walls[sector->sec_walls[i]].v2;
+		if (j < n)
+			tmp[j++] = walls[sector->sec_walls[i]].v1;
+		if (j < n)
+			tmp[j++] = walls[sector->sec_walls[i]].v2;
 	}
 	pair_sort(tmp, n);
 	if (sector_closed(tmp, n) == FALSE)
@@ -774,6 +776,30 @@ unsigned				read_textures(t_media *media, t_section *section)
 	return (SUCCESS);
 }
 
+unsigned				read_itemfull(t_media *media, t_section *section)
+{
+	short 				i;
+
+	if (!media || !section || !section->tab)
+		return (FAIL);
+	i = 0;
+	if (!(media->itemfull = (t_itemfull *)ft_memalloc(sizeof(t_itemfull) * section->n_files)))
+		return (FAIL);
+	media->n_itemfull = section->n_files;
+	ft_bzero(media->itemfull, sizeof(media->itemfull));
+	while (i < section->n_files)
+	{
+		media->itemfull[i].full_path = NULL;
+		media->itemfull[i].filename = NULL;
+		if (!(media->itemfull[i].full_path = ft_strdup(section->tab[i])))
+			return (FAIL);
+		if (!(media->itemfull[i].filename = ft_strdup(section->names[i])))
+			return (FAIL);
+		media->itemfull[i].type = 0;
+		i++;
+	}
+	return (SUCCESS);
+}
 
 unsigned short          find_doors(int n, t_wall *walls)
 {
@@ -851,13 +877,27 @@ unsigned				read_levels(t_media *media, t_section *section)
 
 unsigned				update_media(t_media *media, t_section *section)
 {
-	unsigned			(*update_section[])(t_media*, t_section*) = { read_levels, read_textures, read_sounds, read_fonts };
+	unsigned			(*update_section[])(t_media*, t_section*) = { read_levels, read_textures, read_itemfull, read_sounds, read_fonts };
 
 	if (!media || !section)
 		return (FAIL);
-	ft_strcpy(media->paths[section->id], section->path);
-	ft_strcpy(media->extensions[section->id], section->extension);
+	if (section->path)
+		ft_strcpy(media->paths[section->id], section->path);
+	else
+		ft_bzero(media->paths[section->id], sizeof(media->paths[section->id]));
+	if (section->extension)
+		ft_strcpy(media->extensions[section->id], section->extension);
+	else
+		ft_bzero(media->extensions[section->id], sizeof(media->extensions[section->id]));
 	return (update_section[section->id](media, section));
+}
+
+void					free_sector_items(t_item *items)
+{
+	if (!items)
+		return ;
+	free(items);
+	items = NULL;
 }
 
 void					free_sector_walls(int *walls)
@@ -865,6 +905,7 @@ void					free_sector_walls(int *walls)
 	if (!walls)
 		return ;
 	free(walls);
+	walls = NULL;
 }
 
 void					free_sector(t_sector *sector)
@@ -874,6 +915,8 @@ void					free_sector(t_sector *sector)
 	free_sector_walls(sector->sec_walls);
 	if (sector->v)
 		free(sector->v);
+	if (sector->items)
+		free(sector->items);
 }
 
 void					free_media(t_media *media)
@@ -946,6 +989,25 @@ void					free_media(t_media *media)
 		}
 		free(media->sounds);
 	}
+	if (media->itemfull)
+	{
+		i = 0;
+		while (i < media->n_itemfull)
+		{
+			if (media->itemfull[i].filename)
+			{
+				free(media->itemfull[i].filename);
+				media->itemfull[i].filename = NULL;
+			}
+			if (media->itemfull[i].full_path)
+			{
+				free(media->itemfull[i].full_path);
+				media->itemfull[i].full_path = NULL;
+			}
+			i++;
+		}
+		free(media->sounds);
+	}
 	ft_memdel((void **)&media);
 }
 
@@ -967,9 +1029,11 @@ void					init_media(t_media *media)
 		return ;
 	media->world_id = -1;
 	media->txtrs = NULL;
+	media->itemfull = NULL;
 	media->fonts = NULL;
 	media->sounds = NULL;
 	media->worlds = NULL;
+	media->n_itemfull = 0;
 	media->n_worlds = 0;
 	media->n_txtrs = 0;
 	media->n_fonts = 0;
@@ -1025,6 +1089,9 @@ t_media					*read_assets(int fd)
 					}
 					else
 					{
+						ft_putstr("failed to update media at section ");
+						ft_putnbr(section.id);
+						ft_putendl(" ");
 						free_section(&section);
 						ft_strdel(&line);
 						return (NULL);

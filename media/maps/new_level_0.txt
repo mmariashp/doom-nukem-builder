@@ -1,10 +1,12 @@
 Count Vectors: 3
 Count Walls: 3
 Count Sectors: 1
-Count Textures: 1
+Count Textures: 3
 
 Textures
 0) 0
+1) 12
+2) 9
 
 Vectors
 0) 34,35
@@ -17,7 +19,7 @@ Walls
 2) 2-0 filled 0
 
 Sectors
-0) floor(0 0) ceil(0 0) walls '0 1 2 ' items '' enemies ''
+0) floor(0 2) ceil(0 0) walls '0 1 2 ' items ''
 
 Player
 0) 1,1 start

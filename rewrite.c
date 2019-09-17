@@ -12,6 +12,27 @@ unsigned 				open_for_write(const char *path, int *fd)
 	return (SUCCESS);
 }
 
+void					write_items(t_sector sector, int fd)
+{
+	int 				i;
+
+	if (sector.items && sector.n_items > 0)
+	{
+		i = 0;
+		while (i < sector.n_items)
+		{
+			ft_putstr_fd("(", fd);
+			ft_putnbr_fd(sector.items[i].p.x, fd);
+			ft_putstr_fd(",", fd);
+			ft_putnbr_fd(sector.items[i].p.y, fd);
+			ft_putstr_fd(" ", fd);
+			ft_putnbr_fd(sector.items[i].id, fd);
+			ft_putstr_fd(")", fd);
+			i++;
+		}
+	}
+}
+
 unsigned short			write_level_section(int fd, t_world world, int section)
 {
 	static char 		title[5][9] = { "Textures", "Vectors", "Walls", "Sectors", "Player" };
@@ -76,7 +97,9 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 				ft_putstr_fd(" ", fd);
 				j++;
 			}
-			ft_putstr_fd("' items '' enemies ''", fd);
+			ft_putstr_fd("' items '", fd);
+			write_items(world.sec[i], fd);
+			ft_putstr_fd("'", fd);
 		}
 		else if (section == 4)
 		{
@@ -135,7 +158,7 @@ unsigned short			write_level(int fd, t_world world)
 
 unsigned short			write_section(int fd, t_media *media, int section)
 {
-	static char 		title[TOTAL_SECTIONS][9] = { "Levels", "Textures", "Sounds", "Fonts" };
+	static char 		title[TOTAL_SECTIONS][9] = { "Levels", "Textures", "Items", "Sounds", "Fonts" };
 	static char 		prefix[5][13] = {	"#",
 											"Path: ",
 											"Extension: ",
@@ -165,8 +188,10 @@ unsigned short			write_section(int fd, t_media *media, int section)
 	else if (section == 1)
 		n_files = media->n_txtrs;
 	else if (section == 2)
-		n_files = media->n_sounds;
+		n_files = media->n_itemfull;
 	else if (section == 3)
+		n_files = media->n_sounds;
+	else if (section == 4)
 		n_files = media->n_fonts;
 	else
 		return (FAIL);
@@ -180,8 +205,10 @@ unsigned short			write_section(int fd, t_media *media, int section)
 		else if (section == 1)
 			ft_putstr_fd(media->txtrs[i].name, fd);
 		else if (section == 2)
-			ft_putstr_fd(media->sounds[i], fd);
+			ft_putstr_fd(media->itemfull[i].filename, fd);
 		else if (section == 3)
+			ft_putstr_fd(media->sounds[i], fd);
+		else if (section == 4)
 			ft_putstr_fd(media->fonts[i], fd);
 		ft_putchar_fd('\n', fd);
 		i++;

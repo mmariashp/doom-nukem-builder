@@ -1,6 +1,6 @@
 #Levels
 Path: ./media/maps/
-Extension: .txt
+Extension: ./media/fonts/
 File Names: 
 0. level_0
 1. level_1
@@ -11,7 +11,7 @@ File Names:
 
 #Textures
 Path: ./media/textures/
-Extension: .png
+Extension: nts/
 File Names: 
 0. Tileable1t
 1. Tileable1u
@@ -29,21 +29,26 @@ File Names:
 13. wood_floor
 ###
 
+#Items
+Path: ./media/items/
+Extension: 
+File Names: 
+0. coin (coin)
+1. key (key)
+2. table (object)
+3. demon (enemy)
+4. spider (enemy)
+###
+
 #Sounds
 Path: ./media/sounds/
 Extension: .wav
 File Names: 
-0. 
-1. 
-2. 
-3. 
 ###
 
 #Fonts
 Path: ./media/fonts/
 Extension: .ttf
 File Names: 
-0. 
-1. 
 ###
 

@@ -16,12 +16,13 @@ void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid)
 		prog->click = (t_vec2d){ 0, 0 };
 }
 
-void					move_grid_keys(t_prog *prog, t_grid *grid)
+unsigned short			move_grid_keys(t_prog *prog, t_grid *grid)
 {
 	if (!prog || !grid)
-		return ;
+		return (FAIL);
 	grid->box.x += prog->move.x;
 	grid->box.y += prog->move.y;
 	prog->move = (t_vec2d){ 0, 0 };
 	prog->features[F_REDRAW] = 1;
+	return (SUCCESS);
 }
