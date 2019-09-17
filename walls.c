@@ -8,7 +8,7 @@ unsigned short          vec_same(t_vec2d one, t_vec2d two)
     return (FALSE);
 }
 
-int                     wall_door(int id, t_wall *walls, int n_walls)
+int                     wall_door(int id, t_wall *walls, int n_walls) // finding the index of a corresponding door to a wall of index id, -1 if none
 {
     int                 i;
     t_wall              wall;
@@ -28,38 +28,142 @@ int                     wall_door(int id, t_wall *walls, int n_walls)
     return (-1);
 }
 
+int 					*remove_from_array(int *old_array, int size, int *new_size, int to_remove)
+{
+	int 				count;
+	int 				i;
+	int 				*new;
+
+	count = 0;
+	i = -1;
+	if (!old_array || !new_size)
+		return (NULL);
+	while (++i < size)
+	{
+		if (old_array[i] != to_remove)
+			count++;
+	}
+	if (!count)
+		return (NULL);
+	*new_size = count;
+	if (!(new = (int *)malloc(sizeof(int) * (*new_size))))
+		return (NULL);
+	count = -1;
+	i = -1;
+	while (++i < *new_size && ++count < size)
+	{
+		while (count < size && old_array[count] == to_remove)
+			count++;
+		new[i] = old_array[count];
+	}
+	free(old_array);
+	return (new);
+}
+
+int 					*add_to_array(int *old_array, unsigned short *size, int to_add, int find)
+{
+	int 				j;
+	int 				i;
+	int 				*new;
+	int					new_size;
+
+	if (!old_array || !size)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (i < *size)
+	{
+		if (old_array[i] == find)
+			j++;
+		i++;
+	}
+	if (j == 0)
+		return (old_array);
+	new_size = *size + 1;
+	if (!(new = (int *)malloc(sizeof(int) * new_size)))
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (i < new_size && j < *size)
+	{
+		new[i] = old_array[j];
+		if (old_array[j] == find)
+			new[++i] = to_add;
+		i++;
+		j++;
+	}
+	free(old_array);
+	*size = new_size;
+	return (new);
+}
+
+unsigned short			remove_wall_in_secs(t_world *world, int to_remove)
+{
+	int 				i;
+	int 				tmp;
+
+	if (!world)
+		return (FAIL);
+	i = 0;
+	tmp = 0;
+	while (i < world->n_sec)
+	{
+		world->sec[i].sec_walls = remove_from_array(world->sec[i].sec_walls,\
+		world->sec[i].n_walls, &tmp, to_remove);
+		if (!world->sec[i].sec_walls)
+			return (FAIL);
+		world->sec[i].n_walls = tmp;
+		i++;
+	}
+	return (SUCCESS);
+}
+
+unsigned short			add_wall_in_secs(t_world *world, int to_add, int find)
+{
+	int 				i;
+
+	if (!world)
+		return (FAIL);
+	i = 0;
+	while (i < world->n_sec)
+	{
+		world->sec[i].sec_walls = add_to_array(world->sec[i].sec_walls,\
+		&world->sec[i].n_walls, to_add, find);
+		if (!world->sec[i].sec_walls)
+			return (FAIL);
+		i++;
+	}
+	return (SUCCESS);
+}
+
 void					delete_wall(int id, t_world *world)
 {
     t_wall				*new;
     int 				i;
     int 				j;
 
-    if (!world || id < 0 || id >= world->n_walls)
+    if (!world || !within(id, -1, world->n_walls))
         return ;
-    new = (t_wall *)ft_memalloc(sizeof(t_wall) * (world->n_walls - 1));
-    if (!new)
+    if (!(new = (t_wall *)ft_memalloc(sizeof(t_wall) * (world->n_walls - 1))))
         return ;
     i = 0;
     j = 0;
-    while (j < world->n_walls)
+    while (j < world->n_walls && i < world->n_walls - 1)
     {
         if (j == id)
             j++;
-        new[i] = world->walls[j];
-        i++;
-        j++;
+        new[i++] = world->walls[j++];
     }
     world->n_walls--;
     free(world->walls);
     world->walls = new;
-    i = 0;
+	remove_wall_in_secs(world, id);
+	i = 0;
     while (i < world->n_sec)
     {
         j = 0;
         while (j < world->sec[i].n_walls)
         {
-//            if (world->sec[i].sec_walls[j] == id) // need to delete extra secwall
-//                world->sec[i].sec_walls[j]--;
             if (world->sec[i].sec_walls[j] > id)
                 world->sec[i].sec_walls[j]--;
             j++;
@@ -81,7 +185,7 @@ void                    delete_door(t_world *world, int id) //deletes door that 
     world->walls[id].door = -1;
 }
 
-void                    add_door(t_world *world, int id) // need  to add in secwalls
+void                    add_door(t_world *world, int id)
 {
     if (id < 0 || id >= world->n_walls)
         return ;
@@ -93,6 +197,7 @@ void                    add_door(t_world *world, int id) // need  to add in secw
     world->walls[world->n_walls].v2 = world->walls[id].v2;
     world->walls[id].door = world->n_walls;
     world->n_walls++;
+	add_wall_in_secs(world, world->walls[id].door, id);
 }
 
 void					render_wall_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_wall *wall)
@@ -251,37 +356,37 @@ void					render_wall_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_wall *wall
 //            {
 //                grid->active[1].y = grid->active[1].x;
 //                door = wall_door(grid->active[1].y, media->worlds[media->world_id].walls, media->worlds[media->world_id].n_walls);
-//                int i = W_DESELECT_BUTTON;
+//                int i = W_DESELECT_BTN;
 //                while ( i < prog->modes[prog->mode_id].n_buttons)
 //                    prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = TRUE;
 //                i = 0;
-//                while ( i < W_DESELECT_BUTTON)
+//                while ( i < W_DESELECT_BTN)
 //                    prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
 //                if (media->worlds[media->world_id].walls[grid->active[1].y].type == WALL_EMPTY)
 //                {
-//                    prog->modes[prog->mode_id].buttons[W_DOOR_BUTTON].vis_lit_on[0] = TRUE;
+//                    prog->modes[prog->mode_id].buttons[W_DOOR_BTN].vis_lit_on[0] = TRUE;
 //                    printf("DOOR %d\n", door);
 //                }
 //                else
 //                {
 //                    printf("NO DOOR %d\n", door);
-//                    prog->modes[prog->mode_id].buttons[W_DOOR_BUTTON].vis_lit_on[0] = FALSE;
+//                    prog->modes[prog->mode_id].buttons[W_DOOR_BTN].vis_lit_on[0] = FALSE;
 //                }
 //            }
 //        }
 //        prog->features[F_REDRAW] = 1;
 //        prog->click = (t_vec2d){ 0, 0 };
 //    }
-//    else if (prog->button_on == W_PORTAL_BUTTON || prog->button_on == W_DOOR_BUTTON)
+//    else if (prog->button_on == W_PORTAL_BTN || prog->button_on == W_DOOR_BTN)
 //    {
 //        if (grid->active[1].y >= 0 && grid->active[1].y < media->worlds[media->world_id].n_walls)
 //        {
-//            if (prog->button_on == W_PORTAL_BUTTON)
+//            if (prog->button_on == W_PORTAL_BTN)
 //            {
 //                printf("changing wall type of wall n %d\n", grid->active[1].y);
 //                media->worlds[media->world_id].walls[grid->active[1].y].type = media->worlds[media->world_id].walls[grid->active[1].y].type == WALL_EMPTY ? WALL_FILLED : WALL_EMPTY;
 //            }
-//            if (prog->button_on == W_DOOR_BUTTON)
+//            if (prog->button_on == W_DOOR_BTN)
 //            {
 //                if (media->worlds[media->world_id].walls[grid->active[1].y].door == -1)
 //                    add_door(&media->worlds[media->world_id], grid->active[1].y);
@@ -293,13 +398,13 @@ void					render_wall_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_wall *wall
 //        prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 //        prog->button_on = -1;
 //    }
-//    else if (prog->button_on == W_DESELECT_BUTTON && grid->active[1].y != -1) // sector mode
+//    else if (prog->button_on == W_DESELECT_BTN && grid->active[1].y != -1) // sector mode
 //    {
-//        int i = W_DESELECT_BUTTON;
+//        int i = W_DESELECT_BTN;
 //        while ( i < prog->modes[prog->mode_id].n_buttons)
 //            prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
 //        i = 0;
-//        while ( i < W_DESELECT_BUTTON)
+//        while ( i < W_DESELECT_BTN)
 //            prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = TRUE;
 //        grid->active[1] = (t_vec2d){ -1, -1 };
 //        prog->features[F_REDRAW] = 1;
@@ -362,7 +467,7 @@ void					render_wall_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_wall *wall
 //				prog->click = sdl->mouse;
 //			if(event.type == SDL_MOUSEBUTTONUP)
 //			{
-//				if (prog->button_lit == W_BACK_BUTTON)
+//				if (prog->button_lit == W_BACK_BTN)
 //				{
 //					prog->last_mode_id = prog->mode_id;
 //					prog->mode_id = MODE_EDITOR;
@@ -372,7 +477,7 @@ void					render_wall_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_wall *wall
 //                    clean_grid(grid);
 //					return (quit);
 //				}
-//                if (prog->button_lit == WT_BUTTON)
+//                if (prog->button_lit == WT_BTN)
 //                {
 //                    prog->features[F_REDRAW] = 1;
 //                    if (prog->button_on >= 0)

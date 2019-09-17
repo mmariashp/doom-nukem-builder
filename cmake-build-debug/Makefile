@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/clion-2019.2/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /opt/clion-2019.2/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/moosh/CLionProjects/builder
+CMAKE_SOURCE_DIR = /Users/mshpakov/Desktop/doom-nukem-builder
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/moosh/CLionProjects/builder/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/moosh/CLionProjects/builder/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ft
-
-# Build rule for target.
-ft: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ft
-.PHONY : ft
-
-# fast build rule for target.
-ft/fast:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
-.PHONY : ft/fast
-
-#=============================================================================
 # Target rules for targets named builder
 
 # Build rule for target.
@@ -135,6 +122,19 @@ builder: cmake_check_build_system
 builder/fast:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/build
 .PHONY : builder/fast
+
+#=============================================================================
+# Target rules for targets named ft
+
+# Build rule for target.
+ft: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ft
+.PHONY : ft
+
+# fast build rule for target.
+ft/fast:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
+.PHONY : ft/fast
 
 add_to_media.o: add_to_media.c.o
 
@@ -189,6 +189,33 @@ buttons.s: buttons.c.s
 buttons.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/buttons.c.s
 .PHONY : buttons.c.s
+
+edit_door.o: edit_door.c.o
+
+.PHONY : edit_door.o
+
+# target to build an object file
+edit_door.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/edit_door.c.o
+.PHONY : edit_door.c.o
+
+edit_door.i: edit_door.c.i
+
+.PHONY : edit_door.i
+
+# target to preprocess a source file
+edit_door.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/edit_door.c.i
+.PHONY : edit_door.c.i
+
+edit_door.s: edit_door.c.s
+
+.PHONY : edit_door.s
+
+# target to generate assembly for a file
+edit_door.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/edit_door.c.s
+.PHONY : edit_door.c.s
 
 edit_menu.o: edit_menu.c.o
 
@@ -351,6 +378,33 @@ get_next_line.s: get_next_line.c.s
 get_next_line.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_next_line.c.s
 .PHONY : get_next_line.c.s
+
+init_editor_buttons.o: init_editor_buttons.c.o
+
+.PHONY : init_editor_buttons.o
+
+# target to build an object file
+init_editor_buttons.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/init_editor_buttons.c.o
+.PHONY : init_editor_buttons.c.o
+
+init_editor_buttons.i: init_editor_buttons.c.i
+
+.PHONY : init_editor_buttons.i
+
+# target to preprocess a source file
+init_editor_buttons.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/init_editor_buttons.c.i
+.PHONY : init_editor_buttons.c.i
+
+init_editor_buttons.s: init_editor_buttons.c.s
+
+.PHONY : init_editor_buttons.s
+
+# target to generate assembly for a file
+init_editor_buttons.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/init_editor_buttons.c.s
+.PHONY : init_editor_buttons.c.s
 
 level_edit.o: level_edit.c.o
 
@@ -2655,14 +2709,17 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ft"
 	@echo "... builder"
+	@echo "... ft"
 	@echo "... add_to_media.o"
 	@echo "... add_to_media.i"
 	@echo "... add_to_media.s"
 	@echo "... buttons.o"
 	@echo "... buttons.i"
 	@echo "... buttons.s"
+	@echo "... edit_door.o"
+	@echo "... edit_door.i"
+	@echo "... edit_door.s"
 	@echo "... edit_menu.o"
 	@echo "... edit_menu.i"
 	@echo "... edit_menu.s"
@@ -2681,6 +2738,9 @@ help:
 	@echo "... get_next_line.o"
 	@echo "... get_next_line.i"
 	@echo "... get_next_line.s"
+	@echo "... init_editor_buttons.o"
+	@echo "... init_editor_buttons.i"
+	@echo "... init_editor_buttons.s"
 	@echo "... level_edit.o"
 	@echo "... level_edit.i"
 	@echo "... level_edit.s"

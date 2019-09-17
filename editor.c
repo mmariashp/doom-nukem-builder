@@ -1,215 +1,6 @@
 
 #include "builder.h"
 
-//t_button				*set_get_free_buttons(char set_get_free, int *n, int state)
-//{
-//	static int 			n_sec = 4;
-//	static int 			n_wall = 4;
-//	static t_button		*sec = NULL;
-//	static t_button		*wall = NULL;
-//	int 				nb;
-//
-//	if (state == SECTOR_EDIT)
-//		nb = n_sec;
-//	else if (state == WALL_EDIT)
-//		nb = n_wall;
-//	else
-//		nb = 0;
-//	if (set_get_free == 0)
-//	{
-//		if (state == SECTOR_EDIT && !sec)
-//		{
-//			if ((sec = init_buttons(n_sec)))
-//				*n = nb;
-//		}
-//		else if (state == WALL_EDIT && !wall)
-//		{
-//			if ((wall = init_buttons(n_wall)))
-//				*n = nb;
-//		}
-//	}
-//	else if (set_get_free == 1)
-//	{
-//		*n = nb;
-//		if (state == SECTOR_EDIT && sec)
-//			return (sec);
-//		if (state == WALL_EDIT && wall)
-//			return (wall);
-//	}
-//	else if (set_get_free == 2)
-//	{
-//		if (state == SECTOR_EDIT)
-//			free_buttons(sec, n_sec);
-//		else if (state == WALL_EDIT)
-//			free_buttons(wall, n_wall);
-//	}
-//	return (NULL);
-//}
-
-# define B_EDIT			0
-# define B_UP			1
-# define B_DOWN			2
-# define B_CLOSE		3
-# define B_NB			4
-
-//void					standard_buttons(t_button *button, unsigned type, unsigned short free, SDL_Renderer *rend)
-//{
-//	static char			reg[B_NB][15] = { "edit.png", "up2.png", "down2.png", "cross2.png" };
-//	static char			lit[B_NB][15] = { "editlit.png", "up3.png", "down3.png", "cross3.png" };
-//
-//	if (!button)
-//		return ;
-//	if (free == TRUE)
-//	{
-//		if (button->txtr)
-//			SDL_DestroyTexture(button->txtr);
-//		if (button->lit)
-//			SDL_DestroyTexture(button->lit);
-//		return ;
-//	}
-//	if (!button->txtr && type < B_NB)
-//		button->txtr = load_texture(reg[type], rend, 0);
-//	if (!button->lit && type < B_NB)
-//		button->lit = load_texture(lit[type], rend, 0);
-//}
-//
-//void					render_edit_buttons(SDL_Renderer *rend, int state)
-//{
-//	t_button			*buttons;
-//	int 				n;
-//	static int 			init = 0;
-////	unsigned			i;
-//
-//	if (init == 0)
-//	{
-//		set_get_free_buttons(0, &n, SECTOR_EDIT);
-//		set_get_free_buttons(0, &n, WALL_EDIT);
-//		init = 1;
-//	}
-////	i = 0;
-//	if (!(buttons = set_get_free_buttons(1, &n, state)))
-//		return ;
-//	standard_buttons(&buttons[0], B_CLOSE, FALSE, rend);
-//	t_rec box = layout_menu(0, 0);
-//	buttons[0].box =  (t_rec){ box.x + box.w,         box.y,          30, 30 };
-//	render_buttons(buttons, rend, n);
-//	standard_buttons(&buttons[0], B_CLOSE, TRUE, rend);
-//}
-
-t_mode					*init_sector_buttons(t_mode *mode, SDL_Renderer *rend)
-{
-	t_rec				other;
-
-	if (!mode || !rend)
-		return (NULL);
-	mode->n_buttons = 7;
-	mode->buttons = init_buttons(mode->n_buttons);
-	if (!mode->buttons)
-		return (NULL);
-	mode->buttons[DESELECT_BUTTON].txtr =    load_texture("cross2.png", rend, 0);
-	mode->buttons[F_UP_BUTTON].txtr =            load_texture("up2.png", rend, 0);
-	mode->buttons[F_DOWN_BUTTON].txtr =          load_texture("down2.png", rend, 0);
-	mode->buttons[C_UP_BUTTON].txtr =            load_texture("up2.png", rend, 0);
-	mode->buttons[C_DOWN_BUTTON].txtr =          load_texture("down2.png", rend, 0);
-	mode->buttons[FT_EDIT_BUTTON].txtr =         load_texture("edit.png", rend, 0);
-	mode->buttons[CT_EDIT_BUTTON].txtr =         load_texture("edit.png", rend, 0);
-
-	mode->buttons[DESELECT_BUTTON].lit =      load_texture("cross3.png", rend, 0);
-	mode->buttons[F_UP_BUTTON].lit =              load_texture("up3.png", rend, 0);
-	mode->buttons[F_DOWN_BUTTON].lit =            load_texture("down3.png", rend, 0);
-	mode->buttons[C_UP_BUTTON].lit =              load_texture("up3.png", rend, 0);
-	mode->buttons[C_DOWN_BUTTON].lit =            load_texture("down3.png", rend, 0);
-	mode->buttons[FT_EDIT_BUTTON].lit =           load_texture("editlit.png", rend, 0);
-	mode->buttons[CT_EDIT_BUTTON].lit =           load_texture("editlit.png", rend, 0);
-
-	other = layout_menu(0, 0);
-	mode->buttons[DESELECT_BUTTON].box =  (t_rec){ other.x + other.w, other.y, 30, 30 };
-	mode->buttons[F_UP_BUTTON].box = layout_menu(3, 1);
-	mode->buttons[F_DOWN_BUTTON].box = layout_menu(4, 1);
-	mode->buttons[C_UP_BUTTON].box = layout_menu(3, 2);
-	mode->buttons[C_DOWN_BUTTON].box = layout_menu(4, 2);
-	mode->buttons[FT_EDIT_BUTTON].box = layout_menu(6, 3);
-	mode->buttons[CT_EDIT_BUTTON].box = layout_menu(6, 4);
-	return (mode);
-}
-
-t_mode					*init_wall_buttons(t_mode *mode, SDL_Renderer *rend)
-{
-	t_rec				other;
-
-	if (!mode || !rend)
-		return (NULL);
-	mode->n_buttons = 4;
-	mode->buttons = init_buttons(mode->n_buttons);
-	if (!mode->buttons)
-		return (NULL);
-	mode->buttons[DESELECT_BUTTON].txtr =    	load_texture("cross2.png", rend, 0);
-	mode->buttons[WT_EDIT_BUTTON].txtr =        load_texture("edit.png", rend, 0);
-	mode->buttons[W_PORTAL_BUTTON].txtr =        load_texture("edit.png", rend, 0);
-	mode->buttons[W_DOOR_BUTTON].txtr =        load_texture("edit.png", rend, 0);
-
-	mode->buttons[DESELECT_BUTTON].lit =      load_texture("cross3.png", rend, 0);
-	mode->buttons[WT_EDIT_BUTTON].lit =        load_texture("editlit.png", rend, 0);
-	mode->buttons[W_PORTAL_BUTTON].lit =        load_texture("editlit.png", rend, 0);
-	mode->buttons[W_DOOR_BUTTON].lit =        load_texture("editlit.png", rend, 0);
-
-	other = layout_menu(0, 0);
-	mode->buttons[DESELECT_BUTTON].box =  (t_rec){ other.x + other.w, other.y, 30, 30 };
-	mode->buttons[WT_EDIT_BUTTON].box =  layout_menu(6, 1);
-	mode->buttons[W_PORTAL_BUTTON].box = layout_menu(6, 2);
-	mode->buttons[W_DOOR_BUTTON].box = layout_menu(6, 3);
-	return (mode);
-}
-
-t_mode					*init_regular_buttons(t_mode *mode, SDL_Renderer *rend)
-{
-	static t_rec		box = { 10, 0, WIN_H * 0.07 * 8, WIN_H * 0.07};
-
-	if (!mode || !rend)
-		return (NULL);
-	mode->n_buttons = 8;
-	mode->buttons = init_buttons(mode->n_buttons);
-	if (!mode->buttons)
-		return (NULL);
-	distribute_buttons_h(mode->buttons, 0,  mode->n_buttons, box, 3);
-	mode->buttons[DRAG_BUTTON].txtr = load_texture("move2.png", rend, 0);
-	mode->buttons[DRAW_BUTTON].txtr = load_texture("add2.png", rend, 0);
-	mode->buttons[DISTORT_BUTTON].txtr = load_texture("distort2.png", rend, 0);
-	mode->buttons[DELETE_BUTTON].txtr = load_texture("delete2.png", rend, 0);
-	mode->buttons[BACK_BUTTON].txtr = load_texture("back22.png", rend, 0);
-	mode->buttons[SAVE_BUTTON].txtr = load_texture("save2.png", rend, 0);
-	mode->buttons[SECTOR_BUTTON].txtr = load_texture("sector22.png", rend, 0);
-	mode->buttons[WALL_BUTTON].txtr = load_texture("wall2.png", rend, 0);
-
-	mode->buttons[DRAG_BUTTON].lit = load_texture("move3.png", rend, 0);
-	mode->buttons[DRAW_BUTTON].lit = load_texture("add3.png", rend, 0);
-	mode->buttons[DISTORT_BUTTON].lit = load_texture("distort3.png", rend, 0);
-	mode->buttons[DELETE_BUTTON].lit = load_texture("delete3.png", rend, 0);
-	mode->buttons[BACK_BUTTON].lit = load_texture("back3.png", rend, 0);
-	mode->buttons[SAVE_BUTTON].lit = load_texture("save3.png", rend, 0);
-	mode->buttons[SECTOR_BUTTON].lit = load_texture("sector3.png", rend, 0);
-	mode->buttons[WALL_BUTTON].lit = load_texture("wall3.png", rend, 0);
-	return (mode);
-}
-
-void					get_buttons(int state, t_mode *mode, SDL_Renderer *rend)
-{
-	if (!mode)
-		return ;
-	if (state == SECTOR_EDIT)
-	{
-		mode = init_sector_buttons(mode, rend);
-	}
-	else if (state == WALL_EDIT)
-	{
-		mode = init_wall_buttons(mode, rend);
-	}
-	else
-	{
-		mode = init_regular_buttons(mode, rend);
-	}
-}
-
 void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int			state = selected_item(1, STATE_SELECT, -1);
@@ -290,9 +81,9 @@ unsigned short			save_media(t_media *media, t_prog *prog)
 	if (rewrite_media(media) == FAIL)
 		return (FAIL);
 	prog->save = 0;
-	prog->button_on = DRAG_BUTTON;
+	prog->button_on = DRAG_BTN;
 	prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
-	prog->modes[prog->mode_id].buttons[SAVE_BUTTON].vis_lit_on[2] = FALSE;
+	prog->modes[prog->mode_id].buttons[SAVE_BTN].vis_lit_on[2] = FALSE;
 	return (SUCCESS);
 }
 
@@ -323,13 +114,13 @@ void					change_heights(int b, t_sector *sec)
 	sector = selected_item(1, S_SELECT, -1);
 	int f_shift = 0;
 	int c_shift = 0;
-	if (b == F_UP_BUTTON) // sector mode
+	if (b == F_UP_BTN) // sector mode
 		f_shift++;
-	else if (b == F_DOWN_BUTTON) // sector mode
+	else if (b == F_DOWN_BTN) // sector mode
 		f_shift--;
-	else if (b == C_UP_BUTTON) // sector mode
+	else if (b == C_UP_BTN) // sector mode
 		c_shift++;
-	else if (b == C_DOWN_BUTTON) // sector mode
+	else if (b == C_DOWN_BTN) // sector mode
 		c_shift--;
 	if (f_shift || c_shift)
 	{
@@ -375,6 +166,43 @@ unsigned short			edit_texture(int floor_ceil, int n_txtrs, t_texture *txtrs, t_w
 	return (SUCCESS);
 }
 
+void					edit_wall_type(int btn_on, t_world *world)
+{
+	int 				wall;
+
+	if (!world)
+		return ;
+	wall = selected_item(1, W_SELECT, -1);
+	if (!within(wall, -1, world->n_walls))
+		return ;
+	if (btn_on == W_PORTAL_BTN)
+	{
+		if (world->walls[wall].type == WALL_EMPTY)
+		{
+			world->walls[wall].type = WALL_FILLED;
+			if (world->walls[wall].door != -1)
+				delete_door(world, wall);
+		}
+		else if (world->walls[wall].type == WALL_FILLED)
+		{
+			world->walls[wall].type = WALL_EMPTY;
+		}
+	}
+	else if (btn_on == W_DOOR_BTN)
+	{
+		if (world->walls[wall].door != -1)
+		{
+			delete_door(world, wall);
+		}
+		else
+		{
+			if (world->walls[wall].type == WALL_FILLED)
+				world->walls[wall].type = WALL_EMPTY;
+			add_door(world, wall);
+		}
+	}
+}
+
 unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int                 texture;
@@ -400,11 +228,8 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 			return(open_level(media, prog, grid));
 		}
 		if (prog->last_mode_id == MODE_TEXTURES)
-		{
 			edit_texture(floor_ceil, media->n_txtrs, media->txtrs, &media->worlds[media->world_id]);
-
-			prog->last_mode_id = prog->mode_id;
-		}
+		prog->last_mode_id = prog->mode_id;
 	}
 	if (prog->zoom != 0)
 		zoom_grid(prog, sdl->mouse, grid);
@@ -413,21 +238,23 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 		move_grid_keys(prog, grid);
 		return (SUCCESS);
 	}
-	if (prog->save == 1 || prog->button_on == SAVE_BUTTON) // when saving
+	if (prog->save == 1 || prog->button_on == SAVE_BTN) // when saving
 		return (save_media(media, prog));
 	if (last != state)
 	{
 		printf("change of buttons\n");
+
 		free_buttons(prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons);
 		get_buttons(state, &prog->modes[prog->mode_id], sdl->rend);
 		prog->button_on = -1;
 		prog->button_lit = -1;
+
 		if (state == SECTOR_SEARCH)
-			prog->button_on = SECTOR_BUTTON;
+			prog->button_on = SECTOR_BTN;
 		else if (state == WALL_SEARCH)
-			prog->button_on = WALL_BUTTON;
+			prog->button_on = WALL_BTN;
 		else if (state == NORMAL)
-			prog->button_on = DRAG_BUTTON;
+			prog->button_on = DRAG_BTN;
 		if (within(prog->button_on, -1, prog->modes[prog->mode_id].n_buttons))
 			prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
 		last = state;
@@ -444,31 +271,26 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 		{
 			clean_grid(grid);
 			fill_grid(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
-			if (prog->button_on == SECTOR_BUTTON)
+			if (prog->button_on == SECTOR_BTN)
 				selected_item(0, STATE_SELECT, SECTOR_SEARCH);
-			else if (prog->button_on == WALL_BUTTON)
+			else if (prog->button_on == WALL_BTN)
 			{
 				selected_item(0, STATE_SELECT, WALL_SEARCH);
 				fill_grid_walls(media->worlds[media->world_id].n_walls, media->worlds[media->world_id].walls,
 								media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
 			}
 			else
-			{
-				printf("back to normal\n");
 				selected_item(0, STATE_SELECT, NORMAL);
-			}
 		}
 		else if (state == SECTOR_EDIT || state == WALL_EDIT)
 		{
-			if (prog->button_on == DESELECT_BUTTON)
+			if (prog->button_on == DESELECT_BTN)
 			{
 				clean_grid(grid);
 				fill_grid(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
 				zoom_to_map(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
 				if (state == SECTOR_EDIT)
-				{
 					selected_item(0, STATE_SELECT, SECTOR_SEARCH);
-				}
 				else
 				{
 					selected_item(0, STATE_SELECT, WALL_SEARCH);
@@ -477,13 +299,13 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 									media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
 				}
 			}
-			else if ((state == SECTOR_EDIT && (prog->button_on == FT_EDIT_BUTTON || prog->button_on == CT_EDIT_BUTTON)) ||
-					(state == WALL_EDIT && prog->button_on == WT_EDIT_BUTTON))
+			else if ((state == SECTOR_EDIT && (prog->button_on == FT_EDIT_BTN || prog->button_on == CT_EDIT_BTN)) ||
+					(state == WALL_EDIT && prog->button_on == WT_EDIT_BTN)) //editing textures
 			{
 				texture = -1;
 				if (state == SECTOR_EDIT && within((sector = selected_item(1, S_SELECT, -1)), -1, media->worlds[media->world_id].n_sec))
 				{
-					floor_ceil = prog->button_on == FT_EDIT_BUTTON ? 0 : 1;
+					floor_ceil = prog->button_on == FT_EDIT_BTN ? 0 : 1;
 					texture = floor_ceil == 0 ? media->worlds[media->world_id].sec[sector].floor_txtr :
 							  media->worlds[media->world_id].sec[sector].ceil_txtr;
 					texture = media->worlds[media->world_id].textures[texture];
@@ -502,9 +324,15 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 					selected_item(0, T_SELECT, texture);
 				}
 			}
-			else if (state == SECTOR_EDIT && within(prog->button_on, F_UP_BUTTON - 1, C_DOWN_BUTTON + 1))
+			else if (state == SECTOR_EDIT && within(prog->button_on, F_UP_BTN - 1, C_DOWN_BTN + 1)) // editing heights
 			{
 				change_heights(prog->button_on, media->worlds[media->world_id].sec);
+				prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
+				prog->button_on = -1;
+			}
+			else if (state == WALL_EDIT && (prog->button_on == W_PORTAL_BTN || prog->button_on == W_DOOR_BTN))
+			{
+				edit_wall_type(prog->button_on, &media->worlds[media->world_id]);
 				prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 				prog->button_on = -1;
 			}
@@ -574,7 +402,7 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 	}
 
 
-	if (prog->button_on == DRAW_BUTTON) // draw mode
+	if (prog->button_on == DRAW_BTN) // draw mode
 	{
 		if ((prog->click.x || prog->click.y) && mouse_over(grid->box, sdl->mouse))
 		{
@@ -591,13 +419,13 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 		else if (grid->active[0].x != -1 && grid->active[1].x == -1)
 			prog->features[F_REDRAW] = 1;
 	}
-	else if (prog->button_on == DISTORT_BUTTON ) // move mode
+	else if (prog->button_on == DISTORT_BTN ) // move mode
 	{
 		move_vector(prog, sdl->mouse, grid, &media->worlds[media->world_id]);
 	}
-	else if (prog->button_on == DRAG_BUTTON && (prog->click.x || prog->click.y)) // view mode
+	else if (prog->button_on == DRAG_BTN && (prog->click.x || prog->click.y)) // view mode
 		move_grid_drag(prog, sdl->mouse, grid);
-	else if (prog->button_on == DELETE_BUTTON) // delete mode
+	else if (prog->button_on == DELETE_BTN) // delete mode
 	{
 		if (prog->click.x || prog->click.y)
 		{
@@ -616,8 +444,6 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 				prog->click = (t_vec2d){ 0, 0 };
 		}
 	}
-
-
 
 	update_sector_status(media->worlds[media->world_id].sec, media->worlds[media->world_id].walls,
 			media->worlds[media->world_id].vertices, media->worlds[media->world_id].n_sec);
@@ -669,7 +495,7 @@ int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 				prog->click = sdl->mouse;
 			if(event.type == SDL_MOUSEBUTTONUP)
 			{
-                if (prog->button_lit == BACK_BUTTON)
+                if (prog->button_lit == BACK_BTN)
                 {
 					prog->last_mode_id = prog->mode_id;
                     prog->mode_id = MODE_SUMMARY;

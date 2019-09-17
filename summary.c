@@ -106,8 +106,8 @@ int						input_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
                     prog->mode_id = MODE_EDITOR;
                     media->world_id = prog->button_lit;
 					prog->button_lit = -1;
-                    prog->button_on = DRAG_BUTTON;
-                    prog->modes[prog->mode_id].buttons[DRAG_BUTTON].vis_lit_on[2] = TRUE;
+                    prog->button_on = DRAG_BTN;
+                    prog->modes[prog->mode_id].buttons[DRAG_BTN].vis_lit_on[2] = TRUE;
                     return (quit);
 				}
 			}

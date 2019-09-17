@@ -163,30 +163,30 @@
 # define MODE_EDITOR		2
 # define MODE_TEXTURES		3
 
-# define N_MM_BUTTONS		2
-# define N_SUMM_BUTTONS		3
-# define N_EDIT_BUTTONS		3
+# define N_MM_BTNS		2
+# define N_SUMM_BTNS		3
+# define N_EDIT_BTNS		3
 
-# define DRAG_BUTTON		0
-# define DRAW_BUTTON		1
-# define DISTORT_BUTTON		2
-# define DELETE_BUTTON		3
-# define SECTOR_BUTTON		4
-# define WALL_BUTTON		5
-# define SAVE_BUTTON		6
-# define BACK_BUTTON		7
+# define DRAG_BTN		0
+# define DRAW_BTN		1
+# define DISTORT_BTN		2
+# define DELETE_BTN		3
+# define SECTOR_BTN		4
+# define WALL_BTN		5
+# define SAVE_BTN		6
+# define BACK_BTN		7
 
-# define DESELECT_BUTTON	0
-# define F_UP_BUTTON		1
-# define F_DOWN_BUTTON		2
-# define C_UP_BUTTON		3
-# define C_DOWN_BUTTON		4
-# define FT_EDIT_BUTTON		5
-# define CT_EDIT_BUTTON		6
+# define DESELECT_BTN	0
+# define F_UP_BTN		1
+# define F_DOWN_BTN		2
+# define C_UP_BTN		3
+# define C_DOWN_BTN		4
+# define FT_EDIT_BTN		5
+# define CT_EDIT_BTN		6
 
-# define WT_EDIT_BUTTON		1
-# define W_PORTAL_BUTTON    2
-# define W_DOOR_BUTTON      3
+# define WT_EDIT_BTN		1
+# define W_PORTAL_BTN    2
+# define W_DOOR_BTN      3
 
 
 # define GRID_SIZE			150
@@ -544,5 +544,10 @@ t_button				*init_buttons(int n_buttons);
 void					free_buttons(t_button *buttons, int n);
 t_button				*set_get_free_buttons(char set_get_free, int *n, int state);
 unsigned short			distribute_buttons_h(t_button *buttons, int from, int nb, t_rec box, int padding);
+void					get_buttons(int state, t_mode *mode, SDL_Renderer *rend);
+
+//door
+void                    delete_door(t_world *world, int id);
+void                    add_door(t_world *world, int id);
 
 #endif

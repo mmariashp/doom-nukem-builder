@@ -253,7 +253,7 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 	render_grid_nodes(prog->screen, grid);
 	draw_walls(world, grid, prog->screen, lit_wall, on_wall);
 	place_player(world, grid, prog->screen, radius2);
-	if (prog->mode_id == MODE_EDITOR && prog->button_on == DRAW_BUTTON) // draw mode
+	if (prog->mode_id == MODE_EDITOR && prog->button_on == DRAW_BTN) // draw mode
 	{
 		if (grid->active[0].x != -1 && grid->active[0].y != -1)
 		{

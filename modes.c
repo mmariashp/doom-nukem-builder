@@ -191,7 +191,7 @@ unsigned short			distribute_buttons_v2(t_button *buttons, int from, int to, t_re
     return (SUCCESS);
 }
 
-# define N_BUTTON_BACKS		3
+# define N_BTN_BACKS		3
 
 SDL_Texture				*button_back(int id, int set_get_free, SDL_Renderer *rend)
 {
@@ -203,7 +203,7 @@ SDL_Texture				*button_back(int id, int set_get_free, SDL_Renderer *rend)
 		return (NULL);
 	if (set_get_free == 0 && back == NULL && init == 0)
 	{
-		if (!(back = (SDL_Texture **)ft_memalloc(sizeof(SDL_Texture *) * N_BUTTON_BACKS)))
+		if (!(back = (SDL_Texture **)ft_memalloc(sizeof(SDL_Texture *) * N_BTN_BACKS)))
 			return (NULL);
 		back[0] = load_texture("blue_button00.png", rend, 0);
 		back[1] = load_texture("blue_button13.png", rend, 0);
@@ -214,7 +214,7 @@ SDL_Texture				*button_back(int id, int set_get_free, SDL_Renderer *rend)
 	if (init == 1 && set_get_free == 2 && back != NULL)
 	{
 		i = 0;
-		while (i < N_BUTTON_BACKS)
+		while (i < N_BTN_BACKS)
 		{
 //			if (back[i])
 //				SDL_DestroyTexture(back[i]);
@@ -224,7 +224,7 @@ SDL_Texture				*button_back(int id, int set_get_free, SDL_Renderer *rend)
 		init = 0;
 		return (NULL);
 	}
-	else if (init == 1 && set_get_free == 1 && id >= 0 && id < N_BUTTON_BACKS)
+	else if (init == 1 && set_get_free == 1 && id >= 0 && id < N_BTN_BACKS)
 		return (back[id]);
 	return (NULL);
 }
@@ -237,13 +237,13 @@ unsigned short			main_menu_buttons(t_button *buttons, t_sdl *sdl)
 	if (!buttons)
 		return (FAIL);
     box.w = WIN_W / 4;
-    box.h = (box.w + 20) * N_MM_BUTTONS / 3;
+    box.h = (box.w + 20) * N_MM_BTNS / 3;
 	box.x = (WIN_W  - box.w) / 2;
 	box.y = (WIN_H  - box.h) / 2;
-	distribute_buttons_v(buttons, 0, N_MM_BUTTONS ,box, 20);
+	distribute_buttons_v(buttons, 0, N_MM_BTNS ,box, 20);
 	i = 0;
 
-	while (i < N_MM_BUTTONS)
+	while (i < N_MM_BTNS)
 	{
 		buttons[i].txtr = button_back(1, 1, sdl->rend);
 		buttons[i].lit = button_back(0, 1, sdl->rend);
@@ -334,27 +334,27 @@ unsigned short			textures_buttons(t_button *buttons, t_texture *textures, int n_
 //		buttons[i].lit = NULL;
 //		i++;
 //	}
-//	buttons[W_BACK_BUTTON].txtr = load_texture("back22.png", sdl->rend, 0);
-//	buttons[W_BACK_BUTTON].lit = load_texture("back3.png", sdl->rend, 0);
-//    buttons[W_DESELECT_BUTTON].txtr =      load_texture("cross2.png", sdl->rend, 0);
-//    buttons[W_DESELECT_BUTTON].lit =      load_texture("cross3.png", sdl->rend, 0);
-//    buttons[WT_BUTTON].txtr =            load_texture("edit.png", sdl->rend, 0);
-//    buttons[WT_BUTTON].lit =                load_texture("editlit.png", sdl->rend, 0);
-//    buttons[W_PORTAL_BUTTON].txtr =        buttons[WT_BUTTON].txtr;
-//    buttons[W_PORTAL_BUTTON].lit =          buttons[WT_BUTTON].lit;
-//    buttons[W_DOOR_BUTTON].txtr =          buttons[WT_BUTTON].txtr;
-//    buttons[W_DOOR_BUTTON].lit =            buttons[WT_BUTTON].lit;
+//	buttons[W_BACK_BTN].txtr = load_texture("back22.png", sdl->rend, 0);
+//	buttons[W_BACK_BTN].lit = load_texture("back3.png", sdl->rend, 0);
+//    buttons[W_DESELECT_BTN].txtr =      load_texture("cross2.png", sdl->rend, 0);
+//    buttons[W_DESELECT_BTN].lit =      load_texture("cross3.png", sdl->rend, 0);
+//    buttons[WT_BTN].txtr =            load_texture("edit.png", sdl->rend, 0);
+//    buttons[WT_BTN].lit =                load_texture("editlit.png", sdl->rend, 0);
+//    buttons[W_PORTAL_BTN].txtr =        buttons[WT_BTN].txtr;
+//    buttons[W_PORTAL_BTN].lit =          buttons[WT_BTN].lit;
+//    buttons[W_DOOR_BTN].txtr =          buttons[WT_BTN].txtr;
+//    buttons[W_DOOR_BTN].lit =            buttons[WT_BTN].lit;
 //
 //    box = layout_menu(0, 0);
-//    buttons[W_DESELECT_BUTTON].box =  (t_rec){ box.x + box.w,         box.y,          30, 30 };
-//    buttons[WT_BUTTON].box = layout_menu(6, 0);
-//    buttons[W_PORTAL_BUTTON].box = layout_menu(6, 1);
-//    buttons[W_DOOR_BUTTON].box = layout_menu(6, 2);
+//    buttons[W_DESELECT_BTN].box =  (t_rec){ box.x + box.w,         box.y,          30, 30 };
+//    buttons[WT_BTN].box = layout_menu(6, 0);
+//    buttons[W_PORTAL_BTN].box = layout_menu(6, 1);
+//    buttons[W_DOOR_BTN].box = layout_menu(6, 2);
 //
-//    buttons[W_DESELECT_BUTTON].vis_lit_on[0] = FALSE;
-//    buttons[WT_BUTTON].vis_lit_on[0] = FALSE;
-//    buttons[W_PORTAL_BUTTON].vis_lit_on[0] = FALSE;
-//    buttons[W_DOOR_BUTTON].vis_lit_on[0] = FALSE;
+//    buttons[W_DESELECT_BTN].vis_lit_on[0] = FALSE;
+//    buttons[WT_BTN].vis_lit_on[0] = FALSE;
+//    buttons[W_PORTAL_BTN].vis_lit_on[0] = FALSE;
+//    buttons[W_DOOR_BTN].vis_lit_on[0] = FALSE;
 //	return (SUCCESS);
 //}
 
@@ -406,7 +406,7 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
     prog->modes[MODE_TEXTURES].update = &update_textures;
     prog->modes[MODE_TEXTURES].render = &render_textures;
 
-	prog->modes[MODE_MAIN_MENU].n_buttons = N_MM_BUTTONS;
+	prog->modes[MODE_MAIN_MENU].n_buttons = N_MM_BTNS;
 	prog->modes[MODE_SUMMARY].n_buttons = media->n_worlds + 1;
 	prog->modes[MODE_EDITOR].n_buttons = 8;
     prog->modes[MODE_TEXTURES].n_buttons = media->n_txtrs;

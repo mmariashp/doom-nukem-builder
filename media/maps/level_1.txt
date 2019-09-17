@@ -1,5 +1,5 @@
 Count Vectors: 43
-Count Walls: 56
+Count Walls: 57
 Count Sectors: 13
 Count Textures: 3
 
@@ -90,7 +90,7 @@ Walls
 33) 25-26 empty 0
 34) 26-24 filled 0
 35) 25-27 filled 0
-36) 27-28 filled 0
+36) 27-28 empty 0
 37) 28-29 filled 0
 38) 29-30 filled 0
 39) 30-31 empty 0
@@ -110,6 +110,7 @@ Walls
 53) 41-42 filled 0
 54) 42-38 filled 0
 55) 6-7 door 0
+56) 27-28 door 0
 
 Sectors
 0) floor(1 2) ceil(20 1) walls '0 1 2 3 4 5 ' items '' enemies ''

@@ -166,6 +166,8 @@ unsigned short			add_wall(t_wall **walls, short n_walls, int one, int two)
 	return (SUCCESS);
 }
 
+
+
 unsigned short			add_secwall(int **secwalls, short n_secwalls, int wall)
 {
 	if (n_secwalls > 0 && !*secwalls)

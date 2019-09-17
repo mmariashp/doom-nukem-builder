@@ -79,8 +79,10 @@ t_value					*get_wall_values(int *n, t_wall *wall, SDL_Renderer *rend, SDL_Textu
 		return (NULL);
 	*n = nb;
 	new[1].texture = wall_texture;
-	new[2].texture = wall->type == WALL_EMPTY ? load_texture("yes.png", rend, 0) : load_texture("no.png", rend, 0);
-	new[3].texture = wall->door > -1 ? load_texture("yes.png", rend, 0) : load_texture("no.png", rend, 0);
+	new[2].texture = wall->type == WALL_EMPTY ?\
+		load_texture("yes.png", rend, 0) : load_texture("no.png", rend, 0);
+	new[3].texture = wall->door > -1 ?\
+		load_texture("yes.png", rend, 0) : load_texture("no.png", rend, 0);
 	if (!new[1].texture || !new[2].texture || !new[3].texture)
 		return (NULL);
 	return (new);
@@ -96,6 +98,8 @@ void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int sta
 
 	if (!r || !txtrs || !w || (state != SECTOR_EDIT && state != WALL_EDIT))
 		return ;
+	values = NULL;
+	n = 0;
 	i = state == SECTOR_EDIT ? selected_item(1, S_SELECT, -1)
 			: selected_item(1, W_SELECT, -1);
 	if (state == SECTOR_EDIT && within(i, -1, w->n_sec) &&
