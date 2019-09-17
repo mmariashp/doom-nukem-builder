@@ -65,8 +65,17 @@ unsigned short			update_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog
 	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
 		return (FAIL);
 	if (light_button(sdl, prog->modes[prog->mode_id].buttons,  prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
-		return (SUCCESS);
-	prog->button_lit = -1;
+		prog->features[F_REDRAW] = 1;
+	if ((prog->click.x || prog->click.y) && prog->button_lit != -1)
+	{
+		if (within(prog->button_on, -1, prog->modes[prog->mode_id].n_buttons) == TRUE)
+			prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
+		prog->button_on = prog->button_lit;
+		prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
+		prog->click.x = 0;
+		prog->click.y = 0;
+		prog->features[F_REDRAW] = 1;
+	}
 	return (SUCCESS);
 }
 
@@ -97,19 +106,23 @@ int						input_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		if( event.type == SDL_MOUSEMOTION || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP )
 		{
 			SDL_GetMouseState(&sdl->mouse.x, &sdl->mouse.y);
+			if(event.type == SDL_MOUSEBUTTONDOWN)
+				prog->click = sdl->mouse;
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
-				if (prog->button_lit != -1)
+				if (prog->button_on <= media->n_worlds)
 				{
-					prog->modes[prog->mode_id].buttons[prog->button_lit].vis_lit_on[2] = FALSE;
+					prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 					prog->last_mode_id = prog->mode_id;
                     prog->mode_id = MODE_EDITOR;
-                    media->world_id = prog->button_lit;
+                    media->world_id = prog->button_on;
 					prog->button_lit = -1;
                     prog->button_on = DRAG_BTN;
+                    selected_item(0, STATE_SELECT, NORMAL);
                     prog->modes[prog->mode_id].buttons[DRAG_BTN].vis_lit_on[2] = TRUE;
                     return (quit);
 				}
+				prog->click = (t_vec2d){ 0, 0 };
 			}
 		}
 	}

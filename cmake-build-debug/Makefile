@@ -244,6 +244,33 @@ edit_menu.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/edit_menu.c.s
 .PHONY : edit_menu.c.s
 
+edit_walls.o: edit_walls.c.o
+
+.PHONY : edit_walls.o
+
+# target to build an object file
+edit_walls.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/edit_walls.c.o
+.PHONY : edit_walls.c.o
+
+edit_walls.i: edit_walls.c.i
+
+.PHONY : edit_walls.i
+
+# target to preprocess a source file
+edit_walls.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/edit_walls.c.i
+.PHONY : edit_walls.c.i
+
+edit_walls.s: edit_walls.c.s
+
+.PHONY : edit_walls.s
+
+# target to generate assembly for a file
+edit_walls.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/edit_walls.c.s
+.PHONY : edit_walls.c.s
+
 editor.o: editor.c.o
 
 .PHONY : editor.o
@@ -2723,6 +2750,9 @@ help:
 	@echo "... edit_menu.o"
 	@echo "... edit_menu.i"
 	@echo "... edit_menu.s"
+	@echo "... edit_walls.o"
+	@echo "... edit_walls.i"
+	@echo "... edit_walls.s"
 	@echo "... editor.o"
 	@echo "... editor.i"
 	@echo "... editor.s"

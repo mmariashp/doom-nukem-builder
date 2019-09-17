@@ -34,12 +34,6 @@
 # define TRUE					1
 # define FALSE					0
 
-
-# define C_N_EMPTY				0
-# define C_N_FULL				1
-# define C_W_EMPTY				2
-# define C_W_FULL				3
-
 # define WHITE					0xffffff
 # define GRAY					0xa9a9a9
 # define PURPLE					0x621295
@@ -116,20 +110,20 @@
 # define MIN_VERTEX_ID			0
 # define MAX_VERTEX_ID			200
 
-# define MIN_N_WALLS			3
+# define MIN_N_WALLS			0
 # define MAX_N_WALLS			127
 
 # define MIN_N_SECTORS			1
 # define MAX_N_SECTORS			50
 
-# define MIN_n_txtrs			1
-# define MAX_n_txtrs			50
+# define MIN_N_TXTRS			1
+# define MAX_N_TXTRS			50
 
 # define MIN_HEIGHT				-100
 # define MAX_HEIGHT				100
 
 # define MIN_SECTOR_WALLS		3
-# define MAX_SECTOR_WALLS		20
+# define MAX_SECTOR_WALLS		30
 
 //wall types
 # define WALL_EMPTY					0
@@ -173,8 +167,9 @@
 # define DELETE_BTN		3
 # define SECTOR_BTN		4
 # define WALL_BTN		5
-# define SAVE_BTN		6
-# define BACK_BTN		7
+# define PLAYER_BTN		6
+# define SAVE_BTN		7
+# define BACK_BTN		8
 
 # define DESELECT_BTN	0
 # define F_UP_BTN		1
@@ -195,6 +190,33 @@
 # define SEC_CONVEX_CLOSED		1
 # define SEC_CONCAVE_CLOSED		0
 # define SEC_OPEN				-1
+
+# define WALL_RADIUS	1
+# define LIT_WALL_RADIUS	4
+
+# define F_ZOOM					0
+# define F_MOVE_GRID			1
+# define F_SELECT_NODE			2
+# define F_REDRAW				3
+
+// for selected function
+
+# define V_SELECT		0
+# define W_SELECT		1
+# define S_SELECT		2
+# define T_SELECT		3
+# define BUTT_SELECT	4
+# define STATE_SELECT	5
+# define WORLD_SELECT	6
+
+// states
+# define NORMAL					-1
+# define SECTOR_SEARCH			0
+# define SECTOR_EDIT			1
+# define VECTOR_SEARCH			2
+# define VECTOR_EDIT			3
+# define WALL_SEARCH			4
+# define WALL_EDIT				5
 
 typedef struct					s_vec2d
 {
@@ -249,30 +271,6 @@ typedef struct 					s_button
 	SDL_Texture					*txtr;
 	SDL_Texture					*lit;
 }								t_button;
-
-# define F_ZOOM					0
-# define F_MOVE_GRID			1
-# define F_SELECT_NODE			2
-# define F_REDRAW				3
-
-// for selected function
-
-# define V_SELECT		0
-# define W_SELECT		1
-# define S_SELECT		2
-# define T_SELECT		3
-# define BUTT_SELECT	4
-# define STATE_SELECT	5
-# define O_SELECT		6
-
-// states
-# define NORMAL					-1
-# define SECTOR_SEARCH			0
-# define SECTOR_EDIT			1
-# define VECTOR_SEARCH			2
-# define VECTOR_EDIT			3
-# define WALL_SEARCH			4
-# define WALL_EDIT				5
 
 typedef struct					s_sdl
 {
@@ -467,6 +465,7 @@ void					draw_dot2(int x, int y, int color, int **screen);
 void				    draw_line2(t_line l, int color, int **screen);
 void					draw_circle_fill2(t_vec2d c, int radius, int color, int **screen);
 void					draw_node(t_vec2d c, int r, int color, int **screen);
+void				    draw_thick_line(t_line l, int color, int r, int **screen);
 
 void					fillpoly(t_vec2d *p, int polyCorners, int **screen, int color);
 
@@ -491,7 +490,7 @@ void					clean_grid(t_grid *grid);
 void                    fill_grid_walls(int n_walls, t_wall *walls, int n_vectors, t_vec2d *vertices, t_grid *grid);
 
 void					add_to_media(t_grid *grid, t_media *media);
-unsigned short			add_world(t_world **worlds, short n_worlds);
+unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *path);
 
 void					update_sector_status(t_sector *sec, t_wall *walls, t_vec2d *vertices, int n_sec);
 int 					in_sector(t_vec2d p, t_world *world, t_grid *grid);
@@ -502,6 +501,8 @@ void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid);
 void					move_grid_keys(t_prog *prog, t_grid *grid);
 void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
 void                    zoom_to_sector(t_sector *sector, t_vec2d *vertices, t_grid *grid, t_prog *prog);
+void                    zoom_to_map(int n_vectors, t_vec2d *v, t_grid *grid);
+void                    zoom_to_wall(t_vec2d v1, t_vec2d v2, t_grid *grid, t_prog *prog);
 
 void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
 
@@ -509,7 +510,7 @@ t_vec2d					find_node(int p_x, int p_y, t_grid *grid);
 
 t_vec2d                 make_iso(int x, int y, int z);
 
-void                    zoom_to_map(int n_vectors, t_vec2d *v, t_grid *grid);
+
 
 
 
@@ -549,5 +550,9 @@ void					get_buttons(int state, t_mode *mode, SDL_Renderer *rend);
 //door
 void                    delete_door(t_world *world, int id);
 void                    add_door(t_world *world, int id);
+void					delete_wall(int id, t_world *world);
+unsigned short			add_wall_in_secs(t_world *world, int to_add, int find);
+
+void					move_player(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
 
 #endif

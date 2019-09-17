@@ -115,6 +115,56 @@ void                    zoom_to_sector(t_sector *sector, t_vec2d *vertices, t_gr
     grid->scale = get_scale_to_sector(n, WIN_W * 0.6, WIN_H * 0.6);
 }
 
+void                    zoom_to_wall(t_vec2d v1, t_vec2d v2, t_grid *grid, t_prog *prog)
+{
+	t_vec2d				p[2];
+	t_vec2d             min;
+	t_vec2d             max;
+	t_vec2d             center;
+	static t_vec2d      desired = { WIN_W * 0.3, WIN_H * 0.5 };
+	int                 n;
+
+	if (!prog || !grid)
+		return ;
+	max.x = 0;
+	min.x = GRID_SIZE;
+	max.y = 0;
+	min.y = GRID_SIZE;
+
+		p[0] = v1;
+		draw_node(p[0], 15, BABY_PINK, prog->screen);
+		if (p[0].x < min.x)
+			min.x = p[0].x;
+		if (p[0].x > max.x)
+			max.x = p[0].x;
+		if (p[0].y < min.y)
+			min.y = p[0].y;
+		if (p[0].y > max.y)
+			max.y = p[0].y;
+
+	p[1] = v2;
+	draw_node(p[1], 15, BABY_PINK, prog->screen);
+	if (p[1].x < min.x)
+		min.x = p[1].x;
+	if (p[1].x > max.x)
+		max.x = p[1].x;
+	if (p[1].y < min.y)
+		min.y = p[1].y;
+	if (p[1].y > max.y)
+		max.y = p[1].y;
+
+	n = get_max(max.x - min.x, max.y - min.y);
+	min.x = (int)(grid->box.x + min.x * grid->scale);
+	min.y = (int)(grid->box.y + min.y * grid->scale);
+	max.x = (int)(grid->box.x + max.x * grid->scale);
+	max.y = (int)(grid->box.y + max.y * grid->scale);
+	center = (t_vec2d){ min.x + (max.x - min.x) / 2, min.y + (max.y - min.y) / 2 };
+	grid->box.x = (grid->box.x - center.x) + desired.x;
+	grid->box.y = (grid->box.y - center.y) + desired.y;
+	zoom_displace(&grid->box.x, &grid->box.y, desired, grid->scale, get_scale_to_sector(n, WIN_W * 0.6, WIN_H * 0.6) );
+	grid->scale = get_scale_to_sector(n, WIN_W * 0.6, WIN_H * 0.6);
+}
+
 void                    zoom_to_map(int n_vectors, t_vec2d *v, t_grid *grid)
 {
     int                 i;

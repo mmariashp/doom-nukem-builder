@@ -62,18 +62,18 @@ t_mode					*init_wall_buttons(t_mode *m, SDL_Renderer *rend)
 
 t_mode					*init_regular_buttons(t_mode *mode, SDL_Renderer *rend)
 {
-	static t_rec		box = { 10, 0, WIN_H * 0.07 * 8, WIN_H * 0.07};
-	static char         reg[8][15] = { "move2.png", "add2.png", "distort2.png",\
+	static t_rec		box = { 10, 0, WIN_H * 0.07 * 9, WIN_H * 0.07};
+	static char         reg[9][15] = { "move2.png", "add2.png", "distort2.png",\
 						"delete2.png", "sector22.png", "wall2.png",\
-						"save2.png", "back22.png" };
-	static char         lit[8][15] = { "move3.png", "add3.png", "distort3.png",\
+						"player2.png", "save2.png", "back22.png" };
+	static char         lit[9][15] = { "move3.png", "add3.png", "distort3.png",\
     					"delete3.png", "sector3.png", "wall3.png",\
-						"save3.png", "back3.png" };
+						"player3.png", "save3.png", "back3.png" };
 	int                 i;
 
 	if (!mode || !rend)
 		return (NULL);
-	mode->n_buttons = 8;
+	mode->n_buttons = 9;
 	if (!(mode->buttons = init_buttons(mode->n_buttons)))
 		return (NULL);
 	distribute_buttons_h(mode->buttons, 0,  mode->n_buttons, box, 3);

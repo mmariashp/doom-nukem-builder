@@ -17,6 +17,7 @@ void					draw_node(t_vec2d c, int r, int color, int **screen)
 
 void					draw_player(t_vec2d c, int r, int color, int **screen)
 {
+	draw_circle_fill2(c, r * 1.5, DARK_GRAY, screen);
 	draw_circle_fill2(c, r, color, screen);
 	draw_circle_fill2(c, r * 0.5, WHITE, screen);
 }
@@ -42,21 +43,30 @@ void					render_grid_nodes(int **screen, t_grid *grid)
 		while (x < GRID_SIZE)
 		{
 			node.x = (int)(grid->box.x + (x * grid->scale));
-			if (grid->nodes[x][y] == NODE_FULL)
-				draw_node(node, radius2, BROWN, screen);
-            else if (grid->nodes[x][y] == NODE_SECTOR)
-                draw_node(node, radius2, YELLOW, screen);
-            else if (grid->nodes[x][y] == NODE_EMPTY)
-                draw_node(node, radius1, DARK_GRAY, screen);
-            else
-            {
-                draw_node(node, radius2, RED, screen);
-            }
+			if (within(node.x, -1, WIN_W) && within(node.y, -1, WIN_H))
+			{
+				if (grid->nodes[x][y] == NODE_FULL)
+					draw_node(node, radius2, BROWN, screen);
+				else if (grid->nodes[x][y] == NODE_SECTOR)
+					draw_node(node, radius2, YELLOW, screen);
+				else if (grid->nodes[x][y] == NODE_EMPTY)
+				{
+					if (screen[node.x][node.y] == 0)
+						draw_node(node, radius1, DARK_GRAY, screen);
+				}
+//				else
+//				{
+//					draw_node(node, radius2, RED, screen);
+//				}
+			}
 			x++;
 		}
 		y++;
 	}
 }
+
+
+
 
 void					place_player(t_world world, t_grid *grid, int **screen, int radius)
 {
@@ -64,20 +74,20 @@ void					place_player(t_world world, t_grid *grid, int **screen, int radius)
 
 	node.x = (int)(grid->box.x + world.p_start.x * grid->scale);
 	node.y = (int)(grid->box.y + world.p_start.y * grid->scale);
-	draw_player(node, radius * 1.5, PURPLE, screen);
+	draw_player(node, radius * 1.5, RED, screen);
 
 	node.x = (int)(grid->box.x + world.p_end.x * grid->scale);
 	node.y = (int)(grid->box.y + world.p_end.y * grid->scale);
-	draw_player(node, radius * 1.5, YELLOW, screen);
+	draw_player(node, radius * 1.5, GREEN, screen);
 }
 
-void					draw_walls(t_world world, t_grid *grid, int **screen, int lit, int on)
+
+
+void					draw_walls(t_world world, t_grid *grid, int **screen, int wall)
 {
 	int					i = 0;
 	t_vec2d				v1;
 	t_vec2d				v2;
-    t_vec2d				a1;
-    t_vec2d				a2;
 
 	while (i < world.n_walls)
 	{
@@ -89,66 +99,14 @@ void					draw_walls(t_world world, t_grid *grid, int **screen, int lit, int on)
 		v2.x = (int)(grid->box.x + v2.x * grid->scale);
 		v2.y = (int)(grid->box.y + v2.y * grid->scale);
 
-//        a1 = (t_vec2d){ v1.x, v1.y + 1 };
-//        a2 = (t_vec2d){ v2.x, v2.y + 1 };
-//        draw_line2((t_line){ a1, a2 }, RED, screen);
-//        a1 = (t_vec2d){ v1.x, v1.y - 1 };
-//        a2 = (t_vec2d){ v2.x, v2.y - 1 };
-//        draw_line2((t_line){ a1, a2 }, RED, screen);
-//        a1 = (t_vec2d){ v1.x + 1, v1.y };
-//        a2 = (t_vec2d){ v2.x + 1, v2.y };
-//        draw_line2((t_line){ a1, a2 }, RED, screen);
-//        a1 = (t_vec2d){ v1.x - 1, v1.y };
-//        a2 = (t_vec2d){ v2.x - 1, v2.y };
-//        draw_line2((t_line){ a1, a2 }, RED, screen);
-        if (i == lit)
-        {
-            a1 = (t_vec2d){ v1.x, v1.y + 1 };
-            a2 = (t_vec2d){ v2.x, v2.y + 1 };
-            draw_line2((t_line){ a1, a2 }, RED, screen);
-            a1 = (t_vec2d){ v1.x, v1.y - 1 };
-            a2 = (t_vec2d){ v2.x, v2.y - 1 };
-            draw_line2((t_line){ a1, a2 }, RED, screen);
-            a1 = (t_vec2d){ v1.x + 1, v1.y };
-            a2 = (t_vec2d){ v2.x + 1, v2.y };
-            draw_line2((t_line){ a1, a2 }, RED, screen);
-            a1 = (t_vec2d){ v1.x - 1, v1.y };
-            a2 = (t_vec2d){ v2.x - 1, v2.y };
-            draw_line2((t_line){ a1, a2 }, RED, screen);
-        }
-        else if (i == on)
-        {
-//            a1 = (t_vec2d){ v1.x, v1.y + 1 };
-//            a2 = (t_vec2d){ v2.x, v2.y + 1 };
-//            draw_line2((t_line){ a1, a2 }, GREEN, screen);
-//            a1 = (t_vec2d){ v1.x, v1.y - 1 };
-//            a2 = (t_vec2d){ v2.x, v2.y - 1 };
-//            draw_line2((t_line){ a1, a2 }, GREEN, screen);
-//            a1 = (t_vec2d){ v1.x + 1, v1.y };
-//            a2 = (t_vec2d){ v2.x + 1, v2.y };
-//            draw_line2((t_line){ a1, a2 }, GREEN, screen);
-//            a1 = (t_vec2d){ v1.x - 1, v1.y };
-//            a2 = (t_vec2d){ v2.x - 1, v2.y };
-//            draw_line2((t_line){ a1, a2 }, GREEN, screen);
-            a1 = (t_vec2d){ v1.x, v1.y + 2 };
-            a2 = (t_vec2d){ v2.x, v2.y + 2 };
-            draw_line2((t_line){ a1, a2 }, GREEN, screen);
-            a1 = (t_vec2d){ v1.x, v1.y - 2 };
-            a2 = (t_vec2d){ v2.x, v2.y - 2 };
-            draw_line2((t_line){ a1, a2 }, GREEN, screen);
-            a1 = (t_vec2d){ v1.x + 2, v1.y };
-            a2 = (t_vec2d){ v2.x + 2, v2.y };
-            draw_line2((t_line){ a1, a2 }, GREEN, screen);
-            a1 = (t_vec2d){ v1.x - 2, v1.y };
-            a2 = (t_vec2d){ v2.x - 2, v2.y };
-            draw_line2((t_line){ a1, a2 }, GREEN, screen);
-        }
-        if (world.walls[i].type == WALL_EMPTY)
-            draw_line2((t_line){ v1, v2 }, YELLOW, screen);
-        else if (world.walls[i].type == WALL_FILLED)
-            draw_line2((t_line){ v1, v2 }, WHITE, screen);
-        else if (world.walls[i].type == WALL_DOOR)
-            draw_line2((t_line){ v1, v2 }, BABY_PINK, screen);
+		if (i == wall)
+			draw_thick_line((t_line){ v1, v2 }, NAVY, LIT_WALL_RADIUS, screen);
+		if (world.walls[i].type == WALL_EMPTY)
+			draw_thick_line((t_line){ v1, v2 }, GREEN, WALL_RADIUS, screen);
+		else if (world.walls[i].type == WALL_FILLED)
+			draw_thick_line((t_line){ v1, v2 }, WHITE, WALL_RADIUS, screen);
+		else if (world.walls[i].type == WALL_DOOR)
+			draw_thick_line((t_line){ v1, v2 }, SOFT_ORANGE, WALL_RADIUS, screen);
 		i++;
 	}
 }
@@ -235,25 +193,21 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 	t_vec2d				node2;
 	int 				radius1;
 	int 				radius2;
-	int                 lit_wall;
-    int                 on_wall;
+	int					wall;
+
 
 	if (!grid || !prog || world.n_sec == 100)
 		return;
-	lit_wall = -1;
-    on_wall = -1;
-    if (selected_item(1, 0, 0) == WALL_SEARCH)
-    {
-        lit_wall = grid->active[1].x;
-        on_wall = grid->active[1].y;
-    }
 	clean_screen(prog->screen);
 	radius1 = grid->box.w * 0.001;
 	radius2 = grid->box.w * 0.002;
+	wall = selected_item(1, W_SELECT, -1);
+	if (wall == -1)
+		wall = lit_item(1, W_SELECT, -1);
+	draw_walls(world, grid, prog->screen, wall);
 	render_grid_nodes(prog->screen, grid);
-	draw_walls(world, grid, prog->screen, lit_wall, on_wall);
 	place_player(world, grid, prog->screen, radius2);
-	if (prog->mode_id == MODE_EDITOR && prog->button_on == DRAW_BTN) // draw mode
+	if (selected_item(1, STATE_SELECT, -1) == NORMAL && prog->button_on == DRAW_BTN) // draw mode
 	{
 		if (grid->active[0].x != -1 && grid->active[0].y != -1)
 		{
@@ -272,13 +226,10 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 		}
 	}
 	int k = 0;
-	if (prog->mode_id == MODE_EDITOR)
+	while (k < world.n_sec)
 	{
-		while (k < world.n_sec)
-		{
-			if (world.sec[k].status != SEC_OPEN)
-				fill_sector(world, grid, prog->screen, k, selected_item(1, STATE_SELECT, 0));
-			k++;
-		}
+		if (world.sec[k].status != SEC_OPEN)
+			fill_sector(world, grid, prog->screen, k, selected_item(1, STATE_SELECT, 0));
+		k++;
 	}
 }

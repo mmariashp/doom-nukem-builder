@@ -344,59 +344,27 @@ void					draw_circle_fill(t_vec2d c, int radius, int color, SDL_Renderer *rend)
 	}
 }
 
-//void				    draw_line_surf(t_line l, int color, SDL_Surface *surf)
-//{
-//	int				len;
-//	int				i_value;
-//	double			d;
-//	int				i;
-//
-//	if (!clip_line(&l))
-//		return ;
-//	get_len(&d, &len, &i, l);
-//	i_value = len < 0 ? -1 : 1;
-//	if (!surf || d == 0)
-//		return ;
-//	if (i)
-//	{
-//		i = -i_value;
-//		while ((i += i_value) != len)
-//			draw_dot_surf(l.p0.x + (int)(i / d), l.p0.y + i, color, surf);
-//		return ;
-//	}
-//	i = -i_value;
-//	while ((i += i_value) != len)
-//		draw_dot_surf(l.p0.x + i, l.p0.y + (int)(i / d), color, surf);
-//}
+void				    draw_thick_line(t_line l, int color, int r, int **screen)
+{
+	int				len;
+	int				i_value;
+	double			d;
+	int				i;
 
-//void					draw_circle_fill_surf(t_vec2d c, int radius, int color, SDL_Surface *surf)
-//{
-//	t_vec2d				p;
-//	t_vec2d				d;
-//	int					radiusError = 0;
-//
-//	p = (t_vec2d){radius, 0};
-//	d = (t_vec2d){1 - (radius << 1), 0};
-//	while (p.x >= p.y)
-//	{
-//		for (int i = c.x - p.x; i <= c.x + p.x; i++)
-//		{
-//			draw_dot_surf(i, c.y + p.y, color, surf);
-//			draw_dot_surf(i, c.y - p.y, color, surf);
-//		}
-//		for (int i = c.x - p.y; i <= c.x + p.y; i++)
-//		{
-//			draw_dot_surf(i, c.y + p.x, color, surf);
-//			draw_dot_surf(i, c.y - p.x, color, surf);
-//		}
-//		p.y++;
-//		radiusError += d.y;
-//		d.y += 2;
-//		if (((radiusError << 1) + d.x) > 0)
-//		{
-//			p.x--;
-//			radiusError += d.x;
-//			d.x += 2;
-//		}
-//	}
-//}
+	if (!clip_line(&l))
+		return ;
+	get_len(&d, &len, &i, l);
+	i_value = len < 0 ? -1 : 1;
+	if (!screen || d == 0)
+		return ;
+	if (i)
+	{
+		i = -i_value;
+		while ((i += i_value) != len)
+			draw_circle_fill2((t_vec2d){ l.p0.x + (int)(i / d), l.p0.y + i }, r, color, screen);
+		return ;
+	}
+	i = -i_value;
+	while ((i += i_value) != len)
+		draw_circle_fill2((t_vec2d){ l.p0.x + i, l.p0.y + (int)(i / d) }, r, color, screen);
+}

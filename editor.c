@@ -1,6 +1,38 @@
 
 #include "builder.h"
 
+void					place_player_icons(t_world world, t_grid *grid, SDL_Renderer *rend)
+{
+	t_vec2d				node;
+//	SDL_Rect rect;
+
+//	SDL_Texture *t = load_texture("player_start.png", rend, 0);
+
+	node.x = (int)(grid->box.x + world.p_start.x * grid->scale);
+	node.y = (int)(grid->box.y + world.p_start.y * grid->scale);
+
+	write_text("START", rend, (t_rec){ node.x - 120, node.y + 5, 240, 50 }, WHITE, TRUE);
+
+//	rect = (SDL_Rect){ node.x - 9, node.y - 30 , 20 , 30 };
+//
+//	SDL_RenderCopy(rend, t, NULL, &rect);
+//	SDL_DestroyTexture(t);
+
+//	t = load_texture("player_end.png", rend, 0);
+
+	node.x = (int)(grid->box.x + world.p_end.x * grid->scale);
+	node.y = (int)(grid->box.y + world.p_end.y * grid->scale);
+
+	write_text("END", rend, (t_rec){ node.x - 120, node.y + 5, 240, 50 }, WHITE, TRUE);
+
+//	rect = (SDL_Rect){ node.x, node.y, 30 , 30 };
+
+//	SDL_RenderCopy(rend, t, NULL, &rect);
+
+
+//	SDL_DestroyTexture(t);
+}
+
 void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int			state = selected_item(1, STATE_SELECT, -1);
@@ -19,14 +51,16 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->world_id], state);
 	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons);
 
-	write_text(ft_strjoin("STATE is ", ft_itoa(selected_item(1, STATE_SELECT, -1))), sdl->rend,
-			(t_rec){ 400, 10, 250, 50 }, WHITE, TRUE);
-	write_text(ft_strjoin("SECT is ", ft_itoa(selected_item(1, S_SELECT, -1))), sdl->rend,
-			   (t_rec){ 400, 50, 250, 50 }, WHITE, TRUE);
-	write_text(ft_strjoin("VECT is ", ft_itoa(selected_item(1, V_SELECT, -1))), sdl->rend,
-			   (t_rec){ 400, 90, 250, 50 }, WHITE, TRUE);
-	write_text(ft_strjoin("WALL is ", ft_itoa(selected_item(1, W_SELECT, -1))), sdl->rend,
-			   (t_rec){ 400, 130, 250, 50 }, WHITE, TRUE);
+//	write_text(ft_strjoin("STATE is ", ft_itoa(selected_item(1, STATE_SELECT, -1))), sdl->rend,
+//			(t_rec){ 400, 10, 250, 50 }, WHITE, TRUE);
+//	write_text(ft_strjoin("SECT is ", ft_itoa(selected_item(1, S_SELECT, -1))), sdl->rend,
+//			   (t_rec){ 400, 50, 250, 50 }, WHITE, TRUE);
+//	write_text(ft_strjoin("VECT is ", ft_itoa(selected_item(1, V_SELECT, -1))), sdl->rend,
+//			   (t_rec){ 400, 90, 250, 50 }, WHITE, TRUE);
+//	write_text(ft_strjoin("WALL is ", ft_itoa(selected_item(1, W_SELECT, -1))), sdl->rend,
+//			   (t_rec){ 400, 130, 250, 50 }, WHITE, TRUE);
+	if (state == NORMAL && prog->button_on == PLAYER_BTN)
+		place_player_icons(media->worlds[media->world_id], grid, sdl->rend);
 	SDL_RenderPresent(sdl->rend);
 	prog->features[F_REDRAW] = 0;
 
@@ -94,11 +128,11 @@ unsigned short			open_level(t_media *media, t_prog* prog, t_grid *grid)
 	clean_grid(grid);
 	if (media->world_id == media->n_worlds) // if ADD WORLD chosen
 	{
-		if (add_world(&media->worlds, media->n_worlds) == FAIL)
+		if (add_world(&media->worlds, media->n_worlds, media->extensions[0], media->paths[0]) == FAIL)
 			return (FAIL);
 		media->n_worlds++;
 	}
-	else
+	else if (media->worlds[media->world_id].n_sec > 0)
 		zoom_to_map(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
 	fill_grid(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
 	update_sector_status(media->worlds[media->world_id].sec, media->worlds[media->world_id].walls,
@@ -203,6 +237,19 @@ void					edit_wall_type(int btn_on, t_world *world)
 	}
 }
 
+void					grid_refresh(t_grid *grid, t_media *media)
+{
+	if (!grid || !media)
+		return ;
+	clean_grid(grid);
+	fill_grid_walls(media->worlds[media->world_id].n_walls,\
+	media->worlds[media->world_id].walls,\
+	media->worlds[media->world_id].n_vectors,\
+	media->worlds[media->world_id].vertices, grid);
+	fill_grid(media->worlds[media->world_id].n_vectors,\
+	media->worlds[media->world_id].vertices, grid);
+}
+
 unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int                 texture;
@@ -266,18 +313,17 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 			prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 		prog->button_on = prog->button_lit;
 		prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
+		grid->active[0] = (t_vec2d){ -1, -1 };
+		grid->active[1] = (t_vec2d){ -1, -1 };
 
 		if (state == NORMAL || state == SECTOR_SEARCH || state == WALL_SEARCH)
 		{
-			clean_grid(grid);
-			fill_grid(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
+			grid_refresh(grid, media);
 			if (prog->button_on == SECTOR_BTN)
 				selected_item(0, STATE_SELECT, SECTOR_SEARCH);
 			else if (prog->button_on == WALL_BTN)
 			{
 				selected_item(0, STATE_SELECT, WALL_SEARCH);
-				fill_grid_walls(media->worlds[media->world_id].n_walls, media->worlds[media->world_id].walls,
-								media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
 			}
 			else
 				selected_item(0, STATE_SELECT, NORMAL);
@@ -286,8 +332,7 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 		{
 			if (prog->button_on == DESELECT_BTN)
 			{
-				clean_grid(grid);
-				fill_grid(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
+				grid_refresh(grid, media);
 				zoom_to_map(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
 				if (state == SECTOR_EDIT)
 					selected_item(0, STATE_SELECT, SECTOR_SEARCH);
@@ -295,8 +340,6 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 				{
 					selected_item(0, STATE_SELECT, WALL_SEARCH);
 					selected_item(0, W_SELECT, -1);
-					fill_grid_walls(media->worlds[media->world_id].n_walls, media->worlds[media->world_id].walls,
-									media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
 				}
 			}
 			else if ((state == SECTOR_EDIT && (prog->button_on == FT_EDIT_BTN || prog->button_on == CT_EDIT_BTN)) ||
@@ -310,8 +353,7 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 							  media->worlds[media->world_id].sec[sector].ceil_txtr;
 					texture = media->worlds[media->world_id].textures[texture];
 				}
-				else if (state == WALL_EDIT &&
-				within((wall = selected_item(1, W_SELECT, -1)), -1, media->worlds[media->world_id].n_walls))
+				else if (state == WALL_EDIT && within((wall = selected_item(1, W_SELECT, -1)), -1, media->worlds[media->world_id].n_walls))
 					texture = media->worlds[media->world_id].textures[media->worlds[media->world_id].walls[wall].txtr];
 				prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 				prog->button_lit = -1;
@@ -351,8 +393,7 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 		{
 			selected_item(0, S_SELECT, sector);
 			selected_item(0, STATE_SELECT, SECTOR_EDIT);
-			clean_grid(grid);
-			fill_grid(media->worlds[media->world_id].n_vectors, media->worlds[media->world_id].vertices, grid);
+			grid_refresh(grid, media);
 			zoom_to_sector(&media->worlds[media->world_id].sec[sector], media->worlds[media->world_id].vertices, grid, prog);
 		}
 		prog->features[F_REDRAW] = 1;
@@ -391,6 +432,15 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 				{
 					selected_item(0, W_SELECT, wall);
 					selected_item(0, STATE_SELECT, WALL_EDIT);
+					int v1 = media->worlds[media->world_id].walls[wall].v1;
+					int v2 = media->worlds[media->world_id].walls[wall].v2;
+					if (within(v1, -1, media->worlds[media->world_id].n_vectors) &&
+							within(v2, -1, media->worlds[media->world_id].n_vectors))
+					{
+						grid_refresh(grid, media);
+						zoom_to_wall(media->worlds[media->world_id].vertices[v1], media->worlds[media->world_id].vertices[v2], grid, prog);
+					}
+
 				}
 				prog->features[F_REDRAW] = 1;
 			}
@@ -401,49 +451,59 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 
 	}
 
-
-	if (prog->button_on == DRAW_BTN) // draw mode
+	if (state == NORMAL)
 	{
-		if ((prog->click.x || prog->click.y) && mouse_over(grid->box, sdl->mouse))
+		if (prog->button_on == DRAW_BTN) // draw mode
 		{
-			if (grid->active[0].x == -1)
-				grid->active[0] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
-			else if (grid->active[1].x == -1)
-				grid->active[1] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
-			if (grid->active[0].x != -1)
-				add_to_media(grid, media);
-			prog->features[F_REDRAW] = 1;
-			prog->click.x = 0;
-			prog->click.y = 0;
-		}
-		else if (grid->active[0].x != -1 && grid->active[1].x == -1)
-			prog->features[F_REDRAW] = 1;
-	}
-	else if (prog->button_on == DISTORT_BTN ) // move mode
-	{
-		move_vector(prog, sdl->mouse, grid, &media->worlds[media->world_id]);
-	}
-	else if (prog->button_on == DRAG_BTN && (prog->click.x || prog->click.y)) // view mode
-		move_grid_drag(prog, sdl->mouse, grid);
-	else if (prog->button_on == DELETE_BTN) // delete mode
-	{
-		if (prog->click.x || prog->click.y)
-		{
-			if (mouse_over(grid->box, sdl->mouse))
+			if ((prog->click.x || prog->click.y) && mouse_over(grid->box, sdl->mouse))
 			{
-				int m = -1;
-				grid->active[0] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
-				if (grid->nodes[grid->active[0].x][grid->active[0].y] == NODE_FULL)
-					m = find_vector(media->worlds[media->world_id].vertices, grid->active[0], media->worlds[media->world_id].n_vectors);
-				delete_vector(m, &media->worlds[media->world_id]);
-				grid->nodes[grid->active[0].x][grid->active[0].y] = NODE_EMPTY;
-				prog->click = (t_vec2d){ 0, 0 };
+				if (grid->active[0].x == -1)
+					grid->active[0] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
+				else if (grid->active[1].x == -1)
+					grid->active[1] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
+				if (grid->active[0].x != -1)
+					add_to_media(grid, media);
 				prog->features[F_REDRAW] = 1;
+				prog->click.x = 0;
+				prog->click.y = 0;
 			}
-			else
-				prog->click = (t_vec2d){ 0, 0 };
+			else if (grid->active[0].x != -1 && grid->active[1].x == -1)
+				prog->features[F_REDRAW] = 1;
+		}
+		else if (prog->button_on == DISTORT_BTN ) // move mode
+		{
+			grid_refresh(grid, media);
+			move_vector(prog, sdl->mouse, grid, &media->worlds[media->world_id]);
+		}
+		else if (prog->button_on == PLAYER_BTN ) // move mode
+		{
+			grid_refresh(grid, media);
+			move_player(prog, sdl->mouse, grid, &media->worlds[media->world_id]);
+		}
+		else if (prog->button_on == DRAG_BTN && (prog->click.x || prog->click.y)) // view mode
+			move_grid_drag(prog, sdl->mouse, grid);
+		else if (prog->button_on == DELETE_BTN) // delete mode
+		{
+			if (prog->click.x || prog->click.y)
+			{
+				if (mouse_over(grid->box, sdl->mouse))
+				{
+					int m = -1;
+					grid->active[0] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
+					if (grid->nodes[grid->active[0].x][grid->active[0].y] == NODE_FULL)
+						m = find_vector(media->worlds[media->world_id].vertices, grid->active[0], media->worlds[media->world_id].n_vectors);
+					delete_vector(m, &media->worlds[media->world_id]);
+					grid->nodes[grid->active[0].x][grid->active[0].y] = NODE_EMPTY;
+					prog->click = (t_vec2d){ 0, 0 };
+					prog->features[F_REDRAW] = 1;
+				}
+				else
+					prog->click = (t_vec2d){ 0, 0 };
+			}
 		}
 	}
+
+
 
 	update_sector_status(media->worlds[media->world_id].sec, media->worlds[media->world_id].walls,
 			media->worlds[media->world_id].vertices, media->worlds[media->world_id].n_sec);

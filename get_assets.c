@@ -179,7 +179,7 @@ unsigned short			get_n(char *line, unsigned short min, unsigned short max)
 		line++;
 	if (*line)
 		tmp = ft_atoi(line);
-	if (tmp > min && tmp < max)
+	if (tmp >= min && tmp < max)
 		return((unsigned)tmp);
 	else
 		return (0);
@@ -601,32 +601,45 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 		tmp = line;
 		if (i == 0)
 		{
-			if (!(world->n_vectors = get_n(line, 2, MAX_VERTEX_ID)))
-				return (FAIL);;
-			if (!(world->vertices = (t_vec2d *)malloc(sizeof(t_vec2d) * world->n_vectors)))
-				return (FAIL);
-			ft_bzero(world->vertices, sizeof(world->vertices));
+			world->n_vectors = get_n(line, 0, MAX_VERTEX_ID);
+			if (world->n_vectors == 0)
+				world->vertices = NULL;
+			else
+			{
+				if (!(world->vertices = (t_vec2d *)malloc(sizeof(t_vec2d) * world->n_vectors)))
+					return (FAIL);
+				ft_bzero(world->vertices, sizeof(world->vertices));
+			}
 		}
 		else if (i == 1)
 		{
 			if (!(world->n_walls = get_n(line, MIN_N_WALLS, MAX_N_WALLS)))
-				return (FAIL);;
-			if (!(world->walls = (t_wall *)malloc(sizeof(t_wall) * world->n_walls)))
-				return (FAIL);
-			ft_bzero(world->walls, sizeof(world->walls));
+				world->walls = NULL;
+			else
+			{
+				if (!(world->walls = (t_wall *)malloc(sizeof(t_wall) * world->n_walls)))
+					return (FAIL);
+				ft_bzero(world->walls, sizeof(world->walls));
+			}
 		}
 		else if (i == 2)
 		{
 			if (!(world->n_sec = get_n(line, MIN_N_SECTORS, MAX_N_SECTORS)))
-				return (FAIL);
-			if (!(world->sec = (t_sector *)malloc(sizeof(t_sector) * world->n_sec)))
-				return (FAIL);
-			ft_bzero(world->sec, sizeof(world->sec));
+				world->sec = NULL;
+			else
+			{
+				if (!(world->sec = (t_sector *)malloc(sizeof(t_sector) * world->n_sec)))
+					return (FAIL);
+				ft_bzero(world->sec, sizeof(world->sec));
+			}
 		}
 		else if (i == 3)
 		{
-			if (!(world->n_txtrs = get_n(line, MIN_n_txtrs, MAX_n_txtrs)))
+			if (!(world->n_txtrs = get_n(line, MIN_N_TXTRS, MAX_N_TXTRS)))
+			{
+				ft_putendl("Not enough textures.");
 				return (FAIL);
+			}
 			if (!(world->textures = (int *)malloc(sizeof(int) * world->n_txtrs)))
 				return (FAIL);
 			ft_bzero(world->textures, sizeof(world->textures));

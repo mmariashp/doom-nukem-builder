@@ -179,16 +179,57 @@ unsigned short			add_secwall(int **secwalls, short n_secwalls, int wall)
 	return (SUCCESS);
 }
 
-unsigned short			add_world(t_world **worlds, short n_worlds)
+char 					*get_filename(int i)
+{
+	char 				*nb;
+	char 				*name;
+
+	nb = ft_itoa(i);
+	if (nb)
+	{
+		name = ft_strjoin("new_level_", nb);
+		free(nb);
+		if (name)
+		{
+			return (name);
+		}
+	}
+	return (NULL);
+}
+
+char 					*get_full_path(char *filename, char *ext, char *path)
+{
+	char 				*with_path;
+	char 				*res;
+
+	if (!path || !ext)
+		return (NULL);
+	with_path = ft_strjoin(path, filename);
+	if (with_path)
+	{
+		res = ft_strjoin(with_path, ext);
+		free(with_path);
+		if (res)
+		{
+			return (res);
+		}
+	}
+	return (NULL);
+}
+
+unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *path)
 {
 	static int i = 0;
 	*worlds = realloc_worlds(*worlds, n_worlds + 1);
-	if (!*worlds)
+	if (!*worlds || !path || !ext)
 		return (FAIL);
-	(*worlds)[n_worlds].filename = ft_strdup(ft_strjoin("new_level_", ft_itoa(i)));
-	(*worlds)[n_worlds].full_path = ft_strdup(ft_strjoin("./media/maps/", (*worlds)[n_worlds].filename));
-	(*worlds)[n_worlds].textures = NULL;
-	(*worlds)[n_worlds].n_txtrs = 0;
+	(*worlds)[n_worlds].filename = get_filename(i);
+	(*worlds)[n_worlds].full_path = get_full_path((*worlds)[n_worlds].filename, ext, path);
+	(*worlds)[n_worlds].textures = ft_memalloc(sizeof(int) * 1);
+	(*worlds)[n_worlds].n_txtrs = 1;
+	if (!(*worlds)[n_worlds].filename || !(*worlds)[n_worlds].full_path || !(*worlds)[n_worlds].textures)
+		return (FAIL);
+	(*worlds)[n_worlds].textures[0] = 0;
 	(*worlds)[n_worlds].sec = NULL;
 	(*worlds)[n_worlds].n_sec = 0;
 	(*worlds)[n_worlds].walls = NULL;

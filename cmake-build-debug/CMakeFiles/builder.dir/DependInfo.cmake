@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/buttons.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/buttons.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/edit_door.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/edit_door.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/edit_menu.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/edit_menu.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/edit_walls.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/edit_walls.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/editor.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/editor.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/fill_polygon.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/fill_polygon.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/font.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/font.c.o"

@@ -260,32 +260,64 @@ unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_world
 	int 				i;
 	char				*s;
 	char 				*tmp;
+	int 				n_levels = n_worlds + 1;
+	int 				n_buttons = n_levels * 3;
+
+	static SDL_Texture	*edit = NULL;
+	static SDL_Texture	*editlit = NULL;
+	static SDL_Texture	*trash = NULL;
+	static SDL_Texture	*trashlit = NULL;
+	static int init = 0;
 
 	if (!buttons || !worlds)
 		return (FAIL);
+	if (init == 0)
+	{
+		edit = load_texture("edit.png", sdl->rend, 0);
+		editlit = load_texture("editlit.png", sdl->rend, 0);
+		trash = load_texture("trash.png", sdl->rend, 0);
+		trashlit = load_texture("trash3.png", sdl->rend, 0);
+		init = 1;
+	}
 	box.w = WIN_W / 4;
-	box.h = (box.w + 20) * (n_worlds + 1) / 3;
+	box.h = (box.w + 20) * n_levels / 3;
 	box.x = (WIN_W  - box.w) / 2;
 	box.y = (WIN_H  - box.h) / 2;
-	distribute_buttons_v(buttons, 0, n_worlds + 1 , box, 20);
+	distribute_buttons_v(buttons, 0, n_levels , box, 20);
 	i = 0;
 	s = NULL;
-	while (i < n_worlds + 1)
+	while (i < n_levels)
 	{
-		buttons[i].vis_lit_on[0] = TRUE;
 		tmp = ft_itoa(i);
 		s = ft_strjoin(tmp, ". ");
 		free(tmp);
 		if (i == n_worlds)
 			buttons[i].text = ft_strjoin(s, " ADD LEVEL");
-		else
+		else if (i < n_worlds)
 			buttons[i].text = ft_strjoin(s, worlds[i].filename);
 		if (s)
 			free(s);
 		buttons[i].txtr = button_back(1, 1, sdl->rend);
 		buttons[i].lit = button_back(0, 1, sdl->rend);
-		buttons[i].text_color = 0;
 		i++;
+	}
+	int j = 0;
+	while (i + 1 < n_buttons)
+	{
+		buttons[i].txtr = edit;
+		buttons[i + 1].txtr = trash;
+		buttons[i].lit = editlit;
+		buttons[i + 1].lit = trashlit;
+		buttons[i].box = buttons[j].box;
+		buttons[i + 1].box = buttons[j].box;
+		buttons[i].box.x += buttons[j].box.w + 10;
+		buttons[i + 1].box.x += buttons[j].box.w + 50;
+		buttons[i].box.w = 30;
+		buttons[i + 1].box.w = 30;
+		buttons[i].box.h = 30;
+		buttons[i + 1].box.h = 30;
+		i += 2;
+		j++;
 	}
 	return (SUCCESS);
 }
@@ -313,51 +345,6 @@ unsigned short			textures_buttons(t_button *buttons, t_texture *textures, int n_
     return (SUCCESS);
 }
 
-
-//unsigned short			walls_buttons(t_button *buttons, int n_buttons, t_sdl *sdl)
-//{
-//	t_rec				box;
-//	int 				i;
-//
-//	if (!buttons || !sdl)
-//		return (FAIL);
-//	box.h = WIN_H * 0.07;
-//	box.w = box.h  * n_buttons;
-//	box.x = 10;
-//	box.y = 0;
-//	distribute_buttons_h(buttons, 0, n_buttons , box, 3);
-//	i = 0;
-//	while (i < n_buttons)
-//	{
-//		buttons[i].vis_lit_on[0] = TRUE;
-//		buttons[i].txtr = NULL;
-//		buttons[i].lit = NULL;
-//		i++;
-//	}
-//	buttons[W_BACK_BTN].txtr = load_texture("back22.png", sdl->rend, 0);
-//	buttons[W_BACK_BTN].lit = load_texture("back3.png", sdl->rend, 0);
-//    buttons[W_DESELECT_BTN].txtr =      load_texture("cross2.png", sdl->rend, 0);
-//    buttons[W_DESELECT_BTN].lit =      load_texture("cross3.png", sdl->rend, 0);
-//    buttons[WT_BTN].txtr =            load_texture("edit.png", sdl->rend, 0);
-//    buttons[WT_BTN].lit =                load_texture("editlit.png", sdl->rend, 0);
-//    buttons[W_PORTAL_BTN].txtr =        buttons[WT_BTN].txtr;
-//    buttons[W_PORTAL_BTN].lit =          buttons[WT_BTN].lit;
-//    buttons[W_DOOR_BTN].txtr =          buttons[WT_BTN].txtr;
-//    buttons[W_DOOR_BTN].lit =            buttons[WT_BTN].lit;
-//
-//    box = layout_menu(0, 0);
-//    buttons[W_DESELECT_BTN].box =  (t_rec){ box.x + box.w,         box.y,          30, 30 };
-//    buttons[WT_BTN].box = layout_menu(6, 0);
-//    buttons[W_PORTAL_BTN].box = layout_menu(6, 1);
-//    buttons[W_DOOR_BTN].box = layout_menu(6, 2);
-//
-//    buttons[W_DESELECT_BTN].vis_lit_on[0] = FALSE;
-//    buttons[WT_BTN].vis_lit_on[0] = FALSE;
-//    buttons[W_PORTAL_BTN].vis_lit_on[0] = FALSE;
-//    buttons[W_DOOR_BTN].vis_lit_on[0] = FALSE;
-//	return (SUCCESS);
-//}
-
 unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 {
 	if (!sdl || !buttons || n < 0)
@@ -371,7 +358,7 @@ void                    refresh_level_list(t_media *media, t_mode *mode, t_sdl *
         return ;
     if (mode->buttons)
 		free_buttons(mode->buttons, mode->n_buttons);
-    mode->n_buttons = media->n_worlds + 1;
+    mode->n_buttons = (media->n_worlds + 1) * 3;
     mode->buttons = init_buttons(mode->n_buttons);
     if (!mode->buttons)
         return ;
@@ -407,7 +394,7 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
     prog->modes[MODE_TEXTURES].render = &render_textures;
 
 	prog->modes[MODE_MAIN_MENU].n_buttons = N_MM_BTNS;
-	prog->modes[MODE_SUMMARY].n_buttons = media->n_worlds + 1;
+	prog->modes[MODE_SUMMARY].n_buttons = (media->n_worlds + 1) * 3;
 	prog->modes[MODE_EDITOR].n_buttons = 8;
     prog->modes[MODE_TEXTURES].n_buttons = media->n_txtrs;
 	i = 0;

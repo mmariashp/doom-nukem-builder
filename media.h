@@ -32,8 +32,8 @@
 # define MIN_N_SECTORS			1
 # define MAX_N_SECTORS			50
 
-# define MIN_n_txtrs			1
-# define MAX_n_txtrs			50
+# define MIN_N_TXTRS			1
+# define MAX_N_TXTRS			50
 
 # define MIN_HEIGHT				-100
 # define MAX_HEIGHT				100

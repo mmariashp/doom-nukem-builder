@@ -149,6 +149,9 @@
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/edit_menu.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/edit_walls.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/editor.c">
 			<Option target="builder"/>
 		</Unit>

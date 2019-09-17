@@ -635,7 +635,7 @@ extern "C" {
  *  terminate the app (and attempt to switch to the previous app, or to the
  *  device's home screen).
  *
- *  Setting the SDL_HINT_WINRT_HANDLE_BACK_BUTTON hint to "1" will cause SDL
+ *  Setting the SDL_HINT_WINRT_HANDLE_BACK_BTN hint to "1" will cause SDL
  *  to mark back-button-press events as Handled, if and when one is sent to
  *  the app.
  *
@@ -653,13 +653,13 @@ extern "C" {
  *  SDL registers its own back-button-press callback with the Windows Phone
  *  OS.  This callback will emit a pair of SDL key-press events (SDL_KEYDOWN
  *  and SDL_KEYUP), each with a scancode of SDL_SCANCODE_AC_BACK, after which
- *  it will check the contents of the hint, SDL_HINT_WINRT_HANDLE_BACK_BUTTON.
+ *  it will check the contents of the hint, SDL_HINT_WINRT_HANDLE_BACK_BTN.
  *  If the hint's value is set to "1", the back button event's Handled
  *  property will get set to 'true'.  If the hint's value is set to something
  *  else, or if it is unset, SDL will leave the event's Handled property
  *  alone.  (By default, the OS sets this property to 'false', to note.)
  *
- *  SDL apps can either set SDL_HINT_WINRT_HANDLE_BACK_BUTTON well before a
+ *  SDL apps can either set SDL_HINT_WINRT_HANDLE_BACK_BTN well before a
  *  back button is pressed, or can set it in direct-response to a back button
  *  being pressed.
  *
@@ -667,7 +667,7 @@ extern "C" {
  *  register a callback function with SDL_AddEventWatch(), and have it listen
  *  for SDL_KEYDOWN events that have a scancode of SDL_SCANCODE_AC_BACK.
  *  (Alternatively, SDL_KEYUP events can be listened-for.  Listening for
- *  either event type is suitable.)  Any value of SDL_HINT_WINRT_HANDLE_BACK_BUTTON
+ *  either event type is suitable.)  Any value of SDL_HINT_WINRT_HANDLE_BACK_BTN
  *  set by such a callback, will be applied to the OS' current
  *  back-button-press event.
  *
@@ -675,7 +675,7 @@ extern "C" {
  *  at the following page, on Microsoft's developer site:
  *  http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj247550(v=vs.105).aspx
  */
-#define SDL_HINT_WINRT_HANDLE_BACK_BUTTON "SDL_WINRT_HANDLE_BACK_BUTTON"
+#define SDL_HINT_WINRT_HANDLE_BACK_BTN "SDL_WINRT_HANDLE_BACK_BTN"
 
 /**
  *  \brief  A variable that dictates policy for fullscreen Spaces on Mac OS X.

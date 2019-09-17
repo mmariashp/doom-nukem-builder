@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/buttons.c.o"
   "CMakeFiles/builder.dir/edit_door.c.o"
   "CMakeFiles/builder.dir/edit_menu.c.o"
+  "CMakeFiles/builder.dir/edit_walls.c.o"
   "CMakeFiles/builder.dir/editor.c.o"
   "CMakeFiles/builder.dir/fill_polygon.c.o"
   "CMakeFiles/builder.dir/font.c.o"

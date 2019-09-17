@@ -46,8 +46,8 @@ typedef enum
  */
 typedef enum
 {
-    SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT = 0x00000001,  /**< Marks the default button when return is hit */
-    SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT = 0x00000002   /**< Marks the default button when escape is hit */
+    SDL_MESSAGEBOX_BTN_RETURNKEY_DEFAULT = 0x00000001,  /**< Marks the default button when return is hit */
+    SDL_MESSAGEBOX_BTN_ESCAPEKEY_DEFAULT = 0x00000002   /**< Marks the default button when escape is hit */
 } SDL_MessageBoxButtonFlags;
 
 /**
@@ -72,9 +72,9 @@ typedef enum
 {
     SDL_MESSAGEBOX_COLOR_BACKGROUND,
     SDL_MESSAGEBOX_COLOR_TEXT,
-    SDL_MESSAGEBOX_COLOR_BUTTON_BORDER,
-    SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND,
-    SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED,
+    SDL_MESSAGEBOX_COLOR_BTN_BORDER,
+    SDL_MESSAGEBOX_COLOR_BTN_BACKGROUND,
+    SDL_MESSAGEBOX_COLOR_BTN_SELECTED,
     SDL_MESSAGEBOX_COLOR_MAX
 } SDL_MessageBoxColorType;
 
