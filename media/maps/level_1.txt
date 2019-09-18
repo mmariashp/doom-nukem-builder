@@ -1,12 +1,6 @@
 Count Vectors: 43
 Count Walls: 56
 Count Sectors: 13
-Count Textures: 3
-
-Textures
-0) 1
-1) 0
-2) 2
 
 Vectors
 0) 1,1

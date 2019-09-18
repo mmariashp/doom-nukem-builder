@@ -2,42 +2,42 @@
 Path: ./media/maps/
 Extension: .txt
 File Names: 
-0. level_0
-1. level_1
-2. level_2
-3. new_level_0
-4. new_level_1
+0) level_0
+1) level_1
+2) level_2
+3) new_level_0
+4) new_level_1
 ###
 
 #Textures
 Path: ./media/textures/
 Extension: .png
 File Names: 
-0. Tileable1t
-1. Tileable1u
-2. Tileable2t
-3. Tileable3t
-4. Tileable3u
-5. Tileable4t
-6. Tileable5t
-7. Tileable6t
-8. Tileable7t
-9. Tileable8g
-10. Tileable9t
-11. Tileable10t
-12. tile
-13. wood_floor
+0) Tileable1t
+1) Tileable1u
+2) Tileable2t
+3) Tileable3t
+4) Tileable3u
+5) Tileable4t
+6) Tileable5t
+7) Tileable6t
+8) Tileable7t
+9) Tileable8g
+10) Tileable9t
+11) Tileable10t
+12) tile
+13) wood_floor
 ###
 
 #Items
 Path: ./media/items/
 Extension: 
 File Names: 
-0. (coin) coin
-1. (key) key
-2. (object) table
-3. (enemy) demon
-4. (enemy) spider
+0) (coin) coin
+1) (key) key
+2) (object) table
+3) (enemy) demon
+4) (enemy) spider
 ###
 
 #Sounds

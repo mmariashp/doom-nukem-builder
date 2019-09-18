@@ -1,73 +1,73 @@
 
 #include "builder.h"
 
-void					render_wall_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_wall *wall)
-{
-    SDL_Texture         *back;
-    SDL_Texture         *title;
-    SDL_Rect			rect;
-    t_rec				box;
-    t_rec				title_box;
-    int 				text_color = DARK_GRAY;
-    char                *str;
-    int                 i = 0;
-    int                 n = 3;
-    static char         line[3][20] = { "Texture ", "Portal ", "Door " };
-    int                 value[3] = { wall->txtr, wall->type, 1 };
-    SDL_Texture *yes = load_texture("yes.png", sdl->rend, 0);
-    SDL_Texture *no = load_texture("no.png", sdl->rend, 0);
-
-    if (!sdl || !grid || !media)
-        return ;
-    back = button_back(2, 1, sdl->rend);
-    title = button_back(0, 1, sdl->rend);
-    box = layout_menu(0, 0);
-    title_box = layout_menu(1, 0);
-
-    rect = (SDL_Rect){ box.x, box.y, box.w, box.h };
-    SDL_RenderCopy(sdl->rend, back, NULL, &rect);
-    rect = (SDL_Rect){ title_box.x, title_box.y, title_box.w, title_box.h };
-    SDL_RenderCopy(sdl->rend, title, NULL, &rect);
-
-    str = ft_strjoin("WALL ", ft_itoa(grid->active[1].y));
-    write_text(str, sdl->rend, title_box, text_color, FALSE);
-    if (str)
-        free(str);
-    title = button_back(1, 1, sdl->rend);
-    title_box = layout_menu(2, i);
-    rect = (SDL_Rect){ title_box.x, title_box.y, title_box.w, title_box.h };
-    int k;
-    k = media->worlds[media->world_id].textures[value[0]];
-
-    while (i < n)
-    {
-        title_box = layout_menu(2, i);
-
-        if (i != 2 || value[1] == WALL_EMPTY)
-        {
-            rect.y = title_box.y;
-            SDL_RenderCopy(sdl->rend, title, NULL, &rect);
-            write_text(line[i], sdl->rend, title_box, text_color, FALSE);
-        }
-        title_box = layout_menu(5, i);
-        if (i == 0 && k >= 0 && k < media->n_txtrs && media->txtrs[k].sdl_t)
-        {
-           SDL_Rect rect2 = (SDL_Rect){ title_box.x, title_box.y, title_box.h, title_box.h };
-           SDL_Rect rect3 = (SDL_Rect){ media->txtrs[k].size.x / 4, media->txtrs[k].size.y / 4,
-                                        media->txtrs[k].size.x / 3, media->txtrs[k].size.y / 3 };
-           SDL_RenderCopy(sdl->rend, media->txtrs[k].sdl_t, &rect3, &rect2);
-        }
-        else if (i == 1 || (i == 2 && value[1] == WALL_EMPTY))
-        {
-            SDL_Rect rect2 = (SDL_Rect){ title_box.x, title_box.y, title_box.h, title_box.h };
-            if (value[i] == 1 && no)
-                SDL_RenderCopy(sdl->rend, no, NULL, &rect2);
-            else if (yes)
-                SDL_RenderCopy(sdl->rend, yes, NULL, &rect2);
-        }
-        i++;
-    }
-}
+//void					render_wall_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_wall *wall)
+//{
+//    SDL_Texture         *back;
+//    SDL_Texture         *title;
+//    SDL_Rect			rect;
+//    t_rec				box;
+//    t_rec				title_box;
+//    int 				text_color = DARK_GRAY;
+//    char                *str;
+//    int                 i = 0;
+//    int                 n = 3;
+//    static char         line[3][20] = { "Texture ", "Portal ", "Door " };
+//    int                 value[3] = { wall->txtr, wall->type, 1 };
+//    SDL_Texture *yes = load_texture("yes.png", sdl->rend, 0);
+//    SDL_Texture *no = load_texture("no.png", sdl->rend, 0);
+//
+//    if (!sdl || !grid || !media)
+//        return ;
+//    back = button_back(2, 1, sdl->rend);
+//    title = button_back(0, 1, sdl->rend);
+//    box = layout_menu(0, 0);
+//    title_box = layout_menu(1, 0);
+//
+//    rect = (SDL_Rect){ box.x, box.y, box.w, box.h };
+//    SDL_RenderCopy(sdl->rend, back, NULL, &rect);
+//    rect = (SDL_Rect){ title_box.x, title_box.y, title_box.w, title_box.h };
+//    SDL_RenderCopy(sdl->rend, title, NULL, &rect);
+//
+//    str = ft_strjoin("WALL ", ft_itoa(grid->active[1].y));
+//    write_text(str, sdl->rend, title_box, text_color, FALSE);
+//    if (str)
+//        free(str);
+//    title = button_back(1, 1, sdl->rend);
+//    title_box = layout_menu(2, i);
+//    rect = (SDL_Rect){ title_box.x, title_box.y, title_box.w, title_box.h };
+//    int k;
+//    k = media->worlds[media->world_id].textures[value[0]];
+//
+//    while (i < n)
+//    {
+//        title_box = layout_menu(2, i);
+//
+//        if (i != 2 || value[1] == WALL_EMPTY)
+//        {
+//            rect.y = title_box.y;
+//            SDL_RenderCopy(sdl->rend, title, NULL, &rect);
+//            write_text(line[i], sdl->rend, title_box, text_color, FALSE);
+//        }
+//        title_box = layout_menu(5, i);
+//        if (i == 0 && k >= 0 && k < media->n_txtrs && media->txtrs[k].sdl_t)
+//        {
+//           SDL_Rect rect2 = (SDL_Rect){ title_box.x, title_box.y, title_box.h, title_box.h };
+//           SDL_Rect rect3 = (SDL_Rect){ media->txtrs[k].size.x / 4, media->txtrs[k].size.y / 4,
+//                                        media->txtrs[k].size.x / 3, media->txtrs[k].size.y / 3 };
+//           SDL_RenderCopy(sdl->rend, media->txtrs[k].sdl_t, &rect3, &rect2);
+//        }
+//        else if (i == 1 || (i == 2 && value[1] == WALL_EMPTY))
+//        {
+//            SDL_Rect rect2 = (SDL_Rect){ title_box.x, title_box.y, title_box.h, title_box.h };
+//            if (value[i] == 1 && no)
+//                SDL_RenderCopy(sdl->rend, no, NULL, &rect2);
+//            else if (yes)
+//                SDL_RenderCopy(sdl->rend, yes, NULL, &rect2);
+//        }
+//        i++;
+//    }
+//}
 
 //void					render_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 //{

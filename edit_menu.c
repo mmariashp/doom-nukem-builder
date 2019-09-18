@@ -88,7 +88,7 @@ t_value					*get_wall_values(int *n, t_wall *wall, SDL_Renderer *rend, SDL_Textu
 	return (new);
 }
 
-void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int state)
+void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int state, int n_txtrs)
 {
 	t_value             *values;
 	int 				i;
@@ -103,17 +103,17 @@ void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int sta
 	i = state == SECTOR_EDIT ? selected_item(1, S_SELECT, -1)
 			: selected_item(1, W_SELECT, -1);
 	if (state == SECTOR_EDIT && within(i, -1, w->n_sec) &&
-	within(w->sec[i].floor_txtr, -1, w->n_txtrs) &&
-	within(w->sec[i].ceil_txtr, -1, w->n_txtrs))
+	within(w->sec[i].floor_txtr, -1, n_txtrs) &&
+	within(w->sec[i].ceil_txtr, -1, n_txtrs))
 	{
-		f = w->textures[w->sec[i].floor_txtr];
-		c = w->textures[w->sec[i].ceil_txtr];
+		f = w->sec[i].floor_txtr;
+		c = w->sec[i].ceil_txtr;
 		if (!(values = get_sector_values(&n, &w->sec[i], txtrs[f].sdl_t, txtrs[c].sdl_t)))
 			return ;
 	}
 	else if (state == WALL_EDIT && (!within(i, -1, w->n_walls) || !within(\
-	w->walls[i].txtr, -1, w->n_txtrs) || !(values = get_wall_values(&n, \
-	&w->walls[i], r, txtrs[w->textures[w->walls[i].txtr]].sdl_t))))
+	w->walls[i].txtr, -1, n_txtrs) || !(values = get_wall_values(&n, \
+	&w->walls[i], r, txtrs[w->walls[i].txtr].sdl_t))))
 		return ;
 	values[0].text = ft_itoa(i);
 	render_box(layout_menu(0, 0), button_back(2, 1, r), r);

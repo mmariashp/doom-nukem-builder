@@ -35,20 +35,18 @@ void					write_items(t_sector sector, int fd)
 
 unsigned short			write_level_section(int fd, t_world world, int section)
 {
-	static char 		title[5][9] = { "Textures", "Vectors", "Walls", "Sectors", "Player" };
+	static char 		title[4][9] = { "Vectors", "Walls", "Sectors", "Player" };
 	unsigned short		i;
 	unsigned short		n;
 
 	ft_putendl_fd(title[section], fd);
 	if (section == 0)
-		n = world.n_txtrs;
-	else if (section == 1)
 		n = world.n_vectors;
-	else if (section == 2)
+	else if (section == 1)
 		n = world.n_walls;
-	else if (section == 3)
+	else if (section == 2)
 		n = world.n_sec;
-	else if (section == 4)
+	else if (section == 3)
 		n = 2;
 	else
 		return (FAIL);
@@ -58,14 +56,12 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 		ft_putnbr_fd(i, fd);
 		ft_putstr_fd(") ", fd);
 		if (section == 0)
-			ft_putnbr_fd(world.textures[i], fd);
-		else if (section == 1)
 			{
 				ft_putnbr_fd(world.vertices[i].x, fd);
 				ft_putstr_fd(",", fd);
 				ft_putnbr_fd(world.vertices[i].y, fd);
 			}
-		else if (section == 2)
+		else if (section == 1)
 		{
 			ft_putnbr_fd(world.walls[i].v1, fd);
 			ft_putstr_fd("-", fd);
@@ -78,7 +74,7 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 				ft_putstr_fd(" door ", fd);
 			ft_putnbr_fd(world.walls[i].txtr, fd);
 		}
-		else if (section == 3)
+		else if (section == 2)
 		{
 			ft_putstr_fd("floor(", fd);
 			ft_putnbr_fd(world.sec[i].floor, fd);
@@ -101,7 +97,7 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 			write_items(world.sec[i], fd);
 			ft_putstr_fd("'", fd);
 		}
-		else if (section == 4)
+		else if (section == 3)
 		{
 			if (i == 0)
 			{
@@ -127,11 +123,10 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 
 unsigned short			write_level(int fd, t_world world)
 {
-	static char 		count[4][12] = { "Vectors: ", "Walls: ", "Sectors: ", "Textures: " };
+	static char 		count[3][12] = { "Vectors: ", "Walls: ", "Sectors: " };
 	int i = 0;
 
-	printf("n vectors %d\n",world.n_vectors );
-	while (i < 4)
+	while (i < 3)
 	{
 		ft_putstr_fd("Count ", fd);
 		ft_putstr_fd(count[i], fd);
@@ -141,14 +136,14 @@ unsigned short			write_level(int fd, t_world world)
 			ft_putnbr_fd(world.n_walls, fd);
 		else if (i == 2)
 			ft_putnbr_fd(world.n_sec, fd);
-		else if (i == 3)
-			ft_putnbr_fd(world.n_txtrs, fd);
+//		else if (i == 3)
+//			ft_putnbr_fd(world.n_txtrs, fd);
 		ft_putchar_fd('\n', fd);
 		i++;
 	}
 	ft_putchar_fd('\n', fd);
 	i = 0;
-	while (i < 5)
+	while (i < 4)
 	{
 		write_level_section(fd, world, i);
 		i++;
@@ -215,7 +210,7 @@ unsigned short			write_section(int fd, t_media *media, int section)
 	while (i < n_files)
 	{
 		ft_putnbr_fd(i, fd);
-		ft_putstr_fd(". ", fd);
+		ft_putstr_fd(") ", fd);
 		if (section == 0 && media->worlds[i].filename)
 			ft_putstr_fd(media->worlds[i].filename, fd);
 		else if (section == 1 && media->txtrs[i].name)

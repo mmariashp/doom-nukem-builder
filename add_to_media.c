@@ -227,11 +227,11 @@ unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *pa
 		return (FAIL);
 	(*worlds)[n_worlds].filename = get_filename(i);
 	(*worlds)[n_worlds].full_path = get_full_path((*worlds)[n_worlds].filename, ext, path);
-	(*worlds)[n_worlds].textures = ft_memalloc(sizeof(int) * 1);
-	(*worlds)[n_worlds].n_txtrs = 1;
-	if (!(*worlds)[n_worlds].filename || !(*worlds)[n_worlds].full_path || !(*worlds)[n_worlds].textures)
+//	(*worlds)[n_worlds].textures = ft_memalloc(sizeof(int) * 1);
+//	(*worlds)[n_worlds].n_txtrs = 1;
+	if (!(*worlds)[n_worlds].filename || !(*worlds)[n_worlds].full_path)
 		return (FAIL);
-	(*worlds)[n_worlds].textures[0] = 0;
+//	(*worlds)[n_worlds].textures[0] = 0;
 	(*worlds)[n_worlds].sec = NULL;
 	(*worlds)[n_worlds].n_sec = 0;
 	(*worlds)[n_worlds].walls = NULL;

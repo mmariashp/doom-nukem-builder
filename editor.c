@@ -25,7 +25,7 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	render_grid(media->worlds[media->world_id], grid, prog, sdl->mouse);
 	render_screen(sdl->rend, prog->screen);
 	if (state == SECTOR_EDIT || state == WALL_EDIT)
-		render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->world_id], state);
+		render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->world_id], state, media->n_txtrs);
 	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons);
 	if (state == NORMAL && prog->button_on == PLAYER_BTN)
 		place_player_icons(media->worlds[media->world_id], grid, sdl->rend);
@@ -34,19 +34,19 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 
 }
 
-int						texture_in_world(int id, t_world world)
-{
-    int                 i;
-
-    i = 0;
-    while (i < world.n_txtrs)
-    {
-        if (id == world.textures[i])
-            return (i);
-        i++;
-    }
-    return (-1);
-}
+//int						texture_in_world(int id, t_world world)
+//{
+//    int                 i;
+//
+//    i = 0;
+//    while (i < world.n_txtrs)
+//    {
+//        if (id == world.textures[i])
+//            return (i);
+//        i++;
+//    }
+//    return (-1);
+//}
 
 int					    *realloc_textures(int *textures, int n)
 {
@@ -137,24 +137,23 @@ unsigned short			edit_texture(int floor_ceil, int n_txtrs, t_texture *txtrs, t_w
 {
 	int 				sector;
 	int 				wall;
-	int 				i;
 	int 				texture;
 	int 				state;
 
 	if (!txtrs)
 		return (FAIL);
-	i = selected_item(1, T_SELECT, -1);
+	texture = selected_item(1, T_SELECT, -1);
 	state = selected_item(1, STATE_SELECT, -1);
 	sector = selected_item(1, S_SELECT, -1);
 	wall = selected_item(1, W_SELECT, -1);
-	if (within(i, -1, n_txtrs))
+	if (within(texture, -1, n_txtrs))
 	{
-		if ((texture = texture_in_world(i, *world)) == -1)
-		{
-			if (add_texture(&world->textures, world->n_txtrs, i) == FAIL)
-				return (FAIL);
-			texture = world->n_txtrs++;
-		}
+//		if ((texture = texture_in_world(i, *world)) == -1)
+//		{
+//			if (add_texture(&world->textures, world->n_txtrs, i) == FAIL)
+//				return (FAIL);
+//			texture = world->n_txtrs++;
+//		}
 		if (state == SECTOR_EDIT && within(sector, -1, world->n_sec))
 		{
 			if (floor_ceil == 0)
@@ -193,9 +192,7 @@ void					edit_wall_type(int btn_on, t_world *world)
 	else if (btn_on == W_DOOR_BTN)
 	{
 		if (world->walls[wall].door != -1)
-		{
 			delete_door(world, wall);
-		}
 		else
 		{
 			if (world->walls[wall].type == WALL_FILLED)
@@ -277,9 +274,7 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 	if (prog->save == 1 || prog->button_on == SAVE_BTN) // when saving
 		return (save_media(media, prog));
 	if (last != state)
-	{
 		buttons_refresh(prog, state, &last, sdl->rend);
-	}
 	if (prog->button_lit != -1 && (prog->click.x || prog->click.y)) // when pressing an on screen button
 	{
 		if (within(prog->button_on, -1, prog->modes[prog->mode_id].n_buttons) == TRUE)
@@ -322,10 +317,11 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 					floor_ceil = prog->button_on == FT_EDIT_BTN ? 0 : 1;
 					texture = floor_ceil == 0 ? media->worlds[media->world_id].sec[sector].floor_txtr :
 							  media->worlds[media->world_id].sec[sector].ceil_txtr;
-					texture = media->worlds[media->world_id].textures[texture];
+//					texture = media->worlds[media->world_id].textures[texture];
 				}
 				else if (state == WALL_EDIT && within((wall = selected_item(1, W_SELECT, -1)), -1, media->worlds[media->world_id].n_walls))
-					texture = media->worlds[media->world_id].textures[media->worlds[media->world_id].walls[wall].txtr];
+					texture = media->worlds[media->world_id].walls[wall].txtr;
+//				texture = media->worlds[media->world_id].textures[media->worlds[media->world_id].walls[wall].txtr];
 				prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 				prog->button_lit = -1;
 				prog->button_on = -1;

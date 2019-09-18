@@ -250,7 +250,7 @@ short					get_wall_txtr(char *line, unsigned short min, unsigned short max)
 		tmp = ft_atoi(line);
 //	else
 //		return (-1);
-	if (tmp >= min && tmp <= max)
+	if (tmp >= min && tmp < max)
 		return((short)tmp);
 	else
 		return (-1);
@@ -466,7 +466,7 @@ int 					get_sector_walls(t_sector *sector, char *line)
 	return (SUCCESS);
 }
 
-int 					get_sector_fl_ceil(t_sector *sector, char *line, int n_txtrs)
+int 					get_sector_fl_ceil(t_sector *sector, char *line)
 {
 
 	if (!sector || !line)
@@ -478,17 +478,17 @@ int 					get_sector_fl_ceil(t_sector *sector, char *line, int n_txtrs)
 	line = ft_strchr(line, 'f');
 	if (!line)
 		return (FAIL);
-	if (get_fl_ceil(line, &sector->floor, &sector->floor_txtr, n_txtrs) == FAIL)
+	if (get_fl_ceil(line, &sector->floor, &sector->floor_txtr, MAX_N_TXTRS) == FAIL)
 		return (FAIL);
 	line = ft_strchr(line, 'c');
 	if (!line)
 		return (FAIL);
-	if (get_fl_ceil(line, &sector->ceiling, &sector->ceil_txtr, n_txtrs) == FAIL)
+	if (get_fl_ceil(line, &sector->ceiling, &sector->ceil_txtr, MAX_N_TXTRS) == FAIL)
 		return (FAIL);
 	return (SUCCESS);
 }
 
-void 					get_walls(t_wall *wall, char *line, t_vec2d p, int n_txtrs)
+void 					get_walls(t_wall *wall, char *line, t_vec2d p)
 {
 	if (!wall || !line)
 		return ;
@@ -497,7 +497,7 @@ void 					get_walls(t_wall *wall, char *line, t_vec2d p, int n_txtrs)
 	while (*line && !ft_isalpha(*line))
 		line++;
 	wall->type = get_wall_type(*line);
-	wall->txtr = get_wall_txtr(line, 0, n_txtrs - 1);
+	wall->txtr = get_wall_txtr(line, 0, MAX_N_TXTRS);
 	wall->door = -1;
 }
 
@@ -506,7 +506,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 	static unsigned		v_count = 0;
 	static unsigned		w_count = 0;
 	static unsigned		s_count = 0;
-	static unsigned		t_count = 0;
+//	static unsigned		t_count = 0;
 	static unsigned		p_count = 0;
 	static unsigned short		current_world = 0;
 	t_vec2d				p;
@@ -520,7 +520,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		v_count = 0;
 		w_count = 0;
 		s_count = 0;
-		t_count = 0;
+//		t_count = 0;
 		p_count = 0;
 		current_world = world_no;
 	}
@@ -538,23 +538,23 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 	{
 		sep = status == R_WALLS ? '-' : ',';
 		p.x = ft_atoi(line);
-		if (status == R_TEXTURES)
-			p.y = 0;
-		else
-		{
+//		if (status == R_TEXTURES)
+//			p.y = 0;
+//		else
+//		{
 			while (*line)
 			{
 				if (*line++ == sep)
 					break ;
 			}
 			p.y = ft_atoi(line);
-		}
+//		}
 	}
-	if (status == R_TEXTURES && t_count < world->n_txtrs)
-	{
-		world->textures[t_count] = p.x;
-		t_count++;
-	}
+//	if (status == R_TEXTURES && t_count < world->n_txtrs)
+//	{
+//		world->textures[t_count] = p.x;
+//		t_count++;
+//	}
 	if (status == R_VECTORS && v_count < world->n_vectors)
 	{
 		p.x = clamp(p.x, MIN_VERTEX_COORD, MAX_VERTEX_COORD);
@@ -569,7 +569,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 			p.y < MIN_VERTEX_ID || p.y > MAX_VERTEX_ID || p.y > (int)v_count) {
 			return (FAIL);
 		}
-		get_walls(&world->walls[w_count], line, p, world->n_txtrs);
+		get_walls(&world->walls[w_count], line, p);
 		if (*line == '\0' || world->walls[w_count].type == -1)
 		{
 			ft_putstr("Incorrect wall type for wall ");
@@ -599,7 +599,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		world->sec[s_count].n_walls = 0;
         world->sec[s_count].n_v = 0;
 		world->sec[s_count].status = 0;
-		if (get_sector_fl_ceil(&world->sec[s_count], line, world->n_txtrs) == FAIL)
+		if (get_sector_fl_ceil(&world->sec[s_count], line) == FAIL)
 		{
 			ft_putstr("Incorrect floor or ceiling for sector ");
 			ft_putnbr(s_count);
@@ -626,7 +626,6 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 			world->p_end = p;
 		p_count++;
 	}
-
 	return (SUCCESS);
 }
 
@@ -648,7 +647,7 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 	world->walls = NULL;
 	world->vertices = NULL;
 	world->sec = NULL;
-	world->textures = NULL;
+//	world->textures = NULL;
 	line = NULL;
 	while ((ret = get_next_line(fd, &(line))) == 1)
 	{
@@ -689,14 +688,14 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 		}
 		else if (i == 3)
 		{
-			if (!(world->n_txtrs = get_n(line, MIN_N_TXTRS, MAX_N_TXTRS)))
-			{
-				ft_putendl("Not enough textures.");
-				return (FAIL);
-			}
-			if (!(world->textures = (int *)malloc(sizeof(int) * world->n_txtrs)))
-				return (FAIL);
-			ft_bzero(world->textures, sizeof(world->textures));
+//			if (!(world->n_txtrs = get_n(line, MIN_N_TXTRS, MAX_N_TXTRS)))
+//			{
+//				ft_putendl("Not enough textures.");
+//				return (FAIL);
+//			}
+//			if (!(world->textures = (int *)malloc(sizeof(int) * world->n_txtrs)))
+//				return (FAIL);
+//			ft_bzero(world->textures, sizeof(world->textures));
 		}
 		else
 		{
@@ -725,14 +724,12 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 	ft_strdel(&line);
 	if (ret == -1)
 		return (FAIL);
-	if (line)
-		free(line);
-	line = NULL;
+//	if (line)
+//		free(line);
+//	line = NULL;
 	i = 0;
 	while (i < world->n_sec)
-	{
 		get_sector_v(&world->sec[i++], world->walls);
-	}
 	return (SUCCESS);
 }
 
@@ -905,14 +902,14 @@ unsigned				read_levels(t_media *media, t_section *section)
 		ft_bzero(&media->worlds[i], sizeof(media->worlds[i]));
 		media->worlds[i].full_path = ft_strdup(section->tab[i]);
 		media->worlds[i].filename = ft_strdup(section->names[i]);
-		media->worlds[i].textures = NULL;
+//		media->worlds[i].textures = NULL;
 		media->worlds[i].sec = NULL;
 		media->worlds[i].walls = NULL;
 		media->worlds[i].vertices = NULL;
 		media->worlds[i].n_sec = 0;
 		media->worlds[i].n_vectors = 0;
 		media->worlds[i].n_walls = 0;
-		media->worlds[i].n_txtrs = 0;
+//		media->worlds[i].n_txtrs = 0;
 		printf("NAME %s\n", media->worlds[i].filename);
 		if (get_map(&media->worlds[i], i) == FAIL)
 		{
@@ -995,8 +992,8 @@ void					free_media(t_media *media)
 				free(media->worlds[j].vertices);
 			if (media->worlds[j].walls)
 				free(media->worlds[j].walls);
-			if (media->worlds[j].textures)
-				free(media->worlds[j].textures);
+//			if (media->worlds[j].textures)
+//				free(media->worlds[j].textures);
 			j++;
 		}
 		free(media->worlds);

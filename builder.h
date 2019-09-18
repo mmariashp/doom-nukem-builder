@@ -361,7 +361,7 @@ typedef struct					s_world
 {
 	char 						*filename;
 	char 						*full_path;
-	int							*textures;
+//	int							*textures;
 	t_sector					*sec;
 	t_wall						*walls;
 	t_vec2d						*vertices;
@@ -370,7 +370,7 @@ typedef struct					s_world
 	short unsigned				n_sec;
 	short unsigned				n_vectors;
 	short unsigned				n_walls;
-	short unsigned				n_txtrs;
+//	short unsigned				n_txtrs;
 }								t_world;
 
 typedef struct 					s_section
@@ -558,7 +558,7 @@ int 					lit_item(char set_get_unset, unsigned short id, int value);
 
 // edit menu
 char 					*menu_lines(int id, int i);
-void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int state);
+void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int state, int n_txtrs);
 t_rec                   layout_menu(char i, char n);
 
 //font
