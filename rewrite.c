@@ -174,11 +174,11 @@ unsigned short			write_section(int fd, t_media *media, int section)
 	while (line < 4)
 	{
 		ft_putstr_fd(prefix[line], fd);
-		if (line == 0)
+		if (line == 0 && title[section])
 			ft_putstr_fd(title[section], fd);
-		else if (line == 1)
+		else if (line == 1 && media->paths[section])
 			ft_putstr_fd(media->paths[section], fd);
-		else if (line == 2)
+		else if (line == 2 && media->extensions[section])
 			ft_putstr_fd(media->extensions[section], fd);
 		ft_putchar_fd('\n', fd);
 		line++;
@@ -196,24 +196,27 @@ unsigned short			write_section(int fd, t_media *media, int section)
 	else
 		return (FAIL);
 	i = 0;
+	printf("section %d, n items%d\n", section, n_files);
+	n_files = clamp(n_files, 0, 20);
 	while (i < n_files)
 	{
 		ft_putnbr_fd(i, fd);
 		ft_putstr_fd(". ", fd);
-		if (section == 0)
+		if (section == 0 && media->worlds[i].filename)
 			ft_putstr_fd(media->worlds[i].filename, fd);
-		else if (section == 1)
+		else if (section == 1 && media->txtrs[i].name)
 			ft_putstr_fd(media->txtrs[i].name, fd);
-		else if (section == 2)
+		else if (section == 2 && media->itemfull[i].filename)
 			ft_putstr_fd(media->itemfull[i].filename, fd);
-		else if (section == 3)
+		else if (section == 3 && media->sounds[i])
 			ft_putstr_fd(media->sounds[i], fd);
-		else if (section == 4)
+		else if (section == 4 && media->fonts[i])
 			ft_putstr_fd(media->fonts[i], fd);
 		ft_putchar_fd('\n', fd);
 		i++;
 	}
-	ft_putendl_fd(prefix[line], fd);
+	if (prefix[line])
+		ft_putendl_fd(prefix[line], fd);
 	ft_putchar_fd('\n', fd);
 	return (SUCCESS);
 }
@@ -226,6 +229,7 @@ unsigned short			write_assets(int fd, t_media *media)
 		return (FAIL);
 	while (i < TOTAL_SECTIONS)
 	{
+		printf("rewriting section %d, path %s, extension %s\n", i, media->paths[i], media->extensions[i]);
 		write_section(fd, media, i);
 		i++;
 	}

@@ -381,8 +381,8 @@ typedef struct					s_itemfull
 typedef struct 					s_media
 {
 	short 						world_id;
-	char 						paths[4][20];
-	char 						extensions[4][10];
+	char 						paths[TOTAL_SECTIONS][20];
+	char 						extensions[TOTAL_SECTIONS][10];
 	t_texture					*txtrs;
 	char						**fonts;
 	char						**sounds;
