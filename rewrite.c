@@ -156,9 +156,23 @@ unsigned short			write_level(int fd, t_world world)
 	return (SUCCESS);
 }
 
+void					write_item_type(int type, int fd)
+{
+	static char 		types[TOTAL_TYPES][12] = { "coin", "key", "object",\
+						"enemy", "super_bonus", "health", "ammo" };
+
+	if (type >= 0 && type < TOTAL_TYPES)
+	{
+		ft_putstr_fd("(", fd);
+		ft_putstr_fd(types[type], fd);
+		ft_putstr_fd(") ", fd);
+	}
+}
+
 unsigned short			write_section(int fd, t_media *media, int section)
 {
-	static char 		title[TOTAL_SECTIONS][9] = { "Levels", "Textures", "Items", "Sounds", "Fonts" };
+	static char 		title[TOTAL_SECTIONS][9] = { "Levels",\
+						"Textures", "Items", "Sounds", "Fonts" };
 	static char 		prefix[5][13] = {	"#",
 											"Path: ",
 											"Extension: ",
@@ -207,7 +221,10 @@ unsigned short			write_section(int fd, t_media *media, int section)
 		else if (section == 1 && media->txtrs[i].name)
 			ft_putstr_fd(media->txtrs[i].name, fd);
 		else if (section == 2 && media->itemfull[i].filename)
+		{
+			write_item_type(media->itemfull[i].type, fd);
 			ft_putstr_fd(media->itemfull[i].filename, fd);
+		}
 		else if (section == 3 && media->sounds[i])
 			ft_putstr_fd(media->sounds[i], fd);
 		else if (section == 4 && media->fonts[i])
@@ -229,7 +246,6 @@ unsigned short			write_assets(int fd, t_media *media)
 		return (FAIL);
 	while (i < TOTAL_SECTIONS)
 	{
-		printf("rewriting section %d, path %s, extension %s\n", i, media->paths[i], media->extensions[i]);
 		write_section(fd, media, i);
 		i++;
 	}

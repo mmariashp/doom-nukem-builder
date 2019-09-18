@@ -127,12 +127,63 @@ char					**realloc_tab(char **tab, size_t n)
 	return (new);
 }
 
+int 					*realloc_int_array(int *tab, size_t n)
+{
+	int 				*new;
+	size_t				j;
+
+	j = 0;
+	if (n == 0)
+		return (NULL);
+	if (!(new = (int *)malloc(sizeof(int) * n)))
+		return (NULL);
+	while (j < n - 1)
+	{
+		new[j] = tab[j];
+		j++;
+	}
+	if (tab)
+		free(tab);
+	new[j] = 0;
+	return (new);
+}
+
+int						read_item_type(char *line)
+{
+	static char 		types[TOTAL_TYPES][12] = { "coin", "key", "object",\
+						"enemy", "super_bonus", "health", "ammo" };
+	int 				res;
+
+	res = 0;
+	while (*line && !ft_isalpha(*line))
+		line++;
+	if (*line == '\0')
+		return (res);
+	while (res < TOTAL_TYPES)
+	{
+		if (*line == types[res][0])
+			return (res);
+		res++;
+	}
+	return (0);
+}
+
 void					read_section_filenames(char *line, t_section *section)
 {
 	char 				*tmp;
 
 	if (!section || !line)
 		return ;
+	if (section->id == 2)
+	{
+		while (*line && !ft_isalpha(*line) && *line != '(')
+			line++;
+		if (!(section->extra = realloc_int_array(section->extra, section->n_files + 1)))
+			return ;
+		section->extra[section->n_files] = read_item_type(line);
+		while (*line && *line != ')')
+			line++;
+	}
 	while (*line && !ft_isalpha(*line))
 		line++;
 	if (!(section->names = realloc_tab(section->names, section->n_files + 1)) || \
@@ -162,6 +213,9 @@ void 					refresh_section(t_section *section)
 		free_tab(section->tab, section->n_files);
 	if (section->names)
 		free_tab(section->names, section->n_files);
+	if (section->extra)
+		free(section->extra);
+	section->extra = NULL;
 	section->tab = NULL;
 	section->names = NULL;
 	section->id = -1;
@@ -789,11 +843,14 @@ unsigned				read_itemfull(t_media *media, t_section *section)
 	{
 		media->itemfull[i].full_path = NULL;
 		media->itemfull[i].filename = NULL;
-		if (!(media->itemfull[i].full_path = ft_strdup(section->tab[i])))
+		if (section->tab[i] && !(media->itemfull[i].full_path = ft_strdup(section->tab[i])))
 			return (FAIL);
-		if (!(media->itemfull[i].filename = ft_strdup(section->names[i])))
+		if (section->names[i] && !(media->itemfull[i].filename = ft_strdup(section->names[i])))
 			return (FAIL);
-		media->itemfull[i].type = 0;
+		if (section->extra)
+			media->itemfull[i].type = section->extra[i];
+		else
+			media->itemfull[i].type = 0;
 		i++;
 	}
 	return (SUCCESS);
@@ -1048,6 +1105,7 @@ t_media					*read_assets(int fd)
 	section.extension = NULL;
 	section.tab = NULL;
 	section.names = NULL;
+	section.extra = NULL;
 	if (!(media = (t_media *)ft_memalloc(sizeof(t_media))))
 		return (NULL);
 	init_media(media);

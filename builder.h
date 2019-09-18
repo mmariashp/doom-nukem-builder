@@ -219,6 +219,18 @@
 # define WALL_SEARCH			4
 # define WALL_EDIT				5
 
+
+//item types
+
+# define COIN					0
+# define KEY					1
+# define OBJECT					2
+# define ENEMY					3
+# define SUPER_BONUS			4
+# define HEALTH					5
+# define AMMO					6
+# define TOTAL_TYPES			7
+
 typedef struct					s_vec2d
 {
 	int							x;
@@ -369,6 +381,7 @@ typedef struct 					s_section
 	short 						n_files;
 	char 						**tab;
 	char 						**names;
+	int 						*extra;
 }								t_section;
 
 typedef struct					s_itemfull

@@ -33,11 +33,11 @@ File Names:
 Path: ./media/items/
 Extension: 
 File Names: 
-0. coin) coin
-1. key) key
-2. object) table
-3. enemy) demon
-4. enemy) spider
+0. (coin) coin
+1. (key) key
+2. (object) table
+3. (enemy) demon
+4. (enemy) spider
 ###
 
 #Sounds
