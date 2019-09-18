@@ -157,6 +157,9 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/init_editor_buttons.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/items.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/level_edit.c">
 			<Option target="builder"/>
 		</Unit>

@@ -64,9 +64,6 @@ void					write_text(char *str, SDL_Renderer *rend, t_rec rec, int color, char h_
 	SDL_DestroyTexture(text);
 }
 
-
-
-
 void					render_box(t_rec box, SDL_Texture *t, SDL_Renderer *rend)
 {
 	SDL_Rect			rect;
@@ -118,16 +115,6 @@ void					render_screen_iso(SDL_Renderer *rend, int **screen)
         }
         x++;
     }
-}
-
-t_vec2d					find_node(int p_x, int p_y, t_grid *grid)
-{
-	float				mapx;
-	float				mapy;
-
-	mapx = (float)(p_x - grid->box.x) / grid->scale;
-	mapy = (float)(p_y - grid->box.y) / grid->scale;
-	return ((t_vec2d){ round(mapx), round(mapy) });
 }
 
 short 					find_vector(t_vec2d *vertices, t_vec2d p, int n)
@@ -411,6 +398,61 @@ void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
 	}
 }
 
+void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sector *sector)
+{
+	static int			id = -1;
+	static t_vec2d		to_erase = { -1, -1 };
+
+
+	if (!prog || !grid || !sector)
+		return ;
+	if (prog->click.x || prog->click.y)
+	{
+		if (mouse_over(grid->box, mouse))
+		{
+			if (grid->active[0].x == -1)
+			{
+				grid->active[0] = find_node(mouse.x, mouse.y, grid);
+//				printf("12, 8: %d\n", grid->nodes[12][8]);
+//				printf("found g0: %d,%d =%d\n", grid->active[0].x, grid->active[0].y, grid->nodes[grid->active[0].x][grid->active[0].x]);
+				if (grid->active[0].x >= 0 && grid->active[0].y >= 0 &&
+					grid->nodes[grid->active[0].x][grid->active[0].y] < -9)
+					id = (grid->nodes[grid->active[0].x][grid->active[0].y] + 10) * (-1);
+//				printf("id = %d, from node %d,%d =%d\n", id, grid->active[0].x, grid->active[0].y, grid->nodes[grid->active[0].x][grid->active[0].x]);
+				if (!within(id, -1, sector->n_items))
+				{
+					grid->active[0] = (t_vec2d){ -1, -1 };
+					move_grid_drag(prog, mouse, grid);
+					id = -1;
+				}
+				to_erase = grid->active[0];
+			}
+			else if (id >= 0)
+			{
+				grid->active[1] = find_node(mouse.x, mouse.y, grid);
+//				printf("found g1: %d,%d =%d\n", grid->active[1].x, grid->active[1].y, grid->nodes[grid->active[1].x][grid->active[1].x]);
+				if (grid->nodes[grid->active[1].x][grid->active[1].y] == NODE_EMPTY)
+				{
+					if (to_erase.x != -1)
+						grid->nodes[to_erase.x][to_erase.y] = NODE_EMPTY;
+					sector->items[id].p = grid->active[1];
+					grid->nodes[grid->active[1].x][grid->active[1].y] = (signed char)(-10 - id);
+					to_erase = grid->active[1];
+				}
+			}
+			prog->click = mouse;
+			prog->features[F_REDRAW] = 1;
+		}
+		else
+			prog->click = (t_vec2d){ 0, 0 };
+	}
+	else
+	{
+		grid->active[0] = (t_vec2d){ -1, -1 };
+		id = -1;
+	}
+}
+
 unsigned short          vec_same(t_vec2d one, t_vec2d two)
 {
 	if (one.x == two.x && one.y == two.y)
@@ -487,16 +529,26 @@ unsigned short			dot_inside_sector(int x, int y, t_vec2d *p, int n)
 	return (odd);
 }
 
-t_vec2d					find_in_grid(int p_x, int p_y, t_grid *grid)
-{
-	t_vec2d				res;
+//t_vec2d					find_in_grid(int p_x, int p_y, t_grid *grid)
+//{
+//	t_vec2d				res;
+//
+//	res.x = (float)(p_x - grid->box.x) / grid->scale;
+//	res.y = (float)(p_y - grid->box.y) / grid->scale;
+//	return (res);
+//}
 
-	res.x = (float)(p_x - grid->box.x) / grid->scale;
-	res.y = (float)(p_y - grid->box.y) / grid->scale;
-	return (res);
+t_vec2d					find_node(int p_x, int p_y, t_grid *grid)
+{
+	float				mapx;
+	float				mapy;
+
+	mapx = (float)(p_x - grid->box.x) / grid->scale;
+	mapy = (float)(p_y - grid->box.y) / grid->scale;
+	return ((t_vec2d){ round(mapx), round(mapy) });
 }
 
-int 					in_sector(t_vec2d p, t_world *world, t_grid *grid)
+int 					mouse_in_sector(t_vec2d p, t_world *world, t_grid *grid)
 {
 	int 				id;
 	t_vec2d				map_p;
@@ -507,7 +559,7 @@ int 					in_sector(t_vec2d p, t_world *world, t_grid *grid)
 	if (!world || !grid || mouse_over(grid->box, p) == FALSE)
 		return (-1);
 	id = -1;
-	map_p = find_in_grid(p.x, p.y, grid);
+	map_p = find_node(p.x, p.y, grid);
 	i = 0;
 	while (i < world->n_sec)
 	{
@@ -549,8 +601,6 @@ t_grid                  *get_grid(void)
     return (grid);
 }
 
-
-
 void					game_loop(t_sdl *sdl, t_media *media)
 {
 	t_grid				*grid;
@@ -574,8 +624,7 @@ void					game_loop(t_sdl *sdl, t_media *media)
 	free(grid);
 	free_prog(prog, sdl);
 	set_get_free_font(2);
-//	set_get_free_buttons(2, 0, SECTOR_EDIT);
-//	set_get_free_buttons(2, 0, WALL_EDIT);
+	draw_items_or_free(1, 0, (t_rec){ 100, 100, 100, 100 }, sdl->rend);
 }
 
 unsigned 				load_sdl_media(t_media *media, t_sdl *sdl)
@@ -600,15 +649,20 @@ int						main(void)
 	t_sdl				*sdl;
 	t_media				*media;
 
-
+	if (!(media = get_assets()))
+	{
+		ft_putstr("\x1b[32mMedia is NULL, Returning fail from main function.\x1b[0m\n");
+		return (FAIL);
+	}
 	if (!(sdl = get_sdl()))
 	{
 		ft_putstr("\x1b[32mSdl is NULL, Returning fail from main function.\x1b[0m\n");
+		free_media(media);
 		return (FAIL);
 	}
-	if (!(media = get_assets()) || load_sdl_media(media, sdl) == FAIL)
+	if (load_sdl_media(media, sdl) == FAIL)
 	{
-		ft_putstr("\x1b[32mMedia is NULL, Returning fail from main function.\x1b[0m\n");
+		ft_putstr("\x1b[32mCouldn't load sdl media, Returning fail from main function.\x1b[0m\n");
 		free_media(media);
 		free_sdl(sdl);
 		return (FAIL);

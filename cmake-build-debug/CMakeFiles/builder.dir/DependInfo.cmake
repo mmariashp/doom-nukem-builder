@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/moosh/CLionProjects/builder/get_assets.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/get_assets.c.o"
   "/home/moosh/CLionProjects/builder/get_next_line.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/get_next_line.c.o"
   "/home/moosh/CLionProjects/builder/init_editor_buttons.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/init_editor_buttons.c.o"
+  "/home/moosh/CLionProjects/builder/items.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/items.c.o"
   "/home/moosh/CLionProjects/builder/level_edit.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/level_edit.c.o"
   "/home/moosh/CLionProjects/builder/main.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/main.c.o"
   "/home/moosh/CLionProjects/builder/main_menu.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/main_menu.c.o"

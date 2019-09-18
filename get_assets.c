@@ -325,6 +325,49 @@ unsigned short			count_walls(char const *s)
 	return (count);
 }
 
+unsigned short			count_items(char const *s)
+{
+	unsigned short		count;
+	unsigned short		comma;
+	unsigned short		space;
+	unsigned short		nb;
+
+	count = 0;
+	s++;
+	while (*s && *s != '\'')
+	{
+		if (*s == '(')
+		{
+			s++;
+			comma = 0;
+			space = 0;
+			nb = 0;
+			while (*s && *s != ')')
+			{
+				if (*s == ',')
+					comma++;
+				else if (*s == ' ')
+					space++;
+				else if (ft_isdigit(*s))
+				{
+					nb++;
+					while (*s && ft_isdigit(*s))
+						s++;
+					continue ;
+				}
+				s++;
+			}
+			if (*s != ')' || comma != 1 || space != 1 || nb != 3)
+				return (0);
+			count++;
+			s++;
+		}
+		else
+			s++;
+	}
+	return (count);
+}
+
 int 					exists_in_array(int const *array, int n, int number)
 {
 	int 				i;
@@ -463,6 +506,63 @@ int 					get_sector_walls(t_sector *sector, char *line)
 		line++;
 	}
 	sector->sec_walls = walls;
+	return (SUCCESS);
+}
+
+int 					get_sector_items(t_sector *sector, char *line)
+{
+	t_item				*items;
+	unsigned  short		count;
+	int					i;
+
+	if (!sector || !line)
+		return (FAIL);
+	line = ft_strchr(line, '\'');
+	if (!line)
+		return (FAIL);
+	count = count_items(line);
+	if (count > MAX_SECTOR_ITEMS)
+		return (FAIL);
+	sector->n_items = count;
+	items = (t_item *)ft_memalloc(sizeof(t_item) * count);
+	if (!items)
+		return (FAIL);
+	ft_bzero(items, sizeof(t_item) * count);
+	line++;
+	i = 0;
+	while (*line && *line != '\'' && i < count)
+	{
+		if (*line == '(')
+		{
+			line++;
+			if (!line)
+				return (FAIL);
+			items[i].p.x = ft_atoi(line);
+			if (items[i].p.x < 0 || items[i].p.x > GRID_SIZE)
+				return (FAIL);
+			if (!(line = ft_strchr(line, ',')))
+				return (FAIL);
+			line++;
+			if (!line)
+				return (FAIL);
+			items[i].p.y = ft_atoi(line);
+			if (items[i].p.y < 0 || items[i].p.y > GRID_SIZE)
+				return (FAIL);
+			if (!(line = ft_strchr(line, ' ')))
+				return (FAIL);
+			line++;
+			if (!line)
+				return (FAIL);
+			items[i].id = ft_atoi(line);
+			if (items[i].id < 0 || items[i].id > MAX_SECTOR_ITEMS)
+				return (FAIL);
+			if (!(line = ft_strchr(line, ')')))
+				return (FAIL);
+			i++;
+		}
+		line++;
+	}
+	sector->items = items;
 	return (SUCCESS);
 }
 
@@ -616,6 +716,16 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 			ft_putchar('\n');
 			return (FAIL);
 		}
+		line = ft_strchr(line, 'i');
+		if (!line)
+			return (FAIL);
+		if (get_sector_items(&world->sec[s_count], line) == FAIL)
+		{
+			ft_putstr("Incorrect items for sector ");
+			ft_putnbr(s_count);
+			ft_putchar('\n');
+			return (FAIL);
+		}
 		s_count++;
 	}
 	if (status == R_PLAYER && p_count < 2)
@@ -762,13 +872,13 @@ unsigned				read_fonts(t_media *media, t_section *section)
 {
 	short 				i;
 
-	if (!media || !section || !section->tab)
+	if (!media || !section || !section->tab || media->fonts)
 		return (FAIL);
 	i = 0;
 	if (!(media->fonts = (char **)ft_memalloc(sizeof(char *) * section->n_files)))
 		return (FAIL);
 	media->n_fonts = section->n_files;
-	ft_bzero(media->fonts, sizeof(media->fonts));
+	ft_bzero(media->fonts, sizeof(char *) * section->n_files);
 	while (i < section->n_files)
 	{
 		if (!(media->fonts[i] = ft_strdup(section->tab[i])))
@@ -783,13 +893,13 @@ unsigned				read_sounds(t_media *media, t_section *section)
 {
 	short 				i;
 
-	if (!media || !section || !section->tab)
+	if (!media || !section || !section->tab || media->sounds)
 		return (FAIL);
 	i = 0;
 	if (!(media->sounds = (char **)ft_memalloc(sizeof(char *) * section->n_files)))
 		return (FAIL);
 	media->n_sounds = section->n_files;
-	ft_bzero(media->sounds, sizeof(media->sounds));
+	ft_bzero(media->sounds, sizeof(char *) * section->n_files);
 	while (i < section->n_files)
 	{
 		if (!(media->sounds[i] = ft_strdup(section->tab[i])))
@@ -972,6 +1082,7 @@ void					free_media(t_media *media)
 
 	if (!media)
 		return ;
+	ft_putendl("In free media\n");
 	if (media->worlds)
 	{
 		j = 0;
@@ -1122,6 +1233,7 @@ t_media					*read_assets(int fd)
 					{
 						free_section(&section);
 						ft_strdel(&line);
+						free_media(media);
 						return (NULL);
 					}
 					section.tab = tab;
@@ -1142,6 +1254,7 @@ t_media					*read_assets(int fd)
 						ft_putendl(" ");
 						free_section(&section);
 						ft_strdel(&line);
+						free_media(media);
 						return (NULL);
 					}
 				}
@@ -1158,8 +1271,109 @@ t_media					*read_assets(int fd)
 	free_section(&section);
 	ft_strdel(&line);
 	if (ret == -1)
+	{
+		free_media(media);
 		return (NULL);
+	}
 	return (media);
+}
+
+void 					validate_textures(t_world *world, int n)
+{
+	int 				i;
+
+	if (!world)
+		return ;
+	i = 0;
+	while (i < world->n_walls)
+	{
+		if (within(world->walls[i].txtr, -1, n) == FALSE)
+			world->walls[i].txtr = 0;
+		i++;
+	}
+	i = 0;
+	while (i < world->n_sec)
+	{
+		if (within(world->sec[i].floor_txtr, -1, n) == FALSE)
+			world->sec[i].floor_txtr = 0;
+		if (within(world->sec[i].ceil_txtr, -1, n) == FALSE)
+			world->sec[i].ceil_txtr = 0;
+		i++;
+	}
+}
+
+void					delete_item(t_sector *sector, int id)
+{
+	t_item				*items;
+	int 				i;
+	int 				j;
+
+	if (!sector || !within(id, -1, sector->n_items))
+		return ;
+	if (!(items = ft_memalloc(sizeof(t_item) * (sector->n_items - 1))))
+		return ;
+	i = 0;
+	j = 0;
+	while (i < sector->n_items)
+	{
+		if (i == id)
+			i++;
+		if (j < sector->n_items - 1 && i < sector->n_items)
+			items[j] = sector->items[i];
+		i++;
+		j++;
+	}
+	free(sector->items);
+	sector->items = items;
+	sector->n_items--;
+}
+
+void 					validate_items(t_world *world, int n)
+{
+	int 				i;
+	int 				j;
+	int 				k;
+
+	if (!world)
+		return ;
+	i = 0;
+	while (i < world->n_sec)
+	{
+		j = 0;
+		while (j < world->sec[i].n_items)
+		{
+			if (within(world->sec[i].items[j].id, -1, n) == FALSE)
+				world->sec[i].items[j].id = 0;
+			k = 0;
+			while (k < j)
+			{
+				if (vec_same(world->sec[i].items[j].p, world->sec[i].items[k].p))
+				{
+					delete_item(&world->sec[i], j);
+					j--;
+					break ;
+				}
+				k++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void					validate_media(t_media *media)
+{
+	int 				i;
+
+	if (!media)
+		return ;
+	i = 0;
+	while (i < media->n_worlds)
+	{
+		validate_textures(&media->worlds[i], media->n_txtrs);
+		validate_items(&media->worlds[i], media->n_itemfull);
+		i++;
+	}
 }
 
 t_media					*get_assets(void)
@@ -1186,7 +1400,16 @@ t_media					*get_assets(void)
 		ft_putstr("Couldn't close the file");
 		ft_putstr(ASSET_FILE);
 		ft_putstr(".\n");
+		free_media(media);
 		return (NULL);
 	}
+	validate_media(media);
+//	int i = 0;
+//	while (i < media->worlds[0].sec[0].n_items)
+//	{
+//		printf("%d, id = %d ; p = %d, %d, type = %d\n", i, media->worlds[0].sec[0].items[i].id, media->worlds[0].sec[0].items[i].p.x,
+//				media->worlds[0].sec[0].items[i].p.y, media->itemfull[media->worlds[0].sec[0].items[i].id].type);
+//		i++;
+//	}
 	return (media);
 }

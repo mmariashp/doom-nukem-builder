@@ -433,6 +433,33 @@ init_editor_buttons.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/init_editor_buttons.c.s
 .PHONY : init_editor_buttons.c.s
 
+items.o: items.c.o
+
+.PHONY : items.o
+
+# target to build an object file
+items.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/items.c.o
+.PHONY : items.c.o
+
+items.i: items.c.i
+
+.PHONY : items.i
+
+# target to preprocess a source file
+items.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/items.c.i
+.PHONY : items.c.i
+
+items.s: items.c.s
+
+.PHONY : items.s
+
+# target to generate assembly for a file
+items.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/items.c.s
+.PHONY : items.c.s
+
 level_edit.o: level_edit.c.o
 
 .PHONY : level_edit.o
@@ -2771,6 +2798,9 @@ help:
 	@echo "... init_editor_buttons.o"
 	@echo "... init_editor_buttons.i"
 	@echo "... init_editor_buttons.s"
+	@echo "... items.o"
+	@echo "... items.i"
+	@echo "... items.s"
 	@echo "... level_edit.o"
 	@echo "... level_edit.i"
 	@echo "... level_edit.s"

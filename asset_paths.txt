@@ -37,7 +37,9 @@ File Names:
 1) (key) key
 2) (object) table
 3) (enemy) demon
-4) (enemy) spider
+4) (super_bonus) bonus
+5) (health) potion
+6) (ammo) bullet
 ###
 
 #Sounds

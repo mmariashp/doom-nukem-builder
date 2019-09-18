@@ -205,7 +205,6 @@ unsigned short			write_section(int fd, t_media *media, int section)
 	else
 		return (FAIL);
 	i = 0;
-	printf("section %d, n items%d\n", section, n_files);
 	n_files = clamp(n_files, 0, 20);
 	while (i < n_files)
 	{

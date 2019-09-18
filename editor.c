@@ -19,16 +19,22 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 
 	if (!sdl || !media || !grid || prog->features[F_REDRAW] == 0)
 		return ;
-	grid_refresh(grid, media);
+	grid_refresh(grid, media, state, selected_item(1, S_SELECT, -1));
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
 	render_grid(media->worlds[media->world_id], grid, prog, sdl->mouse);
 	render_screen(sdl->rend, prog->screen);
 	if (state == SECTOR_EDIT || state == WALL_EDIT)
+	{
+		if (state == SECTOR_EDIT)
+			render_items(sdl->rend, &media->worlds[media->world_id], media->itemfull, media->n_itemfull, grid);
 		render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->world_id], state, media->n_txtrs);
+	}
 	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons);
 	if (state == NORMAL && prog->button_on == PLAYER_BTN)
 		place_player_icons(media->worlds[media->world_id], grid, sdl->rend);
+
+
 	SDL_RenderPresent(sdl->rend);
 	prog->features[F_REDRAW] = 0;
 
@@ -202,7 +208,29 @@ void					edit_wall_type(int btn_on, t_world *world)
 	}
 }
 
-void					grid_refresh(t_grid *grid, t_media *media)
+void					fill_grid_items(t_sector *sector, t_grid *grid)
+{
+	int 				i;
+	t_vec2d				p;
+
+	if (!grid || !sector)
+		return ;
+	i = 0;
+	while (i < sector->n_items)
+	{
+		p = sector->items[i].p;
+		if (within(p.x, -1, GRID_SIZE) && within(p.y, -1, GRID_SIZE) && grid->nodes[p.x][p.y] == NODE_EMPTY)
+		{
+			grid->nodes[p.x][p.y] = (signed char)(-10 - i);
+//			printf("i is %d, making node = %d\n", i, grid->nodes[p.x][p.y]);
+		}
+		else
+			delete_item(sector, i--);
+		i++;
+	}
+}
+
+void					grid_refresh(t_grid *grid, t_media *media, int state, int sector)
 {
 	if (!grid || !media)
 		return ;
@@ -213,6 +241,8 @@ void					grid_refresh(t_grid *grid, t_media *media)
 	media->worlds[media->world_id].vertices, grid);
 	fill_grid(media->worlds[media->world_id].n_vectors,\
 	media->worlds[media->world_id].vertices, grid);
+	if (state == SECTOR_EDIT && within(sector, -1, media->worlds[media->world_id].n_sec))
+		fill_grid_items(&media->worlds[media->world_id].sec[sector], grid);
 }
 
 unsigned short			mode_change(t_prog *prog, t_media *media, t_grid *grid, int floor_ceil)
@@ -356,7 +386,7 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 	{
 		if (state == SECTOR_SEARCH)
 		{
-			sector = lit_item(0, S_SELECT, in_sector(sdl->mouse, &media->worlds[media->world_id], grid));
+			sector = lit_item(0, S_SELECT, mouse_in_sector(sdl->mouse, &media->worlds[media->world_id], grid));
 			if ((prog->click.x || prog->click.y) && within(sector, -1, media->worlds[media->world_id].n_sec) == TRUE)
 			{
 				selected_item(0, S_SELECT, sector);
@@ -388,7 +418,13 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 				}
 			}
 		}
-		if (state == NORMAL)
+		else if (state == SECTOR_EDIT)
+		{
+			sector = selected_item(1, S_SELECT, -1);
+			if (mouse_in_sector(sdl->mouse, &media->worlds[media->world_id], grid) == sector)
+				move_item(prog, sdl->mouse, grid, &media->worlds[media->world_id].sec[sector]);
+		}
+		else if (state == NORMAL)
 		{
 			if (prog->button_on == DRAW_BTN) // draw mode
 			{
@@ -409,7 +445,6 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 			}
 			else if (prog->button_on == DISTORT_BTN ) // move mode
 				move_vector(prog, sdl->mouse, grid, &media->worlds[media->world_id]);
-
 			else if (prog->button_on == PLAYER_BTN ) // move mode
 				move_player(prog, sdl->mouse, grid, &media->worlds[media->world_id]);
 			else if (prog->button_on == DRAG_BTN && (prog->click.x || prog->click.y)) // view mode

@@ -55,6 +55,11 @@ CMakeFiles/builder.dir/init_editor_buttons.c.o: ../builder.h
 CMakeFiles/builder.dir/init_editor_buttons.c.o: ../get_next_line.h
 CMakeFiles/builder.dir/init_editor_buttons.c.o: ../init_editor_buttons.c
 
+CMakeFiles/builder.dir/items.c.o: .././libft/libft.h
+CMakeFiles/builder.dir/items.c.o: ../builder.h
+CMakeFiles/builder.dir/items.c.o: ../get_next_line.h
+CMakeFiles/builder.dir/items.c.o: ../items.c
+
 CMakeFiles/builder.dir/level_edit.c.o: .././libft/libft.h
 CMakeFiles/builder.dir/level_edit.c.o: ../builder.h
 CMakeFiles/builder.dir/level_edit.c.o: ../get_next_line.h

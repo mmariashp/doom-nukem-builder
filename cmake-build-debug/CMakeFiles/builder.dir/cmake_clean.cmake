@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/get_assets.c.o"
   "CMakeFiles/builder.dir/get_next_line.c.o"
   "CMakeFiles/builder.dir/init_editor_buttons.c.o"
+  "CMakeFiles/builder.dir/items.c.o"
   "CMakeFiles/builder.dir/level_edit.c.o"
   "CMakeFiles/builder.dir/main.c.o"
   "CMakeFiles/builder.dir/main_menu.c.o"

@@ -126,6 +126,9 @@
 # define MIN_SECTOR_WALLS		3
 # define MAX_SECTOR_WALLS		30
 
+# define MIN_SECTOR_ITEMS		0
+# define MAX_SECTOR_ITEMS		20
+
 //wall types
 # define WALL_EMPTY					0
 # define WALL_FILLED				1
@@ -524,7 +527,7 @@ void					add_to_media(t_grid *grid, t_media *media);
 unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *path);
 
 void					update_sector_status(t_sector *sec, t_wall *walls, t_vec2d *vertices, int n_sec);
-int 					in_sector(t_vec2d p, t_world *world, t_grid *grid);
+int 					mouse_in_sector(t_vec2d p, t_world *world, t_grid *grid);
 
 void					delete_vector(int id, t_world *world);
 
@@ -586,6 +589,18 @@ unsigned short			add_wall_in_secs(t_world *world, int to_add, int find);
 
 void					move_player(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
 
-void					grid_refresh(t_grid *grid, t_media *media);
+void					grid_refresh(t_grid *grid, t_media *media, int state, int sector);
+
+
+//items
+
+void					draw_items_or_free(char draw_free, int type, t_rec box, SDL_Renderer *rend);
+void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, int n, t_grid *grid);
+void					delete_item(t_sector *sector, int id);
+void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sector *sector);
+
+unsigned short          vec_same(t_vec2d one, t_vec2d two);
+
+unsigned short			dot_inside_sector(int x, int y, t_vec2d *p, int n);
 
 #endif
