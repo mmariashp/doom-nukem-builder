@@ -25,7 +25,7 @@ void					free_modes(t_mode *modes, t_sdl *sdl)
 {
 	int 				i;
 
-	button_back(0, 2, sdl->rend);
+	btn_back(0, 2, sdl->rend);
 	if (!modes)
 		return ;
 	i = 0;
@@ -191,9 +191,9 @@ unsigned short			distribute_buttons_v2(t_button *buttons, int from, int to, t_re
     return (SUCCESS);
 }
 
-# define N_BTN_BACKS		3
+# define N_BTN_BACKS		4
 
-SDL_Texture				*button_back(int id, int set_get_free, SDL_Renderer *rend)
+SDL_Texture				*btn_back(int id, int set_get_free, SDL_Renderer *rend)
 {
 	static int 			init = 0;
 	static SDL_Texture	**back = NULL;
@@ -208,6 +208,7 @@ SDL_Texture				*button_back(int id, int set_get_free, SDL_Renderer *rend)
 		back[0] = load_texture("blue_button00.png", rend, 0);
 		back[1] = load_texture("blue_button13.png", rend, 0);
 		back[2] = load_texture("grey_panel.png", rend, 0);
+		back[3] = load_texture("yellow_button00.png", rend, 0);
 		init = 1;
 		return (NULL);
 	}
@@ -245,8 +246,8 @@ unsigned short			main_menu_buttons(t_button *buttons, t_sdl *sdl)
 
 	while (i < N_MM_BTNS)
 	{
-		buttons[i].txtr = button_back(1, 1, sdl->rend);
-		buttons[i].lit = button_back(0, 1, sdl->rend);
+		buttons[i].txtr = btn_back(1, 1, sdl->rend);
+		buttons[i].lit = btn_back(0, 1, sdl->rend);
 		i++;
 	}
 	buttons[0].text = ft_strdup("START");
@@ -297,8 +298,8 @@ unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_world
 			buttons[i].text = ft_strjoin(s, worlds[i].filename);
 		if (s)
 			free(s);
-		buttons[i].txtr = button_back(1, 1, sdl->rend);
-		buttons[i].lit = button_back(0, 1, sdl->rend);
+		buttons[i].txtr = btn_back(1, 1, sdl->rend);
+		buttons[i].lit = btn_back(0, 1, sdl->rend);
 		i++;
 	}
 	int j = 0;
@@ -338,8 +339,8 @@ unsigned short			textures_buttons(t_button *buttons, t_texture *textures, int n_
     while (i < n_txtrs)
     {
         buttons[i].vis_lit_on[0] = TRUE;
-        buttons[i].txtr = button_back(2, 1, sdl->rend);
-        buttons[i].lit = button_back(0, 1, sdl->rend);
+        buttons[i].txtr = btn_back(2, 1, sdl->rend);
+        buttons[i].lit = btn_back(0, 1, sdl->rend);
         i++;
     }
     return (SUCCESS);
@@ -368,8 +369,8 @@ unsigned short			sel_item_buttons(t_button *buttons, t_itemfull *itemfull, int n
 	while (i < n_itemfull)
 	{
 		buttons[i].vis_lit_on[0] = TRUE;
-		buttons[i].txtr = button_back(2, 1, sdl->rend);
-		buttons[i].lit = button_back(0, 1, sdl->rend);
+		buttons[i].txtr = btn_back(2, 1, sdl->rend);
+		buttons[i].lit = btn_back(0, 1, sdl->rend);
 		buttons[i].text = ft_strdup(itemfull[i].filename);
 		buttons[i].box = button_box;
 		button_box.y += button_box.h;
@@ -450,7 +451,7 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
 			return (FAIL);
 		i++;
 	}
-	button_back(0, 0, sdl->rend);
+	btn_back(0, 0, sdl->rend);
 	main_menu_buttons(prog->modes[MODE_MAIN_MENU].buttons, sdl);
 	summary_buttons(prog->modes[MODE_SUMMARY].buttons, media->worlds, media->n_worlds, sdl);
 //	editor_buttons(prog->modes[MODE_EDITOR].buttons, prog->modes[MODE_EDITOR].n_buttons, sdl);

@@ -298,6 +298,33 @@ editor.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/editor.c.s
 .PHONY : editor.c.s
 
+fill_grid.o: fill_grid.c.o
+
+.PHONY : fill_grid.o
+
+# target to build an object file
+fill_grid.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/fill_grid.c.o
+.PHONY : fill_grid.c.o
+
+fill_grid.i: fill_grid.c.i
+
+.PHONY : fill_grid.i
+
+# target to preprocess a source file
+fill_grid.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/fill_grid.c.i
+.PHONY : fill_grid.c.i
+
+fill_grid.s: fill_grid.c.s
+
+.PHONY : fill_grid.s
+
+# target to generate assembly for a file
+fill_grid.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/fill_grid.c.s
+.PHONY : fill_grid.c.s
+
 fill_polygon.o: fill_polygon.c.o
 
 .PHONY : fill_polygon.o
@@ -324,6 +351,33 @@ fill_polygon.s: fill_polygon.c.s
 fill_polygon.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/fill_polygon.c.s
 .PHONY : fill_polygon.c.s
+
+find_in_media.o: find_in_media.c.o
+
+.PHONY : find_in_media.o
+
+# target to build an object file
+find_in_media.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/find_in_media.c.o
+.PHONY : find_in_media.c.o
+
+find_in_media.i: find_in_media.c.i
+
+.PHONY : find_in_media.i
+
+# target to preprocess a source file
+find_in_media.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/find_in_media.c.i
+.PHONY : find_in_media.c.i
+
+find_in_media.s: find_in_media.c.s
+
+.PHONY : find_in_media.s
+
+# target to generate assembly for a file
+find_in_media.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/find_in_media.c.s
+.PHONY : find_in_media.c.s
 
 font.o: font.c.o
 
@@ -405,6 +459,33 @@ get_next_line.s: get_next_line.c.s
 get_next_line.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_next_line.c.s
 .PHONY : get_next_line.c.s
+
+grid_main.o: grid_main.c.o
+
+.PHONY : grid_main.o
+
+# target to build an object file
+grid_main.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/grid_main.c.o
+.PHONY : grid_main.c.o
+
+grid_main.i: grid_main.c.i
+
+.PHONY : grid_main.i
+
+# target to preprocess a source file
+grid_main.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/grid_main.c.i
+.PHONY : grid_main.c.i
+
+grid_main.s: grid_main.c.s
+
+.PHONY : grid_main.s
+
+# target to generate assembly for a file
+grid_main.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/grid_main.c.s
+.PHONY : grid_main.c.s
 
 init_editor_buttons.o: init_editor_buttons.c.o
 
@@ -2593,6 +2674,33 @@ sdl_fun.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sdl_fun.c.s
 .PHONY : sdl_fun.c.s
 
+sector_logic.o: sector_logic.c.o
+
+.PHONY : sector_logic.o
+
+# target to build an object file
+sector_logic.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sector_logic.c.o
+.PHONY : sector_logic.c.o
+
+sector_logic.i: sector_logic.c.i
+
+.PHONY : sector_logic.i
+
+# target to preprocess a source file
+sector_logic.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sector_logic.c.i
+.PHONY : sector_logic.c.i
+
+sector_logic.s: sector_logic.c.s
+
+.PHONY : sector_logic.s
+
+# target to generate assembly for a file
+sector_logic.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sector_logic.c.s
+.PHONY : sector_logic.c.s
+
 sel_item.o: sel_item.c.o
 
 .PHONY : sel_item.o
@@ -2810,9 +2918,15 @@ help:
 	@echo "... editor.o"
 	@echo "... editor.i"
 	@echo "... editor.s"
+	@echo "... fill_grid.o"
+	@echo "... fill_grid.i"
+	@echo "... fill_grid.s"
 	@echo "... fill_polygon.o"
 	@echo "... fill_polygon.i"
 	@echo "... fill_polygon.s"
+	@echo "... find_in_media.o"
+	@echo "... find_in_media.i"
+	@echo "... find_in_media.s"
 	@echo "... font.o"
 	@echo "... font.i"
 	@echo "... font.s"
@@ -2822,6 +2936,9 @@ help:
 	@echo "... get_next_line.o"
 	@echo "... get_next_line.i"
 	@echo "... get_next_line.s"
+	@echo "... grid_main.o"
+	@echo "... grid_main.i"
+	@echo "... grid_main.s"
 	@echo "... init_editor_buttons.o"
 	@echo "... init_editor_buttons.i"
 	@echo "... init_editor_buttons.s"
@@ -3065,6 +3182,9 @@ help:
 	@echo "... sdl_fun.o"
 	@echo "... sdl_fun.i"
 	@echo "... sdl_fun.s"
+	@echo "... sector_logic.o"
+	@echo "... sector_logic.i"
+	@echo "... sector_logic.s"
 	@echo "... sel_item.o"
 	@echo "... sel_item.i"
 	@echo "... sel_item.s"

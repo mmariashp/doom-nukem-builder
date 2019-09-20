@@ -1,11 +1,6 @@
 
 #include "builder.h"
 
-unsigned short			within(int value, int min, int max);
-unsigned short			within_incl(int value, int min, int max);
-int 					selected_item(char set_get_unset, unsigned short id, int value);
-int 					lit_item(char set_get_unset, unsigned short id, int value);
-
 unsigned short			within(int value, int min, int max)
 {
 	if (value <= min)
@@ -59,4 +54,16 @@ char 					*get_full_path(char *filename, char *ext, char *path)
 		}
 	}
 	return (NULL);
+}
+
+void					free_int_tab(int **tab, int size)
+{
+	int					i;
+
+	if(!tab)
+		return ;
+	i = 0;
+	while(i < size && tab[i] != NULL)
+		ft_memdel((void **)&tab[i++]);
+	ft_memdel((void **)&tab);
 }

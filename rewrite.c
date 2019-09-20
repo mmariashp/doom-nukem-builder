@@ -41,7 +41,7 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 
 	ft_putendl_fd(title[section], fd);
 	if (section == 0)
-		n = world.n_vectors;
+		n = world.n_vecs;
 	else if (section == 1)
 		n = world.n_walls;
 	else if (section == 2)
@@ -57,9 +57,9 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 		ft_putstr_fd(") ", fd);
 		if (section == 0)
 			{
-				ft_putnbr_fd(world.vertices[i].x, fd);
+				ft_putnbr_fd(world.vecs[i].x, fd);
 				ft_putstr_fd(",", fd);
-				ft_putnbr_fd(world.vertices[i].y, fd);
+				ft_putnbr_fd(world.vecs[i].y, fd);
 			}
 		else if (section == 1)
 		{
@@ -131,7 +131,7 @@ unsigned short			write_level(int fd, t_world world)
 		ft_putstr_fd("Count ", fd);
 		ft_putstr_fd(count[i], fd);
 		if (i == 0)
-			ft_putnbr_fd(world.n_vectors, fd);
+			ft_putnbr_fd(world.n_vecs, fd);
 		else if (i == 1)
 			ft_putnbr_fd(world.n_walls, fd);
 		else if (i == 2)

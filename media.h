@@ -97,11 +97,11 @@ typedef struct					s_world
 	int							*textures;
 	t_sector					*sec;
 	t_wall						*walls;
-	t_vec2d						*vertices;
+	t_vec2d						*vecs;
 	t_vec2d						p_start;
 	t_vec2d						p_end;
 	short unsigned				n_sec;
-	short unsigned				n_vectors;
+	short unsigned				n_vecs;
 	short unsigned				n_walls;
 	short unsigned				n_txtrs;
 }								t_world;

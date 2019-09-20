@@ -55,39 +55,7 @@ void					draw_items_or_free(char draw_free, int type, t_rec box, SDL_Renderer *r
 	}
 }
 
-int 					node_in_sector(t_vec2d grid_p, t_world *world, t_grid *grid)
-{
-	int 				id;
-	t_vec2d				*v;
-	int 				i;
-	int 				j;
 
-	if (!world || !grid)
-		return (-1);
-	id = -1;
-	i = 0;
-	while (i < world->n_sec)
-	{
-		if ( world->sec[i].status != SEC_OPEN)
-		{
-			if (!(v = ft_memalloc(sizeof(t_vec2d) * world->sec[i].n_v)))
-				return (-1);
-			j = 0;
-			while (j < world->sec[i].n_v)
-			{
-				if (world->sec[i].v[j] < 0 || world->sec[i].v[j] >= world->n_vectors)
-					return (-1);
-				v[j] = world->vertices[world->sec[i].v[j]];
-				j++;
-			}
-			if (dot_inside_sector(grid_p.x, grid_p.y, v, world->sec[i].n_v) == TRUE)
-				id = i;
-			free(v);
-		}
-		i++;
-	}
-	return (id);
-}
 
 void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, int n, t_grid *grid)
 {
@@ -109,7 +77,7 @@ void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, 
 		id = world->sec[sector].items[i].id;
 		p = world->sec[sector].items[i].p;
 		if (within(p.x, -1, GRID_SIZE) && within(p.y, -1, GRID_SIZE) &&
-		node_in_sector(p, world, grid) == sector && grid->nodes[p.x][p.y] == (signed char)(-10 - i))
+		node_in_sector(p, world) == sector && grid->nodes[p.x][p.y] == (signed char)(-10 - i))
 		{
 
 //			grid->nodes[p.x][p.y] = (signed char)(-10 - i);

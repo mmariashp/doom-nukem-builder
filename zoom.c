@@ -72,7 +72,7 @@ void                    highlight_sector_nodes(t_vec2d *p, int n_walls, t_grid *
     }
 }
 
-void                    zoom_to_sector(t_sector *sector, t_vec2d *vertices, t_grid *grid, t_prog *prog)
+void                    zoom_to_sector(t_sector *sector, t_vec2d *vecs, t_grid *grid, t_prog *prog)
 {
     int					i;
     t_vec2d				p[sector->n_walls];
@@ -82,7 +82,7 @@ void                    zoom_to_sector(t_sector *sector, t_vec2d *vertices, t_gr
     static t_vec2d      desired = { WIN_W * 0.3, WIN_H * 0.5 };
     int                 n;
 
-    if (!prog || !vertices)
+    if (!prog || !vecs)
         return ;
     max.x = 0;
     min.x = GRID_SIZE;
@@ -91,7 +91,7 @@ void                    zoom_to_sector(t_sector *sector, t_vec2d *vertices, t_gr
     i = -1;
     while (++i < sector->n_v)
     {
-        p[i] = vertices[sector->v[i]];
+        p[i] = vecs[sector->v[i]];
         draw_node(p[i], 15, BABY_PINK, prog->screen);
         if (p[i].x < min.x)
             min.x = p[i].x;
@@ -165,7 +165,7 @@ void                    zoom_to_wall(t_vec2d v1, t_vec2d v2, t_grid *grid, t_pro
 	grid->scale = get_scale_to_sector(n, WIN_W * 0.6, WIN_H * 0.6);
 }
 
-void                    zoom_to_map(int n_vectors, t_vec2d *v, t_grid *grid)
+void                    zoom_to_map(int n_vecs, t_vec2d *v, t_grid *grid)
 {
     int                 i;
     int                 n;
@@ -179,7 +179,7 @@ void                    zoom_to_map(int n_vectors, t_vec2d *v, t_grid *grid)
     min.x = GRID_SIZE;
     max.y = 0;
     min.y = GRID_SIZE;
-    while (i < n_vectors)
+    while (i < n_vecs)
     {
         if (v[i].x < min.x)
             min.x = v[i].x;

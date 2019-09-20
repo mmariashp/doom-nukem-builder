@@ -155,7 +155,13 @@
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/editor.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/fill_grid.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/fill_polygon.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/find_in_media.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/font.c">
@@ -168,6 +174,9 @@
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/get_next_line.h">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/grid_main.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/init_editor_buttons.c">
@@ -411,6 +420,9 @@
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/sdl_fun.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/sector_logic.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/sel_item.c">

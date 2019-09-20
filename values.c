@@ -14,9 +14,9 @@ void					render_values(int state, int n, t_value *values, SDL_Renderer *rend)
 	{
 		box = layout_menu(2, (char)i);
 		if (i == 0)
-			render_box(box, button_back(0, 1, rend), rend);
+			render_box(box, btn_back(0, 1, rend), rend);
 		else
-			render_box(box, button_back(1, 1, rend), rend);
+			render_box(box, btn_back(1, 1, rend), rend);
 		write_text(menu_lines(state, i), rend, box, EDIT_TEXT_COLOR, FALSE);
 		box = layout_menu(5, (char)i);
 		if (values[i].text)

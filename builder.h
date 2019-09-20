@@ -378,11 +378,11 @@ typedef struct					s_world
 //	int							*textures;
 	t_sector					*sec;
 	t_wall						*walls;
-	t_vec2d						*vertices;
+	t_vec2d						*vecs;
 	t_vec2d						p_start;
 	t_vec2d						p_end;
 	short unsigned				n_sec;
-	short unsigned				n_vectors;
+	short unsigned				n_vecs;
 	short unsigned				n_walls;
 //	short unsigned				n_txtrs;
 }								t_world;
@@ -407,7 +407,7 @@ typedef struct					s_itemfull
 
 typedef struct 					s_media
 {
-	short 						world_id;
+	short 						w_id;
 	char 						paths[TOTAL_SECTIONS][20];
 	char 						extensions[TOTAL_SECTIONS][10];
 	t_texture					*txtrs;
@@ -516,38 +516,37 @@ void				    draw_thick_line(t_line l, int color, int r, int **screen);
 void					fillpoly(t_vec2d *p, int polyCorners, int **screen, int color);
 
 int 					fill_sector_v(t_sector *sector, t_wall *walls, int n);
-int 					sector_closed(int *tmp, int n);
+
 void					pair_sort(int *a, int n);
 
-SDL_Texture				*button_back(int id, int set_get_free, SDL_Renderer *rend);
+SDL_Texture				*btn_back(int id, int set_get_free, SDL_Renderer *rend);
 
 void					free_int_tab(int **tab, int size);
 
 void 					free_prog(t_prog *prog, t_sdl *sdl);
 t_prog					*get_prog(void);
 
-short 					find_vector(t_vec2d *vertices, t_vec2d p, int n);
-short 					find_wall(short one, short two, t_wall *walls, short n_walls);
+
 
 void					render_screen(SDL_Renderer *rend, int **screen);
 
-void					fill_grid(int n_vectors, t_vec2d *vertices, t_grid *grid);
-void					clean_grid(t_grid *grid);
-void                    fill_grid_walls(int n_walls, t_wall *walls, int n_vectors, t_vec2d *vertices, t_grid *grid);
+
+
+
 
 void					add_to_media(t_grid *grid, t_media *media);
 unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *path);
 
-void					update_sector_status(t_sector *sec, t_wall *walls, t_vec2d *vertices, int n_sec);
-int 					mouse_in_sector(t_vec2d p, t_world *world, t_grid *grid);
+void					update_sector_status(t_sector *sec, t_wall *walls, t_vec2d *vecs, int n_sec);
+
 
 void					delete_vector(int id, t_world *world);
 
 void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid);
 unsigned short			move_grid_keys(t_prog *prog, t_grid *grid);
 void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
-void                    zoom_to_sector(t_sector *sector, t_vec2d *vertices, t_grid *grid, t_prog *prog);
-void                    zoom_to_map(int n_vectors, t_vec2d *v, t_grid *grid);
+void                    zoom_to_sector(t_sector *sector, t_vec2d *vecs, t_grid *grid, t_prog *prog);
+void                    zoom_to_map(int n_vecs, t_vec2d *v, t_grid *grid);
 void                    zoom_to_wall(t_vec2d v1, t_vec2d v2, t_grid *grid, t_prog *prog);
 
 void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
@@ -602,7 +601,7 @@ unsigned short			add_wall_in_secs(t_world *world, int to_add, int find);
 
 void					move_player(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
 
-void					grid_refresh(t_grid *grid, t_media *media, int state, int sector);
+
 
 
 //items
@@ -616,6 +615,29 @@ int 					find_default_item(int type, t_itemfull *itemfull, int n);
 
 unsigned short          vec_same(t_vec2d one, t_vec2d two);
 
+
+
+
+//fill grid
+void					fill_grid(int n_vecs, t_vec2d *vecs, t_grid *grid);
+void					fill_grid_items(t_sector *sector, t_grid *grid);
+void                    fill_grid_walls(int n_walls, t_wall *walls, int n_vecs, t_vec2d *vecs, t_grid *grid);
+
+//grid main
+void					clean_grid(t_grid *grid);
+t_grid                  *get_grid(void);
+void					grid_refresh(t_grid *grid, t_media *media, int state, int sector);
+
+
+//find_in_media
+short 					find_vector(t_vec2d *vecs, t_vec2d p, int n);
+short 					find_wall(short one, short two, t_wall *walls, short n_walls);
+
+//sector logic
 unsigned short			dot_inside_sector(int x, int y, t_vec2d *p, int n);
+int 					node_in_sector(t_vec2d grid_p, t_world *world);
+int 					mouse_in_sector(t_vec2d p, t_world *world, t_grid *grid);
+int 					sector_closed(int *tmp, int n);
+unsigned short 			sec_is_convex(t_vec2d *vecs, int *v, int n);
 
 #endif

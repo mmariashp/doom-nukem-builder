@@ -655,12 +655,12 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 //		world->textures[t_count] = p.x;
 //		t_count++;
 //	}
-	if (status == R_VECTORS && v_count < world->n_vectors)
+	if (status == R_VECTORS && v_count < world->n_vecs)
 	{
 		p.x = clamp(p.x, MIN_VERTEX_COORD, MAX_VERTEX_COORD);
 		p.y = clamp(p.y, MIN_VERTEX_COORD, MAX_VERTEX_COORD);
 
-		world->vertices[v_count] = p;
+		world->vecs[v_count] = p;
 		v_count++;
 	}
 	if (status == R_WALLS && w_count < world->n_walls)
@@ -755,7 +755,7 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 	status = 0;
 	ft_strcpy(tab, "0VWSPT");
 	world->walls = NULL;
-	world->vertices = NULL;
+	world->vecs = NULL;
 	world->sec = NULL;
 //	world->textures = NULL;
 	line = NULL;
@@ -764,14 +764,14 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 		tmp = line;
 		if (i == 0)
 		{
-			world->n_vectors = get_n(line, 0, MAX_VERTEX_ID);
-			if (world->n_vectors == 0)
-				world->vertices = NULL;
+			world->n_vecs = get_n(line, 0, MAX_VERTEX_ID);
+			if (world->n_vecs == 0)
+				world->vecs = NULL;
 			else
 			{
-				if (!(world->vertices = (t_vec2d *)malloc(sizeof(t_vec2d) * world->n_vectors)))
+				if (!(world->vecs = (t_vec2d *)malloc(sizeof(t_vec2d) * world->n_vecs)))
 					return (FAIL);
-				ft_bzero(world->vertices, sizeof(world->vertices));
+				ft_bzero(world->vecs, sizeof(world->vecs));
 			}
 		}
 		else if (i == 1)
@@ -1015,9 +1015,9 @@ unsigned				read_levels(t_media *media, t_section *section)
 //		media->worlds[i].textures = NULL;
 		media->worlds[i].sec = NULL;
 		media->worlds[i].walls = NULL;
-		media->worlds[i].vertices = NULL;
+		media->worlds[i].vecs = NULL;
 		media->worlds[i].n_sec = 0;
-		media->worlds[i].n_vectors = 0;
+		media->worlds[i].n_vecs = 0;
 		media->worlds[i].n_walls = 0;
 //		media->worlds[i].n_txtrs = 0;
 		printf("NAME %s\n", media->worlds[i].filename);
@@ -1099,8 +1099,8 @@ void					free_media(t_media *media)
 					free_sector(&media->worlds[j].sec[i++]);
 				free(media->worlds[j].sec);
 			}
-			if (media->worlds[j].vertices)
-				free(media->worlds[j].vertices);
+			if (media->worlds[j].vecs)
+				free(media->worlds[j].vecs);
 			if (media->worlds[j].walls)
 				free(media->worlds[j].walls);
 //			if (media->worlds[j].textures)
@@ -1184,7 +1184,7 @@ void					init_media(t_media *media)
 {
 	if (!media)
 		return ;
-	media->world_id = -1;
+	media->w_id = -1;
 	media->txtrs = NULL;
 	media->itemfull = NULL;
 	media->fonts = NULL;

@@ -117,77 +117,7 @@ void					render_screen_iso(SDL_Renderer *rend, int **screen)
     }
 }
 
-short 					find_vector(t_vec2d *vertices, t_vec2d p, int n)
-{
-	short 				i;
-
-	if (!vertices)
-		return (-1);
-	i = 0;
-	while (i < n)
-	{
-		if (vertices[i].x == p.x && vertices[i].y == p.y)
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-short 					find_wall(short one, short two, t_wall *walls, short n_walls)
-{
-	short 				i;
-
-	i = 0;
-	if (!walls)
-		return (-1);
-	while (i < n_walls)
-	{
-		if (one == walls[i].v1 && two == walls[i].v2)
-			return (i);
-		if (two == walls[i].v1 && one == walls[i].v2)
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-unsigned short 			sec_is_convex(t_vec2d *vertices, int *v, int n)
-{
-	char            pos_neg[2];
-	t_vec2d_d       diff1;
-	t_vec2d_d       diff2;
-    int             i;
-    int             j;
-    int             k;
-
-	if (n < 4)
-		return (TRUE);
-    pos_neg[0] = FALSE;
-    pos_neg[1] = FALSE;
-    i = -1;
-    while (++i < n)
-    {
-        if (v[i] != -2)
-        {
-            j = i + 1;
-            diff2.x = vertices[v[i]].x - vertices[v[(j) % n]].x;
-            diff2.y = vertices[v[i]].y - vertices[v[(j) % n]].y;
-            k = j + 1;
-            diff1.x = vertices[v[(k) % n]].x - vertices[v[(j) % n]].x;
-            diff1.y = vertices[v[(k) % n]].y - vertices[v[(j) % n]].y;
-            diff1.x = diff1.x * diff2.y - diff1.y * diff2.x;
-            if (diff1.x > 0)
-                pos_neg[0] = TRUE;
-            else if (diff1.x < 0)
-                pos_neg[1] = TRUE;
-            if (pos_neg[0] == TRUE && pos_neg[1] == TRUE)
-                return (FALSE);
-        }
-    }
-	return (TRUE);
-}
-
-char 					sector_status(t_sector sector, t_wall *walls, t_vec2d *vertices, int n)
+char 					sector_status(t_sector sector, t_wall *walls, t_vec2d *vecs, int n)
 {
 	int					i;
 	int					j;
@@ -195,7 +125,7 @@ char 					sector_status(t_sector sector, t_wall *walls, t_vec2d *vertices, int n
 	int                 *w;
 	char                status;
 
-	if (!walls || !vertices)
+	if (!walls || !vecs)
 		return (SEC_OPEN);
 	ft_memset(tmp, -1, sizeof(int) * n);
 	i = -1;
@@ -226,7 +156,7 @@ char 					sector_status(t_sector sector, t_wall *walls, t_vec2d *vertices, int n
 	pair_sort(w, j);
     if (sector_closed(w, j) == FALSE)
         status = SEC_OPEN;
-	else if (sec_is_convex(vertices, sector.v, sector.n_v) == FALSE)
+	else if (sec_is_convex(vecs, sector.v, sector.n_v) == FALSE)
 	    status = SEC_CONCAVE_CLOSED;
 	else
 	    status = SEC_CONVEX_CLOSED;
@@ -234,7 +164,7 @@ char 					sector_status(t_sector sector, t_wall *walls, t_vec2d *vertices, int n
 	return(status);
 }
 
-void					update_sector_status(t_sector *sec, t_wall *walls, t_vec2d *vertices, int n_sec)
+void					update_sector_status(t_sector *sec, t_wall *walls, t_vec2d *vecs, int n_sec)
 {
 	int 				i;
 
@@ -243,7 +173,7 @@ void					update_sector_status(t_sector *sec, t_wall *walls, t_vec2d *vertices, i
 		return ;
 	while (i < n_sec)
 	{
-		sec[i].status = sector_status(sec[i], walls, vertices, sec[i].n_walls * 2);
+		sec[i].status = sector_status(sec[i], walls, vecs, sec[i].n_walls * 2);
 		i++;
 	}
 }
@@ -254,24 +184,24 @@ void					delete_vector(int id, t_world *world)
 	int 				i;
 	int 				j;
 
-	if (!world || id < 0 || id >= world->n_vectors)
+	if (!world || id < 0 || id >= world->n_vecs)
 		return ;
-	new = (t_vec2d *)ft_memalloc(sizeof(t_vec2d) * (world->n_vectors - 1));
+	new = (t_vec2d *)ft_memalloc(sizeof(t_vec2d) * (world->n_vecs - 1));
 	if (!new)
 		return ;
 	i = 0;
 	j = 0;
-	while (j < world->n_vectors)
+	while (j < world->n_vecs)
 	{
 		if (j == id)
 			j++;
-		new[i] = world->vertices[j];
+		new[i] = world->vecs[j];
 		i++;
 		j++;
 	}
-	world->n_vectors--;
-	free(world->vertices);
-	world->vertices = new;
+	world->n_vecs--;
+	free(world->vecs);
+	world->vecs = new;
 	i = 0;
 	while (i < world->n_walls)
 	{
@@ -295,58 +225,6 @@ void					delete_vector(int id, t_world *world)
 	}
 }
 
-void                    fill_grid_walls(int n_walls, t_wall *walls, int n_vectors, t_vec2d *vertices, t_grid *grid)
-{
-    int                 wall_i;
-    int                 v1;
-    int                 v2;
-
-    if (!walls || !vertices || !grid || n_walls < 1 || n_vectors < 2 || n_walls >= MAX_N_WALLS)
-        return ;
-    wall_i = 0;
-    while (wall_i < n_walls)
-    {
-        v1 = walls[wall_i].v1;
-        v2 = walls[wall_i].v2;
-        if (walls[wall_i].type != WALL_DOOR && v1 >= 0 && v1 < n_vectors && v2 >= 0 && v2 < n_vectors)
-        {
-            draw_line_grid((t_line){ vertices[v1], vertices[v2] }, (signed char)wall_i, grid->nodes);
-        }
-        wall_i++;
-    }
-}
-
-void					fill_grid(int n_vectors, t_vec2d *vertices, t_grid *grid)
-{
-	int 				i;
-
-	if (!vertices || !grid || n_vectors < 1)
-		return ;
-	i = 0;
-	while (i < n_vectors)
-	{
-		grid->nodes[vertices[i].x][vertices[i].y] = NODE_FULL;
-		i++;
-	}
-}
-
-void					clean_grid(t_grid *grid)
-{
-	int					i;
-	int					j;
-
-	if (!grid)
-		return ;
-	i = 0;
-	while (i < GRID_SIZE)
-	{
-		j = 0;
-		while (j < GRID_SIZE)
-			grid->nodes[i][j++] = NODE_EMPTY;
-		i++;
-	}
-}
-
 void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
 {
 	static int			id = -1;
@@ -363,7 +241,7 @@ void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
 				grid->active[0] = find_node(mouse.x, mouse.y, grid);
 				if (grid->active[0].x >= 0 && grid->active[0].y >= 0 &&
 				grid->nodes[grid->active[0].x][grid->active[0].y] == NODE_FULL)
-					id = find_vector(world->vertices, grid->active[0], world->n_vectors);
+					id = find_vector(world->vecs, grid->active[0], world->n_vecs);
 				if (id == -1)
 				{
 					grid->active[0] = (t_vec2d){ -1, -1 };
@@ -379,7 +257,7 @@ void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
 				{
 					if (to_erase.x != -1)
 						grid->nodes[to_erase.x][to_erase.y] = NODE_EMPTY;
-					world->vertices[id] = grid->active[1];
+					world->vecs[id] = grid->active[1];
 					grid->nodes[grid->active[1].x][grid->active[1].y] = NODE_FULL;
 					to_erase = grid->active[1];
 				}
@@ -454,36 +332,7 @@ void					move_player(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
 	}
 }
 
-unsigned short			dot_inside_sector(int x, int y, t_vec2d *p, int n)
-{
-	int 				i;
-	int 				j;
-	unsigned short		odd;
 
-	i = 0;
-	j = n - 1;
-	odd = FALSE;
-	while(i < n)
-	{
-		if ((p[i].y < y && p[j].y >= y) || (p[j].y < y && p[i].y >= y) )
-		{
-			if (p[i].x + (float)(y - p[i].y) / (p[j].y - p[i].y) * (p[j].x - p[i].x) < x)
-				odd = odd == FALSE ? TRUE : FALSE;
-		}
-		j = i;
-		i++;
-	}
-	return (odd);
-}
-
-//t_vec2d					find_in_grid(int p_x, int p_y, t_grid *grid)
-//{
-//	t_vec2d				res;
-//
-//	res.x = (float)(p_x - grid->box.x) / grid->scale;
-//	res.y = (float)(p_y - grid->box.y) / grid->scale;
-//	return (res);
-//}
 
 t_vec2d					find_node(int p_x, int p_y, t_grid *grid)
 {
@@ -495,58 +344,7 @@ t_vec2d					find_node(int p_x, int p_y, t_grid *grid)
 	return ((t_vec2d){ round(mapx), round(mapy) });
 }
 
-int 					mouse_in_sector(t_vec2d p, t_world *world, t_grid *grid)
-{
-	int 				id;
-	t_vec2d				map_p;
-	t_vec2d				*v;
-	int 				i;
-	int 				j;
 
-	if (!world || !grid || mouse_over(grid->box, p) == FALSE)
-		return (-1);
-	id = -1;
-	map_p = find_node(p.x, p.y, grid);
-	i = 0;
-	while (i < world->n_sec)
-	{
-		if ( world->sec[i].status != SEC_OPEN)
-		{
-			if (!(v = ft_memalloc(sizeof(t_vec2d) * world->sec[i].n_v)))
-				return (-1);
-			j = 0;
-			while (j < world->sec[i].n_v)
-			{
-			    if (world->sec[i].v[j] < 0 || world->sec[i].v[j] >= world->n_vectors)
-                    return (-1);
-				v[j] = world->vertices[world->sec[i].v[j]];
-				j++;
-			}
-			if (dot_inside_sector(map_p.x, map_p.y, v, world->sec[i].n_v) == TRUE)
-				id = i;
-			free(v);
-		}
-		i++;
-	}
-	return (id);
-}
-
-t_grid                  *get_grid(void)
-{
-    t_grid					*grid;
-
-    if (!(grid = (t_grid *)ft_memalloc(sizeof(t_grid))))
-        return (NULL);
-    grid->scale = WIN_H / GRID_SIZE;
-    grid->box.w = GRID_SIZE * grid->scale;
-    grid->box.h = GRID_SIZE * grid->scale;
-    grid->box.x = (WIN_W - grid->box.w) / 2;
-    grid->box.y = (WIN_H - grid->box.h) / 2;
-    grid->active[0] = (t_vec2d){ -1, -1 };
-    grid->active[1] = (t_vec2d){ -1, -1 };
-    clean_grid(grid);
-    return (grid);
-}
 
 void					game_loop(t_sdl *sdl, t_media *media)
 {

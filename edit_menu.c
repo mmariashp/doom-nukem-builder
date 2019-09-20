@@ -117,7 +117,7 @@ void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int sta
 	&w->walls[i], r, txtrs[w->walls[i].txtr].sdl_t))))
 		return ;
 	values[0].text = ft_itoa(i);
-	render_box(layout_menu(0, 0), button_back(2, 1, r), r);
+	render_box(layout_menu(0, 0), btn_back(2, 1, r), r);
 	render_values(state, n, values, r);
 	free_values(values, n);
 }

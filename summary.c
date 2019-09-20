@@ -115,7 +115,7 @@ int						input_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 					prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 					prog->last_mode_id = prog->mode_id;
                     prog->mode_id = MODE_EDITOR;
-                    media->world_id = prog->button_on;
+                    media->w_id = prog->button_on;
 					prog->button_lit = -1;
                     prog->button_on = DRAG_BTN;
                     selected_item(0, STATE_SELECT, NORMAL);

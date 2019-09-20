@@ -91,8 +91,8 @@ void					draw_walls(t_world world, t_grid *grid, int **screen, int wall)
 
 	while (i < world.n_walls)
 	{
-		v1 = world.vertices[world.walls[i].v1];
-		v2 = world.vertices[world.walls[i].v2];
+		v1 = world.vecs[world.walls[i].v1];
+		v2 = world.vecs[world.walls[i].v2];
 
 		v1.x = (int)(grid->box.x + v1.x * grid->scale);
 		v1.y = (int)(grid->box.y + v1.y * grid->scale);
@@ -156,7 +156,7 @@ void					fill_sector(t_world world, t_grid *grid, int **screen, int sec, int sta
 		return ;
 	while (i < world.sec[j].n_v)
 	{
-		p[i] = world.vertices[world.sec[j].v[i]];
+		p[i] = world.vecs[world.sec[j].v[i]];
 		p[i].x = (int)(grid->box.x + p[i].x * grid->scale);
 		p[i].y = (int)(grid->box.y + p[i].y * grid->scale);
 		i++;

@@ -23,7 +23,6 @@ void					render_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	if (!sdl || !media || !grid || prog->features[F_REDRAW] == 0)
 		return ;
-	prog->click = (t_vec2d){ 0, 0 };
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
 	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons, prog->mode_id);
@@ -36,6 +35,13 @@ unsigned short			update_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_pro
 {
 	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].buttons)
 		return (FAIL);
+	if (prog->mode_id != prog->last_mode_id)
+	{
+		prog->click = (t_vec2d){ 0, 0 };
+		prog->button_lit = -1;
+		prog->last_mode_id = prog->mode_id;
+		return (SUCCESS);
+	}
 	if (light_button(sdl, prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
 		return (SUCCESS);
 	prog->button_lit = -1;
@@ -68,7 +74,7 @@ int						input_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		}
 		if( event.type == SDL_MOUSEMOTION || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP )
 		{
-			if(event.type == SDL_MOUSEBUTTONUP)
+			if(event.type == SDL_MOUSEBUTTONDOWN)
 			{
 				if (prog->button_lit != -1)
 				{
