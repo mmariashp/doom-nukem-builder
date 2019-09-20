@@ -30,13 +30,13 @@ t_rec                    layout_menu(char i, char n)
 
 char 					*menu_lines(int id, int i)
 {
-	static short 		n_s_lines = 5;
+	static short 		n_s_lines = 6;
 	static short 		n_w_lines = 4;
-	static char         sector_lines[5][20] = { "SECTOR " ,
+	static char         sector_lines[6][20] = { "SECTOR " ,
 												"Floor height ",
 											 	"Ceiling height ",
 											 	"Floor texture ",
-											 	"Ceiling texture " };
+											 	"Ceiling texture ", "Items" };
 	static char         wall_lines[4][20] = { "WALL ", "Texture ",
 										   "Portal ", "Door " };
 
@@ -50,7 +50,7 @@ char 					*menu_lines(int id, int i)
 
 t_value					*get_sector_values(int *n, t_sector *sector, SDL_Texture *f_texture, SDL_Texture *c_texture)
 {
-	static int 			nb = 5;
+	static int 			nb = 6;
 	t_value				*new;
 
 	if (!sector || !f_texture || !c_texture)
@@ -62,7 +62,8 @@ t_value					*get_sector_values(int *n, t_sector *sector, SDL_Texture *f_texture,
 	new[2].text = ft_itoa(sector->ceiling);
 	new[3].texture = f_texture;
 	new[4].texture = c_texture;
-	if (!new[1].text || !new[2].text || !new[3].texture
+	new[5].text = ft_itoa(sector->n_items);
+	if (!new[1].text || !new[2].text || !new[5].text || !new[3].texture
 	|| !new[4].texture)
 		return (NULL);
 	return (new);

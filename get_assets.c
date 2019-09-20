@@ -151,7 +151,7 @@ int 					*realloc_int_array(int *tab, size_t n)
 int						read_item_type(char *line)
 {
 	static char 		types[TOTAL_TYPES][12] = { "coin", "key", "object",\
-						"enemy", "super_bonus", "health", "ammo" };
+						"enemy", "super_bonus", "health", "ammo", "light" };
 	int 				res;
 
 	res = 0;

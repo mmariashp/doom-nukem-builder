@@ -44,6 +44,5 @@ t_prog					*get_prog(void)
 	prog->features[F_MOVE_GRID] = 1;
 	prog->features[F_SELECT_NODE] = 0;
 	prog->features[F_REDRAW] = 1;
-	prog->save = FALSE;
 	return (prog);
 }

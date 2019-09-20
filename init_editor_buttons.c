@@ -3,22 +3,51 @@
 
 t_mode					*init_sector_buttons(t_mode *m, SDL_Renderer *rend)
 {
-	static char         reg[7][15] = { "cross2.png", "up2.png", "down2.png",\
-						"up2.png", "down2.png", "edit.png", "edit.png" };
-	static char         lit[7][15] = { "cross3.png", "up3.png", "down3.png",\
-						"up3.png", "down3.png", "editlit.png", "editlit.png" };
+	static char 		path_items[10] = "./items3/";
+	static char 		path_buttons[10] = "./";
+	static char 		ext[5] = ".png";
+	static char         reg[15][15] = { "cross2", "up2", "down2",\
+						"up2", "down2", "edit", "edit", \
+						"coin", \
+						"key", \
+						"object", \
+						"enemy", \
+						"super_bonus", \
+						"health", \
+						"ammo", \
+						"light" };
+
+	static char         lit[15][15] = { "cross3", "up3", "down3",\
+						"up3", "down3", "editlit", "editlit", \
+						"coin", \
+						"key", \
+						"object", \
+						"enemy", \
+						"super_bonus", \
+						"health", \
+						"ammo", \
+						"light" };
 	int                 i;
 
-	if (!m || !rend || !(m->buttons = init_buttons(7)))
+	if (!m || !rend || !(m->buttons = init_buttons(15)))
 		return (NULL);
-	m->n_buttons = 7;
+	m->n_buttons = 15;
 	i = -1;
 	while (++i < m->n_buttons)
 	{
 		if (!reg[i] || !lit[i])
 			continue ;
-		m->buttons[i].txtr = load_texture(reg[i], rend, 0);
-		m->buttons[i].lit = load_texture(lit[i], rend, 0);
+		if (i < 7)
+		{
+			m->buttons[i].txtr = load_texture(get_full_path(reg[i], ext, path_buttons), rend, 0);
+			m->buttons[i].lit = load_texture(get_full_path(lit[i], ext, path_buttons), rend, 0);
+		}
+		else
+		{
+			m->buttons[i].txtr = load_texture(get_full_path(reg[i], ext, path_items), rend, 0);
+			m->buttons[i].lit = load_texture(get_full_path(lit[i], ext, path_items), rend, 0);
+		}
+
 	}
 	m->buttons[DESELECT_BTN].box = layout_menu(0, 0);
 	m->buttons[DESELECT_BTN].box = (t_rec){ m->buttons[DESELECT_BTN].box.x +\
@@ -29,6 +58,11 @@ t_mode					*init_sector_buttons(t_mode *m, SDL_Renderer *rend)
 	m->buttons[C_DOWN_BTN].box = layout_menu(4, 2);
 	m->buttons[FT_EDIT_BTN].box = layout_menu(6, 3);
 	m->buttons[CT_EDIT_BTN].box = layout_menu(6, 4);
+
+	t_rec box = layout_menu(2, 6);
+	box.w *= 1.27;
+	box.h *= 1.19;
+	distribute_buttons_h(m->buttons, 7, 15, box, 8);
 	return (m);
 }
 

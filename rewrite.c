@@ -154,7 +154,7 @@ unsigned short			write_level(int fd, t_world world)
 void					write_item_type(int type, int fd)
 {
 	static char 		types[TOTAL_TYPES][12] = { "coin", "key", "object",\
-						"enemy", "super_bonus", "health", "ammo" };
+						"enemy", "super_bonus", "health", "ammo", "light" };
 
 	if (type >= 0 && type < TOTAL_TYPES)
 	{

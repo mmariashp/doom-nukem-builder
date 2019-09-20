@@ -64,19 +64,19 @@ t_button				*init_buttons(int n_buttons)
 	return (buttons);
 }
 
-unsigned short			distribute_buttons_h(t_button *buttons, int from, int nb, t_rec box, int padding)
+unsigned short			distribute_buttons_h(t_button *buttons, int from, int to, t_rec box, int padding)
 {
 	t_vec2d				b;
 	int 				x;
 	unsigned short		i;
 
 
-	if (!buttons || !nb)
+	if (!buttons || !to)
 		return (FAIL);
-	b = (t_vec2d){ box.w / nb - padding, box.h };
+	b = (t_vec2d){ box.w / (to - from) - padding, box.h };
 	x = box.x;
 	i = from;
-	while (i < nb)
+	while (i < to)
 	{
 		buttons[i].box.w = b.x;
 		buttons[i].box.h = b.y;

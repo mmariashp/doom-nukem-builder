@@ -126,7 +126,6 @@
 # define MIN_SECTOR_WALLS		3
 # define MAX_SECTOR_WALLS		30
 
-# define MIN_SECTOR_ITEMS		0
 # define MAX_SECTOR_ITEMS		20
 
 //wall types
@@ -180,8 +179,16 @@
 # define F_DOWN_BTN		2
 # define C_UP_BTN		3
 # define C_DOWN_BTN		4
-# define FT_EDIT_BTN		5
-# define CT_EDIT_BTN		6
+# define FT_EDIT_BTN	5
+# define CT_EDIT_BTN	6
+# define B_COIN			7
+# define B_KEY			8
+# define B_OBJECT		9
+# define B_ENEMY		10
+# define B_SUPER_BONUS	11
+# define B_HEALTH		12
+# define B_AMMO			13
+# define B_LIGHT		14
 
 # define WT_EDIT_BTN		1
 # define W_PORTAL_BTN    2
@@ -209,9 +216,10 @@
 # define W_SELECT		1
 # define S_SELECT		2
 # define T_SELECT		3
-# define BUTT_SELECT	4
+# define B_SELECT		4
 # define STATE_SELECT	5
 # define WORLD_SELECT	6
+# define I_SELECT		7
 
 // states
 # define NORMAL					-1
@@ -232,7 +240,8 @@
 # define SUPER_BONUS			4
 # define HEALTH					5
 # define AMMO					6
-# define TOTAL_TYPES			7
+# define LIGHT					7
+# define TOTAL_TYPES			8
 
 typedef struct					s_vec2d
 {
@@ -307,7 +316,6 @@ typedef struct					s_prog
     t_vec2d						move;
 	t_vec2d						click;
 	char 						features[10];
-	char 						save;
 }								t_prog;
 
 typedef struct                  s_wall
@@ -557,6 +565,7 @@ unsigned short			add_wall(t_wall **walls, short n_walls, int one, int two);
 unsigned short			within(int value, int min, int max);
 int 					selected_item(char set_get_unset, unsigned short id, int value);
 int 					lit_item(char set_get_unset, unsigned short id, int value);
+char 					*get_full_path(char *filename, char *ext, char *path);
 
 
 // edit menu
@@ -578,7 +587,7 @@ void					render_box(t_rec box, SDL_Texture *t, SDL_Renderer *rend);
 t_button				*init_buttons(int n_buttons);
 void					free_buttons(t_button *buttons, int n);
 t_button				*set_get_free_buttons(char set_get_free, int *n, int state);
-unsigned short			distribute_buttons_h(t_button *buttons, int from, int nb, t_rec box, int padding);
+unsigned short			distribute_buttons_h(t_button *buttons, int from, int to, t_rec box, int padding);
 void					get_buttons(int state, t_mode *mode, SDL_Renderer *rend);
 
 //door
@@ -598,6 +607,8 @@ void					draw_items_or_free(char draw_free, int type, t_rec box, SDL_Renderer *r
 void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, int n, t_grid *grid);
 void					delete_item(t_sector *sector, int id);
 void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sector *sector);
+void					add_item(int default_id, t_vec2d mouse, t_grid *grid, t_sector *sector);
+int 					find_default_item(int type, t_itemfull *itemfull, int n);
 
 unsigned short          vec_same(t_vec2d one, t_vec2d two);
 

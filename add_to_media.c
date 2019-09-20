@@ -199,25 +199,7 @@ char 					*get_filename(int i)
 	return (NULL);
 }
 
-char 					*get_full_path(char *filename, char *ext, char *path)
-{
-	char 				*with_path;
-	char 				*res;
 
-	if (!path || !ext)
-		return (NULL);
-	with_path = ft_strjoin(path, filename);
-	if (with_path)
-	{
-		res = ft_strjoin(with_path, ext);
-		free(with_path);
-		if (res)
-		{
-			return (res);
-		}
-	}
-	return (NULL);
-}
 
 unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *path)
 {

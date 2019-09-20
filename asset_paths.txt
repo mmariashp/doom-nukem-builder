@@ -40,6 +40,7 @@ File Names:
 4) (super_bonus) bonus
 5) (health) potion
 6) (ammo) bullet
+7) (light) light
 ###
 
 #Sounds
