@@ -194,24 +194,21 @@ void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sector *sector)
 			if (grid->active[0].x == -1)
 			{
 				grid->active[0] = find_node(mouse.x, mouse.y, grid);
-//				printf("12, 8: %d\n", grid->nodes[12][8]);
-//				printf("found g0: %d,%d =%d\n", grid->active[0].x, grid->active[0].y, grid->nodes[grid->active[0].x][grid->active[0].x]);
 				if (grid->active[0].x >= 0 && grid->active[0].y >= 0 &&
 					grid->nodes[grid->active[0].x][grid->active[0].y] < -9)
 					id = (grid->nodes[grid->active[0].x][grid->active[0].y] + 10) * (-1);
-//				printf("id = %d, from node %d,%d =%d\n", id, grid->active[0].x, grid->active[0].y, grid->nodes[grid->active[0].x][grid->active[0].x]);
 				if (!within(id, -1, sector->n_items))
 				{
 					grid->active[0] = (t_vec2d){ -1, -1 };
 					move_grid_drag(prog, mouse, grid);
 					id = -1;
 				}
+				selected_item(0, I_SELECT, id);
 				to_erase = grid->active[0];
 			}
 			else if (id >= 0)
 			{
 				grid->active[1] = find_node(mouse.x, mouse.y, grid);
-//				printf("found g1: %d,%d =%d\n", grid->active[1].x, grid->active[1].y, grid->nodes[grid->active[1].x][grid->active[1].x]);
 				if (grid->nodes[grid->active[1].x][grid->active[1].y] == NODE_EMPTY)
 				{
 					if (to_erase.x != -1)

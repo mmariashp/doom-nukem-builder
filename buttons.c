@@ -42,7 +42,7 @@ void					render_button_big(t_button *button, SDL_Renderer *rend)
 		SDL_RenderCopy(rend, button->txtr, NULL, &rect);
 }
 
-void					render_buttons(t_button *buttons, SDL_Renderer *rend, int n_buttons)
+void					render_buttons(t_button *buttons, SDL_Renderer *rend, int n_buttons, int mode_id)
 {
 	short 				i;
 	short 				state;
@@ -54,7 +54,7 @@ void					render_buttons(t_button *buttons, SDL_Renderer *rend, int n_buttons)
 	{
 		if (buttons[i].vis_lit_on[0] == TRUE)
 		{
-			if ((buttons[i].vis_lit_on[1] == TRUE || buttons[i].vis_lit_on[2] == TRUE) && state == SECTOR_EDIT && i > 6)
+			if (mode_id == MODE_EDITOR && (buttons[i].vis_lit_on[1] == TRUE || buttons[i].vis_lit_on[2] == TRUE) && state == SECTOR_EDIT && i > B_ITEM_DEL)
 				render_button_big(&buttons[i], rend);
 			else
 				render_button(&buttons[i], rend);

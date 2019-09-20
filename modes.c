@@ -345,6 +345,44 @@ unsigned short			textures_buttons(t_button *buttons, t_texture *textures, int n_
     return (SUCCESS);
 }
 
+unsigned short			sel_item_buttons(t_button *buttons, t_itemfull *itemfull, int n_itemfull, t_sdl *sdl)
+{
+	t_rec				button_box;
+	int 				i;
+
+	if (!buttons || !itemfull || !sdl)
+		return (FAIL);
+	button_box.w = WIN_W * 0.4;
+	button_box.h = WIN_H * 0.9 / 25;
+	if (n_itemfull > 25)
+	{
+		button_box.x = WIN_W * 0.1;
+		button_box.y = WIN_H * 0.05;
+	}
+	else
+	{
+		button_box.x = WIN_W * 0.3;
+		button_box.y = (WIN_H - button_box.h * n_itemfull) / 2;
+	}
+	i = 0;
+	while (i < n_itemfull)
+	{
+		buttons[i].vis_lit_on[0] = TRUE;
+		buttons[i].txtr = button_back(2, 1, sdl->rend);
+		buttons[i].lit = button_back(0, 1, sdl->rend);
+		buttons[i].text = ft_strdup(itemfull[i].filename);
+		buttons[i].box = button_box;
+		button_box.y += button_box.h;
+		if (i == 25)
+		{
+			button_box.x = WIN_W * 0.5;
+			button_box.y = WIN_H * 0.05;
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
+
 unsigned short			editor_buttons(t_button *buttons, int n, t_sdl *sdl)
 {
 	if (!sdl || !buttons || n < 0)
@@ -393,10 +431,18 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
     prog->modes[MODE_TEXTURES].update = &update_textures;
     prog->modes[MODE_TEXTURES].render = &render_textures;
 
+	prog->modes[MODE_SEL_ITEM].input =   &input_sel_item;
+	prog->modes[MODE_SEL_ITEM].update = &update_sel_item;
+	prog->modes[MODE_SEL_ITEM].render = &render_sel_item;
+
 	prog->modes[MODE_MAIN_MENU].n_buttons = N_MM_BTNS;
 	prog->modes[MODE_SUMMARY].n_buttons = (media->n_worlds + 1) * 3;
 	prog->modes[MODE_EDITOR].n_buttons = 8;
     prog->modes[MODE_TEXTURES].n_buttons = media->n_txtrs;
+	prog->modes[MODE_MAIN_MENU].n_buttons = N_MM_BTNS;
+	prog->modes[MODE_SUMMARY].n_buttons = (media->n_worlds + 1) * 3;
+	prog->modes[MODE_EDITOR].n_buttons = 8;
+	prog->modes[MODE_SEL_ITEM].n_buttons = media->n_itemfull;
 	i = 0;
 	while (i < N_MODES)
 	{
@@ -409,5 +455,6 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
 	summary_buttons(prog->modes[MODE_SUMMARY].buttons, media->worlds, media->n_worlds, sdl);
 //	editor_buttons(prog->modes[MODE_EDITOR].buttons, prog->modes[MODE_EDITOR].n_buttons, sdl);
     textures_buttons(prog->modes[MODE_TEXTURES].buttons, media->txtrs, media->n_txtrs, sdl);
+	sel_item_buttons(prog->modes[MODE_SEL_ITEM].buttons, media->itemfull, media->n_itemfull, sdl);
 	return (SUCCESS);
 }

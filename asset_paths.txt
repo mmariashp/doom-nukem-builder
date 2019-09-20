@@ -33,14 +33,34 @@ File Names:
 Path: ./media/items/
 Extension: 
 File Names: 
-0) (coin) coin
-1) (key) key
+0) (coin) money
+1) (key) goldkey
 2) (object) table
 3) (enemy) demon
-4) (super_bonus) bonus
+4) (super_bonus) achievement
 5) (health) potion
 6) (ammo) bullet
-7) (light) light
+7) (light) torch
+8) (object) barrel
+9) (enemy) slime
+10) (enemy) bat
+11) (light) lantern
+12) (enemy) rat
+13) (enemy) satan
+14) (enemy) nazi
+15) (object) ladder
+16) (object) bed
+17) (key) wooden_key
+18) (ammo) ammo_pack
+19) (super_bonus) chest
+20) (object) chair
+21) (enemy) robot
+22) (super_bonus) star
+23) (health) medical kit
+24) (coin) super_coin
+25) (light) street_light
+26) (object) barrel2
+27) (enemy) zombie
 ###
 
 #Sounds

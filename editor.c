@@ -16,6 +16,9 @@ void					place_player_icons(t_world world, t_grid *grid, SDL_Renderer *rend)
 void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int			state = selected_item(1, STATE_SELECT, -1);
+	int			sector = selected_item(1, S_SELECT, -1);
+	int 		id;
+	t_rec		box;
 
 	if (!sdl || !media || !grid || prog->features[F_REDRAW] == 0)
 		return ;
@@ -27,10 +30,33 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	if (state == SECTOR_EDIT || state == WALL_EDIT)
 	{
 		if (state == SECTOR_EDIT)
+		{
+
 			render_items(sdl->rend, &media->worlds[media->world_id], media->itemfull, media->n_itemfull, grid);
+			id = selected_item(1, I_SELECT, -1);
+			if (within(id, -1, media->worlds[media->world_id].sec[sector].n_items))
+			{
+				id = media->worlds[media->world_id].sec[sector].items[id].id ;
+				if (within(id, -1, media->n_itemfull))
+				{
+					box = (t_rec){ 20, WIN_H - 60, 20 * ft_strlen(media->itemfull[id].filename), 50 };
+					write_text(media->itemfull[id].filename, sdl->rend, box, WHITE, FALSE);
+					prog->modes[prog->mode_id].buttons[B_ITEM_EDIT].box = (t_rec){ box.x + box.w , box.y, box.h, box.h };
+					prog->modes[prog->mode_id].buttons[B_ITEM_DEL] .box = (t_rec){ box.x + box.w  + box.h, box.y, box.h, box.h };
+					prog->modes[prog->mode_id].buttons[B_ITEM_EDIT].vis_lit_on[0] = TRUE;
+					prog->modes[prog->mode_id].buttons[B_ITEM_DEL].vis_lit_on[0] = TRUE;
+				}
+			}
+			else
+			{
+				prog->modes[prog->mode_id].buttons[B_ITEM_EDIT].vis_lit_on[0] = FALSE;
+				prog->modes[prog->mode_id].buttons[B_ITEM_DEL].vis_lit_on[0] = FALSE;
+			}
+
+		}
 		render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->world_id], state, media->n_txtrs);
 	}
-	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons);
+	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons, prog->mode_id);
 	if (state == NORMAL && prog->button_on == PLAYER_BTN)
 		place_player_icons(media->worlds[media->world_id], grid, sdl->rend);
 
@@ -221,6 +247,25 @@ void					grid_refresh(t_grid *grid, t_media *media, int state, int sector)
 		fill_grid_items(&media->worlds[media->world_id].sec[sector], grid);
 }
 
+void					edit_item_name(int n_itemfull, t_itemfull *itemfull, t_world *world)
+{
+	int 				sector;
+	int 				item_i;
+	int 				item_sel;
+
+	if (!itemfull || !world)
+		return ;
+	sector = selected_item(1, S_SELECT, -1);
+	item_i = selected_item(1, I_SELECT, -1);
+	item_sel = selected_item(1, SEL_I_SELECT, -1);
+	if (within(sector, -1, world->n_sec) && \
+		within(item_i, -1, world->sec[sector].n_items) && \
+		within(item_sel, -1, n_itemfull))
+	{
+		world->sec[sector].items[item_i].id = item_sel;
+	}
+}
+
 unsigned short			mode_change(t_prog *prog, t_media *media, t_grid *grid, int floor_ceil)
 {
 	if (!prog || !media || !grid)
@@ -234,6 +279,8 @@ unsigned short			mode_change(t_prog *prog, t_media *media, t_grid *grid, int flo
 	}
 	if (prog->last_mode_id == MODE_TEXTURES)
 		edit_texture(floor_ceil, media->n_txtrs, media->txtrs, &media->worlds[media->world_id]);
+	if (prog->last_mode_id == MODE_SEL_ITEM)
+		edit_item_name(media->n_itemfull, media->itemfull, &media->worlds[media->world_id]);
 	prog->last_mode_id = prog->mode_id;
 	return (SUCCESS);
 }
@@ -286,6 +333,7 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 		if (within(prog->button_on, -1, prog->modes[prog->mode_id].n_buttons) == TRUE)
 			prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 		prog->button_on = prog->button_lit;
+		prog->click = (t_vec2d){ 0, 0 };
 		prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
 		grid->active[0] = (t_vec2d){ -1, -1 };
 		grid->active[1] = (t_vec2d){ -1, -1 };
@@ -323,11 +371,9 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 					floor_ceil = prog->button_on == FT_EDIT_BTN ? 0 : 1;
 					texture = floor_ceil == 0 ? media->worlds[media->world_id].sec[sector].floor_txtr :
 							  media->worlds[media->world_id].sec[sector].ceil_txtr;
-//					texture = media->worlds[media->world_id].textures[texture];
 				}
 				else if (state == WALL_EDIT && within((wall = selected_item(1, W_SELECT, -1)), -1, media->worlds[media->world_id].n_walls))
 					texture = media->worlds[media->world_id].walls[wall].txtr;
-//				texture = media->worlds[media->world_id].textures[media->worlds[media->world_id].walls[wall].txtr];
 				prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 				prog->button_lit = -1;
 				prog->button_on = -1;
@@ -339,23 +385,47 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 					selected_item(0, T_SELECT, texture);
 				}
 			}
-			else if (state == SECTOR_EDIT && within(prog->button_on, F_UP_BTN - 1, C_DOWN_BTN + 1)) // editing heights
-			{
-				change_heights(prog->button_on, media->worlds[media->world_id].sec);
-				prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
-				prog->button_on = -1;
-			}
 			else if (state == WALL_EDIT && (prog->button_on == W_PORTAL_BTN || prog->button_on == W_DOOR_BTN))
 			{
 				edit_wall_type(prog->button_on, &media->worlds[media->world_id]);
 				prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 				prog->button_on = -1;
 			}
-			else if (state == SECTOR_EDIT && within(prog->button_on, B_COIN - 1, B_LIGHT + 1)) // adding items
+			else if (state == SECTOR_EDIT)
 			{
-				printf("here %d\n", selected_item(1, I_SELECT, prog->button_on - 7));
-//				prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
-//				prog->button_on = -1;
+				if (prog->button_on == B_ITEM_DEL)
+				{
+					prog->button_lit = -1;
+					prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
+					prog->button_on = -1;
+					delete_item(&media->worlds[media->world_id].sec[selected_item(1, S_SELECT, -1)], selected_item(1, I_SELECT, -1));
+					selected_item(0, I_SELECT, -1);
+				}
+				else if (within(prog->button_on, F_UP_BTN - 1, C_DOWN_BTN + 1))
+				{
+					change_heights(prog->button_on, media->worlds[media->world_id].sec);
+					prog->button_lit = -1;
+					prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
+					prog->button_on = -1;
+				}
+				else if (prog->button_on == B_ITEM_EDIT)
+				{
+					prog->button_lit = -1;
+					prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
+					prog->button_on = -1;
+					prog->mode_id = MODE_SEL_ITEM;
+					sector = selected_item(1, S_SELECT, -1);
+					int item_i = selected_item(1, I_SELECT, -1);
+					if (within(sector, -1, media->worlds[media->world_id].n_sec) && \
+					within(item_i, -1, media->worlds[media->world_id].sec[sector].n_items) && \
+					within(media->worlds[media->world_id].sec[sector].items[item_i].id, -1, media->n_itemfull))
+					{
+						selected_item(0, SEL_I_SELECT, media->worlds[media->world_id].sec[sector].items[item_i].id);
+						prog->button_on = media->worlds[media->world_id].sec[sector].items[item_i].id;
+						prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
+					}
+				}
+
 			}
 		}
 		prog->features[F_REDRAW] = 1;
@@ -408,7 +478,7 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 				if (prog->button_on == -1)
 					move_item(prog, sdl->mouse, grid, &media->worlds[media->world_id].sec[sector]);
 				else if (prog->click.x || prog->click.y)
-					add_item(find_default_item(prog->button_on - 7, media->itemfull, media->n_itemfull), sdl->mouse, grid, &media->worlds[media->world_id].sec[sector]);
+					add_item(find_default_item(prog->button_on - B_COIN, media->itemfull, media->n_itemfull), sdl->mouse, grid, &media->worlds[media->world_id].sec[sector]);
 			}
 			if (prog->button_on != -1 && (prog->click.x || prog->click.y))
 			{

@@ -127,6 +127,7 @@
 # define MAX_SECTOR_WALLS		30
 
 # define MAX_SECTOR_ITEMS		20
+# define MAX_ITEMFULL			50
 
 //wall types
 # define WALL_EMPTY					0
@@ -154,15 +155,15 @@
 # define MENU_TXT_H			25
 # define MAX_MENU_TXT_W		200
 
-# define N_MODES			4
+# define N_MODES			5
 # define MODE_MAIN_MENU		0
 # define MODE_SUMMARY		1
 # define MODE_EDITOR		2
 # define MODE_TEXTURES		3
+# define MODE_SEL_ITEM		4
 
 # define N_MM_BTNS		2
-# define N_SUMM_BTNS		3
-# define N_EDIT_BTNS		3
+
 
 # define DRAG_BTN		0
 # define DRAW_BTN		1
@@ -181,14 +182,16 @@
 # define C_DOWN_BTN		4
 # define FT_EDIT_BTN	5
 # define CT_EDIT_BTN	6
-# define B_COIN			7
-# define B_KEY			8
-# define B_OBJECT		9
-# define B_ENEMY		10
-# define B_SUPER_BONUS	11
-# define B_HEALTH		12
-# define B_AMMO			13
-# define B_LIGHT		14
+# define B_ITEM_EDIT	7
+# define B_ITEM_DEL		8
+# define B_COIN			9
+# define B_KEY			10
+# define B_OBJECT		11
+# define B_ENEMY		12
+# define B_SUPER_BONUS	13
+# define B_HEALTH		14
+# define B_AMMO			15
+# define B_LIGHT		16
 
 # define WT_EDIT_BTN		1
 # define W_PORTAL_BTN    2
@@ -216,7 +219,7 @@
 # define W_SELECT		1
 # define S_SELECT		2
 # define T_SELECT		3
-# define B_SELECT		4
+# define SEL_I_SELECT	4
 # define STATE_SELECT	5
 # define WORLD_SELECT	6
 # define I_SELECT		7
@@ -445,23 +448,24 @@ void					my_error(char *reason);
 void					end(char *reason);
 
 void					render_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-unsigned short					update_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+unsigned short			update_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 int						input_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+
 void					render_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-unsigned short					update_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+unsigned short			update_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 int						input_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
 int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-unsigned short					update_editor(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
+unsigned short			update_editor(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
 int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-unsigned short					update_textures(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
+unsigned short			update_textures(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
-int						input_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-unsigned short					update_walls(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
-void					render_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+int						input_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+unsigned short			update_sel_item(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
+void					render_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
 
 void					write_text(char *str, SDL_Renderer *rend, t_rec rec, int color, char h_center);
@@ -492,7 +496,7 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog);
 void					free_modes(t_mode *modes, t_sdl *sdl);
 void                    refresh_level_list(t_media *media, t_mode *mode, t_sdl *sdl);
 
-void					render_buttons(t_button *buttons, SDL_Renderer *rend, int n_buttons);
+void					render_buttons(t_button *buttons, SDL_Renderer *rend, int n_buttons, int mode_id);
 void					render_button(t_button *button, SDL_Renderer *rend);
 unsigned short			mouse_over(t_rec box, t_vec2d mouse);
 

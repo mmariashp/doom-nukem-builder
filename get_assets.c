@@ -554,7 +554,7 @@ int 					get_sector_items(t_sector *sector, char *line)
 			if (!line)
 				return (FAIL);
 			items[i].id = ft_atoi(line);
-			if (items[i].id < 0 || items[i].id > MAX_SECTOR_ITEMS)
+			if (items[i].id < 0 || items[i].id > MAX_ITEMFULL)
 				return (FAIL);
 			if (!(line = ft_strchr(line, ')')))
 				return (FAIL);
@@ -939,7 +939,7 @@ unsigned				read_itemfull(t_media *media, t_section *section)
 {
 	short 				i;
 
-	if (!media || !section || !section->tab)
+	if (!media || !section || !section->tab || section->n_files > MAX_ITEMFULL)
 		return (FAIL);
 	i = 0;
 	if (!(media->itemfull = (t_itemfull *)ft_memalloc(sizeof(t_itemfull) * section->n_files)))

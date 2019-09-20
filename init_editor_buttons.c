@@ -6,8 +6,8 @@ t_mode					*init_sector_buttons(t_mode *m, SDL_Renderer *rend)
 	static char 		path_items[10] = "./items3/";
 	static char 		path_buttons[10] = "./";
 	static char 		ext[5] = ".png";
-	static char         reg[15][15] = { "cross2", "up2", "down2",\
-						"up2", "down2", "edit", "edit", \
+	static char         reg[17][15] = { "cross2", "up2", "down2",\
+						"up2", "down2", "edit", "edit", "edit", "trash", \
 						"coin", \
 						"key", \
 						"object", \
@@ -17,8 +17,8 @@ t_mode					*init_sector_buttons(t_mode *m, SDL_Renderer *rend)
 						"ammo", \
 						"light" };
 
-	static char         lit[15][15] = { "cross3", "up3", "down3",\
-						"up3", "down3", "editlit", "editlit", \
+	static char         lit[17][15] = { "cross3", "up3", "down3",\
+						"up3", "down3", "editlit", "editlit",  "editlit", "trash3", \
 						"coin", \
 						"key", \
 						"object", \
@@ -29,15 +29,15 @@ t_mode					*init_sector_buttons(t_mode *m, SDL_Renderer *rend)
 						"light" };
 	int                 i;
 
-	if (!m || !rend || !(m->buttons = init_buttons(15)))
+	if (!m || !rend || !(m->buttons = init_buttons(17)))
 		return (NULL);
-	m->n_buttons = 15;
+	m->n_buttons = 17;
 	i = -1;
 	while (++i < m->n_buttons)
 	{
 		if (!reg[i] || !lit[i])
 			continue ;
-		if (i < 7)
+		if (i < B_COIN)
 		{
 			m->buttons[i].txtr = load_texture(get_full_path(reg[i], ext, path_buttons), rend, 0);
 			m->buttons[i].lit = load_texture(get_full_path(lit[i], ext, path_buttons), rend, 0);
@@ -62,7 +62,9 @@ t_mode					*init_sector_buttons(t_mode *m, SDL_Renderer *rend)
 	t_rec box = layout_menu(2, 6);
 	box.w *= 1.27;
 	box.h *= 1.19;
-	distribute_buttons_h(m->buttons, 7, 15, box, 8);
+	distribute_buttons_h(m->buttons, B_COIN, B_LIGHT + 1, box, 8);
+	m->buttons[B_ITEM_EDIT].vis_lit_on[0] = FALSE;
+	m->buttons[B_ITEM_DEL].vis_lit_on[0] = FALSE;
 	return (m);
 }
 

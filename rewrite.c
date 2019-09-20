@@ -205,7 +205,7 @@ unsigned short			write_section(int fd, t_media *media, int section)
 	else
 		return (FAIL);
 	i = 0;
-	n_files = clamp(n_files, 0, 20);
+	n_files = clamp(n_files, 0, 50);
 	while (i < n_files)
 	{
 		ft_putnbr_fd(i, fd);

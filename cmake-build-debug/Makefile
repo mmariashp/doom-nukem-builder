@@ -2593,6 +2593,33 @@ sdl_fun.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sdl_fun.c.s
 .PHONY : sdl_fun.c.s
 
+sel_item.o: sel_item.c.o
+
+.PHONY : sel_item.o
+
+# target to build an object file
+sel_item.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sel_item.c.o
+.PHONY : sel_item.c.o
+
+sel_item.i: sel_item.c.i
+
+.PHONY : sel_item.i
+
+# target to preprocess a source file
+sel_item.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sel_item.c.i
+.PHONY : sel_item.c.i
+
+sel_item.s: sel_item.c.s
+
+.PHONY : sel_item.s
+
+# target to generate assembly for a file
+sel_item.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sel_item.c.s
+.PHONY : sel_item.c.s
+
 summary.o: summary.c.o
 
 .PHONY : summary.o
@@ -3038,6 +3065,9 @@ help:
 	@echo "... sdl_fun.o"
 	@echo "... sdl_fun.i"
 	@echo "... sdl_fun.s"
+	@echo "... sel_item.o"
+	@echo "... sel_item.i"
+	@echo "... sel_item.s"
 	@echo "... summary.o"
 	@echo "... summary.i"
 	@echo "... summary.s"

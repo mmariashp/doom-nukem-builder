@@ -22,6 +22,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/render_grid.c.o"
   "CMakeFiles/builder.dir/rewrite.c.o"
   "CMakeFiles/builder.dir/sdl_fun.c.o"
+  "CMakeFiles/builder.dir/sel_item.c.o"
   "CMakeFiles/builder.dir/summary.c.o"
   "CMakeFiles/builder.dir/textures.c.o"
   "CMakeFiles/builder.dir/useful.c.o"

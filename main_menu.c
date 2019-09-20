@@ -13,7 +13,7 @@ void					render_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 //		f = load_texture("grey_panel.png", sdl);
 
 //	SDL_RenderCopy(sdl->rend, f, 0, 0);
-	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons) ;
+	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons, prog->mode_id) ;
 
 //	sdl->t = SDL_CreateTextureFromSurface(sdl->rend, sdl->surf);
 //	SDL_RenderCopy(sdl->rend, sdl->t, NULL, NULL);
