@@ -491,6 +491,20 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 						grid->active[1] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
 					if (grid->active[0].x != -1)
 						add_to_media(grid, media);
+
+					if (grid->active[0].x != -1)
+					{
+						int i = 0;
+						while (i < prog->modes[prog->mode_id].n_buttons)
+							prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
+					}
+					else
+					{
+						int i = 0;
+						while (i < prog->modes[prog->mode_id].n_buttons)
+							prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = TRUE;
+					}
+
 					prog->features[F_REDRAW] = 1;
 					prog->click = (t_vec2d){ 0, 0 };
 				}

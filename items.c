@@ -55,8 +55,6 @@ void					draw_items_or_free(char draw_free, int type, t_rec box, SDL_Renderer *r
 	}
 }
 
-
-
 void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, int n, t_grid *grid)
 {
 	int 				sector;
@@ -79,12 +77,8 @@ void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, 
 		if (within(p.x, -1, GRID_SIZE) && within(p.y, -1, GRID_SIZE) &&
 		node_in_sector(p, world) == sector && grid->nodes[p.x][p.y] == (signed char)(-10 - i))
 		{
-
-//			grid->nodes[p.x][p.y] = (signed char)(-10 - i);
-//			printf("i is %d, making node = %d\n", i, grid->nodes[p.x][p.y]);
 			p.x = (int)(grid->box.x + (world->sec[sector].items[i].p.x * grid->scale));
 			p.y = (int)(grid->box.y + (world->sec[sector].items[i].p.y * grid->scale));
-//			printf("%d, %d ; %d, %d\n", world->sec[sector].items[i].p.x, world->sec[sector].items[i].p.y, p.x, p.y);
 			if (within(id, -1, n))
 			{
 				box.x = p.x - box.w / 2;
@@ -94,7 +88,6 @@ void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, 
 		}
 		else
 			delete_item(&world->sec[sector], i--);
-
 		i++;
 	}
 }

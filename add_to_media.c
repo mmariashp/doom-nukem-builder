@@ -226,6 +226,24 @@ unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *pa
 	return (SUCCESS);
 }
 
+unsigned short			already_in_sector(int id, int *vecs,int n_vecs)
+{
+	int 				i;
+
+	if (!vecs)
+		return (FALSE);
+	i = 0;
+	while (i < n_vecs)
+	{
+		if (vecs[i++] == id)
+		{
+			printf("exists\n");
+			return (TRUE);
+		}
+	}
+	return (FALSE);
+}
+
 void					add_to_media(t_grid *grid, t_media *media)
 {
 	static short 		first_vector = -1;
@@ -235,7 +253,7 @@ void					add_to_media(t_grid *grid, t_media *media)
 	short 				id;
 	short 				done;
 
-	if (!media || !grid)
+	if (!media || !grid || !within(grid->active[0].x, -1, GRID_SIZE) || !within(grid->active[0].y, -1, GRID_SIZE))
 		return ;
 	id = -1;
 	done = FALSE;
@@ -261,6 +279,8 @@ void					add_to_media(t_grid *grid, t_media *media)
 	}
 	else
 	{
+		if (!within(sector, -1,  media->worlds[media->w_id].n_sec))
+			return ;
 		if (grid->nodes[grid->active[1].x][grid->active[1].y] == NODE_FULL)
 			id = find_vector(media->worlds[media->w_id].vecs, grid->active[1], media->worlds[media->w_id].n_vecs);
 		if (id == -1)
@@ -273,6 +293,11 @@ void					add_to_media(t_grid *grid, t_media *media)
 		{
 			if (id == first_vector)
 				done = TRUE;
+			else if (already_in_sector(id,media->worlds[media->w_id].sec[sector].v, media->worlds[media->w_id].sec[sector].n_v))
+			{
+				grid->active[1] = (t_vec2d){ -1, -1 };
+				return ;
+			}
 			else if (grid->nodes[media->worlds[media->w_id].vecs[last_id].x][media->worlds[media->w_id].vecs[last_id].y] == NODE_FULL &&
 					 grid->nodes[media->worlds[media->w_id].vecs[id].x][media->worlds[media->w_id].vecs[id].y] == NODE_FULL)
 				wall = find_wall(last_id, id, media->worlds[media->w_id].walls, media->worlds[media->w_id].n_walls);
