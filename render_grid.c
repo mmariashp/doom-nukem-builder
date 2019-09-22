@@ -54,19 +54,12 @@ void					render_grid_nodes(int **screen, t_grid *grid)
 					if (screen[node.x][node.y] == 0)
 						draw_node(node, radius1, DARK_GRAY, screen);
 				}
-//				else
-//				{
-//					draw_node(node, radius2, RED, screen);
-//				}
 			}
 			x++;
 		}
 		y++;
 	}
 }
-
-
-
 
 void					place_player(t_world world, t_grid *grid, int **screen, int radius)
 {
@@ -80,8 +73,6 @@ void					place_player(t_world world, t_grid *grid, int **screen, int radius)
 	node.y = (int)(grid->box.y + world.p_end.y * grid->scale);
 	draw_player(node, radius * 1.5, GREEN, screen);
 }
-
-
 
 void					draw_walls(t_world world, t_grid *grid, int **screen, int wall)
 {
@@ -145,7 +136,7 @@ void					draw_walls(t_world world, t_grid *grid, int **screen, int wall)
 //	return (TRUE);
 //}
 
-void					fill_sector(t_world world, t_grid *grid, int **screen, int sec, int state)
+unsigned short			fill_sector(t_world world, t_grid *grid, int **screen, int sec, int state)
 {
 	int					i = 0;
 	int					j = sec;
@@ -153,7 +144,7 @@ void					fill_sector(t_world world, t_grid *grid, int **screen, int sec, int sta
 	t_vec2d				p[world.sec[j].n_v];
 
 	if (world.sec[j].n_v < 3)
-		return ;
+		return (FALSE);
 	while (i < world.sec[j].n_v)
 	{
 		p[i] = world.vecs[world.sec[j].v[i]];
@@ -170,7 +161,7 @@ void					fill_sector(t_world world, t_grid *grid, int **screen, int sec, int sta
 	}
 	else
 		color = world.sec[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
-	fillpoly(p, world.sec[j].n_v, screen, color);
+	return (fill_polygon(p, world.sec[j].n_v, screen, color));
 }
 
 void					clean_screen(int **screen)
@@ -226,10 +217,13 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 		}
 	}
 	int k = 0;
+	unsigned short overlay = FALSE;
 	while (k < world.n_sec)
 	{
 		if (world.sec[k].status != SEC_OPEN)
-			fill_sector(world, grid, prog->screen, k, selected_item(1, STATE_SELECT, 0));
+		{
+			overlay = fill_sector(world, grid, prog->screen, k, selected_item(1, STATE_SELECT, 0)) == TRUE ? TRUE : overlay;
+		}
 		k++;
 	}
 }

@@ -195,7 +195,8 @@ void					delete_vector(int id, t_world *world)
 	{
 		if (j == id)
 			j++;
-		new[i] = world->vecs[j];
+		if (j < world->n_vecs)
+			new[i] = world->vecs[j];
 		i++;
 		j++;
 	}

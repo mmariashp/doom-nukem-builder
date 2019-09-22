@@ -1361,6 +1361,75 @@ void 					validate_items(t_world *world, int n)
 	}
 }
 
+void					replace_vector(int to_replace, int new, t_world *world)
+{
+	int 				i;
+	int 				j;
+
+	if (!world || !within(to_replace, -1, world->n_vecs) || !within(new, -1, world->n_vecs))
+		return ;
+	i = 0;
+	while (i < world->n_walls)
+	{
+		if (world->walls[i].v1 == to_replace)
+			world->walls[i].v1 = new;
+		i++;
+	}
+	i = 0;
+	while (i < world->n_sec)
+	{
+		j = 0;
+		while (j < world->sec[i].n_walls)
+		{
+			if (world->sec[i].v[j] == to_replace)
+				world->sec[i].v[j] = new;
+			j++;
+		}
+		i++;
+	}
+}
+
+void					delete_double_v(t_world *world)
+{
+	int					i;
+	int 				j;
+
+	i = 0;
+	while (i < world->n_vecs)
+	{
+		j = 0;
+		while (j < i)
+		{
+			if (vec_same(world->vecs[i], world->vecs[j]))
+			{
+				replace_vector(i, j, world);
+				delete_vector(i, world);
+				i--;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void					validate_sectors(t_world *world)
+{
+	int 				i;
+
+	if (!world)
+		return ;
+	i = 0;
+	update_sector_status(world->sec, world->walls, world->vecs, world->n_sec);
+	delete_double_v(world);
+//	delete_double_wall(world);
+	while (i < world->n_sec)
+	{
+//		printf("sector %d is %d\n", i, world->sec[i].status);
+		i++;
+	}
+}
+
 void					validate_media(t_media *media)
 {
 	int 				i;
@@ -1372,6 +1441,7 @@ void					validate_media(t_media *media)
 	{
 		validate_textures(&media->worlds[i], media->n_txtrs);
 		validate_items(&media->worlds[i], media->n_itemfull);
+		validate_sectors(&media->worlds[i]);
 		i++;
 	}
 }

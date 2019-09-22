@@ -63,6 +63,8 @@
 # define CONCAVE_COLOR			0xDA4302
 # define ACTIVE_SECTOR_COLOR	0x3949AB
 
+# define TMP_COLOR				SOFT_PURPLE
+
 /*
 ** STR = PRINTS OUT NAME OF MACRO; XSTR = PRINTS OUT VALUE OF MACRO
 */
@@ -513,7 +515,7 @@ void					draw_circle_fill2(t_vec2d c, int radius, int color, int **screen);
 void					draw_node(t_vec2d c, int r, int color, int **screen);
 void				    draw_thick_line(t_line l, int color, int r, int **screen);
 
-void					fillpoly(t_vec2d *p, int polyCorners, int **screen, int color);
+unsigned short			fill_polygon(t_vec2d *p, int n_p, int **screen, int color);
 
 int 					fill_sector_v(t_sector *sector, t_wall *walls, int n);
 
