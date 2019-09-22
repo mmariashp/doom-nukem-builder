@@ -117,7 +117,7 @@ void					render_screen_iso(SDL_Renderer *rend, int **screen)
     }
 }
 
-char 					sector_status(t_sector sector, t_wall *walls, t_vec2d *vecs, int n)
+char 					sector_status(t_sec sector, t_wall *walls, t_vec2d *vecs, int n)
 {
 	int					i;
 	int					j;
@@ -164,7 +164,7 @@ char 					sector_status(t_sector sector, t_wall *walls, t_vec2d *vecs, int n)
 	return(status);
 }
 
-void					update_sector_status(t_sector *sec, t_wall *walls, t_vec2d *vecs, int n_sec)
+void					update_sector_status(t_sec *sec, t_wall *walls, t_vec2d *vecs, int n_sec)
 {
 	int 				i;
 
@@ -176,115 +176,6 @@ void					update_sector_status(t_sector *sec, t_wall *walls, t_vec2d *vecs, int n
 		sec[i].status = sector_status(sec[i], walls, vecs, sec[i].n_walls * 2);
 		i++;
 	}
-}
-
-void					delete_vector(int id, t_world *world)
-{
-	t_vec2d				*new;
-	int 				i;
-	int 				j;
-
-	if (!world || id < 0 || id >= world->n_vecs)
-		return ;
-	new = (t_vec2d *)ft_memalloc(sizeof(t_vec2d) * (world->n_vecs - 1));
-	if (!new)
-		return ;
-	i = 0;
-	j = 0;
-	while (j < world->n_vecs)
-	{
-		if (j == id)
-			j++;
-		if (j < world->n_vecs)
-			new[i] = world->vecs[j];
-		i++;
-		j++;
-	}
-	world->n_vecs--;
-	free(world->vecs);
-	world->vecs = new;
-	i = 0;
-	while (i < world->n_walls)
-	{
-		if (world->walls[i].v1 > id)
-			world->walls[i].v1--;
-		if (world->walls[i].v2 > id)
-			world->walls[i].v2--;
-		i++;
-	}
-	i = 0;
-	while (i < world->n_sec)
-	{
-		j = 0;
-		while (j < world->sec[i].n_walls)
-		{
-			if (world->sec[i].v[j] > id)
-				world->sec[i].v[j]--;
-			j++;
-		}
-		i++;
-	}
-}
-
-void					delete_sector(int id, t_world *world)
-{
-	t_sector			*new;
-	int 				i;
-	int 				j;
-
-	if (!world || id < 0 || id >= world->n_sec)
-		return ;
-	new = (t_sector *)ft_memalloc(sizeof(t_sector) * (world->n_sec - 1));
-	if (!new)
-		return ;
-	i = 0;
-	j = 0;
-	while (j < world->n_sec)
-	{
-		if (j == id)
-		{
-			if (world->sec[j].sec_walls)
-				free(world->sec[j].sec_walls);
-			if (world->sec[j].v)
-				free(world->sec[j].v);
-			if (world->sec[j].items)
-				free(world->sec[j].items);
-			j++;
-		}
-		if (j < world->n_sec)
-		{
-			new[i].sec_walls = ft_memalloc(sizeof(int) *  world->sec[j].n_walls);
-			if (new[i].sec_walls)
-				new[i].sec_walls = ft_memcpy(new[i].sec_walls, world->sec[j].sec_walls, sizeof(int) *  world->sec[j].n_walls);
-			new[i].v = ft_memalloc(sizeof(int) *  world->sec[j].n_v);
-			if (new[i].v)
-				new[i].v = ft_memcpy(new[i].v, world->sec[j].v, sizeof(int) *  world->sec[j].n_v);
-			new[i].items = ft_memalloc(sizeof(t_item *) *  world->sec[j].n_items);
-			if (new[i].items)
-				new[i].items = ft_memcpy(new[i].items, world->sec[j].items, sizeof(t_item) *  world->sec[j].n_items);
-			new[i].floor      = world->sec[j].floor;
-			new[i].ceiling    = world->sec[j].ceiling;
-			new[i].floor_txtr = world->sec[j].floor_txtr;
-			new[i].ceil_txtr  = world->sec[j].ceil_txtr;
-			new[i].n_items    = world->sec[j].n_items;
-			new[i].n_walls    = world->sec[j].n_walls;
-			new[i].n_v        = world->sec[j].n_v;
-			new[i].status     = world->sec[j].status;
-
-			if (world->sec[j].sec_walls)
-				free(world->sec[j].sec_walls);
-			if (world->sec[j].v)
-				free(world->sec[j].v);
-			if (world->sec[j].items)
-				free(world->sec[j].items);
-		}
-		i++;
-		j++;
-	}
-	if (world->sec)
-		free(world->sec);
-	world->sec = new;
-	world->n_sec--;
 }
 
 void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)

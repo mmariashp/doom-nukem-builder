@@ -11,6 +11,11 @@ CMakeFiles/builder.dir/buttons.c.o: ../builder.h
 CMakeFiles/builder.dir/buttons.c.o: ../buttons.c
 CMakeFiles/builder.dir/buttons.c.o: ../get_next_line.h
 
+CMakeFiles/builder.dir/delete_from_media.c.o: .././libft/libft.h
+CMakeFiles/builder.dir/delete_from_media.c.o: ../builder.h
+CMakeFiles/builder.dir/delete_from_media.c.o: ../delete_from_media.c
+CMakeFiles/builder.dir/delete_from_media.c.o: ../get_next_line.h
+
 CMakeFiles/builder.dir/edit_door.c.o: .././libft/libft.h
 CMakeFiles/builder.dir/edit_door.c.o: ../builder.h
 CMakeFiles/builder.dir/edit_door.c.o: ../edit_door.c

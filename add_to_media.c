@@ -20,15 +20,15 @@ t_world					*realloc_worlds(t_world *world, int n)
 	return (new);
 }
 
-t_sector				*realloc_sec(t_sector *sec, int n)
+t_sec				*realloc_sec(t_sec *sec, int n)
 {
-	t_sector			*new;
+	t_sec			*new;
 	int					j;
 
 	j = 0;
 	if (n == 0)
 		return (NULL);
-	if (!(new = (t_sector *)malloc(sizeof(t_sector) * n)))
+	if (!(new = (t_sec *)malloc(sizeof(t_sec) * n)))
 		return (NULL);
 	while (j < n - 1)
 	{
@@ -138,7 +138,7 @@ unsigned short			add_sector_v(int **v, short n_v, int id)
 	return (SUCCESS);
 }
 
-unsigned short			add_sector(t_sector **sec, short n_sec)
+unsigned short			add_sector(t_sec **sec, short n_sec)
 {
 	*sec = realloc_sec(*sec, n_sec + 1);
 	if (!*sec)

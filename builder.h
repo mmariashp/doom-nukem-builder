@@ -178,22 +178,23 @@
 # define BACK_BTN		8
 
 # define DESELECT_BTN	0
-# define F_UP_BTN		1
-# define F_DOWN_BTN		2
-# define C_UP_BTN		3
-# define C_DOWN_BTN		4
-# define FT_EDIT_BTN	5
-# define CT_EDIT_BTN	6
-# define B_ITEM_EDIT	7
-# define B_ITEM_DEL		8
-# define B_COIN			9
-# define B_KEY			10
-# define B_OBJECT		11
-# define B_ENEMY		12
-# define B_SUPER_BONUS	13
-# define B_HEALTH		14
-# define B_AMMO			15
-# define B_LIGHT		16
+# define DEL_SEC_BTN	1
+# define F_UP_BTN		2
+# define F_DOWN_BTN		3
+# define C_UP_BTN		4
+# define C_DOWN_BTN		5
+# define FT_EDIT_BTN	6
+# define CT_EDIT_BTN	7
+# define B_ITEM_EDIT	8
+# define B_ITEM_DEL		9
+# define B_COIN			10
+# define B_KEY			11
+# define B_OBJECT		12
+# define B_ENEMY		13
+# define B_SUPER_BONUS	14
+# define B_HEALTH		15
+# define B_AMMO			16
+# define B_LIGHT		17
 
 # define WT_EDIT_BTN		1
 # define W_PORTAL_BTN    2
@@ -351,7 +352,7 @@ typedef struct                  s_sector
 	unsigned short				n_walls;
     unsigned short				n_v;
 	char 						status;
-}                               t_sector;
+}                               t_sec;
 
 typedef struct                  s_sound
 {
@@ -378,7 +379,7 @@ typedef struct					s_world
 	char 						*filename;
 	char 						*full_path;
 //	int							*textures;
-	t_sector					*sec;
+	t_sec					*sec;
 	t_wall						*walls;
 	t_vec2d						*vecs;
 	t_vec2d						p_start;
@@ -517,7 +518,7 @@ void				    draw_thick_line(t_line l, int color, int r, int **screen);
 
 unsigned short			fill_polygon(t_vec2d *p, int n_p, int **screen, int color);
 
-int 					fill_sector_v(t_sector *sector, t_wall *walls, int n);
+int 					fill_sector_v(t_sec *sector, t_wall *walls, int n);
 
 void					pair_sort(int *a, int n);
 
@@ -539,15 +540,15 @@ void					render_screen(SDL_Renderer *rend, int **screen);
 void					add_to_media(t_grid *grid, t_media *media);
 unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *path);
 
-void					update_sector_status(t_sector *sec, t_wall *walls, t_vec2d *vecs, int n_sec);
+void					update_sector_status(t_sec *sec, t_wall *walls, t_vec2d *vecs, int n_sec);
 
 
-void					delete_vector(int id, t_world *world);
+
 
 void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid);
 unsigned short			move_grid_keys(t_prog *prog, t_grid *grid);
 void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
-void                    zoom_to_sector(t_sector *sector, t_vec2d *vecs, t_grid *grid, t_prog *prog);
+void                    zoom_to_sector(t_sec *sector, t_vec2d *vecs, t_grid *grid, t_prog *prog);
 void                    zoom_to_map(int n_vecs, t_vec2d *v, t_grid *grid);
 void                    zoom_to_wall(t_vec2d v1, t_vec2d v2, t_grid *grid, t_prog *prog);
 
@@ -558,7 +559,7 @@ t_vec2d					find_node(int p_x, int p_y, t_grid *grid);
 t_vec2d                 make_iso(int x, int y, int z);
 
 
-
+void					render_box(t_rec box, SDL_Texture *t, SDL_Renderer *rend);
 
 
 int                      texture_in_world(int id, t_world world);
@@ -586,7 +587,6 @@ void					render_values(int state, int n, t_value *values, SDL_Renderer *rend);
 void					free_values(t_value *values, int n);
 t_value					*init_values(int n);
 
-void					render_box(t_rec box, SDL_Texture *t, SDL_Renderer *rend);
 
 // buttons
 t_button				*init_buttons(int n_buttons);
@@ -604,25 +604,21 @@ unsigned short			add_wall_in_secs(t_world *world, int to_add, int find);
 void					move_player(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
 
 
-
-
 //items
 
 void					draw_items_or_free(char draw_free, int type, t_rec box, SDL_Renderer *rend);
 void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, int n, t_grid *grid);
-void					delete_item(t_sector *sector, int id);
-void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sector *sector);
-void					add_item(int default_id, t_vec2d mouse, t_grid *grid, t_sector *sector);
+void					delete_item(t_sec *sector, int id);
+void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sec *sector);
+void					add_item(int default_id, t_vec2d mouse, t_grid *grid, t_sec *sector);
 int 					find_default_item(int type, t_itemfull *itemfull, int n);
 
 unsigned short          vec_same(t_vec2d one, t_vec2d two);
 
 
-
-
 //fill grid
 void					fill_grid(int n_vecs, t_vec2d *vecs, t_grid *grid);
-void					fill_grid_items(t_sector *sector, t_grid *grid);
+void					fill_grid_items(t_sec *sector, t_grid *grid);
 void                    fill_grid_walls(int n_walls, t_wall *walls, int n_vecs, t_vec2d *vecs, t_grid *grid);
 
 //grid main
@@ -641,5 +637,12 @@ int 					node_in_sector(t_vec2d grid_p, t_world *world);
 int 					mouse_in_sector(t_vec2d p, t_world *world, t_grid *grid);
 int 					sector_closed(int *tmp, int n);
 unsigned short 			sec_is_convex(t_vec2d *vecs, int *v, int n);
+
+//delete from media
+
+void					delete_vector(int id, t_world *world);
+void					delete_sector(int id, t_world *world);
+
+void					free_sector(t_sec *sector);
 
 #endif

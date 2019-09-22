@@ -12,7 +12,7 @@ unsigned 				open_for_write(const char *path, int *fd)
 	return (SUCCESS);
 }
 
-void					write_items(t_sector sector, int fd)
+void					write_items(t_sec sector, int fd)
 {
 	int 				i;
 

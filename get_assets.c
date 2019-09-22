@@ -424,7 +424,7 @@ int 					sector_closed(int *tmp, int n)
 	return (TRUE);
 }
 
-int 					fill_sector_v(t_sector *sector, t_wall *walls, int n)
+int 					fill_sector_v(t_sec *sector, t_wall *walls, int n)
 {
 	int					i;
 	int					j;
@@ -464,14 +464,14 @@ int 					fill_sector_v(t_sector *sector, t_wall *walls, int n)
 	return (SUCCESS);
 }
 
-int 					get_sector_v(t_sector *sector, t_wall *walls)
+int 					get_sec_v(t_sec *sector, t_wall *walls)
 {
 	if (!sector || !walls)
 		return (FAIL);
 	return (fill_sector_v(sector, walls, sector->n_walls * 2));
 }
 
-int 					get_sector_walls(t_sector *sector, char *line)
+int 					get_sec_walls(t_sec *sector, char *line)
 {
 	int 				*walls;
 	unsigned  short		count;
@@ -509,7 +509,7 @@ int 					get_sector_walls(t_sector *sector, char *line)
 	return (SUCCESS);
 }
 
-int 					get_sector_items(t_sector *sector, char *line)
+int 					get_sec_items(t_sec *sector, char *line)
 {
 	t_item				*items;
 	unsigned  short		count;
@@ -566,7 +566,7 @@ int 					get_sector_items(t_sector *sector, char *line)
 	return (SUCCESS);
 }
 
-int 					get_sector_fl_ceil(t_sector *sector, char *line)
+int 					get_sec_fl_ceil(t_sec *sector, char *line)
 {
 
 	if (!sector || !line)
@@ -699,7 +699,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		world->sec[s_count].n_walls = 0;
         world->sec[s_count].n_v = 0;
 		world->sec[s_count].status = 0;
-		if (get_sector_fl_ceil(&world->sec[s_count], line) == FAIL)
+		if (get_sec_fl_ceil(&world->sec[s_count], line) == FAIL)
 		{
 			ft_putstr("Incorrect floor or ceiling for sector ");
 			ft_putnbr(s_count);
@@ -709,7 +709,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		line = ft_strchr(line, 'w');
 		if (!line)
 			return (FAIL);
-		if (get_sector_walls(&world->sec[s_count], line) == FAIL)
+		if (get_sec_walls(&world->sec[s_count], line) == FAIL)
 		{
 			ft_putstr("Incorrect walls for sector ");
 			ft_putnbr(s_count);
@@ -719,7 +719,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		line = ft_strchr(line, 'i');
 		if (!line)
 			return (FAIL);
-		if (get_sector_items(&world->sec[s_count], line) == FAIL)
+		if (get_sec_items(&world->sec[s_count], line) == FAIL)
 		{
 			ft_putstr("Incorrect items for sector ");
 			ft_putnbr(s_count);
@@ -791,7 +791,7 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 				world->sec = NULL;
 			else
 			{
-				if (!(world->sec = (t_sector *)malloc(sizeof(t_sector) * world->n_sec)))
+				if (!(world->sec = (t_sec *)malloc(sizeof(t_sec) * world->n_sec)))
 					return (FAIL);
 				ft_bzero(world->sec, sizeof(world->sec));
 			}
@@ -839,7 +839,7 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 //	line = NULL;
 	i = 0;
 	while (i < world->n_sec)
-		get_sector_v(&world->sec[i++], world->walls);
+		get_sec_v(&world->sec[i++], world->walls);
 	return (SUCCESS);
 }
 
@@ -1054,19 +1054,13 @@ unsigned				update_media(t_media *media, t_section *section)
 	return (update_section[section->id](media, section));
 }
 
-void					free_sector_walls(int *walls)
-{
-	if (!walls)
-		return ;
-	free(walls);
-	walls = NULL;
-}
-
-void					free_sector(t_sector *sector)
+void					free_sector(t_sec *sector)
 {
 	if (!sector)
 		return ;
-	free_sector_walls(sector->sec_walls);
+	if (sector->sec_walls)
+		free(sector->sec_walls);
+	sector->sec_walls = NULL;
 	if (sector->v)
 		free(sector->v);
 	sector->v = NULL;
@@ -1302,7 +1296,7 @@ void 					validate_textures(t_world *world, int n)
 	}
 }
 
-void					delete_item(t_sector *sector, int id)
+void					delete_item(t_sec *sector, int id)
 {
 	t_item				*items;
 	int 				i;
@@ -1526,16 +1520,21 @@ void					validate_sectors(t_world *world)
 
 	if (!world)
 		return ;
-	i = 0;
 	update_sector_status(world->sec, world->walls, world->vecs, world->n_sec);
 	delete_double_v(world);
 	delete_double_walls(world);
 	delete_unused_walls(world);
 	delete_unused_v(world);
+	i = 0;
 	while (i < world->n_sec)
 	{
-//		printf("sector %d is %d\n", i, world->sec[i].status);
-		i++;
+		if (world->sec[i].status == SEC_OPEN)
+		{
+			printf("here\n");
+			delete_sector(i, world);
+		}
+		else
+			i++;
 	}
 }
 

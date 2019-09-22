@@ -190,6 +190,33 @@ buttons.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/buttons.c.s
 .PHONY : buttons.c.s
 
+delete_from_media.o: delete_from_media.c.o
+
+.PHONY : delete_from_media.o
+
+# target to build an object file
+delete_from_media.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_from_media.c.o
+.PHONY : delete_from_media.c.o
+
+delete_from_media.i: delete_from_media.c.i
+
+.PHONY : delete_from_media.i
+
+# target to preprocess a source file
+delete_from_media.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_from_media.c.i
+.PHONY : delete_from_media.c.i
+
+delete_from_media.s: delete_from_media.c.s
+
+.PHONY : delete_from_media.s
+
+# target to generate assembly for a file
+delete_from_media.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_from_media.c.s
+.PHONY : delete_from_media.c.s
+
 edit_door.o: edit_door.c.o
 
 .PHONY : edit_door.o
@@ -2906,6 +2933,9 @@ help:
 	@echo "... buttons.o"
 	@echo "... buttons.i"
 	@echo "... buttons.s"
+	@echo "... delete_from_media.o"
+	@echo "... delete_from_media.i"
+	@echo "... delete_from_media.s"
 	@echo "... edit_door.o"
 	@echo "... edit_door.i"
 	@echo "... edit_door.s"

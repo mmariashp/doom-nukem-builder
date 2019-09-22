@@ -1,12 +1,12 @@
 
 #include "builder.h"
 
-t_mode					*init_sector_buttons(t_mode *m, SDL_Renderer *rend)
+t_mode					*init_sec_buttons(t_mode *m, SDL_Renderer *rend)
 {
 	static char 		path_items[10] = "./items3/";
-	static char 		path_buttons[10] = "./";
+	static char 		path_buttons[10] = "./buttons/";
 	static char 		ext[5] = ".png";
-	static char         reg[17][15] = { "cross2", "up2", "down2",\
+	static char         reg[18][15] = { "cross2", "trash", "up2", "down2",\
 						"up2", "down2", "edit", "edit", "edit", "trash", \
 						"coin", \
 						"key", \
@@ -17,7 +17,7 @@ t_mode					*init_sector_buttons(t_mode *m, SDL_Renderer *rend)
 						"ammo", \
 						"light" };
 
-	static char         lit[17][15] = { "cross3", "up3", "down3",\
+	static char         lit[18][15] = { "cross3", "trash3", "up3", "down3",\
 						"up3", "down3", "editlit", "editlit",  "editlit", "trash3", \
 						"coin", \
 						"key", \
@@ -29,9 +29,9 @@ t_mode					*init_sector_buttons(t_mode *m, SDL_Renderer *rend)
 						"light" };
 	int                 i;
 
-	if (!m || !rend || !(m->buttons = init_buttons(17)))
+	if (!m || !rend || !(m->buttons = init_buttons(18)))
 		return (NULL);
-	m->n_buttons = 17;
+	m->n_buttons = 18;
 	i = -1;
 	while (++i < m->n_buttons)
 	{
@@ -52,6 +52,8 @@ t_mode					*init_sector_buttons(t_mode *m, SDL_Renderer *rend)
 	m->buttons[DESELECT_BTN].box = layout_menu(0, 0);
 	m->buttons[DESELECT_BTN].box = (t_rec){ m->buttons[DESELECT_BTN].box.x +\
 	m->buttons[DESELECT_BTN].box.w, m->buttons[DESELECT_BTN].box.y, 30, 30 };
+	m->buttons[DEL_SEC_BTN].box = m->buttons[DESELECT_BTN].box;
+	m->buttons[DEL_SEC_BTN].box.y += m->buttons[DEL_SEC_BTN].box.h;
 	m->buttons[F_UP_BTN].box = layout_menu(3, 1);
 	m->buttons[F_DOWN_BTN].box = layout_menu(4, 1);
 	m->buttons[C_UP_BTN].box = layout_menu(3, 2);
@@ -70,10 +72,10 @@ t_mode					*init_sector_buttons(t_mode *m, SDL_Renderer *rend)
 
 t_mode					*init_wall_buttons(t_mode *m, SDL_Renderer *rend)
 {
-	static char         reg[4][15] = { "cross2.png", "edit.png", "edit.png",\
-						"edit.png" };
-	static char         lit[4][15] = { "cross3.png", "editlit.png",\
-						"editlit.png", "editlit.png" };
+	static char 		path_buttons[10] = "./buttons/";
+	static char 		ext[5] = ".png";
+	static char         reg[4][15] = { "cross2", "edit", "edit", "edit" };
+	static char         lit[4][15] = { "cross3", "editlit", "editlit", "editlit" };
 	int                 i;
 
 	if (!m || !rend || !(m->buttons = init_buttons(4)))
@@ -83,9 +85,9 @@ t_mode					*init_wall_buttons(t_mode *m, SDL_Renderer *rend)
 	while (++i < m->n_buttons)
 	{
 		if (reg[i])
-			m->buttons[i].txtr = load_texture(reg[i], rend, 0);
+			m->buttons[i].txtr = load_texture(get_full_path(reg[i], ext, path_buttons), rend, 0);
 		if (lit[i])
-			m->buttons[i].lit = load_texture(lit[i], rend, 0);
+			m->buttons[i].lit = load_texture(get_full_path(lit[i], ext, path_buttons), rend, 0);
 	}
 	m->buttons[DESELECT_BTN].box = layout_menu(0, 0);
 	m->buttons[DESELECT_BTN].box = (t_rec){ m->buttons[DESELECT_BTN].box.x +\
@@ -98,13 +100,15 @@ t_mode					*init_wall_buttons(t_mode *m, SDL_Renderer *rend)
 
 t_mode					*init_regular_buttons(t_mode *mode, SDL_Renderer *rend)
 {
+	static char 		path_buttons[10] = "./buttons/";
+	static char 		ext[5] = ".png";
 	static t_rec		box = { 10, 0, WIN_H * 0.07 * 9, WIN_H * 0.07};
-	static char         reg[9][15] = { "move2.png", "add2.png", "distort2.png",\
-						"delete2.png", "sector22.png", "wall2.png",\
-						"player2.png", "save2.png", "back22.png" };
-	static char         lit[9][15] = { "move3.png", "add3.png", "distort3.png",\
-    					"delete3.png", "sector3.png", "wall3.png",\
-						"player3.png", "save3.png", "back3.png" };
+	static char         reg[9][15] = { "move2", "add2", "distort2",\
+						"delete2", "sector22", "wall2",\
+						"player2", "save2", "back22" };
+	static char         lit[9][15] = { "move3", "add3", "distort3",\
+    					"delete3", "sector3", "wall3",\
+						"player3", "save3", "back3" };
 	int                 i;
 
 	if (!mode || !rend)
@@ -117,9 +121,9 @@ t_mode					*init_regular_buttons(t_mode *mode, SDL_Renderer *rend)
 	while (i < mode->n_buttons)
 	{
 		if (reg[i])
-			mode->buttons[i].txtr = load_texture(reg[i], rend, 0);
+			mode->buttons[i].txtr = load_texture(get_full_path(reg[i], ext, path_buttons), rend, 0);
 		if (lit[i])
-			mode->buttons[i].lit = load_texture(lit[i], rend, 0);
+			mode->buttons[i].lit = load_texture(get_full_path(lit[i], ext, path_buttons), rend, 0);
 		i++;
 	}
 	return (mode);
@@ -131,7 +135,7 @@ void					get_buttons(int state, t_mode *mode, SDL_Renderer *rend)
 		return ;
 	if (state == SECTOR_EDIT)
 	{
-		mode = init_sector_buttons(mode, rend);
+		mode = init_sec_buttons(mode, rend);
 	}
 	else if (state == WALL_EDIT)
 	{

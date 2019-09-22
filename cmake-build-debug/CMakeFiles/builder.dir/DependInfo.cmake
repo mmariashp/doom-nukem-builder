@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/home/moosh/CLionProjects/builder/add_to_media.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/add_to_media.c.o"
   "/home/moosh/CLionProjects/builder/buttons.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/buttons.c.o"
+  "/home/moosh/CLionProjects/builder/delete_from_media.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/delete_from_media.c.o"
   "/home/moosh/CLionProjects/builder/edit_door.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/edit_door.c.o"
   "/home/moosh/CLionProjects/builder/edit_menu.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/edit_menu.c.o"
   "/home/moosh/CLionProjects/builder/edit_walls.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/edit_walls.c.o"

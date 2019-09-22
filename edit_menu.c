@@ -48,7 +48,7 @@ char 					*menu_lines(int id, int i)
 		return (NULL);
 }
 
-t_value					*get_sector_values(int *n, t_sector *sector, SDL_Texture *f_texture, SDL_Texture *c_texture)
+t_value					*get_sec_values(int *n, t_sec *sector, SDL_Texture *f_texture, SDL_Texture *c_texture)
 {
 	static int 			nb = 6;
 	t_value				*new;
@@ -81,9 +81,9 @@ t_value					*get_wall_values(int *n, t_wall *wall, SDL_Renderer *rend, SDL_Textu
 	*n = nb;
 	new[1].texture = wall_texture;
 	new[2].texture = wall->type == WALL_EMPTY ?\
-		load_texture("yes.png", rend, 0) : load_texture("no.png", rend, 0);
+		load_texture("./buttons/yes.png", rend, 0) : load_texture("./buttons/no.png", rend, 0);
 	new[3].texture = wall->door > -1 ?\
-		load_texture("yes.png", rend, 0) : load_texture("no.png", rend, 0);
+		load_texture("./buttons/yes.png", rend, 0) : load_texture("./buttons/no.png", rend, 0);
 	if (!new[1].texture || !new[2].texture || !new[3].texture)
 		return (NULL);
 	return (new);
@@ -109,7 +109,7 @@ void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int sta
 	{
 		f = w->sec[i].floor_txtr;
 		c = w->sec[i].ceil_txtr;
-		if (!(values = get_sector_values(&n, &w->sec[i], txtrs[f].sdl_t, txtrs[c].sdl_t)))
+		if (!(values = get_sec_values(&n, &w->sec[i], txtrs[f].sdl_t, txtrs[c].sdl_t)))
 			return ;
 	}
 	else if (state == WALL_EDIT && (!within(i, -1, w->n_walls) || !within(\

@@ -108,7 +108,7 @@ int 					find_default_item(int type, t_itemfull *itemfull, int n)
 	return (-1);
 }
 
-void					add_item(int default_id, t_vec2d mouse, t_grid *grid, t_sector *sector)
+void					add_item(int default_id, t_vec2d mouse, t_grid *grid, t_sec *sector)
 {
 	t_vec2d				node;
 	int 				i;
@@ -140,7 +140,7 @@ void					add_item(int default_id, t_vec2d mouse, t_grid *grid, t_sector *sector)
 	}
 }
 
-void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sector *sector)
+void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sec *sector)
 {
 	static int			id = -1;
 	static t_vec2d		to_erase = { -1, -1 };

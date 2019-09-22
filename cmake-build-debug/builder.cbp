@@ -127,6 +127,9 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/buttons.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/delete_from_media.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/edit_door.c">
 			<Option target="builder"/>
 		</Unit>

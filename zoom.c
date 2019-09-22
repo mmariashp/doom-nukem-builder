@@ -59,7 +59,7 @@ void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid)
 	prog->zoom = 0;
 }
 
-void                    highlight_sector_nodes(t_vec2d *p, int n_walls, t_grid *grid)
+void                    highlight_sec_nodes(t_vec2d *p, int n_walls, t_grid *grid)
 {
     int                 i;
 
@@ -72,7 +72,7 @@ void                    highlight_sector_nodes(t_vec2d *p, int n_walls, t_grid *
     }
 }
 
-void                    zoom_to_sector(t_sector *sector, t_vec2d *vecs, t_grid *grid, t_prog *prog)
+void                    zoom_to_sector(t_sec *sector, t_vec2d *vecs, t_grid *grid, t_prog *prog)
 {
     int					i;
     t_vec2d				p[sector->n_walls];
@@ -102,7 +102,7 @@ void                    zoom_to_sector(t_sector *sector, t_vec2d *vecs, t_grid *
         if (p[i].y > max.y)
             max.y = p[i].y;
     }
-    highlight_sector_nodes((t_vec2d *)p, sector->n_walls, grid);
+    highlight_sec_nodes((t_vec2d *)p, sector->n_walls, grid);
     n = get_max(max.x - min.x, max.y - min.y);
     min.x = (int)(grid->box.x + min.x * grid->scale);
     min.y = (int)(grid->box.y + min.y * grid->scale);

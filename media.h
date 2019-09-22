@@ -69,7 +69,7 @@ typedef struct                  s_sector
 	short 						floor_txtr;
 	short 						ceil_txtr;
 	unsigned short				n_walls;
-}                               t_sector;
+}                               t_sec;
 
 typedef struct                  s_sound
 {
@@ -95,7 +95,7 @@ typedef struct					s_world
 	char 						*filename;
 	char 						*full_path;
 	int							*textures;
-	t_sector					*sec;
+	t_sec					*sec;
 	t_wall						*walls;
 	t_vec2d						*vecs;
 	t_vec2d						p_start;

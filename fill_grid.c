@@ -36,7 +36,7 @@ void					fill_grid(int n_vecs, t_vec2d *vecs, t_grid *grid)
 	}
 }
 
-void					fill_grid_items(t_sector *sector, t_grid *grid)
+void					fill_grid_items(t_sec *sector, t_grid *grid)
 {
 	int 				i;
 	t_vec2d				p;

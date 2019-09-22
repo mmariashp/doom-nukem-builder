@@ -110,7 +110,7 @@ int						input_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 				prog->click = sdl->mouse;
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
-				if (prog->button_on <= media->n_worlds)
+				if (within(prog->button_on, -1, media->n_worlds + 1))
 				{
 					prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 					prog->last_mode_id = prog->mode_id;

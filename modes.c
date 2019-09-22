@@ -195,6 +195,8 @@ unsigned short			distribute_buttons_v2(t_button *buttons, int from, int to, t_re
 
 SDL_Texture				*btn_back(int id, int set_get_free, SDL_Renderer *rend)
 {
+	static char 		path_buttons[10] = "./buttons/";
+	static char 		ext[5] = ".png";
 	static int 			init = 0;
 	static SDL_Texture	**back = NULL;
 	int					i;
@@ -205,10 +207,10 @@ SDL_Texture				*btn_back(int id, int set_get_free, SDL_Renderer *rend)
 	{
 		if (!(back = (SDL_Texture **)ft_memalloc(sizeof(SDL_Texture *) * N_BTN_BACKS)))
 			return (NULL);
-		back[0] = load_texture("blue_button00.png", rend, 0);
-		back[1] = load_texture("blue_button13.png", rend, 0);
-		back[2] = load_texture("grey_panel.png", rend, 0);
-		back[3] = load_texture("yellow_button00.png", rend, 0);
+		back[0] = load_texture(get_full_path("blue_button00", ext, path_buttons), rend, 0);
+		back[1] = load_texture(get_full_path("blue_button13", ext, path_buttons), rend, 0);
+		back[2] = load_texture(get_full_path("grey_panel", ext, path_buttons), rend, 0);
+		back[3] = load_texture(get_full_path("yellow_button00", ext, path_buttons), rend, 0);
 		init = 1;
 		return (NULL);
 	}
@@ -274,10 +276,10 @@ unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_world
 		return (FAIL);
 	if (init == 0)
 	{
-		edit = load_texture("edit.png", sdl->rend, 0);
-		editlit = load_texture("editlit.png", sdl->rend, 0);
-		trash = load_texture("trash.png", sdl->rend, 0);
-		trashlit = load_texture("trash3.png", sdl->rend, 0);
+		edit = load_texture("./buttons/edit.png", sdl->rend, 0);
+		editlit = load_texture("./buttons/editlit.png", sdl->rend, 0);
+		trash = load_texture("./buttons/trash.png", sdl->rend, 0);
+		trashlit = load_texture("./buttons/trash3.png", sdl->rend, 0);
 		init = 1;
 	}
 	box.w = WIN_W / 4;

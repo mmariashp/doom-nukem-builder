@@ -52,11 +52,11 @@ sys/stat.h
 sys/types.h
 -
 
-/home/moosh/CLionProjects/builder/get_assets.c
-builder.h
-/home/moosh/CLionProjects/builder/builder.h
-
 /home/moosh/CLionProjects/builder/get_next_line.h
 ./libft/libft.h
 /home/moosh/CLionProjects/builder/./libft/libft.h
+
+/home/moosh/CLionProjects/builder/init_editor_buttons.c
+builder.h
+/home/moosh/CLionProjects/builder/builder.h
 

@@ -152,7 +152,7 @@ unsigned short			open_level(t_media *media, t_prog* prog, t_grid *grid)
 	return (SUCCESS);
 }
 
-void					change_heights(int b, t_sector *sec)
+void					change_heights(int b, t_sec *sec)
 {
 	int					s;
 	int					f_shift;
@@ -381,6 +381,14 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 			}
 			else if (state == SECTOR_EDIT)
 			{
+				if (prog->button_on == DEL_SEC_BTN)
+				{
+					zoom_to_map(media->worlds[media->w_id].n_vecs, media->worlds[media->w_id].vecs, grid);
+					selected_item(0, STATE_SELECT, SECTOR_SEARCH);
+					delete_sector(selected_item(1, S_SELECT, -1), &media->worlds[media->w_id]);
+					selected_item(0, S_SELECT, -1);
+					return (SUCCESS);
+				}
 				if (prog->button_on == B_ITEM_DEL)
 				{
 					prog->button_lit = -1;
@@ -418,7 +426,6 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 
 			}
 		}
-
 		prog->click = (t_vec2d){ 0, 0 };
 		return (SUCCESS);
 	}
@@ -472,7 +479,6 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 			}
 			if (prog->button_on != -1 && (prog->click.x || prog->click.y))
 			{
-				printf("deselect button\n");
 				prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
 				prog->button_on = -1;
 				prog->features[F_REDRAW] = 1;
@@ -537,7 +543,6 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 				}
 			}
 		}
-
 	}
 	update_sector_status(media->worlds[media->w_id].sec, media->worlds[media->w_id].walls,
 			media->worlds[media->w_id].vecs, media->worlds[media->w_id].n_sec);
