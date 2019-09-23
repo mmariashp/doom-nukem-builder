@@ -166,11 +166,35 @@
 
 # define N_MM_BTNS		2
 
+# define TXTR_MOVE		0
+# define TXTR_DRAW		1
+# define TXTR_DISTORT	2
+# define TXTR_ISO		3
+# define TXTR_SECTOR	4
+# define TXTR_WALL		5
+# define TXTR_PLAYER	6
+# define TXTR_SAVE		7
+# define TXTR_BACK		8
+# define TXTR_CROSS		9
+# define TXTR_TRASH		10
+# define TXTR_EDIT		11
+# define TXTR_DEL_SEC	12
+# define TXTR_UP		13
+# define TXTR_DOWN		14
+# define TXTR_COIN		15
+# define TXTR_KEY		16
+# define TXTR_OBJECT	17
+# define TXTR_ENEMY		18
+# define TXTR_SUPER_BONUS	19
+# define TXTR_HEALTH	20
+# define TXTR_AMMO		21
+# define TXTR_LIGHT		22
+
 
 # define DRAG_BTN		0
 # define DRAW_BTN		1
 # define DISTORT_BTN		2
-# define DELETE_BTN		3
+# define ISO_BTN		3
 # define SECTOR_BTN		4
 # define WALL_BTN		5
 # define PLAYER_BTN		6
@@ -301,6 +325,8 @@ typedef struct 					s_button
 	char 						*text;
 	SDL_Texture					*txtr;
 	SDL_Texture					*lit;
+	int 						reg_i;
+	int 						lit_i;
 }								t_button;
 
 typedef struct					s_sdl
@@ -532,9 +558,6 @@ t_prog					*get_prog(void);
 void					render_screen(SDL_Renderer *rend, int **screen);
 
 
-
-
-
 void					add_to_media(t_grid *grid, t_media *media);
 unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *path);
 
@@ -662,5 +685,8 @@ void					free_sector(t_sec *sector);
  */
 
 void					validate_media(t_media *media);
+
+
+void					render_grid_iso(t_world world, t_grid *grid, t_prog *prog);
 
 #endif

@@ -42,7 +42,7 @@ void					delete_item(t_sec *sector, int id)
 	int 				i;
 	int 				j;
 
-	if (!sector || !within(id, -1, sector->n_items))
+	if (!sector || !within(id, -1, sector->n_items) || !sector->items)
 		return ;
 	if (!(items = ft_memalloc(sizeof(t_item) * (sector->n_items - 1))))
 		return ;
@@ -257,6 +257,7 @@ void					delete_double_walls(t_world *world)
 void					validate_sectors(t_world *world)
 {
 	int 				i;
+	int 				control;
 
 	if (!world)
 		return ;
@@ -266,15 +267,14 @@ void					validate_sectors(t_world *world)
 	delete_unused_walls(world);
 	delete_unused_v(world);
 	i = 0;
-	while (i < world->n_sec)
+	control = 0;
+	while (i < world->n_sec && control < MAX_N_SECTORS)
 	{
 		if (world->sec[i].status == SEC_OPEN)
-		{
-			printf("here\n");
 			delete_sector(i, world);
-		}
 		else
 			i++;
+		control++;
 	}
 }
 
@@ -287,9 +287,11 @@ void					validate_media(t_media *media)
 	i = 0;
 	while (i < media->n_worlds)
 	{
+		printf("%d.validation in\n", i);
 		validate_textures(&media->worlds[i], media->n_txtrs);
 		validate_items(&media->worlds[i], media->n_itemfull);
 		validate_sectors(&media->worlds[i]);
+		printf("%d.validation out\n", i);
 		i++;
 	}
 }

@@ -164,6 +164,35 @@ unsigned short			fill_sector(t_world world, t_grid *grid, int **screen, int sec,
 	return (fill_polygon(p, world.sec[j].n_v, screen, color));
 }
 
+unsigned short			fill_sector_iso(t_world world, t_grid *grid, int **screen, int sec, int state)
+{
+	int					i = 0;
+	int					j = sec;
+	int					color;
+	t_vec2d				p[world.sec[j].n_v];
+
+	if (world.sec[j].n_v < 3)
+		return (FALSE);
+	while (i < world.sec[j].n_v)
+	{
+		p[i] = world.vecs[world.sec[j].v[i]];
+		p[i] = make_iso(p[i].x, p[i].y, world.sec[j].floor);
+		p[i].x = (int)(grid->box.x + p[i].x * grid->scale);
+		p[i].y = (int)(grid->box.y + p[i].y * grid->scale);
+		i++;
+	}
+	if (state == SECTOR_SEARCH || state == SECTOR_EDIT)
+	{
+		if (sec == lit_item(1, S_SELECT, 0))
+			color = ACTIVE_SECTOR_COLOR;
+		else
+			color = world.sec[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
+	}
+	else
+		color = world.sec[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
+	return (fill_polygon(p, world.sec[j].n_v, screen, color));
+}
+
 void					clean_screen(int **screen)
 {
 	int					i;
@@ -223,6 +252,112 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 		if (world.sec[k].status != SEC_OPEN)
 		{
 			overlay = fill_sector(world, grid, prog->screen, k, selected_item(1, STATE_SELECT, 0)) == TRUE ? TRUE : overlay;
+		}
+		k++;
+	}
+}
+
+void					draw_walls_iso(t_world world, t_grid *grid, int **screen, t_sec *sector)
+{
+	int					i = 0;
+	t_vec2d				v1f;
+	t_vec2d				v2f;
+	t_vec2d				v1c;
+	t_vec2d				v2c;
+
+	while (i < sector->n_walls)
+	{
+
+		v1f = world.vecs[world.walls[sector->sec_walls[i]].v1];
+		v2f = world.vecs[world.walls[sector->sec_walls[i]].v2];
+		v1c = world.vecs[world.walls[sector->sec_walls[i]].v1];
+		v2c = world.vecs[world.walls[sector->sec_walls[i]].v2];
+
+		v1f = make_iso(v1f.x, v1f.y, sector->floor);
+		v2f = make_iso(v2f.x, v2f.y, sector->floor);
+		v1c = make_iso(v1c.x, v1c.y, sector->ceiling);
+		v2c = make_iso(v2c.x, v2c.y, sector->ceiling);
+
+		v1f.x = (int)(grid->box.x + v1f.x * grid->scale);
+		v1f.y = (int)(grid->box.y + v1f.y * grid->scale);
+		v2f.x = (int)(grid->box.x + v2f.x * grid->scale);
+		v2f.y = (int)(grid->box.y + v2f.y * grid->scale);
+		v1c.x = (int)(grid->box.x + v1c.x * grid->scale);
+		v1c.y = (int)(grid->box.y + v1c.y * grid->scale);
+		v2c.x = (int)(grid->box.x + v2c.x * grid->scale);
+		v2c.y = (int)(grid->box.y + v2c.y * grid->scale);
+
+
+		if (world.walls[sector->sec_walls[i]].type == WALL_EMPTY)
+		{
+			draw_thick_line((t_line){ v1f, v2f }, GREEN, WALL_RADIUS, screen);
+			draw_thick_line((t_line){ v1c, v2c }, GREEN, WALL_RADIUS, screen);
+			draw_thick_line((t_line){ v1f, v1c }, GREEN, WALL_RADIUS, screen);
+			draw_thick_line((t_line){ v2f, v2c }, GREEN, WALL_RADIUS, screen);
+		}
+		else if (world.walls[sector->sec_walls[i]].type == WALL_FILLED)
+		{
+			draw_thick_line((t_line){ v1f, v2f }, WHITE, WALL_RADIUS, screen);
+			draw_thick_line((t_line){ v1c, v2c }, WHITE, WALL_RADIUS, screen);
+			draw_thick_line((t_line){ v1f, v1c }, GREEN, WALL_RADIUS, screen);
+			draw_thick_line((t_line){ v2f, v2c }, GREEN, WALL_RADIUS, screen);
+		}
+		else if (world.walls[sector->sec_walls[i]].type == WALL_DOOR)
+		{
+			draw_thick_line((t_line){ v1f, v2f }, SOFT_ORANGE, WALL_RADIUS, screen);
+			draw_thick_line((t_line){ v1c, v2c }, SOFT_ORANGE, WALL_RADIUS, screen);
+			draw_thick_line((t_line){ v1f, v1c }, GREEN, WALL_RADIUS, screen);
+			draw_thick_line((t_line){ v2f, v2c }, GREEN, WALL_RADIUS, screen);
+		}
+		i++;
+	}
+}
+
+void					bubble_sort_vec(t_vec2d *tab, int n)
+{
+	int 			i;
+	int 			lim;
+	t_vec2d 			swap;
+
+	lim = n - 1;
+	i = 0;
+	while (i < lim)
+	{
+		if (tab[i].y > tab[i + 1].y)
+		{
+			swap = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = swap;
+			if (i)
+				i--;
+		}
+		else
+			i++;
+	}
+}
+
+void					render_grid_iso(t_world world, t_grid *grid, t_prog *prog)
+{
+	if (!grid || !prog || world.n_sec == 100)
+		return;
+	clean_screen(prog->screen);
+	t_vec2d tab[world.n_sec];
+	int k = 0;
+	unsigned short overlay = FALSE;
+	k = 0;
+	while (k < world.n_sec)
+	{
+		tab[k].x = k;
+		tab[k].y = world.sec[k].floor;
+		k++;
+	}
+	k = 0;
+	while (k < world.n_sec)
+	{
+		if (world.sec[tab[k].x].status != SEC_OPEN)
+		{
+			draw_walls_iso(world, grid, prog->screen, &world.sec[tab[k].x]);
+			overlay = fill_sector_iso(world, grid, prog->screen, tab[k].x, selected_item(1, STATE_SELECT, 0)) == TRUE ? TRUE : overlay;
 		}
 		k++;
 	}

@@ -1079,8 +1079,8 @@ void					free_media(t_media *media)
 				free(media->txtrs[i].full_path);
 			if (media->txtrs[i].name)
 				free(media->txtrs[i].name);
-			if (media->txtrs[i].sdl_t)
-				SDL_DestroyTexture(media->txtrs[i].sdl_t);
+//			if (media->txtrs[i].sdl_t)
+//				SDL_DestroyTexture(media->txtrs[i].sdl_t);
 			i++;
 		}
 		free(media->txtrs);
@@ -1233,8 +1233,6 @@ t_media					*read_assets(int fd)
 	}
 	return (media);
 }
-
-
 
 t_media					*get_assets(void)
 {

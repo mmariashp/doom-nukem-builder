@@ -27,6 +27,7 @@ t_mode					*init_sec_buttons(t_mode *m, SDL_Renderer *rend)
 						"health", \
 						"ammo", \
 						"light" };
+	char 				*tmp;
 	int                 i;
 
 	if (!m || !rend || !(m->buttons = init_buttons(18)))
@@ -39,13 +40,47 @@ t_mode					*init_sec_buttons(t_mode *m, SDL_Renderer *rend)
 			continue ;
 		if (i < B_COIN)
 		{
-			m->buttons[i].txtr = load_texture(get_full_path(reg[i], ext, path_buttons), rend, 0);
-			m->buttons[i].lit = load_texture(get_full_path(lit[i], ext, path_buttons), rend, 0);
+			if (reg[i])
+			{
+				tmp = get_full_path(reg[i], ext, path_buttons);
+				if (tmp)
+				{
+					m->buttons[i].txtr = load_texture(tmp, rend, 0);
+					free(tmp);
+				}
+			}
+			if (lit[i])
+			{
+				tmp = get_full_path(lit[i], ext, path_buttons);
+				if (tmp)
+				{
+					m->buttons[i].lit = load_texture(tmp, rend, 0);
+					free(tmp);
+				}
+
+			}
 		}
 		else
 		{
-			m->buttons[i].txtr = load_texture(get_full_path(reg[i], ext, path_items), rend, 0);
-			m->buttons[i].lit = load_texture(get_full_path(lit[i], ext, path_items), rend, 0);
+			if (reg[i])
+			{
+				tmp = get_full_path(reg[i], ext, path_items);
+				if (tmp)
+				{
+					m->buttons[i].txtr = load_texture(tmp, rend, 0);
+					free(tmp);
+				}
+			}
+			if (lit[i])
+			{
+				tmp = get_full_path(lit[i], ext, path_items);
+				if (tmp)
+				{
+					m->buttons[i].lit = load_texture(tmp, rend, 0);
+					free(tmp);
+				}
+
+			}
 		}
 
 	}
@@ -76,6 +111,7 @@ t_mode					*init_wall_buttons(t_mode *m, SDL_Renderer *rend)
 	static char 		ext[5] = ".png";
 	static char         reg[4][15] = { "cross2", "edit", "edit", "edit" };
 	static char         lit[4][15] = { "cross3", "editlit", "editlit", "editlit" };
+	char				*tmp;
 	int                 i;
 
 	if (!m || !rend || !(m->buttons = init_buttons(4)))
@@ -85,9 +121,24 @@ t_mode					*init_wall_buttons(t_mode *m, SDL_Renderer *rend)
 	while (++i < m->n_buttons)
 	{
 		if (reg[i])
-			m->buttons[i].txtr = load_texture(get_full_path(reg[i], ext, path_buttons), rend, 0);
+		{
+			tmp = get_full_path(reg[i], ext, path_buttons);
+			if (tmp)
+			{
+				m->buttons[i].txtr = load_texture(tmp, rend, 0);
+				free(tmp);
+			}
+		}
 		if (lit[i])
-			m->buttons[i].lit = load_texture(get_full_path(lit[i], ext, path_buttons), rend, 0);
+		{
+			tmp = get_full_path(lit[i], ext, path_buttons);
+			if (tmp)
+			{
+				m->buttons[i].lit = load_texture(tmp, rend, 0);
+				free(tmp);
+			}
+
+		}
 	}
 	m->buttons[DESELECT_BTN].box = layout_menu(0, 0);
 	m->buttons[DESELECT_BTN].box = (t_rec){ m->buttons[DESELECT_BTN].box.x +\
@@ -109,6 +160,7 @@ t_mode					*init_regular_buttons(t_mode *mode, SDL_Renderer *rend)
 	static char         lit[9][15] = { "move3", "add3", "distort3",\
     					"delete3", "sector3", "wall3",\
 						"player3", "save3", "back3" };
+	char				*tmp;
 	int                 i;
 
 	if (!mode || !rend)
@@ -121,9 +173,24 @@ t_mode					*init_regular_buttons(t_mode *mode, SDL_Renderer *rend)
 	while (i < mode->n_buttons)
 	{
 		if (reg[i])
-			mode->buttons[i].txtr = load_texture(get_full_path(reg[i], ext, path_buttons), rend, 0);
+		{
+			tmp = get_full_path(reg[i], ext, path_buttons);
+			if (tmp)
+			{
+				mode->buttons[i].txtr = load_texture(tmp, rend, 0);
+				free(tmp);
+			}
+		}
 		if (lit[i])
-			mode->buttons[i].lit = load_texture(get_full_path(lit[i], ext, path_buttons), rend, 0);
+		{
+			tmp = get_full_path(lit[i], ext, path_buttons);
+			if (tmp)
+			{
+				mode->buttons[i].lit = load_texture(tmp, rend, 0);
+				free(tmp);
+			}
+
+		}
 		i++;
 	}
 	return (mode);

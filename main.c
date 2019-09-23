@@ -51,17 +51,23 @@ void					write_text(char *str, SDL_Renderer *rend, t_rec rec, int color, char h_
 	get_rgb(&r, &g, &b, color);
 	textColor = (SDL_Color){ r, g, b, 0 };
 	SDL_Surface* textSurface = TTF_RenderText_Solid(font, str, textColor);
-	SDL_Texture* text = SDL_CreateTextureFromSurface(rend, textSurface);
-	ratio = textSurface->h ? (float)textSurface->w / textSurface->h : 1.f;
-	w = clamp(textSurface->h * ratio, 0, rec.w);
-	SDL_FreeSurface(textSurface);
-    renderQuad = (SDL_Rect){ rec.x, rec.y, w, rec.h };
-	if (h_center == TRUE)
-        renderQuad.x = rec.x + (rec.w - w) / 2;
-	else
-        renderQuad.x = rec.x + rec.w * 0.05;
-	SDL_RenderCopy(rend, text, NULL, &renderQuad);
-	SDL_DestroyTexture(text);
+	if (textSurface)
+	{
+		SDL_Texture* text = SDL_CreateTextureFromSurface(rend, textSurface);
+		if (text)
+		{
+			ratio = textSurface->h ? (float)textSurface->w / textSurface->h : 1.f;
+			w = clamp(textSurface->h * ratio, 0, rec.w);
+			SDL_FreeSurface(textSurface);
+			renderQuad = (SDL_Rect){ rec.x, rec.y, w, rec.h };
+			if (h_center == TRUE)
+				renderQuad.x = rec.x + (rec.w - w) / 2;
+			else
+				renderQuad.x = rec.x + rec.w * 0.05;
+			SDL_RenderCopy(rend, text, NULL, &renderQuad);
+			SDL_DestroyTexture(text);
+		}
+	}
 }
 
 void					render_box(t_rec box, SDL_Texture *t, SDL_Renderer *rend)
@@ -92,29 +98,6 @@ void					render_screen(SDL_Renderer *rend, int **screen)
 		}
 		x++;
 	}
-}
-
-void					render_screen_iso(SDL_Renderer *rend, int **screen)
-{
-    int 				x;
-    int					y;
-    t_vec2d p;
-
-    x = 0;
-    while (x < WIN_W)
-    {
-        y = 0;
-        while (y < WIN_H)
-        {
-            if (screen[x][y] != 0)
-            {
-                p = make_iso(x, y, 0);
-                draw_dot(p.x, p.y, screen[x][y], rend);
-            }
-            y++;
-        }
-        x++;
-    }
 }
 
 char 					sector_status(t_sec sector, t_wall *walls, t_vec2d *vecs, int n)
@@ -318,8 +301,11 @@ void					game_loop(t_sdl *sdl, t_media *media)
 	free(grid);
 	free_prog(prog, sdl);
 	set_get_free_font(2);
-	draw_items_or_free(1, 0, (t_rec){ 100, 100, 100, 100 }, sdl->rend);
+//	draw_items_or_free(1, 0, (t_rec){ 100, 100, 100, 100 }, sdl->rend);
 }
+
+
+//t_texture				*get_prog_txtr
 
 unsigned 				load_sdl_media(t_media *media, t_sdl *sdl)
 {
@@ -366,6 +352,6 @@ int						main(void)
 	free_media(media);
 	free_sdl(sdl);
 	ft_putstr("\x1b[32mReturning success from main function.\x1b[0m\n");
-//	system("leaks -q builder");
+	system("leaks -q builder");
 	return (SUCCESS);
 }

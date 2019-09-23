@@ -69,19 +69,19 @@ void					render_item_info(t_media *med, SDL_Renderer *rend, t_mode *mode)
 	}
 }
 
-void					render_cursor(SDL_Renderer *rend, t_vec2d mouse)
-{
-	SDL_Texture	*t = load_texture("./buttons/interact.png", rend, 0);
-	SDL_Rect			rect;
-
-	if (rend && t)
-	{
-		rect = (SDL_Rect){ mouse.x , mouse.y,
-						   30, 30 };
-		SDL_RenderCopy(rend, t, NULL, &rect);
-		SDL_DestroyTexture(t);
-	}
-}
+//void					render_cursor(SDL_Renderer *rend, t_vec2d mouse)
+//{
+//	SDL_Texture	*t = load_texture("./buttons/interact.png", rend, 0);
+//	SDL_Rect			rect;
+//
+//	if (rend && t)
+//	{
+//		rect = (SDL_Rect){ mouse.x , mouse.y,
+//						   30, 30 };
+//		SDL_RenderCopy(rend, t, NULL, &rect);
+//		SDL_DestroyTexture(t);
+//	}
+//}
 
 void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
@@ -96,7 +96,11 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		SDL_RenderClear(sdl->rend);
 		state = selected_item(1, STATE_SELECT, -1);
 		grid_refresh(grid, media, state, selected_item(1, S_SELECT, -1));
-		render_grid(media->worlds[media->w_id], grid, prog, sdl->mouse);
+
+		if (state == NORMAL && prog->button_on == ISO_BTN)
+			render_grid_iso(media->worlds[media->w_id], grid, prog);
+		else
+			render_grid(media->worlds[media->w_id], grid, prog, sdl->mouse);
 		render_screen(sdl->rend, prog->screen);
 		if (state == SECTOR_EDIT || state == WALL_EDIT)
 		{
@@ -140,25 +144,6 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 //	render_cursor(sdl->rend, sdl->mouse);
 //	SDL_RenderPresent(sdl->rend);
 //	prog->features[F_REDRAW] = 0;
-}
-
-int					    *realloc_textures(int *textures, int n)
-{
-    int				    *new;
-    int					j;
-
-    j = 0;
-    if (n == 0)
-        return (NULL);
-    if (!(new = (int *)malloc(sizeof(int) * n)))
-        return (NULL);
-    while (j < n - 1)
-    {
-        new[j] = textures[j];
-        j++;
-    }
-    free(textures);
-    return (new);
 }
 
 unsigned short			save_media(t_media *media, t_prog *prog)
@@ -319,9 +304,14 @@ unsigned short			mode_change(t_prog *prog, t_media *media, t_grid *grid, int flo
 
 void					buttons_refresh(t_prog *prog, int state, int *last, SDL_Renderer *rend)
 {
+//	static char			init = FALSE;
+
 	if (!prog || !last || !rend)
 		return ;
-	free_buttons(prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons);
+//	if (init == TRUE)
+		free_buttons(prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons);
+//	else
+//		init = TRUE;
 	get_buttons(state, &prog->modes[prog->mode_id], rend);
 	prog->button_on = -1;
 	prog->button_lit = -1;
@@ -339,6 +329,9 @@ void					buttons_refresh(t_prog *prog, int state, int *last, SDL_Renderer *rend)
 
 void 					drawing(t_media *media, t_prog *prog, t_grid *grid, t_sdl *sdl)
 {
+	int 				i;
+	unsigned short		vis;
+
 	if ((prog->click.x || prog->click.y) && mouse_over(grid->box, sdl->mouse))
 	{
 		if (grid->active[0].x == -1)
@@ -347,19 +340,10 @@ void 					drawing(t_media *media, t_prog *prog, t_grid *grid, t_sdl *sdl)
 			grid->active[1] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
 		if (grid->active[0].x != -1)
 			add_to_media(grid, media);
-		if (grid->active[0].x != -1)
-		{
-			int i = 0;
-			while (i < prog->modes[prog->mode_id].n_buttons)
-				prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
-		}
-		else
-		{
-			int i = 0;
-			while (i < prog->modes[prog->mode_id].n_buttons)
-				prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = TRUE;
-		}
-
+		vis = grid->active[0].x != -1 ? FALSE : TRUE;
+		i = 0;
+		while (i < prog->modes[prog->mode_id].n_buttons)
+			prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = vis;
 		prog->features[F_REDRAW] = 1;
 		prog->click = (t_vec2d){ 0, 0 };
 	}
@@ -563,33 +547,16 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 		else if (state == NORMAL)
 		{
 			if (prog->button_on == DRAW_BTN)
-			{
 				drawing(media, prog, grid, sdl);
-			}
 			else if (prog->button_on == DISTORT_BTN ) // move mode
 				move_vector(prog, sdl->mouse, grid, &media->worlds[media->w_id]);
 			else if (prog->button_on == PLAYER_BTN ) // move mode
 				move_player(prog, sdl->mouse, grid, &media->worlds[media->w_id]);
 			else if (prog->button_on == DRAG_BTN && (prog->click.x || prog->click.y)) // view mode
 				move_grid_drag(prog, sdl->mouse, grid);
-			else if (prog->button_on == DELETE_BTN) // delete mode
+			else if (prog->button_on == ISO_BTN && (prog->click.x || prog->click.y)) // delete mode
 			{
-				if (prog->click.x || prog->click.y)
-				{
-					if (mouse_over(grid->box, sdl->mouse))
-					{
-						int m = -1;
-						grid->active[0] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
-						if (grid->nodes[grid->active[0].x][grid->active[0].y] == NODE_FULL)
-							m = find_vector(media->worlds[media->w_id].vecs, grid->active[0], media->worlds[media->w_id].n_vecs);
-						delete_vector(m, &media->worlds[media->w_id]);
-						grid->nodes[grid->active[0].x][grid->active[0].y] = NODE_EMPTY;
-						prog->click = (t_vec2d){ 0, 0 };
-						prog->features[F_REDRAW] = 1;
-					}
-					else
-						prog->click = (t_vec2d){ 0, 0 };
-				}
+				move_grid_drag(prog, sdl->mouse, grid);
 			}
 		}
 	}

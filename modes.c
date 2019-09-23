@@ -47,7 +47,7 @@ t_button				*init_buttons(int n_buttons)
 	buttons = (t_button *)ft_memalloc(sizeof(t_button) * n_buttons);
 	if (!buttons)
 		return (NULL);
-	ft_bzero(buttons, sizeof(buttons));
+	ft_bzero(buttons, sizeof(t_button) * n_buttons);
 	i = 0;
 	while (i < n_buttons)
 	{
@@ -199,6 +199,7 @@ SDL_Texture				*btn_back(int id, int set_get_free, SDL_Renderer *rend)
 	static char 		ext[5] = ".png";
 	static int 			init = 0;
 	static SDL_Texture	**back = NULL;
+	char 				*tmp;
 	int					i;
 
 	if (!rend)
@@ -207,10 +208,30 @@ SDL_Texture				*btn_back(int id, int set_get_free, SDL_Renderer *rend)
 	{
 		if (!(back = (SDL_Texture **)ft_memalloc(sizeof(SDL_Texture *) * N_BTN_BACKS)))
 			return (NULL);
-		back[0] = load_texture(get_full_path("blue_button00", ext, path_buttons), rend, 0);
-		back[1] = load_texture(get_full_path("blue_button13", ext, path_buttons), rend, 0);
-		back[2] = load_texture(get_full_path("grey_panel", ext, path_buttons), rend, 0);
-		back[3] = load_texture(get_full_path("yellow_button00", ext, path_buttons), rend, 0);
+		tmp = get_full_path("blue_button00", ext, path_buttons);
+		if (tmp)
+		{
+			back[0] = load_texture(tmp, rend, 0);
+			free(tmp);
+		}
+		tmp = get_full_path("blue_button13", ext, path_buttons);
+		if (tmp)
+		{
+			back[1] = load_texture(tmp, rend, 0);
+			free(tmp);
+		}
+		tmp = get_full_path("grey_panel", ext, path_buttons);
+		if (tmp)
+		{
+			back[2] = load_texture(tmp, rend, 0);
+			free(tmp);
+		}
+		tmp = get_full_path("yellow_button00", ext, path_buttons);
+		if (tmp)
+		{
+			back[3] = load_texture(tmp, rend, 0);
+			free(tmp);
+		}
 		init = 1;
 		return (NULL);
 	}
@@ -444,11 +465,12 @@ unsigned short			init_modes(t_sdl *sdl, t_media *media, t_prog *prog)
     prog->modes[MODE_TEXTURES].n_buttons = media->n_txtrs;
 	prog->modes[MODE_MAIN_MENU].n_buttons = N_MM_BTNS;
 	prog->modes[MODE_SUMMARY].n_buttons = (media->n_worlds + 1) * 3;
-	prog->modes[MODE_EDITOR].n_buttons = 8;
+	prog->modes[MODE_EDITOR].n_buttons = 0;
 	prog->modes[MODE_SEL_ITEM].n_buttons = media->n_itemfull;
 	i = 0;
 	while (i < N_MODES)
 	{
+		prog->modes[i].buttons = NULL;
 		if (prog->modes[i].n_buttons > 0 && !(prog->modes[i].buttons = init_buttons(prog->modes[i].n_buttons)))
 			return (FAIL);
 		i++;

@@ -53,6 +53,8 @@ char 					*del_char(char *input)
 	char 				*new;
 
 	i = 0;
+	if (!input)
+		return (NULL);
 	while (input[i])
 		i++;
 	if (!i || !(new = ft_strnew(sizeof(char) * (i - 1))))
@@ -94,7 +96,7 @@ void					render_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	char 				*input;
 
-	if (!sdl || !grid || !media)
+	if (!sdl || !sdl->rend || !grid || !media || !prog)
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
@@ -103,7 +105,9 @@ void					render_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	{
 		input = get_input(NULL, 0);
 		if (input)
+		{
 			write_text(get_input(NULL, 0), sdl->rend, (t_rec){ WIN_W / 4, WIN_H / 12, WIN_W / 2, WIN_H / 10 }, WHITE, TRUE);
+		}
 	}
 	SDL_RenderPresent(sdl->rend);
 }
@@ -260,7 +264,7 @@ int						input_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 					prog->button_lit = -1;
                     prog->button_on = DRAG_BTN;
                     selected_item(0, STATE_SELECT, NORMAL);
-                    prog->modes[prog->mode_id].buttons[DRAG_BTN].vis_lit_on[2] = TRUE;
+//                    prog->modes[prog->mode_id].buttons[DRAG_BTN].vis_lit_on[2] = TRUE;
                     return (quit);
 				}
 				prog->click = (t_vec2d){ 0, 0 };

@@ -7,7 +7,7 @@ void					draw_items_or_free(char draw_free, int type, t_rec box, SDL_Renderer *r
 	static t_texture	*items = NULL;
 	static char 		path[10] = "./items3/";
 	static char 		ext[5] = ".png";
-	static char 		name[TOTAL_TYPES][25] = {	"coin", \
+	static char 		name[TOTAL_TYPES][15] = {	"coin", \
 													"key", \
 													"object", \
 													"enemy", \
@@ -15,6 +15,8 @@ void					draw_items_or_free(char draw_free, int type, t_rec box, SDL_Renderer *r
 													"health", \
 													"ammo", \
 													"light" };
+	char 				*tmp;
+
 	if (!rend)
 		return ;
 	if (!items)
@@ -27,32 +29,38 @@ void					draw_items_or_free(char draw_free, int type, t_rec box, SDL_Renderer *r
 		{
 			items[i].name = NULL;
 			items[i].full_path = NULL;
-			items[i].sdl_t = load_texture(get_full_path(name[i], ext, path), rend, 0);
+			tmp = get_full_path(name[i], ext, path);
+			if (tmp)
+			{
+				items[i].sdl_t = load_texture(tmp, rend, 0);
+				free(tmp);
+			}
+			else
+				items[i].sdl_t = NULL;
 			i++;
 		}
 	}
 	if (draw_free == 0 && within(type, -1, TOTAL_TYPES) && items[type].sdl_t)
 	{
-		if (type == KEY || type == LIGHT || type == HEALTH)
+		if (type == KEY || type == HEALTH)
 		{
 			box.x += box.w * 0.2;
 			box.w *= 0.8;
 		}
 		render_box(box, items[type].sdl_t, rend);
 	}
-	else if (draw_free == 1 && items)
-	{
-		i = 0;
-		while (i < TOTAL_TYPES)
-		{
-			if (items[i].sdl_t)
-				SDL_DestroyTexture(items[i].sdl_t);
-			items[i].sdl_t = NULL;
-			i++;
-		}
-		free(items);
-		items = NULL;
-	}
+//	else if (draw_free == 1 && items)
+//	{
+//		i = 0;
+//		while (i < TOTAL_TYPES)
+//		{
+//			if (items[i].sdl_t)
+//				SDL_DestroyTexture(items[i].sdl_t);
+//			items[i++].sdl_t = NULL;
+//		}
+//		free(items);
+//		items = NULL;
+//	}
 }
 
 void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, int n, t_grid *grid)
@@ -63,7 +71,7 @@ void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, 
 	t_vec2d				p;
 	t_rec				box;
 
-	if (!rend || !world || !itemfull)
+	if (!rend || !world || !itemfull || !grid)
 		return ;
 	sector = selected_item(1, S_SELECT, -1);
 	if (!within(sector, -1, world->n_sec) || world->sec[sector].n_items < 1 || !world->sec[sector].items)

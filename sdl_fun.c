@@ -13,17 +13,20 @@ void					free_sdl(t_sdl *sdl)
 {
 	if (!sdl)
 		return ;
+	printf("1g\n");
 	if (sdl->rend)
 	{
 		SDL_DestroyRenderer(sdl->rend);
 		sdl->rend = NULL;
 	}
+	printf("2g\n");
 	if (sdl->window)
 	{
 		SDL_DestroyWindow(sdl->window);
 		sdl->window = NULL;
 	}
 	free(sdl);
+	sdl = NULL;
 	quit_sdl();
 }
 
@@ -44,9 +47,12 @@ SDL_Texture             *load_texture(char *name, SDL_Renderer *rend, t_vec2d *s
 	if (size)
 	    *size = (t_vec2d){ image->w, image->h };
 	texture = SDL_CreateTextureFromSurface(rend, image);
-	if (texture == NULL)
-		ft_putendl(SDL_GetError());
 	SDL_FreeSurface(image);
+	if (!texture)
+	{
+		ft_putendl(SDL_GetError());
+		return (NULL);
+	}
 	return (texture);
 }
 
@@ -80,13 +86,12 @@ t_sdl					*get_sdl(void)
 	*sdl = (t_sdl){ };
 	sdl->window = NULL;
 	sdl->rend = NULL;
+	sdl->mouse = (t_vec2d){ 0, 0 };
 	if (start_sdl(sdl) == FAIL)
 	{
 		ft_putendl("couldn't start sdl");
 		free_sdl(sdl);
 		return (NULL);
 	}
-	sdl->mouse = (t_vec2d){ 0, 0 };
-//	SDL_ShowCursor(SDL_FALSE);
 	return (sdl);
 }
