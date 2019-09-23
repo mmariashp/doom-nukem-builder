@@ -38,6 +38,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/summary.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/summary.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/textures.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/textures.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/useful.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/useful.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/validate_media.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/validate_media.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/values.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/values.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/walls.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/walls.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/zoom.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/zoom.c.o"

@@ -25,7 +25,46 @@ aux_source_directory( ${SRC_PATH} PROJECT_SOURCE_FILES)
 add_library(   ${LFT_NAME} STATIC ${LFT_SRC})
 
 add_executable(${PROJECT_NAME}
-        ${PROJECT_SOURCE_FILES} builder.h sdl_fun.c main_menu.c summary.c get_assets.c get_next_line.c get_next_line.h render.c modes.c level_edit.c math.c rewrite.c render_grid.c fill_polygon.c editor.c prog.c add_to_media.c buttons.c zoom.c textures.c walls.c useful.c move.c font.c edit_menu.c values.c init_editor_buttons.c edit_door.c edit_walls.c items.c sel_item.c fill_grid.c grid_main.c find_in_media.c sector_logic.c delete_from_media.c delete_world.c delete_sector.c)
+        ${PROJECT_SOURCE_FILES}
+        builder.h
+        sdl_fun.c
+        main_menu.c
+        summary.c
+        get_assets.c
+        get_next_line.c
+        get_next_line.h
+        render.c
+        modes.c
+        level_edit.c
+        math.c
+        rewrite.c
+        render_grid.c
+        fill_polygon.c
+        editor.c
+        prog.c
+        add_to_media.c
+        buttons.c
+        zoom.c
+        textures.c
+        walls.c
+        useful.c
+        move.c
+        font.c
+        edit_menu.c
+        values.c
+        init_editor_buttons.c
+        edit_door.c
+        edit_walls.c
+        items.c
+        sel_item.c
+        fill_grid.c
+        grid_main.c
+        find_in_media.c
+        sector_logic.c
+        delete_from_media.c
+        delete_world.c
+        delete_sector.c
+        validate_media.c)
 
 set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror")
 #set(GCC_COVERAGE_COMPILE_FLAGS "-fsanitize=\"address\" -g -fno-omit-frame-pointer")

@@ -657,4 +657,10 @@ void					delete_sector(int id, t_world *world);
 void					copy_sector(t_sec *new, t_sec *old);
 void					free_sector(t_sec *sector);
 
+/*
+ * validate_media
+ */
+
+void					validate_media(t_media *media);
+
 #endif

@@ -2,7 +2,7 @@
 Path: ./media/maps/
 Extension: .txt
 File Names: 
-0) graveyard
+0) fortress
 1) dungeon
 2) hell
 ###

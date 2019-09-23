@@ -49,27 +49,44 @@ ifeq ($(UNAME_S),Linux)
 endif
 
 # Sources
-SRC =	main.c \
-        level_edit.c \
-        editor.c \
+SRC =   main.c \
+        sdl_fun.c \
         main_menu.c \
         summary.c \
-        buttons.c \
-        rewrite.c \
-        fill_polygon.c \
         get_assets.c \
         get_next_line.c \
-        math.c \
+        render.c  \
         modes.c \
-        prog.c \
-        zoom.c \
-        render.c \
-        sdl_fun.c \
+        level_edit.c \
+        math.c \
+        rewrite.c \
         render_grid.c \
-        textures.c \
+        fill_polygon.c \
+        editor.c \
+        prog.c \
         add_to_media.c \
+        buttons.c \
+        zoom.c \
+        textures.c \
         walls.c \
-        useful.c
+        useful.c \
+        move.c \
+        font.c \
+        edit_menu.c \
+        values.c \
+        init_editor_buttons.c \
+        edit_door.c \
+        edit_walls.c \
+        items.c \
+        sel_item.c \
+        fill_grid.c \
+        grid_main.c \
+        find_in_media.c \
+        sector_logic.c \
+        delete_from_media.c \
+        delete_world.c \
+        delete_sector.c \
+        validate_media.c
 
 OBJ =	$(SRC:.c=.o)
 

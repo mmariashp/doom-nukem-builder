@@ -2890,6 +2890,33 @@ useful.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/useful.c.s
 .PHONY : useful.c.s
 
+validate_media.o: validate_media.c.o
+
+.PHONY : validate_media.o
+
+# target to build an object file
+validate_media.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/validate_media.c.o
+.PHONY : validate_media.c.o
+
+validate_media.i: validate_media.c.i
+
+.PHONY : validate_media.i
+
+# target to preprocess a source file
+validate_media.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/validate_media.c.i
+.PHONY : validate_media.c.i
+
+validate_media.s: validate_media.c.s
+
+.PHONY : validate_media.s
+
+# target to generate assembly for a file
+validate_media.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/validate_media.c.s
+.PHONY : validate_media.c.s
+
 values.o: values.c.o
 
 .PHONY : values.o
@@ -3287,6 +3314,9 @@ help:
 	@echo "... useful.o"
 	@echo "... useful.i"
 	@echo "... useful.s"
+	@echo "... validate_media.o"
+	@echo "... validate_media.i"
+	@echo "... validate_media.s"
 	@echo "... values.o"
 	@echo "... values.i"
 	@echo "... values.s"

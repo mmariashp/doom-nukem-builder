@@ -114,8 +114,6 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		prog->features[F_REDRAW] = 0;
 	}
 
-
-
 //	if (!sdl || !media || !grid)
 //		return ;
 //	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
@@ -339,6 +337,36 @@ void					buttons_refresh(t_prog *prog, int state, int *last, SDL_Renderer *rend)
 	prog->features[F_REDRAW] = 1;
 }
 
+void 					drawing(t_media *media, t_prog *prog, t_grid *grid, t_sdl *sdl)
+{
+	if ((prog->click.x || prog->click.y) && mouse_over(grid->box, sdl->mouse))
+	{
+		if (grid->active[0].x == -1)
+			grid->active[0] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
+		else if (grid->active[1].x == -1)
+			grid->active[1] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
+		if (grid->active[0].x != -1)
+			add_to_media(grid, media);
+		if (grid->active[0].x != -1)
+		{
+			int i = 0;
+			while (i < prog->modes[prog->mode_id].n_buttons)
+				prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
+		}
+		else
+		{
+			int i = 0;
+			while (i < prog->modes[prog->mode_id].n_buttons)
+				prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = TRUE;
+		}
+
+		prog->features[F_REDRAW] = 1;
+		prog->click = (t_vec2d){ 0, 0 };
+	}
+	else if (grid->active[0].x != -1 && grid->active[1].x == -1)
+		prog->features[F_REDRAW] = 1;
+}
+
 unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int                 texture;
@@ -534,35 +562,9 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 		}
 		else if (state == NORMAL)
 		{
-			if (prog->button_on == DRAW_BTN) // draw mode
+			if (prog->button_on == DRAW_BTN)
 			{
-				if ((prog->click.x || prog->click.y) && mouse_over(grid->box, sdl->mouse))
-				{
-					if (grid->active[0].x == -1)
-						grid->active[0] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
-					else if (grid->active[1].x == -1)
-						grid->active[1] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
-					if (grid->active[0].x != -1)
-						add_to_media(grid, media);
-
-					if (grid->active[0].x != -1)
-					{
-						int i = 0;
-						while (i < prog->modes[prog->mode_id].n_buttons)
-							prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
-					}
-					else
-					{
-						int i = 0;
-						while (i < prog->modes[prog->mode_id].n_buttons)
-							prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = TRUE;
-					}
-
-					prog->features[F_REDRAW] = 1;
-					prog->click = (t_vec2d){ 0, 0 };
-				}
-				else if (grid->active[0].x != -1 && grid->active[1].x == -1)
-					prog->features[F_REDRAW] = 1;
+				drawing(media, prog, grid, sdl);
 			}
 			else if (prog->button_on == DISTORT_BTN ) // move mode
 				move_vector(prog, sdl->mouse, grid, &media->worlds[media->w_id]);

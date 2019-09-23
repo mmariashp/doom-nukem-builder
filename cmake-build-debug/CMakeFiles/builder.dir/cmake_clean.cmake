@@ -33,6 +33,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/summary.c.o"
   "CMakeFiles/builder.dir/textures.c.o"
   "CMakeFiles/builder.dir/useful.c.o"
+  "CMakeFiles/builder.dir/validate_media.c.o"
   "CMakeFiles/builder.dir/values.c.o"
   "CMakeFiles/builder.dir/walls.c.o"
   "CMakeFiles/builder.dir/zoom.c.o"

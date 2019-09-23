@@ -303,6 +303,7 @@ unsigned short			rewrite_media(t_media *media)
 		ft_putstr(".\n");
 		return (FAIL);
 	}
+	validate_media(media);
 	rewrite_levels(media);
 	return (SUCCESS);
 }
