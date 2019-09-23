@@ -2,11 +2,9 @@
 Path: ./media/maps/
 Extension: .txt
 File Names: 
-0) level_0
-1) level_1
-2) level_2
-3) new_level_0
-4) new_level_1
+0) graveyard
+1) dungeon
+2) hell
 ###
 
 #Textures

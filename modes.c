@@ -195,7 +195,7 @@ unsigned short			distribute_buttons_v2(t_button *buttons, int from, int to, t_re
 
 SDL_Texture				*btn_back(int id, int set_get_free, SDL_Renderer *rend)
 {
-	static char 		path_buttons[10] = "./buttons/";
+	static char 		path_buttons[11] = "./buttons/";
 	static char 		ext[5] = ".png";
 	static int 			init = 0;
 	static SDL_Texture	**back = NULL;
@@ -264,7 +264,7 @@ unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_world
 	char				*s;
 	char 				*tmp;
 	int 				n_levels = n_worlds + 1;
-	int 				n_buttons = n_levels * 3;
+	int 				n_buttons = n_levels * 3 - 2;
 
 	static SDL_Texture	*edit = NULL;
 	static SDL_Texture	*editlit = NULL;

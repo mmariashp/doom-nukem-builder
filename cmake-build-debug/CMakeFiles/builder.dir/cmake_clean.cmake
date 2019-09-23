@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/add_to_media.c.o"
   "CMakeFiles/builder.dir/buttons.c.o"
   "CMakeFiles/builder.dir/delete_from_media.c.o"
+  "CMakeFiles/builder.dir/delete_sector.c.o"
+  "CMakeFiles/builder.dir/delete_world.c.o"
   "CMakeFiles/builder.dir/edit_door.c.o"
   "CMakeFiles/builder.dir/edit_menu.c.o"
   "CMakeFiles/builder.dir/edit_walls.c.o"

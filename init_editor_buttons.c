@@ -4,7 +4,7 @@
 t_mode					*init_sec_buttons(t_mode *m, SDL_Renderer *rend)
 {
 	static char 		path_items[10] = "./items3/";
-	static char 		path_buttons[10] = "./buttons/";
+	static char 		path_buttons[11] = "./buttons/";
 	static char 		ext[5] = ".png";
 	static char         reg[18][15] = { "cross2", "trash", "up2", "down2",\
 						"up2", "down2", "edit", "edit", "edit", "trash", \
@@ -72,7 +72,7 @@ t_mode					*init_sec_buttons(t_mode *m, SDL_Renderer *rend)
 
 t_mode					*init_wall_buttons(t_mode *m, SDL_Renderer *rend)
 {
-	static char 		path_buttons[10] = "./buttons/";
+	static char 		path_buttons[11] = "./buttons/";
 	static char 		ext[5] = ".png";
 	static char         reg[4][15] = { "cross2", "edit", "edit", "edit" };
 	static char         lit[4][15] = { "cross3", "editlit", "editlit", "editlit" };
@@ -100,7 +100,7 @@ t_mode					*init_wall_buttons(t_mode *m, SDL_Renderer *rend)
 
 t_mode					*init_regular_buttons(t_mode *mode, SDL_Renderer *rend)
 {
-	static char 		path_buttons[10] = "./buttons/";
+	static char 		path_buttons[11] = "./buttons/";
 	static char 		ext[5] = ".png";
 	static t_rec		box = { 10, 0, WIN_H * 0.07 * 9, WIN_H * 0.07};
 	static char         reg[9][15] = { "move2", "add2", "distort2",\

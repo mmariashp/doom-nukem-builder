@@ -293,6 +293,8 @@ t_vec2d					find_node(int p_x, int p_y, t_grid *grid)
 	return ((t_vec2d){ round(mapx), round(mapy) });
 }
 
+
+
 void					game_loop(t_sdl *sdl, t_media *media)
 {
 	t_grid				*grid;

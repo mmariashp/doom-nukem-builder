@@ -231,7 +231,7 @@
 # define NORMAL					-1
 # define SECTOR_SEARCH			0
 # define SECTOR_EDIT			1
-# define VECTOR_SEARCH			2
+# define INPUT					2
 # define VECTOR_EDIT			3
 # define WALL_SEARCH			4
 # define WALL_EDIT				5
@@ -378,8 +378,7 @@ typedef struct					s_world
 {
 	char 						*filename;
 	char 						*full_path;
-//	int							*textures;
-	t_sec					*sec;
+	t_sec						*sec;
 	t_wall						*walls;
 	t_vec2d						*vecs;
 	t_vec2d						p_start;
@@ -387,7 +386,6 @@ typedef struct					s_world
 	short unsigned				n_sec;
 	short unsigned				n_vecs;
 	short unsigned				n_walls;
-//	short unsigned				n_txtrs;
 }								t_world;
 
 typedef struct 					s_section
@@ -641,8 +639,22 @@ unsigned short 			sec_is_convex(t_vec2d *vecs, int *v, int n);
 //delete from media
 
 void					delete_vector(int id, t_world *world);
-void					delete_sector(int id, t_world *world);
 
+
+/*
+ * delete_world
+ */
+
+void					delete_world(t_media *media, int id);
+void					free_world(t_world *world);
+void					copy_world(t_world *new, t_world *old);
+
+/*
+ * delete_sector
+ */
+
+void					delete_sector(int id, t_world *world);
+void					copy_sector(t_sec *new, t_sec *old);
 void					free_sector(t_sec *sector);
 
 #endif

@@ -69,32 +69,79 @@ void					render_item_info(t_media *med, SDL_Renderer *rend, t_mode *mode)
 	}
 }
 
+void					render_cursor(SDL_Renderer *rend, t_vec2d mouse)
+{
+	SDL_Texture	*t = load_texture("./buttons/interact.png", rend, 0);
+	SDL_Rect			rect;
+
+	if (rend && t)
+	{
+		rect = (SDL_Rect){ mouse.x , mouse.y,
+						   30, 30 };
+		SDL_RenderCopy(rend, t, NULL, &rect);
+		SDL_DestroyTexture(t);
+	}
+}
+
 void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int					state;
 
-	if (!sdl || !media || !grid || prog->features[F_REDRAW] == 0)
+	if (!sdl || !media || !grid)
 		return ;
-	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
-	SDL_RenderClear(sdl->rend);
-	state = selected_item(1, STATE_SELECT, -1);
-	grid_refresh(grid, media, state, selected_item(1, S_SELECT, -1));
-	render_grid(media->worlds[media->w_id], grid, prog, sdl->mouse);
-	render_screen(sdl->rend, prog->screen);
-	if (state == SECTOR_EDIT || state == WALL_EDIT)
+
+	if (prog->features[F_REDRAW])
 	{
-		if (state == SECTOR_EDIT)
+		SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
+		SDL_RenderClear(sdl->rend);
+		state = selected_item(1, STATE_SELECT, -1);
+		grid_refresh(grid, media, state, selected_item(1, S_SELECT, -1));
+		render_grid(media->worlds[media->w_id], grid, prog, sdl->mouse);
+		render_screen(sdl->rend, prog->screen);
+		if (state == SECTOR_EDIT || state == WALL_EDIT)
 		{
-			render_items(sdl->rend, &media->worlds[media->w_id], media->itemfull, media->n_itemfull, grid);
-			render_item_info(media, sdl->rend, &prog->modes[prog->mode_id]);
+			if (state == SECTOR_EDIT)
+			{
+				render_items(sdl->rend, &media->worlds[media->w_id], media->itemfull, media->n_itemfull, grid);
+				render_item_info(media, sdl->rend, &prog->modes[prog->mode_id]);
+			}
+			render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->w_id], state, media->n_txtrs);
 		}
-		render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->w_id], state, media->n_txtrs);
+		render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons, prog->mode_id);
+		if (state == NORMAL && prog->button_on == PLAYER_BTN)
+			place_player_icons(media->worlds[media->w_id], grid, sdl->rend);
+		SDL_RenderPresent(sdl->rend);
+		prog->features[F_REDRAW] = 0;
 	}
-	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons, prog->mode_id);
-	if (state == NORMAL && prog->button_on == PLAYER_BTN)
-		place_player_icons(media->worlds[media->w_id], grid, sdl->rend);
-	SDL_RenderPresent(sdl->rend);
-	prog->features[F_REDRAW] = 0;
+
+
+
+//	if (!sdl || !media || !grid)
+//		return ;
+//	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
+//	SDL_RenderClear(sdl->rend);
+//	state = selected_item(1, STATE_SELECT, -1);
+//	if (prog->features[F_REDRAW])
+//	{
+//		grid_refresh(grid, media, state, selected_item(1, S_SELECT, -1));
+//		render_grid(media->worlds[media->w_id], grid, prog, sdl->mouse);
+//	}
+//	render_screen(sdl->rend, prog->screen);
+//	if (state == SECTOR_EDIT || state == WALL_EDIT)
+//	{
+//		if (state == SECTOR_EDIT)
+//		{
+//			render_items(sdl->rend, &media->worlds[media->w_id], media->itemfull, media->n_itemfull, grid);
+//			render_item_info(media, sdl->rend, &prog->modes[prog->mode_id]);
+//		}
+//		render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->w_id], state, media->n_txtrs);
+//	}
+//	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons, prog->mode_id);
+//	if (state == NORMAL && prog->button_on == PLAYER_BTN)
+//		place_player_icons(media->worlds[media->w_id], grid, sdl->rend);
+//	render_cursor(sdl->rend, sdl->mouse);
+//	SDL_RenderPresent(sdl->rend);
+//	prog->features[F_REDRAW] = 0;
 }
 
 int					    *realloc_textures(int *textures, int n)

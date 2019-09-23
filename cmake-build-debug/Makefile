@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/clion-2019.2/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /opt/clion-2019.2/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/moosh/CLionProjects/builder
+CMAKE_SOURCE_DIR = /Users/mshpakov/Desktop/doom-nukem-builder
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/moosh/CLionProjects/builder/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/moosh/CLionProjects/builder/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ft
-
-# Build rule for target.
-ft: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ft
-.PHONY : ft
-
-# fast build rule for target.
-ft/fast:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
-.PHONY : ft/fast
-
-#=============================================================================
 # Target rules for targets named builder
 
 # Build rule for target.
@@ -135,6 +122,19 @@ builder: cmake_check_build_system
 builder/fast:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/build
 .PHONY : builder/fast
+
+#=============================================================================
+# Target rules for targets named ft
+
+# Build rule for target.
+ft: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ft
+.PHONY : ft
+
+# fast build rule for target.
+ft/fast:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
+.PHONY : ft/fast
 
 add_to_media.o: add_to_media.c.o
 
@@ -216,6 +216,60 @@ delete_from_media.s: delete_from_media.c.s
 delete_from_media.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_from_media.c.s
 .PHONY : delete_from_media.c.s
+
+delete_sector.o: delete_sector.c.o
+
+.PHONY : delete_sector.o
+
+# target to build an object file
+delete_sector.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_sector.c.o
+.PHONY : delete_sector.c.o
+
+delete_sector.i: delete_sector.c.i
+
+.PHONY : delete_sector.i
+
+# target to preprocess a source file
+delete_sector.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_sector.c.i
+.PHONY : delete_sector.c.i
+
+delete_sector.s: delete_sector.c.s
+
+.PHONY : delete_sector.s
+
+# target to generate assembly for a file
+delete_sector.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_sector.c.s
+.PHONY : delete_sector.c.s
+
+delete_world.o: delete_world.c.o
+
+.PHONY : delete_world.o
+
+# target to build an object file
+delete_world.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_world.c.o
+.PHONY : delete_world.c.o
+
+delete_world.i: delete_world.c.i
+
+.PHONY : delete_world.i
+
+# target to preprocess a source file
+delete_world.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_world.c.i
+.PHONY : delete_world.c.i
+
+delete_world.s: delete_world.c.s
+
+.PHONY : delete_world.s
+
+# target to generate assembly for a file
+delete_world.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_world.c.s
+.PHONY : delete_world.c.s
 
 edit_door.o: edit_door.c.o
 
@@ -2925,8 +2979,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ft"
 	@echo "... builder"
+	@echo "... ft"
 	@echo "... add_to_media.o"
 	@echo "... add_to_media.i"
 	@echo "... add_to_media.s"
@@ -2936,6 +2990,12 @@ help:
 	@echo "... delete_from_media.o"
 	@echo "... delete_from_media.i"
 	@echo "... delete_from_media.s"
+	@echo "... delete_sector.o"
+	@echo "... delete_sector.i"
+	@echo "... delete_sector.s"
+	@echo "... delete_world.o"
+	@echo "... delete_world.i"
+	@echo "... delete_world.s"
 	@echo "... edit_door.o"
 	@echo "... edit_door.i"
 	@echo "... edit_door.s"

@@ -1054,20 +1054,7 @@ unsigned				update_media(t_media *media, t_section *section)
 	return (update_section[section->id](media, section));
 }
 
-void					free_sector(t_sec *sector)
-{
-	if (!sector)
-		return ;
-	if (sector->sec_walls)
-		free(sector->sec_walls);
-	sector->sec_walls = NULL;
-	if (sector->v)
-		free(sector->v);
-	sector->v = NULL;
-	if (sector->items)
-		free(sector->items);
-	sector->items = NULL;
-}
+
 
 void					free_media(t_media *media)
 {
@@ -1081,26 +1068,7 @@ void					free_media(t_media *media)
 	{
 		j = 0;
 		while (j < media->n_worlds )
-		{
-			if (media->worlds[j].filename)
-				free(media->worlds[j].filename);
-			if (media->worlds[j].full_path)
-				free(media->worlds[j].full_path);
-			if (media->worlds[j].sec)
-			{
-				i = 0;
-				while (i < media->worlds[j].n_sec)
-					free_sector(&media->worlds[j].sec[i++]);
-				free(media->worlds[j].sec);
-			}
-			if (media->worlds[j].vecs)
-				free(media->worlds[j].vecs);
-			if (media->worlds[j].walls)
-				free(media->worlds[j].walls);
-//			if (media->worlds[j].textures)
-//				free(media->worlds[j].textures);
-			j++;
-		}
+			free_world(&media->worlds[j++]);
 		free(media->worlds);
 	}
 	if (media->txtrs)

@@ -87,5 +87,6 @@ t_sdl					*get_sdl(void)
 		return (NULL);
 	}
 	sdl->mouse = (t_vec2d){ 0, 0 };
+//	SDL_ShowCursor(SDL_FALSE);
 	return (sdl);
 }
