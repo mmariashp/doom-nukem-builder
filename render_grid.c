@@ -221,13 +221,13 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 	clean_screen(prog->screen);
 	radius1 = grid->box.w * 0.001;
 	radius2 = grid->box.w * 0.002;
-	wall = selected_item(1, W_SELECT, -1);
+	wall = select_it(1, W_SELECT, -1);
 	if (wall == -1)
 		wall = lit_item(1, W_SELECT, -1);
 	draw_walls(world, grid, prog->screen, wall);
 	render_grid_nodes(prog->screen, grid);
 	place_player(world, grid, prog->screen, radius2);
-	if (selected_item(1, STATE_SELECT, -1) == NORMAL && prog->button_on == DRAW_BTN) // draw mode
+	if (select_it(1, ST_SELECT, -1) == NORMAL && prog->btn_on == DRAW_BTN) // draw mode
 	{
 		if (grid->active[0].x != -1 && grid->active[0].y != -1)
 		{
@@ -251,7 +251,7 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 	{
 		if (world.sec[k].status != SEC_OPEN)
 		{
-			overlay = fill_sector(world, grid, prog->screen, k, selected_item(1, STATE_SELECT, 0)) == TRUE ? TRUE : overlay;
+			overlay = fill_sector(world, grid, prog->screen, k, select_it(1, ST_SELECT, 0)) == TRUE ? TRUE : overlay;
 		}
 		k++;
 	}
@@ -357,7 +357,7 @@ void					render_grid_iso(t_world world, t_grid *grid, t_prog *prog)
 		if (world.sec[tab[k].x].status != SEC_OPEN)
 		{
 			draw_walls_iso(world, grid, prog->screen, &world.sec[tab[k].x]);
-			overlay = fill_sector_iso(world, grid, prog->screen, tab[k].x, selected_item(1, STATE_SELECT, 0)) == TRUE ? TRUE : overlay;
+			overlay = fill_sector_iso(world, grid, prog->screen, tab[k].x, select_it(1, ST_SELECT, 0)) == TRUE ? TRUE : overlay;
 		}
 		k++;
 	}

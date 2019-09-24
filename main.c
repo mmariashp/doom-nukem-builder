@@ -315,6 +315,15 @@ unsigned 				load_sdl_media(t_media *media, t_sdl *sdl)
 	return (SUCCESS);
 }
 
+unsigned short			mouse_over(t_rec box, t_vec2d mouse)
+{
+	if (mouse.x <= box.x || mouse.x >= box.x + box.w)
+		return (FALSE);
+	if (mouse.y <= box.y || mouse.y >= box.y + box.h)
+		return (FALSE);
+	return (TRUE);
+}
+
 int						main(void)
 {
 	t_sdl				*sdl;

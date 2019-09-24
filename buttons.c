@@ -42,29 +42,29 @@ void					render_button_big(t_button *button, SDL_Renderer *rend, SDL_Texture **t
 		SDL_RenderCopy(rend, t[button->reg_i], NULL, &rect);
 }
 
-void					render_buttons(t_button *buttons, SDL_Renderer *rend, int n_buttons, int mode_id, SDL_Texture **t)
+void					render_btn(t_button *btn, SDL_Renderer *rend, int n_btn, int mode_id, SDL_Texture **t)
 {
 	short 				i;
 	short 				state;
 
 	i = 0;
-	state = selected_item(1, STATE_SELECT, -1);
+	state = select_it(1, ST_SELECT, -1);
 	if (!t)
 		return ;
-	while (i < n_buttons)
+	while (i < n_btn)
 	{
-		if (buttons[i].vis_lit_on[0] == TRUE)
+		if (btn[i].vis_lit_on[0] == TRUE)
 		{
-			if (mode_id == MODE_EDITOR && (buttons[i].vis_lit_on[1] == TRUE || buttons[i].vis_lit_on[2] == TRUE) && state == SECTOR_EDIT && i > B_ITEM_DEL)
-				render_button_big(&buttons[i], rend, t);
+			if (mode_id == MODE_EDITOR && (btn[i].vis_lit_on[1] == TRUE || btn[i].vis_lit_on[2] == TRUE) && state == SECTOR_EDIT && i > B_ITEM_DEL)
+				render_button_big(&btn[i], rend, t);
 			else
-				render_button(&buttons[i], rend, t);
+				render_button(&btn[i], rend, t);
 		}
 		i++;
 	}
 }
 
-unsigned short			light_button(t_sdl *sdl, t_button *buttons, int n_buttons, t_prog *prog)
+unsigned short			light_button(t_sdl *sdl, t_button *btn, int n_btn, t_prog *prog)
 {
 	unsigned short		res;
 	unsigned short		i;
@@ -73,24 +73,24 @@ unsigned short			light_button(t_sdl *sdl, t_button *buttons, int n_buttons, t_pr
 		return (FAIL);
 	i = 0;
 	res = FAIL;
-	while (i < n_buttons)
+	while (i < n_btn)
 	{
-		if (mouse_over(buttons[i].box, sdl->mouse) == TRUE)
+		if (mouse_over(btn[i].box, sdl->mouse) == TRUE)
 		{
-			buttons[i].vis_lit_on[1] = TRUE;
-			prog->button_lit = i;
+			btn[i].vis_lit_on[1] = TRUE;
+			prog->btn_lit = i;
 			prog->features[F_REDRAW] = 1;
 			res = SUCCESS;
 		}
 		else
 		{
-			if (buttons[i].vis_lit_on[1] == TRUE)
+			if (btn[i].vis_lit_on[1] == TRUE)
 				prog->features[F_REDRAW] = 1;
-			buttons[i].vis_lit_on[1] = FALSE;
+			btn[i].vis_lit_on[1] = FALSE;
 		}
 		i++;
 	}
 	if (res == FAIL)
-		prog->button_lit = -1;
+		prog->btn_lit = -1;
 	return (res);
 }

@@ -77,12 +77,12 @@
 //	SDL_RenderClear(sdl->rend);
 //	render_grid(media->worlds[media->w_id], grid, prog, sdl->mouse);
 //	render_screen(sdl->rend, prog->screen);
-//    if (prog->button_on == -1)
+//    if (prog->btn_on == -1)
 //	{
 //		if (grid->active[1].y >= 0 && grid->active[1].y < media->worlds[media->w_id].n_walls)
 //    		render_wall_menu(sdl, grid, media, &media->worlds[media->w_id].walls[grid->active[1].y]);
 //	}
-//	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons);
+//	render_btn(prog->modes[prog->mode_id].btn, sdl->rend, prog->modes[prog->mode_id].n_btn);
 //	SDL_RenderPresent(sdl->rend);
 //	prog->features[F_REDRAW] = 0;
 //
@@ -119,16 +119,16 @@
 //        }
 //        prog->last_mode_id = prog->mode_id;
 //    }
-//	if (prog->button_lit != -1 && (prog->click.x || prog->click.y)) // when pressing an on screen button
+//	if (prog->btn_lit != -1 && (prog->click.x || prog->click.y)) // when pressing an on screen button
 //	{
-//		if (prog->button_on != -1)
-//			prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
-//		prog->button_on = prog->button_lit;
-//		prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
+//		if (prog->btn_on != -1)
+//			prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
+//		prog->btn_on = prog->btn_lit;
+//		prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
 //		prog->features[F_REDRAW] = 1;
 //		return (SUCCESS);
 //	}
-//	if (light_button(sdl, prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons, prog) == SUCCESS) // when mouse is over a button
+//	if (light_button(sdl, prog->modes[prog->mode_id].btn, prog->modes[prog->mode_id].n_btn, prog) == SUCCESS) // when mouse is over a button
 //	{
 //		prog->features[F_REDRAW] = 1;
 //	}
@@ -141,7 +141,7 @@
 //        move_grid_keys(prog, grid);
 //        return (SUCCESS);
 //    }
-//    if (mouse_over(grid->box, sdl->mouse) && prog->button_on == -1)
+//    if (mouse_over(grid->box, sdl->mouse) && prog->btn_on == -1)
 //    {
 //         grid->active[0] = find_node(sdl->mouse.x, sdl->mouse.y, grid);
 //         if (grid->active[0].x >= 0 && grid->active[0].x < GRID_SIZE && grid->active[0].y >= 0 && grid->active[0].y < GRID_SIZE &&
@@ -158,36 +158,36 @@
 //                grid->active[1].y = grid->active[1].x;
 //                door = wall_door(grid->active[1].y, media->worlds[media->w_id].walls, media->worlds[media->w_id].n_walls);
 //                int i = W_DESELECT_BTN;
-//                while ( i < prog->modes[prog->mode_id].n_buttons)
-//                    prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = TRUE;
+//                while ( i < prog->modes[prog->mode_id].n_btn)
+//                    prog->modes[prog->mode_id].btn[i++].vis_lit_on[0] = TRUE;
 //                i = 0;
 //                while ( i < W_DESELECT_BTN)
-//                    prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
+//                    prog->modes[prog->mode_id].btn[i++].vis_lit_on[0] = FALSE;
 //                if (media->worlds[media->w_id].walls[grid->active[1].y].type == WALL_EMPTY)
 //                {
-//                    prog->modes[prog->mode_id].buttons[W_DOOR_BTN].vis_lit_on[0] = TRUE;
+//                    prog->modes[prog->mode_id].btn[W_DOOR_BTN].vis_lit_on[0] = TRUE;
 //                    printf("DOOR %d\n", door);
 //                }
 //                else
 //                {
 //                    printf("NO DOOR %d\n", door);
-//                    prog->modes[prog->mode_id].buttons[W_DOOR_BTN].vis_lit_on[0] = FALSE;
+//                    prog->modes[prog->mode_id].btn[W_DOOR_BTN].vis_lit_on[0] = FALSE;
 //                }
 //            }
 //        }
 //        prog->features[F_REDRAW] = 1;
 //        prog->click = (t_vec2d){ 0, 0 };
 //    }
-//    else if (prog->button_on == W_PORTAL_BTN || prog->button_on == W_DOOR_BTN)
+//    else if (prog->btn_on == W_PORTAL_BTN || prog->btn_on == W_DOOR_BTN)
 //    {
 //        if (grid->active[1].y >= 0 && grid->active[1].y < media->worlds[media->w_id].n_walls)
 //        {
-//            if (prog->button_on == W_PORTAL_BTN)
+//            if (prog->btn_on == W_PORTAL_BTN)
 //            {
 //                printf("changing wall type of wall n %d\n", grid->active[1].y);
 //                media->worlds[media->w_id].walls[grid->active[1].y].type = media->worlds[media->w_id].walls[grid->active[1].y].type == WALL_EMPTY ? WALL_FILLED : WALL_EMPTY;
 //            }
-//            if (prog->button_on == W_DOOR_BTN)
+//            if (prog->btn_on == W_DOOR_BTN)
 //            {
 //                if (media->worlds[media->w_id].walls[grid->active[1].y].door == -1)
 //                    add_door(&media->worlds[media->w_id], grid->active[1].y);
@@ -196,22 +196,22 @@
 //            }
 //        }
 //        prog->features[F_REDRAW] = 1;
-//        prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
-//        prog->button_on = -1;
+//        prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
+//        prog->btn_on = -1;
 //    }
-//    else if (prog->button_on == W_DESELECT_BTN && grid->active[1].y != -1) // sector mode
+//    else if (prog->btn_on == W_DESELECT_BTN && grid->active[1].y != -1) // sector mode
 //    {
 //        int i = W_DESELECT_BTN;
-//        while ( i < prog->modes[prog->mode_id].n_buttons)
-//            prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = FALSE;
+//        while ( i < prog->modes[prog->mode_id].n_btn)
+//            prog->modes[prog->mode_id].btn[i++].vis_lit_on[0] = FALSE;
 //        i = 0;
 //        while ( i < W_DESELECT_BTN)
-//            prog->modes[prog->mode_id].buttons[i++].vis_lit_on[0] = TRUE;
+//            prog->modes[prog->mode_id].btn[i++].vis_lit_on[0] = TRUE;
 //        grid->active[1] = (t_vec2d){ -1, -1 };
 //        prog->features[F_REDRAW] = 1;
 //
-//        prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
-//        prog->button_on = -1;
+//        prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
+//        prog->btn_on = -1;
 //
 //        clean_grid(grid);
 //        zoom_to_map(media->worlds[media->w_id].n_vecs, media->worlds[media->w_id].vecs, grid);
@@ -268,33 +268,33 @@
 //				prog->click = sdl->mouse;
 //			if(event.type == SDL_MOUSEBUTTONUP)
 //			{
-//				if (prog->button_lit == W_BACK_BTN)
+//				if (prog->btn_lit == W_BACK_BTN)
 //				{
 //					prog->last_mode_id = prog->mode_id;
 //					prog->mode_id = MODE_EDITOR;
-//					prog->modes[prog->mode_id].buttons[prog->button_lit].vis_lit_on[2] = FALSE;
-//					prog->button_lit = -1;
-//					prog->button_on = -1;
+//					prog->modes[prog->mode_id].btn[prog->btn_lit].vis_lit_on[2] = FALSE;
+//					prog->btn_lit = -1;
+//					prog->btn_on = -1;
 //                    clean_grid(grid);
 //					return (quit);
 //				}
-//                if (prog->button_lit == WT_BTN)
+//                if (prog->btn_lit == WT_BTN)
 //                {
 //                    prog->features[F_REDRAW] = 1;
-//                    if (prog->button_on >= 0)
-//                        prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = FALSE;
+//                    if (prog->btn_on >= 0)
+//                        prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
 //                    prog->last_mode_id = prog->mode_id;
 //                    prog->mode_id = MODE_TEXTURES;
-//                    prog->button_lit = -1;
-//                    prog->button_on = -1;
+//                    prog->btn_lit = -1;
+//                    prog->btn_on = -1;
 //                    if (grid->active[1].y >= 0 && grid->active[1].y < media->worlds[media->w_id].n_walls)
 //                    {
 //                        int k;
 //                        k = media->worlds[media->w_id].textures[media->worlds[media->w_id].walls[grid->active[1].y].txtr];
 //                        if (k >= 0 && k < media->n_txtrs)
 //                        {
-//                            prog->button_on = k;
-//                            prog->modes[prog->mode_id].buttons[prog->button_on].vis_lit_on[2] = TRUE;
+//                            prog->btn_on = k;
+//                            prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
 //                        }
 //                    }
 //                    return (quit);

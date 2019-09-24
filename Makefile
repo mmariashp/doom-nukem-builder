@@ -52,7 +52,7 @@ endif
 SRC =   main.c \
         sdl_fun.c \
         main_menu.c \
-        summary.c \
+        levels.c \
         get_assets.c \
         get_next_line.c \
         render.c  \
@@ -64,7 +64,7 @@ SRC =   main.c \
         editor.c \
         prog.c \
         add_to_media.c \
-        buttons.c \
+        btn.c \
         zoom.c \
         textures.c \
         walls.c \
@@ -73,7 +73,7 @@ SRC =   main.c \
         font.c \
         edit_menu.c \
         values.c \
-        init_editor_buttons.c \
+        init_editor_btn.c \
         edit_door.c \
         edit_walls.c \
         items.c \

@@ -96,8 +96,8 @@ typedef struct
     const char *title;                  /**< UTF-8 title */
     const char *message;                /**< UTF-8 message text */
 
-    int numbuttons;
-    const SDL_MessageBoxButtonData *buttons;
+    int numbtn;
+    const SDL_MessageBoxButtonData *btn;
 
     const SDL_MessageBoxColorScheme *colorScheme;   /**< ::SDL_MessageBoxColorScheme, can be NULL to use system settings */
 } SDL_MessageBoxData;

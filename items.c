@@ -29,7 +29,7 @@ void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, 
 
 	if (!rend || !world || !itemfull || !grid)
 		return ;
-	sector = selected_item(1, S_SELECT, -1);
+	sector = select_it(1, S_SELECT, -1);
 	if (!within(sector, -1, world->n_sec) || world->sec[sector].n_items < 1 || !world->sec[sector].items)
 		return ;
 	i = 0;
@@ -128,7 +128,7 @@ void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sec *sector)
 					move_grid_drag(prog, mouse, grid);
 					id = -1;
 				}
-				selected_item(0, I_SELECT, id);
+				select_it(0, I_SELECT, id);
 				to_erase = grid->active[0];
 			}
 			else if (id >= 0)

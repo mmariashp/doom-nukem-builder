@@ -262,7 +262,7 @@ extern DECLSPEC int SDLCALL SDL_JoystickNumBalls(SDL_Joystick * joystick);
 extern DECLSPEC int SDLCALL SDL_JoystickNumHats(SDL_Joystick * joystick);
 
 /**
- *  Get the number of buttons on a joystick.
+ *  Get the number of btn on a joystick.
  */
 extern DECLSPEC int SDLCALL SDL_JoystickNumButtons(SDL_Joystick * joystick);
 

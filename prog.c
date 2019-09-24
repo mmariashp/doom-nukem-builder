@@ -94,8 +94,8 @@ t_prog					*get_prog(SDL_Renderer *rend)
 	prog->mode_id = 0;
 	prog->last_mode_id = 0;
 	prog->modes = NULL;
-	prog->button_lit = -1;
-	prog->button_on = -1;
+	prog->btn_lit = -1;
+	prog->btn_on = -1;
 	prog->zoom = 0;
 	prog->click = (t_vec2d){ 0, 0 };
     prog->move = (t_vec2d){ 0, 0 };

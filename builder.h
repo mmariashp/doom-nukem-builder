@@ -7,14 +7,14 @@
 # include "get_next_line.h"
 
 # ifdef		__APPLE__
-# include <SDL.h>
-# include <SDL_image.h>
-# include <SDL_ttf.h>
+# include						<SDL.h>
+# include						<SDL_image.h>
+# include						<SDL_ttf.h>
 # elif		__linux
-# include <SDL2/SDL.h>
-# include <SDL2/SDL_image.h>
-# include <SDL2/SDL_ttf.h>
-# include <SDL2/SDL_mixer.h>
+# include						<SDL2/SDL.h>
+# include						<SDL2/SDL_image.h>
+# include						<SDL2/SDL_ttf.h>
+# include						<SDL2/SDL_mixer.h>
 # endif
 
 # include <stdlib.h>
@@ -27,6 +27,13 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 
+# ifdef		__APPLE__
+# define SCROLL_UP				-1
+# define SCROLL_DOWN			1
+# elif		__linux
+# define SCROLL_UP				1
+# define SCROLL_DOWN			-1
+# endif
 
 # define SUCCESS				0
 # define FAIL					1
@@ -159,13 +166,12 @@
 
 # define N_MODES			5
 # define MODE_MAIN_MENU		0
-# define MODE_SUMMARY		1
+# define MODE_levels		1
 # define MODE_EDITOR		2
 # define MODE_TEXTURES		3
 # define MODE_SEL_ITEM		4
 
 # define N_MM_BTNS		2
-
 
 # define TXTR_RECT_GR		0
 # define TXTR_RECT_GR_L		1
@@ -273,7 +279,7 @@
 # define S_SELECT		2
 # define T_SELECT		3
 # define SEL_I_SELECT	4
-# define STATE_SELECT	5
+# define ST_SELECT	5
 # define WORLD_SELECT	6
 # define I_SELECT		7
 
@@ -281,7 +287,7 @@
 # define NORMAL					-1
 # define SECTOR_SEARCH			0
 # define SECTOR_EDIT			1
-# define INPUT					2
+# define INP					2
 # define VECTOR_EDIT			3
 # define WALL_SEARCH			4
 # define WALL_EDIT				5
@@ -368,8 +374,8 @@ typedef struct					s_prog
 	int 						mode_id;
 	int 						last_mode_id;
 	struct s_mode				*modes;
-	short 						button_lit;
-	short 						button_on;
+	short 						btn_lit;
+	short 						btn_on;
 	short 						zoom;
     t_vec2d						move;
 	t_vec2d						click;
@@ -478,8 +484,8 @@ typedef struct 					s_media
 
 typedef struct					s_mode
 {
-	unsigned short				n_buttons;
-	t_button					*buttons;
+	unsigned short				n_btn;
+	t_button					*btn;
 	int							(*input)(t_sdl*, t_grid*, t_media *, t_prog *);
 	unsigned short				(*update)(t_sdl*, t_grid*, t_media *, t_prog *);
 	void						(*render)(t_sdl*, t_grid*, t_media *, t_prog *);
@@ -488,7 +494,8 @@ typedef struct					s_mode
 typedef struct 					s_value
 {
 	char 						*text;
-	SDL_Texture					*texture;
+	int 						t_id;
+	char 						media_prog;
 }								t_value;
 
 int						start_sdl(t_sdl *sdl);
@@ -496,40 +503,40 @@ t_sdl					*get_sdl(void);
 SDL_Texture             *load_texture(char *name, SDL_Renderer *rend, t_vec2d *size);
 void					free_sdl(t_sdl *sdl);
 void					quit_sdl(void);
-//void					error(char *reason);
-//void					my_error(char *reason);
-//void					end(char *reason);
 
-void					render_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-unsigned short			update_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-int						input_main_menu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+void					r_mainmenu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+unsigned short			u_mainmenu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+int						i_mainmenu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
-void					render_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-unsigned short			update_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-int						input_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+void					r_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+int						i_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
-int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-unsigned short			update_editor(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
-void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+unsigned short			u_editor(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
+void					r_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
-int						input_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-unsigned short			update_textures(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
-void					render_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+int						i_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+unsigned short			u_textures(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
+void					r_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
-int						input_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
-unsigned short			update_sel_item(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
-void					render_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+int						i_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+unsigned short			u_sel_item(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
+void					r_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
 
 void					write_text(char *str, SDL_Renderer *rend, t_rec rec, int color, char h_center);
 
+
 int						clamp(int n, int min, int max);
 float					clamp_f(float n, float min, float max);
-t_vec2d					add(t_vec2d one, t_vec2d two);
-t_vec2d					mult(t_vec2d one, t_vec2d two);
 t_vec2d					scale(t_vec2d vec, int scale);
+t_vec2d					mult(t_vec2d one, t_vec2d two);
+t_vec2d					sub_one_from_two(t_vec2d one, t_vec2d two);
+t_vec2d					add(t_vec2d one, t_vec2d two);
 int                     get_max(int one, int two);
 int                     get_min(int one, int two);
+
 
 t_media					*get_assets(void);
 unsigned 				close_file(int fd);
@@ -551,12 +558,12 @@ void                    refresh_level_list(t_media *media, t_mode *mode);
 
 void					render_button(t_button *button, SDL_Renderer *rend, SDL_Texture **t);
 void					render_button_big(t_button *button, SDL_Renderer *rend, SDL_Texture **t);
-void					render_buttons(t_button *buttons, SDL_Renderer *rend, int n_buttons, int mode_id, SDL_Texture **t);
+void					render_btn(t_button *btn, SDL_Renderer *rend, int n_btn, int mode_id, SDL_Texture **t);
 unsigned short			mouse_over(t_rec box, t_vec2d mouse);
 
 void					render_frame(t_rec rec, int color, SDL_Renderer *rend);
 
-unsigned short			light_button(t_sdl *sdl, t_button *buttons, int n_buttons, t_prog *prog);
+unsigned short			light_button(t_sdl *sdl, t_button *btn, int n_btn, t_prog *prog);
 
 void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse);
 
@@ -609,7 +616,7 @@ unsigned short			add_wall(t_wall **walls, short n_walls, int one, int two);
 
 //useful
 unsigned short			within(int value, int min, int max);
-int 					selected_item(char set_get_unset, unsigned short id, int value);
+int 					select_it(char set_get_unset, unsigned short id, int value);
 int 					lit_item(char set_get_unset, unsigned short id, int value);
 char 					*get_full_path(char *filename, char *ext, char *path);
 
@@ -623,17 +630,17 @@ t_rec                   layout_menu(char i, char n);
 TTF_Font				*set_get_free_font(char set_get_free);
 
 //values
-void					render_values(int state, int n, t_value *values, SDL_Renderer *rend, SDL_Texture **t);
+void					render_values(int state, int n, t_value *values, SDL_Renderer *rend, SDL_Texture **t, t_texture *txtrs, int n_txtrs);
 void					free_values(t_value *values, int n);
 t_value					*init_values(int n);
 
 
-// buttons
-t_button				*init_buttons(int n_buttons);
-void					free_buttons(t_button *buttons, int n);
-t_button				*set_get_free_buttons(char set_get_free, int *n, int state);
-unsigned short			distribute_buttons_h(t_button *buttons, int from, int to, t_rec box, int padding);
-void					get_buttons(int state, t_mode *mode);
+// btn
+t_button				*init_btn(int n_btn);
+void					free_btn(t_button *btn, int n);
+t_button				*set_get_free_btn(char set_get_free, int *n, int state);
+unsigned short			distribute_btn_h(t_button *btn, int from, int to, t_rec box, int padding);
+void					get_btn(int state, t_mode *mode);
 
 //door
 void                    delete_door(t_world *world, int id);

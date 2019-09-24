@@ -1,7 +1,7 @@
 
 #include "builder.h"
 
-void					render_values(int state, int n, t_value *values, SDL_Renderer *rend, SDL_Texture **t)
+void					render_values(int state, int n, t_value *values, SDL_Renderer *rend, SDL_Texture **t, t_texture *txtrs, int n_txtrs)
 {
 	int 				i;
 	t_rec				box;
@@ -21,10 +21,15 @@ void					render_values(int state, int n, t_value *values, SDL_Renderer *rend, SD
 		box = layout_menu(5, (char)i);
 		if (values[i].text)
 			write_text(values[i].text, rend, box, EDIT_TEXT_COLOR, FALSE);
-		else if (values[i].texture)
+		else if (values[i].media_prog == 0 && within(values[i].t_id, -1, n_txtrs) && txtrs[values[i].t_id].sdl_t)
 		{
 			box.w = box.h;
-			render_box(box, values[i].texture, rend);
+			render_box(box, txtrs[values[i].t_id].sdl_t, rend);
+		}
+		else if (values[i].media_prog == 1 && within(values[i].t_id, -1, TOTAL_TXTRS) && t[values[i].t_id])
+		{
+			box.w = box.h;
+			render_box(box, t[values[i].t_id], rend);
 		}
 	}
 }
@@ -41,7 +46,8 @@ t_value					*init_values(int n)
 	while (i < n)
 	{
 		new[i].text = NULL;
-		new[i].texture = NULL;
+		new[i].t_id = -1;
+		new[i].media_prog = 0;
 		i++;
 	}
 	return (new);

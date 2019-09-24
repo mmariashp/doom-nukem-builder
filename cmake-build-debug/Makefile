@@ -622,6 +622,33 @@ items.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/items.c.s
 .PHONY : items.c.s
 
+levels.o: levels.c.o
+
+.PHONY : levels.o
+
+# target to build an object file
+levels.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/levels.c.o
+.PHONY : levels.c.o
+
+levels.i: levels.c.i
+
+.PHONY : levels.i
+
+# target to preprocess a source file
+levels.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/levels.c.i
+.PHONY : levels.c.i
+
+levels.s: levels.c.s
+
+.PHONY : levels.s
+
+# target to generate assembly for a file
+levels.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/levels.c.s
+.PHONY : levels.c.s
+
 libft/ft_abs_cut.o: libft/ft_abs_cut.c.o
 
 .PHONY : libft/ft_abs_cut.o
@@ -2782,33 +2809,6 @@ sel_item.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sel_item.c.s
 .PHONY : sel_item.c.s
 
-summary.o: summary.c.o
-
-.PHONY : summary.o
-
-# target to build an object file
-summary.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/summary.c.o
-.PHONY : summary.c.o
-
-summary.i: summary.c.i
-
-.PHONY : summary.i
-
-# target to preprocess a source file
-summary.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/summary.c.i
-.PHONY : summary.c.i
-
-summary.s: summary.c.s
-
-.PHONY : summary.s
-
-# target to generate assembly for a file
-summary.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/summary.c.s
-.PHONY : summary.c.s
-
 textures.o: textures.c.o
 
 .PHONY : textures.o
@@ -3035,6 +3035,9 @@ help:
 	@echo "... items.o"
 	@echo "... items.i"
 	@echo "... items.s"
+	@echo "... levels.o"
+	@echo "... levels.i"
+	@echo "... levels.s"
 	@echo "... libft/ft_abs_cut.o"
 	@echo "... libft/ft_abs_cut.i"
 	@echo "... libft/ft_abs_cut.s"
@@ -3275,9 +3278,6 @@ help:
 	@echo "... sel_item.o"
 	@echo "... sel_item.i"
 	@echo "... sel_item.s"
-	@echo "... summary.o"
-	@echo "... summary.i"
-	@echo "... summary.s"
 	@echo "... textures.o"
 	@echo "... textures.i"
 	@echo "... textures.s"

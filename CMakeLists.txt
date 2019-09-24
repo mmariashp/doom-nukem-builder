@@ -29,7 +29,7 @@ add_executable(${PROJECT_NAME}
         builder.h
         sdl_fun.c
         main_menu.c
-        summary.c
+        levels.c
         get_assets.c
         get_next_line.c
         get_next_line.h

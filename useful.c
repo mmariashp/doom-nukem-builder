@@ -10,7 +10,7 @@ unsigned short			within(int value, int min, int max)
 	return (TRUE);
 }
 
-int 					selected_item(char set_get_unset, unsigned short id, int value)
+int 					select_it(char set_get_unset, unsigned short id, int value)
 {
 	static int 			select[8] = { -1, -1, -1, -1, -1, -1, -1, -1 };
 

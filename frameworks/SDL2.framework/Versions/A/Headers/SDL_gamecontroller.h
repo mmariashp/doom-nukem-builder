@@ -296,7 +296,7 @@ SDL_GameControllerGetAxis(SDL_GameController *gamecontroller,
                           SDL_GameControllerAxis axis);
 
 /**
- *  The list of buttons available from a controller
+ *  The list of btn available from a controller
  */
 typedef enum
 {

@@ -48,44 +48,44 @@ char 					*menu_lines(int id, int i)
 		return (NULL);
 }
 
-t_value					*get_sec_values(int *n, t_sec *sector, SDL_Texture *f_texture, SDL_Texture *c_texture)
+t_value					*get_sec_values(int *n, t_sec *sector)
 {
 	static int 			nb = 6;
 	t_value				*new;
 
-	if (!sector || !f_texture || !c_texture)
+	if (!sector)
 		return (NULL);
 	if (!(new = init_values(nb)))
 		return (NULL);
 	*n = nb;
 	new[1].text = ft_itoa(sector->floor);
 	new[2].text = ft_itoa(sector->ceiling);
-	new[3].texture = f_texture;
-	new[4].texture = c_texture;
+	new[3].t_id = sector->floor_txtr;
+	new[4].t_id = sector->ceil_txtr;
 	new[5].text = ft_itoa(sector->n_items);
-	if (!new[1].text || !new[2].text || !new[5].text || !new[3].texture
-	|| !new[4].texture)
+	new[3].media_prog = 0;
+	new[4].media_prog = 0;
+	if (!new[1].text || !new[2].text || !new[5].text)
 		return (NULL);
 	return (new);
 }
 
-t_value					*get_wall_values(int *n, t_wall *wall, SDL_Renderer *rend, SDL_Texture *wall_texture)
+t_value					*get_wall_values(int *n, t_wall *wall)
 {
 	static int 			nb = 4;
 	t_value				*new;
 
-	if (!wall || !rend || !wall_texture)
+	if (!wall)
 		return (NULL);
 	if (!(new = init_values(nb)))
 		return (NULL);
 	*n = nb;
-	new[1].texture = wall_texture;
-	new[2].texture = wall->type == WALL_EMPTY ?\
-		load_texture("./buttons/yes.png", rend, 0) : load_texture("./buttons/no.png", rend, 0);
-	new[3].texture = wall->door > -1 ?\
-		load_texture("./buttons/yes.png", rend, 0) : load_texture("./buttons/no.png", rend, 0);
-	if (!new[1].texture || !new[2].texture || !new[3].texture)
-		return (NULL);
+	new[1].t_id = wall->txtr;
+	new[2].t_id = wall->type == WALL_EMPTY ? TXTR_YES : TXTR_NO;
+	new[3].t_id = wall->door > -1 ? TXTR_YES : TXTR_NO;
+	new[1].media_prog = 0;
+	new[2].media_prog = 1;
+	new[3].media_prog = 1;
 	return (new);
 }
 
@@ -94,32 +94,26 @@ void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int sta
 	t_value             *values;
 	int 				i;
 	int                 n;
-	int 				f;
-	int 				c;
 
 	if (!r || !txtrs || !w || (state != SECTOR_EDIT && state != WALL_EDIT))
 		return ;
 	values = NULL;
 	n = 0;
-	i = state == SECTOR_EDIT ? selected_item(1, S_SELECT, -1)
-			: selected_item(1, W_SELECT, -1);
+	i = state == SECTOR_EDIT ? select_it(1, S_SELECT, -1) : select_it(1, W_SELECT, -1);
 	if (state == SECTOR_EDIT && within(i, -1, w->n_sec) &&
 	within(w->sec[i].floor_txtr, -1, n_txtrs) &&
 	within(w->sec[i].ceil_txtr, -1, n_txtrs))
 	{
-		f = w->sec[i].floor_txtr;
-		c = w->sec[i].ceil_txtr;
-		if (!(values = get_sec_values(&n, &w->sec[i], txtrs[f].sdl_t, txtrs[c].sdl_t)))
+		if (!(values = get_sec_values(&n, &w->sec[i])))
 			return ;
 	}
 	else if (state == WALL_EDIT && (!within(i, -1, w->n_walls) || !within(\
-	w->walls[i].txtr, -1, n_txtrs) || !(values = get_wall_values(&n, \
-	&w->walls[i], r, txtrs[w->walls[i].txtr].sdl_t))))
+	w->walls[i].txtr, -1, n_txtrs) || !(values = get_wall_values(&n, &w->walls[i]))))
 		return ;
 	values[0].text = ft_itoa(i);
 	if (within(TXTR_PANEL_GR, -1, TOTAL_TXTRS) && t[TXTR_PANEL_GR])
 		render_box(layout_menu(0, 0), t[TXTR_PANEL_GR], r);
-	render_values(state, n, values, r, t);
+	render_values(state, n, values, r, t, txtrs, n_txtrs);
 	free_values(values, n);
 }
 

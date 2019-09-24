@@ -1,6 +1,24 @@
 
 #include "builder.h"
 
+void					render_frame(t_rec rec, int color, SDL_Renderer *rend)
+{
+	if (!rend)
+		return ;
+	draw_line((t_line){ (t_vec2d){ rec.x, rec.y }, (t_vec2d){ rec.x + rec.w, rec.y } }, color, rend);
+	draw_line((t_line){ (t_vec2d){ rec.x, rec.y }, (t_vec2d){ rec.x, rec.y + rec.h } }, color, rend);
+	draw_line((t_line){ (t_vec2d){ rec.x + rec.w, rec.y }, (t_vec2d){ rec.x + rec.w, rec.y + rec.h } }, color, rend);
+	draw_line((t_line){ (t_vec2d){ rec.x + rec.w, rec.y + rec.h }, (t_vec2d){ rec.x, rec.y + rec.h } }, color, rend);
+}
+
+void					render_txtr_box(t_vec2d size, t_vec2d pos, SDL_Texture *t, SDL_Renderer *rend)
+{
+	SDL_Rect			rect = { pos.x, pos.y, size.x, size.y };
+	if (!t || !rend)
+		return ;
+	SDL_RenderCopy(rend, t, 0, &rect);
+}
+
 void				    get_rgb(unsigned char *r, unsigned char *g, unsigned char *b, int color)
 {
 	if (!r || !g || !b)

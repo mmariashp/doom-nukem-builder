@@ -1,24 +1,24 @@
 
 #include "builder.h"
 
-void					free_buttons(t_button *buttons, int n)
+void					free_btn(t_button *btn, int n)
 {
 	int 				i;
 
 	i = 0;
-	if (!buttons)
+	if (!btn)
 		return ;
 	while (i < n)
 	{
-		if (buttons[i].text)
+		if (btn[i].text)
 		{
-			free(buttons[i].text);
-			buttons[i].text = NULL;
+			free(btn[i].text);
+			btn[i].text = NULL;
 		}
 		i++;
 	}
-	free(buttons);
-	buttons = NULL;
+	free(btn);
+	btn = NULL;
 }
 
 void					free_modes(t_mode *modes)
@@ -30,57 +30,57 @@ void					free_modes(t_mode *modes)
 	i = 0;
 	while (i < N_MODES)
 	{
-		if (modes[i].buttons)
-			free_buttons(modes[i].buttons, modes[i].n_buttons);
+		if (modes[i].btn)
+			free_btn(modes[i].btn, modes[i].n_btn);
 		i++;
 	}
 	free(modes);
 	modes = NULL;
 }
 
-t_button				*init_buttons(int n_buttons)
+t_button				*init_btn(int n_btn)
 {
 	int 				i;
-	t_button			*buttons;
+	t_button			*btn;
 
-	buttons = (t_button *)ft_memalloc(sizeof(t_button) * n_buttons);
-	if (!buttons)
+	btn = (t_button *)ft_memalloc(sizeof(t_button) * n_btn);
+	if (!btn)
 		return (NULL);
-	ft_bzero(buttons, sizeof(t_button) * n_buttons);
+	ft_bzero(btn, sizeof(t_button) * n_btn);
 	i = 0;
-	while (i < n_buttons)
+	while (i < n_btn)
 	{
-		buttons[i].vis_lit_on[0] = TRUE;
-		buttons[i].vis_lit_on[1] = FALSE;
-		buttons[i].vis_lit_on[2] = FALSE;
-		buttons[i].box = (t_rec){ 0, 0, 10, 10 };
-		buttons[i].text_color = 0;
-		buttons[i].text = NULL;
-		buttons[i].reg_i = -1;
-		buttons[i].lit_i = -1;
+		btn[i].vis_lit_on[0] = TRUE;
+		btn[i].vis_lit_on[1] = FALSE;
+		btn[i].vis_lit_on[2] = FALSE;
+		btn[i].box = (t_rec){ 0, 0, 10, 10 };
+		btn[i].text_color = 0;
+		btn[i].text = NULL;
+		btn[i].reg_i = -1;
+		btn[i].lit_i = -1;
 		i++;
 	}
-	return (buttons);
+	return (btn);
 }
 
-unsigned short			distribute_buttons_h(t_button *buttons, int from, int to, t_rec box, int padding)
+unsigned short			distribute_btn_h(t_button *btn, int from, int to, t_rec box, int padding)
 {
 	t_vec2d				b;
 	int 				x;
 	unsigned short		i;
 
 
-	if (!buttons || !to)
+	if (!btn || !to)
 		return (FAIL);
 	b = (t_vec2d){ box.w / (to - from) - padding, box.h };
 	x = box.x;
 	i = from;
 	while (i < to)
 	{
-		buttons[i].box.w = b.x;
-		buttons[i].box.h = b.y;
-		buttons[i].box.x = x;
-		buttons[i].box.y = box.y;
+		btn[i].box.w = b.x;
+		btn[i].box.h = b.y;
+		btn[i].box.x = x;
+		btn[i].box.y = box.y;
 		x += b.x + padding;
 		i++;
 	}
@@ -88,24 +88,24 @@ unsigned short			distribute_buttons_h(t_button *buttons, int from, int to, t_rec
 	return (SUCCESS);
 }
 
-unsigned short			distribute_buttons_v(t_button *buttons, int from, int to, t_rec box, int padding)
+unsigned short			distribute_btn_v(t_button *btn, int from, int to, t_rec box, int padding)
 {
 	t_vec2d				b;
 	int 				y;
 	unsigned short		i;
 
 
-	if (!buttons || from >= to)
+	if (!btn || from >= to)
 		return (FAIL);
 	b = (t_vec2d){ box.w, box.h / (to - from) - padding };
     y = box.y;
 	i = from;
 	while (i < to)
 	{
-		buttons[i].box.w = b.x;
-		buttons[i].box.h = b.y;
-		buttons[i].box.x = box.x;
-		buttons[i].box.y = y;
+		btn[i].box.w = b.x;
+		btn[i].box.h = b.y;
+		btn[i].box.x = box.x;
+		btn[i].box.y = y;
 		y += b.y + padding;
 		i++;
 	}
@@ -131,7 +131,7 @@ int						distr(int x, int y, int n)
 	return (res);
 }
 
-unsigned short			distribute_buttons_grid(t_button *buttons, int from, int to, t_rec box, int padding)
+unsigned short			distribute_btn_grid(t_button *btn, int from, int to, t_rec box, int padding)
 {
     t_vec2d				b;
     int 				y;
@@ -139,7 +139,7 @@ unsigned short			distribute_buttons_grid(t_button *buttons, int from, int to, t_
     int x;
 
 
-    if (!buttons || from >= to || padding == -1)
+    if (!btn || from >= to || padding == -1)
         return (FAIL);
     int side = distr(box.w, box.h, to-from);
 
@@ -153,10 +153,10 @@ unsigned short			distribute_buttons_grid(t_button *buttons, int from, int to, t_
         while (i < to && x  + b.x < box.x + box.w)
         {
 //            x += padding;
-            buttons[i].box.w = b.x;
-            buttons[i].box.h = b.y;
-            buttons[i].box.x = x;
-            buttons[i].box.y = y;
+            btn[i].box.w = b.x;
+            btn[i].box.h = b.y;
+            btn[i].box.x = x;
+            btn[i].box.y = y;
             x += b.x;
             i++;
         }
@@ -166,24 +166,24 @@ unsigned short			distribute_buttons_grid(t_button *buttons, int from, int to, t_
     return (SUCCESS);
 }
 
-unsigned short			distribute_buttons_v2(t_button *buttons, int from, int to, t_rec box, t_vec2d button_size)
+unsigned short			distribute_btn_v2(t_button *btn, int from, int to, t_rec box, t_vec2d button_size)
 {
     int 				y;
     unsigned short		i;
     int                 padding = (box.h - (button_size.y * (to - from))) / to - from + 1;
 
 
-    if (!buttons || from >= to)
+    if (!btn || from >= to)
         return (FAIL);
     y = box.y;
     i = from;
     while (i < to)
     {
         y += padding;
-        buttons[i].box.w = button_size.x;
-        buttons[i].box.h = button_size.y;
-        buttons[i].box.x = box.x;
-        buttons[i].box.y = y;
+        btn[i].box.w = button_size.x;
+        btn[i].box.h = button_size.y;
+        btn[i].box.x = box.x;
+        btn[i].box.y = y;
         y += button_size.y;
         i++;
     }
@@ -194,7 +194,7 @@ unsigned short			distribute_buttons_v2(t_button *buttons, int from, int to, t_re
 
 //SDL_Texture				*btn_back(int id, int set_get_free, SDL_Renderer *rend)
 //{
-//	static char 		path_buttons[11] = "./buttons/";
+//	static char 		path_btn[11] = "./buttons/";
 //	static char 		ext[5] = ".png";
 //	static int 			init = 0;
 //	static SDL_Texture	**back = NULL;
@@ -207,25 +207,25 @@ unsigned short			distribute_buttons_v2(t_button *buttons, int from, int to, t_re
 //	{
 //		if (!(back = (SDL_Texture **)ft_memalloc(sizeof(SDL_Texture *) * N_BTN_BACKS)))
 //			return (NULL);
-//		tmp = get_full_path("blue_button00", ext, path_buttons);
+//		tmp = get_full_path("blue_button00", ext, path_btn);
 //		if (tmp)
 //		{
 //			back[0] = load_texture(tmp, rend, 0);
 //			free(tmp);
 //		}
-//		tmp = get_full_path("blue_button13", ext, path_buttons);
+//		tmp = get_full_path("blue_button13", ext, path_btn);
 //		if (tmp)
 //		{
 //			back[1] = load_texture(tmp, rend, 0);
 //			free(tmp);
 //		}
-//		tmp = get_full_path("grey_panel", ext, path_buttons);
+//		tmp = get_full_path("grey_panel", ext, path_btn);
 //		if (tmp)
 //		{
 //			back[2] = load_texture(tmp, rend, 0);
 //			free(tmp);
 //		}
-//		tmp = get_full_path("yellow_button00", ext, path_buttons);
+//		tmp = get_full_path("yellow_button00", ext, path_btn);
 //		if (tmp)
 //		{
 //			back[3] = load_texture(tmp, rend, 0);
@@ -252,47 +252,47 @@ unsigned short			distribute_buttons_v2(t_button *buttons, int from, int to, t_re
 //	return (NULL);
 //}
 
-unsigned short			main_menu_buttons(t_button *buttons)
+unsigned short			main_menu_btn(t_button *btn)
 {
 	t_rec				box;
 	int 				i;
 
-	if (!buttons)
+	if (!btn)
 		return (FAIL);
     box.w = WIN_W / 4;
     box.h = (box.w + 20) * N_MM_BTNS / 3;
 	box.x = (WIN_W  - box.w) / 2;
 	box.y = (WIN_H  - box.h) / 2;
-	distribute_buttons_v(buttons, 0, N_MM_BTNS ,box, 20);
+	distribute_btn_v(btn, 0, N_MM_BTNS ,box, 20);
 	i = 0;
 
 	while (i < N_MM_BTNS)
 	{
-		buttons[i].reg_i = TXTR_RECT_GR;
-		buttons[i].lit_i = TXTR_RECT_GR_L;
+		btn[i].reg_i = TXTR_RECT_GR;
+		btn[i].lit_i = TXTR_RECT_GR_L;
 		i++;
 	}
-	buttons[0].text = ft_strdup("START");
-	buttons[1].text = ft_strdup("QUIT");
+	btn[0].text = ft_strdup("START");
+	btn[1].text = ft_strdup("QUIT");
 	return (SUCCESS);
 }
 
-unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_worlds)
+unsigned short			levels_btn(t_button *btn, t_world *worlds, int n_worlds)
 {
 	t_rec				box;
 	int 				i;
 	char				*s;
 	char 				*tmp;
 	int 				n_levels = n_worlds + 1;
-	int 				n_buttons = n_levels * 3 - 2;
+	int 				n_btn = n_levels * 3 - 2;
 
-	if (!buttons || !worlds)
+	if (!btn || !worlds)
 		return (FAIL);
 	box.w = WIN_W / 4;
 	box.h = (box.w + 20) * n_levels / 3;
 	box.x = (WIN_W  - box.w) / 2;
 	box.y = (WIN_H  - box.h) / 2;
-	distribute_buttons_v(buttons, 0, n_levels , box, 20);
+	distribute_btn_v(btn, 0, n_levels , box, 20);
 	i = 0;
 	s = NULL;
 	while (i < n_levels)
@@ -301,65 +301,65 @@ unsigned short			summary_buttons(t_button *buttons, t_world *worlds, int n_world
 		s = ft_strjoin(tmp, ". ");
 		free(tmp);
 		if (i == n_worlds)
-			buttons[i].text = ft_strjoin(s, " ADD LEVEL");
+			btn[i].text = ft_strjoin(s, " ADD LEVEL");
 		else if (i < n_worlds)
-			buttons[i].text = ft_strjoin(s, worlds[i].filename);
+			btn[i].text = ft_strjoin(s, worlds[i].filename);
 		if (s)
 			free(s);
-		buttons[i].reg_i = TXTR_RECT_GR;
-		buttons[i].lit_i = TXTR_RECT_GR_L;
+		btn[i].reg_i = TXTR_RECT_GR;
+		btn[i].lit_i = TXTR_RECT_GR_L;
 		i++;
 	}
 	int j = 0;
-	while (i + 1 < n_buttons)
+	while (i + 1 < n_btn)
 	{
-		buttons[i].reg_i = TXTR_EDIT;
-		buttons[i].lit_i = TXTR_EDIT_L;
-		buttons[i + 1].reg_i = TXTR_DEL;
-		buttons[i + 1].lit_i = TXTR_DEL_L;
-		buttons[i].box = buttons[j].box;
-		buttons[i + 1].box = buttons[j].box;
-		buttons[i].box.x += buttons[j].box.w + 10;
-		buttons[i + 1].box.x += buttons[j].box.w + 50;
-		buttons[i].box.w = 30;
-		buttons[i + 1].box.w = 30;
-		buttons[i].box.h = 30;
-		buttons[i + 1].box.h = 30;
+		btn[i].reg_i = TXTR_EDIT;
+		btn[i].lit_i = TXTR_EDIT_L;
+		btn[i + 1].reg_i = TXTR_DEL;
+		btn[i + 1].lit_i = TXTR_DEL_L;
+		btn[i].box = btn[j].box;
+		btn[i + 1].box = btn[j].box;
+		btn[i].box.x += btn[j].box.w + 10;
+		btn[i + 1].box.x += btn[j].box.w + 50;
+		btn[i].box.w = 30;
+		btn[i + 1].box.w = 30;
+		btn[i].box.h = 30;
+		btn[i + 1].box.h = 30;
 		i += 2;
 		j++;
 	}
 	return (SUCCESS);
 }
 
-unsigned short			textures_buttons(t_button *buttons, t_texture *textures, int n_txtrs)
+unsigned short			textures_btn(t_button *btn, t_texture *textures, int n_txtrs)
 {
     t_rec				box;
     int 				i;
 
-    if (!buttons || !textures)
+    if (!btn || !textures)
         return (FAIL);
     box.w = WIN_W * 0.9;
     box.h = WIN_H * 0.9;
     box.x = (WIN_W  - box.w) / 2;
     box.y = (WIN_H  - box.h) / 2;
-    distribute_buttons_grid(buttons, 0, n_txtrs , box, 20);
+    distribute_btn_grid(btn, 0, n_txtrs , box, 20);
     i = 0;
     while (i < n_txtrs)
     {
-        buttons[i].vis_lit_on[0] = TRUE;
-		buttons[i].reg_i = TXTR_RECT_GR;
-		buttons[i].lit_i = TXTR_RECT_GR_L;
+        btn[i].vis_lit_on[0] = TRUE;
+		btn[i].reg_i = TXTR_RECT_GR;
+		btn[i].lit_i = TXTR_RECT_GR_L;
         i++;
     }
     return (SUCCESS);
 }
 
-unsigned short			sel_item_buttons(t_button *buttons, t_itemfull *itemfull, int n_itemfull)
+unsigned short			sel_item_btn(t_button *btn, t_itemfull *itemfull, int n_itemfull)
 {
 	t_rec				button_box;
 	int 				i;
 
-	if (!buttons || !itemfull)
+	if (!btn || !itemfull)
 		return (FAIL);
 	button_box.w = WIN_W * 0.4;
 	button_box.h = WIN_H * 0.9 / 25;
@@ -376,11 +376,11 @@ unsigned short			sel_item_buttons(t_button *buttons, t_itemfull *itemfull, int n
 	i = 0;
 	while (i < n_itemfull)
 	{
-		buttons[i].vis_lit_on[0] = TRUE;
-		buttons[i].reg_i = TXTR_RECT_GR;
-		buttons[i].lit_i = TXTR_RECT_GR_L;
-		buttons[i].text = ft_strdup(itemfull[i].filename);
-		buttons[i].box = button_box;
+		btn[i].vis_lit_on[0] = TRUE;
+		btn[i].reg_i = TXTR_RECT_GR;
+		btn[i].lit_i = TXTR_RECT_GR_L;
+		btn[i].text = ft_strdup(itemfull[i].filename);
+		btn[i].box = button_box;
 		button_box.y += button_box.h;
 		if (i == 25)
 		{
@@ -394,15 +394,15 @@ unsigned short			sel_item_buttons(t_button *buttons, t_itemfull *itemfull, int n
 
 void                    refresh_level_list(t_media *media, t_mode *mode)
 {
-    if (mode->n_buttons == media->n_worlds + 1)
+    if (mode->n_btn == media->n_worlds + 1)
         return ;
-    if (mode->buttons)
-		free_buttons(mode->buttons, mode->n_buttons);
-    mode->n_buttons = (media->n_worlds + 1) * 3;
-    mode->buttons = init_buttons(mode->n_buttons);
-    if (!mode->buttons)
+    if (mode->btn)
+		free_btn(mode->btn, mode->n_btn);
+    mode->n_btn = (media->n_worlds + 1) * 3;
+    mode->btn = init_btn(mode->n_btn);
+    if (!mode->btn)
         return ;
-    summary_buttons(mode->buttons, media->worlds, media->n_worlds);
+    levels_btn(mode->btn, media->worlds, media->n_worlds);
 }
 
 unsigned short			init_modes(t_media *media, t_prog *prog)
@@ -417,45 +417,45 @@ unsigned short			init_modes(t_media *media, t_prog *prog)
 		return (FAIL);
 	ft_bzero(modes, sizeof(modes));
 	prog->modes = modes;
-	prog->modes[MODE_MAIN_MENU].input = &input_main_menu;
-	prog->modes[MODE_MAIN_MENU].update = &update_main_menu;
-	prog->modes[MODE_MAIN_MENU].render = &render_main_menu;
+	prog->modes[MODE_MAIN_MENU].input = &i_mainmenu;
+	prog->modes[MODE_MAIN_MENU].update = &u_mainmenu;
+	prog->modes[MODE_MAIN_MENU].render = &r_mainmenu;
 
-	prog->modes[MODE_SUMMARY].input =   &input_summary;
-	prog->modes[MODE_SUMMARY].update = &update_summary;
-	prog->modes[MODE_SUMMARY].render = &render_summary;
+	prog->modes[MODE_levels].input =   &i_levels;
+	prog->modes[MODE_levels].update = &u_levels;
+	prog->modes[MODE_levels].render = &r_levels;
 
-	prog->modes[MODE_EDITOR].input =   &input_editor;
-	prog->modes[MODE_EDITOR].update = &update_editor;
-	prog->modes[MODE_EDITOR].render = &render_editor;
+	prog->modes[MODE_EDITOR].input =   &i_editor;
+	prog->modes[MODE_EDITOR].update = &u_editor;
+	prog->modes[MODE_EDITOR].render = &r_editor;
 
-    prog->modes[MODE_TEXTURES].input =   &input_textures;
-    prog->modes[MODE_TEXTURES].update = &update_textures;
-    prog->modes[MODE_TEXTURES].render = &render_textures;
+    prog->modes[MODE_TEXTURES].input =   &i_textures;
+    prog->modes[MODE_TEXTURES].update = &u_textures;
+    prog->modes[MODE_TEXTURES].render = &r_textures;
 
-	prog->modes[MODE_SEL_ITEM].input =   &input_sel_item;
-	prog->modes[MODE_SEL_ITEM].update = &update_sel_item;
-	prog->modes[MODE_SEL_ITEM].render = &render_sel_item;
+	prog->modes[MODE_SEL_ITEM].input =   &i_sel_item;
+	prog->modes[MODE_SEL_ITEM].update = &u_sel_item;
+	prog->modes[MODE_SEL_ITEM].render = &r_sel_item;
 
-	prog->modes[MODE_MAIN_MENU].n_buttons = N_MM_BTNS;
-	prog->modes[MODE_SUMMARY].n_buttons = (media->n_worlds + 1) * 3;
-	prog->modes[MODE_EDITOR].n_buttons = 8;
-    prog->modes[MODE_TEXTURES].n_buttons = media->n_txtrs;
-	prog->modes[MODE_MAIN_MENU].n_buttons = N_MM_BTNS;
-	prog->modes[MODE_SUMMARY].n_buttons = (media->n_worlds + 1) * 3;
-	prog->modes[MODE_EDITOR].n_buttons = 0;
-	prog->modes[MODE_SEL_ITEM].n_buttons = media->n_itemfull;
+	prog->modes[MODE_MAIN_MENU].n_btn = N_MM_BTNS;
+	prog->modes[MODE_levels].n_btn = (media->n_worlds + 1) * 3;
+	prog->modes[MODE_EDITOR].n_btn = 8;
+    prog->modes[MODE_TEXTURES].n_btn = media->n_txtrs;
+	prog->modes[MODE_MAIN_MENU].n_btn = N_MM_BTNS;
+	prog->modes[MODE_levels].n_btn = (media->n_worlds + 1) * 3;
+	prog->modes[MODE_EDITOR].n_btn = 0;
+	prog->modes[MODE_SEL_ITEM].n_btn = media->n_itemfull;
 	i = 0;
 	while (i < N_MODES)
 	{
-		prog->modes[i].buttons = NULL;
-		if (prog->modes[i].n_buttons > 0 && !(prog->modes[i].buttons = init_buttons(prog->modes[i].n_buttons)))
+		prog->modes[i].btn = NULL;
+		if (prog->modes[i].n_btn > 0 && !(prog->modes[i].btn = init_btn(prog->modes[i].n_btn)))
 			return (FAIL);
 		i++;
 	}
-	main_menu_buttons(prog->modes[MODE_MAIN_MENU].buttons);
-	summary_buttons(prog->modes[MODE_SUMMARY].buttons, media->worlds, media->n_worlds);
-    textures_buttons(prog->modes[MODE_TEXTURES].buttons, media->txtrs, media->n_txtrs);
-	sel_item_buttons(prog->modes[MODE_SEL_ITEM].buttons, media->itemfull, media->n_itemfull);
+	main_menu_btn(prog->modes[MODE_MAIN_MENU].btn);
+	levels_btn(prog->modes[MODE_levels].btn, media->worlds, media->n_worlds);
+    textures_btn(prog->modes[MODE_TEXTURES].btn, media->txtrs, media->n_txtrs);
+	sel_item_btn(prog->modes[MODE_SEL_ITEM].btn, media->itemfull, media->n_itemfull);
 	return (SUCCESS);
 }
