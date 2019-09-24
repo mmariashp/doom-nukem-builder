@@ -109,6 +109,6 @@ Sectors
 15) floor(0 0) ceil(0 0) walls '25 22 19 16 14 12 10 48 49 33 ' items ''
 
 Player
-0) 57,11 start
-1) 61,35 end
+0) 57,11 (sector: 12)  start
+1) 61,35 (sector: 11)  end
 

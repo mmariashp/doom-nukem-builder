@@ -375,6 +375,9 @@ void					validate_media(t_media *media)
 	i = 0;
 	while (i < media->n_worlds)
 	{
+		ft_putstr("\033[1;31m");
+		printf("w %d \n", i);
+		ft_putstr("\x1b[0m");
 		validate_textures(&media->worlds[i], media->n_txtrs);
 		validate_items(&media->worlds[i], media->n_itemfull);
 		validate_sectors(&media->worlds[i]);
@@ -386,7 +389,7 @@ void					validate_media(t_media *media)
 				media->worlds[i].walls[media->worlds[i].walls[k].door].v1 = media->worlds[i].walls[k].v1;
 				media->worlds[i].walls[media->worlds[i].walls[k].door].v2 = media->worlds[i].walls[k].v2;
 			}
-			i++;
+			k++;
 		}
 		i++;
 	}

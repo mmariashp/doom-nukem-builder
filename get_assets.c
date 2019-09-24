@@ -842,13 +842,7 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 //	line = NULL;
 	i = 0;
 	while (i < world->n_sec)
-	{
-		if (i == 12)
-		{
-
-		}
 		get_sec_v(&world->sec[i++], world->walls);
-	}
 	return (SUCCESS);
 }
 

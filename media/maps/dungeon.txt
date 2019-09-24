@@ -9,6 +9,6 @@ Walls
 Sectors
 
 Player
-0) 58,48 start
-1) 70,49 end
+0) 58,48 (sector: -1)  start
+1) 70,49 (sector: -1)  end
 

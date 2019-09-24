@@ -104,6 +104,9 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 				ft_putnbr_fd(world.p_start.x, fd);
 				ft_putstr_fd(",", fd);
 				ft_putnbr_fd(world.p_start.y, fd);
+				ft_putstr_fd(" (sector: ", fd);
+				ft_putnbr_fd(node_in_sector(world.p_start, &world), fd);
+				ft_putstr_fd(") ", fd);
 				ft_putstr_fd(" start", fd);
 			}
 			else
@@ -111,6 +114,9 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 				ft_putnbr_fd(world.p_end.x, fd);
 				ft_putstr_fd(",", fd);
 				ft_putnbr_fd(world.p_end.y, fd);
+				ft_putstr_fd(" (sector: ", fd);
+				ft_putnbr_fd(node_in_sector(world.p_end, &world), fd);
+				ft_putstr_fd(") ", fd);
 				ft_putstr_fd(" end", fd);
 			}
 		}
@@ -136,8 +142,6 @@ unsigned short			write_level(int fd, t_world world)
 			ft_putnbr_fd(world.n_walls, fd);
 		else if (i == 2)
 			ft_putnbr_fd(world.n_sec, fd);
-//		else if (i == 3)
-//			ft_putnbr_fd(world.n_txtrs, fd);
 		ft_putchar_fd('\n', fd);
 		i++;
 	}
@@ -304,9 +308,7 @@ unsigned short			rewrite_media(t_media *media)
 		return (FAIL);
 	}
 	validate_media(media);
-
 	rewrite_levels(media);
-	printf("out of rewrite\n");
 	return (SUCCESS);
 }
 
