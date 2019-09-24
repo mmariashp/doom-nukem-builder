@@ -715,4 +715,8 @@ void					validate_media(t_media *media);
 
 void					render_grid_iso(t_world world, t_grid *grid, t_prog *prog);
 
+int 					get_sec_v(t_sec *sector, t_wall *walls);
+
+void				    swap_ints(int *one, int *two);
+
 #endif

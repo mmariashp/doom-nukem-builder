@@ -151,14 +151,11 @@ void					update_sector_status(t_sec *sec, t_wall *walls, t_vec2d *vecs, int n_se
 {
 	int 				i;
 
-	i = 0;
+	i = -1;
 	if (!sec)
 		return ;
-	while (i < n_sec)
-	{
+	while (++i < n_sec)
 		sec[i].status = sector_status(sec[i], walls, vecs, sec[i].n_walls * 2);
-		i++;
-	}
 }
 
 void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)

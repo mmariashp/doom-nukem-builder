@@ -304,6 +304,7 @@ unsigned short			rewrite_media(t_media *media)
 		return (FAIL);
 	}
 	validate_media(media);
+
 	rewrite_levels(media);
 	printf("out of rewrite\n");
 	return (SUCCESS);

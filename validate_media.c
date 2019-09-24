@@ -254,6 +254,90 @@ void					delete_double_walls(t_world *world)
 	}
 }
 
+int						*reverse_order(int *p, int n_p)
+{
+	int 				*tab;
+	int 				i;
+	int 				j;
+
+	if (p)
+	{
+		if (!(tab = (int *)ft_memalloc(sizeof(int) * n_p)))
+			return (NULL);
+		i = 0;
+		j = n_p - 1;
+		while (i < n_p)
+			tab[j--] = p[i++];
+		free(p);
+		return (tab);
+	}
+	return (NULL);
+}
+
+//int						*reverse_order_walls(int *w, int n_w, t_wall *walls)
+//{
+//	int 				*tab;
+//	int 				i;
+//	int 				j;
+//
+//	if (w && walls)
+//	{
+//		if (!(tab = (int *)ft_memalloc(sizeof(int) * n_w)))
+//			return (NULL);
+//		i = 0;
+//		j = n_w - 1;
+//		while (i < n_w)
+//			tab[j--] = w[i++];
+//		free(w);
+//		return (tab);
+//	}
+//	return (NULL);
+//}
+
+void					validate_clockwise(t_world *world, int sec)
+{
+	int 				i;
+	int 				sum;
+	t_vec2d				one;
+	t_vec2d				two;
+
+	if (!world)
+		return ;
+	i = 0;
+	sum = 0;
+	while (i < world->sec[sec].n_v)
+	{
+		one = world->vecs[world->sec[sec].v[i]];
+		two = world->vecs[world->sec[sec].v[(i + 1) % world->sec[sec].n_v]];
+		sum += (two.x - one.x) * (one.y + two.y);
+		i++;
+	}
+	if (sum > 0)
+	{
+		ft_putstr("\033[1;31m");
+		printf("SECTOR %d counter clockwise\n", sec);
+		ft_putstr("\x1b[0m");
+		world->sec[sec].sec_walls = reverse_order(world->sec[sec].sec_walls, world->sec[sec].n_walls);
+		free(world->sec[sec].v);
+		get_sec_v(&world->sec[sec], world->walls);
+
+	}
+	int k = 0;
+	int j = 0;
+	while (k < world->sec[sec].n_walls && j < world->sec[sec].n_v)
+	{
+		if (world->walls[world->sec[sec].sec_walls[k]].type != WALL_DOOR)
+			k++;
+		else
+		{
+			if (world->walls[world->sec[sec].sec_walls[k]].v1 != world->sec[sec].v[j])
+				swap_ints(&world->walls[world->sec[sec].sec_walls[k]].v1, &world->walls[world->sec[sec].sec_walls[k]].v2);
+			j++;
+			k++;
+		}
+	}
+}
+
 void					validate_sectors(t_world *world)
 {
 	int 				i;
@@ -270,10 +354,14 @@ void					validate_sectors(t_world *world)
 	control = 0;
 	while (i < world->n_sec && control < MAX_N_SECTORS)
 	{
+
 		if (world->sec[i].status == SEC_OPEN)
 			delete_sector(i, world);
 		else
+		{
+			validate_clockwise(world, i);
 			i++;
+		}
 		control++;
 	}
 }
@@ -290,6 +378,16 @@ void					validate_media(t_media *media)
 		validate_textures(&media->worlds[i], media->n_txtrs);
 		validate_items(&media->worlds[i], media->n_itemfull);
 		validate_sectors(&media->worlds[i]);
+		int k = 0;
+		while (k < media->worlds[i].n_walls)
+		{
+			if (within(media->worlds[i].walls[k].door, -1, media->worlds[i].n_walls))
+			{
+				media->worlds[i].walls[media->worlds[i].walls[k].door].v1 = media->worlds[i].walls[k].v1;
+				media->worlds[i].walls[media->worlds[i].walls[k].door].v2 = media->worlds[i].walls[k].v2;
+			}
+			i++;
+		}
 		i++;
 	}
 }
