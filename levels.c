@@ -115,6 +115,21 @@ int 					get_w_id(int btn_id, int n_worlds, int *edit_del)
 	}
 }
 
+void					turn_btn_off(t_mode *mode)
+{
+	int 				i;
+
+	if (mode && mode->btn && mode->n_btn > 0)
+	{
+		i = 0;
+		while (i < mode->n_btn)
+		{
+			mode->btn[i].vis_lit_on[2] = FALSE;
+			i++;
+		}
+	}
+}
+
 unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int 				world;
@@ -125,61 +140,58 @@ unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].btn)
 		return (FAIL);
 	world = select_it(1, WORLD_SELECT, -1);
-	if (select_it(1, ST_SELECT, -1) == NORMAL)
+	if (select_it(1, ST_SELECT, -1) != NORMAL)
+		return (SUCCESS);
+	if (within(prog->btn_on, media->n_worlds, prog->modes[prog->mode_id].n_btn))
 	{
+		turn_btn_off(&prog->modes[prog->mode_id]);
+		prog->btn_on = -1;
+	}
+	light_button(sdl, prog->modes[prog->mode_id].btn,  prog->modes[prog->mode_id].n_btn, prog);
+	if ((prog->click.x || prog->click.y) && prog->btn_lit != -1)
+	{
+		turn_btn_off(&prog->modes[prog->mode_id]);
+		prog->btn_on = prog->btn_lit;
+		prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
+		prog->click = (t_vec2d){ 0, 0 };
 		if (within(prog->btn_on, media->n_worlds, prog->modes[prog->mode_id].n_btn))
 		{
-			prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
-			prog->btn_on = -1;
-		}
-		if (light_button(sdl, prog->modes[prog->mode_id].btn,  prog->modes[prog->mode_id].n_btn, prog) == SUCCESS) // when mouse is over a button
-			prog->features[F_REDRAW] = 1;
-		if ((prog->click.x || prog->click.y) && prog->btn_lit != -1)
-		{
-			if (within(prog->btn_on, -1, prog->modes[prog->mode_id].n_btn) == TRUE)
-				prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
-			prog->btn_on = prog->btn_lit;
-			prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
-			prog->click = (t_vec2d){ 0, 0 };
-			if (within(prog->btn_on, media->n_worlds, prog->modes[prog->mode_id].n_btn))
+			if (within((world = get_w_id(prog->btn_on, media->n_worlds, &edit_del)), -1, media->n_worlds))
 			{
-				if (within((world = get_w_id(prog->btn_on, media->n_worlds, &edit_del)), -1, media->n_worlds))
+				select_it(0, WORLD_SELECT, world);
+				if (edit_del == 0 && (tmp = get_input(media->worlds[world].filename, 0)))
+					select_it(0, ST_SELECT, INP);
+				else if (edit_del == 1)
 				{
-					select_it(0, WORLD_SELECT, world);
-					if (edit_del == 0 && (tmp = get_input(media->worlds[world].filename, 0)))
-						select_it(0, ST_SELECT, INP);
-					else if (edit_del == 1)
-					{
-						delete_world(media, world);
-						select_it(0, WORLD_SELECT, -1);
-						refresh_level_list(media, &prog->modes[prog->mode_id]);
-					}
+					delete_world(media, world);
+					select_it(0, WORLD_SELECT, -1);
+					refresh_level_list(media, &prog->modes[prog->mode_id]);
 				}
 			}
 		}
-		else if (within(world, -1, media->n_worlds))
+	}
+	else if (within(world, -1, media->n_worlds))
+	{
+		new = get_input(NULL, 0);
+		if (new)
 		{
-			new = get_input(NULL, 0);
-			if (new)
+			tmp = get_full_path(new, media->extensions[0], media->paths[0]);
+			if (tmp)
 			{
-				tmp = get_full_path(new, media->extensions[0], media->paths[0]);
-				if (tmp)
+				if (my_rename(media->worlds[world].full_path, tmp) == SUCCESS)
 				{
-					if (my_rename(media->worlds[world].full_path, tmp) == SUCCESS)
-					{
-						if (media->worlds[world].filename)
-							free(media->worlds[world].filename);
-						if (media->worlds[world].full_path)
-							free(media->worlds[world].full_path);
-						media->worlds[world].filename = ft_strdup(new);
-						media->worlds[world].full_path = get_full_path(new, media->extensions[0], media->paths[0]);
-					}
-					free(tmp);
+					if (media->worlds[world].filename)
+						free(media->worlds[world].filename);
+					if (media->worlds[world].full_path)
+						free(media->worlds[world].full_path);
+					media->worlds[world].filename = ft_strdup(new);
+					media->worlds[world].full_path = get_full_path(new, media->extensions[0], media->paths[0]);
 				}
+				free(tmp);
 			}
-			select_it(0, WORLD_SELECT, -1);
-			refresh_level_list(media, &prog->modes[prog->mode_id]);
 		}
+		select_it(0, WORLD_SELECT, -1);
+		refresh_level_list(media, &prog->modes[prog->mode_id]);
 	}
 	return (SUCCESS);
 }
