@@ -1,7 +1,7 @@
 
 #include "builder.h"
 
-void					render_values(int state, int n, t_value *values, SDL_Renderer *rend)
+void					render_values(int state, int n, t_value *values, SDL_Renderer *rend, SDL_Texture **t)
 {
 	int 				i;
 	t_rec				box;
@@ -13,10 +13,10 @@ void					render_values(int state, int n, t_value *values, SDL_Renderer *rend)
 	while (++i < n)
 	{
 		box = layout_menu(2, (char)i);
-		if (i == 0)
-			render_box(box, btn_back(0, 1, rend), rend);
-		else
-			render_box(box, btn_back(1, 1, rend), rend);
+		if (i == 0 && within(TXTR_RECT_GR_L, -1, TOTAL_TXTRS) && t[TXTR_RECT_GR_L])
+			render_box(box, t[TXTR_RECT_GR_L], rend);
+		else if (within(TXTR_RECT_GR, -1, TOTAL_TXTRS) && t[TXTR_RECT_GR])
+			render_box(box, t[TXTR_RECT_GR], rend);
 		write_text(menu_lines(state, i), rend, box, EDIT_TEXT_COLOR, FALSE);
 		box = layout_menu(5, (char)i);
 		if (values[i].text)

@@ -1,88 +1,39 @@
 
 #include "builder.h"
 
-t_mode					*init_sec_buttons(t_mode *m, SDL_Renderer *rend)
+t_mode					*init_sec_buttons(t_mode *m)
 {
-	static char 		path_items[10] = "./items3/";
-	static char 		path_buttons[11] = "./buttons/";
-	static char 		ext[5] = ".png";
-	static char         reg[18][15] = { "cross2", "trash", "up2", "down2",\
-						"up2", "down2", "edit", "edit", "edit", "trash", \
-						"coin", \
-						"key", \
-						"object", \
-						"enemy", \
-						"super_bonus", \
-						"health", \
-						"ammo", \
-						"light" };
+	static int			reg[18] = { TXTR_BACK, TXTR_DEL, TXTR_UP, TXTR_DOWN,\
+						TXTR_UP, TXTR_DOWN, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT, TXTR_DEL, \
+						TXTR_COIN,
+						TXTR_KEY,
+						TXTR_OBJECT,
+						TXTR_ENEMY,
+						TXTR_SUPER,
+						TXTR_HEALTH,
+						TXTR_AMMO,
+						TXTR_LIGHT };
 
-	static char         lit[18][15] = { "cross3", "trash3", "up3", "down3",\
-						"up3", "down3", "editlit", "editlit",  "editlit", "trash3", \
-						"coin", \
-						"key", \
-						"object", \
-						"enemy", \
-						"super_bonus", \
-						"health", \
-						"ammo", \
-						"light" };
-	char 				*tmp;
+	static int         lit[18] = { TXTR_BACK_L, TXTR_DEL_L, TXTR_UP_L, TXTR_DOWN_L,\
+						TXTR_UP_L, TXTR_DOWN_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_DEL_L, \
+						TXTR_COIN,
+						TXTR_KEY,
+						TXTR_OBJECT,
+						TXTR_ENEMY,
+						TXTR_SUPER,
+						TXTR_HEALTH,
+						TXTR_AMMO,
+						TXTR_LIGHT };
 	int                 i;
 
-	if (!m || !rend || !(m->buttons = init_buttons(18)))
+	if (!m || !(m->buttons = init_buttons(18)))
 		return (NULL);
 	m->n_buttons = 18;
 	i = -1;
 	while (++i < m->n_buttons)
 	{
-		if (!reg[i] || !lit[i])
-			continue ;
-		if (i < B_COIN)
-		{
-			if (reg[i])
-			{
-				tmp = get_full_path(reg[i], ext, path_buttons);
-				if (tmp)
-				{
-					m->buttons[i].txtr = load_texture(tmp, rend, 0);
-					free(tmp);
-				}
-			}
-			if (lit[i])
-			{
-				tmp = get_full_path(lit[i], ext, path_buttons);
-				if (tmp)
-				{
-					m->buttons[i].lit = load_texture(tmp, rend, 0);
-					free(tmp);
-				}
-
-			}
-		}
-		else
-		{
-			if (reg[i])
-			{
-				tmp = get_full_path(reg[i], ext, path_items);
-				if (tmp)
-				{
-					m->buttons[i].txtr = load_texture(tmp, rend, 0);
-					free(tmp);
-				}
-			}
-			if (lit[i])
-			{
-				tmp = get_full_path(lit[i], ext, path_items);
-				if (tmp)
-				{
-					m->buttons[i].lit = load_texture(tmp, rend, 0);
-					free(tmp);
-				}
-
-			}
-		}
-
+		m->buttons[i].reg_i = reg[i];
+		m->buttons[i].lit_i = lit[i];
 	}
 	m->buttons[DESELECT_BTN].box = layout_menu(0, 0);
 	m->buttons[DESELECT_BTN].box = (t_rec){ m->buttons[DESELECT_BTN].box.x +\
@@ -105,40 +56,20 @@ t_mode					*init_sec_buttons(t_mode *m, SDL_Renderer *rend)
 	return (m);
 }
 
-t_mode					*init_wall_buttons(t_mode *m, SDL_Renderer *rend)
+t_mode					*init_wall_buttons(t_mode *m)
 {
-	static char 		path_buttons[11] = "./buttons/";
-	static char 		ext[5] = ".png";
-	static char         reg[4][15] = { "cross2", "edit", "edit", "edit" };
-	static char         lit[4][15] = { "cross3", "editlit", "editlit", "editlit" };
-	char				*tmp;
+	static int			reg[4] = { TXTR_BACK, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT };
+	static int			lit[4] = { TXTR_BACK_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L };
 	int                 i;
 
-	if (!m || !rend || !(m->buttons = init_buttons(4)))
+	if (!m || !(m->buttons = init_buttons(4)))
 		return (NULL);
 	m->n_buttons = 4;
 	i = -1;
 	while (++i < m->n_buttons)
 	{
-		if (reg[i])
-		{
-			tmp = get_full_path(reg[i], ext, path_buttons);
-			if (tmp)
-			{
-				m->buttons[i].txtr = load_texture(tmp, rend, 0);
-				free(tmp);
-			}
-		}
-		if (lit[i])
-		{
-			tmp = get_full_path(lit[i], ext, path_buttons);
-			if (tmp)
-			{
-				m->buttons[i].lit = load_texture(tmp, rend, 0);
-				free(tmp);
-			}
-
-		}
+		m->buttons[i].reg_i = reg[i];
+		m->buttons[i].lit_i = lit[i];
 	}
 	m->buttons[DESELECT_BTN].box = layout_menu(0, 0);
 	m->buttons[DESELECT_BTN].box = (t_rec){ m->buttons[DESELECT_BTN].box.x +\
@@ -149,67 +80,41 @@ t_mode					*init_wall_buttons(t_mode *m, SDL_Renderer *rend)
 	return (m);
 }
 
-t_mode					*init_regular_buttons(t_mode *mode, SDL_Renderer *rend)
+t_mode					*init_regular_buttons(t_mode *m)
 {
-	static char 		path_buttons[11] = "./buttons/";
-	static char 		ext[5] = ".png";
 	static t_rec		box = { 10, 0, WIN_H * 0.07 * 9, WIN_H * 0.07};
-	static char         reg[9][15] = { "move2", "add2", "distort2",\
-						"delete2", "sector22", "wall2",\
-						"player2", "save2", "back22" };
-	static char         lit[9][15] = { "move3", "add3", "distort3",\
-    					"delete3", "sector3", "wall3",\
-						"player3", "save3", "back3" };
-	char				*tmp;
+	static int			reg[9] = { TXTR_MOVE, TXTR_DRAW, TXTR_DISTORT, \
+						TXTR_ISO, TXTR_SECTOR, TXTR_WALL, TXTR_PLAYER, \
+						TXTR_SAVE, TXTR_EXIT };
+	static int 			lit[9] = { TXTR_MOVE_L, TXTR_DRAW_L, TXTR_DISTORT_L, \
+						TXTR_ISO_L, TXTR_SECTOR_L, TXTR_WALL_L, TXTR_PLAYER_L, \
+						TXTR_SAVE_L, TXTR_EXIT_L };
 	int                 i;
 
-	if (!mode || !rend)
+	if (!m)
 		return (NULL);
-	mode->n_buttons = 9;
-	if (!(mode->buttons = init_buttons(mode->n_buttons)))
+	m->n_buttons = 9;
+	if (!(m->buttons = init_buttons(m->n_buttons)))
 		return (NULL);
-	distribute_buttons_h(mode->buttons, 0,  mode->n_buttons, box, 3);
+	distribute_buttons_h(m->buttons, 0, m->n_buttons, box, 3);
 	i = 0;
-	while (i < mode->n_buttons)
+	while (i < m->n_buttons)
 	{
-		if (reg[i])
-		{
-			tmp = get_full_path(reg[i], ext, path_buttons);
-			if (tmp)
-			{
-				mode->buttons[i].txtr = load_texture(tmp, rend, 0);
-				free(tmp);
-			}
-		}
-		if (lit[i])
-		{
-			tmp = get_full_path(lit[i], ext, path_buttons);
-			if (tmp)
-			{
-				mode->buttons[i].lit = load_texture(tmp, rend, 0);
-				free(tmp);
-			}
-
-		}
+		m->buttons[i].reg_i = reg[i];
+		m->buttons[i].lit_i = lit[i];
 		i++;
 	}
-	return (mode);
+	return (m);
 }
 
-void					get_buttons(int state, t_mode *mode, SDL_Renderer *rend)
+void					get_buttons(int state, t_mode *mode)
 {
 	if (!mode)
 		return ;
 	if (state == SECTOR_EDIT)
-	{
-		mode = init_sec_buttons(mode, rend);
-	}
+		mode = init_sec_buttons(mode);
 	else if (state == WALL_EDIT)
-	{
-		mode = init_wall_buttons(mode, rend);
-	}
+		mode = init_wall_buttons(mode);
 	else
-	{
-		mode = init_regular_buttons(mode, rend);
-	}
+		mode = init_regular_buttons(mode);
 }

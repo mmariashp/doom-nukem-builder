@@ -276,17 +276,13 @@ t_vec2d					find_node(int p_x, int p_y, t_grid *grid)
 	return ((t_vec2d){ round(mapx), round(mapy) });
 }
 
-
-
-void					game_loop(t_sdl *sdl, t_media *media)
+void					game_loop(t_sdl *sdl, t_media *media, t_prog *prog)
 {
 	t_grid				*grid;
-	t_prog				*prog;
 
-	prog = NULL;
     grid = NULL;
 	set_get_free_font(0);
-	if (!(prog = get_prog()) || init_modes(sdl, media, prog) == FAIL || !(grid = get_grid()))
+	if (init_modes(media, prog) == FAIL || !(grid = get_grid()))
 	{
 		ft_putstr("\x1b[32mReturning fail from game loop.\x1b[0m\n");
 		return ;
@@ -299,13 +295,8 @@ void					game_loop(t_sdl *sdl, t_media *media)
 		SDL_Delay(10);
 	}
 	free(grid);
-	free_prog(prog, sdl);
 	set_get_free_font(2);
-//	draw_items_or_free(1, 0, (t_rec){ 100, 100, 100, 100 }, sdl->rend);
 }
-
-
-//t_texture				*get_prog_txtr
 
 unsigned 				load_sdl_media(t_media *media, t_sdl *sdl)
 {
@@ -328,6 +319,9 @@ int						main(void)
 {
 	t_sdl				*sdl;
 	t_media				*media;
+	t_prog				*prog;
+
+	prog = NULL;
 
 	if (!(media = get_assets()))
 	{
@@ -340,14 +334,16 @@ int						main(void)
 		free_media(media);
 		return (FAIL);
 	}
-	if (load_sdl_media(media, sdl) == FAIL)
+	if (!(prog = get_prog(sdl->rend)) || load_sdl_media(media, sdl) == FAIL)
 	{
 		ft_putstr("\x1b[32mCouldn't load sdl media, Returning fail from main function.\x1b[0m\n");
 		free_media(media);
+		free_prog(prog);
 		free_sdl(sdl);
 		return (FAIL);
 	}
-	game_loop(sdl, media);
+	game_loop(sdl, media, prog);
+	free_prog(prog);
 	rewrite_media(media);
 	free_media(media);
 	free_sdl(sdl);

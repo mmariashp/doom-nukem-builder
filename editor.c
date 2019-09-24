@@ -30,7 +30,7 @@ char 					*write_type(int type)
 	return (NULL);
 }
 
-void					render_item_info(t_media *med, SDL_Renderer *rend, t_mode *mode)
+void					render_item_info(t_media *med, SDL_Renderer *rend, t_mode *mode, SDL_Texture **t)
 {
 	int					s;
 	int					id;
@@ -45,10 +45,13 @@ void					render_item_info(t_media *med, SDL_Renderer *rend, t_mode *mode)
 	1)), -1, med->worlds[med->w_id].sec[s].n_items) && within((id = \
 	med->worlds[med->w_id].sec[s].items[id].id), -1, med->n_itemfull))
 	{
-		render_box((box = (t_rec){ 20, WIN_H - 120, 350, 48 }), btn_back(3, 1, rend), rend);
+		box = (t_rec){ 20, WIN_H - 120, 350, 48 };
+		if (within(TXTR_RECT_Y, -1, TOTAL_TXTRS) && t[TXTR_RECT_Y])
+			render_box(box, t[TXTR_RECT_Y], rend);
 		write_text(write_type(med->itemfull[id].type), rend, box, EDIT_TEXT_COLOR, FALSE);
 		box = (t_rec){ 20, WIN_H - 60, 350, 50 };
-		render_box(box, btn_back(3, 1, rend), rend);
+		if (within(TXTR_RECT_Y, -1, TOTAL_TXTRS) && t[TXTR_RECT_Y])
+			render_box(box, t[TXTR_RECT_Y], rend);
 		if ((tmp = ft_strjoin("Name: \"", med->itemfull[id].filename)))
 		{
 			tmp2 = ft_strjoin(tmp,"\"");
@@ -106,12 +109,12 @@ void					render_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		{
 			if (state == SECTOR_EDIT)
 			{
-				render_items(sdl->rend, &media->worlds[media->w_id], media->itemfull, media->n_itemfull, grid);
-				render_item_info(media, sdl->rend, &prog->modes[prog->mode_id]);
+				render_items(sdl->rend, &media->worlds[media->w_id], media->itemfull, media->n_itemfull, grid, prog->t);
+				render_item_info(media, sdl->rend, &prog->modes[prog->mode_id], prog->t);
 			}
-			render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->w_id], state, media->n_txtrs);
+			render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->w_id], state, media->n_txtrs, prog->t);
 		}
-		render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons, prog->mode_id);
+		render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons, prog->mode_id, prog->t);
 		if (state == NORMAL && prog->button_on == PLAYER_BTN)
 			place_player_icons(media->worlds[media->w_id], grid, sdl->rend);
 		SDL_RenderPresent(sdl->rend);
@@ -302,17 +305,12 @@ unsigned short			mode_change(t_prog *prog, t_media *media, t_grid *grid, int flo
 	return (SUCCESS);
 }
 
-void					buttons_refresh(t_prog *prog, int state, int *last, SDL_Renderer *rend)
+void					buttons_refresh(t_prog *prog, int state, int *last)
 {
-//	static char			init = FALSE;
-
-	if (!prog || !last || !rend)
+	if (!prog || !last)
 		return ;
-//	if (init == TRUE)
-		free_buttons(prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons);
-//	else
-//		init = TRUE;
-	get_buttons(state, &prog->modes[prog->mode_id], rend);
+	free_buttons(prog->modes[prog->mode_id].buttons, prog->modes[prog->mode_id].n_buttons);
+	get_buttons(state, &prog->modes[prog->mode_id]);
 	prog->button_on = -1;
 	prog->button_lit = -1;
 	if (state == SECTOR_SEARCH)
@@ -373,7 +371,7 @@ unsigned short			update_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog 
 	if (state == NORMAL && prog->button_on == SAVE_BTN) // when saving
 		return (save_media(media, prog));
 	if (last != state)
-		buttons_refresh(prog, state, &last, sdl->rend);
+		buttons_refresh(prog, state, &last);
 	if (prog->button_lit != -1 && (prog->click.x || prog->click.y)) // when pressing an on screen button
 	{
 		prog->features[F_REDRAW] = 1;
@@ -618,7 +616,7 @@ int						input_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 					prog->button_lit = -1;
                     prog->button_on = -1;
                     media->w_id = -1;
-                    refresh_level_list(media, &prog->modes[MODE_SUMMARY], sdl);
+                    refresh_level_list(media, &prog->modes[MODE_SUMMARY]);
                     return (quit);
                 }
                 prog->click = (t_vec2d){ 0, 0 };

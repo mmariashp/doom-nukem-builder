@@ -17,7 +17,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/grid_main.c.o"
   "CMakeFiles/builder.dir/init_editor_buttons.c.o"
   "CMakeFiles/builder.dir/items.c.o"
-  "CMakeFiles/builder.dir/level_edit.c.o"
   "CMakeFiles/builder.dir/main.c.o"
   "CMakeFiles/builder.dir/main_menu.c.o"
   "CMakeFiles/builder.dir/math.c.o"

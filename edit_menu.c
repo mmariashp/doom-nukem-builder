@@ -89,7 +89,7 @@ t_value					*get_wall_values(int *n, t_wall *wall, SDL_Renderer *rend, SDL_Textu
 	return (new);
 }
 
-void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int state, int n_txtrs)
+void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int state, int n_txtrs, SDL_Texture **t)
 {
 	t_value             *values;
 	int 				i;
@@ -117,8 +117,9 @@ void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int sta
 	&w->walls[i], r, txtrs[w->walls[i].txtr].sdl_t))))
 		return ;
 	values[0].text = ft_itoa(i);
-	render_box(layout_menu(0, 0), btn_back(2, 1, r), r);
-	render_values(state, n, values, r);
+	if (within(TXTR_PANEL_GR, -1, TOTAL_TXTRS) && t[TXTR_PANEL_GR])
+		render_box(layout_menu(0, 0), t[TXTR_PANEL_GR], r);
+	render_values(state, n, values, r, t);
 	free_values(values, n);
 }
 

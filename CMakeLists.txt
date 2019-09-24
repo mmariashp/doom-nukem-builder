@@ -35,8 +35,7 @@ add_executable(${PROJECT_NAME}
         get_next_line.h
         render.c
         modes.c
-        level_edit.c
-        math.c
+		math.c
         rewrite.c
         render_grid.c
         fill_polygon.c

@@ -57,7 +57,6 @@ SRC =   main.c \
         get_next_line.c \
         render.c  \
         modes.c \
-        level_edit.c \
         math.c \
         rewrite.c \
         render_grid.c \

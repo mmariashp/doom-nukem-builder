@@ -22,7 +22,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/grid_main.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/grid_main.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/init_editor_buttons.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/init_editor_buttons.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/items.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/items.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/level_edit.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/level_edit.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/main.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/main.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/main_menu.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/main_menu.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/math.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/math.c.o"

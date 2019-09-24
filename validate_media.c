@@ -287,11 +287,9 @@ void					validate_media(t_media *media)
 	i = 0;
 	while (i < media->n_worlds)
 	{
-		printf("%d.validation in\n", i);
 		validate_textures(&media->worlds[i], media->n_txtrs);
 		validate_items(&media->worlds[i], media->n_itemfull);
 		validate_sectors(&media->worlds[i]);
-		printf("%d.validation out\n", i);
 		i++;
 	}
 }

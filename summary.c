@@ -100,7 +100,7 @@ void					render_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
-	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons, prog->mode_id);
+	render_buttons(prog->modes[prog->mode_id].buttons, sdl->rend, prog->modes[prog->mode_id].n_buttons, prog->mode_id, prog->t);
 	if (selected_item(1, STATE_SELECT, -1) == INPUT)
 	{
 		input = get_input(NULL, 0);
@@ -184,7 +184,7 @@ unsigned short			update_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog
 					{
 						delete_world(media, world);
 						selected_item(0, WORLD_SELECT, -1);
-						refresh_level_list(media, &prog->modes[prog->mode_id], sdl);
+						refresh_level_list(media, &prog->modes[prog->mode_id]);
 					}
 				}
 			}
@@ -206,7 +206,7 @@ unsigned short			update_summary(t_sdl *sdl, t_grid *grid, t_media *media, t_prog
 				}
 			}
 			selected_item(0, WORLD_SELECT, -1);
-			refresh_level_list(media, &prog->modes[prog->mode_id], sdl);
+			refresh_level_list(media, &prog->modes[prog->mode_id]);
 		}
 	}
 	prog->features[F_REDRAW] = 1;

@@ -1,69 +1,25 @@
 
 #include "builder.h"
 
-void					draw_items_or_free(char draw_free, int type, t_rec box, SDL_Renderer *rend)
+void					draw_item(int type, t_rec box, SDL_Renderer *rend, SDL_Texture **t)
 {
-	int 				i;
-	static t_texture	*items = NULL;
-	static char 		path[10] = "./items3/";
-	static char 		ext[5] = ".png";
-	static char 		name[TOTAL_TYPES][15] = {	"coin", \
-													"key", \
-													"object", \
-													"enemy", \
-													"super_bonus", \
-													"health", \
-													"ammo", \
-													"light" };
-	char 				*tmp;
+	int 				txtr;
 
-	if (!rend)
+	if (!rend || !t)
 		return ;
-	if (!items)
-	{
-		if (!(items = (t_texture *)ft_memalloc(sizeof(t_texture) * TOTAL_TYPES)))
-			return ;
-		ft_bzero(items, sizeof(t_texture) * TOTAL_TYPES);
-		i = 0;
-		while (i < TOTAL_TYPES)
-		{
-			items[i].name = NULL;
-			items[i].full_path = NULL;
-			tmp = get_full_path(name[i], ext, path);
-			if (tmp)
-			{
-				items[i].sdl_t = load_texture(tmp, rend, 0);
-				free(tmp);
-			}
-			else
-				items[i].sdl_t = NULL;
-			i++;
-		}
-	}
-	if (draw_free == 0 && within(type, -1, TOTAL_TYPES) && items[type].sdl_t)
+	txtr = type + TXTR_COIN;
+	if (within(type, -1, TOTAL_TYPES) && within(txtr, -1, TOTAL_TXTRS) && t[txtr])
 	{
 		if (type == KEY || type == HEALTH)
 		{
 			box.x += box.w * 0.2;
 			box.w *= 0.8;
 		}
-		render_box(box, items[type].sdl_t, rend);
+		render_box(box, t[txtr], rend);
 	}
-//	else if (draw_free == 1 && items)
-//	{
-//		i = 0;
-//		while (i < TOTAL_TYPES)
-//		{
-//			if (items[i].sdl_t)
-//				SDL_DestroyTexture(items[i].sdl_t);
-//			items[i++].sdl_t = NULL;
-//		}
-//		free(items);
-//		items = NULL;
-//	}
 }
 
-void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, int n, t_grid *grid)
+void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, int n, t_grid *grid, SDL_Texture **t)
 {
 	int 				sector;
 	int 				i;
@@ -91,7 +47,7 @@ void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, 
 			{
 				box.x = p.x - box.w / 2;
 				box.y = p.y - box.h / 2;
-				draw_items_or_free(0, itemfull[id].type, box, rend);
+				draw_item(itemfull[id].type, box, rend, t);
 			}
 		}
 		else

@@ -622,33 +622,6 @@ items.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/items.c.s
 .PHONY : items.c.s
 
-level_edit.o: level_edit.c.o
-
-.PHONY : level_edit.o
-
-# target to build an object file
-level_edit.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/level_edit.c.o
-.PHONY : level_edit.c.o
-
-level_edit.i: level_edit.c.i
-
-.PHONY : level_edit.i
-
-# target to preprocess a source file
-level_edit.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/level_edit.c.i
-.PHONY : level_edit.c.i
-
-level_edit.s: level_edit.c.s
-
-.PHONY : level_edit.s
-
-# target to generate assembly for a file
-level_edit.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/level_edit.c.s
-.PHONY : level_edit.c.s
-
 libft/ft_abs_cut.o: libft/ft_abs_cut.c.o
 
 .PHONY : libft/ft_abs_cut.o
@@ -3062,9 +3035,6 @@ help:
 	@echo "... items.o"
 	@echo "... items.i"
 	@echo "... items.s"
-	@echo "... level_edit.o"
-	@echo "... level_edit.i"
-	@echo "... level_edit.s"
 	@echo "... libft/ft_abs_cut.o"
 	@echo "... libft/ft_abs_cut.i"
 	@echo "... libft/ft_abs_cut.s"
