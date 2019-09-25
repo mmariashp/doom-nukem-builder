@@ -166,7 +166,7 @@
 
 # define N_MODES			5
 # define MODE_MAIN_MENU		0
-# define MODE_levels		1
+# define MODE_LEVELS		1
 # define MODE_EDITOR		2
 # define MODE_TEXTURES		3
 # define MODE_SEL_ITEM		4
@@ -366,6 +366,7 @@ typedef struct					s_sdl
 	SDL_Window					*window;
 	SDL_Renderer				*rend;
 	t_vec2d						mouse;
+	TTF_Font					*font;
 }								t_sdl;
 
 typedef struct					s_prog
@@ -389,7 +390,7 @@ typedef struct                  s_wall
 	int 						v2;
 	signed char 				type;
 	short						txtr;
-	signed char                 door;
+	int                 		door;
 }                               t_wall;
 
 typedef struct					s_item
@@ -438,10 +439,12 @@ typedef struct					s_world
 	char 						*filename;
 	char 						*full_path;
 	t_sec						*sec;
+	int 						*doors;
 	t_wall						*walls;
 	t_vec2d						*vecs;
 	t_vec2d						p_start;
 	t_vec2d						p_end;
+	short unsigned				n_doors;
 	short unsigned				n_sec;
 	short unsigned				n_vecs;
 	short unsigned				n_walls;
@@ -525,7 +528,7 @@ unsigned short			u_sel_item(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *p
 void					r_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
 
-void					write_text(char *str, SDL_Renderer *rend, t_rec rec, int color, char h_center);
+void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center);
 
 
 int						clamp(int n, int min, int max);
@@ -556,9 +559,9 @@ unsigned short			init_modes(t_media *media, t_prog *prog);
 void					free_modes(t_mode *modes);
 void                    refresh_level_list(t_media *media, t_mode *mode);
 
-void					render_button(t_button *button, SDL_Renderer *rend, SDL_Texture **t);
-void					render_button_big(t_button *button, SDL_Renderer *rend, SDL_Texture **t);
-void					render_btn(t_button *btn, SDL_Renderer *rend, int n_btn, int mode_id, SDL_Texture **t);
+void					render_button(t_button *button, t_sdl *sdl, SDL_Texture **t);
+void					render_button_big(t_button *button, t_sdl *sdl, SDL_Texture **t);
+void					render_btn(t_button *btn, t_sdl *sdl, int n_btn, int mode_id, SDL_Texture **t);
 unsigned short			mouse_over(t_rec box, t_vec2d mouse);
 
 void					render_frame(t_rec rec, int color, SDL_Renderer *rend);
@@ -623,14 +626,14 @@ char 					*get_full_path(char *filename, char *ext, char *path);
 
 // edit menu
 char 					*menu_lines(int id, int i);
-void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int state, int n_txtrs, SDL_Texture **t);
+void					render_edit_menu(t_sdl *sdl, t_texture *txtrs, t_world *w, int state, int n_txtrs, SDL_Texture **t);
 t_rec                   layout_menu(char i, char n);
 
 //font
-TTF_Font				*set_get_free_font(char set_get_free);
+//TTF_Font				*set_get_free_font(char set_get_free);
 
 //values
-void					render_values(int state, int n, t_value *values, SDL_Renderer *rend, SDL_Texture **t, t_texture *txtrs, int n_txtrs);
+void					render_values(int state, int n, t_value *values, t_sdl *sdl, SDL_Texture **t, t_texture *txtrs, int n_txtrs);
 void					free_values(t_value *values, int n);
 t_value					*init_values(int n);
 
@@ -638,7 +641,7 @@ t_value					*init_values(int n);
 // btn
 t_button				*init_btn(int n_btn);
 void					free_btn(t_button *btn, int n);
-t_button				*set_get_free_btn(char set_get_free, int *n, int state);
+//t_button				*set_get_free_btn(char set_get_free, int *n, int state);
 unsigned short			distribute_btn_h(t_button *btn, int from, int to, t_rec box, int padding);
 void					get_btn(int state, t_mode *mode);
 

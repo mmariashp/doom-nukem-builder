@@ -25,6 +25,10 @@ void					free_sdl(t_sdl *sdl)
 		SDL_DestroyWindow(sdl->window);
 		sdl->window = NULL;
 	}
+	if (sdl->font)
+	{
+		TTF_CloseFont(sdl->font);
+	}
 	free(sdl);
 	sdl = NULL;
 	quit_sdl();
@@ -38,8 +42,7 @@ SDL_Texture             *load_texture(char *name, SDL_Renderer *rend, t_vec2d *s
 	if (!name || !rend)
 		return (NULL);
 	texture = NULL;
-	image = IMG_Load(name);
-	if (!image)
+	if (!(image = IMG_Load(name)))
 	{
 		ft_putendl(IMG_GetError());
 		return (NULL);
@@ -74,6 +77,9 @@ int						start_sdl(t_sdl *sdl)
 	if (!(sdl->rend = SDL_CreateRenderer(sdl->window, -1, \
 	SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)))
 		return(FAIL);
+	if (!(sdl->font = TTF_OpenFont( FONT_NAME, 30 )))
+		return (FAIL);
+	SDL_SetRenderDrawColor(sdl->rend, 0xFF, 0xFF, 0xFF, 0xFF);
 	return (SUCCESS);
 }
 
@@ -83,6 +89,7 @@ t_sdl					*get_sdl(void)
 
 	if (!(sdl = (t_sdl*)ft_memalloc(sizeof(t_sdl))))
 		return (NULL);
+	ft_bzero(sdl, sizeof(t_sdl));
 	*sdl = (t_sdl){ };
 	sdl->window = NULL;
 	sdl->rend = NULL;

@@ -25,7 +25,7 @@ void					r_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
-	render_btn(prog->modes[prog->mode_id].btn, sdl->rend, prog->modes[prog->mode_id].n_btn, prog->mode_id, prog->t);
+	render_btn(prog->modes[prog->mode_id].btn, sdl, prog->modes[prog->mode_id].n_btn, prog->mode_id, prog->t);
 	render_item_icons(prog, media, sdl->rend);
 	SDL_RenderPresent(sdl->rend);
 	prog->features[F_REDRAW] = 1;

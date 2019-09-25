@@ -1,7 +1,7 @@
 
 #include "builder.h"
 
-t_mode					*init_sec_btn(t_mode *m)
+void					init_sec_btn(t_mode *m)
 {
 	static int			reg[18] = { TXTR_BACK, TXTR_DEL, TXTR_UP, TXTR_DOWN,\
 						TXTR_UP, TXTR_DOWN, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT, TXTR_DEL, \
@@ -25,15 +25,27 @@ t_mode					*init_sec_btn(t_mode *m)
 						TXTR_AMMO,
 						TXTR_LIGHT };
 	int                 i;
+	int 				n;
 
-	if (!m || !(m->btn = init_btn(18)))
-		return (NULL);
-	m->n_btn = 18;
+	if (!m)
+		return ;
+//	m->n_btn = 18;
+	n = 18;
 	i = -1;
 	while (++i < m->n_btn)
 	{
-		m->btn[i].reg_i = reg[i];
-		m->btn[i].lit_i = lit[i];
+		if (i < n)
+		{
+			m->btn[i].reg_i = reg[i];
+			m->btn[i].lit_i = lit[i];
+			m->btn[i].vis_lit_on[0] = TRUE;
+		}
+		else
+		{
+			m->btn[i].reg_i = 0;
+			m->btn[i].lit_i = 0;
+			m->btn[i].vis_lit_on[0] = FALSE;
+		}
 	}
 	m->btn[DESELECT_BTN].box = layout_menu(0, 0);
 	m->btn[DESELECT_BTN].box = (t_rec){ m->btn[DESELECT_BTN].box.x +\
@@ -53,23 +65,34 @@ t_mode					*init_sec_btn(t_mode *m)
 	distribute_btn_h(m->btn, B_COIN, B_LIGHT + 1, box, 8);
 	m->btn[B_ITEM_EDIT].vis_lit_on[0] = FALSE;
 	m->btn[B_ITEM_DEL].vis_lit_on[0] = FALSE;
-	return (m);
 }
 
-t_mode					*init_wall_btn(t_mode *m)
+void					init_wall_btn(t_mode *m)
 {
 	static int			reg[4] = { TXTR_BACK, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT };
 	static int			lit[4] = { TXTR_BACK_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L };
 	int                 i;
+	int 				n;
 
-	if (!m || !(m->btn = init_btn(4)))
-		return (NULL);
-	m->n_btn = 4;
+	if (!m)
+		return ;
+//	m->n_btn = 4;
+	n = 4;
 	i = -1;
 	while (++i < m->n_btn)
 	{
-		m->btn[i].reg_i = reg[i];
-		m->btn[i].lit_i = lit[i];
+		if (i < n)
+		{
+			m->btn[i].reg_i = reg[i];
+			m->btn[i].lit_i = lit[i];
+			m->btn[i].vis_lit_on[0] = TRUE;
+		}
+		else
+		{
+			m->btn[i].reg_i = 0;
+			m->btn[i].lit_i = 0;
+			m->btn[i].vis_lit_on[0] = FALSE;
+		}
 	}
 	m->btn[DESELECT_BTN].box = layout_menu(0, 0);
 	m->btn[DESELECT_BTN].box = (t_rec){ m->btn[DESELECT_BTN].box.x +\
@@ -77,10 +100,9 @@ t_mode					*init_wall_btn(t_mode *m)
 	m->btn[WT_EDIT_BTN].box = layout_menu(6, 1);
 	m->btn[W_PORTAL_BTN].box = layout_menu(6, 2);
 	m->btn[W_DOOR_BTN].box = layout_menu(6, 3);
-	return (m);
 }
 
-t_mode					*init_regular_btn(t_mode *m)
+void					init_regular_btn(t_mode *m)
 {
 	static t_rec		box = { 10, 0, WIN_H * 0.07 * 9, WIN_H * 0.07};
 	static int			reg[9] = { TXTR_MOVE, TXTR_DRAW, TXTR_DISTORT, \
@@ -90,21 +112,32 @@ t_mode					*init_regular_btn(t_mode *m)
 						TXTR_ISO_L, TXTR_SECTOR_L, TXTR_WALL_L, TXTR_PLAYER_L, \
 						TXTR_SAVE_L, TXTR_EXIT_L };
 	int                 i;
+	int 				n;
 
 	if (!m)
-		return (NULL);
-	m->n_btn = 9;
-	if (!(m->btn = init_btn(m->n_btn)))
-		return (NULL);
-	distribute_btn_h(m->btn, 0, m->n_btn, box, 3);
+		return ;
+//	m->n_btn = 9;
+	n = 9;
+//	if (!(m->btn = init_btn(m->n_btn)))
+//		return ;
+	distribute_btn_h(m->btn, 0, n, box, 3);
 	i = 0;
 	while (i < m->n_btn)
 	{
-		m->btn[i].reg_i = reg[i];
-		m->btn[i].lit_i = lit[i];
+		if (i < n)
+		{
+			m->btn[i].reg_i = reg[i];
+			m->btn[i].lit_i = lit[i];
+			m->btn[i].vis_lit_on[0] = TRUE;
+		}
+		else
+		{
+			m->btn[i].reg_i = 0;
+			m->btn[i].lit_i = 0;
+			m->btn[i].vis_lit_on[0] = FALSE;
+		}
 		i++;
 	}
-	return (m);
 }
 
 void					get_btn(int state, t_mode *mode)
@@ -112,9 +145,9 @@ void					get_btn(int state, t_mode *mode)
 	if (!mode)
 		return ;
 	if (state == SECTOR_EDIT)
-		mode = init_sec_btn(mode);
+		init_sec_btn(mode);
 	else if (state == WALL_EDIT)
-		mode = init_wall_btn(mode);
+		init_wall_btn(mode);
 	else
-		mode = init_regular_btn(mode);
+		init_regular_btn(mode);
 }

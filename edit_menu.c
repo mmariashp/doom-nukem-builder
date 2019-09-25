@@ -89,13 +89,13 @@ t_value					*get_wall_values(int *n, t_wall *wall)
 	return (new);
 }
 
-void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int state, int n_txtrs, SDL_Texture **t)
+void					render_edit_menu(t_sdl *sdl, t_texture *txtrs, t_world *w, int state, int n_txtrs, SDL_Texture **t)
 {
 	t_value             *values;
 	int 				i;
 	int                 n;
 
-	if (!r || !txtrs || !w || (state != SECTOR_EDIT && state != WALL_EDIT))
+	if (!sdl || !txtrs || !w || (state != SECTOR_EDIT && state != WALL_EDIT))
 		return ;
 	values = NULL;
 	n = 0;
@@ -111,9 +111,9 @@ void					render_edit_menu(SDL_Renderer *r, t_texture *txtrs, t_world *w, int sta
 	w->walls[i].txtr, -1, n_txtrs) || !(values = get_wall_values(&n, &w->walls[i]))))
 		return ;
 	values[0].text = ft_itoa(i);
-	if (within(TXTR_PANEL_GR, -1, TOTAL_TXTRS) && t[TXTR_PANEL_GR])
-		render_box(layout_menu(0, 0), t[TXTR_PANEL_GR], r);
-	render_values(state, n, values, r, t, txtrs, n_txtrs);
+	if (within(TXTR_PANEL_GR, -1, TOTAL_TXTRS) && t && t[TXTR_PANEL_GR])
+		render_box(layout_menu(0, 0), t[TXTR_PANEL_GR], sdl->rend);
+	render_values(state, n, values, sdl, t, txtrs, n_txtrs);
 	free_values(values, n);
 }
 

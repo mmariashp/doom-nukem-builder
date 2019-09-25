@@ -81,12 +81,12 @@ void					r_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
-	render_btn(prog->modes[prog->mode_id].btn, sdl->rend, prog->modes[prog->mode_id].n_btn, prog->mode_id, prog->t);
+	render_btn(prog->modes[prog->mode_id].btn, sdl, prog->modes[prog->mode_id].n_btn, prog->mode_id, prog->t);
 	if (select_it(1, ST_SELECT, -1) == INP)
 	{
 		input = get_input(NULL, 0);
 		if (input)
-			write_text(input, sdl->rend, (t_rec){ WIN_W / 4, WIN_H / 12, WIN_W / 2, WIN_H / 10 }, WHITE, TRUE);
+			write_text(input, sdl, (t_rec){ WIN_W / 4, WIN_H / 12, WIN_W / 2, WIN_H / 10 }, WHITE, TRUE);
 	}
 	SDL_RenderPresent(sdl->rend);
 }
@@ -213,7 +213,7 @@ int						i_levels(t_sdl *sdl, t_grid *grid, t_media *med, t_prog *prog)
 {
 	int					quit;
 	SDL_Event			e;
-	char 				*tmp;
+//	char 				*tmp;
 	
 	quit = sdl && grid && med && prog ? FALSE : TRUE;
 	while(SDL_PollEvent(&e) && quit == FALSE)
@@ -225,7 +225,9 @@ int						i_levels(t_sdl *sdl, t_grid *grid, t_media *med, t_prog *prog)
 		else if (e.type == SDL_KEYUP)
 		{
 			if (ft_isalnum(e.key.keysym.sym) || e.key.keysym.sym == 8)
-				tmp = get_input(NULL, e.key.keysym.sym);
+				get_input(NULL, e.key.keysym.sym);
+//			if (ft_isalnum(e.key.keysym.sym) || e.key.keysym.sym == 8)
+//				tmp = get_input(NULL, e.key.keysym.sym);
 			if (e.key.keysym.sym == SDLK_RETURN && select_it(1, ST_SELECT, INP))
 				select_it(0, ST_SELECT, NORMAL);
 		}

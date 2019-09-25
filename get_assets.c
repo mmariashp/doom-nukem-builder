@@ -103,8 +103,8 @@ void					free_tab(char **tab, int size)
 		return ;
 	i = 0;
 	while(i < size && tab[i] != NULL)
-		ft_memdel((void **)&tab[i++]);
-	ft_memdel((void **)&tab);
+		free(tab[i++]);
+	free(tab);
 }
 
 char					**realloc_tab(char **tab, size_t n)
@@ -492,7 +492,7 @@ int 					get_sec_walls(t_sec *sector, char *line)
 	walls = (int *)ft_memalloc(sizeof(int) * count);
 	if (!walls)
 		return (FAIL);
-	ft_bzero(walls, sizeof(walls));
+	ft_bzero(walls,sizeof(int) * count);
 	line++;
 	i = 0;
 	while (*line && *line != '\'' && i < count)
@@ -609,7 +609,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 	static unsigned		v_count = 0;
 	static unsigned		w_count = 0;
 	static unsigned		s_count = 0;
-//	static unsigned		t_count = 0;
+//	static unsigned		d_count = 0;
 	static unsigned		p_count = 0;
 	static unsigned short		current_world = 0;
 	t_vec2d				p;
@@ -623,46 +623,27 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		v_count = 0;
 		w_count = 0;
 		s_count = 0;
-//		t_count = 0;
+//		d_count = 0;
 		p_count = 0;
 		current_world = world_no;
 	}
 	if (!line || !world || !status)
 		return (FAIL);
-	while (*line)
-	{
-		if (*line++ == ')')
-			break ;
-	}
-	if (*line == '\0')
+	if (!(line = ft_strchr(line, ')')))
 		return (FAIL) ;
-
+	line++;
 	if (status != R_SECTORS)
 	{
 		sep = status == R_WALLS ? '-' : ',';
 		p.x = ft_atoi(line);
-//		if (status == R_TEXTURES)
-//			p.y = 0;
-//		else
-//		{
-			while (*line)
-			{
-				if (*line++ == sep)
-					break ;
-			}
-			p.y = ft_atoi(line);
-//		}
+		if (!(line = ft_strchr(line, sep)))
+			return (FAIL) ;
+		line++;
+		p.y = ft_atoi(line);
 	}
-//	if (status == R_TEXTURES && t_count < world->n_txtrs)
-//	{
-//		world->textures[t_count] = p.x;
-//		t_count++;
-//	}
 	if (status == R_VECTORS && v_count < world->n_vecs)
 	{
-		p.x = clamp(p.x, MIN_VERTEX_COORD, MAX_VERTEX_COORD);
-		p.y = clamp(p.y, MIN_VERTEX_COORD, MAX_VERTEX_COORD);
-
+		p = (t_vec2d){ clamp(p.x, 0, GRID_SIZE), clamp(p.y, 0, GRID_SIZE) };
 		world->vecs[v_count] = p;
 		v_count++;
 	}
@@ -750,22 +731,18 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 	unsigned short		i;
 	unsigned short		j;
 	unsigned short		status;
-	char 				tab[6];
+	char 				tab[5];
 
 	if (!world || fd < 1)
 		return (FAIL);
-	i = 0;
 	status = 0;
-	ft_strcpy(tab, "0VWSPT");
-	world->walls = NULL;
-	world->vecs = NULL;
-	world->sec = NULL;
-//	world->textures = NULL;
+	ft_strcpy(tab, "0VWSP");
 	line = NULL;
+	i = -1;
 	while ((ret = get_next_line(fd, &(line))) == 1)
 	{
 		tmp = line;
-		if (i == 0)
+		if (++i == 0)
 		{
 			world->n_vecs = get_n(line, 0, MAX_VERTEX_ID);
 			if (world->n_vecs == 0)
@@ -774,7 +751,7 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 			{
 				if (!(world->vecs = (t_vec2d *)malloc(sizeof(t_vec2d) * world->n_vecs)))
 					return (FAIL);
-				ft_bzero(world->vecs, sizeof(world->vecs));
+				ft_bzero(world->vecs, sizeof(t_vec2d) * world->n_vecs);
 			}
 		}
 		else if (i == 1)
@@ -785,7 +762,7 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 			{
 				if (!(world->walls = (t_wall *)malloc(sizeof(t_wall) * world->n_walls)))
 					return (FAIL);
-				ft_bzero(world->walls, sizeof(world->walls));
+				ft_bzero(world->walls, sizeof(t_wall) * world->n_walls);
 			}
 		}
 		else if (i == 2)
@@ -796,19 +773,8 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 			{
 				if (!(world->sec = (t_sec *)malloc(sizeof(t_sec) * world->n_sec)))
 					return (FAIL);
-				ft_bzero(world->sec, sizeof(world->sec));
+				ft_bzero(world->sec, sizeof(t_sec) * world->n_sec);
 			}
-		}
-		else if (i == 3)
-		{
-//			if (!(world->n_txtrs = get_n(line, MIN_N_TXTRS, MAX_N_TXTRS)))
-//			{
-//				ft_putendl("Not enough textures.");
-//				return (FAIL);
-//			}
-//			if (!(world->textures = (int *)malloc(sizeof(int) * world->n_txtrs)))
-//				return (FAIL);
-//			ft_bzero(world->textures, sizeof(world->textures));
 		}
 		else
 		{
@@ -820,7 +786,7 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 			else
 			{
 				j = 0;
-				while (j < 6 && tab[j] && line[0])
+				while (j < 5 && tab[j] && line[0])
 				{
 					if (tab[j] == line[0])
 					{
@@ -832,14 +798,10 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 			}
 		}
 		ft_strdel(&line);
-		i++;
 	}
 	ft_strdel(&line);
 	if (ret == -1)
 		return (FAIL);
-//	if (line)
-//		free(line);
-//	line = NULL;
 	i = 0;
 	while (i < world->n_sec)
 		get_sec_v(&world->sec[i++], world->walls);
@@ -886,7 +848,7 @@ unsigned				read_fonts(t_media *media, t_section *section)
 	{
 		if (!(media->fonts[i] = ft_strdup(section->tab[i])))
 			return (FAIL);
-		ft_bzero(media->fonts[i], sizeof(media->fonts[i]));
+		ft_bzero(media->fonts[i], sizeof(char *) * section->n_files);
 		i++;
 	}
 	return (SUCCESS);
@@ -898,17 +860,16 @@ unsigned				read_sounds(t_media *media, t_section *section)
 
 	if (!media || !section || !section->tab || media->sounds)
 		return (FAIL);
-	i = 0;
 	if (!(media->sounds = (char **)ft_memalloc(sizeof(char *) * section->n_files)))
 		return (FAIL);
 	media->n_sounds = section->n_files;
 	ft_bzero(media->sounds, sizeof(char *) * section->n_files);
-	while (i < section->n_files)
+	i = -1;
+	while (++i < section->n_files)
 	{
 		if (!(media->sounds[i] = ft_strdup(section->tab[i])))
 			return (FAIL);
 		ft_bzero(media->sounds[i], sizeof(media->sounds[i]));
-		i++;
 	}
 	return (SUCCESS);
 }
@@ -917,14 +878,13 @@ unsigned				read_textures(t_media *media, t_section *section)
 {
 	short 				i;
 
-	if (!media || !section || !section->tab)
-		return (FAIL);
-	i = 0;
-	if (!(media->txtrs = (t_texture *)ft_memalloc(sizeof(t_texture) * section->n_files)))
+	if (!media || !section || !section->tab ||!(media->txtrs = \
+	(t_texture *)ft_memalloc(sizeof(t_texture) * section->n_files)))
 		return (FAIL);
 	media->n_txtrs = section->n_files;
-	ft_bzero(media->txtrs, sizeof(media->txtrs));
-	while (i < section->n_files)
+	ft_bzero(media->txtrs, sizeof(t_texture) * section->n_files);
+	i = -1;
+	while (++i < section->n_files)
 	{
 		media->txtrs[i].full_path = NULL;
 		media->txtrs[i].name = NULL;
@@ -933,7 +893,6 @@ unsigned				read_textures(t_media *media, t_section *section)
 		if (!(media->txtrs[i].name = ft_strdup(section->names[i])))
 			return (FAIL);
 		media->txtrs[i].sdl_t = NULL;
-		i++;
 	}
 	return (SUCCESS);
 }
@@ -944,12 +903,12 @@ unsigned				read_itemfull(t_media *media, t_section *section)
 
 	if (!media || !section || !section->tab || section->n_files > MAX_ITEMFULL)
 		return (FAIL);
-	i = 0;
 	if (!(media->itemfull = (t_itemfull *)ft_memalloc(sizeof(t_itemfull) * section->n_files)))
 		return (FAIL);
 	media->n_itemfull = section->n_files;
-	ft_bzero(media->itemfull, sizeof(media->itemfull));
-	while (i < section->n_files)
+	ft_bzero(media->itemfull, sizeof(t_itemfull) * section->n_files);
+	i = -1;
+	while (++i < section->n_files)
 	{
 		media->itemfull[i].full_path = NULL;
 		media->itemfull[i].filename = NULL;
@@ -961,7 +920,6 @@ unsigned				read_itemfull(t_media *media, t_section *section)
 			media->itemfull[i].type = section->extra[i];
 		else
 			media->itemfull[i].type = 0;
-		i++;
 	}
 	return (SUCCESS);
 }
@@ -1003,39 +961,36 @@ unsigned				read_levels(t_media *media, t_section *section)
 		return (FAIL);
 	if (!(media->worlds = (t_world *)ft_memalloc(sizeof(t_world) * section->n_files)))
 		return (FAIL);
-	i = 0;
-	ft_putendl("allocated media world\n");
 	media->n_worlds = section->n_files;
-	ft_bzero(media->worlds, sizeof(media->worlds));
-	while (i < section->n_files)
+	ft_bzero(media->worlds, sizeof(t_world) * section->n_files);
+	i = -1;
+	while (++i < section->n_files)
 	{
 		if (!section->tab[i] || !section->names[i])
 			return (FAIL);
-		ft_putendl("reading a level file\n");
-		ft_bzero(&media->worlds[i], sizeof(media->worlds[i]));
+		ft_bzero(&media->worlds[i], sizeof(t_world));
 		media->worlds[i].full_path = ft_strdup(section->tab[i]);
 		media->worlds[i].filename = ft_strdup(section->names[i]);
-//		media->worlds[i].textures = NULL;
 		media->worlds[i].sec = NULL;
 		media->worlds[i].walls = NULL;
 		media->worlds[i].vecs = NULL;
+		media->worlds[i].doors = NULL;
 		media->worlds[i].n_sec = 0;
 		media->worlds[i].n_vecs = 0;
 		media->worlds[i].n_walls = 0;
-//		media->worlds[i].n_txtrs = 0;
+		media->worlds[i].n_doors = 0;
 		printf("NAME %s\n", media->worlds[i].filename);
-		if (get_map(&media->worlds[i], i) == FAIL)
+		if (!media->worlds[i].full_path  || !media->worlds[i].filename || get_map(&media->worlds[i], i) == FAIL)
 		{
 			ft_putendl("failed to get map\n");
 			return (FAIL);
 		}
-		if (find_doors(media->worlds[i].n_walls, media->worlds[i].walls) == FAIL)
+		if (find_doors(media->worlds[i].n_walls, media->worlds[i].walls) == FAIL) // will remove
         {
             ft_putstr("Errors in doors in level: ");
             ft_putendl(media->worlds[i].filename);
 		    return (FAIL);
         }
-		i++;
 	}
 	return (SUCCESS);
 }
@@ -1046,18 +1001,14 @@ unsigned				update_media(t_media *media, t_section *section)
 
 	if (!media || !section)
 		return (FAIL);
-	if (section->path)
+	ft_bzero(&media->paths[section->id], sizeof(char) * 20);
+	ft_bzero(&media->extensions[section->id], sizeof(char) * 10);
+	if (section->path && ft_strlen(section->path) < 20)
 		ft_strcpy(media->paths[section->id], section->path);
-	else
-		ft_bzero(media->paths[section->id], sizeof(media->paths[section->id]));
-	if (section->extension)
+	if (section->extension && ft_strlen(section->extension) < 10)
 		ft_strcpy(media->extensions[section->id], section->extension);
-	else
-		ft_bzero(media->extensions[section->id], sizeof(media->extensions[section->id]));
 	return (update_section[section->id](media, section));
 }
-
-
 
 void					free_media(t_media *media)
 {
@@ -1075,8 +1026,8 @@ void					free_media(t_media *media)
 	}
 	if (media->txtrs)
 	{
-		i = 0;
-		while (i < media->n_txtrs)
+		i = -1;
+		while (++i < media->n_txtrs)
 		{
 			if (media->txtrs[i].full_path)
 				free(media->txtrs[i].full_path);
@@ -1084,36 +1035,33 @@ void					free_media(t_media *media)
 				free(media->txtrs[i].name);
 //			if (media->txtrs[i].sdl_t)
 //				SDL_DestroyTexture(media->txtrs[i].sdl_t);
-			i++;
 		}
 		free(media->txtrs);
 	}
 	if (media->fonts)
 	{
-		i = 0;
-		while (i < media->n_fonts)
+		i = -1;
+		while (++i < media->n_fonts)
 		{
 			if (media->fonts[i])
 				free(media->fonts[i]);
-			i++;
 		}
 		free(media->fonts);
 	}
 	if (media->sounds)
 	{
-		i = 0;
-		while (i < media->n_sounds)
+		i = -1;
+		while (++i < media->n_sounds)
 		{
 			if (media->sounds[i])
 				free(media->sounds[i]);
-			i++;
 		}
 		free(media->sounds);
 	}
 	if (media->itemfull)
 	{
-		i = 0;
-		while (i < media->n_itemfull)
+		i = -1;
+		while (++i < media->n_itemfull)
 		{
 			if (media->itemfull[i].filename)
 			{
@@ -1125,7 +1073,6 @@ void					free_media(t_media *media)
 				free(media->itemfull[i].full_path);
 				media->itemfull[i].full_path = NULL;
 			}
-			i++;
 		}
 		free(media->itemfull);
 	}
@@ -1135,13 +1082,18 @@ void					free_media(t_media *media)
 void					free_section(t_section * section)
 {
 	if (section->path)
-		ft_memdel((void **)&section->path);
+		free(section->path);
 	if (section->extension)
-		ft_memdel((void **)&section->extension);
-	if (section->tab)
+		free(section->extension);
+	if (section->tab && section->n_files)
 		free_tab(section->tab, section->n_files);
-	if (section->names)
+	if (section->names && section->n_files)
 		free_tab(section->names, section->n_files);
+	section->path = NULL;
+	section->extension = NULL;
+	section->tab = NULL;
+	section->n_files = 0;
+	section->names = NULL;
 }
 
 void					init_media(t_media *media)

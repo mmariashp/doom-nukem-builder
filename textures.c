@@ -19,7 +19,7 @@ void					render_texture_icons(t_button *btn, t_sdl *sdl, int n_btn, t_texture *t
 		if (txtrs[i].sdl_t)
 			SDL_RenderCopy(sdl->rend, txtrs[i].sdl_t, NULL, &rect);
 		if (txtrs[i].name)
-			write_text(txtrs[i].name, sdl->rend, text, 0, TRUE);
+			write_text(txtrs[i].name, sdl, text, 0, TRUE);
 		i++;
 	}
 }
@@ -30,7 +30,7 @@ void					r_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
         return ;
     SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
     SDL_RenderClear(sdl->rend);
-    render_btn(prog->modes[prog->mode_id].btn, sdl->rend, prog->modes[prog->mode_id].n_btn, prog->mode_id, prog->t);
+    render_btn(prog->modes[prog->mode_id].btn, sdl, prog->modes[prog->mode_id].n_btn, prog->mode_id, prog->t);
     render_texture_icons(prog->modes[prog->mode_id].btn, sdl, prog->modes[prog->mode_id].n_btn, media->txtrs);
     SDL_RenderPresent(sdl->rend);
     prog->features[F_REDRAW] = 1;

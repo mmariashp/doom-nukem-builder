@@ -1,16 +1,16 @@
 
 #include "builder.h"
 
-void					place_player_icons(t_world world, t_grid *grid, SDL_Renderer *rend)
+void					place_player_icons(t_world world, t_grid *grid, t_sdl *sdl)
 {
 	t_vec2d				node;
 
 	node.x = (int)(grid->box.x + world.p_start.x * grid->scale);
 	node.y = (int)(grid->box.y + world.p_start.y * grid->scale);
-	write_text("START", rend, (t_rec){ node.x - 120, node.y + 5, 240, 50 }, WHITE, TRUE);
+	write_text("START", sdl, (t_rec){ node.x - 120, node.y + 5, 240, 50 }, WHITE, TRUE);
 	node.x = (int)(grid->box.x + world.p_end.x * grid->scale);
 	node.y = (int)(grid->box.y + world.p_end.y * grid->scale);
-	write_text("END", rend, (t_rec){ node.x - 120, node.y + 5, 240, 50 }, WHITE, TRUE);
+	write_text("END", sdl, (t_rec){ node.x - 120, node.y + 5, 240, 50 }, WHITE, TRUE);
 }
 
 char 					*write_type(int type)
@@ -30,7 +30,7 @@ char 					*write_type(int type)
 	return (NULL);
 }
 
-void					render_item_info(t_media *med, SDL_Renderer *rend, t_mode *mode, SDL_Texture **t)
+void					render_item_info(t_media *med, t_sdl *sdl, t_mode *mode, SDL_Texture **t)
 {
 	int					s;
 	int					id;
@@ -38,7 +38,7 @@ void					render_item_info(t_media *med, SDL_Renderer *rend, t_mode *mode, SDL_Te
 	char				*tmp;
 	char				*tmp2;
 
-	if (!rend || !med || !mode || !mode->btn || !med->itemfull)
+	if (!sdl || !med || !mode || !mode->btn || !med->itemfull)
 		return ;
 	if (within((s = select_it(1, S_SELECT, 1)), -1, \
 	med->worlds[med->w_id].n_sec) && within((id = select_it(1, I_SELECT, \
@@ -47,16 +47,16 @@ void					render_item_info(t_media *med, SDL_Renderer *rend, t_mode *mode, SDL_Te
 	{
 		box = (t_rec){ 20, WIN_H - 120, 350, 48 };
 		if (within(TXTR_RECT_Y, -1, TOTAL_TXTRS) && t[TXTR_RECT_Y])
-			render_box(box, t[TXTR_RECT_Y], rend);
-		write_text(write_type(med->itemfull[id].type), rend, box, EDIT_TEXT_COLOR, FALSE);
+			render_box(box, t[TXTR_RECT_Y], sdl->rend);
+		write_text(write_type(med->itemfull[id].type), sdl, box, EDIT_TEXT_COLOR, FALSE);
 		box = (t_rec){ 20, WIN_H - 60, 350, 50 };
 		if (within(TXTR_RECT_Y, -1, TOTAL_TXTRS) && t[TXTR_RECT_Y])
-			render_box(box, t[TXTR_RECT_Y], rend);
+			render_box(box, t[TXTR_RECT_Y], sdl->rend);
 		if ((tmp = ft_strjoin("Name: \"", med->itemfull[id].filename)))
 		{
 			tmp2 = ft_strjoin(tmp,"\"");
 			free(tmp);
-			write_text(tmp2, rend, box, EDIT_TEXT_COLOR, FALSE);
+			write_text(tmp2, sdl, box, EDIT_TEXT_COLOR, FALSE);
 			if (tmp2)
 				free(tmp2);
 		}
@@ -110,13 +110,13 @@ void					r_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 			if (state == SECTOR_EDIT)
 			{
 				render_items(sdl->rend, &media->worlds[media->w_id], media->itemfull, media->n_itemfull, grid, prog->t);
-				render_item_info(media, sdl->rend, &prog->modes[prog->mode_id], prog->t);
+				render_item_info(media, sdl, &prog->modes[prog->mode_id], prog->t);
 			}
-			render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->w_id], state, media->n_txtrs, prog->t);
+			render_edit_menu(sdl, media->txtrs, &media->worlds[media->w_id], state, media->n_txtrs, prog->t);
 		}
-		render_btn(prog->modes[prog->mode_id].btn, sdl->rend, prog->modes[prog->mode_id].n_btn, prog->mode_id, prog->t);
+		render_btn(prog->modes[prog->mode_id].btn, sdl, prog->modes[prog->mode_id].n_btn, prog->mode_id, prog->t);
 		if (state == NORMAL && prog->btn_on == PLAYER_BTN)
-			place_player_icons(media->worlds[media->w_id], grid, sdl->rend);
+			place_player_icons(media->worlds[media->w_id], grid, sdl);
 		SDL_RenderPresent(sdl->rend);
 		prog->features[F_REDRAW] = 0;
 	}
@@ -290,7 +290,7 @@ unsigned short			mode_change(t_prog *prog, t_media *media, t_grid *grid, int flo
 {
 	if (!prog || !media || !grid)
 		return (FAIL);
-	if (prog->last_mode_id == MODE_levels) // when opening a map
+	if (prog->last_mode_id == MODE_LEVELS) // when opening a map
 	{
 		prog->last_mode_id = prog->mode_id;
 		prog->btn_on = -1;
@@ -309,7 +309,7 @@ void					btn_refresh(t_prog *prog, int state, int *last)
 {
 	if (!prog || !last)
 		return ;
-	free_btn(prog->modes[prog->mode_id].btn, prog->modes[prog->mode_id].n_btn);
+//	free_btn(prog->modes[prog->mode_id].btn, prog->modes[prog->mode_id].n_btn);
 	get_btn(state, &prog->modes[prog->mode_id]);
 	prog->btn_on = -1;
 	prog->btn_lit = -1;
@@ -361,7 +361,7 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 
 	if (!sdl || !media || !grid || !prog)
 		return (FAIL);
-	last = prog->last_mode_id == MODE_levels ? -2 : last; // to unlight btn
+	last = prog->last_mode_id == MODE_LEVELS ? -2 : last; // to unlight btn
 	if (prog->last_mode_id != prog->mode_id) // coming from other modes
 		return(mode_change(prog, media, grid, floor_ceil));
 	if (prog->zoom != 0)
@@ -606,12 +606,12 @@ int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
                 if (select_it(1, ST_SELECT, -1) == NORMAL && prog->btn_lit == BACK_BTN)
                 {
 					prog->last_mode_id = prog->mode_id;
-                    prog->mode_id = MODE_levels;
+                    prog->mode_id = MODE_LEVELS;
 					prog->modes[prog->mode_id].btn[prog->btn_lit].vis_lit_on[2] = FALSE;
 					prog->btn_lit = -1;
                     prog->btn_on = -1;
                     media->w_id = -1;
-                    refresh_level_list(media, &prog->modes[MODE_levels]);
+                    refresh_level_list(media, &prog->modes[MODE_LEVELS]);
                     break ;
                 }
                 prog->click = (t_vec2d){ 0, 0 };

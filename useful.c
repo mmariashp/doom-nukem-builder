@@ -64,6 +64,6 @@ void					free_int_tab(int **tab, int size)
 		return ;
 	i = 0;
 	while(i < size && tab[i] != NULL)
-		ft_memdel((void **)&tab[i++]);
-	ft_memdel((void **)&tab);
+		free(tab[i++]);
+	free(tab);
 }

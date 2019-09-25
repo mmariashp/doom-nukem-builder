@@ -22,7 +22,7 @@ SDL_Texture				**get_prog_txtr(SDL_Renderer *rend)
 	{
 		if ((tmp = ft_strjoin("./buttons/", name[i])))
 		{
-			tmp2 = ft_strjoin(tmp, ".png");
+			tmp2 = ft_strjoin(tmp, ".bmp");
 			free(tmp);
 			if (tmp2)
 			{
@@ -76,7 +76,7 @@ t_prog					*get_prog(SDL_Renderer *rend)
 	t_prog				*prog;
 
 	prog = (t_prog *)ft_memalloc(sizeof(t_prog));
-	if (!prog)
+	if (!prog || !rend)
 		return (NULL);
 	ft_bzero(prog, sizeof(t_prog));
 	prog->screen = (int **)ft_memalloc(sizeof(int *) * WIN_W);
@@ -88,7 +88,7 @@ t_prog					*get_prog(SDL_Renderer *rend)
 		prog->screen[k] = (int *)ft_memalloc(sizeof(int) * WIN_H);
 		if (!prog->screen[k])
 			return (NULL);
-		ft_bzero(prog->screen[k], sizeof(prog->screen[k]));
+		ft_bzero(prog->screen[k], sizeof(int) * WIN_H);
 		k++;
 	}
 	prog->mode_id = 0;
@@ -103,6 +103,7 @@ t_prog					*get_prog(SDL_Renderer *rend)
 	prog->features[F_MOVE_GRID] = 1;
 	prog->features[F_SELECT_NODE] = 0;
 	prog->features[F_REDRAW] = 1;
+	prog->t = NULL;
 	prog->t = get_prog_txtr(rend);
 	if (!prog->t)
 	{

@@ -61,7 +61,10 @@ int 					*add_to_array(int *old_array, unsigned short *size, int to_add, int fin
 	{
 		new[i] = old_array[j];
 		if (old_array[j] == find)
-			new[++i] = to_add;
+		{
+			new[i] = to_add;
+			new[++i] = find;
+		}
 		i++;
 		j++;
 	}

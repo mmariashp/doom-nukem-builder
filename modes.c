@@ -30,8 +30,12 @@ void					free_modes(t_mode *modes)
 	i = 0;
 	while (i < N_MODES)
 	{
+		printf("mode = %d, n-b = %d\n", i, modes[i].n_btn);
 		if (modes[i].btn)
+		{
+			printf("btn yes\n");
 			free_btn(modes[i].btn, modes[i].n_btn);
+		}
 		i++;
 	}
 	free(modes);
@@ -190,68 +194,6 @@ unsigned short			distribute_btn_v2(t_button *btn, int from, int to, t_rec box, t
     return (SUCCESS);
 }
 
-# define N_BTN_BACKS		4
-
-//SDL_Texture				*btn_back(int id, int set_get_free, SDL_Renderer *rend)
-//{
-//	static char 		path_btn[11] = "./buttons/";
-//	static char 		ext[5] = ".png";
-//	static int 			init = 0;
-//	static SDL_Texture	**back = NULL;
-//	char 				*tmp;
-//	int					i;
-//
-//	if (!rend)
-//		return (NULL);
-//	if (set_get_free == 0 && back == NULL && init == 0)
-//	{
-//		if (!(back = (SDL_Texture **)ft_memalloc(sizeof(SDL_Texture *) * N_BTN_BACKS)))
-//			return (NULL);
-//		tmp = get_full_path("blue_button00", ext, path_btn);
-//		if (tmp)
-//		{
-//			back[0] = load_texture(tmp, rend, 0);
-//			free(tmp);
-//		}
-//		tmp = get_full_path("blue_button13", ext, path_btn);
-//		if (tmp)
-//		{
-//			back[1] = load_texture(tmp, rend, 0);
-//			free(tmp);
-//		}
-//		tmp = get_full_path("grey_panel", ext, path_btn);
-//		if (tmp)
-//		{
-//			back[2] = load_texture(tmp, rend, 0);
-//			free(tmp);
-//		}
-//		tmp = get_full_path("yellow_button00", ext, path_btn);
-//		if (tmp)
-//		{
-//			back[3] = load_texture(tmp, rend, 0);
-//			free(tmp);
-//		}
-//		init = 1;
-//		return (NULL);
-//	}
-//	if (init == 1 && set_get_free == 2 && back != NULL)
-//	{
-//		i = 0;
-//		while (i < N_BTN_BACKS)
-//		{
-////			if (back[i])
-////				SDL_DestroyTexture(back[i]);
-//			i++;
-//		}
-//		free(back);
-//		init = 0;
-//		return (NULL);
-//	}
-//	else if (init == 1 && set_get_free == 1 && id >= 0 && id < N_BTN_BACKS)
-//		return (back[id]);
-//	return (NULL);
-//}
-
 unsigned short			main_menu_btn(t_button *btn)
 {
 	t_rec				box;
@@ -265,7 +207,6 @@ unsigned short			main_menu_btn(t_button *btn)
 	box.y = (WIN_H  - box.h) / 2;
 	distribute_btn_v(btn, 0, N_MM_BTNS ,box, 20);
 	i = 0;
-
 	while (i < N_MM_BTNS)
 	{
 		btn[i].reg_i = TXTR_RECT_GR;
@@ -300,12 +241,14 @@ unsigned short			levels_btn(t_button *btn, t_world *worlds, int n_worlds)
 		tmp = ft_itoa(i);
 		s = ft_strjoin(tmp, ". ");
 		free(tmp);
-		if (i == n_worlds)
-			btn[i].text = ft_strjoin(s, " ADD LEVEL");
-		else if (i < n_worlds)
-			btn[i].text = ft_strjoin(s, worlds[i].filename);
 		if (s)
+		{
+			if (i == n_worlds)
+				btn[i].text = ft_strjoin(s, " ADD LEVEL");
+			else if (i < n_worlds)
+				btn[i].text = ft_strjoin(s, worlds[i].filename);
 			free(s);
+		}
 		btn[i].reg_i = TXTR_RECT_GR;
 		btn[i].lit_i = TXTR_RECT_GR_L;
 		i++;
@@ -379,7 +322,8 @@ unsigned short			sel_item_btn(t_button *btn, t_itemfull *itemfull, int n_itemful
 		btn[i].vis_lit_on[0] = TRUE;
 		btn[i].reg_i = TXTR_RECT_GR;
 		btn[i].lit_i = TXTR_RECT_GR_L;
-		btn[i].text = ft_strdup(itemfull[i].filename);
+		if (itemfull[i].filename)
+			btn[i].text = ft_strdup(itemfull[i].filename);
 		btn[i].box = button_box;
 		button_box.y += button_box.h;
 		if (i == 25)
@@ -394,6 +338,8 @@ unsigned short			sel_item_btn(t_button *btn, t_itemfull *itemfull, int n_itemful
 
 void                    refresh_level_list(t_media *media, t_mode *mode)
 {
+	if (!media || !mode)
+		return ;
     if (mode->n_btn == media->n_worlds + 1)
         return ;
     if (mode->btn)
@@ -415,15 +361,15 @@ unsigned short			init_modes(t_media *media, t_prog *prog)
 	modes = (t_mode *)ft_memalloc(sizeof(t_mode) * N_MODES);
 	if (!modes)
 		return (FAIL);
-	ft_bzero(modes, sizeof(modes));
+	ft_bzero(modes, sizeof(t_mode) * N_MODES);
 	prog->modes = modes;
 	prog->modes[MODE_MAIN_MENU].input = &i_mainmenu;
 	prog->modes[MODE_MAIN_MENU].update = &u_mainmenu;
 	prog->modes[MODE_MAIN_MENU].render = &r_mainmenu;
 
-	prog->modes[MODE_levels].input =   &i_levels;
-	prog->modes[MODE_levels].update = &u_levels;
-	prog->modes[MODE_levels].render = &r_levels;
+	prog->modes[MODE_LEVELS].input =   &i_levels;
+	prog->modes[MODE_LEVELS].update = &u_levels;
+	prog->modes[MODE_LEVELS].render = &r_levels;
 
 	prog->modes[MODE_EDITOR].input =   &i_editor;
 	prog->modes[MODE_EDITOR].update = &u_editor;
@@ -438,12 +384,12 @@ unsigned short			init_modes(t_media *media, t_prog *prog)
 	prog->modes[MODE_SEL_ITEM].render = &r_sel_item;
 
 	prog->modes[MODE_MAIN_MENU].n_btn = N_MM_BTNS;
-	prog->modes[MODE_levels].n_btn = (media->n_worlds + 1) * 3;
+	prog->modes[MODE_LEVELS].n_btn = (media->n_worlds + 1) * 3;
 	prog->modes[MODE_EDITOR].n_btn = 8;
     prog->modes[MODE_TEXTURES].n_btn = media->n_txtrs;
 	prog->modes[MODE_MAIN_MENU].n_btn = N_MM_BTNS;
-	prog->modes[MODE_levels].n_btn = (media->n_worlds + 1) * 3;
-	prog->modes[MODE_EDITOR].n_btn = 0;
+	prog->modes[MODE_LEVELS].n_btn = (media->n_worlds + 1) * 3;
+	prog->modes[MODE_EDITOR].n_btn = 18;
 	prog->modes[MODE_SEL_ITEM].n_btn = media->n_itemfull;
 	i = 0;
 	while (i < N_MODES)
@@ -454,7 +400,7 @@ unsigned short			init_modes(t_media *media, t_prog *prog)
 		i++;
 	}
 	main_menu_btn(prog->modes[MODE_MAIN_MENU].btn);
-	levels_btn(prog->modes[MODE_levels].btn, media->worlds, media->n_worlds);
+	levels_btn(prog->modes[MODE_LEVELS].btn, media->worlds, media->n_worlds);
     textures_btn(prog->modes[MODE_TEXTURES].btn, media->txtrs, media->n_txtrs);
 	sel_item_btn(prog->modes[MODE_SEL_ITEM].btn, media->itemfull, media->n_itemfull);
 	return (SUCCESS);

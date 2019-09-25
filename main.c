@@ -35,7 +35,7 @@
 //	exit(EXIT_FAILURE);
 //}
 
-void					write_text(char *str, SDL_Renderer *rend, t_rec rec, int color, char h_center)
+void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center)
 {
 	unsigned char		r;
 	unsigned char		g;
@@ -44,29 +44,28 @@ void					write_text(char *str, SDL_Renderer *rend, t_rec rec, int color, char h_
 	float 				ratio;
     SDL_Rect            renderQuad;
 	SDL_Color			textColor;
-    TTF_Font			*font;
 
-    if (!str || !(font = set_get_free_font(1)))
+    if (!str || !sdl || !sdl->rend || !sdl->font)
 		return ;
 	get_rgb(&r, &g, &b, color);
 	textColor = (SDL_Color){ r, g, b, 0 };
-	SDL_Surface* textSurface = TTF_RenderText_Solid(font, str, textColor);
+	SDL_Surface* textSurface = TTF_RenderText_Solid(sdl->font, str, textColor);
 	if (textSurface)
 	{
-		SDL_Texture* text = SDL_CreateTextureFromSurface(rend, textSurface);
+		SDL_Texture* text = SDL_CreateTextureFromSurface(sdl->rend, textSurface);
 		if (text)
 		{
 			ratio = textSurface->h ? (float)textSurface->w / textSurface->h : 1.f;
 			w = clamp(textSurface->h * ratio, 0, rec.w);
-			SDL_FreeSurface(textSurface);
 			renderQuad = (SDL_Rect){ rec.x, rec.y, w, rec.h };
 			if (h_center == TRUE)
 				renderQuad.x = rec.x + (rec.w - w) / 2;
 			else
 				renderQuad.x = rec.x + rec.w * 0.05;
-			SDL_RenderCopy(rend, text, NULL, &renderQuad);
+			SDL_RenderCopy(sdl->rend, text, NULL, &renderQuad);
 			SDL_DestroyTexture(text);
 		}
+		SDL_FreeSurface(textSurface);
 	}
 }
 
@@ -104,11 +103,13 @@ char 					sector_status(t_sec sector, t_wall *walls, t_vec2d *vecs, int n)
 {
 	int					i;
 	int					j;
-	int 				tmp[n];
+	int 				*tmp;
 	int                 *w;
 	char                status;
 
 	if (!walls || !vecs)
+		return (SEC_OPEN);
+	if (!(tmp = (int *)ft_memalloc(sizeof(int) * n)))
 		return (SEC_OPEN);
 	ft_memset(tmp, -1, sizeof(int) * n);
 	i = -1;
@@ -123,25 +124,29 @@ char 					sector_status(t_sec sector, t_wall *walls, t_vec2d *vecs, int n)
 	}
     i = -1;
     j = 0;
-    while (++i < n)
+    while (++i < n && j < n)
     {
         if (tmp[i] >= 0)
             tmp[j++] = tmp[i];
     }
     if (!(w = (int *)ft_memalloc(sizeof(int) * j)))
-        return (SEC_OPEN);
+	{
+    	free(tmp);
+    	return (SEC_OPEN);
+	}
     i = 0;
     while (i < j && i < n)
     {
         w[i] = tmp[i];
         i++;
     }
+	free(tmp);
 	pair_sort(w, j);
     if (sector_closed(w, j) == FALSE)
-        status = SEC_OPEN;
-	else if (sec_is_convex(vecs, sector.v, sector.n_v) == FALSE)
-	    status = SEC_CONCAVE_CLOSED;
-	else
+    	status = SEC_OPEN;
+    else if (sec_is_convex(vecs, sector.v, sector.n_v) == FALSE)
+    	status = SEC_CONCAVE_CLOSED;
+    else
 	    status = SEC_CONVEX_CLOSED;
     free(w);
 	return(status);
@@ -152,7 +157,7 @@ void					update_sector_status(t_sec *sec, t_wall *walls, t_vec2d *vecs, int n_se
 	int 				i;
 
 	i = -1;
-	if (!sec)
+	if (!sec || !walls || !vecs)
 		return ;
 	while (++i < n_sec)
 		sec[i].status = sector_status(sec[i], walls, vecs, sec[i].n_walls * 2);
@@ -278,7 +283,6 @@ void					game_loop(t_sdl *sdl, t_media *media, t_prog *prog)
 	t_grid				*grid;
 
     grid = NULL;
-	set_get_free_font(0);
 	if (init_modes(media, prog) == FAIL || !(grid = get_grid()))
 	{
 		ft_putstr("\x1b[32mReturning fail from game loop.\x1b[0m\n");
@@ -292,7 +296,6 @@ void					game_loop(t_sdl *sdl, t_media *media, t_prog *prog)
 		SDL_Delay(10);
 	}
 	free(grid);
-	set_get_free_font(2);
 }
 
 unsigned 				load_sdl_media(t_media *media, t_sdl *sdl)
@@ -354,6 +357,6 @@ int						main(void)
 	free_media(media);
 	free_sdl(sdl);
 	ft_putstr("\x1b[32mReturning success from main function.\x1b[0m\n");
-	system("leaks -q builder");
+//	system("leaks -q builder");
 	return (SUCCESS);
 }

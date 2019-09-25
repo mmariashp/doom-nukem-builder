@@ -103,7 +103,7 @@ Sectors
 9) floor(2 0) ceil(22 0) walls '29 30 31 28 ' items '(62,12 3)(61,14 0)'
 10) floor(0 0) ceil(0 0) walls '34 35 36 37 26 33 ' items ''
 11) floor(0 0) ceil(20 0) walls '32 40 39 38 ' items ''
-12) floor(22 0) ceil(0 0) walls '0 41 1 18 21 24 ' items ''
+12) floor(22 0) ceil(0 0) walls '0 41 1 18 21 24 ' items '(59,12 5)(56,13 0)(55,10 1)'
 13) floor(0 0) ceil(0 0) walls '45 44 32 43 8 5 42 30 ' items ''
 14) floor(0 0) ceil(0 0) walls '46 47 45 29 27 37 ' items ''
 15) floor(0 0) ceil(0 0) walls '25 22 19 16 14 12 10 48 49 33 ' items ''
