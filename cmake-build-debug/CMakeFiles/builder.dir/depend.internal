@@ -46,6 +46,11 @@ CMakeFiles/builder.dir/editor.c.o
  /home/moosh/CLionProjects/builder/builder.h
  /home/moosh/CLionProjects/builder/editor.c
  /home/moosh/CLionProjects/builder/get_next_line.h
+CMakeFiles/builder.dir/file_fun.c.o
+ /home/moosh/CLionProjects/builder/./libft/libft.h
+ /home/moosh/CLionProjects/builder/builder.h
+ /home/moosh/CLionProjects/builder/file_fun.c
+ /home/moosh/CLionProjects/builder/get_next_line.h
 CMakeFiles/builder.dir/fill_grid.c.o
  /home/moosh/CLionProjects/builder/./libft/libft.h
  /home/moosh/CLionProjects/builder/builder.h

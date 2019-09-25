@@ -132,8 +132,8 @@
 # define MIN_HEIGHT				-100
 # define MAX_HEIGHT				100
 
-# define MIN_SECTOR_WALLS		3
-# define MAX_SECTOR_WALLS		30
+# define MIN_SEC_WALLS		3
+# define MAX_SEC_WALLS		30
 
 # define MAX_SECTOR_ITEMS		20
 # define MAX_ITEMFULL			50
@@ -542,7 +542,6 @@ int                     get_min(int one, int two);
 
 
 t_media					*get_assets(void);
-unsigned 				close_file(int fd);
 void					free_media(t_media *media);
 unsigned short			rewrite_media(t_media *media);
 unsigned short			rewrite_levels(t_media *media);
@@ -579,7 +578,7 @@ void				    draw_thick_line(t_line l, int color, int r, int **screen);
 
 unsigned short			fill_polygon(t_vec2d *p, int n_p, int **screen, int color);
 
-int 					fill_sector_v(t_sec *sector, t_wall *walls, int n);
+//int 					fill_sector_v(t_sec *sector, int *tmp, int n);
 
 void					pair_sort(int *a, int n);
 
@@ -715,6 +714,12 @@ void					free_sector(t_sec *sector);
 
 void					validate_media(t_media *media);
 
+/*
+ * validate_media
+ */
+unsigned 				open_for_read(const char *path, int *fd);
+unsigned 				open_for_write(const char *path, int *fd);
+unsigned 				close_file(int fd);
 
 void					render_grid_iso(t_world world, t_grid *grid, t_prog *prog);
 

@@ -63,7 +63,7 @@ add_executable(${PROJECT_NAME}
         delete_from_media.c
         delete_world.c
         delete_sector.c
-        validate_media.c)
+        validate_media.c file_fun.c)
 
 set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror")
 #set(GCC_COVERAGE_COMPILE_FLAGS "-fsanitize=\"address\" -g -fno-omit-frame-pointer")

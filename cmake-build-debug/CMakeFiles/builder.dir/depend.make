@@ -46,6 +46,11 @@ CMakeFiles/builder.dir/editor.c.o: ../builder.h
 CMakeFiles/builder.dir/editor.c.o: ../editor.c
 CMakeFiles/builder.dir/editor.c.o: ../get_next_line.h
 
+CMakeFiles/builder.dir/file_fun.c.o: .././libft/libft.h
+CMakeFiles/builder.dir/file_fun.c.o: ../builder.h
+CMakeFiles/builder.dir/file_fun.c.o: ../file_fun.c
+CMakeFiles/builder.dir/file_fun.c.o: ../get_next_line.h
+
 CMakeFiles/builder.dir/fill_grid.c.o: .././libft/libft.h
 CMakeFiles/builder.dir/fill_grid.c.o: ../builder.h
 CMakeFiles/builder.dir/fill_grid.c.o: ../fill_grid.c

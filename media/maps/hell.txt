@@ -65,14 +65,14 @@ Walls
 32) 21-22 door 0
 
 Sectors
-0) floor(0 12) ceil(0 0) walls '3 22 2 1 0 ' items '(20,18 3)(19,23 7)'
-1) floor(0 0) ceil(0 0) walls '22 2 4 5 6 ' items ''
+0) floor(0 12) ceil(0 0) walls '3 2 1 0 ' items '(20,18 3)(19,23 7)'
+1) floor(0 0) ceil(0 0) walls '2 4 5 6 ' items ''
 2) floor(0 0) ceil(0 0) walls '7 6 8 9 ' items ''
 3) floor(0 0) ceil(0 0) walls '13 12 11 10 ' items ''
 4) floor(0 0) ceil(0 0) walls '17 16 15 14 ' items ''
 5) floor(0 0) ceil(0 0) walls '21 20 19 18 ' items ''
-6) floor(0 0) ceil(0 0) walls '23 24 25 26 5 27 ' items ''
-7) floor(0 0) ceil(0 0) walls '32 28 29 30 31 ' items ''
+6) floor(0 0) ceil(0 0) walls '23 24 25 26 5 ' items ''
+7) floor(0 0) ceil(0 0) walls '28 29 30 31 ' items ''
 
 Player
 0) 1,1 (sector: -1)  start

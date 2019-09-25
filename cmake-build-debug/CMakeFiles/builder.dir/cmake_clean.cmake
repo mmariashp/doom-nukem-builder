@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/edit_menu.c.o"
   "CMakeFiles/builder.dir/edit_walls.c.o"
   "CMakeFiles/builder.dir/editor.c.o"
+  "CMakeFiles/builder.dir/file_fun.c.o"
   "CMakeFiles/builder.dir/fill_grid.c.o"
   "CMakeFiles/builder.dir/fill_polygon.c.o"
   "CMakeFiles/builder.dir/find_in_media.c.o"

@@ -148,6 +148,9 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/editor.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/file_fun.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/fill_grid.c">
 			<Option target="builder"/>
 		</Unit>

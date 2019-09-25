@@ -38,8 +38,8 @@
 # define MIN_HEIGHT				-100
 # define MAX_HEIGHT				100
 
-# define MIN_SECTOR_WALLS		3
-# define MAX_SECTOR_WALLS		20
+# define MIN_SEC_WALLS		3
+# define MAX_SEC_WALLS		20
 
 //wall types
 # define WALL_EMPTY					0

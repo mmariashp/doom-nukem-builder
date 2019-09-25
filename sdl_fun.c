@@ -13,13 +13,11 @@ void					free_sdl(t_sdl *sdl)
 {
 	if (!sdl)
 		return ;
-	printf("1g\n");
 	if (sdl->rend)
 	{
 		SDL_DestroyRenderer(sdl->rend);
 		sdl->rend = NULL;
 	}
-	printf("2g\n");
 	if (sdl->window)
 	{
 		SDL_DestroyWindow(sdl->window);

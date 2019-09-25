@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/moosh/CLionProjects/builder/edit_menu.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/edit_menu.c.o"
   "/home/moosh/CLionProjects/builder/edit_walls.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/edit_walls.c.o"
   "/home/moosh/CLionProjects/builder/editor.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/editor.c.o"
+  "/home/moosh/CLionProjects/builder/file_fun.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/file_fun.c.o"
   "/home/moosh/CLionProjects/builder/fill_grid.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/fill_grid.c.o"
   "/home/moosh/CLionProjects/builder/fill_polygon.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/fill_polygon.c.o"
   "/home/moosh/CLionProjects/builder/find_in_media.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/find_in_media.c.o"

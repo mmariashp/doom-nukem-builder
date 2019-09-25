@@ -379,6 +379,33 @@ editor.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/editor.c.s
 .PHONY : editor.c.s
 
+file_fun.o: file_fun.c.o
+
+.PHONY : file_fun.o
+
+# target to build an object file
+file_fun.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/file_fun.c.o
+.PHONY : file_fun.c.o
+
+file_fun.i: file_fun.c.i
+
+.PHONY : file_fun.i
+
+# target to preprocess a source file
+file_fun.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/file_fun.c.i
+.PHONY : file_fun.c.i
+
+file_fun.s: file_fun.c.s
+
+.PHONY : file_fun.s
+
+# target to generate assembly for a file
+file_fun.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/file_fun.c.s
+.PHONY : file_fun.c.s
+
 fill_grid.o: fill_grid.c.o
 
 .PHONY : fill_grid.o
@@ -3008,6 +3035,9 @@ help:
 	@echo "... editor.o"
 	@echo "... editor.i"
 	@echo "... editor.s"
+	@echo "... file_fun.o"
+	@echo "... file_fun.i"
+	@echo "... file_fun.s"
 	@echo "... fill_grid.o"
 	@echo "... fill_grid.i"
 	@echo "... fill_grid.s"

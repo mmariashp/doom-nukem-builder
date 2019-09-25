@@ -113,7 +113,7 @@ int 				get_inter_x(int *inter_x, t_vec2d *p, int n_p, int y)
 unsigned short		fill_polygon(t_vec2d *p, int n_p, int **screen, int color)
 {
 	int				n_interx;
-	int				inter_x[MAX_SECTOR_WALLS];
+	int				inter_x[MAX_SEC_WALLS];
 	int 			i;
 	t_vec2d			min_max[2];
 	t_vec2d			pix;

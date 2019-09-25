@@ -1,17 +1,6 @@
 
 #include "builder.h"
 
-unsigned 				open_for_write(const char *path, int *fd)
-{
-	if (!path)
-		return (FAIL);
-	*fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	if (*fd == -1)
-		return (FAIL);
-	ft_putstr("Opened the file.\n");
-	return (SUCCESS);
-}
-
 void					write_items(t_sec sector, int fd)
 {
 	int 				i;
@@ -299,7 +288,6 @@ unsigned short			rewrite_media(t_media *media)
 		ft_putendl("error in writing assets\n");
 		return (FAIL);
 	}
-	ft_putendl("Wrote assets\n");
 	if (close_file(fd) == FAIL)
 	{
 		ft_putstr("Couldn't close the file");
