@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_assets.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/26 12:05:08 by mshpakov          #+#    #+#             */
+/*   Updated: 2019/09/26 12:05:10 by mshpakov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "builder.h"
 
@@ -60,54 +72,6 @@ short 					identify_section(const char *line)
 	return (id);
 }
 
-void					free_tab(char **tab, int size)
-{
-	int					i;
-
-	if(!tab)
-		return ;
-	i = 0;
-	while(i < size && tab[i] != NULL)
-		free(tab[i++]);
-	free(tab);
-}
-
-char					**realloc_tab(char **tab, size_t n)
-{
-	char				**new;
-	size_t				j;
-
-	j = 0;
-	if (n == 0)
-		return (NULL);
-	if (!(new = (char **)malloc(sizeof(char *) * n)))
-		return (NULL);
-	while (j < n - 1 && tab[j])
-	{
-		new[j] = ft_strdup(tab[j]);
-		j++;
-	}
-	free_tab(tab, n - 1);
-	new[j] = NULL;
-	return (new);
-}
-
-int 					*realloc_int_array(int *tab, size_t n)
-{
-	int 				*new;
-	size_t				j;
-
-	if (n == 0 || !(new = (int *)malloc(sizeof(int) * n)))
-		return (NULL);
-	j = -1;
-	while (++j < n - 1)
-		new[j] = tab[j];
-	if (tab)
-		free(tab);
-	new[j] = 0;
-	return (new);
-}
-
 int						read_item_type(char *line)
 {
 	static char 		types[TOTAL_TYPES][12] = { "coin", "key", "object",\
@@ -138,7 +102,8 @@ void					read_section_filenames(char *line, t_section *section)
 	{
 		while (*line && !ft_isalpha(*line) && *line != '(')
 			line++;
-		if (!(section->extra = realloc_int_array(section->extra, section->n_files + 1)))
+		if (!(section->extra = (int *)realloc_tab(section->extra, \
+		sizeof(int) * (section->n_files + 1), sizeof(int) * section->n_files)))
 			return ;
 		section->extra[section->n_files] = read_item_type(line);
 		if (!(line = ft_strchr(line, ')')))
@@ -146,15 +111,26 @@ void					read_section_filenames(char *line, t_section *section)
 	}
 	while (*line && !ft_isalpha(*line))
 		line++;
-	if (!(section->names = realloc_tab(section->names, section->n_files + 1)) || \
+	if (!(section->names = (char **)realloc_tab(section->names, sizeof(char *) * (section->n_files + 1), sizeof(char *) * section->n_files)) || \
 	!(section->names[section->n_files] = ft_strdup(line)))
 		return ;
-	if ((section->tab = realloc_tab(section->tab, section->n_files + 1)) &&
-	(tmp = ft_strjoin(section->path, line)))
+	if ((section->tab = (char **)realloc_tab(section->tab, sizeof(char *) * (section->n_files + 1), sizeof(char *) * section->n_files)))
 	{
-		if ((section->tab[section->n_files] = ft_strjoin(tmp, section->extension)))
+		if (section->path)
+			tmp = ft_strjoin(section->path, line);
+		else
+			tmp = ft_strdup(line);
+		if (tmp)
+		{
+			if (section->extension)
+				section->tab[section->n_files] = ft_strjoin(tmp, section->extension);
+			else
+				section->tab[section->n_files] = ft_strdup(tmp);
+			free(tmp);
+		}
+		if (section->tab[section->n_files])
 			section->n_files++;
-		free(tmp);
+
 	}
 }
 
@@ -167,9 +143,9 @@ void 					refresh_section(t_section *section)
 	if (section->extension)
 		ft_memdel((void **)&section->extension);
 	if (section->tab)
-		free_tab(section->tab, section->n_files);
+		free_tab((void **)section->tab, section->n_files);
 	if (section->names)
-		free_tab(section->names, section->n_files);
+		free_tab((void **)section->names, section->n_files);
 	if (section->extra)
 		free(section->extra);
 	section->extra = NULL;
@@ -217,8 +193,6 @@ int 					get_wall_type(char c)
 		return (WALL_EMPTY);
 	if (c == 'f' || c == 'F')
 		return (WALL_FILLED);
-	if (c == 'd' || c == 'D')
-		return (WALL_DOOR);
 	return (-1);
 }
 
@@ -251,7 +225,7 @@ unsigned				get_fl_ceil(char *line, int *h, short *txtr, unsigned short max_txtr
 	return (SUCCESS);
 }
 
-unsigned short			count_walls(char const *s, t_wall *w, int n)
+unsigned short			count_walls(char const *s, int n)
 {
 	unsigned short		count;
 	int 				tmp;
@@ -263,7 +237,7 @@ unsigned short			count_walls(char const *s, t_wall *w, int n)
 		if (ft_isdigit(*s))
 		{
 			tmp = ft_atoi(s);
-			if (within(tmp, -1, n) && w[tmp].type != WALL_DOOR)
+			if (within(tmp, -1, n))
 				count++;
 			while (*s && ft_isdigit(*s))
 				s++;
@@ -364,7 +338,6 @@ int 					sector_closed(int *tmp, int n)
 	return (TRUE);
 }
 
-
 //int 					fill_sector_v(t_sec *sector, int *tmp, int n)
 //{
 //	int					i;
@@ -461,15 +434,15 @@ int 					get_sec_v(t_sec *sector, t_wall *walls)
 	return (fill_sector_v(sector, walls, sector->n_walls * 2, -1));
 }
 
-int 					get_sec_walls(t_sec *sector, char *line, t_wall *w, int n_walls)
+int 					get_sec_walls(t_sec *sector, char *line, int n_walls)
 {
 	int 				*walls;
 	unsigned  short		c;
 	int					i;
 
-	if (!w || !n_walls || !sector || !line || !(line = ft_strchr(line, '\'')))
+	if (!n_walls || !sector || !line || !(line = ft_strchr(line, '\'')))
 		return (FAIL);
-	if (!within ((c = count_walls(line, w, n_walls)), MIN_SEC_WALLS - 1, MAX_SEC_WALLS))
+	if (!within ((c = count_walls(line, n_walls)), MIN_SEC_WALLS - 1, MAX_SEC_WALLS))
 		return (FAIL);
 	if (!(walls = (int *)ft_memalloc(sizeof(int) * (sector->n_walls = c))))
 		return (FAIL);
@@ -480,7 +453,7 @@ int 					get_sec_walls(t_sec *sector, char *line, t_wall *w, int n_walls)
 		if (ft_isdigit(*line))
 		{
 			walls[i] = ft_atoi(line);
-			if (within(walls[i], -1, n_walls) && w[walls[i]].type != WALL_DOOR)
+			if (within(walls[i], -1, n_walls))
 				i++;
 			if (!(line = ft_strchr(line, ' ')))
 				break ;
@@ -563,7 +536,6 @@ void 					get_walls(t_wall *wall, char *line, t_vec2d p)
 		line++;
 	wall->type = get_wall_type(*line);
 	wall->txtr = get_wall_txtr(line, 0, MAX_N_TXTRS);
-	wall->door = -1;
 }
 
 unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned short world_no)
@@ -628,8 +600,6 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 			ft_putchar('\n');
 			return (FAIL);
 		}
-		if (world->walls[w_count].type == WALL_DOOR)
-			world->n_doors++;
 		w_count++;
 	}
 	if (status == R_SECTORS && s_count < world->n_sec)
@@ -645,6 +615,15 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		world->sec[s_count].n_walls = 0;
         world->sec[s_count].n_v = 0;
 		world->sec[s_count].status = 0;
+		world->sec[s_count].is_door = FALSE;
+		while (line && *line != 'f')
+		{
+			if (*line++ == 'd')
+			{
+				world->sec[s_count].is_door = TRUE;
+				printf("sector %d is a door\n", s_count);
+			}
+		}
 		if (get_sec_fl_ceil(&world->sec[s_count], line) == FAIL)
 		{
 			ft_putstr("Incorrect floor or ceiling for sector ");
@@ -655,7 +634,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		line = ft_strchr(line, 'w');
 		if (!line)
 			return (FAIL);
-		if (get_sec_walls(&world->sec[s_count], line, world->walls, world->n_walls) == FAIL)
+		if (get_sec_walls(&world->sec[s_count], line, world->n_walls) == FAIL)
 		{
 			ft_putstr("Incorrect walls for sector ");
 			ft_putnbr(s_count);
@@ -886,35 +865,6 @@ unsigned				read_itemfull(t_media *media, t_section *section)
 	return (SUCCESS);
 }
 
-unsigned short          find_doors(int n, t_wall *walls)
-{
-    int                 i;
-    int                 j;
-    int                 wall;
-
-    i = -1;
-    while (++i < n)
-    {
-        if (walls[i].type == WALL_DOOR)
-        {
-            j = -1;
-            wall = -1;
-            while ( ++j < n )
-            {
-                if (j != i && ((walls[j].v1 == walls[i].v1 && walls[j].v2 == walls[i].v2) ||
-                               (walls[j].v1 == walls[i].v2 && walls[j].v2 == walls[i].v1)) )
-                {
-                    if (walls[j].type != WALL_EMPTY || walls[j].door != -1 || wall != -1)
-                        return (FAIL);
-                    walls[j].door = i;
-                    wall = j;
-                }
-            }
-        }
-    }
-    return (SUCCESS);
-}
-
 unsigned				read_levels(t_media *media, t_section *section)
 {
 	short 				i;
@@ -936,23 +886,15 @@ unsigned				read_levels(t_media *media, t_section *section)
 		media->worlds[i].sec = NULL;
 		media->worlds[i].walls = NULL;
 		media->worlds[i].vecs = NULL;
-		media->worlds[i].doors = NULL;
 		media->worlds[i].n_sec = 0;
 		media->worlds[i].n_vecs = 0;
 		media->worlds[i].n_walls = 0;
-		media->worlds[i].n_doors = 0;
 		printf("NAME %s\n", media->worlds[i].filename);
 		if (!media->worlds[i].full_path  || !media->worlds[i].filename || get_map(&media->worlds[i], i) == FAIL)
 		{
 			ft_putendl("failed to get map\n");
 			return (FAIL);
 		}
-		if (find_doors(media->worlds[i].n_walls, media->worlds[i].walls) == FAIL) // will remove
-        {
-            ft_putstr("Errors in doors in level: ");
-            ft_putendl(media->worlds[i].filename);
-		    return (FAIL);
-        }
 	}
 	return (SUCCESS);
 }
@@ -995,8 +937,8 @@ void					free_media(t_media *media)
 				free(media->txtrs[i].full_path);
 			if (media->txtrs[i].name)
 				free(media->txtrs[i].name);
-//			if (media->txtrs[i].sdl_t)
-//				SDL_DestroyTexture(media->txtrs[i].sdl_t);
+			if (media->txtrs[i].sdl_t)
+				SDL_DestroyTexture(media->txtrs[i].sdl_t);
 		}
 		free(media->txtrs);
 	}
@@ -1048,9 +990,9 @@ void					free_section(t_section * section)
 	if (section->extension)
 		free(section->extension);
 	if (section->tab && section->n_files)
-		free_tab(section->tab, section->n_files);
+		free_tab((void **)section->tab, section->n_files);
 	if (section->names && section->n_files)
-		free_tab(section->names, section->n_files);
+		free_tab((void **)section->names, section->n_files);
 	section->path = NULL;
 	section->extension = NULL;
 	section->tab = NULL;
@@ -1132,7 +1074,7 @@ t_media					*read_assets(int fd)
 					}
 				}
 			}
-			else if (ft_isdigit(line[0]) && section.id >= 0 && section.path && section.extension)
+			else if (ft_isdigit(line[0]) && section.id >= 0 && section.path)
 				read_section_filenames(tmp, &section);
 			else if (line[0] == 'P' && !section.path)
 				section.path = identify_path(tmp);

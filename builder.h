@@ -141,7 +141,6 @@
 //wall types
 # define WALL_EMPTY					0
 # define WALL_FILLED				1
-# define WALL_DOOR					2
 
 # define ASSET_FILE             "./asset_paths.txt"
 
@@ -195,43 +194,49 @@
 # define TXTR_SECTOR_L		19
 # define TXTR_WALL			20
 # define TXTR_WALL_L		21
-# define TXTR_PLAYER		22
-# define TXTR_PLAYER_L		23
-# define TXTR_SAVE			24
-# define TXTR_SAVE_L		25
-# define TXTR_EXIT			26
-# define TXTR_EXIT_L		27
-# define TXTR_BACK			28
-# define TXTR_BACK_L		29
-# define TXTR_DEL			30
-# define TXTR_DEL_L			31
-# define TXTR_EDIT			32
-# define TXTR_EDIT_L		33
-# define TXTR_UP			34
-# define TXTR_UP_L			35
-# define TXTR_DOWN			36
-# define TXTR_DOWN_L		37
-# define TXTR_COIN			38
-# define TXTR_KEY			39
-# define TXTR_OBJECT		40
-# define TXTR_ENEMY			41
-# define TXTR_SUPER			42
-# define TXTR_HEALTH		43
-# define TXTR_AMMO			44
-# define TXTR_LIGHT			45
+# define TXTR_DOOR_ADD		22
+# define TXTR_DOOR_ADD_L	23
+# define TXTR_DOOR_DEL		24
+# define TXTR_DOOR_DEL_L	25
+# define TXTR_PLAYER		26
+# define TXTR_PLAYER_L		27
+# define TXTR_SAVE			28
+# define TXTR_SAVE_L		29
+# define TXTR_EXIT			30
+# define TXTR_EXIT_L		31
+# define TXTR_BACK			32
+# define TXTR_BACK_L		33
+# define TXTR_DEL			34
+# define TXTR_DEL_L			35
+# define TXTR_EDIT			36
+# define TXTR_EDIT_L		37
+# define TXTR_UP			38
+# define TXTR_UP_L			39
+# define TXTR_DOWN			40
+# define TXTR_DOWN_L		41
+# define TXTR_COIN			42
+# define TXTR_KEY			43
+# define TXTR_OBJECT		44
+# define TXTR_ENEMY			45
+# define TXTR_SUPER			46
+# define TXTR_HEALTH		47
+# define TXTR_AMMO			48
+# define TXTR_LIGHT			49
 
-# define TOTAL_TXTRS		46
+# define TOTAL_TXTRS		50
 
 
 # define DRAG_BTN		0
-# define DRAW_BTN		1
-# define DISTORT_BTN		2
-# define ISO_BTN		3
-# define SECTOR_BTN		4
-# define WALL_BTN		5
-# define PLAYER_BTN		6
-# define SAVE_BTN		7
-# define BACK_BTN		8
+# define DISTORT_BTN	1
+# define DRAW_BTN		2
+# define SECTOR_BTN		3
+# define WALL_BTN		4
+# define DOOR_ADD_BTN	5
+# define DOOR_DEL_BTN	6
+# define PLAYER_BTN		7
+# define ISO_BTN		8
+# define SAVE_BTN		9
+# define BACK_BTN		10
 
 # define DESELECT_BTN	0
 # define DEL_SEC_BTN	1
@@ -390,7 +395,6 @@ typedef struct                  s_wall
 	int 						v2;
 	signed char 				type;
 	short						txtr;
-	int                 		door;
 }                               t_wall;
 
 typedef struct					s_item
@@ -412,6 +416,7 @@ typedef struct                  s_sector
 	unsigned short				n_walls;
     unsigned short				n_v;
 	char 						status;
+	char 						is_door;
 }                               t_sec;
 
 typedef struct                  s_sound
@@ -439,12 +444,10 @@ typedef struct					s_world
 	char 						*filename;
 	char 						*full_path;
 	t_sec						*sec;
-	int 						*doors;
 	t_wall						*walls;
 	t_vec2d						*vecs;
 	t_vec2d						p_start;
 	t_vec2d						p_end;
-	short unsigned				n_doors;
 	short unsigned				n_sec;
 	short unsigned				n_vecs;
 	short unsigned				n_walls;
@@ -501,73 +504,131 @@ typedef struct 					s_value
 	char 						media_prog;
 }								t_value;
 
+/*
+ * sdl_fun
+ */
+
 int						start_sdl(t_sdl *sdl);
 t_sdl					*get_sdl(void);
 SDL_Texture             *load_texture(char *name, SDL_Renderer *rend, t_vec2d *size);
 void					free_sdl(t_sdl *sdl);
 void					quit_sdl(void);
 
+/*
+ * main_menu mode
+ */
+
 void					r_mainmenu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 unsigned short			u_mainmenu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 int						i_mainmenu(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+
+/*
+ * levels mode
+ */
 
 void					r_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 int						i_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
+/*
+ * editor mode
+ */
+
 int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 unsigned short			u_editor(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					r_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
+
+/*
+ * textures mode
+ */
 
 int						i_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 unsigned short			u_textures(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					r_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
+/*
+ * sel_item mode
+ */
+
 int						i_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 unsigned short			u_sel_item(t_sdl *sdl, t_grid *grid,  t_media *media, t_prog *prog);
 void					r_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog);
 
-
-void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center);
-
-
-int						clamp(int n, int min, int max);
-float					clamp_f(float n, float min, float max);
-t_vec2d					scale(t_vec2d vec, int scale);
-t_vec2d					mult(t_vec2d one, t_vec2d two);
-t_vec2d					sub_one_from_two(t_vec2d one, t_vec2d two);
-t_vec2d					add(t_vec2d one, t_vec2d two);
-int                     get_max(int one, int two);
-int                     get_min(int one, int two);
-
+/*
+ * get_assets
+ */
 
 t_media					*get_assets(void);
 void					free_media(t_media *media);
+
+/*
+ * rewrite
+ */
+
 unsigned short			rewrite_media(t_media *media);
 unsigned short			rewrite_levels(t_media *media);
 
-void					draw_dot(int x, int y, int color, SDL_Renderer *rend);
-void					draw_circle_fill(t_vec2d c, int radius, int color, SDL_Renderer *rend);
-void				    get_rgb(unsigned char *r, unsigned char *g, unsigned char *b, int color);
-void				    draw_line(t_line l, int color, SDL_Renderer *rend);
-
-void				    draw_line_grid(t_line l, char c, signed char nodes[GRID_SIZE][GRID_SIZE]);
-//void					draw_dot_grid(int x, int y, int color, char **nodes);
+/*
+ * modes
+ */
 
 unsigned short			init_modes(t_media *media, t_prog *prog);
 void					free_modes(t_mode *modes);
 void                    refresh_level_list(t_media *media, t_mode *mode);
 
+/*
+ * buttons
+ */
+
 void					render_button(t_button *button, t_sdl *sdl, SDL_Texture **t);
 void					render_button_big(t_button *button, t_sdl *sdl, SDL_Texture **t);
 void					render_btn(t_button *btn, t_sdl *sdl, int n_btn, int mode_id, SDL_Texture **t);
+unsigned short			light_button(t_sdl *sdl, t_button *btn, int n_btn, t_prog *prog);
+t_button				*init_btn(int n_btn);
+void					free_btn(t_button *btn, int n);
+unsigned short			distribute_btn_h(t_button *btn, int from, int to, t_rec box, int padding);
+void					get_btn(int state, t_mode *mode);
+
+/*
+ * zoom
+ */
+
+void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
+void                    zoom_to_sector(t_sec *sector, t_vec2d *vecs, t_grid *grid, t_prog *prog);
+void                    zoom_to_map(int n_vecs, t_vec2d *v, t_grid *grid);
+void                    zoom_to_wall(t_vec2d v1, t_vec2d v2, t_grid *grid, t_prog *prog);
+
+/*
+ * move
+ */
+
+void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid);
+unsigned short			move_grid_keys(t_prog *prog, t_grid *grid);
+void					move_player(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
+void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
+
+/*
+ * render
+ */
+
+void					draw_dot(int x, int y, int color, SDL_Renderer *rend);
+void					draw_circle_fill(t_vec2d c, int radius, int color, SDL_Renderer *rend);
+void				    get_rgb(unsigned char *r, unsigned char *g, unsigned char *b, int color);
+void				    draw_line(t_line l, int color, SDL_Renderer *rend);
+void				    draw_line_grid(t_line l, char c, signed char nodes[GRID_SIZE][GRID_SIZE]);
+
+
 unsigned short			mouse_over(t_rec box, t_vec2d mouse);
 
 void					render_frame(t_rec rec, int color, SDL_Renderer *rend);
 
-unsigned short			light_button(t_sdl *sdl, t_button *btn, int n_btn, t_prog *prog);
+
+/*
+ * render_grid
+ */
 
 void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse);
+void					render_grid_iso(t_world world, t_grid *grid, t_prog *prog);
 
 
 void					draw_dot2(int x, int y, int color, int **screen);
@@ -580,9 +641,9 @@ unsigned short			fill_polygon(t_vec2d *p, int n_p, int **screen, int color);
 
 //int 					fill_sector_v(t_sec *sector, int *tmp, int n);
 
-void					pair_sort(int *a, int n);
 
-void					free_int_tab(int **tab, int size);
+
+
 
 void 					free_prog(t_prog *prog);
 t_prog					*get_prog(SDL_Renderer *rend);
@@ -594,66 +655,48 @@ unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *pa
 
 void					update_sector_status(t_sec *sec, t_wall *walls, t_vec2d *vecs, int n_sec);
 
-void					move_grid_drag(t_prog *prog, t_vec2d mouse, t_grid *grid);
-unsigned short			move_grid_keys(t_prog *prog, t_grid *grid);
-void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
-void                    zoom_to_sector(t_sec *sector, t_vec2d *vecs, t_grid *grid, t_prog *prog);
-void                    zoom_to_map(int n_vecs, t_vec2d *v, t_grid *grid);
-void                    zoom_to_wall(t_vec2d v1, t_vec2d v2, t_grid *grid, t_prog *prog);
 
-void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
 
 t_vec2d					find_node(int p_x, int p_y, t_grid *grid);
 
-t_vec2d                 make_iso(int x, int y, int z);
+t_vec2d_d				make_iso(int x, int y, int z);
 
 
 void					render_box(t_rec box, SDL_Texture *t, SDL_Renderer *rend);
 
 
-int                      texture_in_world(int id, t_world world);
-int					    *realloc_textures(int *textures, int n);
-unsigned short			add_texture(int **textures, short n_txtrs, int id);
 unsigned short			add_wall(t_wall **walls, short n_walls, int one, int two);
 
-//useful
-unsigned short			within(int value, int min, int max);
-int 					select_it(char set_get_unset, unsigned short id, int value);
-int 					lit_item(char set_get_unset, unsigned short id, int value);
-char 					*get_full_path(char *filename, char *ext, char *path);
 
+/*
+ * edit_menu
+ */
 
-// edit menu
 char 					*menu_lines(int id, int i);
 void					render_edit_menu(t_sdl *sdl, t_texture *txtrs, t_world *w, int state, int n_txtrs, SDL_Texture **t);
 t_rec                   layout_menu(char i, char n);
 
-//font
-//TTF_Font				*set_get_free_font(char set_get_free);
 
-//values
+/*
+ * values
+ */
+
 void					render_values(int state, int n, t_value *values, t_sdl *sdl, SDL_Texture **t, t_texture *txtrs, int n_txtrs);
 void					free_values(t_value *values, int n);
 t_value					*init_values(int n);
 
 
-// btn
-t_button				*init_btn(int n_btn);
-void					free_btn(t_button *btn, int n);
-//t_button				*set_get_free_btn(char set_get_free, int *n, int state);
-unsigned short			distribute_btn_h(t_button *btn, int from, int to, t_rec box, int padding);
-void					get_btn(int state, t_mode *mode);
-
 //door
-void                    delete_door(t_world *world, int id);
-void                    add_door(t_world *world, int id);
+//void                    delete_door(t_world *world, int id);
+void                    add_door(t_world *world, int id, t_grid *grid);
 void					delete_wall(int id, t_world *world);
-unsigned short			add_wall_in_secs(t_world *world, int to_add, int find);
-
-void					move_player(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
+//unsigned short			add_wall_in_secs(t_world *world, int to_add, int find);
 
 
-//items
+
+/*
+ * items
+ */
 
 void					draw_item(int type, t_rec box, SDL_Renderer *rend, SDL_Texture **t);
 void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, int n, t_grid *grid, SDL_Texture **t);
@@ -662,25 +705,33 @@ void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sec *sector);
 void					add_item(int default_id, t_vec2d mouse, t_grid *grid, t_sec *sector);
 int 					find_default_item(int type, t_itemfull *itemfull, int n);
 
-unsigned short          vec_same(t_vec2d one, t_vec2d two);
+/*
+ * fill_grid
+ */
 
-
-//fill grid
 void					fill_grid(int n_vecs, t_vec2d *vecs, t_grid *grid);
 void					fill_grid_items(t_sec *sector, t_grid *grid);
 void                    fill_grid_walls(int n_walls, t_wall *walls, int n_vecs, t_vec2d *vecs, t_grid *grid);
 
-//grid main
+/*
+ * grid_main
+ */
+
 void					clean_grid(t_grid *grid);
 t_grid                  *get_grid(void);
 void					grid_refresh(t_grid *grid, t_media *media, int state, int sector);
 
+/*
+ * find_in_media
+ */
 
-//find_in_media
 short 					find_vector(t_vec2d *vecs, t_vec2d p, int n);
 short 					find_wall(short one, short two, t_wall *walls, short n_walls);
 
-//sector logic
+/*
+ * sector_logic
+ */
+
 unsigned short			dot_inside_sector(int x, int y, t_vec2d *p, int n);
 int 					node_in_sector(t_vec2d grid_p, t_world *world);
 int 					mouse_in_sector(t_vec2d p, t_world *world, t_grid *grid);
@@ -690,7 +741,6 @@ unsigned short 			sec_is_convex(t_vec2d *vecs, int *v, int n);
 //delete from media
 
 void					delete_vector(int id, t_world *world);
-
 
 /*
  * delete_world
@@ -715,16 +765,54 @@ void					free_sector(t_sec *sector);
 void					validate_media(t_media *media);
 
 /*
- * validate_media
+ * file_fun
  */
+
+int						my_rename(const char *oldname, const char *newname);
 unsigned 				open_for_read(const char *path, int *fd);
 unsigned 				open_for_write(const char *path, int *fd);
 unsigned 				close_file(int fd);
 
-void					render_grid_iso(t_world world, t_grid *grid, t_prog *prog);
-
 int 					get_sec_v(t_sec *sector, t_wall *walls);
 
+/*
+ * math
+ */
+
+int						clamp(int n, int min, int max);
+float					clamp_f(float n, float min, float max);
+t_vec2d					scale(t_vec2d vec, int scale);
+t_vec2d					mult(t_vec2d one, t_vec2d two);
+t_vec2d					sub_one_from_two(t_vec2d one, t_vec2d two);
+t_vec2d					add(t_vec2d one, t_vec2d two);
+int                     get_max(int one, int two);
+int                     get_min(int one, int two);
+
+/*
+ * useful
+ */
+
+unsigned short			within(int value, int min, int max);
+int 					select_it(char set_get_unset, unsigned short id, int value);
+int 					lit_it(char set_get_unset, unsigned short id, int value);
+char 					*get_full_path(char *filename, char *ext, char *path);
+
+/*
+ * memory_fun
+ */
+
+void					*realloc_tab(void *old_tab, size_t new_size, size_t old_size);
+void					free_tab(void **tab, int size);
+
 void				    swap_ints(int *one, int *two);
+unsigned short          vec_same(t_vec2d one, t_vec2d two);
+void					pair_sort(int *a, int n);;
+
+void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center);
+
+void					turn_btns_off(t_prog *prog);
+
+unsigned short			add_sector(t_sec **sec, short n_sec);
+unsigned short			add_vector(t_vec2d **vecs, short n_vecs, t_grid *grid, short i);
 
 #endif

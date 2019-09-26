@@ -27,16 +27,11 @@ void					free_modes(t_mode *modes)
 
 	if (!modes)
 		return ;
-	i = 0;
-	while (i < N_MODES)
+	i = -1;
+	while (++i < N_MODES)
 	{
-		printf("mode = %d, n-b = %d\n", i, modes[i].n_btn);
 		if (modes[i].btn)
-		{
-			printf("btn yes\n");
 			free_btn(modes[i].btn, modes[i].n_btn);
-		}
-		i++;
 	}
 	free(modes);
 	modes = NULL;
@@ -116,83 +111,78 @@ unsigned short			distribute_btn_v(t_button *btn, int from, int to, t_rec box, in
 	return (SUCCESS);
 }
 
-#define MAX(x,y)    (x)>(y)?(x):(y)
-int						distr(int x, int y, int n)
+int						get_good_size(int w, int h, int n)
 {
-	int res;
-	double px=ceil(sqrt(n*x/y));
-	double sx,sy;
-	if(floor(px*y/x)*px<n)  //does not fit, y/(x/px)=px*y/x
-		sx=y/ceil(px*y/x);
-	else
-		sx= x/px;
-	double py=ceil(sqrt(n*y/x));
-	if(floor(py*x/y)*py<n)  //does not fit
-		sy=x/ceil(x*py/y);
-	else
-		sy=y/py;
-	res = MAX(sx,sy);
-	return (res);
+	t_vec2d_d			tmp;
+	t_vec2d_d			size;
+	double 				w_h;
+	double 				h_w;
+
+	if (!w || !h || !n)
+		return (0);
+	w_h = (double)w / h;
+	h_w = (double)h / w;
+	tmp = (t_vec2d_d){ ceil(sqrt(n * w_h)), ceil(sqrt(n * h_w)) };
+	size.x = floor(tmp.x * h_w) * tmp.x < n ? h / ceil(tmp.x * h_w) : w / tmp.x;
+	if (!tmp.y)
+		return (0);
+	size.y = floor(tmp.y * w_h) * tmp.y < n ? w / ceil(w * tmp.y / h) :
+			h / tmp.y;
+	return (get_max((int)size.x, (int)size.y));
 }
 
-unsigned short			distribute_btn_grid(t_button *btn, int from, int to, t_rec box, int padding)
+unsigned short			distribute_btn_grid(t_button *btn, int from, int to, t_rec box)
 {
     t_vec2d				b;
     int 				y;
     unsigned short		i;
-    int x;
-
-
-    if (!btn || from >= to || padding == -1)
-        return (FAIL);
-    int side = distr(box.w, box.h, to-from);
-
-    b = (t_vec2d){ side, side };
-    y = box.y;
-    i = from;
-    while (i < to)
-    {
-//        y += padding;
-        x = box.x;
-        while (i < to && x  + b.x < box.x + box.w)
-        {
-//            x += padding;
-            btn[i].box.w = b.x;
-            btn[i].box.h = b.y;
-            btn[i].box.x = x;
-            btn[i].box.y = y;
-            x += b.x;
-            i++;
-        }
-        y += b.y;
-
-    }
-    return (SUCCESS);
-}
-
-unsigned short			distribute_btn_v2(t_button *btn, int from, int to, t_rec box, t_vec2d button_size)
-{
-    int 				y;
-    unsigned short		i;
-    int                 padding = (box.h - (button_size.y * (to - from))) / to - from + 1;
-
+    int					x;
 
     if (!btn || from >= to)
         return (FAIL);
+    b.x = get_good_size(box.w, box.h, to - from);
+    b.y = b.x;
     y = box.y;
     i = from;
     while (i < to)
     {
-        y += padding;
-        btn[i].box.w = button_size.x;
-        btn[i].box.h = button_size.y;
-        btn[i].box.x = box.x;
-        btn[i].box.y = y;
-        y += button_size.y;
-        i++;
+        x = box.x;
+        while (i < to && x + b.x < box.x + box.w)
+        {
+            btn[i].box.w = b.x;
+            btn[i].box.h = b.y;
+            btn[i].box.x = x;
+            btn[i++].box.y = y;
+            x += b.x;
+        }
+        y += b.y;
     }
     return (SUCCESS);
 }
+
+//unsigned short			distribute_btn_v2(t_button *btn, int from, int to, t_rec box, t_vec2d button_size)
+//{
+//    int 				y;
+//    unsigned short		i;
+//    int                 padding = (box.h - (button_size.y * (to - from))) / to - from + 1;
+//
+//
+//    if (!btn || from >= to)
+//        return (FAIL);
+//    y = box.y;
+//    i = from;
+//    while (i < to)
+//    {
+//        y += padding;
+//        btn[i].box.w = button_size.x;
+//        btn[i].box.h = button_size.y;
+//        btn[i].box.x = box.x;
+//        btn[i].box.y = y;
+//        y += button_size.y;
+//        i++;
+//    }
+//    return (SUCCESS);
+//}
 
 unsigned short			main_menu_btn(t_button *btn)
 {
@@ -285,7 +275,7 @@ unsigned short			textures_btn(t_button *btn, t_texture *textures, int n_txtrs)
     box.h = WIN_H * 0.9;
     box.x = (WIN_W  - box.w) / 2;
     box.y = (WIN_H  - box.h) / 2;
-    distribute_btn_grid(btn, 0, n_txtrs , box, 20);
+    distribute_btn_grid(btn, 0, n_txtrs , box);
     i = 0;
     while (i < n_txtrs)
     {

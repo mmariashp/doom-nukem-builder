@@ -1,6 +1,6 @@
-Count Vectors: 37
-Count Walls: 53
-Count Sectors: 17
+Count Vectors: 46
+Count Walls: 64
+Count Sectors: 20
 
 Vectors
 0) 54,9
@@ -37,9 +37,18 @@ Vectors
 31) 63,23
 32) 70,23
 33) 44,23
-34) 47,27
+34) 44,29
 35) 44,37
 36) 54,32
+37) 37,27
+38) 36,37
+39) 34,25
+40) 32,36
+41) 36,10
+42) 33,13
+43) 33,18
+44) 39,18
+45) 39,10
 
 Walls
 0) 0-1 filled 0
@@ -95,6 +104,17 @@ Walls
 50) 34-35 filled 0
 51) 35-36 filled 0
 52) 36-34 filled 0
+53) 34-37 filled 0
+54) 37-38 filled 0
+55) 38-35 filled 0
+56) 37-39 filled 0
+57) 39-40 filled 0
+58) 40-38 filled 0
+59) 41-42 filled 0
+60) 42-43 filled 0
+61) 43-44 filled 0
+62) 44-45 filled 0
+63) 45-41 filled 0
 
 Sectors
 0) floor(20 0) ceil(40 0) walls '2 3 4 1 ' items ''
@@ -109,11 +129,14 @@ Sectors
 9) floor(2 0) ceil(22 0) walls '29 30 31 28 ' items '(62,12 0)(61,14 0)'
 10) floor(0 0) ceil(0 0) walls '34 35 36 37 26 33 ' items ''
 11) floor(0 0) ceil(20 0) walls '32 40 39 38 ' items ''
-12) floor(22 0) ceil(0 0) walls '0 41 1 18 21 24 ' items '(59,12 0)(56,13 0)(55,10 0)'
+12) floor(22 0) ceil(42 0) walls '0 41 1 18 21 24 ' items '(59,12 0)(56,13 0)(55,10 0)'
 13) floor(0 0) ceil(0 0) walls '45 44 32 43 8 5 42 30 ' items ''
 14) floor(0 0) ceil(0 0) walls '46 47 45 29 27 37 ' items ''
 15) floor(0 0) ceil(0 0) walls '25 22 19 16 14 12 10 48 49 33 ' items ''
 16) floor(0 0) ceil(0 0) walls '52 51 50 ' items ''
+17) floor(0 0) ceil(0 0) walls '53 54 55 50 ' items ''
+18) floor(0 0) ceil(0 0) walls '54 58 57 56 ' items ''
+19) floor(0 0) ceil(0 0) walls '59 60 61 62 63 ' items ''
 
 Player
 0) 57,11 (sector: 12)  start

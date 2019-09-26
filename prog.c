@@ -10,7 +10,8 @@ SDL_Texture				**get_prog_txtr(SDL_Renderer *rend)
 	static char			name[TOTAL_TXTRS][30] = { "rect_gr", "rect_gr_l",\
 	"rect_y", "rect_y_l", "panel_gr", "panel_gr_l", "yes", "yes_l", "no",\
 	"no_l", "move", "move_l", "draw", "draw_l", "distort", "distort_l", "iso",\
-	"iso_l", "sector", "sector_l", "wall", "wall_l", "player", "player_l",\
+	"iso_l", "sector", "sector_l", "wall", "wall_l", "door_add", "door_add_l", \
+	"door_del", "door_del_l", "player", "player_l",\
 	"save", "save_l", "exit", "exit_l", "back", "back_l", "del", "del_l",\
 	"edit", "edit_l", "up", "up_l", "down", "down_l", "coin", "key", "object",\
 	"enemy", "super", "health", "ammo", "light" };
@@ -22,7 +23,7 @@ SDL_Texture				**get_prog_txtr(SDL_Renderer *rend)
 	{
 		if ((tmp = ft_strjoin("./buttons/", name[i])))
 		{
-			tmp2 = ft_strjoin(tmp, ".bmp");
+			tmp2 = ft_strjoin(tmp, ".png");
 			free(tmp);
 			if (tmp2)
 			{
@@ -64,7 +65,7 @@ void 					free_prog(t_prog *prog)
 	if (prog->modes)
 		free_modes(prog->modes);
 	if (prog->screen)
-		free_int_tab(prog->screen, WIN_W);
+		free_tab((void **)prog->screen, WIN_W);
 	if (prog->t)
 		free_prog_txtr(prog->t);
 	free(prog);

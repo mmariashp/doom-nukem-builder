@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   editor.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/26 12:04:56 by mshpakov          #+#    #+#             */
+/*   Updated: 2019/09/26 12:04:58 by mshpakov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "builder.h"
 
@@ -86,20 +98,25 @@ void					render_item_info(t_media *med, t_sdl *sdl, t_mode *mode, SDL_Texture **
 //	}
 //}
 
+
+
 void					r_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int					state;
 
 	if (!sdl || !media || !grid)
 		return ;
-
 	if (prog->features[F_REDRAW])
 	{
 		SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 		SDL_RenderClear(sdl->rend);
 		state = select_it(1, ST_SELECT, -1);
 		grid_refresh(grid, media, state, select_it(1, S_SELECT, -1));
+		if (state == WALL_SEARCH && prog->btn_on == DOOR_ADD_BTN)
+		{
 
+
+		}
 		if (state == NORMAL && prog->btn_on == ISO_BTN)
 			render_grid_iso(media->worlds[media->w_id], grid, prog);
 		else
@@ -120,33 +137,6 @@ void					r_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		SDL_RenderPresent(sdl->rend);
 		prog->features[F_REDRAW] = 0;
 	}
-
-//	if (!sdl || !media || !grid)
-//		return ;
-//	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
-//	SDL_RenderClear(sdl->rend);
-//	state = select_it(1, ST_SELECT, -1);
-//	if (prog->features[F_REDRAW])
-//	{
-//		grid_refresh(grid, media, state, select_it(1, S_SELECT, -1));
-//		render_grid(media->worlds[media->w_id], grid, prog, sdl->mouse);
-//	}
-//	render_screen(sdl->rend, prog->screen);
-//	if (state == SECTOR_EDIT || state == WALL_EDIT)
-//	{
-//		if (state == SECTOR_EDIT)
-//		{
-//			render_items(sdl->rend, &media->worlds[media->w_id], media->itemfull, media->n_itemfull, grid);
-//			render_item_info(media, sdl->rend, &prog->modes[prog->mode_id]);
-//		}
-//		render_edit_menu(sdl->rend, media->txtrs, &media->worlds[media->w_id], state, media->n_txtrs);
-//	}
-//	render_btn(prog->modes[prog->mode_id].btn, sdl->rend, prog->modes[prog->mode_id].n_btn, prog->mode_id);
-//	if (state == NORMAL && prog->btn_on == PLAYER_BTN)
-//		place_player_icons(media->worlds[media->w_id], grid, sdl->rend);
-//	render_cursor(sdl->rend, sdl->mouse);
-//	SDL_RenderPresent(sdl->rend);
-//	prog->features[F_REDRAW] = 0;
 }
 
 unsigned short			save_media(t_media *media, t_prog *prog)
@@ -247,23 +237,10 @@ void					edit_wall_type(int btn_on, t_world *world)
 		return ;
 	if (btn_on == W_PORTAL_BTN)
 	{
-		if (world->walls[wall].type == WALL_EMPTY)
-		{
+		if (world->walls[wall].type != WALL_FILLED)
 			world->walls[wall].type = WALL_FILLED;
-			if (world->walls[wall].door != -1)
-				delete_door(world, wall);
-		}
 		else if (world->walls[wall].type == WALL_FILLED)
 			world->walls[wall].type = WALL_EMPTY;
-	}
-	else if (btn_on == W_DOOR_BTN)
-	{
-		if (world->walls[wall].type == WALL_FILLED)
-			world->walls[wall].type = WALL_EMPTY;
-		if (world->walls[wall].door != -1)
-			delete_door(world, wall);
-		else
-			add_door(world, wall);
 	}
 }
 
@@ -281,9 +258,7 @@ void					edit_item_name(int n_itemfull, t_itemfull *itemfull, t_world *world)
 	if (within(sector, -1, world->n_sec) && \
 		within(item_i, -1, world->sec[sector].n_items) && \
 		within(item_sel, -1, n_itemfull))
-	{
 		world->sec[sector].items[item_i].id = item_sel;
-	}
 }
 
 unsigned short			mode_change(t_prog *prog, t_media *media, t_grid *grid, int floor_ceil)
@@ -307,16 +282,17 @@ unsigned short			mode_change(t_prog *prog, t_media *media, t_grid *grid, int flo
 
 void					btn_refresh(t_prog *prog, int state, int *last)
 {
+	int 				on;
+
 	if (!prog || !last)
 		return ;
-//	free_btn(prog->modes[prog->mode_id].btn, prog->modes[prog->mode_id].n_btn);
+	on = prog->btn_on;
 	get_btn(state, &prog->modes[prog->mode_id]);
-	prog->btn_on = -1;
-	prog->btn_lit = -1;
+	turn_btns_off(prog);
 	if (state == SECTOR_SEARCH)
 		prog->btn_on = SECTOR_BTN;
 	else if (state == WALL_SEARCH)
-		prog->btn_on = WALL_BTN;
+		prog->btn_on = on;
 	else if (state == NORMAL)
 		prog->btn_on = DRAG_BTN;
 	if (within(prog->btn_on, -1, prog->modes[prog->mode_id].n_btn))
@@ -349,10 +325,25 @@ void 					drawing(t_media *media, t_prog *prog, t_grid *grid, t_sdl *sdl)
 		prog->features[F_REDRAW] = 1;
 }
 
+int 					distance(t_vec2d p1, t_vec2d p2)
+{
+	int					x;
+	int 				y;
+	float				distance;
+
+	x = p2.x - p1.x;
+	y = p2.y - p1.y;
+	distance = sqrt((x * x) + (y * y));
+	printf("Distance: %.2f", distance);
+
+	return 0;
+
+}
+
 unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int                 texture;
-	static int			last = -2; // last state
+	static int			last = -2;
 	static int			floor_ceil = 0;
 	int					sector;
 	int 				wall;
@@ -361,18 +352,18 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 
 	if (!sdl || !media || !grid || !prog)
 		return (FAIL);
-	last = prog->last_mode_id == MODE_LEVELS ? -2 : last; // to unlight btn
-	if (prog->last_mode_id != prog->mode_id) // coming from other modes
+	last = prog->last_mode_id == MODE_LEVELS ? -2 : last;
+	if (prog->last_mode_id != prog->mode_id)
 		return(mode_change(prog, media, grid, floor_ceil));
 	if (prog->zoom != 0)
 		zoom_grid(prog, sdl->mouse, grid);
 	if (prog->move.x || prog->move.y)
 		return(move_grid_keys(prog, grid));
-	if (state == NORMAL && prog->btn_on == SAVE_BTN) // when saving
+	if (state == NORMAL && prog->btn_on == SAVE_BTN)
 		return (save_media(media, prog));
 	if (last != state)
 		btn_refresh(prog, state, &last);
-	if (prog->btn_lit != -1 && (prog->click.x || prog->click.y)) // when pressing an on screen button
+	if (prog->btn_lit != -1 && (prog->click.x || prog->click.y))
 	{
 		prog->features[F_REDRAW] = 1;
 		if (within(prog->btn_on, -1, prog->modes[prog->mode_id].n_btn) == TRUE)
@@ -387,10 +378,8 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 		{
 			if (prog->btn_on == SECTOR_BTN)
 				select_it(0, ST_SELECT, SECTOR_SEARCH);
-			else if (prog->btn_on == WALL_BTN)
-			{
+			else if (prog->btn_on == WALL_BTN || prog->btn_on == DOOR_ADD_BTN)
 				select_it(0, ST_SELECT, WALL_SEARCH);
-			}
 			else
 				select_it(0, ST_SELECT, NORMAL);
 		}
@@ -408,7 +397,7 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 				}
 			}
 			else if ((state == SECTOR_EDIT && (prog->btn_on == FT_EDIT_BTN || prog->btn_on == CT_EDIT_BTN)) ||
-					(state == WALL_EDIT && prog->btn_on == WT_EDIT_BTN)) //editing textures
+					(state == WALL_EDIT && prog->btn_on == WT_EDIT_BTN))
 			{
 				texture = -1;
 				if (state == SECTOR_EDIT && within((sector = select_it(1, S_SELECT, -1)), -1, media->worlds[media->w_id].n_sec))
@@ -486,13 +475,13 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 		prog->click = (t_vec2d){ 0, 0 };
 		return (SUCCESS);
 	}
-	if (light_button(sdl, prog->modes[prog->mode_id].btn, prog->modes[prog->mode_id].n_btn, prog) == SUCCESS) // when mouse is over a button
+	if (light_button(sdl, prog->modes[prog->mode_id].btn, prog->modes[prog->mode_id].n_btn, prog) == SUCCESS)
 		prog->features[F_REDRAW] = 1;
-	else // managing interactions not concerning btn
+	else
 	{
 		if (state == SECTOR_SEARCH)
 		{
-			sector = lit_item(0, S_SELECT, mouse_in_sector(sdl->mouse, &media->worlds[media->w_id], grid));
+			sector = lit_it(0, S_SELECT, mouse_in_sector(sdl->mouse, &media->worlds[media->w_id], grid));
 			if ((prog->click.x || prog->click.y) && within(sector, -1, media->worlds[media->w_id].n_sec) == TRUE)
 			{
 				select_it(0, S_SELECT, sector);
@@ -508,17 +497,21 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 				grid_node = find_node(sdl->mouse.x, sdl->mouse.y, grid);
 				if (within(grid_node.x, -1, GRID_SIZE) && within(grid_node.y, -1, GRID_SIZE))
 				{
-					wall = lit_item(0, W_SELECT, grid->nodes[grid_node.x][grid_node.y]);
+					wall = lit_it(0, W_SELECT, grid->nodes[grid_node.x][grid_node.y]);
 					if ((prog->click.x || prog->click.y) && within(wall, -1, media->worlds[media->w_id].n_walls) == TRUE)
 					{
 						select_it(0, W_SELECT, wall);
-						select_it(0, ST_SELECT, WALL_EDIT);
-						int v1 = media->worlds[media->w_id].walls[wall].v1;
-						int v2 = media->worlds[media->w_id].walls[wall].v2;
-						if (within(v1, -1, media->worlds[media->w_id].n_vecs) &&
-							within(v2, -1, media->worlds[media->w_id].n_vecs))
-							zoom_to_wall(media->worlds[media->w_id].vecs[v1], media->worlds[media->w_id].vecs[v2], grid, prog);
-
+						if (prog->btn_on == DOOR_ADD_BTN)
+							add_door(&media->worlds[media->w_id], wall, grid);
+						else
+						{
+							select_it(0, ST_SELECT, WALL_EDIT);
+							int v1 = media->worlds[media->w_id].walls[wall].v1;
+							int v2 = media->worlds[media->w_id].walls[wall].v2;
+							if (within(v1, -1, media->worlds[media->w_id].n_vecs) &&
+								within(v2, -1, media->worlds[media->w_id].n_vecs))
+								zoom_to_wall(media->worlds[media->w_id].vecs[v1], media->worlds[media->w_id].vecs[v2], grid, prog);
+						}
 					}
 					prog->features[F_REDRAW] = 1;
 				}
@@ -546,16 +539,14 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 		{
 			if (prog->btn_on == DRAW_BTN)
 				drawing(media, prog, grid, sdl);
-			else if (prog->btn_on == DISTORT_BTN ) // move mode
+			else if (prog->btn_on == DISTORT_BTN )
 				move_vector(prog, sdl->mouse, grid, &media->worlds[media->w_id]);
-			else if (prog->btn_on == PLAYER_BTN ) // move mode
+			else if (prog->btn_on == PLAYER_BTN )
 				move_player(prog, sdl->mouse, grid, &media->worlds[media->w_id]);
-			else if (prog->btn_on == DRAG_BTN && (prog->click.x || prog->click.y)) // view mode
+			else if (prog->btn_on == DRAG_BTN && (prog->click.x || prog->click.y))
 				move_grid_drag(prog, sdl->mouse, grid);
-			else if (prog->btn_on == ISO_BTN && (prog->click.x || prog->click.y)) // delete mode
-			{
+			else if (prog->btn_on == ISO_BTN && (prog->click.x || prog->click.y))
 				move_grid_drag(prog, sdl->mouse, grid);
-			}
 		}
 	}
 	update_sector_status(media->worlds[media->w_id].sec, media->worlds[media->w_id].walls,
@@ -600,7 +591,13 @@ int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		else if( event.type == SDL_MOUSEMOTION || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP )
 		{
 			if(event.type == SDL_MOUSEBUTTONDOWN)
+			{
+				ft_putstr("\033[1;31m");
+				printf("down\n");
+				ft_putstr("\x1b[0m");
 				prog->click = sdl->mouse;
+				break ;
+			}
 			if(event.type == SDL_MOUSEBUTTONUP)
 			{
                 if (select_it(1, ST_SELECT, -1) == NORMAL && prog->btn_lit == BACK_BTN)
@@ -614,6 +611,9 @@ int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
                     refresh_level_list(media, &prog->modes[MODE_LEVELS]);
                     break ;
                 }
+				ft_putstr("\033[1;32m");
+				printf("up\n");
+				ft_putstr("\x1b[0m");
                 prog->click = (t_vec2d){ 0, 0 };
 			}
 		}

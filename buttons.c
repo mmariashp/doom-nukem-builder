@@ -55,7 +55,9 @@ void					render_btn(t_button *btn, t_sdl *sdl, int n_btn, int mode_id, SDL_Textu
 	{
 		if (btn[i].vis_lit_on[0] == TRUE)
 		{
-			if (mode_id == MODE_EDITOR && (btn[i].vis_lit_on[1] == TRUE || btn[i].vis_lit_on[2] == TRUE) && state == SECTOR_EDIT && i > B_ITEM_DEL)
+			if (mode_id == MODE_EDITOR && (btn[i].vis_lit_on[1] == TRUE ||
+			btn[i].vis_lit_on[2] == TRUE) && state == SECTOR_EDIT &&
+			i > B_ITEM_DEL)
 				render_button_big(&btn[i], sdl, t);
 			else
 				render_button(&btn[i], sdl, t);
@@ -71,11 +73,12 @@ unsigned short			light_button(t_sdl *sdl, t_button *btn, int n_btn, t_prog *prog
 
 	if (!sdl)
 		return (FAIL);
-	i = 0;
+	i = -1;
 	res = FAIL;
-	while (i < n_btn)
+	prog->btn_lit = -1;
+	while (++i < n_btn)
 	{
-		if (mouse_over(btn[i].box, sdl->mouse) == TRUE)
+		if (btn[i].vis_lit_on[0] && mouse_over(btn[i].box, sdl->mouse) == TRUE)
 		{
 			btn[i].vis_lit_on[1] = TRUE;
 			prog->btn_lit = i;
@@ -88,9 +91,6 @@ unsigned short			light_button(t_sdl *sdl, t_button *btn, int n_btn, t_prog *prog
 				prog->features[F_REDRAW] = 1;
 			btn[i].vis_lit_on[1] = FALSE;
 		}
-		i++;
 	}
-	if (res == FAIL)
-		prog->btn_lit = -1;
 	return (res);
 }

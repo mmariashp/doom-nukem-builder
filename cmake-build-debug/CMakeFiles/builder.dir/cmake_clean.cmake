@@ -22,6 +22,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/main.c.o"
   "CMakeFiles/builder.dir/main_menu.c.o"
   "CMakeFiles/builder.dir/math.c.o"
+  "CMakeFiles/builder.dir/memory_fun.c.o"
   "CMakeFiles/builder.dir/modes.c.o"
   "CMakeFiles/builder.dir/move.c.o"
   "CMakeFiles/builder.dir/prog.c.o"

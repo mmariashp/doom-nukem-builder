@@ -1,6 +1,33 @@
 
 #include "builder.h"
 
+int						my_rename(const char *oldname, const char *newname)
+{
+	char 				*tmp;
+	char 				*tmp2;
+
+	if (!oldname || !newname)
+		return (FAIL);
+	tmp = ft_strjoin("mv ", oldname);
+	if (tmp)
+	{
+		tmp2 = ft_strjoin(tmp, " ");
+		free(tmp);
+		if (tmp2)
+		{
+			tmp = ft_strjoin(tmp2, newname);
+			free(tmp2);
+			if (tmp)
+			{
+				system(tmp);
+				free(tmp);
+				return (SUCCESS);
+			}
+		}
+	}
+	return (FAIL);
+}
+
 unsigned 				open_for_write(const char *path, int *fd)
 {
 	if (!path)

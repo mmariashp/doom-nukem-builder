@@ -239,14 +239,10 @@ void					delete_double_walls(t_world *world)
 			if ((world->walls[i].v1 == world->walls[j].v2 && world->walls[i].v2 == world->walls[j].v1) ||
 				(world->walls[i].v1 == world->walls[j].v1 && world->walls[i].v2 == world->walls[j].v2))
 			{
-				if (!((world->walls[i].type == WALL_EMPTY || world->walls[j].type == WALL_EMPTY) &&
-					  (world->walls[i].type == WALL_DOOR || world->walls[j].type == WALL_DOOR)))
-				{
-					replace_wall(i, j, world);
-					delete_wall(i, world);
-					i--;
-					break ;
-				}
+				replace_wall(i, j, world);
+				delete_wall(i, world);
+				i--;
+				break ;
 			}
 			j++;
 		}
@@ -320,21 +316,6 @@ void					validate_clockwise(t_world *world, int sec)
 		world->sec[sec].sec_walls = reverse_order(world->sec[sec].sec_walls, world->sec[sec].n_walls);
 		free(world->sec[sec].v);
 		get_sec_v(&world->sec[sec], world->walls);
-
-	}
-	int k = 0;
-	int j = 0;
-	while (k < world->sec[sec].n_walls && j < world->sec[sec].n_v)
-	{
-		if (world->walls[world->sec[sec].sec_walls[k]].type != WALL_DOOR)
-			k++;
-		else
-		{
-			if (world->walls[world->sec[sec].sec_walls[k]].v1 != world->sec[sec].v[j])
-				swap_ints(&world->walls[world->sec[sec].sec_walls[k]].v1, &world->walls[world->sec[sec].sec_walls[k]].v2);
-			j++;
-			k++;
-		}
 	}
 }
 
@@ -354,43 +335,38 @@ void					validate_sectors(t_world *world)
 	control = 0;
 	while (i < world->n_sec && control < MAX_N_SECTORS)
 	{
-
 		if (world->sec[i].status == SEC_OPEN)
+		{
+			ft_putstr("\033[1;31m");
+			printf("deleting SECTOR %d bec open\n", i);
+			ft_putstr("\x1b[0m");
 			delete_sector(i, world);
+		}
 		else
 		{
 			validate_clockwise(world, i);
 			i++;
 		}
 		control++;
+		i++;
 	}
 }
 
 void					validate_media(t_media *media)
 {
-//	int 				i;
+	int 				i;
 
 	if (!media)
 		return ;
-//	i = 0;
-//	while (i < media->n_worlds)
-//	{
-//		ft_putstr("\033[1;31m");
-//		printf("w %d \n", i);
-//		ft_putstr("\x1b[0m");
-//		validate_textures(&media->worlds[i], media->n_txtrs);
-//		validate_items(&media->worlds[i], media->n_itemfull);
-//		validate_sectors(&media->worlds[i]);
-//		int k = 0;
-//		while (k < media->worlds[i].n_walls)
-//		{
-//			if (within(media->worlds[i].walls[k].door, -1, media->worlds[i].n_walls))
-//			{
-//				media->worlds[i].walls[media->worlds[i].walls[k].door].v1 = media->worlds[i].walls[k].v1;
-//				media->worlds[i].walls[media->worlds[i].walls[k].door].v2 = media->worlds[i].walls[k].v2;
-//			}
-//			k++;
-//		}
-//		i++;
-//	}
+	i = 0;
+	while (i < media->n_worlds)
+	{
+		ft_putstr("\033[1;35m");
+		printf("level %d validation \n", i);
+		ft_putstr("\x1b[0m");
+		validate_textures(&media->worlds[i], media->n_txtrs);
+		validate_items(&media->worlds[i], media->n_itemfull);
+		validate_sectors(&media->worlds[i]);
+		i++;
+	}
 }

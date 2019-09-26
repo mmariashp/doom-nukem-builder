@@ -1,6 +1,6 @@
-Count Vectors: 25
-Count Walls: 33
-Count Sectors: 8
+Count Vectors: 73
+Count Walls: 97
+Count Sectors: 28
 
 Vectors
 0) 9,13
@@ -19,7 +19,7 @@ Vectors
 13) 35,38
 14) 45,14
 15) 42,29
-16) 50,30
+16) 50,26
 17) 50,15
 18) 35,8
 19) 42,10
@@ -28,6 +28,54 @@ Vectors
 22) 26,41
 23) 25,50
 24) 12,51
+25) 40,48
+26) 47,47
+27) 50,50
+28) 46,53
+29) 38,53
+30) 38,50
+31) 37,49
+32) 39,47
+33) 40,47
+34) 43,45
+35) 37,53
+36) 37,50
+37) 46,54
+38) 38,54
+39) 51,52
+40) 47,53
+41) 38,46
+42) 36,48
+43) 47,46
+44) 50,49
+45) 34,54
+46) 30,50
+47) 35,54
+48) 31,50
+49) 35,47
+50) 37,45
+51) 32,50
+52) 36,54
+53) 36,44
+54) 34,46
+55) 35,55
+56) 33,49
+57) 15,66
+58) 20,66
+59) 20,62
+60) 18,60
+61) 17,60
+62) 15,62
+63) 21,61
+64) 19,59
+65) 16,59
+66) 14,61
+67) 14,62
+68) 14,66
+69) 21,66
+70) 21,62
+71) 15,67
+72) 20,67
 
 Walls
 0) 1-0 filled 0
@@ -52,27 +100,111 @@ Walls
 19) 16-15 filled 0
 20) 17-16 filled 0
 21) 14-17 filled 0
-22) 2-3 door 0
-23) 4-18 filled 0
-24) 18-19 filled 0
-25) 19-20 filled 0
-26) 20-5 filled 0
-27) 4-5 door 0
-28) 21-22 empty 0
-29) 22-23 filled 0
-30) 23-24 filled 0
-31) 24-21 filled 0
-32) 21-22 door 0
+22) 4-18 filled 0
+23) 18-19 filled 0
+24) 19-20 filled 0
+25) 20-5 filled 0
+26) 21-22 empty 0
+27) 22-23 filled 0
+28) 23-24 filled 0
+29) 24-21 filled 0
+30) 1-8 filled 0
+31) 10-21 filled 0
+32) 22-7 filled 0
+33) 25-26 filled 0
+34) 26-27 filled 0
+35) 27-28 filled 0
+36) 28-29 filled 0
+37) 29-30 filled 0
+38) 30-25 filled 0
+39) 25-32 filled 0
+40) 32-31 filled 0
+41) 31-30 filled 0
+42) 26-34 filled 0
+43) 34-33 filled 0
+44) 33-25 filled 0
+45) 30-36 filled 0
+46) 36-35 filled 0
+47) 35-29 filled 0
+48) 29-38 filled 0
+49) 38-37 filled 0
+50) 37-28 filled 0
+51) 28-40 filled 0
+52) 40-39 filled 0
+53) 39-27 filled 0
+54) 31-42 filled 0
+55) 42-41 filled 0
+56) 41-32 filled 0
+57) 27-44 filled 0
+58) 44-43 filled 0
+59) 43-26 filled 0
+60) 45-46 filled 0
+61) 46-48 filled 0
+62) 48-47 filled 0
+63) 47-45 filled 0
+64) 41-50 filled 0
+65) 50-49 filled 0
+66) 49-42 filled 0
+67) 47-52 filled 0
+68) 52-51 filled 0
+69) 51-48 filled 0
+70) 49-54 filled 0
+71) 54-53 filled 0
+72) 53-50 filled 0
+73) 51-56 filled 0
+74) 56-55 filled 0
+75) 55-52 filled 0
+76) 57-58 filled 0
+77) 58-59 filled 0
+78) 59-60 filled 0
+79) 60-61 filled 0
+80) 61-62 filled 0
+81) 62-57 filled 0
+82) 60-64 filled 0
+83) 64-63 filled 0
+84) 63-59 filled 0
+85) 62-66 filled 0
+86) 66-65 filled 0
+87) 65-61 filled 0
+88) 57-68 filled 0
+89) 68-67 filled 0
+90) 67-62 filled 0
+91) 59-70 filled 0
+92) 70-69 filled 0
+93) 69-58 filled 0
+94) 58-72 filled 0
+95) 72-71 filled 0
+96) 71-57 filled 0
 
 Sectors
-0) floor(0 12) ceil(0 0) walls '3 2 1 0 ' items '(20,18 3)(19,23 7)'
+0) floor(0 12) ceil(0 0) walls '3 2 1 0 ' items '(20,18 0)(19,23 0)'
 1) floor(0 0) ceil(0 0) walls '2 4 5 6 ' items ''
 2) floor(0 0) ceil(0 0) walls '7 6 8 9 ' items ''
 3) floor(0 0) ceil(0 0) walls '13 12 11 10 ' items ''
 4) floor(0 0) ceil(0 0) walls '17 16 15 14 ' items ''
 5) floor(0 0) ceil(0 0) walls '21 20 19 18 ' items ''
-6) floor(0 0) ceil(0 0) walls '23 24 25 26 5 ' items ''
-7) floor(0 0) ceil(0 0) walls '28 29 30 31 ' items ''
+6) floor(0 0) ceil(0 0) walls '22 23 24 25 5 ' items ''
+7) floor(0 0) ceil(0 0) walls '26 27 28 29 ' items ''
+8) floor(0 0) ceil(0 0) walls '1 7 9 32 26 31 12 13 30 ' items ''
+9) floor(0 0) ceil(0 0) walls '33 34 35 36 37 38 ' items ''
+10) floor(0 0) ceil(0 0) walls '41 40 39 38 ' items ''
+11) floor(0 0) ceil(0 0) walls '33 42 43 44 ' items ''
+12) floor(0 0) ceil(0 0) walls '47 46 45 37 ' items ''
+13) floor(0 0) ceil(0 0) walls '36 48 49 50 ' items ''
+14) floor(0 0) ceil(0 0) walls '53 52 51 35 ' items ''
+15) floor(0 0) ceil(0 0) walls '40 54 55 56 ' items ''
+16) floor(0 0) ceil(0 0) walls '59 58 57 34 ' items ''
+17) floor(0 0) ceil(0 0) walls '60 61 62 63 ' items ''
+18) floor(0 0) ceil(0 0) walls '66 65 64 55 ' items ''
+19) floor(0 0) ceil(0 0) walls '62 67 68 69 ' items ''
+20) floor(0 0) ceil(0 0) walls '65 70 71 72 ' items ''
+21) floor(0 0) ceil(0 0) walls '68 73 74 75 ' items ''
+22) floor(0 0) ceil(0 0) walls '81 80 79 78 77 76 ' items ''
+23) door floor(0 0) ceil(0 0) walls '78 82 83 84 ' items ''
+24) door floor(0 0) ceil(0 0) walls '80 85 86 87 ' items ''
+25) door floor(0 0) ceil(0 0) walls '81 88 89 90 ' items ''
+26) door floor(0 0) ceil(0 0) walls '77 91 92 93 ' items ''
+27) door floor(0 0) ceil(0 0) walls '76 94 95 96 ' items ''
 
 Player
 0) 1,1 (sector: -1)  start

@@ -1,21 +1,33 @@
-Count Vectors: 4
-Count Walls: 4
-Count Sectors: 1
+Count Vectors: 8
+Count Walls: 10
+Count Sectors: 3
 
 Vectors
 0) 8,12
 1) 10,4
 2) 15,18
 3) 10,20
+4) 20,7
+5) 18,16
+6) 25,16
+7) 25,7
 
 Walls
 0) 0-1 filled 0
 1) 1-2 empty 0
 2) 3-2 filled 0
 3) 3-0 filled 0
+4) 4-5 filled 0
+5) 5-6 filled 0
+6) 6-7 filled 0
+7) 7-4 filled 0
+8) 1-4 filled 0
+9) 5-2 filled 0
 
 Sectors
 0) floor(0 0) ceil(0 0) walls '0 1 2 3 ' items ''
+1) floor(0 0) ceil(0 0) walls '4 5 6 7 ' items ''
+2) floor(0 0) ceil(0 0) walls '8 4 9 1 ' items ''
 
 Player
 0) 1,1 (sector: -1)  start

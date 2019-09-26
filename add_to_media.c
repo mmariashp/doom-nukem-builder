@@ -1,127 +1,11 @@
 
 #include "builder.h"
 
-t_world					*realloc_worlds(t_world *world, int n)
-{
-	t_world			*new;
-	int					j;
-
-	j = 0;
-	if (n == 0)
-		return (NULL);
-	if (!(new = (t_world *)malloc(sizeof(t_world) * n)))
-		return (NULL);
-	while (j < n - 1)
-	{
-		new[j] = world[j];
-		j++;
-	}
-	free(world);
-	return (new);
-}
-
-t_sec				*realloc_sec(t_sec *sec, int n)
-{
-	t_sec			*new;
-	int					j;
-
-	j = 0;
-	if (n == 0)
-		return (NULL);
-	if (!(new = (t_sec *)malloc(sizeof(t_sec) * n)))
-		return (NULL);
-	while (j < n - 1)
-	{
-		new[j] = sec[j];
-		j++;
-	}
-	free(sec);
-	return (new);
-}
-
-int						*realloc_sector_v(int *v, int n)
-{
-	int					*new;
-	int					j;
-
-	j = 0;
-	if (n == 0)
-		return (NULL);
-	if (!(new = (int *)malloc(sizeof(int) * n)))
-		return (NULL);
-	while (j < n - 1)
-	{
-		new[j] = v[j];
-		j++;
-	}
-	if (n > 1 && v)
-		free(v);
-	return (new);
-}
-
-int						*realloc_secwalls(int *secwalls, int n)
-{
-	int					*new;
-	int					j;
-
-	j = 0;
-	if (n == 0)
-		return (NULL);
-	if (!(new = (int *)malloc(sizeof(int) * n)))
-		return (NULL);
-	while (j < n - 1)
-	{
-		new[j] = secwalls[j];
-		j++;
-	}
-	if (secwalls)
-		free(secwalls);
-	return (new);
-}
-
-t_wall					*realloc_walls(t_wall *walls, int n)
-{
-	t_wall				*new;
-	int					j;
-
-	j = 0;
-	if (n == 0)
-		return (NULL);
-	if (!(new = (t_wall *)malloc(sizeof(t_wall) * n)))
-		return (NULL);
-	while (j < n - 1)
-	{
-		new[j] = walls[j];
-		j++;
-	}
-	free(walls);
-	return (new);
-}
-
-t_vec2d					*realloc_vecs(t_vec2d *vecs, int n)
-{
-	t_vec2d				*new;
-	int					j;
-
-	j = 0;
-	if (n == 0)
-		return (NULL);
-	if (!(new = (t_vec2d *)malloc(sizeof(t_vec2d) * n)))
-		return (NULL);
-	while (j < n - 1)
-	{
-		new[j] = vecs[j];
-		j++;
-	}
-	free(vecs);
-	return (new);
-}
-
 unsigned short			add_vector(t_vec2d **vecs, short n_vecs, t_grid *grid, short i)
 {
 	if (!grid)
 		return (FAIL);
-	*vecs = realloc_vecs(*vecs, n_vecs + 1);
+	*vecs = (t_vec2d *)realloc_tab(*vecs, sizeof(t_vec2d) * (n_vecs + 1), sizeof(t_vec2d) * n_vecs);
 	if (!*vecs)
 		return (FAIL);
 	(*vecs)[n_vecs] = grid->active[i];
@@ -131,7 +15,7 @@ unsigned short			add_vector(t_vec2d **vecs, short n_vecs, t_grid *grid, short i)
 
 unsigned short			add_sector_v(int **v, short n_v, int id)
 {
-	*v = realloc_sector_v(*v, n_v + 1);
+	*v = (int *)realloc_tab(*v, sizeof(int) * (n_v + 1), sizeof(int) * n_v);
 	if (!*v)
 		return (FAIL);
 	(*v)[n_v] = id;
@@ -140,7 +24,7 @@ unsigned short			add_sector_v(int **v, short n_v, int id)
 
 unsigned short			add_sector(t_sec **sec, short n_sec)
 {
-	*sec = realloc_sec(*sec, n_sec + 1);
+	*sec = (t_sec *)realloc_tab(*sec, sizeof(t_sec) * (n_sec + 1), sizeof(t_sec) * n_sec);
 	if (!*sec)
 		return (FAIL);
 	(*sec)[n_sec].sec_walls = NULL;
@@ -157,24 +41,21 @@ unsigned short			add_sector(t_sec **sec, short n_sec)
 
 unsigned short			add_wall(t_wall **walls, short n_walls, int one, int two)
 {
-	*walls = realloc_walls(*walls, n_walls + 1);
+	*walls = (t_wall *)realloc_tab(*walls, sizeof(t_wall) * (n_walls + 1), sizeof(t_wall) * n_walls);
 	if (!*walls)
 		return (FAIL);
 	(*walls)[n_walls].type = WALL_FILLED;
     (*walls)[n_walls].txtr = 0;
 	(*walls)[n_walls].v1 = one;
 	(*walls)[n_walls].v2 = two;
-    (*walls)[n_walls].door = -1;
 	return (SUCCESS);
 }
-
-
 
 unsigned short			add_secwall(int **secwalls, short n_secwalls, int wall)
 {
 	if (n_secwalls > 0 && !*secwalls)
 		return (FAIL);
-	*secwalls = realloc_secwalls(*secwalls, n_secwalls + 1);
+	*secwalls = (int *)realloc_tab(*secwalls, sizeof(int) * (n_secwalls + 1), sizeof(int) * n_secwalls);
 	if (!*secwalls)
 		return (FAIL);
 	(*secwalls)[n_secwalls] = wall;
@@ -199,21 +80,16 @@ char 					*get_filename(int i)
 	return (NULL);
 }
 
-
-
 unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *path)
 {
 	static int i = 0;
-	*worlds = realloc_worlds(*worlds, n_worlds + 1);
+	*worlds = (t_world *)realloc_tab(*worlds, sizeof(t_world) * (n_worlds + 1), sizeof(t_world) * n_worlds);
 	if (!*worlds || !path || !ext)
 		return (FAIL);
 	(*worlds)[n_worlds].filename = get_filename(i);
 	(*worlds)[n_worlds].full_path = get_full_path((*worlds)[n_worlds].filename, ext, path);
-//	(*worlds)[n_worlds].textures = ft_memalloc(sizeof(int) * 1);
-//	(*worlds)[n_worlds].n_txtrs = 1;
 	if (!(*worlds)[n_worlds].filename || !(*worlds)[n_worlds].full_path)
 		return (FAIL);
-//	(*worlds)[n_worlds].textures[0] = 0;
 	(*worlds)[n_worlds].sec = NULL;
 	(*worlds)[n_worlds].n_sec = 0;
 	(*worlds)[n_worlds].walls = NULL;
@@ -236,10 +112,7 @@ unsigned short			already_in_sector(int id, int *vecs,int n_vecs)
 	while (i < n_vecs)
 	{
 		if (vecs[i++] == id)
-		{
-			printf("exists\n");
 			return (TRUE);
-		}
 	}
 	return (FALSE);
 }

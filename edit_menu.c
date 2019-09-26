@@ -72,7 +72,7 @@ t_value					*get_sec_values(int *n, t_sec *sector)
 
 t_value					*get_wall_values(int *n, t_wall *wall)
 {
-	static int 			nb = 4;
+	static int 			nb = 3;
 	t_value				*new;
 
 	if (!wall)
@@ -81,11 +81,9 @@ t_value					*get_wall_values(int *n, t_wall *wall)
 		return (NULL);
 	*n = nb;
 	new[1].t_id = wall->txtr;
-	new[2].t_id = wall->type == WALL_EMPTY ? TXTR_YES : TXTR_NO;
-	new[3].t_id = wall->door > -1 ? TXTR_YES : TXTR_NO;
+	new[2].t_id = wall->type != WALL_FILLED ? TXTR_YES : TXTR_NO;
 	new[1].media_prog = 0;
 	new[2].media_prog = 1;
-	new[3].media_prog = 1;
 	return (new);
 }
 

@@ -22,6 +22,42 @@ void					write_items(t_sec sector, int fd)
 	}
 }
 
+//unsigned short			count_doors(t_wall *w, int n)
+//{
+//	unsigned short		i;
+//	unsigned short		n_d;
+//
+//	i = 0;
+//	n_d = 0;
+//	if (w)
+//	{
+//		while (i < n)
+//		{
+//			if (w[i].door == TRUE)
+//				n_d++;
+//			i++;
+//		}
+//	}
+//	return (n_d);
+//}
+//
+//void					fill_doors(int *d, int n_d, t_wall *w, int n_w)
+//{
+//	unsigned short		i;
+//	unsigned short		j;
+//
+//	if (!w || !d)
+//		return ;
+//	i = 0;
+//	j = 0;
+//	while (i < n_w && j < n_d)
+//	{
+//		if (w[i].door == TRUE)
+//			d[j++] = i;
+//		i++;
+//	}
+//}
+
 unsigned short			write_level_section(int fd, t_world world, int section)
 {
 	static char 		title[4][9] = { "Vectors", "Walls", "Sectors", "Player" };
@@ -65,6 +101,8 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 		}
 		else if (section == 2)
 		{
+			if (world.sec[i].is_door)
+				ft_putstr_fd("door ", fd);
 			ft_putstr_fd("floor(", fd);
 			ft_putnbr_fd(world.sec[i].floor, fd);
 			ft_putstr_fd(" ", fd);

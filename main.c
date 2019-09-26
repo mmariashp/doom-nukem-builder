@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/26 12:04:32 by mshpakov          #+#    #+#             */
+/*   Updated: 2019/09/26 12:04:35 by mshpakov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "builder.h"
 
@@ -114,13 +126,10 @@ char 					sector_status(t_sec sector, t_wall *walls, t_vec2d *vecs, int n)
 	ft_memset(tmp, -1, sizeof(int) * n);
 	i = -1;
 	j = 0;
-	while (++i < sector.n_walls)
+	while (++i < sector.n_walls && j + 1 < n)
 	{
-	    if (walls[sector.sec_walls[i]].type != WALL_DOOR)
-        {
-            tmp[j++] = walls[sector.sec_walls[i]].v1;
-            tmp[j++] = walls[sector.sec_walls[i]].v2;
-        }
+		tmp[j++] = walls[sector.sec_walls[i]].v1;
+		tmp[j++] = walls[sector.sec_walls[i]].v2;
 	}
     i = -1;
     j = 0;
@@ -357,6 +366,6 @@ int						main(void)
 	free_media(media);
 	free_sdl(sdl);
 	ft_putstr("\x1b[32mReturning success from main function.\x1b[0m\n");
-//	system("leaks -q builder");
+	system("leaks -q builder");
 	return (SUCCESS);
 }

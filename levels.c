@@ -1,32 +1,7 @@
 
 #include "builder.h"
 
-int						my_rename(const char *oldname, const char *newname)
-{
-	char 				*tmp;
-	char 				*tmp2;
 
-	if (!oldname || !newname)
-		return (FAIL);
-	tmp = ft_strjoin("mv ", oldname);
-	if (tmp)
-	{
-		tmp2 = ft_strjoin(tmp, " ");
-		free(tmp);
-		if (tmp2)
-		{
-			tmp = ft_strjoin(tmp2, newname);
-			free(tmp2);
-			if (tmp)
-			{
-				system(tmp);
-				free(tmp);
-				return (SUCCESS);
-			}
-		}
-	}
-	return (FAIL);
-}
 
 char 					*del_char(char *input)
 {
@@ -115,19 +90,20 @@ int 					get_w_id(int btn_id, int n_worlds, int *edit_del)
 	}
 }
 
-void					turn_btn_off(t_mode *mode)
+void					turn_btns_off(t_prog *prog)
 {
 	int 				i;
 
-	if (mode && mode->btn && mode->n_btn > 0)
+	if (prog->modes && prog->modes[prog->mode_id].btn && prog->modes[prog->mode_id].n_btn > 0)
 	{
 		i = 0;
-		while (i < mode->n_btn)
+		while (i < prog->modes[prog->mode_id].n_btn)
 		{
-			mode->btn[i].vis_lit_on[2] = FALSE;
+			prog->modes[prog->mode_id].btn[i].vis_lit_on[2] = FALSE;
 			i++;
 		}
 	}
+	prog->btn_on = -1;
 }
 
 unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
@@ -144,13 +120,12 @@ unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 		return (SUCCESS);
 	if (within(prog->btn_on, media->n_worlds, prog->modes[prog->mode_id].n_btn))
 	{
-		turn_btn_off(&prog->modes[prog->mode_id]);
-		prog->btn_on = -1;
+		turn_btns_off(prog);
 	}
 	light_button(sdl, prog->modes[prog->mode_id].btn,  prog->modes[prog->mode_id].n_btn, prog);
 	if ((prog->click.x || prog->click.y) && prog->btn_lit != -1)
 	{
-		turn_btn_off(&prog->modes[prog->mode_id]);
+		turn_btns_off(prog);
 		prog->btn_on = prog->btn_lit;
 		prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
 		prog->click = (t_vec2d){ 0, 0 };

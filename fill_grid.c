@@ -14,7 +14,7 @@ void					fill_grid_walls(int n_walls, t_wall *walls, int n_vecs, t_vec2d *vecs, 
 	{
 		v1 = walls[wall_i].v1;
 		v2 = walls[wall_i].v2;
-		if (walls[wall_i].type != WALL_DOOR && v1 >= 0 && v1 < n_vecs && v2 >= 0 && v2 < n_vecs)
+		if (v1 >= 0 && v1 < n_vecs && v2 >= 0 && v2 < n_vecs)
 		{
 			draw_line_grid((t_line){ vecs[v1], vecs[v2] }, (signed char)wall_i, grid->nodes);
 		}

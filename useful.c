@@ -23,7 +23,7 @@ int 					select_it(char set_get_unset, unsigned short id, int value)
 	return (select[id]);
 }
 
-int 					lit_item(char set_get_unset, unsigned short id, int value)
+int 					lit_it(char set_get_unset, unsigned short id, int value)
 {
 	static int 			select[7] = { -1, -1, -1, -1, -1, -1, -1 };
 
@@ -49,21 +49,7 @@ char 					*get_full_path(char *filename, char *ext, char *path)
 		res = ft_strjoin(with_path, ext);
 		free(with_path);
 		if (res)
-		{
 			return (res);
-		}
 	}
 	return (NULL);
-}
-
-void					free_int_tab(int **tab, int size)
-{
-	int					i;
-
-	if(!tab)
-		return ;
-	i = 0;
-	while(i < size && tab[i] != NULL)
-		free(tab[i++]);
-	free(tab);
 }
