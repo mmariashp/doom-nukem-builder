@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   vec_ops.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/29 19:01:30 by mshpakov          #+#    #+#             */
-/*   Updated: 2018/10/29 19:01:32 by mshpakov         ###   ########.fr       */
+/*   Created: 2019/09/27 17:16:34 by mshpakov          #+#    #+#             */
+/*   Updated: 2019/09/27 17:16:36 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "builder.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void					vec_set(t_vec2d *vec, int x, int y, int n)
 {
-	unsigned char *d;
-	const unsigned char *s;
+	int					i;
 
-	if (dst == src)
-		return (dst);
-	d = (unsigned char *)dst;
-	s = (const unsigned char *)src;
-	while (n-- > 0)
-		*d++ = *s++;
-	return (dst);
+	i = 0;
+	if (vec)
+	{
+		while (i < n)
+		{
+			vec[i] = (t_vec2d){ x, y };
+			i++;
+		}
+	}
+}
+
+unsigned short			vec_same(t_vec2d one, t_vec2d two)
+{
+	if (one.x == two.x && one.y == two.y)
+		return (TRUE);
+	return (FALSE);
 }

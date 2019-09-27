@@ -63,9 +63,9 @@ add_executable(${PROJECT_NAME}
         delete_from_media.c
         delete_world.c
         delete_sector.c
-        validate_media.c file_fun.c memory_fun.c)
+        validate_media.c file_fun.c memory_fun.c line_math.c vec_ops.c)
 
-set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror")
+set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror ")
 #set(GCC_COVERAGE_COMPILE_FLAGS "-fsanitize=\"address\" -g -fno-omit-frame-pointer")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )
 #set(dir ${CMAKE_CURRENT_SOURCE_DIR})

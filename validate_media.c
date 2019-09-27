@@ -28,8 +28,8 @@ void 					validate_textures(t_world *world, int n)
 	i = 0;
 	while (i < world->n_sec)
 	{
-		if (within(world->sec[i].floor_txtr, -1, n) == FALSE)
-			world->sec[i].floor_txtr = 0;
+		if (within(world->sec[i].fl_txtr, -1, n) == FALSE)
+			world->sec[i].fl_txtr = 0;
 		if (within(world->sec[i].ceil_txtr, -1, n) == FALSE)
 			world->sec[i].ceil_txtr = 0;
 		i++;
@@ -136,8 +136,8 @@ void					replace_wall(int to_replace, int new, t_world *world)
 		j = 0;
 		while (j < world->sec[i].n_walls)
 		{
-			if (world->sec[i].sec_walls[j] == to_replace)
-				world->sec[i].sec_walls[j] = new;
+			if (world->sec[i].s_walls[j] == to_replace)
+				world->sec[i].s_walls[j] = new;
 			j++;
 		}
 		i++;
@@ -212,7 +212,7 @@ void					delete_unused_walls(t_world *world)
 			k = 0;
 			while (k < world->sec[j].n_walls && used == FALSE)
 			{
-				if (world->sec[j].sec_walls[k] == i)
+				if (world->sec[j].s_walls[k] == i)
 					used = TRUE;
 				k++;
 			}
@@ -311,9 +311,9 @@ void					validate_clockwise(t_world *world, int sec)
 	if (sum > 0)
 	{
 		ft_putstr("\033[1;31m");
-		printf("SECTOR %d counter clockwise\n", sec);
+		printf("SEC %d counter clockwise\n", sec);
 		ft_putstr("\x1b[0m");
-		world->sec[sec].sec_walls = reverse_order(world->sec[sec].sec_walls, world->sec[sec].n_walls);
+		world->sec[sec].s_walls = reverse_order(world->sec[sec].s_walls, world->sec[sec].n_walls);
 		free(world->sec[sec].v);
 		get_sec_v(&world->sec[sec], world->walls);
 	}
@@ -326,19 +326,19 @@ void					validate_sectors(t_world *world)
 
 	if (!world)
 		return ;
-	update_sector_status(world->sec, world->walls, world->vecs, world->n_sec);
+	upd_sec(world->sec, world->walls, world->vecs, world->n_sec);
 	delete_double_v(world);
 	delete_double_walls(world);
 	delete_unused_walls(world);
 	delete_unused_v(world);
 	i = 0;
 	control = 0;
-	while (i < world->n_sec && control < MAX_N_SECTORS)
+	while (i < world->n_sec && control < MAX_N_SECS)
 	{
 		if (world->sec[i].status == SEC_OPEN)
 		{
 			ft_putstr("\033[1;31m");
-			printf("deleting SECTOR %d bec open\n", i);
+			printf("deleting SEC %d bec open\n", i);
 			ft_putstr("\x1b[0m");
 			delete_sector(i, world);
 		}

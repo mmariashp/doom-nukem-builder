@@ -9,8 +9,8 @@ On VIEW mode can move map around by dragging.
 On DRAW mode click anywhere to start drawing a sector.
 On MOVE mode select an existing vector and move it to a different location.
 On DELETE mode select an existing vector and delete it. Not working perfectly yet.
-On SECTOR mode select an existing sector by clicking it.
-    Can change values of floor/ceiling heights, and can see the textures picked.
+On SEC mode select an existing sector by clicking it.
+    Can change values of fl/ceiling heights, and can see the textures picked.
     In progress of making textures editable.
 
 Save file while working by pressing "S" or selecting the SAVE button.

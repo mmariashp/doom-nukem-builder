@@ -29,8 +29,8 @@ t_grid                  *get_grid(void)
 	grid->box.h = GRID_SIZE * grid->scale;
 	grid->box.x = (WIN_W - grid->box.w) / 2;
 	grid->box.y = (WIN_H - grid->box.h) / 2;
-	grid->active[0] = (t_vec2d){ -1, -1 };
-	grid->active[1] = (t_vec2d){ -1, -1 };
+	grid->p[0] = (t_vec2d){ -1, -1 };
+	grid->p[1] = (t_vec2d){ -1, -1 };
 	clean_grid(grid);
 	return (grid);
 }
@@ -46,6 +46,6 @@ void					grid_refresh(t_grid *grid, t_media *media, int state, int sector)
 	media->worlds[media->w_id].vecs, grid);
 	fill_grid(media->worlds[media->w_id].n_vecs,\
 	media->worlds[media->w_id].vecs, grid);
-	if (state == SECTOR_EDIT && within(sector, -1, media->worlds[media->w_id].n_sec))
+	if (state == SEC_EDIT && within(sector, -1, media->worlds[media->w_id].n_sec))
 		fill_grid_items(&media->worlds[media->w_id].sec[sector], grid);
 }

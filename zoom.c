@@ -79,7 +79,7 @@ void                    highlight_sec_nodes(t_vec2d *p, int n_walls, t_grid *gri
     while (i < n_walls)
     {
         if (p[i].x >= 0 && p[i].x < GRID_SIZE && p[i].y >= 0 && p[i].y < GRID_SIZE)
-            grid->nodes[p[i].x][p[i].y] = NODE_SECTOR;
+            grid->nodes[p[i].x][p[i].y] = NODE_SEC;
         i++;
     }
 }

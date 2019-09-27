@@ -16,9 +16,9 @@ void					free_sector(t_sec *sector)
 {
 	if (!sector)
 		return ;
-	if (sector->sec_walls)
-		free(sector->sec_walls);
-	sector->sec_walls = NULL;
+	if (sector->s_walls)
+		free(sector->s_walls);
+	sector->s_walls = NULL;
 	if (sector->v)
 		free(sector->v);
 	sector->v = NULL;
@@ -33,21 +33,21 @@ void					copy_sector(t_sec *new, t_sec *old)
 
 	if (!old || !new)
 		return ;
-	new->sec_walls = ft_memalloc(sizeof(int) *  old->n_walls);
+	new->s_walls = ft_memalloc(sizeof(int) *  old->n_walls);
 	new->v = ft_memalloc(sizeof(int) *  old->n_v);
 	new->items = ft_memalloc(sizeof(t_item) *  old->n_items);
 	i = -1;
-	while (new->sec_walls && ++i < old->n_walls)
-		new->sec_walls[i] = old->sec_walls[i];
+	while (new->s_walls && ++i < old->n_walls)
+		new->s_walls[i] = old->s_walls[i];
 	i = -1;
 	while (new->v && ++i < old->n_v)
 		new->v[i] = old->v[i];
 	i = -1;
 	while (new->items && ++i < old->n_items)
 		new->items[i] = old->items[i];
-	new->floor      = old->floor;
+	new->fl      = old->fl;
 	new->ceiling    = old->ceiling;
-	new->floor_txtr = old->floor_txtr;
+	new->fl_txtr = old->fl_txtr;
 	new->ceil_txtr  = old->ceil_txtr;
 	new->n_items    = old->n_items;
 	new->n_walls    = old->n_walls;

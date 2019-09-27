@@ -103,10 +103,10 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 		{
 			if (world.sec[i].is_door)
 				ft_putstr_fd("door ", fd);
-			ft_putstr_fd("floor(", fd);
-			ft_putnbr_fd(world.sec[i].floor, fd);
+			ft_putstr_fd("fl(", fd);
+			ft_putnbr_fd(world.sec[i].fl, fd);
 			ft_putstr_fd(" ", fd);
-			ft_putnbr_fd(world.sec[i].floor_txtr, fd);
+			ft_putnbr_fd(world.sec[i].fl_txtr, fd);
 			ft_putstr_fd(") ceil(", fd);
 			ft_putnbr_fd(world.sec[i].ceiling, fd);
 			ft_putstr_fd(" ", fd);
@@ -116,7 +116,7 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 			int j = 0;
 			while (j < world.sec[i].n_walls)
 			{
-				ft_putnbr_fd(world.sec[i].sec_walls[j], fd);
+				ft_putnbr_fd(world.sec[i].s_walls[j], fd);
 				ft_putstr_fd(" ", fd);
 				j++;
 			}

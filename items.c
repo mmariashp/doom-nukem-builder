@@ -56,7 +56,7 @@ void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, 
 	}
 }
 
-int 					find_default_item(int type, t_itemfull *itemfull, int n)
+int 					find_def_item(int type, t_itemfull *itemfull, int n)
 {
 	int 				i;
 
@@ -78,7 +78,7 @@ void					add_item(int default_id, t_vec2d mouse, t_grid *grid, t_sec *sector)
 	int 				i;
 	t_item				*new;
 
-	if (!grid || !sector || sector->n_items >= MAX_SECTOR_ITEMS || default_id == -1)
+	if (!grid || !sector || sector->n_items >= MAX_SEC_ITEMS || default_id == -1)
 		return ;
 	node = find_node(mouse.x, mouse.y, grid);
 	if (within(node.x, -1, GRID_SIZE) && within(node.y, -1, GRID_SIZE))
@@ -116,31 +116,31 @@ void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sec *sector)
 	{
 		if (mouse_over(grid->box, mouse))
 		{
-			if (grid->active[0].x == -1)
+			if (grid->p[0].x == -1)
 			{
-				grid->active[0] = find_node(mouse.x, mouse.y, grid);
-				if (grid->active[0].x >= 0 && grid->active[0].y >= 0 &&
-					grid->nodes[grid->active[0].x][grid->active[0].y] < -9)
-					id = (grid->nodes[grid->active[0].x][grid->active[0].y] + 10) * (-1);
+				grid->p[0] = find_node(mouse.x, mouse.y, grid);
+				if (grid->p[0].x >= 0 && grid->p[0].y >= 0 &&
+					grid->nodes[grid->p[0].x][grid->p[0].y] < -9)
+					id = (grid->nodes[grid->p[0].x][grid->p[0].y] + 10) * (-1);
 				if (!within(id, -1, sector->n_items))
 				{
-					grid->active[0] = (t_vec2d){ -1, -1 };
+					grid->p[0] = (t_vec2d){ -1, -1 };
 					move_grid_drag(prog, mouse, grid);
 					id = -1;
 				}
 				select_it(0, I_SELECT, id);
-				to_erase = grid->active[0];
+				to_erase = grid->p[0];
 			}
 			else if (id >= 0)
 			{
-				grid->active[1] = find_node(mouse.x, mouse.y, grid);
-				if (grid->nodes[grid->active[1].x][grid->active[1].y] == NODE_EMPTY)
+				grid->p[1] = find_node(mouse.x, mouse.y, grid);
+				if (grid->nodes[grid->p[1].x][grid->p[1].y] == NODE_EMPTY)
 				{
 					if (to_erase.x != -1)
 						grid->nodes[to_erase.x][to_erase.y] = NODE_EMPTY;
-					sector->items[id].p = grid->active[1];
-					grid->nodes[grid->active[1].x][grid->active[1].y] = (signed char)(-10 - id);
-					to_erase = grid->active[1];
+					sector->items[id].p = grid->p[1];
+					grid->nodes[grid->p[1].x][grid->p[1].y] = (signed char)(-10 - id);
+					to_erase = grid->p[1];
 				}
 			}
 			prog->click = mouse;
@@ -151,7 +151,7 @@ void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sec *sector)
 	}
 	else
 	{
-		grid->active[0] = (t_vec2d){ -1, -1 };
+		grid->p[0] = (t_vec2d){ -1, -1 };
 		id = -1;
 	}
 }

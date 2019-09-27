@@ -24,6 +24,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/init_editor_buttons.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/init_editor_buttons.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/items.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/items.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/levels.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/levels.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/line_math.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/line_math.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/main.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/main.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/main_menu.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/main_menu.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/math.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/math.c.o"
@@ -41,6 +42,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/useful.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/useful.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/validate_media.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/validate_media.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/values.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/values.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/vec_ops.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/vec_ops.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/walls.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/walls.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/zoom.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/zoom.c.o"
   )

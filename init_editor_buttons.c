@@ -74,10 +74,10 @@ void					init_regular_btn(t_mode *m)
 {
 	static t_rec		box = { 10, 0, WIN_H * 0.07 * 11, WIN_H * 0.07};
 	static int			reg[18] = { TXTR_MOVE, TXTR_DISTORT, TXTR_DRAW, \
-	TXTR_SECTOR, TXTR_WALL, TXTR_DOOR_ADD, TXTR_DOOR_DEL, TXTR_PLAYER, TXTR_ISO, TXTR_SAVE, TXTR_EXIT, \
+	TXTR_SEC, TXTR_WALL, TXTR_DOOR_ADD, TXTR_DOOR_DEL, TXTR_PLAYER, TXTR_ISO, TXTR_SAVE, TXTR_EXIT, \
 	0, 0, 0, 0, 0, 0, 0 };
 	static int 			lit[18] = { TXTR_MOVE_L, TXTR_DISTORT_L, TXTR_DRAW_L, \
-	TXTR_SECTOR_L, TXTR_WALL_L, TXTR_DOOR_ADD_L, TXTR_DOOR_DEL_L, TXTR_PLAYER_L, TXTR_ISO_L, TXTR_SAVE_L, \
+	TXTR_SEC_L, TXTR_WALL_L, TXTR_DOOR_ADD_L, TXTR_DOOR_DEL_L, TXTR_PLAYER_L, TXTR_ISO_L, TXTR_SAVE_L, \
 	TXTR_EXIT_L, 0, 0, 0, 0, 0, 0, 0 };
 	int                 i;
 	int 				n;
@@ -98,7 +98,7 @@ void					get_btn(int state, t_mode *mode)
 {
 	if (!mode)
 		return ;
-	if (state == SECTOR_EDIT)
+	if (state == SEC_EDIT)
 		init_sec_btn(mode);
 	else if (state == WALL_EDIT)
 		init_wall_btn(mode);

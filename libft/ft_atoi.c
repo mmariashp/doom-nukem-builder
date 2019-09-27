@@ -36,7 +36,7 @@ int		ft_atoi(const char *str)
 			return (-1);
 		else if ((r > l || (r == l && (*str - '0') > 8)) && m == -1)
 			return (0);
-		r = r * 10 + (*str++ - 48);
+		r = r * 10 + (__typeof__(r))(*str++ - 48);
 	}
-	return (r * m);
+	return ((int)((long)m * (long)r));
 }

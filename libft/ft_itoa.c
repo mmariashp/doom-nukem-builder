@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stddef.h>
 
 char	*ft_itoa(int n)
 {
@@ -24,7 +25,7 @@ char	*ft_itoa(int n)
 		j++;
 	if (n < 0)
 		j++;
-	if (!(str = (char *)malloc(sizeof(char) * (j + 1))))
+	if (!(str = (char *)malloc(sizeof(char) * ((size_t)j + 1UL))))
 		return (NULL);
 	i = 0;
 	if (n < 0)

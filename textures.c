@@ -30,17 +30,17 @@ void					r_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
         return ;
     SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
     SDL_RenderClear(sdl->rend);
-    render_btn(prog->modes[prog->mode_id].btn, sdl, prog->modes[prog->mode_id].n_btn, prog->mode_id, prog->t);
-    render_texture_icons(prog->modes[prog->mode_id].btn, sdl, prog->modes[prog->mode_id].n_btn, media->txtrs);
+    render_btn(prog->modes[prog->m_id].btn, sdl, prog->modes[prog->m_id].n_btn, prog->m_id, prog->t);
+    render_texture_icons(prog->modes[prog->m_id].btn, sdl, prog->modes[prog->m_id].n_btn, media->txtrs);
     SDL_RenderPresent(sdl->rend);
     prog->features[F_REDRAW] = 1;
 }
 
 unsigned short			u_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
-    if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].btn)
+    if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->m_id].btn)
         return (FAIL);
-    if (light_button(sdl, prog->modes[prog->mode_id].btn, prog->modes[prog->mode_id].n_btn, prog) == SUCCESS) // when mouse is over a button
+    if (btn_light(sdl->mouse, prog->modes[prog->m_id].btn, prog->modes[prog->m_id].n_btn, prog) == SUCCESS) // when mouse is over a button
         return (SUCCESS);
     prog->btn_lit = -1;
 	return (SUCCESS);
@@ -78,14 +78,14 @@ int						i_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
                 {
 					select_it(0, T_SELECT, prog->btn_lit);
                     int i = 0;
-                    while (i < prog->modes[prog->mode_id].n_btn)
+                    while (i < prog->modes[prog->m_id].n_btn)
                     {
-                        prog->modes[prog->mode_id].btn[i].vis_lit_on[1] = FALSE;
-                        prog->modes[prog->mode_id].btn[i].vis_lit_on[2] = FALSE;
+                        prog->modes[prog->m_id].btn[i].vis_lit_on[1] = FALSE;
+                        prog->modes[prog->m_id].btn[i].vis_lit_on[2] = FALSE;
                         i++;
                     }
-					prog->last_mode_id = prog->mode_id;
-                    prog->mode_id = MODE_EDITOR;
+					prog->last = prog->m_id;
+                    prog->m_id = MODE_EDITOR;
 
                     prog->click.x = 0;
                     prog->click.y = 0;

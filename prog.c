@@ -14,7 +14,7 @@ SDL_Texture				**get_prog_txtr(SDL_Renderer *rend)
 	"door_del", "door_del_l", "player", "player_l",\
 	"save", "save_l", "exit", "exit_l", "back", "back_l", "del", "del_l",\
 	"edit", "edit_l", "up", "up_l", "down", "down_l", "coin", "key", "object",\
-	"enemy", "super", "health", "ammo", "light" };
+	"enemy", "super", "health", "ammo", "light", "door" };
 
 	if (!(t = ft_memalloc(sizeof(SDL_Texture *) * TOTAL_TXTRS)))
 		return (NULL);
@@ -92,8 +92,8 @@ t_prog					*get_prog(SDL_Renderer *rend)
 		ft_bzero(prog->screen[k], sizeof(int) * WIN_H);
 		k++;
 	}
-	prog->mode_id = 0;
-	prog->last_mode_id = 0;
+	prog->m_id = 0;
+	prog->last = 0;
 	prog->modes = NULL;
 	prog->btn_lit = -1;
 	prog->btn_on = -1;

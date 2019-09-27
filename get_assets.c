@@ -258,7 +258,7 @@ unsigned short			count_items(char const *s)
 	count = 0;
 	while (*(++s) && *s != '\'')
 	{
-		if (*s == '(' && ++count < MAX_SECTOR_ITEMS)
+		if (*s == '(' && ++count < MAX_SEC_ITEMS)
 		{
 			nb = 0;
 			while (*s && *s != ')')
@@ -383,8 +383,8 @@ int 					sector_closed(int *tmp, int n)
 //	j = 0;
 //	while (++i < sector->n_walls && j + 1 < n)
 //	{
-//		tmp[j++] = walls[sector->sec_walls[i]].v1;
-//		tmp[j++] = walls[sector->sec_walls[i]].v2;
+//		tmp[j++] = walls[sector->s_walls[i]].v1;
+//		tmp[j++] = walls[sector->s_walls[i]].v2;
 //	}
 //	pair_sort(tmp, n);
 //	sector->status = sector_closed(tmp, n) == FALSE ?
@@ -403,8 +403,8 @@ int 					fill_sector_v(t_sec *sector, t_wall *walls, int n, int i)
 	j = 0;
 	while (++i < sector->n_walls && j + 1 < n)
 	{
-		tmp[j++] = walls[sector->sec_walls[i]].v1;
-		tmp[j++] = walls[sector->sec_walls[i]].v2;
+		tmp[j++] = walls[sector->s_walls[i]].v1;
+		tmp[j++] = walls[sector->s_walls[i]].v2;
 	}
 	pair_sort(tmp, n);
 	sector->status = sector_closed(tmp, n) == FALSE ? SEC_OPEN : SEC_CONCAVE_CLOSED;
@@ -427,6 +427,41 @@ int 					fill_sector_v(t_sec *sector, t_wall *walls, int n, int i)
 	return (SUCCESS);
 }
 
+//int 					fill_sector_v2(int *vecs, int *n_vecs, int *s_walls, int n_sec_walls, t_wall *walls)
+//{
+//	int 				i = 0;
+//	int					j;
+//	int					n = n_sec_walls * 2;
+//	int 				tmp[n];
+//
+//
+//	ft_memset(tmp, -1, sizeof(int) * n);
+//	j = 0;
+//	while (++i < n_sec_walls && j + 1 < n)
+//	{
+//		tmp[j++] = walls[s_walls[i]].v1;
+//		tmp[j++] = walls[s_walls[i]].v2;
+//	}
+//	pair_sort(tmp, n);
+//	i = -1;
+//	j = 0;
+//	while (++i < n)
+//	{
+//		if (exists_in_array(tmp, j, tmp[i]) == FALSE)
+//			tmp[j++] = tmp[i];
+//	}
+//	if (!(vecs = (int *)ft_memalloc(sizeof(int) * j)))
+//		return (FAIL);
+//	ft_memset(vecs, -1, sizeof(int) * (*n_vecs = j));
+//	i = 0;
+//	while (i < *n_vecs)
+//	{
+//		vecs[i] = tmp[i];
+//		i++;
+//	}
+//	return (SUCCESS);
+//}
+
 int 					get_sec_v(t_sec *sector, t_wall *walls)
 {
 	if (!sector || !walls)
@@ -434,7 +469,7 @@ int 					get_sec_v(t_sec *sector, t_wall *walls)
 	return (fill_sector_v(sector, walls, sector->n_walls * 2, -1));
 }
 
-int 					get_sec_walls(t_sec *sector, char *line, int n_walls)
+int 					get_s_walls(t_sec *sector, char *line, int n_walls)
 {
 	int 				*walls;
 	unsigned  short		c;
@@ -461,7 +496,7 @@ int 					get_sec_walls(t_sec *sector, char *line, int n_walls)
 		else if (*line != ' ')
 			return (FAIL);
 	}
-	sector->sec_walls = walls;
+	sector->s_walls = walls;
 	return (SUCCESS);
 }
 
@@ -471,7 +506,7 @@ int 					get_sec_items(t_sec *sec, char *l)
 	int					i;
 
 	if (!sec || !l || !(l = ft_strchr(l, '\'')) || (sec->n_items = \
-	count_items(l++)) > MAX_SECTOR_ITEMS || !(items = (t_item *)ft_memalloc(\
+	count_items(l++)) > MAX_SEC_ITEMS || !(items = (t_item *)ft_memalloc(\
 	sizeof(t_item) * sec->n_items)))
 		return (FAIL);
 	i = 0;
@@ -509,13 +544,13 @@ int 					get_sec_fl_ceil(t_sec *sector, char *line)
 {
 	if (!sector || !line)
 		return (FAIL);
-	sector->floor = 0;
-	sector->floor_txtr = 0;
+	sector->fl = 0;
+	sector->fl_txtr = 0;
 	sector->ceiling = 0;
 	sector->ceil_txtr = 0;
 	if (!(line = ft_strchr(line, 'f')))
 		return (FAIL);
-	if (get_fl_ceil(line, &sector->floor, &sector->floor_txtr, MAX_N_TXTRS)
+	if (get_fl_ceil(line, &sector->fl, &sector->fl_txtr, MAX_N_TXTRS)
 	== FAIL)
 		return (FAIL);
 	if (!(line = ft_strchr(line, 'c')))
@@ -564,7 +599,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 	if (!(line = ft_strchr(line, ')')))
 		return (FAIL) ;
 	line++;
-	if (status != R_SECTORS)
+	if (status != R_SECS)
 	{
 		sep = status == R_WALLS ? '-' : ',';
 		p.x = ft_atoi(line);
@@ -602,14 +637,14 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		}
 		w_count++;
 	}
-	if (status == R_SECTORS && s_count < world->n_sec)
+	if (status == R_SECS && s_count < world->n_sec)
 	{
 		world->sec[s_count].items = NULL;
-		world->sec[s_count].sec_walls = NULL;
+		world->sec[s_count].s_walls = NULL;
 		world->sec[s_count].v = NULL;
-		world->sec[s_count].floor = 0;
+		world->sec[s_count].fl = 0;
 		world->sec[s_count].ceiling = 0;
-		world->sec[s_count].floor_txtr = 0;
+		world->sec[s_count].fl_txtr = 0;
 		world->sec[s_count].ceil_txtr = 0;
 		world->sec[s_count].n_items = 0;
 		world->sec[s_count].n_walls = 0;
@@ -626,7 +661,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		}
 		if (get_sec_fl_ceil(&world->sec[s_count], line) == FAIL)
 		{
-			ft_putstr("Incorrect floor or ceiling for sector ");
+			ft_putstr("Incorrect fl or ceiling for sector ");
 			ft_putnbr(s_count);
 			ft_putchar('\n');
 			return (FAIL);
@@ -634,7 +669,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		line = ft_strchr(line, 'w');
 		if (!line)
 			return (FAIL);
-		if (get_sec_walls(&world->sec[s_count], line, world->n_walls) == FAIL)
+		if (get_s_walls(&world->sec[s_count], line, world->n_walls) == FAIL)
 		{
 			ft_putstr("Incorrect walls for sector ");
 			ft_putnbr(s_count);
@@ -708,7 +743,7 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 		}
 		else if (i == 2)
 		{
-			if (!(world->n_sec = get_n(line, MIN_N_SECTORS, MAX_N_SECTORS)))
+			if (!(world->n_sec = get_n(line, MIN_N_SECS, MAX_N_SECS)))
 				world->sec = NULL;
 			else
 			{

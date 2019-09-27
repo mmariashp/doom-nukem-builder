@@ -16,7 +16,7 @@
 
 # define R_VECTORS				1
 # define R_WALLS				2
-# define R_SECTORS				3
+# define R_SECS				3
 # define R_PLAYER				4
 # define R_TEXTURES				5
 
@@ -29,8 +29,8 @@
 # define MIN_N_WALLS			3
 # define MAX_N_WALLS			100
 
-# define MIN_N_SECTORS			1
-# define MAX_N_SECTORS			50
+# define MIN_N_SECS			1
+# define MAX_N_SECS			50
 
 # define MIN_N_TXTRS			1
 # define MAX_N_TXTRS			50
@@ -63,10 +63,10 @@ typedef struct                  s_wall
 
 typedef struct                  s_sector
 {
-	int 						*sec_walls;
-	int						    floor;
+	int 						*s_walls;
+	int						    fl;
 	int						    ceiling;
-	short 						floor_txtr;
+	short 						fl_txtr;
 	short 						ceil_txtr;
 	unsigned short				n_walls;
 }                               t_sec;

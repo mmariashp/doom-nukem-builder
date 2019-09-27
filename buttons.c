@@ -42,7 +42,7 @@ void					render_button_big(t_button *button, t_sdl *sdl, SDL_Texture **t)
 		SDL_RenderCopy(sdl->rend, t[button->reg_i], NULL, &rect);
 }
 
-void					render_btn(t_button *btn, t_sdl *sdl, int n_btn, int mode_id, SDL_Texture **t)
+void					render_btn(t_button *btn, t_sdl *sdl, int n_btn, int m_id, SDL_Texture **t)
 {
 	short 				i;
 	short 				state;
@@ -55,8 +55,8 @@ void					render_btn(t_button *btn, t_sdl *sdl, int n_btn, int mode_id, SDL_Textu
 	{
 		if (btn[i].vis_lit_on[0] == TRUE)
 		{
-			if (mode_id == MODE_EDITOR && (btn[i].vis_lit_on[1] == TRUE ||
-			btn[i].vis_lit_on[2] == TRUE) && state == SECTOR_EDIT &&
+			if (m_id == MODE_EDITOR && (btn[i].vis_lit_on[1] == TRUE ||
+			btn[i].vis_lit_on[2] == TRUE) && state == SEC_EDIT &&
 			i > B_ITEM_DEL)
 				render_button_big(&btn[i], sdl, t);
 			else
@@ -66,19 +66,19 @@ void					render_btn(t_button *btn, t_sdl *sdl, int n_btn, int mode_id, SDL_Textu
 	}
 }
 
-unsigned short			light_button(t_sdl *sdl, t_button *btn, int n_btn, t_prog *prog)
+unsigned short			btn_light(t_vec2d mouse, t_button *btn, int n_btn, t_prog *prog)
 {
 	unsigned short		res;
 	unsigned short		i;
 
-	if (!sdl)
+	if (!btn || !prog)
 		return (FAIL);
 	i = -1;
 	res = FAIL;
 	prog->btn_lit = -1;
 	while (++i < n_btn)
 	{
-		if (btn[i].vis_lit_on[0] && mouse_over(btn[i].box, sdl->mouse) == TRUE)
+		if (btn[i].vis_lit_on[0] && mouse_over(btn[i].box, mouse) == TRUE)
 		{
 			btn[i].vis_lit_on[1] = TRUE;
 			prog->btn_lit = i;

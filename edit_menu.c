@@ -32,7 +32,7 @@ char 					*menu_lines(int id, int i)
 {
 	static short 		n_s_lines = 6;
 	static short 		n_w_lines = 4;
-	static char         sector_lines[6][20] = { "SECTOR " ,
+	static char         sector_lines[6][20] = { "SEC " ,
 												"Floor height ",
 											 	"Ceiling height ",
 											 	"Floor texture ",
@@ -40,7 +40,7 @@ char 					*menu_lines(int id, int i)
 	static char         wall_lines[4][20] = { "WALL ", "Texture ",
 										   "Portal ", "Door " };
 
-	if (id == SECTOR_EDIT && within(i, -1, n_s_lines))
+	if (id == SEC_EDIT && within(i, -1, n_s_lines))
 		return (sector_lines[i]);
 	else if (id == WALL_EDIT && within(i, -1, n_w_lines))
 		return (wall_lines[i]);
@@ -58,9 +58,9 @@ t_value					*get_sec_values(int *n, t_sec *sector)
 	if (!(new = init_values(nb)))
 		return (NULL);
 	*n = nb;
-	new[1].text = ft_itoa(sector->floor);
+	new[1].text = ft_itoa(sector->fl);
 	new[2].text = ft_itoa(sector->ceiling);
-	new[3].t_id = sector->floor_txtr;
+	new[3].t_id = sector->fl_txtr;
 	new[4].t_id = sector->ceil_txtr;
 	new[5].text = ft_itoa(sector->n_items);
 	new[3].media_prog = 0;
@@ -93,13 +93,13 @@ void					render_edit_menu(t_sdl *sdl, t_texture *txtrs, t_world *w, int state, i
 	int 				i;
 	int                 n;
 
-	if (!sdl || !txtrs || !w || (state != SECTOR_EDIT && state != WALL_EDIT))
+	if (!sdl || !txtrs || !w || (state != SEC_EDIT && state != WALL_EDIT))
 		return ;
 	values = NULL;
 	n = 0;
-	i = state == SECTOR_EDIT ? select_it(1, S_SELECT, -1) : select_it(1, W_SELECT, -1);
-	if (state == SECTOR_EDIT && within(i, -1, w->n_sec) &&
-	within(w->sec[i].floor_txtr, -1, n_txtrs) &&
+	i = state == SEC_EDIT ? select_it(1, S_SELECT, -1) : select_it(1, W_SELECT, -1);
+	if (state == SEC_EDIT && within(i, -1, w->n_sec) &&
+	within(w->sec[i].fl_txtr, -1, n_txtrs) &&
 	within(w->sec[i].ceil_txtr, -1, n_txtrs))
 	{
 		if (!(values = get_sec_values(&n, &w->sec[i])))

@@ -68,7 +68,7 @@
 
 # define CONVEX_COLOR			0x207561
 # define CONCAVE_COLOR			0xDA4302
-# define ACTIVE_SECTOR_COLOR	0x3949AB
+# define ACTIVE_SEC_COLOR	0x3949AB
 
 # define TMP_COLOR				SOFT_PURPLE
 
@@ -110,7 +110,7 @@
 
 # define R_VECTORS				1
 # define R_WALLS				2
-# define R_SECTORS				3
+# define R_SECS				3
 # define R_PLAYER				4
 # define R_TEXTURES				5
 
@@ -123,8 +123,8 @@
 # define MIN_N_WALLS			0
 # define MAX_N_WALLS			127
 
-# define MIN_N_SECTORS			1
-# define MAX_N_SECTORS			50
+# define MIN_N_SECS			1
+# define MAX_N_SECS			50
 
 # define MIN_N_TXTRS			1
 # define MAX_N_TXTRS			50
@@ -135,7 +135,7 @@
 # define MIN_SEC_WALLS		3
 # define MAX_SEC_WALLS		30
 
-# define MAX_SECTOR_ITEMS		20
+# define MAX_SEC_ITEMS		20
 # define MAX_ITEMFULL			50
 
 //wall types
@@ -157,7 +157,7 @@
 
 # define NODE_EMPTY			-1
 # define NODE_FULL			-2
-# define NODE_SECTOR		-3
+# define NODE_SEC		-3
 # define NODE_WALL  		-4
 
 # define MENU_TXT_H			25
@@ -190,8 +190,8 @@
 # define TXTR_DISTORT_L		15
 # define TXTR_ISO			16
 # define TXTR_ISO_L			17
-# define TXTR_SECTOR		18
-# define TXTR_SECTOR_L		19
+# define TXTR_SEC		18
+# define TXTR_SEC_L		19
 # define TXTR_WALL			20
 # define TXTR_WALL_L		21
 # define TXTR_DOOR_ADD		22
@@ -222,14 +222,15 @@
 # define TXTR_HEALTH		47
 # define TXTR_AMMO			48
 # define TXTR_LIGHT			49
+# define TXTR_DOOR			50
 
-# define TOTAL_TXTRS		50
+# define TOTAL_TXTRS		51
 
 
 # define DRAG_BTN		0
 # define DISTORT_BTN	1
 # define DRAW_BTN		2
-# define SECTOR_BTN		3
+# define SEC_BTN		3
 # define WALL_BTN		4
 # define DOOR_ADD_BTN	5
 # define DOOR_DEL_BTN	6
@@ -279,19 +280,20 @@
 
 // for selected function
 
-# define V_SELECT		0
+# define FC_SELECT		0
 # define W_SELECT		1
 # define S_SELECT		2
 # define T_SELECT		3
 # define SEL_I_SELECT	4
-# define ST_SELECT	5
-# define WORLD_SELECT	6
-# define I_SELECT		7
+# define ST_SELECT		5
+# define LAST_ST_SELECT	6
+# define WORLD_SELECT	7
+# define I_SELECT		8
 
 // states
 # define NORMAL					-1
-# define SECTOR_SEARCH			0
-# define SECTOR_EDIT			1
+# define SEC_SEARCH			0
+# define SEC_EDIT			1
 # define INP					2
 # define VECTOR_EDIT			3
 # define WALL_SEARCH			4
@@ -322,6 +324,12 @@ typedef struct                  s_vecd2_d
     double                      y;
 }                               t_vec2d_d;
 
+typedef struct                  s_vecd2_f
+{
+	float						x;
+	float						y;
+}                               t_vec2d_f;
+
 typedef struct					s_poly
 {
 	int 						area;
@@ -351,7 +359,7 @@ typedef struct 					s_grid
 	t_rec						box;
 	signed char 				nodes[GRID_SIZE][GRID_SIZE];
 	float 						scale;
-    t_vec2d						active[2];
+    t_vec2d						p[2];
 }								t_grid;
 
 typedef struct 					s_button
@@ -377,8 +385,8 @@ typedef struct					s_sdl
 typedef struct					s_prog
 {
 	int 						**screen;
-	int 						mode_id;
-	int 						last_mode_id;
+	int 						m_id;
+	int 						last;
 	struct s_mode				*modes;
 	short 						btn_lit;
 	short 						btn_on;
@@ -405,11 +413,11 @@ typedef struct					s_item
 
 typedef struct                  s_sector
 {
-	int 						*sec_walls;
+	int 						*s_walls;
 	int 						*v;
-	int						    floor;
+	int						    fl;
 	int						    ceiling;
-	short 						floor_txtr;
+	short 						fl_txtr;
 	short 						ceil_txtr;
 	t_item						*items;
 	unsigned short				n_items;
@@ -582,8 +590,8 @@ void                    refresh_level_list(t_media *media, t_mode *mode);
 
 void					render_button(t_button *button, t_sdl *sdl, SDL_Texture **t);
 void					render_button_big(t_button *button, t_sdl *sdl, SDL_Texture **t);
-void					render_btn(t_button *btn, t_sdl *sdl, int n_btn, int mode_id, SDL_Texture **t);
-unsigned short			light_button(t_sdl *sdl, t_button *btn, int n_btn, t_prog *prog);
+void					render_btn(t_button *btn, t_sdl *sdl, int n_btn, int m_id, SDL_Texture **t);
+unsigned short			btn_light(t_vec2d mouse, t_button *btn, int n_btn, t_prog *prog);
 t_button				*init_btn(int n_btn);
 void					free_btn(t_button *btn, int n);
 unsigned short			distribute_btn_h(t_button *btn, int from, int to, t_rec box, int padding);
@@ -650,10 +658,10 @@ t_prog					*get_prog(SDL_Renderer *rend);
 
 void					render_screen(SDL_Renderer *rend, int **screen);
 
-void					add_to_media(t_grid *grid, t_media *media);
+void					add_to_media(t_grid *grid, t_world *world);
 unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *path);
 
-void					update_sector_status(t_sec *sec, t_wall *walls, t_vec2d *vecs, int n_sec);
+void					upd_sec(t_sec *sec, t_wall *walls, t_vec2d *vecs, int n_sec);
 
 
 
@@ -703,7 +711,7 @@ void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, 
 void					delete_item(t_sec *sector, int id);
 void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sec *sector);
 void					add_item(int default_id, t_vec2d mouse, t_grid *grid, t_sec *sector);
-int 					find_default_item(int type, t_itemfull *itemfull, int n);
+int 					find_def_item(int type, t_itemfull *itemfull, int n);
 
 /*
  * fill_grid
@@ -725,7 +733,7 @@ void					grid_refresh(t_grid *grid, t_media *media, int state, int sector);
  * find_in_media
  */
 
-short 					find_vector(t_vec2d *vecs, t_vec2d p, int n);
+short 					find_vec(t_vec2d *vecs, t_vec2d p, int n);
 short 					find_wall(short one, short two, t_wall *walls, short n_walls);
 
 /*
@@ -805,14 +813,29 @@ void					*realloc_tab(void *old_tab, size_t new_size, size_t old_size);
 void					free_tab(void **tab, int size);
 
 void				    swap_ints(int *one, int *two);
-unsigned short          vec_same(t_vec2d one, t_vec2d two);
-void					pair_sort(int *a, int n);;
+
+void					pair_sort(int *a, int n);
 
 void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center);
 
 void					turn_btns_off(t_prog *prog);
 
 unsigned short			add_sector(t_sec **sec, short n_sec);
-unsigned short			add_vector(t_vec2d **vecs, short n_vecs, t_grid *grid, short i);
+unsigned short			add_vec(t_vec2d **vecs, short n_vecs, t_grid *grid, short i);
+
+/*
+ * line_math
+ */
+float 					get_slope(t_vec2d p1, t_vec2d p2);
+t_vec2d_f				lines_intersect(t_line a, t_line b, unsigned short *i);
+float 					get_perp_slope(t_vec2d p1, t_vec2d p2);
+unsigned short			intersects(t_vec2d p, t_vec2d l1, t_vec2d l2);
+int						find_wall_inter(t_vec2d p, t_world world);
+
+/*
+ * vec_ops
+ */
+void					vec_set(t_vec2d *vec, int x, int y, int n);
+unsigned short          vec_same(t_vec2d one, t_vec2d two);
 
 #endif

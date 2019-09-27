@@ -5,8 +5,7 @@ File Names:
 0) fortress
 1) dungeon
 2) hell
-3) new_level
-4) new_level_0
+3) new_le
 ###
 
 #Textures

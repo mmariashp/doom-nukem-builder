@@ -79,7 +79,7 @@ unsigned short		fill_row(int x_from, int x_to, int y, int **screen)
 			screen[x_from][y] = TMP_COLOR;
 		else if (screen[x_from][y] == CONVEX_COLOR || \
 		screen[x_from][y] == CONCAVE_COLOR || \
-		screen[x_from][y] == ACTIVE_SECTOR_COLOR)
+		screen[x_from][y] == ACTIVE_SEC_COLOR)
 		{
 			screen[x_from][y] = YELLOW;
 			overlay = TRUE;

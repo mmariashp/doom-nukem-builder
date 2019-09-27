@@ -12,9 +12,9 @@ unsigned short			within(int value, int min, int max)
 
 int 					select_it(char set_get_unset, unsigned short id, int value)
 {
-	static int 			select[8] = { -1, -1, -1, -1, -1, -1, -1, -1 };
+	static int 			select[9] = { -1, -1, -1, -1, -1, -1, -1, -1, -1 };
 
-	if (id >= 8)
+	if (id >= 9)
 		return (-1);
 	else if (set_get_unset == 0)
 		select[id] = value;
@@ -25,9 +25,9 @@ int 					select_it(char set_get_unset, unsigned short id, int value)
 
 int 					lit_it(char set_get_unset, unsigned short id, int value)
 {
-	static int 			select[7] = { -1, -1, -1, -1, -1, -1, -1 };
+	static int 			select[9] = { -1, -1, -1, -1, -1, -1, -1, -1, -1 };
 
-	if (id >= 7)
+	if (id >= 9)
 		return (-1);
 	else if (set_get_unset == 0)
 		select[id] = value;

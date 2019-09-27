@@ -87,7 +87,9 @@ SRC =   main.c \
         delete_sector.c \
         validate_media.c \
         file_fun.c \
-        memory_fun.c
+        memory_fun.c \
+        line_math.c \
+        vec_ops.c
 
 OBJ =	$(SRC:.c=.o)
 

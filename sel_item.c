@@ -9,9 +9,9 @@ void					render_item_icons(t_prog *prog, t_media *media, SDL_Renderer *rend)
 	if (!rend || !media || !prog)
 		return ;
 	i = 0;
-	while (i < prog->modes[prog->mode_id].n_btn && i < media->n_itemfull)
+	while (i < prog->modes[prog->m_id].n_btn && i < media->n_itemfull)
 	{
-		box = prog->modes[prog->mode_id].btn[i].box;
+		box = prog->modes[prog->m_id].btn[i].box;
 		box.x += box.w * 0.1;
 		box.w = box.h;
 		draw_item(media->itemfull[i].type, box, rend, prog->t);
@@ -25,7 +25,7 @@ void					r_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
-	render_btn(prog->modes[prog->mode_id].btn, sdl, prog->modes[prog->mode_id].n_btn, prog->mode_id, prog->t);
+	render_btn(prog->modes[prog->m_id].btn, sdl, prog->modes[prog->m_id].n_btn, prog->m_id, prog->t);
 	render_item_icons(prog, media, sdl->rend);
 	SDL_RenderPresent(sdl->rend);
 	prog->features[F_REDRAW] = 1;
@@ -33,16 +33,16 @@ void					r_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 
 unsigned short			u_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
-	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].btn)
+	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->m_id].btn)
 		return (FAIL);
-	if (prog->mode_id != prog->last_mode_id)
+	if (prog->m_id != prog->last)
 	{
 		prog->click = (t_vec2d){ 0, 0 };
 		prog->btn_lit = -1;
-		prog->last_mode_id = prog->mode_id;
+		prog->last = prog->m_id;
 		return (SUCCESS);
 	}
-	if (light_button(sdl, prog->modes[prog->mode_id].btn, prog->modes[prog->mode_id].n_btn, prog) == SUCCESS) // when mouse is over a button
+	if (btn_light(sdl->mouse, prog->modes[prog->m_id].btn, prog->modes[prog->m_id].n_btn, prog) == SUCCESS) // when mouse is over a button
 		return (SUCCESS);
 	prog->btn_lit = -1;
 	return (SUCCESS);
@@ -80,14 +80,14 @@ int						i_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 				{
 					select_it(0, SEL_I_SELECT, prog->btn_lit);
 					int i = 0;
-					while (i < prog->modes[prog->mode_id].n_btn)
+					while (i < prog->modes[prog->m_id].n_btn)
 					{
-						prog->modes[prog->mode_id].btn[i].vis_lit_on[1] = FALSE;
-						prog->modes[prog->mode_id].btn[i].vis_lit_on[2] = FALSE;
+						prog->modes[prog->m_id].btn[i].vis_lit_on[1] = FALSE;
+						prog->modes[prog->m_id].btn[i].vis_lit_on[2] = FALSE;
 						i++;
 					}
-					prog->last_mode_id = prog->mode_id;
-					prog->mode_id = MODE_EDITOR;
+					prog->last = prog->m_id;
+					prog->m_id = MODE_EDITOR;
 
 					prog->click.x = 0;
 					prog->click.y = 0;

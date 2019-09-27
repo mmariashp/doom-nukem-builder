@@ -56,7 +56,7 @@ void					r_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
-	render_btn(prog->modes[prog->mode_id].btn, sdl, prog->modes[prog->mode_id].n_btn, prog->mode_id, prog->t);
+	render_btn(prog->modes[prog->m_id].btn, sdl, prog->modes[prog->m_id].n_btn, prog->m_id, prog->t);
 	if (select_it(1, ST_SELECT, -1) == INP)
 	{
 		input = get_input(NULL, 0);
@@ -94,12 +94,12 @@ void					turn_btns_off(t_prog *prog)
 {
 	int 				i;
 
-	if (prog->modes && prog->modes[prog->mode_id].btn && prog->modes[prog->mode_id].n_btn > 0)
+	if (prog->modes && prog->modes[prog->m_id].btn && prog->modes[prog->m_id].n_btn > 0)
 	{
 		i = 0;
-		while (i < prog->modes[prog->mode_id].n_btn)
+		while (i < prog->modes[prog->m_id].n_btn)
 		{
-			prog->modes[prog->mode_id].btn[i].vis_lit_on[2] = FALSE;
+			prog->modes[prog->m_id].btn[i].vis_lit_on[2] = FALSE;
 			i++;
 		}
 	}
@@ -113,23 +113,23 @@ unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 	char 				*new;
 	char 				*tmp;
 
-	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->mode_id].btn)
+	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->m_id].btn)
 		return (FAIL);
 	world = select_it(1, WORLD_SELECT, -1);
 	if (select_it(1, ST_SELECT, -1) != NORMAL)
 		return (SUCCESS);
-	if (within(prog->btn_on, media->n_worlds, prog->modes[prog->mode_id].n_btn))
+	if (within(prog->btn_on, media->n_worlds, prog->modes[prog->m_id].n_btn))
 	{
 		turn_btns_off(prog);
 	}
-	light_button(sdl, prog->modes[prog->mode_id].btn,  prog->modes[prog->mode_id].n_btn, prog);
+	btn_light(sdl->mouse, prog->modes[prog->m_id].btn,  prog->modes[prog->m_id].n_btn, prog);
 	if ((prog->click.x || prog->click.y) && prog->btn_lit != -1)
 	{
 		turn_btns_off(prog);
 		prog->btn_on = prog->btn_lit;
-		prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
+		prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
 		prog->click = (t_vec2d){ 0, 0 };
-		if (within(prog->btn_on, media->n_worlds, prog->modes[prog->mode_id].n_btn))
+		if (within(prog->btn_on, media->n_worlds, prog->modes[prog->m_id].n_btn))
 		{
 			if (within((world = get_w_id(prog->btn_on, media->n_worlds, &edit_del)), -1, media->n_worlds))
 			{
@@ -140,7 +140,7 @@ unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 				{
 					delete_world(media, world);
 					select_it(0, WORLD_SELECT, -1);
-					refresh_level_list(media, &prog->modes[prog->mode_id]);
+					refresh_level_list(media, &prog->modes[prog->m_id]);
 				}
 			}
 		}
@@ -166,18 +166,18 @@ unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog
 			}
 		}
 		select_it(0, WORLD_SELECT, -1);
-		refresh_level_list(media, &prog->modes[prog->mode_id]);
+		refresh_level_list(media, &prog->modes[prog->m_id]);
 	}
 	return (SUCCESS);
 }
 
-void					switch_mode(t_prog *prog, int new_mode_id, int new_state)
+void					switch_mode(t_prog *prog, int new_m_id, int new_state)
 {
 	if (prog)
 	{
-		prog->modes[prog->mode_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
-		prog->last_mode_id = prog->mode_id;
-		prog->mode_id = new_mode_id;
+		prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
+		prog->last = prog->m_id;
+		prog->m_id = new_m_id;
 		prog->btn_lit = -1;
 		select_it(0, ST_SELECT, new_state);
 		prog->click = (t_vec2d){ 0, 0 };

@@ -1,7 +1,7 @@
 
 #include "builder.h"
 
-short 					find_vector(t_vec2d *vecs, t_vec2d p, int n)
+short 					find_vec(t_vec2d *vecs, t_vec2d p, int n)
 {
 	short 				i;
 

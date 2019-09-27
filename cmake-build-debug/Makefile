@@ -2512,6 +2512,33 @@ libft/ft_toupper.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_toupper.c.s
 .PHONY : libft/ft_toupper.c.s
 
+line_math.o: line_math.c.o
+
+.PHONY : line_math.o
+
+# target to build an object file
+line_math.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/line_math.c.o
+.PHONY : line_math.c.o
+
+line_math.i: line_math.c.i
+
+.PHONY : line_math.i
+
+# target to preprocess a source file
+line_math.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/line_math.c.i
+.PHONY : line_math.c.i
+
+line_math.s: line_math.c.s
+
+.PHONY : line_math.s
+
+# target to generate assembly for a file
+line_math.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/line_math.c.s
+.PHONY : line_math.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -2971,6 +2998,33 @@ values.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/values.c.s
 .PHONY : values.c.s
 
+vec_ops.o: vec_ops.c.o
+
+.PHONY : vec_ops.o
+
+# target to build an object file
+vec_ops.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/vec_ops.c.o
+.PHONY : vec_ops.c.o
+
+vec_ops.i: vec_ops.c.i
+
+.PHONY : vec_ops.i
+
+# target to preprocess a source file
+vec_ops.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/vec_ops.c.i
+.PHONY : vec_ops.c.i
+
+vec_ops.s: vec_ops.c.s
+
+.PHONY : vec_ops.s
+
+# target to generate assembly for a file
+vec_ops.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/vec_ops.c.s
+.PHONY : vec_ops.c.s
+
 walls.o: walls.c.o
 
 .PHONY : walls.o
@@ -3299,6 +3353,9 @@ help:
 	@echo "... libft/ft_toupper.o"
 	@echo "... libft/ft_toupper.i"
 	@echo "... libft/ft_toupper.s"
+	@echo "... line_math.o"
+	@echo "... line_math.i"
+	@echo "... line_math.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -3350,6 +3407,9 @@ help:
 	@echo "... values.o"
 	@echo "... values.i"
 	@echo "... values.s"
+	@echo "... vec_ops.o"
+	@echo "... vec_ops.i"
+	@echo "... vec_ops.s"
 	@echo "... walls.o"
 	@echo "... walls.i"
 	@echo "... walls.s"

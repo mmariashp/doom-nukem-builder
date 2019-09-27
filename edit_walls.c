@@ -84,9 +84,9 @@ unsigned short			remove_wall_in_secs(t_world *world, int to_remove)
 	tmp = 0;
 	while (i < world->n_sec)
 	{
-		world->sec[i].sec_walls = remove_from_array(world->sec[i].sec_walls,\
+		world->sec[i].s_walls = remove_from_array(world->sec[i].s_walls,\
 		world->sec[i].n_walls, &tmp, to_remove);
-		if (!world->sec[i].sec_walls)
+		if (!world->sec[i].s_walls)
 			return (FAIL);
 		world->sec[i].n_walls = tmp;
 		i++;
@@ -103,9 +103,9 @@ unsigned short			add_wall_in_secs(t_world *world, int to_add, int find)
 	i = 0;
 	while (i < world->n_sec)
 	{
-		world->sec[i].sec_walls = add_to_array(world->sec[i].sec_walls,\
+		world->sec[i].s_walls = add_to_array(world->sec[i].s_walls,\
 		&world->sec[i].n_walls, to_add, find);
-		if (!world->sec[i].sec_walls)
+		if (!world->sec[i].s_walls)
 			return (FAIL);
 		i++;
 	}
@@ -140,8 +140,8 @@ void					delete_wall(int id, t_world *world)
 		j = 0;
 		while (j < world->sec[i].n_walls)
 		{
-			if (world->sec[i].sec_walls[j] > id)
-				world->sec[i].sec_walls[j]--;
+			if (world->sec[i].s_walls[j] > id)
+				world->sec[i].s_walls[j]--;
 			j++;
 		}
 		i++;

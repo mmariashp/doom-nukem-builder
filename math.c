@@ -40,7 +40,7 @@ t_vec2d					add(t_vec2d one, t_vec2d two)
 
 t_vec2d					sub_one_from_two(t_vec2d one, t_vec2d two)
 {
-	return ((t_vec2d){ one.x + two.x, one.y + two.y });
+	return ((t_vec2d){ two.x - one.x, two.y - one.y });
 }
 
 t_vec2d					mult(t_vec2d one, t_vec2d two)

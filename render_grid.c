@@ -47,7 +47,7 @@ void					render_grid_nodes(int **screen, t_grid *grid)
 			{
 				if (grid->nodes[x][y] == NODE_FULL)
 					draw_node(node, radius2, BROWN, screen);
-				else if (grid->nodes[x][y] == NODE_SECTOR)
+				else if (grid->nodes[x][y] == NODE_SEC)
 					draw_node(node, radius2, YELLOW, screen);
 				else if (grid->nodes[x][y] == NODE_EMPTY)
 				{
@@ -150,10 +150,10 @@ unsigned short			fill_sector(t_world world, t_grid *grid, int **screen, int sec,
 		p[i].y = (int)(grid->box.y + p[i].y * grid->scale);
 		i++;
 	}
-	if (state == SECTOR_SEARCH || state == SECTOR_EDIT)
+	if (state == SEC_SEARCH || state == SEC_EDIT)
 	{
 		if (sec == lit_it(1, S_SELECT, 0))
-			color = ACTIVE_SECTOR_COLOR;
+			color = ACTIVE_SEC_COLOR;
 		else
 			color = world.sec[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
 	}
@@ -174,15 +174,15 @@ unsigned short			fill_sector_iso(t_world world, t_grid *grid, int **screen, int 
 		return (FALSE);
 	while (i < world.sec[j].n_v)
 	{
-		p1[i] = make_iso(world.vecs[world.sec[j].v[i]].x, world.vecs[world.sec[j].v[i]].y, world.sec[j].floor);
+		p1[i] = make_iso(world.vecs[world.sec[j].v[i]].x, world.vecs[world.sec[j].v[i]].y, world.sec[j].fl);
 		p[i].x = (int)(grid->box.x + p1[i].x * grid->scale);
 		p[i].y = (int)(grid->box.y + p1[i].y * grid->scale);
 		i++;
 	}
-	if (state == SECTOR_SEARCH || state == SECTOR_EDIT)
+	if (state == SEC_SEARCH || state == SEC_EDIT)
 	{
 		if (sec == lit_it(1, S_SELECT, 0))
-			color = ACTIVE_SECTOR_COLOR;
+			color = ACTIVE_SEC_COLOR;
 		else
 			color = world.sec[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : CONCAVE_COLOR;
 	}
@@ -227,15 +227,15 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 	place_player(world, grid, prog->screen, radius2);
 	if (select_it(1, ST_SELECT, -1) == NORMAL && prog->btn_on == DRAW_BTN) // draw mode
 	{
-		if (grid->active[0].x != -1 && grid->active[0].y != -1)
+		if (grid->p[0].x != -1 && grid->p[0].y != -1)
 		{
-			node.x = (int)(grid->box.x + grid->active[0].x * grid->scale);
-			node.y = (int)(grid->box.y + grid->active[0].y * grid->scale);
+			node.x = (int)(grid->box.x + grid->p[0].x * grid->scale);
+			node.y = (int)(grid->box.y + grid->p[0].y * grid->scale);
 			draw_node(node, radius2, BABY_PINK, prog->screen);
-			if (grid->active[1].x != -1 && grid->active[1].y != -1)
+			if (grid->p[1].x != -1 && grid->p[1].y != -1)
 			{
-				node2.x = (int)(grid->box.x + grid->active[1].x * grid->scale);
-				node2.y = (int)(grid->box.y + grid->active[1].y * grid->scale);
+				node2.x = (int)(grid->box.x + grid->p[1].x * grid->scale);
+				node2.y = (int)(grid->box.y + grid->p[1].y * grid->scale);
 				draw_node(node2, radius1, BABY_PINK, prog->screen);
 				draw_line2((t_line){ node, node2 }, BABY_PINK, prog->screen);
 			}
@@ -271,10 +271,10 @@ void					draw_walls_iso(t_world world, t_grid *grid, int **screen, t_sec *sector
 	{
 
 
-		v1f = make_iso(world.vecs[world.walls[sector->sec_walls[i]].v1].x, world.vecs[world.walls[sector->sec_walls[i]].v1].y, sector->floor);
-		v2f = make_iso(world.vecs[world.walls[sector->sec_walls[i]].v2].x, world.vecs[world.walls[sector->sec_walls[i]].v2].y, sector->floor);
-		v1c = make_iso(world.vecs[world.walls[sector->sec_walls[i]].v1].x, world.vecs[world.walls[sector->sec_walls[i]].v1].y, sector->ceiling);
-		v2c = make_iso(world.vecs[world.walls[sector->sec_walls[i]].v2].x, world.vecs[world.walls[sector->sec_walls[i]].v2].y, sector->ceiling);
+		v1f = make_iso(world.vecs[world.walls[sector->s_walls[i]].v1].x, world.vecs[world.walls[sector->s_walls[i]].v1].y, sector->fl);
+		v2f = make_iso(world.vecs[world.walls[sector->s_walls[i]].v2].x, world.vecs[world.walls[sector->s_walls[i]].v2].y, sector->fl);
+		v1c = make_iso(world.vecs[world.walls[sector->s_walls[i]].v1].x, world.vecs[world.walls[sector->s_walls[i]].v1].y, sector->ceiling);
+		v2c = make_iso(world.vecs[world.walls[sector->s_walls[i]].v2].x, world.vecs[world.walls[sector->s_walls[i]].v2].y, sector->ceiling);
 
 		v1f.x = (int)(grid->box.x + v1f.x * grid->scale);
 		v1f.y = (int)(grid->box.y + v1f.y * grid->scale);
@@ -289,7 +289,7 @@ void					draw_walls_iso(t_world world, t_grid *grid, int **screen, t_sec *sector
 		v1cb = (t_vec2d){ v1c.x, v1c.y };
 		v2cb = (t_vec2d){ v2c.x, v2c.y };
 
-		if (world.walls[sector->sec_walls[i]].type == WALL_EMPTY)
+		if (world.walls[sector->s_walls[i]].type == WALL_EMPTY)
 		{
 			draw_thick_line((t_line){ v1fb, v2fb }, GREEN, WALL_RADIUS, screen);
 			draw_thick_line((t_line){ v1cb, v2cb }, GREEN, WALL_RADIUS, screen);
@@ -298,7 +298,7 @@ void					draw_walls_iso(t_world world, t_grid *grid, int **screen, t_sec *sector
 			draw_thick_line((t_line){ v1fb, v2cb }, DARK_GRAY, WALL_RADIUS / 2, screen);
 			draw_thick_line((t_line){ v2fb, v1cb }, DARK_GRAY, WALL_RADIUS / 2, screen);
 		}
-		else if (world.walls[sector->sec_walls[i]].type == WALL_FILLED)
+		else if (world.walls[sector->s_walls[i]].type == WALL_FILLED)
 		{
 			draw_thick_line((t_line){ v1fb, v2fb }, WHITE, WALL_RADIUS, screen);
 			draw_thick_line((t_line){ v1cb, v2cb }, WHITE, WALL_RADIUS, screen);
@@ -346,7 +346,7 @@ void					render_grid_iso(t_world world, t_grid *grid, t_prog *prog)
 	while (k < world.n_sec)
 	{
 		tab[k].x = k;
-		tab[k].y = world.sec[k].floor;
+		tab[k].y = world.sec[k].fl;
 		k++;
 	}
 	k = 0;
