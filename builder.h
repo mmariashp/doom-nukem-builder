@@ -372,7 +372,7 @@ typedef struct 					s_button
 //	SDL_Texture					*lit;
 	int 						reg_i;
 	int 						lit_i;
-}								t_button;
+}								t_btn;
 
 typedef struct					s_sdl
 {
@@ -499,7 +499,7 @@ typedef struct 					s_media
 typedef struct					s_mode
 {
 	unsigned short				n_btn;
-	t_button					*btn;
+	t_btn					*btn;
 	int							(*input)(t_sdl*, t_grid*, t_media *, t_prog *);
 	unsigned short				(*update)(t_sdl*, t_grid*, t_media *, t_prog *);
 	void						(*render)(t_sdl*, t_grid*, t_media *, t_prog *);
@@ -585,18 +585,38 @@ void					free_modes(t_mode *modes);
 void                    refresh_level_list(t_media *media, t_mode *mode);
 
 /*
- * buttons
+ * ---------------------BUTTONS-------------------------------------------------
  */
 
-void					render_button(t_button *button, t_sdl *sdl, SDL_Texture **t);
-void					render_button_big(t_button *button, t_sdl *sdl, SDL_Texture **t);
-void					render_btn(t_button *btn, t_sdl *sdl, int n_btn, int m_id, SDL_Texture **t);
-unsigned short			btn_light(t_vec2d mouse, t_button *btn, int n_btn, t_prog *prog);
-t_button				*init_btn(int n_btn);
-void					free_btn(t_button *btn, int n);
-unsigned short			distribute_btn_h(t_button *btn, int from, int to, t_rec box, int padding);
+/*
+ * render_btn
+ */
+
+void					render_btns(t_prog *prog, t_sdl *sdl);
+void					render_btn_big(t_btn *button, t_sdl *sdl, SDL_Texture **t);
+void					render_btn(t_btn *button, t_sdl *sdl, SDL_Texture **t);
+
+/*
+ * manage_btn
+ */
+
+unsigned short			manage_btn(t_media *media, t_prog *prog, t_grid *grid, t_vec2d mouse);
+unsigned short			btn_press(t_prog *prog, t_grid *grid, t_media *media, int state);
+void					turn_btn_on(t_prog *prog, t_grid *grid);
+void					turn_btns_off(t_prog *prog);
+unsigned short			btn_light(t_vec2d mouse, t_btn *btn, int n_btn, t_prog *prog);
+
+unsigned short			btn_refresh(t_prog *prog, int state);
+t_btn					*init_btn(int n_btn);
+void					free_btn(t_btn *btn, int n);
+unsigned short			distribute_btn_h(t_btn *btn, int from, int to, t_rec box, int padding);
 void					get_btn(int state, t_mode *mode);
 
+
+void					change_heights(int b, t_sec *sec);
+void					edit_wall_type(int btn_on, t_world *world);
+void					prep_texture_edit(t_world *world, t_prog *prog,
+										  int n_txtrs);
 /*
  * zoom
  */

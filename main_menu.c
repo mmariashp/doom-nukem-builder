@@ -20,8 +20,7 @@ void					r_mainmenu(t_sdl *sdl, t_grid *grid, t_media *media, \
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
-	render_btn(prog->modes[prog->m_id].btn, sdl,\
-	prog->modes[prog->m_id].n_btn, prog->m_id, prog->t);
+	render_btns(prog, sdl);
 	SDL_RenderPresent(sdl->rend);
 }
 

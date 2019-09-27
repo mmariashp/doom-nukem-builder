@@ -89,7 +89,9 @@ SRC =   main.c \
         file_fun.c \
         memory_fun.c \
         line_math.c \
-        vec_ops.c
+        vec_ops.c \
+        render_btn.c \
+        manage_btn.c
 
 OBJ =	$(SRC:.c=.o)
 

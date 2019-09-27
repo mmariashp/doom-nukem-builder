@@ -356,9 +356,22 @@ CMakeFiles/builder.dir/main_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/main_menu.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/main_menu.c -o CMakeFiles/builder.dir/main_menu.c.s
 
+CMakeFiles/builder.dir/manage_btn.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/manage_btn.c.o: ../manage_btn.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/builder.dir/manage_btn.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/manage_btn.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/manage_btn.c
+
+CMakeFiles/builder.dir/manage_btn.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/manage_btn.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/manage_btn.c > CMakeFiles/builder.dir/manage_btn.c.i
+
+CMakeFiles/builder.dir/manage_btn.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/manage_btn.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/manage_btn.c -o CMakeFiles/builder.dir/manage_btn.c.s
+
 CMakeFiles/builder.dir/math.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/math.c.o: ../math.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/builder.dir/math.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/builder.dir/math.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/math.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/math.c
 
 CMakeFiles/builder.dir/math.c.i: cmake_force
@@ -371,7 +384,7 @@ CMakeFiles/builder.dir/math.c.s: cmake_force
 
 CMakeFiles/builder.dir/memory_fun.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/memory_fun.c.o: ../memory_fun.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/builder.dir/memory_fun.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/builder.dir/memory_fun.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/memory_fun.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/memory_fun.c
 
 CMakeFiles/builder.dir/memory_fun.c.i: cmake_force
@@ -384,7 +397,7 @@ CMakeFiles/builder.dir/memory_fun.c.s: cmake_force
 
 CMakeFiles/builder.dir/modes.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/modes.c.o: ../modes.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/builder.dir/modes.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/builder.dir/modes.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/modes.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/modes.c
 
 CMakeFiles/builder.dir/modes.c.i: cmake_force
@@ -397,7 +410,7 @@ CMakeFiles/builder.dir/modes.c.s: cmake_force
 
 CMakeFiles/builder.dir/move.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/move.c.o: ../move.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/builder.dir/move.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/builder.dir/move.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/move.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/move.c
 
 CMakeFiles/builder.dir/move.c.i: cmake_force
@@ -410,7 +423,7 @@ CMakeFiles/builder.dir/move.c.s: cmake_force
 
 CMakeFiles/builder.dir/prog.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/prog.c.o: ../prog.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/builder.dir/prog.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/builder.dir/prog.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/prog.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/prog.c
 
 CMakeFiles/builder.dir/prog.c.i: cmake_force
@@ -423,7 +436,7 @@ CMakeFiles/builder.dir/prog.c.s: cmake_force
 
 CMakeFiles/builder.dir/render.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/render.c.o: ../render.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/builder.dir/render.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/builder.dir/render.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/render.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/render.c
 
 CMakeFiles/builder.dir/render.c.i: cmake_force
@@ -434,9 +447,22 @@ CMakeFiles/builder.dir/render.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/render.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/render.c -o CMakeFiles/builder.dir/render.c.s
 
+CMakeFiles/builder.dir/render_btn.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/render_btn.c.o: ../render_btn.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/builder.dir/render_btn.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/render_btn.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/render_btn.c
+
+CMakeFiles/builder.dir/render_btn.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/render_btn.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/render_btn.c > CMakeFiles/builder.dir/render_btn.c.i
+
+CMakeFiles/builder.dir/render_btn.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/render_btn.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/render_btn.c -o CMakeFiles/builder.dir/render_btn.c.s
+
 CMakeFiles/builder.dir/render_grid.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/render_grid.c.o: ../render_grid.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/builder.dir/render_grid.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/builder.dir/render_grid.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/render_grid.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/render_grid.c
 
 CMakeFiles/builder.dir/render_grid.c.i: cmake_force
@@ -449,7 +475,7 @@ CMakeFiles/builder.dir/render_grid.c.s: cmake_force
 
 CMakeFiles/builder.dir/rewrite.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/rewrite.c.o: ../rewrite.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/builder.dir/rewrite.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/builder.dir/rewrite.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/rewrite.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/rewrite.c
 
 CMakeFiles/builder.dir/rewrite.c.i: cmake_force
@@ -462,7 +488,7 @@ CMakeFiles/builder.dir/rewrite.c.s: cmake_force
 
 CMakeFiles/builder.dir/sdl_fun.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/sdl_fun.c.o: ../sdl_fun.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/builder.dir/sdl_fun.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/builder.dir/sdl_fun.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/sdl_fun.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/sdl_fun.c
 
 CMakeFiles/builder.dir/sdl_fun.c.i: cmake_force
@@ -475,7 +501,7 @@ CMakeFiles/builder.dir/sdl_fun.c.s: cmake_force
 
 CMakeFiles/builder.dir/sector_logic.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/sector_logic.c.o: ../sector_logic.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/builder.dir/sector_logic.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/builder.dir/sector_logic.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/sector_logic.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/sector_logic.c
 
 CMakeFiles/builder.dir/sector_logic.c.i: cmake_force
@@ -488,7 +514,7 @@ CMakeFiles/builder.dir/sector_logic.c.s: cmake_force
 
 CMakeFiles/builder.dir/sel_item.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/sel_item.c.o: ../sel_item.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/builder.dir/sel_item.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/builder.dir/sel_item.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/sel_item.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/sel_item.c
 
 CMakeFiles/builder.dir/sel_item.c.i: cmake_force
@@ -501,7 +527,7 @@ CMakeFiles/builder.dir/sel_item.c.s: cmake_force
 
 CMakeFiles/builder.dir/textures.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/textures.c.o: ../textures.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/builder.dir/textures.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/builder.dir/textures.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/textures.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/textures.c
 
 CMakeFiles/builder.dir/textures.c.i: cmake_force
@@ -514,7 +540,7 @@ CMakeFiles/builder.dir/textures.c.s: cmake_force
 
 CMakeFiles/builder.dir/useful.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/useful.c.o: ../useful.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/builder.dir/useful.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/builder.dir/useful.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/useful.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/useful.c
 
 CMakeFiles/builder.dir/useful.c.i: cmake_force
@@ -527,7 +553,7 @@ CMakeFiles/builder.dir/useful.c.s: cmake_force
 
 CMakeFiles/builder.dir/validate_media.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/validate_media.c.o: ../validate_media.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/builder.dir/validate_media.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/builder.dir/validate_media.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/validate_media.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/validate_media.c
 
 CMakeFiles/builder.dir/validate_media.c.i: cmake_force
@@ -540,7 +566,7 @@ CMakeFiles/builder.dir/validate_media.c.s: cmake_force
 
 CMakeFiles/builder.dir/values.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/values.c.o: ../values.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/builder.dir/values.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/builder.dir/values.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/values.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/values.c
 
 CMakeFiles/builder.dir/values.c.i: cmake_force
@@ -553,7 +579,7 @@ CMakeFiles/builder.dir/values.c.s: cmake_force
 
 CMakeFiles/builder.dir/vec_ops.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/vec_ops.c.o: ../vec_ops.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/builder.dir/vec_ops.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/builder.dir/vec_ops.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/vec_ops.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/vec_ops.c
 
 CMakeFiles/builder.dir/vec_ops.c.i: cmake_force
@@ -566,7 +592,7 @@ CMakeFiles/builder.dir/vec_ops.c.s: cmake_force
 
 CMakeFiles/builder.dir/walls.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/walls.c.o: ../walls.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/builder.dir/walls.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/builder.dir/walls.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/walls.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/walls.c
 
 CMakeFiles/builder.dir/walls.c.i: cmake_force
@@ -579,7 +605,7 @@ CMakeFiles/builder.dir/walls.c.s: cmake_force
 
 CMakeFiles/builder.dir/zoom.c.o: CMakeFiles/builder.dir/flags.make
 CMakeFiles/builder.dir/zoom.c.o: ../zoom.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/builder.dir/zoom.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/builder.dir/zoom.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/zoom.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/zoom.c
 
 CMakeFiles/builder.dir/zoom.c.i: cmake_force
@@ -615,12 +641,14 @@ builder_OBJECTS = \
 "CMakeFiles/builder.dir/line_math.c.o" \
 "CMakeFiles/builder.dir/main.c.o" \
 "CMakeFiles/builder.dir/main_menu.c.o" \
+"CMakeFiles/builder.dir/manage_btn.c.o" \
 "CMakeFiles/builder.dir/math.c.o" \
 "CMakeFiles/builder.dir/memory_fun.c.o" \
 "CMakeFiles/builder.dir/modes.c.o" \
 "CMakeFiles/builder.dir/move.c.o" \
 "CMakeFiles/builder.dir/prog.c.o" \
 "CMakeFiles/builder.dir/render.c.o" \
+"CMakeFiles/builder.dir/render_btn.c.o" \
 "CMakeFiles/builder.dir/render_grid.c.o" \
 "CMakeFiles/builder.dir/rewrite.c.o" \
 "CMakeFiles/builder.dir/sdl_fun.c.o" \
@@ -660,12 +688,14 @@ builder: CMakeFiles/builder.dir/levels.c.o
 builder: CMakeFiles/builder.dir/line_math.c.o
 builder: CMakeFiles/builder.dir/main.c.o
 builder: CMakeFiles/builder.dir/main_menu.c.o
+builder: CMakeFiles/builder.dir/manage_btn.c.o
 builder: CMakeFiles/builder.dir/math.c.o
 builder: CMakeFiles/builder.dir/memory_fun.c.o
 builder: CMakeFiles/builder.dir/modes.c.o
 builder: CMakeFiles/builder.dir/move.c.o
 builder: CMakeFiles/builder.dir/prog.c.o
 builder: CMakeFiles/builder.dir/render.c.o
+builder: CMakeFiles/builder.dir/render_btn.c.o
 builder: CMakeFiles/builder.dir/render_grid.c.o
 builder: CMakeFiles/builder.dir/rewrite.c.o
 builder: CMakeFiles/builder.dir/sdl_fun.c.o
@@ -681,7 +711,7 @@ builder: CMakeFiles/builder.dir/zoom.c.o
 builder: CMakeFiles/builder.dir/build.make
 builder: libft.a
 builder: CMakeFiles/builder.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Linking C executable builder"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Linking C executable builder"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/builder.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

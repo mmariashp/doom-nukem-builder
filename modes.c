@@ -1,7 +1,7 @@
 
 #include "builder.h"
 
-void					free_btn(t_button *btn, int n)
+void					free_btn(t_btn *btn, int n)
 {
 	int 				i;
 
@@ -37,15 +37,15 @@ void					free_modes(t_mode *modes)
 	modes = NULL;
 }
 
-t_button				*init_btn(int n_btn)
+t_btn				*init_btn(int n_btn)
 {
 	int 				i;
-	t_button			*btn;
+	t_btn			*btn;
 
-	btn = (t_button *)ft_memalloc(sizeof(t_button) * n_btn);
+	btn = (t_btn *)ft_memalloc(sizeof(t_btn) * n_btn);
 	if (!btn)
 		return (NULL);
-	ft_bzero(btn, sizeof(t_button) * n_btn);
+	ft_bzero(btn, sizeof(t_btn) * n_btn);
 	i = 0;
 	while (i < n_btn)
 	{
@@ -62,7 +62,7 @@ t_button				*init_btn(int n_btn)
 	return (btn);
 }
 
-unsigned short			distribute_btn_h(t_button *btn, int from, int to, t_rec box, int padding)
+unsigned short			distribute_btn_h(t_btn *btn, int from, int to, t_rec box, int padding)
 {
 	t_vec2d				b;
 	int 				x;
@@ -87,7 +87,7 @@ unsigned short			distribute_btn_h(t_button *btn, int from, int to, t_rec box, in
 	return (SUCCESS);
 }
 
-unsigned short			distribute_btn_v(t_button *btn, int from, int to, t_rec box, int padding)
+unsigned short			distribute_btn_v(t_btn *btn, int from, int to, t_rec box, int padding)
 {
 	t_vec2d				b;
 	int 				y;
@@ -131,7 +131,7 @@ int						get_good_size(int w, int h, int n)
 	return (get_max((int)size.x, (int)size.y));
 }
 
-unsigned short			distribute_btn_grid(t_button *btn, int from, int to, t_rec box)
+unsigned short			distribute_btn_grid(t_btn *btn, int from, int to, t_rec box)
 {
     t_vec2d				b;
     int 				y;
@@ -160,7 +160,7 @@ unsigned short			distribute_btn_grid(t_button *btn, int from, int to, t_rec box)
     return (SUCCESS);
 }
 
-//unsigned short			distribute_btn_v2(t_button *btn, int from, int to, t_rec box, t_vec2d button_size)
+//unsigned short			distribute_btn_v2(t_btn *btn, int from, int to, t_rec box, t_vec2d button_size)
 //{
 //    int 				y;
 //    unsigned short		i;
@@ -184,7 +184,7 @@ unsigned short			distribute_btn_grid(t_button *btn, int from, int to, t_rec box)
 //    return (SUCCESS);
 //}
 
-unsigned short			main_menu_btn(t_button *btn)
+unsigned short			main_menu_btn(t_btn *btn)
 {
 	t_rec				box;
 	int 				i;
@@ -208,7 +208,7 @@ unsigned short			main_menu_btn(t_button *btn)
 	return (SUCCESS);
 }
 
-unsigned short			levels_btn(t_button *btn, t_world *worlds, int n_worlds)
+unsigned short			levels_btn(t_btn *btn, t_world *worlds, int n_worlds)
 {
 	t_rec				box;
 	int 				i;
@@ -264,7 +264,7 @@ unsigned short			levels_btn(t_button *btn, t_world *worlds, int n_worlds)
 	return (SUCCESS);
 }
 
-unsigned short			textures_btn(t_button *btn, t_texture *textures, int n_txtrs)
+unsigned short			textures_btn(t_btn *btn, t_texture *textures, int n_txtrs)
 {
     t_rec				box;
     int 				i;
@@ -287,7 +287,7 @@ unsigned short			textures_btn(t_button *btn, t_texture *textures, int n_txtrs)
     return (SUCCESS);
 }
 
-unsigned short			sel_item_btn(t_button *btn, t_itemfull *itemfull, int n_itemfull)
+unsigned short			sel_item_btn(t_btn *btn, t_itemfull *itemfull, int n_itemfull)
 {
 	t_rec				button_box;
 	int 				i;

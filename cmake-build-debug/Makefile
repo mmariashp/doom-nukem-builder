@@ -2593,6 +2593,33 @@ main_menu.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/main_menu.c.s
 .PHONY : main_menu.c.s
 
+manage_btn.o: manage_btn.c.o
+
+.PHONY : manage_btn.o
+
+# target to build an object file
+manage_btn.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/manage_btn.c.o
+.PHONY : manage_btn.c.o
+
+manage_btn.i: manage_btn.c.i
+
+.PHONY : manage_btn.i
+
+# target to preprocess a source file
+manage_btn.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/manage_btn.c.i
+.PHONY : manage_btn.c.i
+
+manage_btn.s: manage_btn.c.s
+
+.PHONY : manage_btn.s
+
+# target to generate assembly for a file
+manage_btn.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/manage_btn.c.s
+.PHONY : manage_btn.c.s
+
 math.o: math.c.o
 
 .PHONY : math.o
@@ -2754,6 +2781,33 @@ render.s: render.c.s
 render.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/render.c.s
 .PHONY : render.c.s
+
+render_btn.o: render_btn.c.o
+
+.PHONY : render_btn.o
+
+# target to build an object file
+render_btn.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/render_btn.c.o
+.PHONY : render_btn.c.o
+
+render_btn.i: render_btn.c.i
+
+.PHONY : render_btn.i
+
+# target to preprocess a source file
+render_btn.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/render_btn.c.i
+.PHONY : render_btn.c.i
+
+render_btn.s: render_btn.c.s
+
+.PHONY : render_btn.s
+
+# target to generate assembly for a file
+render_btn.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/render_btn.c.s
+.PHONY : render_btn.c.s
 
 render_grid.o: render_grid.c.o
 
@@ -3362,6 +3416,9 @@ help:
 	@echo "... main_menu.o"
 	@echo "... main_menu.i"
 	@echo "... main_menu.s"
+	@echo "... manage_btn.o"
+	@echo "... manage_btn.i"
+	@echo "... manage_btn.s"
 	@echo "... math.o"
 	@echo "... math.i"
 	@echo "... math.s"
@@ -3380,6 +3437,9 @@ help:
 	@echo "... render.o"
 	@echo "... render.i"
 	@echo "... render.s"
+	@echo "... render_btn.o"
+	@echo "... render_btn.i"
+	@echo "... render_btn.s"
 	@echo "... render_grid.o"
 	@echo "... render_grid.i"
 	@echo "... render_grid.s"

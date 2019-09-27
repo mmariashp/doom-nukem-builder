@@ -56,7 +56,7 @@ void					r_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
-	render_btn(prog->modes[prog->m_id].btn, sdl, prog->modes[prog->m_id].n_btn, prog->m_id, prog->t);
+	render_btns(prog, sdl);
 	if (select_it(1, ST_SELECT, -1) == INP)
 	{
 		input = get_input(NULL, 0);
@@ -90,21 +90,7 @@ int 					get_w_id(int btn_id, int n_worlds, int *edit_del)
 	}
 }
 
-void					turn_btns_off(t_prog *prog)
-{
-	int 				i;
 
-	if (prog->modes && prog->modes[prog->m_id].btn && prog->modes[prog->m_id].n_btn > 0)
-	{
-		i = 0;
-		while (i < prog->modes[prog->m_id].n_btn)
-		{
-			prog->modes[prog->m_id].btn[i].vis_lit_on[2] = FALSE;
-			i++;
-		}
-	}
-	prog->btn_on = -1;
-}
 
 unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {

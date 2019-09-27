@@ -1,7 +1,7 @@
 
 #include "builder.h"
 
-void					render_texture_icons(t_button *btn, t_sdl *sdl, int n_btn, t_texture *txtrs)
+void					render_texture_icons(t_btn *btn, t_sdl *sdl, int n_btn, t_texture *txtrs)
 {
 	if (!btn || n_btn < 1 || !sdl || !txtrs)
 		return ;
@@ -30,7 +30,7 @@ void					r_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
         return ;
     SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
     SDL_RenderClear(sdl->rend);
-    render_btn(prog->modes[prog->m_id].btn, sdl, prog->modes[prog->m_id].n_btn, prog->m_id, prog->t);
+    render_btns(prog, sdl);
     render_texture_icons(prog->modes[prog->m_id].btn, sdl, prog->modes[prog->m_id].n_btn, media->txtrs);
     SDL_RenderPresent(sdl->rend);
     prog->features[F_REDRAW] = 1;
