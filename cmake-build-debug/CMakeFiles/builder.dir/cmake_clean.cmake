@@ -37,6 +37,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/sector_logic.c.o"
   "CMakeFiles/builder.dir/sel_item.c.o"
   "CMakeFiles/builder.dir/sort.c.o"
+  "CMakeFiles/builder.dir/states.c.o"
   "CMakeFiles/builder.dir/textures.c.o"
   "CMakeFiles/builder.dir/useful.c.o"
   "CMakeFiles/builder.dir/validate_media.c.o"

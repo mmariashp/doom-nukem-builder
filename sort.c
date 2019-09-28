@@ -36,3 +36,31 @@ void					bubble_sort(int *tab, int n)
 			i++;
 	}
 }
+
+void					pair_sort(int *a, int n)
+{
+	int					one;
+	int					prev;
+	int					next;
+	int 				count;
+
+	count = -1;
+	while (++count < n)
+	{
+		one = 0;
+		prev = n - 1;
+		next = 2;
+		while (one < n - 1)
+		{
+			if (next >= n)
+				next = 0;
+			if (a[one] != a[prev] && a[one + 1] != a[next])
+				swap_ints(&a[one], &a[one + 1]);
+			if (next == 0)
+				break ;
+			prev = one + 1;
+			one = next;
+			next = one + 2;
+		}
+	}
+}

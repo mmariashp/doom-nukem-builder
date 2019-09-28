@@ -882,4 +882,10 @@ unsigned short			can_place_vec(t_vec2d v, t_world world, t_grid *grid);
 unsigned short			add_secwall(int **secwalls, short n_swalls, int wall);
 unsigned short			add_sector_v(int **v, short n_v, int id);
 
+
+void					normal_st(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
+void					wall_search_st(t_prog *prog, t_vec2d node, t_grid *grid, t_world *world);
+void					sec_search_st(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
+void					sec_edit_st(t_prog *prog, t_vec2d mouse, t_grid *grid, t_media *media);
+
 #endif

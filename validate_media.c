@@ -53,9 +53,7 @@ void					delete_item(t_sec *sector, int id)
 		if (i == id)
 			i++;
 		if (j < sector->n_items - 1 && i < sector->n_items)
-			items[j] = sector->items[i];
-		i++;
-		j++;
+			items[j++] = sector->items[i++];
 	}
 	free(sector->items);
 	sector->items = items;
@@ -270,25 +268,23 @@ int						*reverse_order(int *p, int n_p)
 	return (NULL);
 }
 
-//int						*reverse_order_walls(int *w, int n_w, t_wall *walls)
-//{
-//	int 				*tab;
-//	int 				i;
-//	int 				j;
-//
-//	if (w && walls)
-//	{
-//		if (!(tab = (int *)ft_memalloc(sizeof(int) * n_w)))
-//			return (NULL);
-//		i = 0;
-//		j = n_w - 1;
-//		while (i < n_w)
-//			tab[j--] = w[i++];
-//		free(w);
-//		return (tab);
-//	}
-//	return (NULL);
-//}
+void					make_continuous(t_sec *sec, t_world *world)
+{
+	int 				i;
+	int 				j;
+
+	if (!world || !sec || !world->walls || !sec->s_walls || !sec->v)
+		return ;
+	i = 0;
+	j = 0;
+	while (j < sec->n_w)
+	{
+		world->walls[sec->s_walls[j]].v1 = sec->v[i];
+		world->walls[sec->s_walls[j]].v2 = sec->v[(i + 1) % sec->n_v];
+		j++;
+		i++;
+	}
+}
 
 void					validate_clockwise(t_world *world, int sec)
 {
@@ -317,6 +313,7 @@ void					validate_clockwise(t_world *world, int sec)
 		free(world->sec[sec].v);
 		get_sec_v(&world->sec[sec], world->walls);
 	}
+	make_continuous(&world->sec[sec], world);
 }
 
 void					validate_sectors(t_world *world)

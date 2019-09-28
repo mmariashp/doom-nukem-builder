@@ -91,7 +91,7 @@ unsigned short			add_dsec(t_sec **sec, short n_s, int wall)
 	(*sec)[n_s].s_walls = NULL;
 	(*sec)[n_s].items = NULL;
 	(*sec)[n_s].fl = 0;
-	(*sec)[n_s].ceiling = 20;
+	(*sec)[n_s].ceiling = 0;
 	(*sec)[n_s].fl_txtr = 0;
 	(*sec)[n_s].ceil_txtr = 0;
 	(*sec)[n_s].n_w = 4;
