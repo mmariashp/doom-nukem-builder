@@ -64,13 +64,10 @@ SRC =   main.c \
         editor.c \
         prog.c \
         add_to_media.c \
-        buttons.c \
         zoom.c \
         textures.c \
-        walls.c \
         useful.c \
         move.c \
-        font.c \
         edit_menu.c \
         values.c \
         init_editor_buttons.c \
@@ -82,7 +79,6 @@ SRC =   main.c \
         grid_main.c \
         find_in_media.c \
         sector_logic.c \
-        delete_from_media.c \
         delete_world.c \
         delete_sector.c \
         validate_media.c \

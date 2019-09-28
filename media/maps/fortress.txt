@@ -1,6 +1,6 @@
-Count Vectors: 38
-Count Walls: 54
-Count Sectors: 16
+Count Vectors: 44
+Count Walls: 62
+Count Sectors: 18
 
 Vectors
 0) 54,9
@@ -41,6 +41,12 @@ Vectors
 35) 55,43
 36) 68,43
 37) 68,39
+38) 69,43
+39) 69,39
+40) 69,36
+41) 72,36
+42) 72,45
+43) 69,45
 
 Walls
 0) 0-1 filled 0
@@ -95,8 +101,16 @@ Walls
 49) 29-34 filled 0
 50) 34-35 filled 0
 51) 35-36 filled 0
-52) 36-37 filled 0
+52) 36-37 empty 0
 53) 37-30 filled 0
+54) 37-39 filled 0
+55) 39-38 empty 0
+56) 38-36 filled 0
+57) 39-40 filled 0
+58) 40-41 filled 0
+59) 41-42 filled 0
+60) 42-43 filled 0
+61) 43-38 filled 0
 
 Sectors
 0) fl(20 0) ceil(40 0) walls '2 3 4 1 ' items ''
@@ -115,6 +129,8 @@ Sectors
 13) fl(10 0) ceil(0 0) walls '41 42 43 44 45 39 ' items ''
 14) fl(0 0) ceil(0 0) walls '37 46 47 48 ' items ''
 15) fl(0 0) ceil(20 0) walls '43 53 52 51 50 49 ' items ''
+16) door fl(0 0) ceil(20 0) walls '52 54 55 56 ' items ''
+17) fl(0 0) ceil(20 0) walls '57 58 59 60 61 55 ' items ''
 
 Player
 0) 57,11 (sector: 10)  start

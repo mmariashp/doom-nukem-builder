@@ -6,8 +6,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/add_door.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/add_door.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/add_to_media.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/add_to_media.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/buttons.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/buttons.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/delete_from_media.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/delete_from_media.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/delete_sector.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/delete_sector.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/delete_vector.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/delete_vector.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/delete_world.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/delete_world.c.o"
@@ -20,7 +18,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/fill_grid.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/fill_grid.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/fill_polygon.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/fill_polygon.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/find_in_media.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/find_in_media.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/font.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/font.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/get_assets.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/get_assets.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/get_input.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/get_input.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/get_next_line.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/get_next_line.c.o"
@@ -50,7 +47,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/validate_media.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/validate_media.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/values.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/values.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/vec_ops.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/vec_ops.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/walls.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/walls.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/zoom.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/zoom.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")

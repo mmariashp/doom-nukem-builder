@@ -350,6 +350,23 @@ void					normal_st(t_prog *prog, t_vec2d mouse, t_grid *grid, \
 	else if (prog->btn_on == ISO_BTN && (prog->click.x || prog->click.y))
 		move_grid_drag(prog, mouse, grid);
 }
+void					setup_door(t_world *world)
+{
+	if (!world || world->n_s < 2)
+		return ;
+	if (world->sec[world->n_s - 1].is_door == TRUE && world->sec[world->n_s - 1].n_w == 4)
+	{
+		if (within(world->sec[world->n_s - 1].s_walls[0], -1, world->n_w))
+		{
+			world->walls[world->sec[world->n_s - 1].s_walls[0]].type = WALL_EMPTY;
+		}
+		if (within(world->sec[world->n_s - 1].s_walls[2], -1, world->n_w))
+		{
+			world->walls[world->sec[world->n_s - 1].s_walls[2]].type = WALL_EMPTY;
+		}
+	}
+}
+
 void					wall_search_st(t_prog *prog, t_vec2d node, \
 											t_grid *grid, t_world *world)
 {
@@ -366,7 +383,10 @@ void					wall_search_st(t_prog *prog, t_vec2d node, \
 		{
 			select_it(0, W_SELECT, w);
 			if (prog->btn_on == DOOR_ADD_BTN)
+			{
 				add_door(world, w, grid);
+				setup_door(world);
+			}
 			else
 			{
 				select_it(0, ST_SELECT, WALL_EDIT);

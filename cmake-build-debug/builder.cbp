@@ -143,12 +143,6 @@
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/builder.h">
 			<Option target="builder"/>
 		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/buttons.c">
-			<Option target="builder"/>
-		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/delete_from_media.c">
-			<Option target="builder"/>
-		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/delete_sector.c">
 			<Option target="builder"/>
 		</Unit>
@@ -183,9 +177,6 @@
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/find_in_media.c">
-			<Option target="builder"/>
-		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/font.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/get_assets.c">
@@ -480,9 +471,6 @@
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/vec_ops.c">
-			<Option target="builder"/>
-		</Unit>
-		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/walls.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/zoom.c">

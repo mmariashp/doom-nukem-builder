@@ -42,14 +42,11 @@ add_executable(${PROJECT_NAME}
         editor.c
         prog.c
         add_to_media.c
-        buttons.c
-        zoom.c
+		zoom.c
         textures.c
-        walls.c
-        useful.c
+		useful.c
         move.c
-        font.c
-        edit_menu.c
+		edit_menu.c
         values.c
         init_editor_buttons.c
         edit_door.c
@@ -60,8 +57,7 @@ add_executable(${PROJECT_NAME}
         grid_main.c
         find_in_media.c
         sector_logic.c
-        delete_from_media.c
-        delete_world.c
+		delete_world.c
         delete_sector.c
         validate_media.c file_fun.c memory_fun.c line_math.c vec_ops.c render_btn.c manage_btn.c delete_vector.c add_door.c sort.c get_input.c drawing.c)
 

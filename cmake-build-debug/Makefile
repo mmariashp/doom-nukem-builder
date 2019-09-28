@@ -190,60 +190,6 @@ add_to_media.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/add_to_media.c.s
 .PHONY : add_to_media.c.s
 
-buttons.o: buttons.c.o
-
-.PHONY : buttons.o
-
-# target to build an object file
-buttons.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/buttons.c.o
-.PHONY : buttons.c.o
-
-buttons.i: buttons.c.i
-
-.PHONY : buttons.i
-
-# target to preprocess a source file
-buttons.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/buttons.c.i
-.PHONY : buttons.c.i
-
-buttons.s: buttons.c.s
-
-.PHONY : buttons.s
-
-# target to generate assembly for a file
-buttons.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/buttons.c.s
-.PHONY : buttons.c.s
-
-delete_from_media.o: delete_from_media.c.o
-
-.PHONY : delete_from_media.o
-
-# target to build an object file
-delete_from_media.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_from_media.c.o
-.PHONY : delete_from_media.c.o
-
-delete_from_media.i: delete_from_media.c.i
-
-.PHONY : delete_from_media.i
-
-# target to preprocess a source file
-delete_from_media.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_from_media.c.i
-.PHONY : delete_from_media.c.i
-
-delete_from_media.s: delete_from_media.c.s
-
-.PHONY : delete_from_media.s
-
-# target to generate assembly for a file
-delete_from_media.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_from_media.c.s
-.PHONY : delete_from_media.c.s
-
 delete_sector.o: delete_sector.c.o
 
 .PHONY : delete_sector.o
@@ -567,33 +513,6 @@ find_in_media.s: find_in_media.c.s
 find_in_media.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/find_in_media.c.s
 .PHONY : find_in_media.c.s
-
-font.o: font.c.o
-
-.PHONY : font.o
-
-# target to build an object file
-font.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/font.c.o
-.PHONY : font.c.o
-
-font.i: font.c.i
-
-.PHONY : font.i
-
-# target to preprocess a source file
-font.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/font.c.i
-.PHONY : font.c.i
-
-font.s: font.c.s
-
-.PHONY : font.s
-
-# target to generate assembly for a file
-font.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/font.c.s
-.PHONY : font.c.s
 
 get_assets.o: get_assets.c.o
 
@@ -3214,33 +3133,6 @@ vec_ops.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/vec_ops.c.s
 .PHONY : vec_ops.c.s
 
-walls.o: walls.c.o
-
-.PHONY : walls.o
-
-# target to build an object file
-walls.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/walls.c.o
-.PHONY : walls.c.o
-
-walls.i: walls.c.i
-
-.PHONY : walls.i
-
-# target to preprocess a source file
-walls.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/walls.c.i
-.PHONY : walls.c.i
-
-walls.s: walls.c.s
-
-.PHONY : walls.s
-
-# target to generate assembly for a file
-walls.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/walls.c.s
-.PHONY : walls.c.s
-
 zoom.o: zoom.c.o
 
 .PHONY : zoom.o
@@ -3284,12 +3176,6 @@ help:
 	@echo "... add_to_media.o"
 	@echo "... add_to_media.i"
 	@echo "... add_to_media.s"
-	@echo "... buttons.o"
-	@echo "... buttons.i"
-	@echo "... buttons.s"
-	@echo "... delete_from_media.o"
-	@echo "... delete_from_media.i"
-	@echo "... delete_from_media.s"
 	@echo "... delete_sector.o"
 	@echo "... delete_sector.i"
 	@echo "... delete_sector.s"
@@ -3326,9 +3212,6 @@ help:
 	@echo "... find_in_media.o"
 	@echo "... find_in_media.i"
 	@echo "... find_in_media.s"
-	@echo "... font.o"
-	@echo "... font.i"
-	@echo "... font.s"
 	@echo "... get_assets.o"
 	@echo "... get_assets.i"
 	@echo "... get_assets.s"
@@ -3620,9 +3503,6 @@ help:
 	@echo "... vec_ops.o"
 	@echo "... vec_ops.i"
 	@echo "... vec_ops.s"
-	@echo "... walls.o"
-	@echo "... walls.i"
-	@echo "... walls.s"
 	@echo "... zoom.o"
 	@echo "... zoom.i"
 	@echo "... zoom.s"
