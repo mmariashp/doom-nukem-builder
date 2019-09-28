@@ -85,6 +85,16 @@ CMakeFiles/builder.dir/get_next_line.c.o
  /home/moosh/CLionProjects/builder/./libft/libft.h
  /home/moosh/CLionProjects/builder/get_next_line.c
  /home/moosh/CLionProjects/builder/get_next_line.h
+CMakeFiles/builder.dir/get_sec_items.c.o
+ /home/moosh/CLionProjects/builder/./libft/libft.h
+ /home/moosh/CLionProjects/builder/builder.h
+ /home/moosh/CLionProjects/builder/get_next_line.h
+ /home/moosh/CLionProjects/builder/get_sec_items.c
+CMakeFiles/builder.dir/get_sec_v.c.o
+ /home/moosh/CLionProjects/builder/./libft/libft.h
+ /home/moosh/CLionProjects/builder/builder.h
+ /home/moosh/CLionProjects/builder/get_next_line.h
+ /home/moosh/CLionProjects/builder/get_sec_v.c
 CMakeFiles/builder.dir/grid_main.c.o
  /home/moosh/CLionProjects/builder/./libft/libft.h
  /home/moosh/CLionProjects/builder/builder.h

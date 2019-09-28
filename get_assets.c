@@ -250,50 +250,6 @@ unsigned short			count_walls(char const *s, int n)
 	return (count);
 }
 
-unsigned short			count_items(char const *s)
-{
-	unsigned short		count;
-	unsigned short		nb;
-
-	count = 0;
-	while (*(++s) && *s != '\'')
-	{
-		if (*s == '(' && ++count < MAX_SEC_ITEMS)
-		{
-			nb = 0;
-			while (*s && *s != ')')
-			{
-				if (!ft_isdigit(*s))
-					s++;
-				else
-				{
-					nb++;
-					while (*s && ft_isdigit(*s))
-						s++;
-				}
-			}
-			if (*s != ')' || nb != 3)
-				return (0);
-		}
-	}
-	return (count);
-}
-
-int 					exists_in_array(int const *array, int n, int number)
-{
-	int 				i;
-
-	i = 0;
-	while (i < n)
-	{
-		if (array[i++] == number)
-			return (TRUE);
-	}
-	return (FALSE);
-}
-
-
-
 int 					sector_closed(int *tmp, int n)
 {
 	int					i;
@@ -310,137 +266,6 @@ int 					sector_closed(int *tmp, int n)
 		i += 2;
 	}
 	return (TRUE);
-}
-
-//int 					fill_sector_v(t_sec *sector, int *tmp, int n)
-//{
-//	int					i;
-//	int					j;
-//
-//
-//	if (!sector || !tmp)
-//		return (FAIL);
-//	i = -1;
-//	j = 0;
-//	while (++i < n && j < n)
-//	{
-//		if (exists_in_array(tmp, j, tmp[i]) == FALSE)
-//			tmp[j++] = tmp[i];
-//	}
-//	if (!(sector->v = (int *)ft_memalloc(sizeof(int) * j)))
-//		return (FAIL);
-//
-//	while (i < j)
-//	{
-//		sector->v[i] = tmp[i];
-//		i++;
-//	}
-//	sector->n_v = j;
-//	i = 0;
-//	return (SUCCESS);
-//}
-//
-//int 					get_sec_v(t_sec *sector, t_wall *walls)
-//{
-//	int 				*tmp;
-//	int					i;
-//	int					j;
-//	int 				n;
-//
-//	if (!walls || !sector)
-//		return (FAIL);
-//	n = sector->n_w * 2;
-//	if (!(tmp = (int *)ft_memalloc(sizeof(int) * n)))
-//		return (FAIL);
-//	ft_memset(tmp, -1, sizeof(int) * n);
-//	i = -1;
-//	j = 0;
-//	while (++i < sector->n_w && j + 1 < n)
-//	{
-//		tmp[j++] = walls[sector->s_walls[i]].v1;
-//		tmp[j++] = walls[sector->s_walls[i]].v2;
-//	}
-//	pair_sort(tmp, n);
-//	sector->status = sector_closed(tmp, n) == FALSE ?
-//					 SEC_OPEN : SEC_CONCAVE_CLOSED;
-//	return (fill_sector_v(sector, (int *)tmp, n));
-//}
-
-int 					fill_sector_v(t_sec *sector, t_wall *walls, int n, int i)
-{
-	int					j;
-	int 				tmp[n];
-
-	if (!sector || !walls)
-		return (FAIL);
-	ft_memset(tmp, -1, sizeof(int) * n);
-	j = 0;
-	while (++i < sector->n_w && j + 1 < n)
-	{
-		tmp[j++] = walls[sector->s_walls[i]].v1;
-		tmp[j++] = walls[sector->s_walls[i]].v2;
-	}
-	pair_sort(tmp, n);
-	sector->status = sector_closed(tmp, n) == FALSE ? SEC_OPEN : SEC_CONCAVE_CLOSED;
-	i = -1;
-	j = 0;
-	while (++i < n)
-	{
-		if (exists_in_array(tmp, j, tmp[i]) == FALSE)
-			tmp[j++] = tmp[i];
-	}
-    if (!(sector->v = (int *)ft_memalloc(sizeof(int) * j)))
-        return (FAIL);
-    ft_memset(sector->v, -1, sizeof(int) * (sector->n_v = j));
-    i = 0;
-    while (i < sector->n_v)
-	{
-    	sector->v[i] = tmp[i];
-    	i++;
-	}
-	return (SUCCESS);
-}
-
-//int 					fill_sector_v2(int *vecs, int *n_v, int *s_walls, int n_s_walls, t_wall *walls)
-//{
-//	int 				i = 0;
-//	int					j;
-//	int					n = n_s_walls * 2;
-//	int 				tmp[n];
-//
-//
-//	ft_memset(tmp, -1, sizeof(int) * n);
-//	j = 0;
-//	while (++i < n_s_walls && j + 1 < n)
-//	{
-//		tmp[j++] = walls[s_walls[i]].v1;
-//		tmp[j++] = walls[s_walls[i]].v2;
-//	}
-//	pair_sort(tmp, n);
-//	i = -1;
-//	j = 0;
-//	while (++i < n)
-//	{
-//		if (exists_in_array(tmp, j, tmp[i]) == FALSE)
-//			tmp[j++] = tmp[i];
-//	}
-//	if (!(vecs = (int *)ft_memalloc(sizeof(int) * j)))
-//		return (FAIL);
-//	ft_memset(vecs, -1, sizeof(int) * (*n_v = j));
-//	i = 0;
-//	while (i < *n_v)
-//	{
-//		vecs[i] = tmp[i];
-//		i++;
-//	}
-//	return (SUCCESS);
-//}
-
-int 					get_sec_v(t_sec *sector, t_wall *walls)
-{
-	if (!sector || !walls)
-		return (FAIL);
-	return (fill_sector_v(sector, walls, sector->n_w * 2, -1));
 }
 
 int 					get_s_walls(t_sec *sector, char *line, int n_w)
@@ -471,46 +296,6 @@ int 					get_s_walls(t_sec *sector, char *line, int n_w)
 			return (FAIL);
 	}
 	sector->s_walls = walls;
-	return (SUCCESS);
-}
-
-int 					get_sec_items(t_sec *sec, char *l)
-{
-	t_item				*items;
-	int					i;
-
-	if (!sec || !l || !(l = ft_strchr(l, '\'')) || (sec->n_items = \
-	count_items(l++)) > MAX_SEC_ITEMS || !(items = (t_item *)ft_memalloc(\
-	sizeof(t_item) * sec->n_items)))
-		return (FAIL);
-	i = 0;
-	while (*l && *l != '\'' && i < sec->n_items)
-	{
-		if (*l == '(')
-		{
-			if (!++l)
-				break ;
-			items[i].p.x = clamp(ft_atoi(l), 0, GRID_SIZE - 1);
-			if (!(l = ft_strchr(l, ',')) || !++l)
-				break ;
-			items[i].p.y = clamp(ft_atoi(l), 0, GRID_SIZE - 1);
-			if (!(l = ft_strchr(l, ' ')) || !++l)
-				break ;
-			items[i].id = clamp(ft_atoi(l), 0, MAX_ITEMFULL - 1);
-			if (!(l = ft_strchr(l, ')')))
-				break ;
-			i++;
-		}
-		l++;
-	}
-	if (i == sec->n_items)
-		sec->items = items;
-	else
-	{
-		sec->n_items = 0;
-		free(items);
-		return (FAIL);
-	}
 	return (SUCCESS);
 }
 
@@ -1026,23 +811,41 @@ void					init_media(t_media *media)
 	media->n_sounds = 0;
 }
 
+void					empty_section(t_section *section)
+{
+	section->id = -1;
+	section->n_files = 0;
+	section->path = NULL;
+	section->extension = NULL;
+	section->tab = NULL;
+	section->names = NULL;
+	section->extra = NULL;
+}
+
+t_media					*exit_read_assets(t_section *section, char *line, t_media *media)
+{
+	ft_putstr("failed to read assets at section ");
+	if (section)
+		ft_putnbr(section->id);
+	ft_putendl(" ");
+	if (section)
+		free_section(section);
+	if (line)
+		ft_strdel(&line);
+	if (media)
+		free_media(media);
+	return (NULL);
+}
+
 t_media					*read_assets(int fd)
 {
 	t_section			section;
 	int					ret;
 	char				*line;
 	char 				*tmp;
-	char 				**tab;
-	char 				**names;
 	t_media				*media;
 
-	section.id = -1;
-	section.n_files = 0;
-	section.path = NULL;
-	section.extension = NULL;
-	section.tab = NULL;
-	section.names = NULL;
-	section.extra = NULL;
+	empty_section(&section);
 	if (!(media = (t_media *)ft_memalloc(sizeof(t_media))))
 		return (NULL);
 	init_media(media);
@@ -1051,37 +854,18 @@ t_media					*read_assets(int fd)
 		tmp = line;
 		if (ft_strlen(line) > 2)
 		{
-			if (line[0]== '#')
+			if (line[0]== '#' && section.id == -1)
 			{
-				if (section.id == -1)
-				{
-					section.id = identify_section(tmp);
-					if (section.tab || !(tab = (char **)ft_memalloc(sizeof(char *) * 1)) ||
-					!(names = (char **)ft_memalloc(sizeof(char *) * 1)))
-					{
-						free_section(&section);
-						ft_strdel(&line);
-						free_media(media);
-						return (NULL);
-					}
-					section.tab = tab;
-					section.names = names;
-				}
-				else if (!ft_strcmp(line, "###"))
-				{
-					if (update_media(media, &section) == SUCCESS)
-						refresh_section(&section);
-					else
-					{
-						ft_putstr("failed to update media at section ");
-						ft_putnbr(section.id);
-						ft_putendl(" ");
-						free_section(&section);
-						ft_strdel(&line);
-						free_media(media);
-						return (NULL);
-					}
-				}
+				section.id = identify_section(tmp);
+				if (section.tab || !(section.tab = (char **)ft_memalloc(sizeof(char *))) ||
+				!(section.names = (char **)ft_memalloc(sizeof(char *))))
+					return (exit_read_assets(&section, line, media));
+			}
+			else if (!ft_strcmp(line, "###"))
+			{
+				if (update_media(media, &section) == FAIL)
+					return (exit_read_assets(&section, line, media));
+				refresh_section(&section);
 			}
 			else if (ft_isdigit(line[0]) && section.id >= 0 && section.path)
 				read_section_names(tmp, &section);
@@ -1092,13 +876,10 @@ t_media					*read_assets(int fd)
 		}
 		ft_strdel(&line);
 	}
+	if (ret == -1)
+		return (exit_read_assets(&section, line, media));
 	free_section(&section);
 	ft_strdel(&line);
-	if (ret == -1)
-	{
-		free_media(media);
-		return (NULL);
-	}
 	return (media);
 }
 

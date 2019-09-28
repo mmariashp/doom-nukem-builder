@@ -175,6 +175,12 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/get_next_line.h">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/get_sec_items.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/get_sec_v.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/grid_main.c">
 			<Option target="builder"/>
 		</Unit>

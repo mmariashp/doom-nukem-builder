@@ -888,4 +888,6 @@ void					wall_search_st(t_prog *prog, t_vec2d node, t_grid *grid, t_world *world
 void					sec_search_st(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world);
 void					sec_edit_st(t_prog *prog, t_vec2d mouse, t_grid *grid, t_media *media);
 
+int 					get_sec_items(t_sec *sec, char *l);
+
 #endif

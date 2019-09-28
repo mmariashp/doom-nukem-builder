@@ -59,7 +59,7 @@ add_executable(${PROJECT_NAME}
         sector_logic.c
 		delete_world.c
         delete_sector.c
-        validate_media.c file_fun.c memory_fun.c line_math.c vec_ops.c render_btn.c manage_btn.c delete_vector.c add_door.c sort.c get_input.c drawing.c states.c)
+        validate_media.c file_fun.c memory_fun.c line_math.c vec_ops.c render_btn.c manage_btn.c delete_vector.c add_door.c sort.c get_input.c drawing.c states.c get_sec_v.c get_sec_items.c)
 
 set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror ")
 #set(GCC_COVERAGE_COMPILE_FLAGS "-fsanitize=\"address\" -g -fno-omit-frame-pointer")

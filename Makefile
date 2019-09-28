@@ -93,6 +93,8 @@ SRC =   main.c \
         add_door.c \
         sort.c \
         drawing.c \
+        get_sec_v.c \
+        get_sec_items.c
 
 OBJ =	$(SRC:.c=.o)
 

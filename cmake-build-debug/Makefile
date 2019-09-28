@@ -595,6 +595,60 @@ get_next_line.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_next_line.c.s
 .PHONY : get_next_line.c.s
 
+get_sec_items.o: get_sec_items.c.o
+
+.PHONY : get_sec_items.o
+
+# target to build an object file
+get_sec_items.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_sec_items.c.o
+.PHONY : get_sec_items.c.o
+
+get_sec_items.i: get_sec_items.c.i
+
+.PHONY : get_sec_items.i
+
+# target to preprocess a source file
+get_sec_items.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_sec_items.c.i
+.PHONY : get_sec_items.c.i
+
+get_sec_items.s: get_sec_items.c.s
+
+.PHONY : get_sec_items.s
+
+# target to generate assembly for a file
+get_sec_items.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_sec_items.c.s
+.PHONY : get_sec_items.c.s
+
+get_sec_v.o: get_sec_v.c.o
+
+.PHONY : get_sec_v.o
+
+# target to build an object file
+get_sec_v.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_sec_v.c.o
+.PHONY : get_sec_v.c.o
+
+get_sec_v.i: get_sec_v.c.i
+
+.PHONY : get_sec_v.i
+
+# target to preprocess a source file
+get_sec_v.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_sec_v.c.i
+.PHONY : get_sec_v.c.i
+
+get_sec_v.s: get_sec_v.c.s
+
+.PHONY : get_sec_v.s
+
+# target to generate assembly for a file
+get_sec_v.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_sec_v.c.s
+.PHONY : get_sec_v.c.s
+
 grid_main.o: grid_main.c.o
 
 .PHONY : grid_main.o
@@ -3248,6 +3302,12 @@ help:
 	@echo "... get_next_line.o"
 	@echo "... get_next_line.i"
 	@echo "... get_next_line.s"
+	@echo "... get_sec_items.o"
+	@echo "... get_sec_items.i"
+	@echo "... get_sec_items.s"
+	@echo "... get_sec_v.o"
+	@echo "... get_sec_v.i"
+	@echo "... get_sec_v.s"
 	@echo "... grid_main.o"
 	@echo "... grid_main.i"
 	@echo "... grid_main.s"

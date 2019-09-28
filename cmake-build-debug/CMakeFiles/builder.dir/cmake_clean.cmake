@@ -16,6 +16,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/get_assets.c.o"
   "CMakeFiles/builder.dir/get_input.c.o"
   "CMakeFiles/builder.dir/get_next_line.c.o"
+  "CMakeFiles/builder.dir/get_sec_items.c.o"
+  "CMakeFiles/builder.dir/get_sec_v.c.o"
   "CMakeFiles/builder.dir/grid_main.c.o"
   "CMakeFiles/builder.dir/init_editor_buttons.c.o"
   "CMakeFiles/builder.dir/items.c.o"

@@ -85,6 +85,16 @@ CMakeFiles/builder.dir/get_next_line.c.o: .././libft/libft.h
 CMakeFiles/builder.dir/get_next_line.c.o: ../get_next_line.c
 CMakeFiles/builder.dir/get_next_line.c.o: ../get_next_line.h
 
+CMakeFiles/builder.dir/get_sec_items.c.o: .././libft/libft.h
+CMakeFiles/builder.dir/get_sec_items.c.o: ../builder.h
+CMakeFiles/builder.dir/get_sec_items.c.o: ../get_next_line.h
+CMakeFiles/builder.dir/get_sec_items.c.o: ../get_sec_items.c
+
+CMakeFiles/builder.dir/get_sec_v.c.o: .././libft/libft.h
+CMakeFiles/builder.dir/get_sec_v.c.o: ../builder.h
+CMakeFiles/builder.dir/get_sec_v.c.o: ../get_next_line.h
+CMakeFiles/builder.dir/get_sec_v.c.o: ../get_sec_v.c
+
 CMakeFiles/builder.dir/grid_main.c.o: .././libft/libft.h
 CMakeFiles/builder.dir/grid_main.c.o: ../builder.h
 CMakeFiles/builder.dir/grid_main.c.o: ../get_next_line.h
