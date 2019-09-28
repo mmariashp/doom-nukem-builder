@@ -325,6 +325,33 @@ delete_world.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_world.c.s
 .PHONY : delete_world.c.s
 
+drawing.o: drawing.c.o
+
+.PHONY : drawing.o
+
+# target to build an object file
+drawing.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/drawing.c.o
+.PHONY : drawing.c.o
+
+drawing.i: drawing.c.i
+
+.PHONY : drawing.i
+
+# target to preprocess a source file
+drawing.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/drawing.c.i
+.PHONY : drawing.c.i
+
+drawing.s: drawing.c.s
+
+.PHONY : drawing.s
+
+# target to generate assembly for a file
+drawing.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/drawing.c.s
+.PHONY : drawing.c.s
+
 edit_door.o: edit_door.c.o
 
 .PHONY : edit_door.o
@@ -3272,6 +3299,9 @@ help:
 	@echo "... delete_world.o"
 	@echo "... delete_world.i"
 	@echo "... delete_world.s"
+	@echo "... drawing.o"
+	@echo "... drawing.i"
+	@echo "... drawing.s"
 	@echo "... edit_door.o"
 	@echo "... edit_door.i"
 	@echo "... edit_door.s"

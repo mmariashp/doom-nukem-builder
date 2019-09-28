@@ -1,6 +1,6 @@
-Count Vectors: 94
-Count Walls: 124
-Count Sectors: 38
+Count Vectors: 38
+Count Walls: 54
+Count Sectors: 16
 
 Vectors
 0) 54,9
@@ -37,66 +37,10 @@ Vectors
 31) 64,25
 32) 64,23
 33) 64,16
-34) 62,31
-35) 73,26
-36) 74,37
-37) 70,7
-38) 84,20
-39) 80,6
-40) 71,6
-41) 71,2
-42) 66,2
-43) 66,4
-44) 74,6
-45) 74,1
-46) 78,3
-47) 71,15
-48) 68,13
-49) 68,18
-50) 74,18
-51) 88,25
-52) 96,25
-53) 88,9
-54) 95,9
-55) 91,11
-56) 88,8
-57) 95,8
-58) 96,24
-59) 88,24
-60) 88,23
-61) 96,23
-62) 96,22
-63) 88,22
-64) 88,21
-65) 96,21
-66) 55,47
-67) 50,58
-68) 73,60
-69) 70,44
-70) 63,53
-71) 58,44
-72) 96,20
-73) 88,20
-74) 88,19
-75) 96,19
-76) 96,18
-77) 88,18
-78) 88,17
-79) 96,17
-80) 96,16
-81) 88,16
-82) 67,13
-83) 67,18
-84) 68,19
-85) 74,19
-86) 74,20
-87) 68,20
-88) 75,17
-89) 72,14
-90) 96,26
-91) 88,26
-92) 73,13
-93) 76,16
+34) 55,39
+35) 55,43
+36) 68,43
+37) 68,39
 
 Walls
 0) 0-1 filled 0
@@ -148,81 +92,11 @@ Walls
 46) 21-33 filled 0
 47) 33-32 filled 0
 48) 32-25 filled 0
-49) 34-35 filled 0
-50) 35-36 filled 0
-51) 36-34 filled 0
-52) 37-38 filled 0
-53) 38-39 filled 0
-54) 39-37 filled 0
-55) 40-41 filled 0
-56) 41-42 filled 0
-57) 42-43 filled 0
-58) 43-40 filled 0
-59) 44-45 filled 0
-60) 45-46 filled 0
-61) 46-44 filled 0
-62) 47-48 filled 12
-63) 48-49 filled 0
-64) 49-50 filled 0
-65) 50-47 filled 0
-66) 52-51 filled 0
-67) 53-54 filled 0
-68) 54-55 filled 0
-69) 55-53 filled 0
-70) 54-57 filled 0
-71) 57-56 filled 0
-72) 56-53 filled 0
-73) 51-59 filled 0
-74) 59-58 filled 0
-75) 58-52 filled 0
-76) 58-61 filled 0
-77) 61-60 filled 0
-78) 60-59 filled 0
-79) 60-63 filled 0
-80) 63-62 filled 0
-81) 62-61 filled 0
-82) 62-65 filled 0
-83) 65-64 filled 0
-84) 64-63 filled 0
-85) 66-67 filled 0
-86) 67-68 filled 0
-87) 68-69 filled 0
-88) 69-70 filled 0
-89) 70-71 filled 0
-90) 71-66 filled 0
-91) 64-73 filled 0
-92) 73-72 filled 0
-93) 72-65 filled 0
-94) 72-75 filled 0
-95) 75-74 filled 0
-96) 74-73 filled 0
-97) 74-77 filled 0
-98) 77-76 filled 0
-99) 76-75 filled 0
-100) 76-79 filled 0
-101) 79-78 filled 0
-102) 78-77 filled 0
-103) 78-81 filled 0
-104) 81-80 filled 0
-105) 80-79 filled 0
-106) 49-83 filled 0
-107) 83-82 filled 0
-108) 82-48 filled 0
-109) 50-85 filled 0
-110) 85-84 filled 0
-111) 84-49 filled 0
-112) 84-87 filled 0
-113) 87-86 filled 0
-114) 86-85 filled 0
-115) 47-89 filled 0
-116) 89-88 filled 0
-117) 88-50 filled 0
-118) 51-91 filled 0
-119) 91-90 filled 0
-120) 90-52 filled 0
-121) 88-93 filled 0
-122) 93-92 filled 0
-123) 92-89 filled 0
+49) 29-34 filled 0
+50) 34-35 filled 0
+51) 35-36 filled 0
+52) 36-37 filled 0
+53) 37-30 filled 0
 
 Sectors
 0) fl(20 0) ceil(40 0) walls '2 3 4 1 ' items ''
@@ -240,29 +114,7 @@ Sectors
 12) fl(0 0) ceil(0 0) walls '40 39 38 32 ' items ''
 13) fl(10 0) ceil(0 0) walls '41 42 43 44 45 39 ' items ''
 14) fl(0 0) ceil(0 0) walls '37 46 47 48 ' items ''
-15) fl(0 0) ceil(20 0) walls '49 50 51 ' items ''
-16) fl(0 0) ceil(20 0) walls '54 53 52 ' items ''
-17) fl(0 0) ceil(20 0) walls '58 57 56 55 ' items ''
-18) fl(0 0) ceil(20 0) walls '59 60 61 ' items ''
-19) fl(0 0) ceil(20 0) walls '65 64 63 62 ' items ''
-20) fl(0 0) ceil(20 0) walls '67 68 69 ' items ''
-21) fl(0 0) ceil(20 0) walls '72 71 70 67 ' items ''
-22) fl(0 0) ceil(20 0) walls '66 73 74 75 ' items ''
-23) fl(0 0) ceil(20 0) walls '78 77 76 74 ' items ''
-24) fl(0 0) ceil(20 0) walls '77 79 80 81 ' items ''
-25) fl(0 0) ceil(20 0) walls '84 83 82 80 ' items ''
-26) fl(0 0) ceil(20 0) walls '90 89 88 87 86 85 ' items ''
-27) fl(0 0) ceil(20 0) walls '83 91 92 93 ' items ''
-28) fl(0 0) ceil(20 0) walls '96 95 94 92 ' items ''
-29) fl(0 0) ceil(20 0) walls '95 97 98 99 ' items ''
-30) fl(0 0) ceil(20 0) walls '102 101 100 98 ' items ''
-31) fl(0 0) ceil(20 0) walls '101 103 104 105 ' items ''
-32) fl(0 0) ceil(20 0) walls '63 106 107 108 ' items ''
-33) fl(0 0) ceil(20 0) walls '64 109 110 111 ' items ''
-34) fl(0 0) ceil(20 0) walls '114 113 112 110 ' items ''
-35) fl(0 0) ceil(20 0) walls '65 115 116 117 ' items ''
-36) fl(0 0) ceil(20 0) walls '120 119 118 66 ' items ''
-37) fl(0 0) ceil(20 0) walls '116 121 122 123 ' items ''
+15) fl(0 0) ceil(20 0) walls '43 53 52 51 50 49 ' items ''
 
 Player
 0) 57,11 (sector: 10)  start

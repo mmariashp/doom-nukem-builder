@@ -109,7 +109,7 @@ void					render_edit_menu(t_sdl *sdl, t_texture *txtrs, t_world *w, int state, i
 	w->walls[i].txtr, -1, n_txtrs) || !(values = get_wall_values(&n, &w->walls[i]))))
 		return ;
 	values[0].text = ft_itoa(i);
-	if (within(TXTR_PANEL_GR, -1, TOTAL_TXTRS) && t && t[TXTR_PANEL_GR])
+	if (within(TXTR_PANEL_GR, -1, TOT_TXTRS) && t && t[TXTR_PANEL_GR])
 		render_box(layout_menu(0, 0), t[TXTR_PANEL_GR], sdl->rend);
 	render_values(state, n, values, sdl, t, txtrs, n_txtrs);
 	free_values(values, n);

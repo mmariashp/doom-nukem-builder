@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "builder.h"
 
 void					place_player_icons(t_world world, t_grid *grid, t_sdl *sdl)
@@ -58,11 +57,11 @@ void					render_item_info(t_media *med, t_sdl *sdl, t_mode *mode, SDL_Texture **
 	med->worlds[med->w_id].sec[s].items[id].id), -1, med->n_itemfull))
 	{
 		box = (t_rec){ 20, WIN_H - 120, 350, 48 };
-		if (within(TXTR_RECT_Y, -1, TOTAL_TXTRS) && t[TXTR_RECT_Y])
+		if (within(TXTR_RECT_Y, -1, TOT_TXTRS) && t[TXTR_RECT_Y])
 			render_box(box, t[TXTR_RECT_Y], sdl->rend);
 		write_text(write_type(med->itemfull[id].type), sdl, box, EDIT_TEXT_COLOR, FALSE);
 		box = (t_rec){ 20, WIN_H - 60, 350, 50 };
-		if (within(TXTR_RECT_Y, -1, TOTAL_TXTRS) && t[TXTR_RECT_Y])
+		if (within(TXTR_RECT_Y, -1, TOT_TXTRS) && t[TXTR_RECT_Y])
 			render_box(box, t[TXTR_RECT_Y], sdl->rend);
 		if ((tmp = ft_strjoin("Name: \"", med->itemfull[id].name)))
 		{
@@ -88,7 +87,7 @@ void					render_cursor(SDL_Renderer *rend, t_vec2d mouse, SDL_Texture **t, int t
 {
 	SDL_Rect			rect;
 
-	if (rend && t && within(txtr_id, -1, TOTAL_TXTRS))
+	if (rend && t && within(txtr_id, -1, TOT_TXTRS))
 	{
 		rect = (SDL_Rect){ mouse.x , mouse.y, 30, 30 };
 		SDL_RenderCopy(rend, t[txtr_id], NULL, &rect);
@@ -300,28 +299,6 @@ unsigned short			btn_refresh(t_prog *prog, int state)
 	select_it(0, LAST_ST_SELECT, state);
 	prog->redraw = 1;
 	return (SUCCESS);
-}
-
-void 					drawing(t_world *world, t_prog *prog, t_grid *grid, t_vec2d mouse)
-{
-	int 				i;
-	unsigned short		vis;
-
-	if ((prog->click.x || prog->click.y) && mouse_over(grid->box, mouse))
-	{
-		if (grid->p[0].x == -1)
-			grid->p[0] = find_node(mouse.x, mouse.y, grid);
-		else if (grid->p[1].x == -1)
-			grid->p[1] = find_node(mouse.x, mouse.y, grid);
-		if (grid->p[0].x != -1)
-			add_to_media(grid, world);
-		vis = grid->p[0].x != -1 ? FALSE : TRUE;
-		i = 0;
-		while (i < prog->modes[prog->m_id].n_btn)
-			prog->modes[prog->m_id].btn[i++].vis_lit_on[0] = vis;
-		prog->click = (t_vec2d){ 0, 0 };
-	}
-	prog->redraw = 1;
 }
 
 void					prep_texture_edit(t_world *world, t_prog *prog,

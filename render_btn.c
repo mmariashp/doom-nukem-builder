@@ -17,11 +17,11 @@ void					render_btn(t_btn *btn, t_sdl *sdl, SDL_Texture **t)
 	if (!btn || !sdl || !sdl->rend || !t)
 		return ;
 	if (btn->vis_lit_on[1] == FALSE && btn->vis_lit_on[2] == FALSE &&
-	within(btn->reg_i, -1, TOTAL_TXTRS) && t[btn->reg_i])
+	within(btn->reg_i, -1, TOT_TXTRS) && t[btn->reg_i])
 		SDL_RenderCopy(sdl->rend, t[btn->reg_i], NULL, &(SDL_Rect){ btn->box.x,\
 		btn->box.y, btn->box.w, btn->box.h });
 	else if ((btn->vis_lit_on[1] == TRUE || btn->vis_lit_on[2] == TRUE) &&
-	within(btn->lit_i, -1, TOTAL_TXTRS) && t[btn->lit_i])
+	within(btn->lit_i, -1, TOT_TXTRS) && t[btn->lit_i])
 	{
 		SDL_RenderCopy(sdl->rend, t[btn->lit_i], NULL,
 				&(SDL_Rect){ btn->box.x, btn->box.y, btn->box.w, btn->box.h });
@@ -39,7 +39,7 @@ void					render_btn_big(t_btn *btn, t_sdl *sdl, SDL_Texture **t)
 {
 	if (!btn || !sdl || !sdl->rend || !t)
 		return ;
-	if (within(btn->reg_i, -1, TOTAL_TXTRS) && t[btn->reg_i])
+	if (within(btn->reg_i, -1, TOT_TXTRS) && t[btn->reg_i])
 		SDL_RenderCopy(sdl->rend, t[btn->reg_i], NULL, &(SDL_Rect){ btn->box.x,\
 		btn->box.y - btn->box.h * 0.3, btn->box.w * 1.3, btn->box.h * 1.3 });
 }

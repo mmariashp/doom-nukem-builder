@@ -13,9 +13,9 @@ void					render_values(int state, int n, t_value *values, t_sdl *sdl, SDL_Textur
 	while (++i < n)
 	{
 		box = layout_menu(2, (char)i);
-		if (i == 0 && within(TXTR_RECT_GR_L, -1, TOTAL_TXTRS) && t && t[TXTR_RECT_GR_L])
+		if (i == 0 && within(TXTR_RECT_GR_L, -1, TOT_TXTRS) && t && t[TXTR_RECT_GR_L])
 			render_box(box, t[TXTR_RECT_GR_L], sdl->rend);
-		else if (within(TXTR_RECT_GR, -1, TOTAL_TXTRS) && t && t[TXTR_RECT_GR])
+		else if (within(TXTR_RECT_GR, -1, TOT_TXTRS) && t && t[TXTR_RECT_GR])
 			render_box(box, t[TXTR_RECT_GR], sdl->rend);
 		write_text(menu_lines(state, i), sdl, box, EDIT_TEXT_COLOR, FALSE);
 		box = layout_menu(5, (char)i);
@@ -26,7 +26,7 @@ void					render_values(int state, int n, t_value *values, t_sdl *sdl, SDL_Textur
 			box.w = box.h;
 			render_box(box, txtrs[values[i].t_id].sdl_t, sdl->rend);
 		}
-		else if (values[i].media_prog == 1 && within(values[i].t_id, -1, TOTAL_TXTRS) && t[values[i].t_id])
+		else if (values[i].media_prog == 1 && within(values[i].t_id, -1, TOT_TXTRS) && t[values[i].t_id])
 		{
 			box.w = box.h;
 			render_box(box, t[values[i].t_id], sdl->rend);

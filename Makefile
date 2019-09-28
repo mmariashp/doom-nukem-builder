@@ -95,7 +95,8 @@ SRC =   main.c \
         delete_vector.c \
         get_input.c \
         add_door.c \
-        sort.c
+        sort.c \
+        drawing.c \
 
 OBJ =	$(SRC:.c=.o)
 

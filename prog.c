@@ -19,7 +19,7 @@ void					free_prog_txtr(SDL_Texture **t)
 	if (t)
 	{
 		i = 0;
-		while (i < TOTAL_TXTRS)
+		while (i < TOT_TXTRS)
 		{
 			if (t[i])
 				SDL_DestroyTexture(t[i]);
@@ -34,20 +34,20 @@ SDL_Texture				**get_prog_txtr(SDL_Renderer *rend)
 	int					i;
 	SDL_Texture			**t;
 	char				*tmp;
-	static char			name[TOTAL_TXTRS][30] = { "rct_g", "rct_g_l", "rct_y", \
-	"rct_y_l", "panel", "panel_l", "yes", "yes_l", "no", "no_l", "move", \
-	"move_l", "draw", "draw_l", "distort", "distort_l", "iso", "iso_l", "sec", \
-	"sec_l", "wall", "wall_l", "d_add", "d_add_l", "d_del", "d_del_l", \
-	"player", "player_l", "save", "save_l", "exit", "exit_l", "back", "back_l",\
-	"del", "del_l", "edit", "edit_l", "up", "up_l", "down", "down_l", "coin", \
-	"key", "object", "enemy", "super", "health", "ammo", "light", "door" };
+	static char			s[TOT_TXTRS][30] = { "rct_g", "rct_g_l", "rct_y", \
+	"rct_y_l", "panel", "panel_l", "yes", "no", "move", "move_l", "draw", \
+	"draw_l", "dist", "dist_l", "iso", "iso_l", "sec", "sec_l", "wall",\
+	"wall_l", "d_add", "d_add_l", "d_del", "d_del_l", "player", "player_l", \
+	"save", "save_l", "exit", "exit_l", "back", "back_l", "del", "del_l", \
+	"edit", "edit_l", "up", "up_l", "down", "down_l", "coin", "key", "object", \
+	"enemy", "super", "hp", "ammo", "light", "door" };
 
-	if (!rend || !(t = ft_memalloc(sizeof(SDL_Texture *) * TOTAL_TXTRS)))
+	if (!rend || !(t = ft_memalloc(sizeof(SDL_Texture *) * TOT_TXTRS)))
 		return (NULL);
 	i = -1;
-	while (++i < TOTAL_TXTRS)
+	while (++i < TOT_TXTRS)
 	{
-		if ((tmp = get_full_path(name[i], ".png", "./buttons/")))
+		if ((tmp = get_full_path(s[i], ".png", "./buttons/")))
 		{
 			t[i] = load_texture(tmp, rend, 0);
 			free(tmp);
@@ -85,7 +85,7 @@ void					free_prog(t_prog *prog)
 
 unsigned short			init_prog_values(t_prog *prog, SDL_Renderer *rend)
 {
-	int 				k;
+	int					k;
 
 	if (!prog)
 		return (FAIL);

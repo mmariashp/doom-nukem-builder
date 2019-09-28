@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/delete_sector.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/delete_sector.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/delete_vector.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/delete_vector.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/delete_world.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/delete_world.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/drawing.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/drawing.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/edit_door.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/edit_door.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/edit_menu.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/edit_menu.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/edit_walls.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/edit_walls.c.o"

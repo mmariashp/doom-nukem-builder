@@ -8,7 +8,7 @@ void					draw_item(int type, t_rec box, SDL_Renderer *rend, SDL_Texture **t)
 	if (!rend || !t)
 		return ;
 	txtr = type + TXTR_COIN;
-	if (within(type, -1, TOTAL_TYPES) && within(txtr, -1, TOTAL_TXTRS) && t[txtr])
+	if (within(type, -1, TOTAL_TYPES) && within(txtr, -1, TOT_TXTRS) && t[txtr])
 	{
 		if (type == KEY || type == HEALTH)
 		{

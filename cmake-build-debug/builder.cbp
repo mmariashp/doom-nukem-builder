@@ -158,6 +158,9 @@
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/delete_world.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/drawing.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/edit_door.c">
 			<Option target="builder"/>
 		</Unit>
