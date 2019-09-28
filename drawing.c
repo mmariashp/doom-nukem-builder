@@ -44,6 +44,9 @@ int						add_start_vec(t_grid *grid, t_world *world, int *sector)
 	return (id);
 }
 
+
+
+
 void					add_to_media(t_grid *grid, t_world *world)
 {
 	static int	 		first_vector = -1;
@@ -63,8 +66,9 @@ void					add_to_media(t_grid *grid, t_world *world)
 		last_id = add_start_vec(grid, world, &sector);
 		first_vector = last_id;
 	}
-	else if (within(sector, -1, world->n_s))
+	else if (within(sector, -1, world->n_s) && first_vector != -1)
 	{
+//		add_second_vec(grid, world, &sector);
 		if (grid->nodes[grid->p[1].x][grid->p[1].y] == NODE_FULL)
 			id = find_vec(world->vecs, grid->p[1], world->n_v);
 		if (id != first_vector && !can_place_vec(grid->p[1], *world, grid))

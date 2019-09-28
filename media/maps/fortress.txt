@@ -101,7 +101,7 @@ Walls
 Sectors
 0) fl(20 0) ceil(40 0) walls '2 3 4 1 ' items ''
 1) fl(18 0) ceil(38 0) walls '5 6 7 3 ' items ''
-2) fl(16 13) ceil(36 0) walls '8 9 10 11 6 ' items '(57,21 3)(59,20 7)'
+2) fl(16 13) ceil(36 0) walls '8 9 10 11 6 ' items '(57,21 3)(59,20 7)(55,21 5)'
 3) fl(14 0) ceil(34 0) walls '12 13 7 11 ' items ''
 4) fl(12 0) ceil(32 0) walls '14 15 4 13 ' items ''
 5) fl(10 0) ceil(30 0) walls '16 17 18 15 ' items '(53,14 0)'

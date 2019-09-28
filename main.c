@@ -10,42 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "builder.h"
-
-//void					end(char *reason)
-//{
-//	ft_putendl("\x1b[32mSuccessful Exit\x1b[33m");
-//	if (reason)
-//		ft_putendl(reason);
-//	ft_putstr("\x1b[0m");
-//	exit(EXIT_SUCCESS);
-//}
-//
-//void					my_error(char *reason)
-//{
-//	ft_putstr("\x1b[31mError\x1b[33m");
-//	if (reason)
-//	{
-//		ft_putstr("\x1b[31m: \x1b[33m");
-//		ft_putstr(reason);
-//	}
-//	ft_putchar('\n');
-//	exit(EXIT_FAILURE);
-//}
-//
-//void					error(char *reason)
-//{
-//	ft_putstr("\x1b[31mError\x1b[33m");
-//	if (reason)
-//	{
-//		ft_putstr("\x1b[31m: \x1b[33m");
-//		ft_putstr(reason);
-//	}
-//	ft_putchar('\n');
-//	ft_putendl(strerror(errno));
-//	exit(EXIT_FAILURE);
-//}
 
 void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center)
 {

@@ -54,7 +54,7 @@ void					fill_grid_items(t_sec *sector, t_grid *grid)
 	int					i;
 	t_vec2d				p;
 
-	if (!grid || !sector || sector->items)
+	if (!grid || !sector || !sector->items)
 		return ;
 	i = 0;
 	while (i < sector->n_items)

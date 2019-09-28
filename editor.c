@@ -94,8 +94,6 @@ void					render_cursor(SDL_Renderer *rend, t_vec2d mouse, SDL_Texture **t, int t
 	}
 }
 
-
-
 void					r_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
 	int					state;
@@ -127,12 +125,11 @@ void					r_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 		if (state == NORMAL && prog->btn_on == PLAYER_BTN)
 			place_player_icons(media->worlds[media->w_id], grid, sdl);
 		if (state == WALL_SEARCH && prog->btn_on == DOOR_ADD_BTN && prog->btn_lit == -1)
-		{
 			render_cursor(sdl->rend, sdl->mouse, prog->t, TXTR_DOOR);
-		}
 		SDL_RenderPresent(sdl->rend);
 		prog->redraw = 0;
 	}
+
 }
 
 unsigned short			save_media(t_media *media, t_prog *prog)
@@ -433,6 +430,7 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *m,
 
 	if (!sdl || !m || !grid || !prog)
 		return (FAIL);
+
 	if (prog->last != prog->m_id)
 		return (mode_change(prog, m, grid, select_it(1, FC_SELECT, -1)));
 	if (prog->zoom != 0)

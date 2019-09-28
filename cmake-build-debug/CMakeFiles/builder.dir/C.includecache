@@ -14,10 +14,6 @@ string.h
 unistd.h
 -
 
-/Users/mshpakov/Desktop/doom-nukem-builder/add_to_media.c
-builder.h
-/Users/mshpakov/Desktop/doom-nukem-builder/builder.h
-
 /Users/mshpakov/Desktop/doom-nukem-builder/builder.h
 ./libft/libft.h
 /Users/mshpakov/Desktop/doom-nukem-builder/./libft/libft.h
@@ -55,6 +51,10 @@ sys/stat.h
 -
 sys/types.h
 -
+
+/Users/mshpakov/Desktop/doom-nukem-builder/fill_grid.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/builder.h
 
 /Users/mshpakov/Desktop/doom-nukem-builder/get_next_line.h
 ./libft/libft.h
