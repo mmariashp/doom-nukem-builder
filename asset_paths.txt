@@ -4,8 +4,7 @@ Extension: .txt
 File Names: 
 0) fortress
 1) dungeon
-2) hell
-3) new_le
+2) new_level_0
 ###
 
 #Textures

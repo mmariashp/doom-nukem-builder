@@ -73,7 +73,7 @@ int 					*add_to_array(int *old_array, unsigned short *size, int to_add, int fin
 	return (new);
 }
 
-unsigned short			remove_wall_in_secs(t_world *world, int to_remove)
+unsigned short			remove_wall_in_ss(t_world *world, int to_remove)
 {
 	int 				i;
 	int 				tmp;
@@ -82,29 +82,29 @@ unsigned short			remove_wall_in_secs(t_world *world, int to_remove)
 		return (FAIL);
 	i = 0;
 	tmp = 0;
-	while (i < world->n_sec)
+	while (i < world->n_s)
 	{
 		world->sec[i].s_walls = remove_from_array(world->sec[i].s_walls,\
-		world->sec[i].n_walls, &tmp, to_remove);
+		world->sec[i].n_w, &tmp, to_remove);
 		if (!world->sec[i].s_walls)
 			return (FAIL);
-		world->sec[i].n_walls = tmp;
+		world->sec[i].n_w = tmp;
 		i++;
 	}
 	return (SUCCESS);
 }
 
-unsigned short			add_wall_in_secs(t_world *world, int to_add, int find)
+unsigned short			add_wall_in_ss(t_world *world, int to_add, int find)
 {
 	int 				i;
 
 	if (!world)
 		return (FAIL);
 	i = 0;
-	while (i < world->n_sec)
+	while (i < world->n_s)
 	{
 		world->sec[i].s_walls = add_to_array(world->sec[i].s_walls,\
-		&world->sec[i].n_walls, to_add, find);
+		&world->sec[i].n_w, to_add, find);
 		if (!world->sec[i].s_walls)
 			return (FAIL);
 		i++;
@@ -118,27 +118,27 @@ void					delete_wall(int id, t_world *world)
 	int 				i;
 	int 				j;
 
-	if (!world || !within(id, -1, world->n_walls))
+	if (!world || !within(id, -1, world->n_w))
 		return ;
-	if (!(new = (t_wall *)ft_memalloc(sizeof(t_wall) * (world->n_walls - 1))))
+	if (!(new = (t_wall *)ft_memalloc(sizeof(t_wall) * (world->n_w - 1))))
 		return ;
 	i = 0;
 	j = 0;
-	while (j < world->n_walls && i < world->n_walls - 1)
+	while (j < world->n_w && i < world->n_w - 1)
 	{
 		if (j == id)
 			j++;
 		new[i++] = world->walls[j++];
 	}
-	world->n_walls--;
+	world->n_w--;
 	free(world->walls);
 	world->walls = new;
-	remove_wall_in_secs(world, id);
+	remove_wall_in_ss(world, id);
 	i = 0;
-	while (i < world->n_sec)
+	while (i < world->n_s)
 	{
 		j = 0;
-		while (j < world->sec[i].n_walls)
+		while (j < world->sec[i].n_w)
 		{
 			if (world->sec[i].s_walls[j] > id)
 				world->sec[i].s_walls[j]--;

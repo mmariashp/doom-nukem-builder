@@ -387,14 +387,14 @@ typedef struct					s_prog
 	int 						**screen;
 	int 						m_id;
 	int 						last;
-	struct s_mode				*modes;
+	char 						redraw;
 	short 						btn_lit;
 	short 						btn_on;
 	short 						zoom;
-    t_vec2d						move;
+	t_vec2d						move;
 	t_vec2d						click;
-	char 						features[10];
 	SDL_Texture					**t;
+	struct s_mode				*modes;
 }								t_prog;
 
 typedef struct                  s_wall
@@ -421,7 +421,7 @@ typedef struct                  s_sector
 	short 						ceil_txtr;
 	t_item						*items;
 	unsigned short				n_items;
-	unsigned short				n_walls;
+	unsigned short				n_w;
     unsigned short				n_v;
 	char 						status;
 	char 						is_door;
@@ -449,16 +449,16 @@ typedef struct                  s_texture
 
 typedef struct					s_world
 {
-	char 						*filename;
+	char 						*name;
 	char 						*full_path;
 	t_sec						*sec;
 	t_wall						*walls;
 	t_vec2d						*vecs;
 	t_vec2d						p_start;
 	t_vec2d						p_end;
-	short unsigned				n_sec;
-	short unsigned				n_vecs;
-	short unsigned				n_walls;
+	short unsigned				n_s;
+	short unsigned				n_v;
+	short unsigned				n_w;
 }								t_world;
 
 typedef struct 					s_section
@@ -474,7 +474,7 @@ typedef struct 					s_section
 
 typedef struct					s_itemfull
 {
-	char 						*filename;
+	char 						*name;
 	char 						*full_path;
 	int 						type;
 }								t_itemfull;
@@ -499,7 +499,7 @@ typedef struct 					s_media
 typedef struct					s_mode
 {
 	unsigned short				n_btn;
-	t_btn					*btn;
+	t_btn						*btn;
 	int							(*input)(t_sdl*, t_grid*, t_media *, t_prog *);
 	unsigned short				(*update)(t_sdl*, t_grid*, t_media *, t_prog *);
 	void						(*render)(t_sdl*, t_grid*, t_media *, t_prog *);
@@ -623,7 +623,7 @@ void					prep_texture_edit(t_world *world, t_prog *prog,
 
 void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid);
 void                    zoom_to_sector(t_sec *sector, t_vec2d *vecs, t_grid *grid, t_prog *prog);
-void                    zoom_to_map(int n_vecs, t_vec2d *v, t_grid *grid);
+void                    zoom_to_map(int n_v, t_vec2d *v, t_grid *grid);
 void                    zoom_to_wall(t_vec2d v1, t_vec2d v2, t_grid *grid, t_prog *prog);
 
 /*
@@ -681,7 +681,7 @@ void					render_screen(SDL_Renderer *rend, int **screen);
 void					add_to_media(t_grid *grid, t_world *world);
 unsigned short			add_world(t_world **worlds, short n_worlds, char *ext, char *path);
 
-void					upd_sec(t_sec *sec, t_wall *walls, t_vec2d *vecs, int n_sec);
+void					upd_sec(t_sec *sec, t_wall *walls, t_vec2d *vecs, int n_s);
 
 
 
@@ -693,7 +693,7 @@ t_vec2d_d				make_iso(int x, int y, int z);
 void					render_box(t_rec box, SDL_Texture *t, SDL_Renderer *rend);
 
 
-unsigned short			add_wall(t_wall **walls, short n_walls, int one, int two);
+unsigned short			add_wall(t_wall **walls, short n_w, int one, int two);
 
 
 /*
@@ -713,14 +713,13 @@ void					render_values(int state, int n, t_value *values, t_sdl *sdl, SDL_Textur
 void					free_values(t_value *values, int n);
 t_value					*init_values(int n);
 
+/*
+ * add_door
+ */
 
-//door
 //void                    delete_door(t_world *world, int id);
 void                    add_door(t_world *world, int id, t_grid *grid);
 void					delete_wall(int id, t_world *world);
-//unsigned short			add_wall_in_secs(t_world *world, int to_add, int find);
-
-
 
 /*
  * items
@@ -737,9 +736,9 @@ int 					find_def_item(int type, t_itemfull *itemfull, int n);
  * fill_grid
  */
 
-void					fill_grid(int n_vecs, t_vec2d *vecs, t_grid *grid);
+void					fill_grid(int n_v, t_vec2d *vecs, t_grid *grid);
 void					fill_grid_items(t_sec *sector, t_grid *grid);
-void                    fill_grid_walls(int n_walls, t_wall *walls, int n_vecs, t_vec2d *vecs, t_grid *grid);
+void					fill_grid_walls(t_world *world, t_grid *grid);
 
 /*
  * grid_main
@@ -754,21 +753,21 @@ void					grid_refresh(t_grid *grid, t_media *media, int state, int sector);
  */
 
 short 					find_vec(t_vec2d *vecs, t_vec2d p, int n);
-short 					find_wall(short one, short two, t_wall *walls, short n_walls);
+short 					find_wall(short one, short two, t_wall *walls, short n_w);
 
 /*
  * sector_logic
  */
 
 unsigned short			dot_inside_sector(int x, int y, t_vec2d *p, int n);
-int 					node_in_sector(t_vec2d grid_p, t_world *world);
-int 					mouse_in_sector(t_vec2d p, t_world *world, t_grid *grid);
+int 					node_in_sec(t_vec2d grid_p, t_world *world);
+int 					mouse_in_stor(t_vec2d p, t_world *world, t_grid *grid);
 int 					sector_closed(int *tmp, int n);
 unsigned short 			sec_is_convex(t_vec2d *vecs, int *v, int n);
 
-//delete from media
-
-void					delete_vector(int id, t_world *world);
+/*
+ * ---------------------DELETE_-------------------------------------------------
+ */
 
 /*
  * delete_world
@@ -785,6 +784,12 @@ void					copy_world(t_world *new, t_world *old);
 void					delete_sector(int id, t_world *world);
 void					copy_sector(t_sec *new, t_sec *old);
 void					free_sector(t_sec *sector);
+
+/*
+ * delete_vector
+ */
+
+void					delete_vector(int id, t_world *world);
 
 /*
  * validate_media
@@ -823,7 +828,9 @@ int                     get_min(int one, int two);
 unsigned short			within(int value, int min, int max);
 int 					select_it(char set_get_unset, unsigned short id, int value);
 int 					lit_it(char set_get_unset, unsigned short id, int value);
-char 					*get_full_path(char *filename, char *ext, char *path);
+char 					*get_full_path(char *name, char *ext, char *path);
+void					bounding_box(t_vec2d *min, t_vec2d *max, t_vec2d *p, \
+																		int n_p);
 
 /*
  * memory_fun
@@ -834,14 +841,14 @@ void					free_tab(void **tab, int size);
 
 void				    swap_ints(int *one, int *two);
 
-void					pair_sort(int *a, int n);
+
 
 void					write_text(char *str, t_sdl *sdl, t_rec rec, int color, char h_center);
 
 void					turn_btns_off(t_prog *prog);
 
-unsigned short			add_sector(t_sec **sec, short n_sec);
-unsigned short			add_vec(t_vec2d **vecs, short n_vecs, t_grid *grid, short i);
+unsigned short			add_sector(t_sec **sec, short n_s);
+unsigned short			add_vec(t_vec2d **vecs, short n_v, t_grid *grid, short i);
 
 /*
  * line_math
@@ -851,11 +858,25 @@ t_vec2d_f				lines_intersect(t_line a, t_line b, unsigned short *i);
 float 					get_perp_slope(t_vec2d p1, t_vec2d p2);
 unsigned short			intersects(t_vec2d p, t_vec2d l1, t_vec2d l2);
 int						find_wall_inter(t_vec2d p, t_world world);
+t_vec2d					*get_point_at_d(t_vec2d origin, int dist, int slope);
 
 /*
  * vec_ops
  */
 void					vec_set(t_vec2d *vec, int x, int y, int n);
 unsigned short          vec_same(t_vec2d one, t_vec2d two);
+
+/*
+ * sort
+ */
+void					bubble_sort(int *tab, int n);
+void					pair_sort(int *a, int n);
+
+/*
+ * get-input
+ */
+char 					*get_input(char *init, char change);
+
+void					switch_mode(t_prog *prog, int new_m_id, int new_state);
 
 #endif

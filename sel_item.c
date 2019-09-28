@@ -21,14 +21,14 @@ void					render_item_icons(t_prog *prog, t_media *media, SDL_Renderer *rend)
 
 void					r_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
-	if (!sdl || !media || !grid || prog->features[F_REDRAW] == 0)
+	if (!sdl || !media || !grid || prog->redraw == 0)
 		return ;
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
 	render_btns(prog, sdl);
 	render_item_icons(prog, media, sdl->rend);
 	SDL_RenderPresent(sdl->rend);
-	prog->features[F_REDRAW] = 1;
+	prog->redraw = 1;
 }
 
 unsigned short			u_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)

@@ -22,7 +22,7 @@ unsigned short			dot_inside_sector(int x, int y, t_vec2d *p, int n)
 	return (odd);
 }
 
-int 					node_in_sector(t_vec2d grid_p, t_world *world)
+int 					node_in_sec(t_vec2d grid_p, t_world *world)
 {
 	int 				id;
 	t_vec2d				*v;
@@ -33,7 +33,7 @@ int 					node_in_sector(t_vec2d grid_p, t_world *world)
 		return (-1);
 	id = -1;
 	i = -1;
-	while (++i < world->n_sec)
+	while (++i < world->n_s)
 	{
 		if (world->sec[i].status != SEC_OPEN)
 		{
@@ -42,7 +42,7 @@ int 					node_in_sector(t_vec2d grid_p, t_world *world)
 			j = -1;
 			while (++j < world->sec[i].n_v)
 			{
-				if (!within(world->sec[i].v[j], -1, world->n_vecs))
+				if (!within(world->sec[i].v[j], -1, world->n_v))
 				{
 					free(v);
 					return (-1);
@@ -57,14 +57,14 @@ int 					node_in_sector(t_vec2d grid_p, t_world *world)
 	return (id);
 }
 
-int 					mouse_in_sector(t_vec2d p, t_world *world, t_grid *grid)
+int 					mouse_in_stor(t_vec2d p, t_world *world, t_grid *grid)
 {
 	t_vec2d				map_p;
 
 	if (!world || !grid || mouse_over(grid->box, p) == FALSE)
 		return (-1);
 	map_p = find_node(p.x, p.y, grid);
-	return (node_in_sector(map_p, world));
+	return (node_in_sec(map_p, world));
 }
 
 unsigned short 			sec_is_convex(t_vec2d *vec, int *v, int n)

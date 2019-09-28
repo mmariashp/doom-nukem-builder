@@ -98,14 +98,14 @@ void					render_edit_menu(t_sdl *sdl, t_texture *txtrs, t_world *w, int state, i
 	values = NULL;
 	n = 0;
 	i = state == SEC_EDIT ? select_it(1, S_SELECT, -1) : select_it(1, W_SELECT, -1);
-	if (state == SEC_EDIT && within(i, -1, w->n_sec) &&
+	if (state == SEC_EDIT && within(i, -1, w->n_s) &&
 	within(w->sec[i].fl_txtr, -1, n_txtrs) &&
 	within(w->sec[i].ceil_txtr, -1, n_txtrs))
 	{
 		if (!(values = get_sec_values(&n, &w->sec[i])))
 			return ;
 	}
-	else if (state == WALL_EDIT && (!within(i, -1, w->n_walls) || !within(\
+	else if (state == WALL_EDIT && (!within(i, -1, w->n_w) || !within(\
 	w->walls[i].txtr, -1, n_txtrs) || !(values = get_wall_values(&n, &w->walls[i]))))
 		return ;
 	values[0].text = ft_itoa(i);

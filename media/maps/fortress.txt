@@ -1,6 +1,6 @@
-Count Vectors: 72
-Count Walls: 91
-Count Sectors: 27
+Count Vectors: 94
+Count Walls: 124
+Count Sectors: 38
 
 Vectors
 0) 54,9
@@ -50,7 +50,7 @@ Vectors
 44) 74,6
 45) 74,1
 46) 78,3
-47) 73,14
+47) 71,15
 48) 68,13
 49) 68,18
 50) 74,18
@@ -75,6 +75,28 @@ Vectors
 69) 70,44
 70) 63,53
 71) 58,44
+72) 96,20
+73) 88,20
+74) 88,19
+75) 96,19
+76) 96,18
+77) 88,18
+78) 88,17
+79) 96,17
+80) 96,16
+81) 88,16
+82) 67,13
+83) 67,18
+84) 68,19
+85) 74,19
+86) 74,20
+87) 68,20
+88) 75,17
+89) 72,14
+90) 96,26
+91) 88,26
+92) 73,13
+93) 76,16
 
 Walls
 0) 0-1 filled 0
@@ -168,6 +190,39 @@ Walls
 88) 69-70 filled 0
 89) 70-71 filled 0
 90) 71-66 filled 0
+91) 64-73 filled 0
+92) 73-72 filled 0
+93) 72-65 filled 0
+94) 72-75 filled 0
+95) 75-74 filled 0
+96) 74-73 filled 0
+97) 74-77 filled 0
+98) 77-76 filled 0
+99) 76-75 filled 0
+100) 76-79 filled 0
+101) 79-78 filled 0
+102) 78-77 filled 0
+103) 78-81 filled 0
+104) 81-80 filled 0
+105) 80-79 filled 0
+106) 49-83 filled 0
+107) 83-82 filled 0
+108) 82-48 filled 0
+109) 50-85 filled 0
+110) 85-84 filled 0
+111) 84-49 filled 0
+112) 84-87 filled 0
+113) 87-86 filled 0
+114) 86-85 filled 0
+115) 47-89 filled 0
+116) 89-88 filled 0
+117) 88-50 filled 0
+118) 51-91 filled 0
+119) 91-90 filled 0
+120) 90-52 filled 0
+121) 88-93 filled 0
+122) 93-92 filled 0
+123) 92-89 filled 0
 
 Sectors
 0) fl(20 0) ceil(40 0) walls '2 3 4 1 ' items ''
@@ -178,7 +233,7 @@ Sectors
 5) fl(10 0) ceil(30 0) walls '16 17 18 15 ' items '(53,14 0)'
 6) fl(8 0) ceil(28 0) walls '19 20 21 17 ' items ''
 7) fl(6 0) ceil(26 0) walls '22 23 24 20 ' items ''
-8) fl(4 0) ceil(24 0) walls '25 26 27 28 0 23 ' items '(58,8 0)'
+8) fl(4 0) ceil(24 0) walls '25 26 27 28 0 23 ' items ''
 9) fl(2 0) ceil(22 0) walls '29 30 31 28 ' items '(62,12 0)(61,14 0)'
 10) fl(22 0) ceil(42 0) walls '0 33 1 18 21 24 ' items '(59,12 0)(56,13 0)(55,10 0)'
 11) fl(0 0) ceil(0 0) walls '37 36 32 35 8 5 34 30 ' items ''
@@ -197,6 +252,17 @@ Sectors
 24) fl(0 0) ceil(20 0) walls '77 79 80 81 ' items ''
 25) fl(0 0) ceil(20 0) walls '84 83 82 80 ' items ''
 26) fl(0 0) ceil(20 0) walls '90 89 88 87 86 85 ' items ''
+27) fl(0 0) ceil(20 0) walls '83 91 92 93 ' items ''
+28) fl(0 0) ceil(20 0) walls '96 95 94 92 ' items ''
+29) fl(0 0) ceil(20 0) walls '95 97 98 99 ' items ''
+30) fl(0 0) ceil(20 0) walls '102 101 100 98 ' items ''
+31) fl(0 0) ceil(20 0) walls '101 103 104 105 ' items ''
+32) fl(0 0) ceil(20 0) walls '63 106 107 108 ' items ''
+33) fl(0 0) ceil(20 0) walls '64 109 110 111 ' items ''
+34) fl(0 0) ceil(20 0) walls '114 113 112 110 ' items ''
+35) fl(0 0) ceil(20 0) walls '65 115 116 117 ' items ''
+36) fl(0 0) ceil(20 0) walls '120 119 118 66 ' items ''
+37) fl(0 0) ceil(20 0) walls '116 121 122 123 ' items ''
 
 Player
 0) 57,11 (sector: 10)  start

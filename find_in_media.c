@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_in_media.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/28 16:43:54 by mshpakov          #+#    #+#             */
+/*   Updated: 2019/09/28 16:43:55 by mshpakov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "builder.h"
 
-short 					find_vec(t_vec2d *vecs, t_vec2d p, int n)
+short					find_vec(t_vec2d *vecs, t_vec2d p, int n)
 {
-	short 				i;
+	short				i;
 
 	if (!vecs)
 		return (-1);
@@ -17,14 +28,15 @@ short 					find_vec(t_vec2d *vecs, t_vec2d p, int n)
 	return (-1);
 }
 
-short 					find_wall(short one, short two, t_wall *walls, short n_walls)
+short					find_wall(short one, short two, t_wall *walls,
+																	short n_w)
 {
-	short 				i;
+	short				i;
 
 	i = 0;
-	if (!walls)
+	if (!walls || n_w < 1)
 		return (-1);
-	while (i < n_walls)
+	while (i < n_w)
 	{
 		if (one == walls[i].v1 && two == walls[i].v2)
 			return (i);

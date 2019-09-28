@@ -4,10 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/Users/mshpakov/Desktop/doom-nukem-builder/add_door.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/add_door.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/add_to_media.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/add_to_media.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/buttons.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/buttons.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/delete_from_media.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/delete_from_media.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/delete_sector.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/delete_sector.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/delete_vector.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/delete_vector.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/delete_world.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/delete_world.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/edit_door.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/edit_door.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/edit_menu.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/edit_menu.c.o"
@@ -19,6 +21,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/find_in_media.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/find_in_media.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/font.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/font.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/get_assets.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/get_assets.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/get_input.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/get_input.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/get_next_line.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/get_next_line.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/grid_main.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/grid_main.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/init_editor_buttons.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/init_editor_buttons.c.o"
@@ -40,6 +43,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/sdl_fun.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/sdl_fun.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/sector_logic.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/sector_logic.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/sel_item.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/sel_item.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/sort.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/sort.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/textures.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/textures.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/useful.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/useful.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/validate_media.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/validate_media.c.o"

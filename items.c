@@ -30,7 +30,7 @@ void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, 
 	if (!rend || !world || !itemfull || !grid)
 		return ;
 	sector = select_it(1, S_SELECT, -1);
-	if (!within(sector, -1, world->n_sec) || world->sec[sector].n_items < 1 || !world->sec[sector].items)
+	if (!within(sector, -1, world->n_s) || world->sec[sector].n_items < 1 || !world->sec[sector].items)
 		return ;
 	i = 0;
 	box = (t_rec){ 0, 0, grid->box.w * 0.009, grid->box.w * 0.009 };
@@ -39,7 +39,7 @@ void					render_items(SDL_Renderer *rend, t_world *world, t_itemfull *itemfull, 
 		id = world->sec[sector].items[i].id;
 		p = world->sec[sector].items[i].p;
 		if (within(p.x, -1, GRID_SIZE) && within(p.y, -1, GRID_SIZE) &&
-		node_in_sector(p, world) == sector && grid->nodes[p.x][p.y] == (signed char)(-10 - i))
+		node_in_sec(p, world) == sector && grid->nodes[p.x][p.y] == (signed char)(-10 - i))
 		{
 			p.x = (int)(grid->box.x + (world->sec[sector].items[i].p.x * grid->scale));
 			p.y = (int)(grid->box.y + (world->sec[sector].items[i].p.y * grid->scale));
@@ -144,7 +144,7 @@ void					move_item(t_prog *prog, t_vec2d mouse, t_grid *grid, t_sec *sector)
 				}
 			}
 			prog->click = mouse;
-			prog->features[F_REDRAW] = 1;
+			prog->redraw = 1;
 		}
 		else
 			prog->click = (t_vec2d){ 0, 0 };

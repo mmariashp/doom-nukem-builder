@@ -36,14 +36,14 @@ int 					lit_it(char set_get_unset, unsigned short id, int value)
 	return (select[id]);
 }
 
-char 					*get_full_path(char *filename, char *ext, char *path)
+char 					*get_full_path(char *name, char *ext, char *path)
 {
 	char 				*with_path;
 	char 				*res;
 
-	if (!path || !ext || !filename)
+	if (!path || !ext || !name)
 		return (NULL);
-	with_path = ft_strjoin(path, filename);
+	with_path = ft_strjoin(path, name);
 	if (with_path)
 	{
 		res = ft_strjoin(with_path, ext);
@@ -52,4 +52,31 @@ char 					*get_full_path(char *filename, char *ext, char *path)
 			return (res);
 	}
 	return (NULL);
+}
+
+void					bounding_box(t_vec2d *min, t_vec2d *max, t_vec2d *p, \
+																		int n_p)
+{
+	int 				i;
+
+	if (!min || !max)
+		return ;
+	*min = (t_vec2d){ 0, 0 };
+	*max = (t_vec2d){ WIN_W, WIN_H };
+	if (!p || n_p < 3)
+		return ;
+	*min = (t_vec2d){ WIN_W, WIN_H };
+	*max = (t_vec2d){ 0, 0 };
+	i = -1;
+	while (++i < n_p)
+	{
+		min->x = p[i].x < min->x ? p[i].x : min->x;
+		max->x = p[i].x > max->x ? p[i].x : max->x;
+		min->y = p[i].y < min->y ? p[i].y : min->y;
+		max->y = p[i].y > max->y ? p[i].y : max->y;
+	}
+	min->x = clamp(min->x, 0, WIN_W);
+	max->x = clamp(max->x, 0, WIN_W);
+	min->y = clamp(min->y, 0, WIN_H);
+	max->y = clamp(max->y, 0, WIN_H);
 }

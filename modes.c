@@ -1,6 +1,19 @@
 
 #include "builder.h"
 
+void					switch_mode(t_prog *prog, int new_m_id, int new_state)
+{
+	if (prog)
+	{
+		prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
+		prog->last = prog->m_id;
+		prog->m_id = new_m_id;
+		prog->btn_lit = -1;
+		select_it(0, ST_SELECT, new_state);
+		prog->click = (t_vec2d){ 0, 0 };
+	}
+}
+
 void					free_btn(t_btn *btn, int n)
 {
 	int 				i;
@@ -236,7 +249,7 @@ unsigned short			levels_btn(t_btn *btn, t_world *worlds, int n_worlds)
 			if (i == n_worlds)
 				btn[i].text = ft_strjoin(s, " ADD LEVEL");
 			else if (i < n_worlds)
-				btn[i].text = ft_strjoin(s, worlds[i].filename);
+				btn[i].text = ft_strjoin(s, worlds[i].name);
 			free(s);
 		}
 		btn[i].reg_i = TXTR_RECT_GR;
@@ -312,8 +325,8 @@ unsigned short			sel_item_btn(t_btn *btn, t_itemfull *itemfull, int n_itemfull)
 		btn[i].vis_lit_on[0] = TRUE;
 		btn[i].reg_i = TXTR_RECT_GR;
 		btn[i].lit_i = TXTR_RECT_GR_L;
-		if (itemfull[i].filename)
-			btn[i].text = ft_strdup(itemfull[i].filename);
+		if (itemfull[i].name)
+			btn[i].text = ft_strdup(itemfull[i].name);
 		btn[i].box = button_box;
 		button_box.y += button_box.h;
 		if (i == 25)

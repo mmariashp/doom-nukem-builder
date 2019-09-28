@@ -92,7 +92,7 @@ int						read_item_type(char *line)
 	return (0);
 }
 
-void					read_section_filenames(char *line, t_section *section)
+void					read_section_names(char *line, t_section *section)
 {
 	char 				*tmp;
 
@@ -375,13 +375,13 @@ int 					sector_closed(int *tmp, int n)
 //
 //	if (!walls || !sector)
 //		return (FAIL);
-//	n = sector->n_walls * 2;
+//	n = sector->n_w * 2;
 //	if (!(tmp = (int *)ft_memalloc(sizeof(int) * n)))
 //		return (FAIL);
 //	ft_memset(tmp, -1, sizeof(int) * n);
 //	i = -1;
 //	j = 0;
-//	while (++i < sector->n_walls && j + 1 < n)
+//	while (++i < sector->n_w && j + 1 < n)
 //	{
 //		tmp[j++] = walls[sector->s_walls[i]].v1;
 //		tmp[j++] = walls[sector->s_walls[i]].v2;
@@ -401,7 +401,7 @@ int 					fill_sector_v(t_sec *sector, t_wall *walls, int n, int i)
 		return (FAIL);
 	ft_memset(tmp, -1, sizeof(int) * n);
 	j = 0;
-	while (++i < sector->n_walls && j + 1 < n)
+	while (++i < sector->n_w && j + 1 < n)
 	{
 		tmp[j++] = walls[sector->s_walls[i]].v1;
 		tmp[j++] = walls[sector->s_walls[i]].v2;
@@ -427,17 +427,17 @@ int 					fill_sector_v(t_sec *sector, t_wall *walls, int n, int i)
 	return (SUCCESS);
 }
 
-//int 					fill_sector_v2(int *vecs, int *n_vecs, int *s_walls, int n_sec_walls, t_wall *walls)
+//int 					fill_sector_v2(int *vecs, int *n_v, int *s_walls, int n_s_walls, t_wall *walls)
 //{
 //	int 				i = 0;
 //	int					j;
-//	int					n = n_sec_walls * 2;
+//	int					n = n_s_walls * 2;
 //	int 				tmp[n];
 //
 //
 //	ft_memset(tmp, -1, sizeof(int) * n);
 //	j = 0;
-//	while (++i < n_sec_walls && j + 1 < n)
+//	while (++i < n_s_walls && j + 1 < n)
 //	{
 //		tmp[j++] = walls[s_walls[i]].v1;
 //		tmp[j++] = walls[s_walls[i]].v2;
@@ -452,9 +452,9 @@ int 					fill_sector_v(t_sec *sector, t_wall *walls, int n, int i)
 //	}
 //	if (!(vecs = (int *)ft_memalloc(sizeof(int) * j)))
 //		return (FAIL);
-//	ft_memset(vecs, -1, sizeof(int) * (*n_vecs = j));
+//	ft_memset(vecs, -1, sizeof(int) * (*n_v = j));
 //	i = 0;
-//	while (i < *n_vecs)
+//	while (i < *n_v)
 //	{
 //		vecs[i] = tmp[i];
 //		i++;
@@ -466,20 +466,20 @@ int 					get_sec_v(t_sec *sector, t_wall *walls)
 {
 	if (!sector || !walls)
 		return (FAIL);
-	return (fill_sector_v(sector, walls, sector->n_walls * 2, -1));
+	return (fill_sector_v(sector, walls, sector->n_w * 2, -1));
 }
 
-int 					get_s_walls(t_sec *sector, char *line, int n_walls)
+int 					get_s_walls(t_sec *sector, char *line, int n_w)
 {
 	int 				*walls;
 	unsigned  short		c;
 	int					i;
 
-	if (!n_walls || !sector || !line || !(line = ft_strchr(line, '\'')))
+	if (!n_w || !sector || !line || !(line = ft_strchr(line, '\'')))
 		return (FAIL);
-	if (!within ((c = count_walls(line, n_walls)), MIN_SEC_WALLS - 1, MAX_SEC_WALLS))
+	if (!within ((c = count_walls(line, n_w)), MIN_SEC_WALLS - 1, MAX_SEC_WALLS))
 		return (FAIL);
-	if (!(walls = (int *)ft_memalloc(sizeof(int) * (sector->n_walls = c))))
+	if (!(walls = (int *)ft_memalloc(sizeof(int) * (sector->n_w = c))))
 		return (FAIL);
 	ft_bzero(walls,sizeof(int) * c);
 	i = 0;
@@ -488,7 +488,7 @@ int 					get_s_walls(t_sec *sector, char *line, int n_walls)
 		if (ft_isdigit(*line))
 		{
 			walls[i] = ft_atoi(line);
-			if (within(walls[i], -1, n_walls))
+			if (within(walls[i], -1, n_w))
 				i++;
 			if (!(line = ft_strchr(line, ' ')))
 				break ;
@@ -608,13 +608,13 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		line++;
 		p.y = ft_atoi(line);
 	}
-	if (status == R_VECTORS && v_count < world->n_vecs)
+	if (status == R_VECTORS && v_count < world->n_v)
 	{
 		p = (t_vec2d){ clamp(p.x, 0, GRID_SIZE), clamp(p.y, 0, GRID_SIZE) };
 		world->vecs[v_count] = p;
 		v_count++;
 	}
-	if (status == R_WALLS && w_count < world->n_walls)
+	if (status == R_WALLS && w_count < world->n_w)
 	{
 		if (p.x < MIN_VERTEX_ID || p.x > MAX_VERTEX_ID || p.x > (int)v_count ||
 			p.y < MIN_VERTEX_ID || p.y > MAX_VERTEX_ID || p.y > (int)v_count) {
@@ -637,7 +637,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		}
 		w_count++;
 	}
-	if (status == R_SECS && s_count < world->n_sec)
+	if (status == R_SECS && s_count < world->n_s)
 	{
 		world->sec[s_count].items = NULL;
 		world->sec[s_count].s_walls = NULL;
@@ -647,7 +647,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		world->sec[s_count].fl_txtr = 0;
 		world->sec[s_count].ceil_txtr = 0;
 		world->sec[s_count].n_items = 0;
-		world->sec[s_count].n_walls = 0;
+		world->sec[s_count].n_w = 0;
         world->sec[s_count].n_v = 0;
 		world->sec[s_count].status = 0;
 		world->sec[s_count].is_door = FALSE;
@@ -669,7 +669,7 @@ unsigned				read_line(char *str, unsigned short status, t_world *world, unsigned
 		line = ft_strchr(line, 'w');
 		if (!line)
 			return (FAIL);
-		if (get_s_walls(&world->sec[s_count], line, world->n_walls) == FAIL)
+		if (get_s_walls(&world->sec[s_count], line, world->n_w) == FAIL)
 		{
 			ft_putstr("Incorrect walls for sector ");
 			ft_putnbr(s_count);
@@ -720,36 +720,36 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 		tmp = line;
 		if (++i == 0)
 		{
-			world->n_vecs = get_n(line, 0, MAX_VERTEX_ID);
-			if (world->n_vecs == 0)
+			world->n_v = get_n(line, 0, MAX_VERTEX_ID);
+			if (world->n_v == 0)
 				world->vecs = NULL;
 			else
 			{
-				if (!(world->vecs = (t_vec2d *)malloc(sizeof(t_vec2d) * world->n_vecs)))
+				if (!(world->vecs = (t_vec2d *)malloc(sizeof(t_vec2d) * world->n_v)))
 					return (FAIL);
-				ft_bzero(world->vecs, sizeof(t_vec2d) * world->n_vecs);
+				ft_bzero(world->vecs, sizeof(t_vec2d) * world->n_v);
 			}
 		}
 		else if (i == 1)
 		{
-			if (!(world->n_walls = get_n(line, MIN_N_WALLS, MAX_N_WALLS)))
+			if (!(world->n_w = get_n(line, MIN_N_WALLS, MAX_N_WALLS)))
 				world->walls = NULL;
 			else
 			{
-				if (!(world->walls = (t_wall *)malloc(sizeof(t_wall) * world->n_walls)))
+				if (!(world->walls = (t_wall *)malloc(sizeof(t_wall) * world->n_w)))
 					return (FAIL);
-				ft_bzero(world->walls, sizeof(t_wall) * world->n_walls);
+				ft_bzero(world->walls, sizeof(t_wall) * world->n_w);
 			}
 		}
 		else if (i == 2)
 		{
-			if (!(world->n_sec = get_n(line, MIN_N_SECS, MAX_N_SECS)))
+			if (!(world->n_s = get_n(line, MIN_N_SECS, MAX_N_SECS)))
 				world->sec = NULL;
 			else
 			{
-				if (!(world->sec = (t_sec *)malloc(sizeof(t_sec) * world->n_sec)))
+				if (!(world->sec = (t_sec *)malloc(sizeof(t_sec) * world->n_s)))
 					return (FAIL);
-				ft_bzero(world->sec, sizeof(t_sec) * world->n_sec);
+				ft_bzero(world->sec, sizeof(t_sec) * world->n_s);
 			}
 		}
 		else
@@ -779,7 +779,7 @@ unsigned 				read_map(int fd, t_world *world, unsigned short world_no)
 	if (ret == -1)
 		return (FAIL);
 	i = 0;
-	while (i < world->n_sec)
+	while (i < world->n_s)
 		get_sec_v(&world->sec[i++], world->walls);
 	return (SUCCESS);
 }
@@ -887,10 +887,10 @@ unsigned				read_itemfull(t_media *media, t_section *section)
 	while (++i < section->n_files)
 	{
 		media->itemfull[i].full_path = NULL;
-		media->itemfull[i].filename = NULL;
+		media->itemfull[i].name = NULL;
 		if (section->tab[i] && !(media->itemfull[i].full_path = ft_strdup(section->tab[i])))
 			return (FAIL);
-		if (section->names[i] && !(media->itemfull[i].filename = ft_strdup(section->names[i])))
+		if (section->names[i] && !(media->itemfull[i].name = ft_strdup(section->names[i])))
 			return (FAIL);
 		if (section->extra)
 			media->itemfull[i].type = section->extra[i];
@@ -917,15 +917,15 @@ unsigned				read_levels(t_media *media, t_section *section)
 			return (FAIL);
 		ft_bzero(&media->worlds[i], sizeof(t_world));
 		media->worlds[i].full_path = ft_strdup(section->tab[i]);
-		media->worlds[i].filename = ft_strdup(section->names[i]);
+		media->worlds[i].name = ft_strdup(section->names[i]);
 		media->worlds[i].sec = NULL;
 		media->worlds[i].walls = NULL;
 		media->worlds[i].vecs = NULL;
-		media->worlds[i].n_sec = 0;
-		media->worlds[i].n_vecs = 0;
-		media->worlds[i].n_walls = 0;
-		printf("NAME %s\n", media->worlds[i].filename);
-		if (!media->worlds[i].full_path  || !media->worlds[i].filename || get_map(&media->worlds[i], i) == FAIL)
+		media->worlds[i].n_s = 0;
+		media->worlds[i].n_v = 0;
+		media->worlds[i].n_w = 0;
+		printf("NAME %s\n", media->worlds[i].name);
+		if (!media->worlds[i].full_path  || !media->worlds[i].name || get_map(&media->worlds[i], i) == FAIL)
 		{
 			ft_putendl("failed to get map\n");
 			return (FAIL);
@@ -1002,10 +1002,10 @@ void					free_media(t_media *media)
 		i = -1;
 		while (++i < media->n_itemfull)
 		{
-			if (media->itemfull[i].filename)
+			if (media->itemfull[i].name)
 			{
-				free(media->itemfull[i].filename);
-				media->itemfull[i].filename = NULL;
+				free(media->itemfull[i].name);
+				media->itemfull[i].name = NULL;
 			}
 			if (media->itemfull[i].full_path)
 			{
@@ -1110,7 +1110,7 @@ t_media					*read_assets(int fd)
 				}
 			}
 			else if (ft_isdigit(line[0]) && section.id >= 0 && section.path)
-				read_section_filenames(tmp, &section);
+				read_section_names(tmp, &section);
 			else if (line[0] == 'P' && !section.path)
 				section.path = identify_path(tmp);
 			else if (line[0] == 'E' && !section.extension)

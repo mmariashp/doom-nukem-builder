@@ -66,11 +66,11 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 
 	ft_putendl_fd(title[section], fd);
 	if (section == 0)
-		n = world.n_vecs;
+		n = world.n_v;
 	else if (section == 1)
-		n = world.n_walls;
+		n = world.n_w;
 	else if (section == 2)
-		n = world.n_sec;
+		n = world.n_s;
 	else if (section == 3)
 		n = 2;
 	else
@@ -114,7 +114,7 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 
 			ft_putstr_fd(") walls '", fd);
 			int j = 0;
-			while (j < world.sec[i].n_walls)
+			while (j < world.sec[i].n_w)
 			{
 				ft_putnbr_fd(world.sec[i].s_walls[j], fd);
 				ft_putstr_fd(" ", fd);
@@ -132,7 +132,7 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 				ft_putstr_fd(",", fd);
 				ft_putnbr_fd(world.p_start.y, fd);
 				ft_putstr_fd(" (sector: ", fd);
-				ft_putnbr_fd(node_in_sector(world.p_start, &world), fd);
+				ft_putnbr_fd(node_in_sec(world.p_start, &world), fd);
 				ft_putstr_fd(") ", fd);
 				ft_putstr_fd(" start", fd);
 			}
@@ -142,7 +142,7 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 				ft_putstr_fd(",", fd);
 				ft_putnbr_fd(world.p_end.y, fd);
 				ft_putstr_fd(" (sector: ", fd);
-				ft_putnbr_fd(node_in_sector(world.p_end, &world), fd);
+				ft_putnbr_fd(node_in_sec(world.p_end, &world), fd);
 				ft_putstr_fd(") ", fd);
 				ft_putstr_fd(" end", fd);
 			}
@@ -164,11 +164,11 @@ unsigned short			write_level(int fd, t_world world)
 		ft_putstr_fd("Count ", fd);
 		ft_putstr_fd(count[i], fd);
 		if (i == 0)
-			ft_putnbr_fd(world.n_vecs, fd);
+			ft_putnbr_fd(world.n_v, fd);
 		else if (i == 1)
-			ft_putnbr_fd(world.n_walls, fd);
+			ft_putnbr_fd(world.n_w, fd);
 		else if (i == 2)
-			ft_putnbr_fd(world.n_sec, fd);
+			ft_putnbr_fd(world.n_s, fd);
 		ft_putchar_fd('\n', fd);
 		i++;
 	}
@@ -241,14 +241,14 @@ unsigned short			write_section(int fd, t_media *media, int section)
 	{
 		ft_putnbr_fd(i, fd);
 		ft_putstr_fd(") ", fd);
-		if (section == 0 && media->worlds[i].filename)
-			ft_putstr_fd(media->worlds[i].filename, fd);
+		if (section == 0 && media->worlds[i].name)
+			ft_putstr_fd(media->worlds[i].name, fd);
 		else if (section == 1 && media->txtrs[i].name)
 			ft_putstr_fd(media->txtrs[i].name, fd);
-		else if (section == 2 && media->itemfull[i].filename)
+		else if (section == 2 && media->itemfull[i].name)
 		{
 			write_item_type(media->itemfull[i].type, fd);
-			ft_putstr_fd(media->itemfull[i].filename, fd);
+			ft_putstr_fd(media->itemfull[i].name, fd);
 		}
 		else if (section == 3 && media->sounds[i])
 			ft_putstr_fd(media->sounds[i], fd);

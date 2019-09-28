@@ -136,6 +136,33 @@ ft/fast:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
 .PHONY : ft/fast
 
+add_door.o: add_door.c.o
+
+.PHONY : add_door.o
+
+# target to build an object file
+add_door.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/add_door.c.o
+.PHONY : add_door.c.o
+
+add_door.i: add_door.c.i
+
+.PHONY : add_door.i
+
+# target to preprocess a source file
+add_door.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/add_door.c.i
+.PHONY : add_door.c.i
+
+add_door.s: add_door.c.s
+
+.PHONY : add_door.s
+
+# target to generate assembly for a file
+add_door.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/add_door.c.s
+.PHONY : add_door.c.s
+
 add_to_media.o: add_to_media.c.o
 
 .PHONY : add_to_media.o
@@ -243,6 +270,33 @@ delete_sector.s: delete_sector.c.s
 delete_sector.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_sector.c.s
 .PHONY : delete_sector.c.s
+
+delete_vector.o: delete_vector.c.o
+
+.PHONY : delete_vector.o
+
+# target to build an object file
+delete_vector.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_vector.c.o
+.PHONY : delete_vector.c.o
+
+delete_vector.i: delete_vector.c.i
+
+.PHONY : delete_vector.i
+
+# target to preprocess a source file
+delete_vector.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_vector.c.i
+.PHONY : delete_vector.c.i
+
+delete_vector.s: delete_vector.c.s
+
+.PHONY : delete_vector.s
+
+# target to generate assembly for a file
+delete_vector.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/delete_vector.c.s
+.PHONY : delete_vector.c.s
 
 delete_world.o: delete_world.c.o
 
@@ -540,6 +594,33 @@ get_assets.s: get_assets.c.s
 get_assets.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_assets.c.s
 .PHONY : get_assets.c.s
+
+get_input.o: get_input.c.o
+
+.PHONY : get_input.o
+
+# target to build an object file
+get_input.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_input.c.o
+.PHONY : get_input.c.o
+
+get_input.i: get_input.c.i
+
+.PHONY : get_input.i
+
+# target to preprocess a source file
+get_input.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_input.c.i
+.PHONY : get_input.c.i
+
+get_input.s: get_input.c.s
+
+.PHONY : get_input.s
+
+# target to generate assembly for a file
+get_input.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/get_input.c.s
+.PHONY : get_input.c.s
 
 get_next_line.o: get_next_line.c.o
 
@@ -2944,6 +3025,33 @@ sel_item.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sel_item.c.s
 .PHONY : sel_item.c.s
 
+sort.o: sort.c.o
+
+.PHONY : sort.o
+
+# target to build an object file
+sort.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sort.c.o
+.PHONY : sort.c.o
+
+sort.i: sort.c.i
+
+.PHONY : sort.i
+
+# target to preprocess a source file
+sort.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sort.c.i
+.PHONY : sort.c.i
+
+sort.s: sort.c.s
+
+.PHONY : sort.s
+
+# target to generate assembly for a file
+sort.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/sort.c.s
+.PHONY : sort.c.s
+
 textures.o: textures.c.o
 
 .PHONY : textures.o
@@ -3143,6 +3251,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... builder"
 	@echo "... ft"
+	@echo "... add_door.o"
+	@echo "... add_door.i"
+	@echo "... add_door.s"
 	@echo "... add_to_media.o"
 	@echo "... add_to_media.i"
 	@echo "... add_to_media.s"
@@ -3155,6 +3266,9 @@ help:
 	@echo "... delete_sector.o"
 	@echo "... delete_sector.i"
 	@echo "... delete_sector.s"
+	@echo "... delete_vector.o"
+	@echo "... delete_vector.i"
+	@echo "... delete_vector.s"
 	@echo "... delete_world.o"
 	@echo "... delete_world.i"
 	@echo "... delete_world.s"
@@ -3188,6 +3302,9 @@ help:
 	@echo "... get_assets.o"
 	@echo "... get_assets.i"
 	@echo "... get_assets.s"
+	@echo "... get_input.o"
+	@echo "... get_input.i"
+	@echo "... get_input.s"
 	@echo "... get_next_line.o"
 	@echo "... get_next_line.i"
 	@echo "... get_next_line.s"
@@ -3455,6 +3572,9 @@ help:
 	@echo "... sel_item.o"
 	@echo "... sel_item.i"
 	@echo "... sel_item.s"
+	@echo "... sort.o"
+	@echo "... sort.i"
+	@echo "... sort.s"
 	@echo "... textures.o"
 	@echo "... textures.i"
 	@echo "... textures.s"

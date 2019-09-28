@@ -91,7 +91,11 @@ SRC =   main.c \
         line_math.c \
         vec_ops.c \
         render_btn.c \
-        manage_btn.c
+        manage_btn.c \
+        delete_vector.c \
+        get_input.c \
+        add_door.c \
+        sort.c
 
 OBJ =	$(SRC:.c=.o)
 

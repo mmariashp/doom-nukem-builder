@@ -71,7 +71,7 @@
 
 //void					render_walls(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 //{
-//	if (!sdl || !media || !grid || prog->features[F_REDRAW] == 0)
+//	if (!sdl || !media || !grid || prog->redraw == 0)
 //		return ;
 //	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 //	SDL_RenderClear(sdl->rend);
@@ -79,12 +79,12 @@
 //	render_screen(sdl->rend, prog->screen);
 //    if (prog->btn_on == -1)
 //	{
-//		if (grid->p[1].y >= 0 && grid->p[1].y < media->worlds[media->w_id].n_walls)
+//		if (grid->p[1].y >= 0 && grid->p[1].y < media->worlds[media->w_id].n_w)
 //    		render_wall_menu(sdl, grid, media, &media->worlds[media->w_id].walls[grid->p[1].y]);
 //	}
 //	render_btn(prog->modes[prog->m_id].btn, sdl->rend, prog->modes[prog->m_id].n_btn);
 //	SDL_RenderPresent(sdl->rend);
-//	prog->features[F_REDRAW] = 0;
+//	prog->redraw = 0;
 //
 //}
 //
@@ -95,8 +95,8 @@
 //		return (FAIL);
 //	if (prog->last == MODE_EDITOR)
 //    {
-//        fill_grid_walls(media->worlds[media->w_id].n_walls, media->worlds[media->w_id].walls,
-//                media->worlds[media->w_id].n_vecs, media->worlds[media->w_id].vecs, grid);
+//        fill_grid_walls(media->worlds[media->w_id].n_w, media->worlds[media->w_id].walls,
+//                media->worlds[media->w_id].n_v, media->worlds[media->w_id].vecs, grid);
 //        prog->last = prog->m_id;
 //        grid->p[1].y = -1;
 //    }
@@ -112,7 +112,7 @@
 //                texture = media->worlds[media->w_id].n_txtrs;
 //                media->worlds[media->w_id].n_txtrs++;
 //            }
-//            if (grid->p[0].y >= 0 && grid->p[0].y < media->worlds[media->w_id].n_sec)
+//            if (grid->p[0].y >= 0 && grid->p[0].y < media->worlds[media->w_id].n_s)
 //            {
 //                media->worlds[media->w_id].walls[grid->p[1].y].txtr = texture ;
 //            }
@@ -125,12 +125,12 @@
 //			prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
 //		prog->btn_on = prog->btn_lit;
 //		prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
-//		prog->features[F_REDRAW] = 1;
+//		prog->redraw = 1;
 //		return (SUCCESS);
 //	}
 //	if (btn_light(sdl->mouse, prog->modes[prog->m_id].btn, prog->modes[prog->m_id].n_btn, prog) == SUCCESS) // when mouse is over a button
 //	{
-//		prog->features[F_REDRAW] = 1;
+//		prog->redraw = 1;
 //	}
 //	if (prog->zoom != 0)
 //	{
@@ -156,7 +156,7 @@
 //            if (grid->p[1].x != -1 && grid->p[1].y == -1)
 //            {
 //                grid->p[1].y = grid->p[1].x;
-//                door = wall_door(grid->p[1].y, media->worlds[media->w_id].walls, media->worlds[media->w_id].n_walls);
+//                door = wall_door(grid->p[1].y, media->worlds[media->w_id].walls, media->worlds[media->w_id].n_w);
 //                int i = W_DESELECT_BTN;
 //                while ( i < prog->modes[prog->m_id].n_btn)
 //                    prog->modes[prog->m_id].btn[i++].vis_lit_on[0] = TRUE;
@@ -175,12 +175,12 @@
 //                }
 //            }
 //        }
-//        prog->features[F_REDRAW] = 1;
+//        prog->redraw = 1;
 //        prog->click = (t_vec2d){ 0, 0 };
 //    }
 //    else if (prog->btn_on == W_PORTAL_BTN || prog->btn_on == W_DOOR_BTN)
 //    {
-//        if (grid->p[1].y >= 0 && grid->p[1].y < media->worlds[media->w_id].n_walls)
+//        if (grid->p[1].y >= 0 && grid->p[1].y < media->worlds[media->w_id].n_w)
 //        {
 //            if (prog->btn_on == W_PORTAL_BTN)
 //            {
@@ -195,7 +195,7 @@
 ////                    delete_door(&media->worlds[media->w_id], grid->p[1].y);
 //            }
 //        }
-//        prog->features[F_REDRAW] = 1;
+//        prog->redraw = 1;
 //        prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
 //        prog->btn_on = -1;
 //    }
@@ -208,18 +208,18 @@
 //        while ( i < W_DESELECT_BTN)
 //            prog->modes[prog->m_id].btn[i++].vis_lit_on[0] = TRUE;
 //        grid->p[1] = (t_vec2d){ -1, -1 };
-//        prog->features[F_REDRAW] = 1;
+//        prog->redraw = 1;
 //
 //        prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
 //        prog->btn_on = -1;
 //
 //        clean_grid(grid);
-//        zoom_to_map(media->worlds[media->w_id].n_vecs, media->worlds[media->w_id].vecs, grid);
-//        fill_grid(media->worlds[media->w_id].n_vecs, media->worlds[media->w_id].vecs, grid);
-//        fill_grid_walls(media->worlds[media->w_id].n_walls, media->worlds[media->w_id].walls,
-//                        media->worlds[media->w_id].n_vecs, media->worlds[media->w_id].vecs, grid);
+//        zoom_to_map(media->worlds[media->w_id].n_v, media->worlds[media->w_id].vecs, grid);
+//        fill_grid(media->worlds[media->w_id].n_v, media->worlds[media->w_id].vecs, grid);
+//        fill_grid_walls(media->worlds[media->w_id].n_w, media->worlds[media->w_id].walls,
+//                        media->worlds[media->w_id].n_v, media->worlds[media->w_id].vecs, grid);
 //    }
-//	upd_sec(media->worlds[media->w_id].sec, media->worlds[media->w_id].walls, media->worlds[media->w_id].vecs, media->worlds[media->w_id].n_sec);
+//	upd_sec(media->worlds[media->w_id].sec, media->worlds[media->w_id].walls, media->worlds[media->w_id].vecs, media->worlds[media->w_id].n_s);
 //	return (SUCCESS);
 //}
 //
@@ -280,14 +280,14 @@
 //				}
 //                if (prog->btn_lit == WT_BTN)
 //                {
-//                    prog->features[F_REDRAW] = 1;
+//                    prog->redraw = 1;
 //                    if (prog->btn_on >= 0)
 //                        prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
 //                    prog->last = prog->m_id;
 //                    prog->m_id = MODE_TEXTURES;
 //                    prog->btn_lit = -1;
 //                    prog->btn_on = -1;
-//                    if (grid->p[1].y >= 0 && grid->p[1].y < media->worlds[media->w_id].n_walls)
+//                    if (grid->p[1].y >= 0 && grid->p[1].y < media->worlds[media->w_id].n_w)
 //                    {
 //                        int k;
 //                        k = media->worlds[media->w_id].textures[media->worlds[media->w_id].walls[grid->p[1].y].txtr];

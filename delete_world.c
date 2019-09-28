@@ -14,18 +14,18 @@
 
 void					free_world(t_world *world)
 {
-	int 				i;
+	int					i;
 
 	if (!world)
 		return ;
-	if (world->filename)
-		free(world->filename);
+	if (world->name)
+		free(world->name);
 	if (world->full_path)
 		free(world->full_path);
 	if (world->sec)
 	{
 		i = 0;
-		while (i < world->n_sec)
+		while (i < world->n_s)
 			free_sector(&world->sec[i++]);
 		free(world->sec);
 	}
@@ -37,39 +37,39 @@ void					free_world(t_world *world)
 
 void					copy_world(t_world *new, t_world *old)
 {
-	int 				i;
+	int					i;
 
-	if (!old || !new)
+	if (!old || !new || !(new->name = ft_strdup(old->name)) ||
+	!(new->full_path = ft_strdup(old->full_path)))
 		return ;
-	new->filename = ft_strdup(old->filename);
-	new->full_path = ft_strdup(old->full_path);
-	new->sec = ft_memalloc(sizeof(t_sec) *  old->n_sec);
-	new->walls = ft_memalloc(sizeof(t_wall) *  old->n_walls);
-	new->vecs = ft_memalloc(sizeof(t_vec2d) *  old->n_vecs);
+	new->sec = ft_memalloc(sizeof(t_sec) * old->n_s);
+	new->walls = ft_memalloc(sizeof(t_wall) * old->n_w);
+	new->vecs = ft_memalloc(sizeof(t_vec2d) * old->n_v);
 	i = -1;
-	while (new->walls && ++i < old->n_walls)
+	while (new->walls && old->walls && ++i < old->n_w)
 		new->walls[i] = old->walls[i];
 	i = -1;
-	while (new->vecs && ++i < old->n_vecs)
+	while (new->vecs && old->vecs && ++i < old->n_v)
 		new->vecs[i] = old->vecs[i];
 	i = -1;
-	while (new->sec && ++i < old->n_sec)
+	while (new->sec && old->sec && ++i < old->n_s)
 		copy_sector(&new->sec[i], &old->sec[i]);
 	new->p_start = old->p_start;
 	new->p_end = old->p_end;
-	new->n_sec = old->n_sec;
-	new->n_vecs = old->n_vecs;
-	new->n_walls = old->n_walls;
+	new->n_s = old->n_s;
+	new->n_v = old->n_v;
+	new->n_w = old->n_w;
 	free_world(old);
 }
 
 void					delete_world(t_media *media, int id)
 {
 	t_world				*new;
-	int 				i;
-	int 				j;
+	int					i;
+	int					j;
 
-	if (!media || media->n_worlds < 2)
+	if (!media || !media->worlds || media->n_worlds < 2 ||
+	!within(id, -1, media->n_worlds))
 		return ;
 	new = (t_world *)ft_memalloc(sizeof(t_world) * (media->n_worlds - 1));
 	if (new)

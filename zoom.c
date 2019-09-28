@@ -66,17 +66,17 @@ void					zoom_grid(t_prog *prog, t_vec2d mouse, t_grid *grid)
 		new = grid->scale + grid->scale * 0.3f * prog->zoom;
 		grid->scale = clamp_f(new, min_scale, 100);
 		zoom_displace(&grid->box.x, &grid->box.y, mouse, old_scale, grid->scale );
-		prog->features[F_REDRAW] = 1;
+		prog->redraw = 1;
 	}
 	prog->zoom = 0;
 }
 
-void                    highlight_sec_nodes(t_vec2d *p, int n_walls, t_grid *grid)
+void                    highlight_sec_nodes(t_vec2d *p, int n_w, t_grid *grid)
 {
     int                 i;
 
     i = 0;
-    while (i < n_walls)
+    while (i < n_w)
     {
         if (p[i].x >= 0 && p[i].x < GRID_SIZE && p[i].y >= 0 && p[i].y < GRID_SIZE)
             grid->nodes[p[i].x][p[i].y] = NODE_SEC;
@@ -87,7 +87,7 @@ void                    highlight_sec_nodes(t_vec2d *p, int n_walls, t_grid *gri
 void                    zoom_to_sector(t_sec *sector, t_vec2d *vecs, t_grid *grid, t_prog *prog)
 {
     int					i;
-    t_vec2d				p[sector->n_walls];
+    t_vec2d				p[sector->n_w];
     t_vec2d             min;
     t_vec2d             max;
     t_vec2d             center;
@@ -114,7 +114,7 @@ void                    zoom_to_sector(t_sec *sector, t_vec2d *vecs, t_grid *gri
         if (p[i].y > max.y)
             max.y = p[i].y;
     }
-    highlight_sec_nodes((t_vec2d *)p, sector->n_walls, grid);
+    highlight_sec_nodes((t_vec2d *)p, sector->n_w, grid);
     n = get_max(max.x - min.x, max.y - min.y);
     min.x = (int)(grid->box.x + min.x * grid->scale);
     min.y = (int)(grid->box.y + min.y * grid->scale);
@@ -177,7 +177,7 @@ void                    zoom_to_wall(t_vec2d v1, t_vec2d v2, t_grid *grid, t_pro
 	grid->scale = get_scale_to_sector(n, WIN_W * 0.6, WIN_H * 0.6);
 }
 
-void                    zoom_to_map(int n_vecs, t_vec2d *v, t_grid *grid)
+void                    zoom_to_map(int n_v, t_vec2d *v, t_grid *grid)
 {
     int                 i;
     int                 n;
@@ -191,7 +191,7 @@ void                    zoom_to_map(int n_vecs, t_vec2d *v, t_grid *grid)
     min.x = GRID_SIZE;
     max.y = 0;
     min.y = GRID_SIZE;
-    while (i < n_vecs)
+    while (i < n_v)
     {
         if (v[i].x < min.x)
             min.x = v[i].x;

@@ -53,7 +53,7 @@ void					render_item_info(t_media *med, t_sdl *sdl, t_mode *mode, SDL_Texture **
 	if (!sdl || !med || !mode || !mode->btn || !med->itemfull)
 		return ;
 	if (within((s = select_it(1, S_SELECT, 1)), -1, \
-	med->worlds[med->w_id].n_sec) && within((id = select_it(1, I_SELECT, \
+	med->worlds[med->w_id].n_s) && within((id = select_it(1, I_SELECT, \
 	1)), -1, med->worlds[med->w_id].sec[s].n_items) && within((id = \
 	med->worlds[med->w_id].sec[s].items[id].id), -1, med->n_itemfull))
 	{
@@ -64,7 +64,7 @@ void					render_item_info(t_media *med, t_sdl *sdl, t_mode *mode, SDL_Texture **
 		box = (t_rec){ 20, WIN_H - 60, 350, 50 };
 		if (within(TXTR_RECT_Y, -1, TOTAL_TXTRS) && t[TXTR_RECT_Y])
 			render_box(box, t[TXTR_RECT_Y], sdl->rend);
-		if ((tmp = ft_strjoin("Name: \"", med->itemfull[id].filename)))
+		if ((tmp = ft_strjoin("Name: \"", med->itemfull[id].name)))
 		{
 			tmp2 = ft_strjoin(tmp,"\"");
 			free(tmp);
@@ -103,7 +103,7 @@ void					r_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 
 	if (!sdl || !media || !grid)
 		return ;
-	if (prog->features[F_REDRAW])
+	if (prog->redraw)
 	{
 		SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 		SDL_RenderClear(sdl->rend);
@@ -132,7 +132,7 @@ void					r_editor(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 			render_cursor(sdl->rend, sdl->mouse, prog->t, TXTR_DOOR);
 		}
 		SDL_RenderPresent(sdl->rend);
-		prog->features[F_REDRAW] = 0;
+		prog->redraw = 0;
 	}
 }
 
@@ -163,12 +163,12 @@ unsigned short			open_level(t_media *media, t_prog* prog, t_grid *grid)
 			return (FAIL);
 		media->n_worlds++;
 	}
-	else if (media->worlds[w].n_sec > 0)
-		zoom_to_map(media->worlds[w].n_vecs, media->worlds[w].vecs, grid);
-	fill_grid(media->worlds[w].n_vecs, media->worlds[w].vecs, grid);
+	else if (media->worlds[w].n_s > 0)
+		zoom_to_map(media->worlds[w].n_v, media->worlds[w].vecs, grid);
+	fill_grid(media->worlds[w].n_v, media->worlds[w].vecs, grid);
 	upd_sec(media->worlds[w].sec, media->worlds[w].walls, \
-	media->worlds[w].vecs, media->worlds[w].n_sec);
-	prog->features[F_REDRAW] = 1;
+	media->worlds[w].vecs, media->worlds[w].n_s);
+	prog->redraw = 1;
 	return (SUCCESS);
 }
 
@@ -212,14 +212,14 @@ unsigned short			edit_texture(int fl_ceil, int n_txtrs, t_texture *txtrs, t_worl
 	wall = select_it(1, W_SELECT, -1);
 	if (within((texture = select_it(1, T_SELECT, -1)), -1, n_txtrs))
 	{
-		if (state == SEC_EDIT && within(sector, -1, world->n_sec))
+		if (state == SEC_EDIT && within(sector, -1, world->n_s))
 		{
 			if (fl_ceil == 0)
 				world->sec[sector].fl_txtr = texture ;
 			else
 				world->sec[sector].ceil_txtr = texture ;
 		}
-		else if (state == WALL_EDIT && within(wall, -1, world->n_walls))
+		else if (state == WALL_EDIT && within(wall, -1, world->n_w))
 			world->walls[wall].txtr = texture ;
 	}
 	return (SUCCESS);
@@ -230,7 +230,7 @@ void					edit_wall_type(int btn_on, t_world *world)
 	int 				wall;
 
 	if (!world || \
-	!within((wall = select_it(1, W_SELECT, -1)), -1, world->n_walls))
+	!within((wall = select_it(1, W_SELECT, -1)), -1, world->n_w))
 		return ;
 	if (btn_on == W_PORTAL_BTN)
 	{
@@ -252,7 +252,7 @@ void					edit_item_name(int n_itemfull, t_itemfull *itemfull, t_world *world)
 	sector = select_it(1, S_SELECT, -1);
 	item_i = select_it(1, I_SELECT, -1);
 	item_sel = select_it(1, SEL_I_SELECT, -1);
-	if (within(sector, -1, world->n_sec) && \
+	if (within(sector, -1, world->n_s) && \
 		within(item_i, -1, world->sec[sector].n_items) && \
 		within(item_sel, -1, n_itemfull))
 		world->sec[sector].items[item_i].id = item_sel;
@@ -298,7 +298,7 @@ unsigned short			btn_refresh(t_prog *prog, int state)
 	if (within(prog->btn_on, -1, prog->modes[prog->m_id].n_btn))
 		prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
 	select_it(0, LAST_ST_SELECT, state);
-	prog->features[F_REDRAW] = 1;
+	prog->redraw = 1;
 	return (SUCCESS);
 }
 
@@ -321,7 +321,7 @@ void 					drawing(t_world *world, t_prog *prog, t_grid *grid, t_vec2d mouse)
 			prog->modes[prog->m_id].btn[i++].vis_lit_on[0] = vis;
 		prog->click = (t_vec2d){ 0, 0 };
 	}
-	prog->features[F_REDRAW] = 1;
+	prog->redraw = 1;
 }
 
 void					prep_texture_edit(t_world *world, t_prog *prog,
@@ -336,13 +336,13 @@ void					prep_texture_edit(t_world *world, t_prog *prog,
 		return ;
 	txtr = -1;
 	if (select_it(1, ST_SELECT, -1) == SEC_EDIT && within((sec = \
-	select_it(1, S_SELECT, -1)), -1, world->n_sec))
+	select_it(1, S_SELECT, -1)), -1, world->n_s))
 	{
 		fc = prog->btn_on == FT_EDIT_BTN ? 0 : 1;
 		txtr = !select_it(0, FC_SELECT, fc) ? world->sec[sec].fl_txtr :
 			   world->sec[sec].ceil_txtr;
 	}
-	else if (within((wall = select_it(1, W_SELECT, 0)), -1, world->n_walls))
+	else if (within((wall = select_it(1, W_SELECT, 0)), -1, world->n_w))
 		txtr = world->walls[wall].txtr;
 	turn_btns_off(prog);
 	prog->btn_lit = -1;
@@ -362,12 +362,12 @@ void					normal_st(t_prog *prog, t_vec2d mouse, t_grid *grid, \
 	if (prog->btn_on == DRAW_BTN)
 	{
 		drawing(world, prog, grid, mouse);
-		upd_sec(world->sec, world->walls, world->vecs, world->n_sec);
+		upd_sec(world->sec, world->walls, world->vecs, world->n_s);
 	}
 	else if (prog->btn_on == DISTORT_BTN )
 	{
 		move_vector(prog, mouse, grid, world);
-		upd_sec(world->sec, world->walls, world->vecs, world->n_sec);
+		upd_sec(world->sec, world->walls, world->vecs, world->n_s);
 	}
 	else if (prog->btn_on == PLAYER_BTN )
 		move_player(prog, mouse, grid, world);
@@ -388,7 +388,7 @@ void					wall_search_st(t_prog *prog, t_vec2d node, \
 	if (within(node.x, -1, GRID_SIZE) && within(node.y, -1, GRID_SIZE))
 	{
 		w = lit_it(0, W_SELECT, grid->nodes[node.x][node.y]);
-		if ((prog->click.x || prog->click.y) && within(w, -1, world->n_walls))
+		if ((prog->click.x || prog->click.y) && within(w, -1, world->n_w))
 		{
 			select_it(0, W_SELECT, w);
 			if (prog->btn_on == DOOR_ADD_BTN)
@@ -396,12 +396,12 @@ void					wall_search_st(t_prog *prog, t_vec2d node, \
 			else
 			{
 				select_it(0, ST_SELECT, WALL_EDIT);
-				if (within((v1 = world->walls[w].v1), -1, world->n_vecs) &&
-					within((v2 = world->walls[w].v2), -1, world->n_vecs))
+				if (within((v1 = world->walls[w].v1), -1, world->n_v) &&
+					within((v2 = world->walls[w].v2), -1, world->n_v))
 					zoom_to_wall(world->vecs[v1], world->vecs[v2], grid, prog);
 			}
 		}
-		prog->features[F_REDRAW] = 1;
+		prog->redraw = 1;
 	}
 }
 void					sec_search_st(t_prog *prog, t_vec2d mouse, \
@@ -411,14 +411,14 @@ void					sec_search_st(t_prog *prog, t_vec2d mouse, \
 
 	if (!prog || !world)
 		return ;
-	sec = lit_it(0, S_SELECT, mouse_in_sector(mouse, world, grid));
-	if ((prog->click.x || prog->click.y) && within(sec, -1, world->n_sec))
+	sec = lit_it(0, S_SELECT, mouse_in_stor(mouse, world, grid));
+	if ((prog->click.x || prog->click.y) && within(sec, -1, world->n_s))
 	{
 		select_it(0, S_SELECT, sec);
 		select_it(0, ST_SELECT, SEC_EDIT);
 		zoom_to_sector(&world->sec[sec], world->vecs, grid, prog);
 	}
-	prog->features[F_REDRAW] = 1;
+	prog->redraw = 1;
 }
 void					sec_edit_st(t_prog *prog, t_vec2d mouse, \
 												t_grid *grid, t_media *media)
@@ -428,7 +428,7 @@ void					sec_edit_st(t_prog *prog, t_vec2d mouse, \
 	if (!prog)
 		return ;
 	sector = select_it(1, S_SELECT, -1);
-	if (mouse_in_sector(mouse, &media->worlds[media->w_id], grid) == sector)
+	if (mouse_in_stor(mouse, &media->worlds[media->w_id], grid) == sector)
 	{
 		if (prog->btn_on == -1)
 			move_item(prog, mouse, grid, \
@@ -441,11 +441,11 @@ void					sec_edit_st(t_prog *prog, t_vec2d mouse, \
 	if (prog->btn_on != -1 && (prog->click.x || prog->click.y))
 	{
 		turn_btns_off(prog);
-		prog->features[F_REDRAW] = 1;
+		prog->redraw = 1;
 		prog->click = (t_vec2d){ 0, 0 };
 	}
 	upd_sec(media->worlds[media->w_id].sec, media->worlds[media->w_id].walls,\
-	media->worlds[media->w_id].vecs, media->worlds[media->w_id].n_sec);
+	media->worlds[media->w_id].vecs, media->worlds[media->w_id].n_s);
 }
 
 unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *m,

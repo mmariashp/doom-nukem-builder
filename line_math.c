@@ -89,7 +89,7 @@ int						find_wall_inter(t_vec2d p, t_world world)
 	int					i;
 
 	i = 0;
-	while (i < world.n_walls)
+	while (i < world.n_w)
 	{
 		if (intersects(p, world.vecs[world.walls[i].v1],
 				world.vecs[world.walls[i].v1]))
@@ -97,4 +97,29 @@ int						find_wall_inter(t_vec2d p, t_world world)
 		i++;
 	}
 	return (-1);
+}
+
+t_vec2d					*get_point_at_d(t_vec2d origin, int dist, int slope)
+{
+	t_vec2d				*res;
+
+	res = ft_memalloc(sizeof(t_vec2d) * 2);
+	if (!res)
+		return (NULL);
+	if (!slope)
+	{
+		res[0] = (t_vec2d){ origin.x + dist, origin.y };
+		res[1] = (t_vec2d){ origin.x - dist, origin.y };
+	}
+	else if (slope > 10000)
+	{
+		res[0] = (t_vec2d){ origin.x, origin.y + dist };
+		res[1] = (t_vec2d){ origin.x, origin.y - dist };
+	}
+	else
+	{
+		res[0] = (t_vec2d){ origin.x + 1, origin.y + slope };
+		res[1] = (t_vec2d){ origin.x - 1, origin.y - slope };
+	}
+	return ((t_vec2d *)res);
 }

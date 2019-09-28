@@ -26,14 +26,14 @@ void					render_texture_icons(t_btn *btn, t_sdl *sdl, int n_btn, t_texture *txtr
 
 void					r_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 {
-    if (!sdl || !media || !grid || prog->features[F_REDRAW] == 0)
+    if (!sdl || !media || !grid || prog->redraw == 0)
         return ;
     SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
     SDL_RenderClear(sdl->rend);
     render_btns(prog, sdl);
     render_texture_icons(prog->modes[prog->m_id].btn, sdl, prog->modes[prog->m_id].n_btn, media->txtrs);
     SDL_RenderPresent(sdl->rend);
-    prog->features[F_REDRAW] = 1;
+    prog->redraw = 1;
 }
 
 unsigned short			u_textures(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)

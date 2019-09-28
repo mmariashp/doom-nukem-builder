@@ -126,7 +126,7 @@ char 					sector_status(t_sec sector, t_wall *walls, t_vec2d *vecs, int n)
 	ft_memset(tmp, -1, sizeof(int) * n);
 	i = -1;
 	j = 0;
-	while (++i < sector.n_walls && j + 1 < n)
+	while (++i < sector.n_w && j + 1 < n)
 	{
 		tmp[j++] = walls[sector.s_walls[i]].v1;
 		tmp[j++] = walls[sector.s_walls[i]].v2;
@@ -161,15 +161,15 @@ char 					sector_status(t_sec sector, t_wall *walls, t_vec2d *vecs, int n)
 	return(status);
 }
 
-void					upd_sec(t_sec *sec, t_wall *walls, t_vec2d *vecs, int n_sec)
+void					upd_sec(t_sec *sec, t_wall *walls, t_vec2d *vecs, int n_s)
 {
 	int 				i;
 
 	i = -1;
 	if (!sec || !walls || !vecs)
 		return ;
-	while (++i < n_sec)
-		sec[i].status = sector_status(sec[i], walls, vecs, sec[i].n_walls * 2);
+	while (++i < n_s)
+		sec[i].status = sector_status(sec[i], walls, vecs, sec[i].n_w * 2);
 }
 
 void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
@@ -188,7 +188,7 @@ void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
 				grid->p[0] = find_node(mouse.x, mouse.y, grid);
 				if (grid->p[0].x >= 0 && grid->p[0].y >= 0 &&
 				grid->nodes[grid->p[0].x][grid->p[0].y] == NODE_FULL)
-					id = find_vec(world->vecs, grid->p[0], world->n_vecs);
+					id = find_vec(world->vecs, grid->p[0], world->n_v);
 				if (id == -1)
 				{
 					grid->p[0] = (t_vec2d){ -1, -1 };
@@ -211,7 +211,7 @@ void					move_vector(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
 
 			}
 			prog->click = mouse;
-			prog->features[F_REDRAW] = 1;
+			prog->redraw = 1;
 		}
 		else
 			prog->click = (t_vec2d){ 0, 0 };
@@ -258,7 +258,7 @@ void					move_player(t_prog *prog, t_vec2d mouse, t_grid *grid, t_world *world)
 				}
 			}
 			prog->click = mouse;
-			prog->features[F_REDRAW] = 1;
+			prog->redraw = 1;
 		}
 		else
 			prog->click = (t_vec2d){ 0, 0 };
@@ -334,16 +334,17 @@ int						main(void)
 	t_prog				*prog;
 
 	prog = NULL;
-
 	if (!(media = get_assets()))
 	{
 		ft_putstr("\x1b[32mMedia is NULL, Returning fail from main function.\x1b[0m\n");
+		system("leaks -q builder");
 		return (FAIL);
 	}
 	if (!(sdl = get_sdl()))
 	{
 		ft_putstr("\x1b[32mSdl is NULL, Returning fail from main function.\x1b[0m\n");
 		free_media(media);
+		system("leaks -q builder");
 		return (FAIL);
 	}
 	if (!(prog = get_prog(sdl->rend)) || load_sdl_media(media, sdl) == FAIL)
@@ -352,6 +353,7 @@ int						main(void)
 		free_media(media);
 		free_prog(prog);
 		free_sdl(sdl);
+		system("leaks -q builder");
 		return (FAIL);
 	}
 	game_loop(sdl, media, prog);

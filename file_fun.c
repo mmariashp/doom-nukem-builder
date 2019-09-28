@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file_fun.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/28 16:17:04 by mshpakov          #+#    #+#             */
+/*   Updated: 2019/09/28 16:17:06 by mshpakov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "builder.h"
 
 int						my_rename(const char *oldname, const char *newname)
 {
-	char 				*tmp;
-	char 				*tmp2;
+	char				*tmp;
+	char				*tmp2;
 
 	if (!oldname || !newname)
 		return (FAIL);
@@ -28,27 +39,27 @@ int						my_rename(const char *oldname, const char *newname)
 	return (FAIL);
 }
 
-unsigned 				open_for_write(const char *path, int *fd)
+unsigned				open_for_write(const char *path, int *fd)
 {
-	if (!path)
+	if (!path || !fd)
 		return (FAIL);
-	*fd = open(path,O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR |\
+	*fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR |\
 	S_IRGRP | S_IROTH);
 	if (*fd == -1)
 		return (FAIL);
 	return (SUCCESS);
 }
 
-unsigned 				close_file(int fd)
+unsigned				close_file(int fd)
 {
 	if (close(fd) == -1)
 		return (FAIL);
 	return (SUCCESS);
 }
 
-unsigned 				open_for_read(const char *path, int *fd)
+unsigned				open_for_read(const char *path, int *fd)
 {
-	if (!path)
+	if (!path || !fd)
 		return (FAIL);
 	*fd = open(path, O_RDONLY);
 	if (*fd == -1)

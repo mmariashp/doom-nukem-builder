@@ -80,7 +80,7 @@ void					draw_walls(t_world world, t_grid *grid, int **screen, int wall)
 	t_vec2d				v1;
 	t_vec2d				v2;
 
-	while (i < world.n_walls)
+	while (i < world.n_w)
 	{
 		v1 = world.vecs[world.walls[i].v1];
 		v2 = world.vecs[world.walls[i].v2];
@@ -214,7 +214,7 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 	int					wall;
 
 
-	if (!grid || !prog || world.n_sec == 100)
+	if (!grid || !prog || world.n_s == 100)
 		return;
 	clean_screen(prog->screen);
 	radius1 = grid->box.w * 0.001;
@@ -245,7 +245,7 @@ void					render_grid(t_world world, t_grid *grid, t_prog *prog, t_vec2d mouse)
 	}
 	int k = 0;
 	unsigned short overlay = FALSE;
-	while (k < world.n_sec)
+	while (k < world.n_s)
 	{
 		if (world.sec[k].status != SEC_OPEN)
 		{
@@ -267,7 +267,7 @@ void					draw_walls_iso(t_world world, t_grid *grid, int **screen, t_sec *sector
 	t_vec2d_d			v1c;
 	t_vec2d_d			v2c;
 
-	while (i < sector->n_walls)
+	while (i < sector->n_w)
 	{
 
 
@@ -336,21 +336,21 @@ void					bubble_sort_vec(t_vec2d *tab, int n)
 
 void					render_grid_iso(t_world world, t_grid *grid, t_prog *prog)
 {
-	if (!grid || !prog || world.n_sec == 100)
+	if (!grid || !prog || world.n_s == 100)
 		return;
 	clean_screen(prog->screen);
-	t_vec2d tab[world.n_sec];
+	t_vec2d tab[world.n_s];
 	int k = 0;
 	unsigned short overlay = FALSE;
 	k = 0;
-	while (k < world.n_sec)
+	while (k < world.n_s)
 	{
 		tab[k].x = k;
 		tab[k].y = world.sec[k].fl;
 		k++;
 	}
 	k = 0;
-	while (k < world.n_sec)
+	while (k < world.n_s)
 	{
 		if (world.sec[tab[k].x].status != SEC_OPEN)
 		{

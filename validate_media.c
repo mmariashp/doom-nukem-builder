@@ -19,14 +19,14 @@ void 					validate_textures(t_world *world, int n)
 	if (!world)
 		return ;
 	i = 0;
-	while (i < world->n_walls)
+	while (i < world->n_w)
 	{
 		if (within(world->walls[i].txtr, -1, n) == FALSE)
 			world->walls[i].txtr = 0;
 		i++;
 	}
 	i = 0;
-	while (i < world->n_sec)
+	while (i < world->n_s)
 	{
 		if (within(world->sec[i].fl_txtr, -1, n) == FALSE)
 			world->sec[i].fl_txtr = 0;
@@ -71,7 +71,7 @@ void 					validate_items(t_world *world, int n)
 	if (!world)
 		return ;
 	i = 0;
-	while (i < world->n_sec)
+	while (i < world->n_s)
 	{
 		j = 0;
 		while (j < world->sec[i].n_items)
@@ -100,20 +100,20 @@ void					replace_vector(int to_replace, int new, t_world *world)
 	int 				i;
 	int 				j;
 
-	if (!world || !within(to_replace, -1, world->n_vecs) || !within(new, -1, world->n_vecs))
+	if (!world || !within(to_replace, -1, world->n_v) || !within(new, -1, world->n_v))
 		return ;
 	i = 0;
-	while (i < world->n_walls)
+	while (i < world->n_w)
 	{
 		if (world->walls[i].v1 == to_replace)
 			world->walls[i].v1 = new;
 		i++;
 	}
 	i = 0;
-	while (i < world->n_sec)
+	while (i < world->n_s)
 	{
 		j = 0;
-		while (j < world->sec[i].n_walls)
+		while (j < world->sec[i].n_w)
 		{
 			if (world->sec[i].v[j] == to_replace)
 				world->sec[i].v[j] = new;
@@ -128,13 +128,13 @@ void					replace_wall(int to_replace, int new, t_world *world)
 	int 				i;
 	int 				j;
 
-	if (!world || !within(to_replace, -1, world->n_walls) || !within(new, -1, world->n_walls))
+	if (!world || !within(to_replace, -1, world->n_w) || !within(new, -1, world->n_w))
 		return ;
 	i = 0;
-	while (i < world->n_sec)
+	while (i < world->n_s)
 	{
 		j = 0;
-		while (j < world->sec[i].n_walls)
+		while (j < world->sec[i].n_w)
 		{
 			if (world->sec[i].s_walls[j] == to_replace)
 				world->sec[i].s_walls[j] = new;
@@ -150,7 +150,7 @@ void					delete_double_v(t_world *world)
 	int 				j;
 
 	i = 0;
-	while (i < world->n_vecs)
+	while (i < world->n_v)
 	{
 		j = 0;
 		while (j < i)
@@ -175,11 +175,11 @@ void					delete_unused_v(t_world *world)
 	unsigned short		used;
 
 	i = 0;
-	while (i < world->n_vecs)
+	while (i < world->n_v)
 	{
 		j = 0;
 		used = FALSE;
-		while (j < world->n_walls)
+		while (j < world->n_w)
 		{
 			if (world->walls[j].v1 == i || world->walls[j].v2 == i)
 			{
@@ -203,14 +203,14 @@ void					delete_unused_walls(t_world *world)
 	unsigned short		used;
 
 	i = 0;
-	while (i < world->n_walls)
+	while (i < world->n_w)
 	{
 		j = 0;
 		used = FALSE;
-		while (j < world->n_sec && used == FALSE)
+		while (j < world->n_s && used == FALSE)
 		{
 			k = 0;
-			while (k < world->sec[j].n_walls && used == FALSE)
+			while (k < world->sec[j].n_w && used == FALSE)
 			{
 				if (world->sec[j].s_walls[k] == i)
 					used = TRUE;
@@ -231,7 +231,7 @@ void					delete_double_walls(t_world *world)
 	int 				j;
 
 	i = 0;
-	while (i < world->n_walls)
+	while (i < world->n_w)
 	{
 		j = 0;
 		while (j < i)
@@ -313,7 +313,7 @@ void					validate_clockwise(t_world *world, int sec)
 		ft_putstr("\033[1;31m");
 		printf("SEC %d counter clockwise\n", sec);
 		ft_putstr("\x1b[0m");
-		world->sec[sec].s_walls = reverse_order(world->sec[sec].s_walls, world->sec[sec].n_walls);
+		world->sec[sec].s_walls = reverse_order(world->sec[sec].s_walls, world->sec[sec].n_w);
 		free(world->sec[sec].v);
 		get_sec_v(&world->sec[sec], world->walls);
 	}
@@ -326,14 +326,14 @@ void					validate_sectors(t_world *world)
 
 	if (!world)
 		return ;
-	upd_sec(world->sec, world->walls, world->vecs, world->n_sec);
+	upd_sec(world->sec, world->walls, world->vecs, world->n_s);
 	delete_double_v(world);
 	delete_double_walls(world);
 	delete_unused_walls(world);
 	delete_unused_v(world);
 	i = 0;
 	control = 0;
-	while (i < world->n_sec && control < MAX_N_SECS)
+	while (i < world->n_s && control < MAX_N_SECS)
 	{
 		if (world->sec[i].status == SEC_OPEN)
 		{

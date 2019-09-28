@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   grid_main.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/28 16:45:37 by mshpakov          #+#    #+#             */
+/*   Updated: 2019/09/28 16:45:38 by mshpakov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "builder.h"
 
@@ -18,13 +29,13 @@ void					clean_grid(t_grid *grid)
 	}
 }
 
-t_grid                  *get_grid(void)
+t_grid					*get_grid(void)
 {
 	t_grid					*grid;
 
 	if (!(grid = (t_grid *)ft_memalloc(sizeof(t_grid))))
 		return (NULL);
-	grid->scale = WIN_H / GRID_SIZE;
+	grid->scale = (float)WIN_H / GRID_SIZE;
 	grid->box.w = GRID_SIZE * grid->scale;
 	grid->box.h = GRID_SIZE * grid->scale;
 	grid->box.x = (WIN_W - grid->box.w) / 2;
@@ -35,17 +46,15 @@ t_grid                  *get_grid(void)
 	return (grid);
 }
 
-void					grid_refresh(t_grid *grid, t_media *media, int state, int sector)
+void					grid_refresh(t_grid *grid, t_media *media, int state,
+																	int sector)
 {
-	if (!grid || !media)
+	if (!grid || !media || !media->worlds || !media->worlds[media->w_id].sec)
 		return ;
 	clean_grid(grid);
-	fill_grid_walls(media->worlds[media->w_id].n_walls,\
-	media->worlds[media->w_id].walls,\
-	media->worlds[media->w_id].n_vecs,\
+	fill_grid_walls(&media->worlds[media->w_id], grid);
+	fill_grid(media->worlds[media->w_id].n_v,\
 	media->worlds[media->w_id].vecs, grid);
-	fill_grid(media->worlds[media->w_id].n_vecs,\
-	media->worlds[media->w_id].vecs, grid);
-	if (state == SEC_EDIT && within(sector, -1, media->worlds[media->w_id].n_sec))
+	if (state == SEC_EDIT && within(sector, -1, media->worlds[media->w_id].n_s))
 		fill_grid_items(&media->worlds[media->w_id].sec[sector], grid);
 }
