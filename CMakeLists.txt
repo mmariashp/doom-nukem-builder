@@ -86,7 +86,26 @@ add_executable(${PROJECT_NAME}
 		src/render_elements.c
 		src/move_player.c
 		src/move_vector.c
-		src/update_sec.c src/render_grid_iso.c src/render_grid_elems.c src/delete_useless.c src/replace.c src/validate_clockwise.c src/write_section.c src/write_level.c)
+		src/update_sec.c
+		src/render_grid_iso.c
+		src/render_grid_elems.c
+		src/delete_useless.c
+		src/replace.c
+		src/validate_clockwise.c
+		src/write_section.c
+		src/write_level.c
+		src/identify.c
+		src/read_assets_help.c
+		src/get_map.c
+		src/section.c
+		src/free_media.c
+		src/update_media_sect.c
+		src/read_levels.c
+		src/get_map_elems.c
+		src/init_world.c
+		src/read_line.c
+		src/drawing_help.c
+		src/edit_walls_help.c)
 
 set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror ")
 #set(GCC_COVERAGE_COMPILE_FLAGS "-fsanitize=\"address\" -g -fno-omit-frame-pointer")

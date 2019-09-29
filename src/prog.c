@@ -47,7 +47,7 @@ SDL_Texture				**get_prog_txtr(SDL_Renderer *rend)
 	i = -1;
 	while (++i < N_TXTR)
 	{
-		if ((tmp = get_full_path(s[i], ".png", "./buttons/")))
+		if ((tmp = get_full_p(s[i], ".png", "./buttons/")))
 		{
 			t[i] = load_texture(tmp, rend, 0);
 			free(tmp);

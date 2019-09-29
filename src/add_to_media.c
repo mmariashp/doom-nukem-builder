@@ -49,9 +49,9 @@ unsigned short			add_world(t_world **worlds, short n_worlds, char *ext,
 	if (!*worlds || !path || !ext)
 		return (FAIL);
 	(*worlds)[n_worlds].name = get_name(i);
-	(*worlds)[n_worlds].full_path = get_full_path((*worlds)[n_worlds].name,
+	(*worlds)[n_worlds].full_p = get_full_p((*worlds)[n_worlds].name,
 			ext, path);
-	if (!(*worlds)[n_worlds].name || !(*worlds)[n_worlds].full_path)
+	if (!(*worlds)[n_worlds].name || !(*worlds)[n_worlds].full_p)
 		return (FAIL);
 	(*worlds)[n_worlds].sec = NULL;
 	(*worlds)[n_worlds].n_s = 0;

@@ -29,9 +29,10 @@ unsigned short			write_assets(int fd, t_media *media)
 
 unsigned short			write_level(int fd, t_world world)
 {
-	static char 		count[3][12] = { "Vectors: ", "Walls: ", "Sectors: " };
-	int i = 0;
+	static char			count[3][12] = { "Vectors: ", "Walls: ", "Sectors: " };
+	int					i;
 
+	i = 0;
 	while (i < 3)
 	{
 		ft_putstr_fd("Count ", fd);
@@ -46,12 +47,9 @@ unsigned short			write_level(int fd, t_world world)
 		i++;
 	}
 	ft_putchar_fd('\n', fd);
-	i = 0;
-	while (i < 4)
-	{
+	i = -1;
+	while (++i < 4)
 		write_level_section(fd, world, i);
-		i++;
-	}
 	return (SUCCESS);
 }
 
@@ -65,7 +63,7 @@ unsigned short			rewrite_levels(t_media *media)
 	i = -1;
 	while (++i < media->n_worlds)
 	{
-		if (open_for_write(media->worlds[i].full_path, &fd) == FAIL)
+		if (open_for_write(media->worlds[i].full_p, &fd) == FAIL)
 			return (FAIL);
 		if (write_level(fd, media->worlds[i]) == FAIL)
 			return (FAIL);

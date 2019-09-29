@@ -88,11 +88,19 @@ builder.h
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
+/Users/mshpakov/Desktop/doom-nukem-builder/src/drawing_help.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
 /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_menu.c
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
 /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_walls.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/src/edit_walls_help.c
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
@@ -128,11 +136,23 @@ builder.h
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
+/Users/mshpakov/Desktop/doom-nukem-builder/src/free_media.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
 /Users/mshpakov/Desktop/doom-nukem-builder/src/get_assets.c
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
 /Users/mshpakov/Desktop/doom-nukem-builder/src/get_input.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/src/get_map.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/src/get_map_elems.c
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
@@ -152,7 +172,15 @@ builder.h
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
+/Users/mshpakov/Desktop/doom-nukem-builder/src/identify.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
 /Users/mshpakov/Desktop/doom-nukem-builder/src/init_editor_buttons.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/src/init_world.c
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
@@ -212,6 +240,18 @@ builder.h
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
+/Users/mshpakov/Desktop/doom-nukem-builder/src/read_assets_help.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/src/read_levels.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/src/read_line.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
 /Users/mshpakov/Desktop/doom-nukem-builder/src/render.c
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
@@ -252,6 +292,10 @@ builder.h
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
+/Users/mshpakov/Desktop/doom-nukem-builder/src/section.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
 /Users/mshpakov/Desktop/doom-nukem-builder/src/sector_logic.c
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
@@ -280,6 +324,10 @@ builder.h
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
+/Users/mshpakov/Desktop/doom-nukem-builder/src/update_media_sect.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
 /Users/mshpakov/Desktop/doom-nukem-builder/src/update_sec.c
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
@@ -301,6 +349,10 @@ builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
 /Users/mshpakov/Desktop/doom-nukem-builder/src/vec_ops.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/src/write_level.c
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 

@@ -368,10 +368,16 @@
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/drawing.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/drawing_help.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/edit_menu.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/edit_walls.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/edit_walls_help.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/edit_world.c">
@@ -398,10 +404,19 @@
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/find_in_media.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/free_media.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/get_assets.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/get_input.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/get_map.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/get_map_elems.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.c">
@@ -419,7 +434,13 @@
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/grid_main.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/identify.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/init_editor_buttons.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/init_world.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/items.c">
@@ -464,6 +485,15 @@
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/prog.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/read_assets_help.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/read_levels.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/read_line.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/render.c">
 			<Option target="builder"/>
 		</Unit>
@@ -494,6 +524,9 @@
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/sdl_fun.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/section.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/sector_logic.c">
 			<Option target="builder"/>
 		</Unit>
@@ -513,6 +546,9 @@
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/textures.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/update_media_sect.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/update_sec.c">

@@ -106,6 +106,6 @@ Sectors
 13) fl(0 0) ceil(20 0) walls '19 45 46 47 ' items ''
 
 Player
-0) 58,48 (sector: 0)  start
-1) 70,49 (sector: 0)  end
+0) 0,0 (sector: -1) start
+1) 0,0 (sector: -1) end
 

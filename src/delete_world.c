@@ -20,8 +20,8 @@ void					free_world(t_world *world)
 		return ;
 	if (world->name)
 		free(world->name);
-	if (world->full_path)
-		free(world->full_path);
+	if (world->full_p)
+		free(world->full_p);
 	if (world->sec)
 	{
 		i = 0;
@@ -40,7 +40,7 @@ void					copy_world(t_world *new, t_world *old)
 	int					i;
 
 	if (!old || !new || !(new->name = ft_strdup(old->name)) ||
-	!(new->full_path = ft_strdup(old->full_path)))
+	!(new->full_p = ft_strdup(old->full_p)))
 		return ;
 	new->sec = ft_memalloc(sizeof(t_sec) * old->n_s);
 	new->walls = ft_memalloc(sizeof(t_wall) * old->n_w);

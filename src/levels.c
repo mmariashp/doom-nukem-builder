@@ -68,16 +68,16 @@ unsigned short			rename_world(t_media *m, int world, t_prog *prog)
 	if (!within(select_it(1, WORLD_SELECT, -1), -1, m->n_worlds))
 		return (SUCCESS);
 	new = get_input(NULL, 0);
-	if (new && (tmp = get_full_path(new, m->extensions[0], m->paths[0])))
+	if (new && (tmp = get_full_p(new, m->extensions[0], m->paths[0])))
 	{
-		if (my_rename(m->worlds[world].full_path, tmp) == SUCCESS)
+		if (my_rename(m->worlds[world].full_p, tmp) == SUCCESS)
 		{
 			if (m->worlds[world].name)
 				free(m->worlds[world].name);
-			if (m->worlds[world].full_path)
-				free(m->worlds[world].full_path);
+			if (m->worlds[world].full_p)
+				free(m->worlds[world].full_p);
 			m->worlds[world].name = ft_strdup(new);
-			m->worlds[world].full_path = get_full_path(new, m->extensions[0],
+			m->worlds[world].full_p = get_full_p(new, m->extensions[0],
 					m->paths[0]);
 		}
 		free(tmp);

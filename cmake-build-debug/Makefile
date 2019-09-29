@@ -2215,6 +2215,33 @@ src/drawing.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/drawing.c.s
 .PHONY : src/drawing.c.s
 
+src/drawing_help.o: src/drawing_help.c.o
+
+.PHONY : src/drawing_help.o
+
+# target to build an object file
+src/drawing_help.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/drawing_help.c.o
+.PHONY : src/drawing_help.c.o
+
+src/drawing_help.i: src/drawing_help.c.i
+
+.PHONY : src/drawing_help.i
+
+# target to preprocess a source file
+src/drawing_help.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/drawing_help.c.i
+.PHONY : src/drawing_help.c.i
+
+src/drawing_help.s: src/drawing_help.c.s
+
+.PHONY : src/drawing_help.s
+
+# target to generate assembly for a file
+src/drawing_help.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/drawing_help.c.s
+.PHONY : src/drawing_help.c.s
+
 src/edit_menu.o: src/edit_menu.c.o
 
 .PHONY : src/edit_menu.o
@@ -2268,6 +2295,33 @@ src/edit_walls.s: src/edit_walls.c.s
 src/edit_walls.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_walls.c.s
 .PHONY : src/edit_walls.c.s
+
+src/edit_walls_help.o: src/edit_walls_help.c.o
+
+.PHONY : src/edit_walls_help.o
+
+# target to build an object file
+src/edit_walls_help.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_walls_help.c.o
+.PHONY : src/edit_walls_help.c.o
+
+src/edit_walls_help.i: src/edit_walls_help.c.i
+
+.PHONY : src/edit_walls_help.i
+
+# target to preprocess a source file
+src/edit_walls_help.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_walls_help.c.i
+.PHONY : src/edit_walls_help.c.i
+
+src/edit_walls_help.s: src/edit_walls_help.c.s
+
+.PHONY : src/edit_walls_help.s
+
+# target to generate assembly for a file
+src/edit_walls_help.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_walls_help.c.s
+.PHONY : src/edit_walls_help.c.s
 
 src/edit_world.o: src/edit_world.c.o
 
@@ -2485,6 +2539,33 @@ src/find_in_media.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/find_in_media.c.s
 .PHONY : src/find_in_media.c.s
 
+src/free_media.o: src/free_media.c.o
+
+.PHONY : src/free_media.o
+
+# target to build an object file
+src/free_media.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/free_media.c.o
+.PHONY : src/free_media.c.o
+
+src/free_media.i: src/free_media.c.i
+
+.PHONY : src/free_media.i
+
+# target to preprocess a source file
+src/free_media.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/free_media.c.i
+.PHONY : src/free_media.c.i
+
+src/free_media.s: src/free_media.c.s
+
+.PHONY : src/free_media.s
+
+# target to generate assembly for a file
+src/free_media.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/free_media.c.s
+.PHONY : src/free_media.c.s
+
 src/get_assets.o: src/get_assets.c.o
 
 .PHONY : src/get_assets.o
@@ -2538,6 +2619,60 @@ src/get_input.s: src/get_input.c.s
 src/get_input.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_input.c.s
 .PHONY : src/get_input.c.s
+
+src/get_map.o: src/get_map.c.o
+
+.PHONY : src/get_map.o
+
+# target to build an object file
+src/get_map.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map.c.o
+.PHONY : src/get_map.c.o
+
+src/get_map.i: src/get_map.c.i
+
+.PHONY : src/get_map.i
+
+# target to preprocess a source file
+src/get_map.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map.c.i
+.PHONY : src/get_map.c.i
+
+src/get_map.s: src/get_map.c.s
+
+.PHONY : src/get_map.s
+
+# target to generate assembly for a file
+src/get_map.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map.c.s
+.PHONY : src/get_map.c.s
+
+src/get_map_elems.o: src/get_map_elems.c.o
+
+.PHONY : src/get_map_elems.o
+
+# target to build an object file
+src/get_map_elems.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map_elems.c.o
+.PHONY : src/get_map_elems.c.o
+
+src/get_map_elems.i: src/get_map_elems.c.i
+
+.PHONY : src/get_map_elems.i
+
+# target to preprocess a source file
+src/get_map_elems.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map_elems.c.i
+.PHONY : src/get_map_elems.c.i
+
+src/get_map_elems.s: src/get_map_elems.c.s
+
+.PHONY : src/get_map_elems.s
+
+# target to generate assembly for a file
+src/get_map_elems.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map_elems.c.s
+.PHONY : src/get_map_elems.c.s
 
 src/get_next_line.o: src/get_next_line.c.o
 
@@ -2647,6 +2782,33 @@ src/grid_main.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/grid_main.c.s
 .PHONY : src/grid_main.c.s
 
+src/identify.o: src/identify.c.o
+
+.PHONY : src/identify.o
+
+# target to build an object file
+src/identify.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/identify.c.o
+.PHONY : src/identify.c.o
+
+src/identify.i: src/identify.c.i
+
+.PHONY : src/identify.i
+
+# target to preprocess a source file
+src/identify.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/identify.c.i
+.PHONY : src/identify.c.i
+
+src/identify.s: src/identify.c.s
+
+.PHONY : src/identify.s
+
+# target to generate assembly for a file
+src/identify.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/identify.c.s
+.PHONY : src/identify.c.s
+
 src/init_editor_buttons.o: src/init_editor_buttons.c.o
 
 .PHONY : src/init_editor_buttons.o
@@ -2673,6 +2835,33 @@ src/init_editor_buttons.s: src/init_editor_buttons.c.s
 src/init_editor_buttons.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/init_editor_buttons.c.s
 .PHONY : src/init_editor_buttons.c.s
+
+src/init_world.o: src/init_world.c.o
+
+.PHONY : src/init_world.o
+
+# target to build an object file
+src/init_world.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/init_world.c.o
+.PHONY : src/init_world.c.o
+
+src/init_world.i: src/init_world.c.i
+
+.PHONY : src/init_world.i
+
+# target to preprocess a source file
+src/init_world.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/init_world.c.i
+.PHONY : src/init_world.c.i
+
+src/init_world.s: src/init_world.c.s
+
+.PHONY : src/init_world.s
+
+# target to generate assembly for a file
+src/init_world.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/init_world.c.s
+.PHONY : src/init_world.c.s
 
 src/items.o: src/items.c.o
 
@@ -3052,6 +3241,87 @@ src/prog.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/prog.c.s
 .PHONY : src/prog.c.s
 
+src/read_assets_help.o: src/read_assets_help.c.o
+
+.PHONY : src/read_assets_help.o
+
+# target to build an object file
+src/read_assets_help.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_assets_help.c.o
+.PHONY : src/read_assets_help.c.o
+
+src/read_assets_help.i: src/read_assets_help.c.i
+
+.PHONY : src/read_assets_help.i
+
+# target to preprocess a source file
+src/read_assets_help.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_assets_help.c.i
+.PHONY : src/read_assets_help.c.i
+
+src/read_assets_help.s: src/read_assets_help.c.s
+
+.PHONY : src/read_assets_help.s
+
+# target to generate assembly for a file
+src/read_assets_help.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_assets_help.c.s
+.PHONY : src/read_assets_help.c.s
+
+src/read_levels.o: src/read_levels.c.o
+
+.PHONY : src/read_levels.o
+
+# target to build an object file
+src/read_levels.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_levels.c.o
+.PHONY : src/read_levels.c.o
+
+src/read_levels.i: src/read_levels.c.i
+
+.PHONY : src/read_levels.i
+
+# target to preprocess a source file
+src/read_levels.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_levels.c.i
+.PHONY : src/read_levels.c.i
+
+src/read_levels.s: src/read_levels.c.s
+
+.PHONY : src/read_levels.s
+
+# target to generate assembly for a file
+src/read_levels.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_levels.c.s
+.PHONY : src/read_levels.c.s
+
+src/read_line.o: src/read_line.c.o
+
+.PHONY : src/read_line.o
+
+# target to build an object file
+src/read_line.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_line.c.o
+.PHONY : src/read_line.c.o
+
+src/read_line.i: src/read_line.c.i
+
+.PHONY : src/read_line.i
+
+# target to preprocess a source file
+src/read_line.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_line.c.i
+.PHONY : src/read_line.c.i
+
+src/read_line.s: src/read_line.c.s
+
+.PHONY : src/read_line.s
+
+# target to generate assembly for a file
+src/read_line.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_line.c.s
+.PHONY : src/read_line.c.s
+
 src/render.o: src/render.c.o
 
 .PHONY : src/render.o
@@ -3322,6 +3592,33 @@ src/sdl_fun.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sdl_fun.c.s
 .PHONY : src/sdl_fun.c.s
 
+src/section.o: src/section.c.o
+
+.PHONY : src/section.o
+
+# target to build an object file
+src/section.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/section.c.o
+.PHONY : src/section.c.o
+
+src/section.i: src/section.c.i
+
+.PHONY : src/section.i
+
+# target to preprocess a source file
+src/section.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/section.c.i
+.PHONY : src/section.c.i
+
+src/section.s: src/section.c.s
+
+.PHONY : src/section.s
+
+# target to generate assembly for a file
+src/section.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/section.c.s
+.PHONY : src/section.c.s
+
 src/sector_logic.o: src/sector_logic.c.o
 
 .PHONY : src/sector_logic.o
@@ -3510,6 +3807,33 @@ src/textures.s: src/textures.c.s
 src/textures.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/textures.c.s
 .PHONY : src/textures.c.s
+
+src/update_media_sect.o: src/update_media_sect.c.o
+
+.PHONY : src/update_media_sect.o
+
+# target to build an object file
+src/update_media_sect.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/update_media_sect.c.o
+.PHONY : src/update_media_sect.c.o
+
+src/update_media_sect.i: src/update_media_sect.c.i
+
+.PHONY : src/update_media_sect.i
+
+# target to preprocess a source file
+src/update_media_sect.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/update_media_sect.c.i
+.PHONY : src/update_media_sect.c.i
+
+src/update_media_sect.s: src/update_media_sect.c.s
+
+.PHONY : src/update_media_sect.s
+
+# target to generate assembly for a file
+src/update_media_sect.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/update_media_sect.c.s
+.PHONY : src/update_media_sect.c.s
 
 src/update_sec.o: src/update_sec.c.o
 
@@ -3995,12 +4319,18 @@ help:
 	@echo "... src/drawing.o"
 	@echo "... src/drawing.i"
 	@echo "... src/drawing.s"
+	@echo "... src/drawing_help.o"
+	@echo "... src/drawing_help.i"
+	@echo "... src/drawing_help.s"
 	@echo "... src/edit_menu.o"
 	@echo "... src/edit_menu.i"
 	@echo "... src/edit_menu.s"
 	@echo "... src/edit_walls.o"
 	@echo "... src/edit_walls.i"
 	@echo "... src/edit_walls.s"
+	@echo "... src/edit_walls_help.o"
+	@echo "... src/edit_walls_help.i"
+	@echo "... src/edit_walls_help.s"
 	@echo "... src/edit_world.o"
 	@echo "... src/edit_world.i"
 	@echo "... src/edit_world.s"
@@ -4025,12 +4355,21 @@ help:
 	@echo "... src/find_in_media.o"
 	@echo "... src/find_in_media.i"
 	@echo "... src/find_in_media.s"
+	@echo "... src/free_media.o"
+	@echo "... src/free_media.i"
+	@echo "... src/free_media.s"
 	@echo "... src/get_assets.o"
 	@echo "... src/get_assets.i"
 	@echo "... src/get_assets.s"
 	@echo "... src/get_input.o"
 	@echo "... src/get_input.i"
 	@echo "... src/get_input.s"
+	@echo "... src/get_map.o"
+	@echo "... src/get_map.i"
+	@echo "... src/get_map.s"
+	@echo "... src/get_map_elems.o"
+	@echo "... src/get_map_elems.i"
+	@echo "... src/get_map_elems.s"
 	@echo "... src/get_next_line.o"
 	@echo "... src/get_next_line.i"
 	@echo "... src/get_next_line.s"
@@ -4043,9 +4382,15 @@ help:
 	@echo "... src/grid_main.o"
 	@echo "... src/grid_main.i"
 	@echo "... src/grid_main.s"
+	@echo "... src/identify.o"
+	@echo "... src/identify.i"
+	@echo "... src/identify.s"
 	@echo "... src/init_editor_buttons.o"
 	@echo "... src/init_editor_buttons.i"
 	@echo "... src/init_editor_buttons.s"
+	@echo "... src/init_world.o"
+	@echo "... src/init_world.i"
+	@echo "... src/init_world.s"
 	@echo "... src/items.o"
 	@echo "... src/items.i"
 	@echo "... src/items.s"
@@ -4088,6 +4433,15 @@ help:
 	@echo "... src/prog.o"
 	@echo "... src/prog.i"
 	@echo "... src/prog.s"
+	@echo "... src/read_assets_help.o"
+	@echo "... src/read_assets_help.i"
+	@echo "... src/read_assets_help.s"
+	@echo "... src/read_levels.o"
+	@echo "... src/read_levels.i"
+	@echo "... src/read_levels.s"
+	@echo "... src/read_line.o"
+	@echo "... src/read_line.i"
+	@echo "... src/read_line.s"
 	@echo "... src/render.o"
 	@echo "... src/render.i"
 	@echo "... src/render.s"
@@ -4118,6 +4472,9 @@ help:
 	@echo "... src/sdl_fun.o"
 	@echo "... src/sdl_fun.i"
 	@echo "... src/sdl_fun.s"
+	@echo "... src/section.o"
+	@echo "... src/section.i"
+	@echo "... src/section.s"
 	@echo "... src/sector_logic.o"
 	@echo "... src/sector_logic.i"
 	@echo "... src/sector_logic.s"
@@ -4139,6 +4496,9 @@ help:
 	@echo "... src/textures.o"
 	@echo "... src/textures.i"
 	@echo "... src/textures.s"
+	@echo "... src/update_media_sect.o"
+	@echo "... src/update_media_sect.i"
+	@echo "... src/update_media_sect.s"
 	@echo "... src/update_sec.o"
 	@echo "... src/update_sec.i"
 	@echo "... src/update_sec.s"

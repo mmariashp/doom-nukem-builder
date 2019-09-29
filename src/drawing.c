@@ -12,120 +12,80 @@
 
 #include "builder.h"
 
-int						add_start_vec(t_grid *grid, t_world *world, int *sector)
+int						add_start_vec(t_grid *g, t_world *w, int *sector)
 {
-	int 				id;
+	int					id;
 
 	id = -1;
-	if (!can_place_vec(grid->p[0], *world, grid))
+	if (!can_place_vec(g->p[0], *w, g))
 	{
-		grid->p[0] = (t_vec){ -1, -1 };
+		g->p[0] = (t_vec){ -1, -1 };
 		return (-1);
 	}
-	if (grid->nod[grid->p[0].x][grid->p[0].y] == NODE_EMPTY ||
-		(grid->nod[grid->p[0].x][grid->p[0].y] == NODE_FULL &&
-		 (id = find_vec(world->vecs, grid->p[0], world->n_v)) == -1))
+	if (g->nod[g->p[0].x][g->p[0].y] == -1 || (g->nod[g->p[0].x][g->p[0].y] == \
+	-2 && (id = find_vec(w->vecs, g->p[0], w->n_v)) == -1))
 	{
-		if (add_vec(&world->vecs, world->n_v, grid, 0) == FAIL)
+		if (add_vec(&w->vecs, (id = w->n_v++), g, 0) == FAIL)
 			return (-1);
-		id = world->n_v++;
 	}
 	if (id == -1)
 	{
-		grid->p[0] = (t_vec){ -1, -1 };
+		g->p[0] = (t_vec){ -1, -1 };
 		return (-1);
 	}
-	if (add_sector(&world->sec, world->n_s) == FAIL)
+	if (add_sector(&w->sec, (*sector = w->n_s++)) == FAIL)
 		return (-1);
-	*sector = world->n_s++;
-	if (add_sector_v(&world->sec[*sector].v, world->sec[*sector].n_v, id) == FAIL)
+	if (add_sector_v(&w->sec[*sector].v, w->sec[*sector].n_v++, id) == FAIL)
 		return (-1);
-	world->sec[*sector].n_v++;
 	return (id);
 }
 
+unsigned				get_walliddone(short *wall_id_done)
+{
+	wall_id_done[1] = -1;
+	wall_id_done[2] = FALSE;
+	wall_id_done[0] = -1;
+	return (TRUE);
+}
 
-
+unsigned				tmp_fun(int *f_s_l, t_grid *grid, t_world *world)
+{
+	f_s_l[2] = add_start_vec(grid, world, &f_s_l[1]);
+	f_s_l[0] = f_s_l[2];
+	return (TRUE);
+}
 
 void					add_to_media(t_grid *grid, t_world *world)
 {
-	static int	 		first_vector = -1;
-	static int	 		sector = -1;
-	static int	 		last_id = -1;
-	short 				wall;
-	short 				id;
-	short 				done;
+	static int			f_s_l[3] = { -1, -1, -1 };
+	short				wall_id_done[3];
 
-	if (!world || !grid)
+	if (!world || !grid || !get_walliddone(wall_id_done) || (grid->p[1].x != -1\
+	&& !(within(f_s_l[1], -1, world->n_s) && f_s_l[0] != -1)))
 		return ;
-	id = -1;
-	done = FALSE;
-	wall = -1;
-	if (grid->p[1].x == -1)
+	if (grid->p[1].x == -1 && tmp_fun(f_s_l, grid, world))
+		return ;
+	if (grid->nod[grid->p[1].x][grid->p[1].y] == NODE_FULL)
+		wall_id_done[1] = find_vec(world->vecs, grid->p[1], world->n_v);
+	if (wall_id_done[1] != f_s_l[0] && !can_place_vec(grid->p[1], *world, grid))
 	{
-		last_id = add_start_vec(grid, world, &sector);
-		first_vector = last_id;
-	}
-	else if (within(sector, -1, world->n_s) && first_vector != -1)
-	{
-//		add_second_vec(grid, world, &sector);
-		if (grid->nod[grid->p[1].x][grid->p[1].y] == NODE_FULL)
-			id = find_vec(world->vecs, grid->p[1], world->n_v);
-		if (id != first_vector && !can_place_vec(grid->p[1], *world, grid))
-		{
-			grid->p[1] = (t_vec){ -1, -1 };
-			return ;
-		}
-		if (id == -1 && grid->nod[grid->p[1].x][grid->p[1].y] == NODE_EMPTY)
-		{
-			if (add_vec(&world->vecs, world->n_v, grid, 1) == FAIL)
-				return ;
-			id = world->n_v++;
-		}
-		else
-		{
-			if (id == first_vector)
-				done = TRUE;
-			else if (id == -1 || already_in_sector(id, world->sec[sector].v, world->sec[sector].n_v))
-			{
-				grid->p[1] = (t_vec){ -1, -1 };
-				return ;
-			}
-			else if (grid->nod[world->vecs[last_id].x][world->vecs[last_id].y] == NODE_FULL &&
-					 grid->nod[world->vecs[id].x][world->vecs[id].y] == NODE_FULL)
-				wall = find_wall(last_id, id, world->walls, world->n_w);
-		}
-		if (wall == -1)
-		{
-			if (add_wall(&world->walls, world->n_w, last_id, id) == FAIL)
-				return ;
-			wall = world->n_w++;
-		}
-		if (add_secwall(&world->sec[sector].s_walls, world->sec[sector].n_w, wall) == FAIL)
-			return ;
-		world->sec[sector].n_w++;
-		if (add_sector_v(&world->sec[sector].v, world->sec[sector].n_v, id) == FAIL)
-			return ;
-		world->sec[sector].n_v++;
-		grid->p[0] = grid->p[1];
 		grid->p[1] = (t_vec){ -1, -1 };
-		last_id = id;
-	}
-	else
 		return ;
-	if (done == TRUE)
-	{
-		vec_set(grid->p, -1, -1, 2);
-		last_id = -1;
-		sector = -1;
-		first_vector = -1;
 	}
+	if (!(wall_id_done[1] == -1 && grid->nod[grid->p[1].x][grid->p[1].y] == -1))
+		fun_fun(wall_id_done, f_s_l, world, grid);
+	else if (add_vec(&world->vecs, (wall_id_done[1] = world->n_v++), grid, 1)\
+	== FAIL)
+		return ;
+	if (fun2(world, grid, wall_id_done, f_s_l) == FAIL)
+		return ;
+	done_condition(grid, f_s_l, wall_id_done[2]);
 }
 
-void 					drawing(t_world *world, t_prog *prog, t_grid *grid,
-		t_vec mouse)
+void					drawing(t_world *world, t_prog *prog, t_grid *grid, \
+t_vec mouse)
 {
-	int 				i;
+	int					i;
 	unsigned short		vis;
 
 	if (!world || !prog || !prog->modes || !grid)

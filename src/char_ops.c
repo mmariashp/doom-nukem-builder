@@ -28,7 +28,7 @@ char					*get_name(int i)
 	return (NULL);
 }
 
-char					*get_full_path(char *name, char *ext, char *path)
+char					*get_full_p(char *name, char *ext, char *path)
 {
 	char				*with_path;
 	char				*res;

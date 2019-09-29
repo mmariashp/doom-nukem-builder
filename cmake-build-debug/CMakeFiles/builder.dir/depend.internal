@@ -469,6 +469,58 @@ CMakeFiles/builder.dir/src/drawing.c.o
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
  /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
  /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/drawing_help.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/drawing_help.c
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
 CMakeFiles/builder.dir/src/edit_menu.c.o
  /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
@@ -525,6 +577,58 @@ CMakeFiles/builder.dir/src/edit_walls.c.o
  /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_walls.c
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/edit_walls_help.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_walls_help.c
  /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
@@ -989,6 +1093,58 @@ CMakeFiles/builder.dir/src/find_in_media.c.o
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
  /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
  /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/free_media.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/free_media.c
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
 CMakeFiles/builder.dir/src/get_assets.c.o
  /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
@@ -1045,6 +1201,110 @@ CMakeFiles/builder.dir/src/get_input.c.o
  /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/get_input.c
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/get_map.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_map.c
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/get_map_elems.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_map_elems.c
  /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
@@ -1253,11 +1513,115 @@ CMakeFiles/builder.dir/src/grid_main.c.o
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
  /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
  /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/identify.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/identify.c
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
 CMakeFiles/builder.dir/src/init_editor_buttons.c.o
  /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/init_editor_buttons.c
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/init_world.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/init_world.c
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
@@ -2033,6 +2397,162 @@ CMakeFiles/builder.dir/src/prog.c.o
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
  /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
  /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/read_assets_help.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/read_assets_help.c
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/read_levels.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/read_levels.c
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/read_line.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/read_line.c
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
 CMakeFiles/builder.dir/src/render.c.o
  /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
@@ -2553,6 +3073,58 @@ CMakeFiles/builder.dir/src/sdl_fun.c.o
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
  /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
  /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/section.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/section.c
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
 CMakeFiles/builder.dir/src/sector_logic.c.o
  /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
@@ -2917,6 +3489,58 @@ CMakeFiles/builder.dir/src/textures.c.o
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
  /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
  /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/update_media_sect.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/update_media_sect.c
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
 CMakeFiles/builder.dir/src/update_sec.c.o
  /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
@@ -3182,6 +3806,58 @@ CMakeFiles/builder.dir/src/vec_ops.c.o
  /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
  /Users/mshpakov/Desktop/doom-nukem-builder/src/vec_ops.c
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_audio.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_endian.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_error.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_events.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_hints.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_log.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_main.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_platform.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_power.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_quit.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rect.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_render.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_shape.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_surface.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_system.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_thread.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_timer.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_touch.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_version.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_video.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/begin_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/close_code.h
+ /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
+ /Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h
+CMakeFiles/builder.dir/src/write_level.c.o
+ /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
+ /Users/mshpakov/Desktop/doom-nukem-builder/src/write_level.c
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_assert.h
  /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h

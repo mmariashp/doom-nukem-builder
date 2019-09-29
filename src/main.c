@@ -42,7 +42,7 @@ unsigned				load_sdl_media(t_media *media, t_sdl *sdl)
 	i = 0;
 	while (i < media->n_t)
 	{
-		media->txtr[i].sdl_t = load_texture(media->txtr[i].full_path, \
+		media->txtr[i].sdl_t = load_texture(media->txtr[i].full_p, \
 		sdl->rend, &media->txtr[i].size);
 		if (!media->txtr[i].sdl_t)
 			return (FAIL);

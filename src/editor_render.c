@@ -60,7 +60,7 @@ void					render_item_info(t_media *m, t_sdl *sdl, t_mode *mod,
 	].n_s) && within((id = select_it(1, I_SELECT, 1)), -1, m->worlds[m->w\
 	].sec[s].n_it) && within((id = m->worlds[m->w].sec[s].items[id].id), -1,\
 	m->n_itf) && within(TXTR_RECY, -1, N_TXTR) && t[TXTR_RECY] &&
-	(tmp = get_full_path(m->it_f[id].name, "\"", "Name: \"")))
+	(tmp = get_full_p(m->it_f[id].name, "\"", "Name: \"")))
 	{
 		rend_box((b = (t_rec){ 20, 730, 350, 48 }), t[TXTR_RECY], sdl->rend);
 		write_txt(write_typ(m->it_f[id].type), sdl, (t_txtb){ b, 0, ED_CLR });
