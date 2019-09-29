@@ -1,6 +1,6 @@
-Count Vectors: 46
-Count Walls: 65
-Count Sectors: 19
+Count Vectors: 50
+Count Walls: 69
+Count Sectors: 20
 
 Vectors
 0) 54,9
@@ -49,38 +49,42 @@ Vectors
 43) 69,45
 44) 70,35
 45) 76,41
+46) 68,19
+47) 72,11
+48) 77,19
+49) 70,22
 
 Walls
 0) 0-1 filled 0
 1) 2-3 empty 0
 2) 2-4 filled 0
-3) 4-5 empty 0
+3) 5-4 empty 0
 4) 3-5 filled 0
 5) 6-4 filled 0
 6) 7-6 empty 0
 7) 5-7 filled 0
-8) 6-8 filled 0
+8) 8-6 filled 0
 9) 8-9 filled 0
 10) 9-10 filled 0
-11) 10-7 empty 0
-12) 11-10 filled 0
+11) 7-10 empty 0
+12) 10-11 filled 0
 13) 5-11 empty 0
 14) 11-12 filled 0
-15) 12-3 empty 0
-16) 13-12 filled 0
+15) 3-12 empty 0
+16) 12-13 filled 0
 17) 14-13 empty 0
 18) 3-14 filled 0
 19) 13-15 filled 0
-20) 15-16 empty 0
+20) 16-15 empty 0
 21) 14-16 filled 0
-22) 17-15 filled 0
+22) 15-17 filled 0
 23) 0-17 empty 0
 24) 16-0 filled 0
 25) 17-18 filled 0
 26) 18-19 filled 0
 27) 19-20 filled 0
-28) 20-1 empty 0
-29) 21-20 filled 0
+28) 1-20 empty 0
+29) 20-21 filled 0
 30) 22-21 empty 0
 31) 22-1 filled 0
 32) 24-23 empty 0
@@ -90,23 +94,23 @@ Walls
 36) 25-23 filled 0
 37) 25-21 filled 0
 38) 27-24 filled 0
-39) 26-27 filled 0
+39) 27-26 filled 0
 40) 23-26 filled 0
-41) 27-28 filled 0
-42) 28-29 filled 0
+41) 28-27 filled 0
+42) 29-28 filled 0
 43) 29-30 filled 0
-44) 30-31 filled 0
-45) 31-26 filled 0
+44) 31-30 filled 0
+45) 26-31 filled 0
 46) 21-33 filled 0
 47) 33-32 filled 0
 48) 32-25 filled 0
-49) 29-34 filled 0
-50) 34-35 filled 0
-51) 35-36 filled 0
+49) 34-29 filled 0
+50) 35-34 filled 0
+51) 36-35 filled 0
 52) 36-37 empty 0
-53) 37-30 filled 0
+53) 30-37 filled 0
 54) 37-39 filled 0
-55) 39-38 empty 0
+55) 38-39 empty 0
 56) 38-36 filled 0
 57) 39-40 filled 0
 58) 41-40 empty 0
@@ -116,11 +120,15 @@ Walls
 62) 45-41 filled 0
 63) 44-45 empty 0
 64) 40-44 filled 0
+65) 46-47 filled 0
+66) 47-48 filled 0
+67) 48-49 filled 0
+68) 49-46 filled 0
 
 Sectors
 0) fl(20 0) ceil(40 0) walls '2 3 4 1 ' items ''
 1) fl(18 0) ceil(38 0) walls '5 6 7 3 ' items ''
-2) fl(16 13) ceil(36 0) walls '8 9 10 11 6 ' items '(57,21 3)(59,20 7)(55,21 5)'
+2) fl(16 13) ceil(36 0) walls '8 9 10 11 6 ' items '(53,20 3)(59,20 7)(55,21 17)'
 3) fl(14 0) ceil(34 0) walls '12 13 7 11 ' items ''
 4) fl(12 0) ceil(32 0) walls '14 15 4 13 ' items ''
 5) fl(10 0) ceil(30 0) walls '16 17 18 15 ' items '(53,14 0)'
@@ -131,14 +139,15 @@ Sectors
 10) fl(22 0) ceil(42 0) walls '0 33 1 18 21 24 ' items '(59,12 0)(56,13 0)(55,10 0)'
 11) fl(0 0) ceil(0 0) walls '37 36 32 35 8 5 34 30 ' items ''
 12) fl(0 0) ceil(0 0) walls '40 39 38 32 ' items ''
-13) fl(10 0) ceil(0 0) walls '41 42 43 44 45 39 ' items ''
+13) fl(10 0) ceil(0 0) walls '39 45 44 43 42 41 ' items '(60,34 3)(61,28 4)(62,27 4)(62,31 2)'
 14) fl(0 0) ceil(0 0) walls '37 46 47 48 ' items ''
-15) fl(0 0) ceil(20 0) walls '43 53 52 51 50 49 ' items ''
+15) fl(0 0) ceil(20 0) walls '43 53 52 51 50 49 ' items '(66,40 3)'
 16) door fl(0 0) ceil(20 0) walls '52 54 55 56 ' items ''
-17) fl(0 0) ceil(20 0) walls '57 58 59 60 61 55 ' items ''
+17) fl(0 13) ceil(20 13) walls '57 58 59 60 61 55 ' items '(72,43 27)(71,40 16)'
 18) door fl(0 0) ceil(0 0) walls '64 63 62 58 ' items ''
+19) fl(0 0) ceil(20 0) walls '65 66 67 68 ' items ''
 
 Player
-0) 57,11 (sector: 10)  start
-1) 62,36 (sector: 13)  end
+0) 57,13 (sector: 10)  start
+1) 65,41 (sector: 15)  end
 

@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/clion-2019.2/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /opt/clion-2019.2/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/moosh/CLionProjects/builder
+CMAKE_SOURCE_DIR = /Users/mshpakov/Desktop/doom-nukem-builder
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/moosh/CLionProjects/builder/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/builder.dir/depend.make
@@ -57,724 +57,1006 @@ include CMakeFiles/builder.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/builder.dir/flags.make
 
-CMakeFiles/builder.dir/add_door.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/add_door.c.o: ../add_door.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/builder.dir/add_door.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/add_door.c.o   -c /home/moosh/CLionProjects/builder/add_door.c
-
-CMakeFiles/builder.dir/add_door.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/add_door.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/add_door.c > CMakeFiles/builder.dir/add_door.c.i
-
-CMakeFiles/builder.dir/add_door.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/add_door.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/add_door.c -o CMakeFiles/builder.dir/add_door.c.s
-
-CMakeFiles/builder.dir/add_to_media.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/add_to_media.c.o: ../add_to_media.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/builder.dir/add_to_media.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/add_to_media.c.o   -c /home/moosh/CLionProjects/builder/add_to_media.c
-
-CMakeFiles/builder.dir/add_to_media.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/add_to_media.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/add_to_media.c > CMakeFiles/builder.dir/add_to_media.c.i
-
-CMakeFiles/builder.dir/add_to_media.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/add_to_media.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/add_to_media.c -o CMakeFiles/builder.dir/add_to_media.c.s
-
-CMakeFiles/builder.dir/delete_sector.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/delete_sector.c.o: ../delete_sector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/builder.dir/delete_sector.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/delete_sector.c.o   -c /home/moosh/CLionProjects/builder/delete_sector.c
-
-CMakeFiles/builder.dir/delete_sector.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/delete_sector.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/delete_sector.c > CMakeFiles/builder.dir/delete_sector.c.i
-
-CMakeFiles/builder.dir/delete_sector.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/delete_sector.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/delete_sector.c -o CMakeFiles/builder.dir/delete_sector.c.s
-
-CMakeFiles/builder.dir/delete_vector.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/delete_vector.c.o: ../delete_vector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/builder.dir/delete_vector.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/delete_vector.c.o   -c /home/moosh/CLionProjects/builder/delete_vector.c
-
-CMakeFiles/builder.dir/delete_vector.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/delete_vector.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/delete_vector.c > CMakeFiles/builder.dir/delete_vector.c.i
-
-CMakeFiles/builder.dir/delete_vector.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/delete_vector.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/delete_vector.c -o CMakeFiles/builder.dir/delete_vector.c.s
-
-CMakeFiles/builder.dir/delete_world.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/delete_world.c.o: ../delete_world.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/builder.dir/delete_world.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/delete_world.c.o   -c /home/moosh/CLionProjects/builder/delete_world.c
-
-CMakeFiles/builder.dir/delete_world.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/delete_world.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/delete_world.c > CMakeFiles/builder.dir/delete_world.c.i
-
-CMakeFiles/builder.dir/delete_world.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/delete_world.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/delete_world.c -o CMakeFiles/builder.dir/delete_world.c.s
-
-CMakeFiles/builder.dir/drawing.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/drawing.c.o: ../drawing.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/builder.dir/drawing.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/drawing.c.o   -c /home/moosh/CLionProjects/builder/drawing.c
-
-CMakeFiles/builder.dir/drawing.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/drawing.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/drawing.c > CMakeFiles/builder.dir/drawing.c.i
-
-CMakeFiles/builder.dir/drawing.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/drawing.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/drawing.c -o CMakeFiles/builder.dir/drawing.c.s
-
-CMakeFiles/builder.dir/edit_door.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/edit_door.c.o: ../edit_door.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/builder.dir/edit_door.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/edit_door.c.o   -c /home/moosh/CLionProjects/builder/edit_door.c
-
-CMakeFiles/builder.dir/edit_door.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/edit_door.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/edit_door.c > CMakeFiles/builder.dir/edit_door.c.i
-
-CMakeFiles/builder.dir/edit_door.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/edit_door.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/edit_door.c -o CMakeFiles/builder.dir/edit_door.c.s
-
-CMakeFiles/builder.dir/edit_menu.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/edit_menu.c.o: ../edit_menu.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/builder.dir/edit_menu.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/edit_menu.c.o   -c /home/moosh/CLionProjects/builder/edit_menu.c
-
-CMakeFiles/builder.dir/edit_menu.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/edit_menu.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/edit_menu.c > CMakeFiles/builder.dir/edit_menu.c.i
-
-CMakeFiles/builder.dir/edit_menu.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/edit_menu.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/edit_menu.c -o CMakeFiles/builder.dir/edit_menu.c.s
-
-CMakeFiles/builder.dir/edit_walls.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/edit_walls.c.o: ../edit_walls.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/builder.dir/edit_walls.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/edit_walls.c.o   -c /home/moosh/CLionProjects/builder/edit_walls.c
-
-CMakeFiles/builder.dir/edit_walls.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/edit_walls.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/edit_walls.c > CMakeFiles/builder.dir/edit_walls.c.i
-
-CMakeFiles/builder.dir/edit_walls.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/edit_walls.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/edit_walls.c -o CMakeFiles/builder.dir/edit_walls.c.s
-
-CMakeFiles/builder.dir/editor.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/editor.c.o: ../editor.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/builder.dir/editor.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/editor.c.o   -c /home/moosh/CLionProjects/builder/editor.c
-
-CMakeFiles/builder.dir/editor.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/editor.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/editor.c > CMakeFiles/builder.dir/editor.c.i
-
-CMakeFiles/builder.dir/editor.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/editor.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/editor.c -o CMakeFiles/builder.dir/editor.c.s
-
-CMakeFiles/builder.dir/file_fun.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/file_fun.c.o: ../file_fun.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/builder.dir/file_fun.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/file_fun.c.o   -c /home/moosh/CLionProjects/builder/file_fun.c
-
-CMakeFiles/builder.dir/file_fun.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/file_fun.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/file_fun.c > CMakeFiles/builder.dir/file_fun.c.i
-
-CMakeFiles/builder.dir/file_fun.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/file_fun.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/file_fun.c -o CMakeFiles/builder.dir/file_fun.c.s
-
-CMakeFiles/builder.dir/fill_grid.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/fill_grid.c.o: ../fill_grid.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/builder.dir/fill_grid.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/fill_grid.c.o   -c /home/moosh/CLionProjects/builder/fill_grid.c
-
-CMakeFiles/builder.dir/fill_grid.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/fill_grid.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/fill_grid.c > CMakeFiles/builder.dir/fill_grid.c.i
-
-CMakeFiles/builder.dir/fill_grid.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/fill_grid.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/fill_grid.c -o CMakeFiles/builder.dir/fill_grid.c.s
-
-CMakeFiles/builder.dir/fill_polygon.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/fill_polygon.c.o: ../fill_polygon.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/builder.dir/fill_polygon.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/fill_polygon.c.o   -c /home/moosh/CLionProjects/builder/fill_polygon.c
-
-CMakeFiles/builder.dir/fill_polygon.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/fill_polygon.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/fill_polygon.c > CMakeFiles/builder.dir/fill_polygon.c.i
-
-CMakeFiles/builder.dir/fill_polygon.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/fill_polygon.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/fill_polygon.c -o CMakeFiles/builder.dir/fill_polygon.c.s
-
-CMakeFiles/builder.dir/find_in_media.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/find_in_media.c.o: ../find_in_media.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/builder.dir/find_in_media.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/find_in_media.c.o   -c /home/moosh/CLionProjects/builder/find_in_media.c
-
-CMakeFiles/builder.dir/find_in_media.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/find_in_media.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/find_in_media.c > CMakeFiles/builder.dir/find_in_media.c.i
-
-CMakeFiles/builder.dir/find_in_media.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/find_in_media.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/find_in_media.c -o CMakeFiles/builder.dir/find_in_media.c.s
-
-CMakeFiles/builder.dir/get_assets.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/get_assets.c.o: ../get_assets.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/builder.dir/get_assets.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/get_assets.c.o   -c /home/moosh/CLionProjects/builder/get_assets.c
-
-CMakeFiles/builder.dir/get_assets.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/get_assets.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/get_assets.c > CMakeFiles/builder.dir/get_assets.c.i
-
-CMakeFiles/builder.dir/get_assets.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/get_assets.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/get_assets.c -o CMakeFiles/builder.dir/get_assets.c.s
-
-CMakeFiles/builder.dir/get_input.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/get_input.c.o: ../get_input.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/builder.dir/get_input.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/get_input.c.o   -c /home/moosh/CLionProjects/builder/get_input.c
-
-CMakeFiles/builder.dir/get_input.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/get_input.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/get_input.c > CMakeFiles/builder.dir/get_input.c.i
-
-CMakeFiles/builder.dir/get_input.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/get_input.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/get_input.c -o CMakeFiles/builder.dir/get_input.c.s
-
-CMakeFiles/builder.dir/get_next_line.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/get_next_line.c.o: ../get_next_line.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/builder.dir/get_next_line.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/get_next_line.c.o   -c /home/moosh/CLionProjects/builder/get_next_line.c
-
-CMakeFiles/builder.dir/get_next_line.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/get_next_line.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/get_next_line.c > CMakeFiles/builder.dir/get_next_line.c.i
-
-CMakeFiles/builder.dir/get_next_line.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/get_next_line.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/get_next_line.c -o CMakeFiles/builder.dir/get_next_line.c.s
-
-CMakeFiles/builder.dir/get_sec_items.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/get_sec_items.c.o: ../get_sec_items.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/builder.dir/get_sec_items.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/get_sec_items.c.o   -c /home/moosh/CLionProjects/builder/get_sec_items.c
-
-CMakeFiles/builder.dir/get_sec_items.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/get_sec_items.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/get_sec_items.c > CMakeFiles/builder.dir/get_sec_items.c.i
-
-CMakeFiles/builder.dir/get_sec_items.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/get_sec_items.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/get_sec_items.c -o CMakeFiles/builder.dir/get_sec_items.c.s
-
-CMakeFiles/builder.dir/get_sec_v.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/get_sec_v.c.o: ../get_sec_v.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/builder.dir/get_sec_v.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/get_sec_v.c.o   -c /home/moosh/CLionProjects/builder/get_sec_v.c
-
-CMakeFiles/builder.dir/get_sec_v.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/get_sec_v.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/get_sec_v.c > CMakeFiles/builder.dir/get_sec_v.c.i
-
-CMakeFiles/builder.dir/get_sec_v.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/get_sec_v.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/get_sec_v.c -o CMakeFiles/builder.dir/get_sec_v.c.s
-
-CMakeFiles/builder.dir/grid_main.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/grid_main.c.o: ../grid_main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/builder.dir/grid_main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/grid_main.c.o   -c /home/moosh/CLionProjects/builder/grid_main.c
-
-CMakeFiles/builder.dir/grid_main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/grid_main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/grid_main.c > CMakeFiles/builder.dir/grid_main.c.i
-
-CMakeFiles/builder.dir/grid_main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/grid_main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/grid_main.c -o CMakeFiles/builder.dir/grid_main.c.s
-
-CMakeFiles/builder.dir/init_editor_buttons.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/init_editor_buttons.c.o: ../init_editor_buttons.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/builder.dir/init_editor_buttons.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/init_editor_buttons.c.o   -c /home/moosh/CLionProjects/builder/init_editor_buttons.c
-
-CMakeFiles/builder.dir/init_editor_buttons.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/init_editor_buttons.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/init_editor_buttons.c > CMakeFiles/builder.dir/init_editor_buttons.c.i
-
-CMakeFiles/builder.dir/init_editor_buttons.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/init_editor_buttons.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/init_editor_buttons.c -o CMakeFiles/builder.dir/init_editor_buttons.c.s
-
-CMakeFiles/builder.dir/items.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/items.c.o: ../items.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/builder.dir/items.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/items.c.o   -c /home/moosh/CLionProjects/builder/items.c
-
-CMakeFiles/builder.dir/items.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/items.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/items.c > CMakeFiles/builder.dir/items.c.i
-
-CMakeFiles/builder.dir/items.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/items.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/items.c -o CMakeFiles/builder.dir/items.c.s
-
-CMakeFiles/builder.dir/levels.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/levels.c.o: ../levels.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/builder.dir/levels.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/levels.c.o   -c /home/moosh/CLionProjects/builder/levels.c
-
-CMakeFiles/builder.dir/levels.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/levels.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/levels.c > CMakeFiles/builder.dir/levels.c.i
-
-CMakeFiles/builder.dir/levels.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/levels.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/levels.c -o CMakeFiles/builder.dir/levels.c.s
-
-CMakeFiles/builder.dir/line_math.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/line_math.c.o: ../line_math.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/builder.dir/line_math.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/line_math.c.o   -c /home/moosh/CLionProjects/builder/line_math.c
-
-CMakeFiles/builder.dir/line_math.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/line_math.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/line_math.c > CMakeFiles/builder.dir/line_math.c.i
-
-CMakeFiles/builder.dir/line_math.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/line_math.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/line_math.c -o CMakeFiles/builder.dir/line_math.c.s
-
-CMakeFiles/builder.dir/main.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/builder.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/main.c.o   -c /home/moosh/CLionProjects/builder/main.c
-
-CMakeFiles/builder.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/main.c > CMakeFiles/builder.dir/main.c.i
-
-CMakeFiles/builder.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/main.c -o CMakeFiles/builder.dir/main.c.s
-
-CMakeFiles/builder.dir/main_menu.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/main_menu.c.o: ../main_menu.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/builder.dir/main_menu.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/main_menu.c.o   -c /home/moosh/CLionProjects/builder/main_menu.c
-
-CMakeFiles/builder.dir/main_menu.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/main_menu.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/main_menu.c > CMakeFiles/builder.dir/main_menu.c.i
-
-CMakeFiles/builder.dir/main_menu.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/main_menu.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/main_menu.c -o CMakeFiles/builder.dir/main_menu.c.s
-
-CMakeFiles/builder.dir/manage_btn.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/manage_btn.c.o: ../manage_btn.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/builder.dir/manage_btn.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/manage_btn.c.o   -c /home/moosh/CLionProjects/builder/manage_btn.c
-
-CMakeFiles/builder.dir/manage_btn.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/manage_btn.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/manage_btn.c > CMakeFiles/builder.dir/manage_btn.c.i
-
-CMakeFiles/builder.dir/manage_btn.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/manage_btn.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/manage_btn.c -o CMakeFiles/builder.dir/manage_btn.c.s
-
-CMakeFiles/builder.dir/math.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/math.c.o: ../math.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/builder.dir/math.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/math.c.o   -c /home/moosh/CLionProjects/builder/math.c
-
-CMakeFiles/builder.dir/math.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/math.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/math.c > CMakeFiles/builder.dir/math.c.i
-
-CMakeFiles/builder.dir/math.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/math.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/math.c -o CMakeFiles/builder.dir/math.c.s
-
-CMakeFiles/builder.dir/memory_fun.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/memory_fun.c.o: ../memory_fun.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/builder.dir/memory_fun.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/memory_fun.c.o   -c /home/moosh/CLionProjects/builder/memory_fun.c
-
-CMakeFiles/builder.dir/memory_fun.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/memory_fun.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/memory_fun.c > CMakeFiles/builder.dir/memory_fun.c.i
-
-CMakeFiles/builder.dir/memory_fun.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/memory_fun.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/memory_fun.c -o CMakeFiles/builder.dir/memory_fun.c.s
-
-CMakeFiles/builder.dir/modes.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/modes.c.o: ../modes.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/builder.dir/modes.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/modes.c.o   -c /home/moosh/CLionProjects/builder/modes.c
-
-CMakeFiles/builder.dir/modes.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/modes.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/modes.c > CMakeFiles/builder.dir/modes.c.i
-
-CMakeFiles/builder.dir/modes.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/modes.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/modes.c -o CMakeFiles/builder.dir/modes.c.s
-
-CMakeFiles/builder.dir/move.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/move.c.o: ../move.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/builder.dir/move.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/move.c.o   -c /home/moosh/CLionProjects/builder/move.c
-
-CMakeFiles/builder.dir/move.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/move.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/move.c > CMakeFiles/builder.dir/move.c.i
-
-CMakeFiles/builder.dir/move.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/move.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/move.c -o CMakeFiles/builder.dir/move.c.s
-
-CMakeFiles/builder.dir/prog.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/prog.c.o: ../prog.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/builder.dir/prog.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/prog.c.o   -c /home/moosh/CLionProjects/builder/prog.c
-
-CMakeFiles/builder.dir/prog.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/prog.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/prog.c > CMakeFiles/builder.dir/prog.c.i
-
-CMakeFiles/builder.dir/prog.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/prog.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/prog.c -o CMakeFiles/builder.dir/prog.c.s
-
-CMakeFiles/builder.dir/render.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/render.c.o: ../render.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/builder.dir/render.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/render.c.o   -c /home/moosh/CLionProjects/builder/render.c
-
-CMakeFiles/builder.dir/render.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/render.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/render.c > CMakeFiles/builder.dir/render.c.i
-
-CMakeFiles/builder.dir/render.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/render.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/render.c -o CMakeFiles/builder.dir/render.c.s
-
-CMakeFiles/builder.dir/render_btn.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/render_btn.c.o: ../render_btn.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/builder.dir/render_btn.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/render_btn.c.o   -c /home/moosh/CLionProjects/builder/render_btn.c
-
-CMakeFiles/builder.dir/render_btn.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/render_btn.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/render_btn.c > CMakeFiles/builder.dir/render_btn.c.i
-
-CMakeFiles/builder.dir/render_btn.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/render_btn.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/render_btn.c -o CMakeFiles/builder.dir/render_btn.c.s
-
-CMakeFiles/builder.dir/render_grid.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/render_grid.c.o: ../render_grid.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/builder.dir/render_grid.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/render_grid.c.o   -c /home/moosh/CLionProjects/builder/render_grid.c
-
-CMakeFiles/builder.dir/render_grid.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/render_grid.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/render_grid.c > CMakeFiles/builder.dir/render_grid.c.i
-
-CMakeFiles/builder.dir/render_grid.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/render_grid.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/render_grid.c -o CMakeFiles/builder.dir/render_grid.c.s
-
-CMakeFiles/builder.dir/rewrite.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/rewrite.c.o: ../rewrite.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/builder.dir/rewrite.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/rewrite.c.o   -c /home/moosh/CLionProjects/builder/rewrite.c
-
-CMakeFiles/builder.dir/rewrite.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/rewrite.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/rewrite.c > CMakeFiles/builder.dir/rewrite.c.i
-
-CMakeFiles/builder.dir/rewrite.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/rewrite.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/rewrite.c -o CMakeFiles/builder.dir/rewrite.c.s
-
-CMakeFiles/builder.dir/sdl_fun.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/sdl_fun.c.o: ../sdl_fun.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/builder.dir/sdl_fun.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/sdl_fun.c.o   -c /home/moosh/CLionProjects/builder/sdl_fun.c
-
-CMakeFiles/builder.dir/sdl_fun.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/sdl_fun.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/sdl_fun.c > CMakeFiles/builder.dir/sdl_fun.c.i
-
-CMakeFiles/builder.dir/sdl_fun.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/sdl_fun.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/sdl_fun.c -o CMakeFiles/builder.dir/sdl_fun.c.s
-
-CMakeFiles/builder.dir/sector_logic.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/sector_logic.c.o: ../sector_logic.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/builder.dir/sector_logic.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/sector_logic.c.o   -c /home/moosh/CLionProjects/builder/sector_logic.c
-
-CMakeFiles/builder.dir/sector_logic.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/sector_logic.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/sector_logic.c > CMakeFiles/builder.dir/sector_logic.c.i
-
-CMakeFiles/builder.dir/sector_logic.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/sector_logic.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/sector_logic.c -o CMakeFiles/builder.dir/sector_logic.c.s
-
-CMakeFiles/builder.dir/sel_item.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/sel_item.c.o: ../sel_item.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/builder.dir/sel_item.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/sel_item.c.o   -c /home/moosh/CLionProjects/builder/sel_item.c
-
-CMakeFiles/builder.dir/sel_item.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/sel_item.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/sel_item.c > CMakeFiles/builder.dir/sel_item.c.i
-
-CMakeFiles/builder.dir/sel_item.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/sel_item.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/sel_item.c -o CMakeFiles/builder.dir/sel_item.c.s
-
-CMakeFiles/builder.dir/sort.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/sort.c.o: ../sort.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/builder.dir/sort.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/sort.c.o   -c /home/moosh/CLionProjects/builder/sort.c
-
-CMakeFiles/builder.dir/sort.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/sort.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/sort.c > CMakeFiles/builder.dir/sort.c.i
-
-CMakeFiles/builder.dir/sort.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/sort.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/sort.c -o CMakeFiles/builder.dir/sort.c.s
-
-CMakeFiles/builder.dir/states.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/states.c.o: ../states.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/builder.dir/states.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/states.c.o   -c /home/moosh/CLionProjects/builder/states.c
-
-CMakeFiles/builder.dir/states.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/states.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/states.c > CMakeFiles/builder.dir/states.c.i
-
-CMakeFiles/builder.dir/states.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/states.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/states.c -o CMakeFiles/builder.dir/states.c.s
-
-CMakeFiles/builder.dir/textures.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/textures.c.o: ../textures.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/builder.dir/textures.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/textures.c.o   -c /home/moosh/CLionProjects/builder/textures.c
-
-CMakeFiles/builder.dir/textures.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/textures.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/textures.c > CMakeFiles/builder.dir/textures.c.i
-
-CMakeFiles/builder.dir/textures.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/textures.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/textures.c -o CMakeFiles/builder.dir/textures.c.s
-
-CMakeFiles/builder.dir/useful.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/useful.c.o: ../useful.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/builder.dir/useful.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/useful.c.o   -c /home/moosh/CLionProjects/builder/useful.c
-
-CMakeFiles/builder.dir/useful.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/useful.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/useful.c > CMakeFiles/builder.dir/useful.c.i
-
-CMakeFiles/builder.dir/useful.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/useful.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/useful.c -o CMakeFiles/builder.dir/useful.c.s
-
-CMakeFiles/builder.dir/validate_media.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/validate_media.c.o: ../validate_media.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/builder.dir/validate_media.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/validate_media.c.o   -c /home/moosh/CLionProjects/builder/validate_media.c
-
-CMakeFiles/builder.dir/validate_media.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/validate_media.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/validate_media.c > CMakeFiles/builder.dir/validate_media.c.i
-
-CMakeFiles/builder.dir/validate_media.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/validate_media.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/validate_media.c -o CMakeFiles/builder.dir/validate_media.c.s
-
-CMakeFiles/builder.dir/values.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/values.c.o: ../values.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/builder.dir/values.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/values.c.o   -c /home/moosh/CLionProjects/builder/values.c
-
-CMakeFiles/builder.dir/values.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/values.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/values.c > CMakeFiles/builder.dir/values.c.i
-
-CMakeFiles/builder.dir/values.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/values.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/values.c -o CMakeFiles/builder.dir/values.c.s
-
-CMakeFiles/builder.dir/vec_ops.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/vec_ops.c.o: ../vec_ops.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/builder.dir/vec_ops.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/vec_ops.c.o   -c /home/moosh/CLionProjects/builder/vec_ops.c
-
-CMakeFiles/builder.dir/vec_ops.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/vec_ops.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/vec_ops.c > CMakeFiles/builder.dir/vec_ops.c.i
-
-CMakeFiles/builder.dir/vec_ops.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/vec_ops.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/vec_ops.c -o CMakeFiles/builder.dir/vec_ops.c.s
-
-CMakeFiles/builder.dir/zoom.c.o: CMakeFiles/builder.dir/flags.make
-CMakeFiles/builder.dir/zoom.c.o: ../zoom.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/builder.dir/zoom.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/zoom.c.o   -c /home/moosh/CLionProjects/builder/zoom.c
-
-CMakeFiles/builder.dir/zoom.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/zoom.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/moosh/CLionProjects/builder/zoom.c > CMakeFiles/builder.dir/zoom.c.i
-
-CMakeFiles/builder.dir/zoom.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/zoom.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/moosh/CLionProjects/builder/zoom.c -o CMakeFiles/builder.dir/zoom.c.s
+CMakeFiles/builder.dir/src/sdl_fun.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/sdl_fun.c.o: ../src/sdl_fun.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/builder.dir/src/sdl_fun.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/sdl_fun.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/sdl_fun.c
+
+CMakeFiles/builder.dir/src/sdl_fun.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/sdl_fun.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/sdl_fun.c > CMakeFiles/builder.dir/src/sdl_fun.c.i
+
+CMakeFiles/builder.dir/src/sdl_fun.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/sdl_fun.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/sdl_fun.c -o CMakeFiles/builder.dir/src/sdl_fun.c.s
+
+CMakeFiles/builder.dir/src/main_menu.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/main_menu.c.o: ../src/main_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/builder.dir/src/main_menu.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/main_menu.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/main_menu.c
+
+CMakeFiles/builder.dir/src/main_menu.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/main_menu.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/main_menu.c > CMakeFiles/builder.dir/src/main_menu.c.i
+
+CMakeFiles/builder.dir/src/main_menu.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/main_menu.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/main_menu.c -o CMakeFiles/builder.dir/src/main_menu.c.s
+
+CMakeFiles/builder.dir/src/main.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/main.c.o: ../src/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/builder.dir/src/main.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/main.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/main.c
+
+CMakeFiles/builder.dir/src/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/main.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/main.c > CMakeFiles/builder.dir/src/main.c.i
+
+CMakeFiles/builder.dir/src/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/main.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/main.c -o CMakeFiles/builder.dir/src/main.c.s
+
+CMakeFiles/builder.dir/src/levels.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/levels.c.o: ../src/levels.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/builder.dir/src/levels.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/levels.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/levels.c
+
+CMakeFiles/builder.dir/src/levels.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/levels.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/levels.c > CMakeFiles/builder.dir/src/levels.c.i
+
+CMakeFiles/builder.dir/src/levels.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/levels.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/levels.c -o CMakeFiles/builder.dir/src/levels.c.s
+
+CMakeFiles/builder.dir/src/get_assets.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/get_assets.c.o: ../src/get_assets.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/builder.dir/src/get_assets.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/get_assets.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/get_assets.c
+
+CMakeFiles/builder.dir/src/get_assets.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/get_assets.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/get_assets.c > CMakeFiles/builder.dir/src/get_assets.c.i
+
+CMakeFiles/builder.dir/src/get_assets.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/get_assets.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/get_assets.c -o CMakeFiles/builder.dir/src/get_assets.c.s
+
+CMakeFiles/builder.dir/src/get_next_line.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/get_next_line.c.o: ../src/get_next_line.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/builder.dir/src/get_next_line.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/get_next_line.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.c
+
+CMakeFiles/builder.dir/src/get_next_line.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/get_next_line.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.c > CMakeFiles/builder.dir/src/get_next_line.c.i
+
+CMakeFiles/builder.dir/src/get_next_line.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/get_next_line.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.c -o CMakeFiles/builder.dir/src/get_next_line.c.s
+
+CMakeFiles/builder.dir/src/render.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/render.c.o: ../src/render.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/builder.dir/src/render.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/render.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/render.c
+
+CMakeFiles/builder.dir/src/render.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/render.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/render.c > CMakeFiles/builder.dir/src/render.c.i
+
+CMakeFiles/builder.dir/src/render.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/render.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/render.c -o CMakeFiles/builder.dir/src/render.c.s
+
+CMakeFiles/builder.dir/src/modes.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/modes.c.o: ../src/modes.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/builder.dir/src/modes.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/modes.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/modes.c
+
+CMakeFiles/builder.dir/src/modes.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/modes.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/modes.c > CMakeFiles/builder.dir/src/modes.c.i
+
+CMakeFiles/builder.dir/src/modes.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/modes.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/modes.c -o CMakeFiles/builder.dir/src/modes.c.s
+
+CMakeFiles/builder.dir/src/math.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/math.c.o: ../src/math.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/builder.dir/src/math.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/math.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/math.c
+
+CMakeFiles/builder.dir/src/math.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/math.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/math.c > CMakeFiles/builder.dir/src/math.c.i
+
+CMakeFiles/builder.dir/src/math.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/math.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/math.c -o CMakeFiles/builder.dir/src/math.c.s
+
+CMakeFiles/builder.dir/src/rewrite.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/rewrite.c.o: ../src/rewrite.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/builder.dir/src/rewrite.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/rewrite.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/rewrite.c
+
+CMakeFiles/builder.dir/src/rewrite.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/rewrite.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/rewrite.c > CMakeFiles/builder.dir/src/rewrite.c.i
+
+CMakeFiles/builder.dir/src/rewrite.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/rewrite.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/rewrite.c -o CMakeFiles/builder.dir/src/rewrite.c.s
+
+CMakeFiles/builder.dir/src/render_grid.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/render_grid.c.o: ../src/render_grid.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/builder.dir/src/render_grid.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/render_grid.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/render_grid.c
+
+CMakeFiles/builder.dir/src/render_grid.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/render_grid.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/render_grid.c > CMakeFiles/builder.dir/src/render_grid.c.i
+
+CMakeFiles/builder.dir/src/render_grid.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/render_grid.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/render_grid.c -o CMakeFiles/builder.dir/src/render_grid.c.s
+
+CMakeFiles/builder.dir/src/fill_polygon.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/fill_polygon.c.o: ../src/fill_polygon.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/builder.dir/src/fill_polygon.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/fill_polygon.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/fill_polygon.c
+
+CMakeFiles/builder.dir/src/fill_polygon.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/fill_polygon.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/fill_polygon.c > CMakeFiles/builder.dir/src/fill_polygon.c.i
+
+CMakeFiles/builder.dir/src/fill_polygon.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/fill_polygon.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/fill_polygon.c -o CMakeFiles/builder.dir/src/fill_polygon.c.s
+
+CMakeFiles/builder.dir/src/editor.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/editor.c.o: ../src/editor.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/builder.dir/src/editor.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/editor.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/editor.c
+
+CMakeFiles/builder.dir/src/editor.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/editor.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/editor.c > CMakeFiles/builder.dir/src/editor.c.i
+
+CMakeFiles/builder.dir/src/editor.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/editor.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/editor.c -o CMakeFiles/builder.dir/src/editor.c.s
+
+CMakeFiles/builder.dir/src/prog.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/prog.c.o: ../src/prog.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/builder.dir/src/prog.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/prog.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/prog.c
+
+CMakeFiles/builder.dir/src/prog.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/prog.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/prog.c > CMakeFiles/builder.dir/src/prog.c.i
+
+CMakeFiles/builder.dir/src/prog.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/prog.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/prog.c -o CMakeFiles/builder.dir/src/prog.c.s
+
+CMakeFiles/builder.dir/src/add_to_media.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/add_to_media.c.o: ../src/add_to_media.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/builder.dir/src/add_to_media.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/add_to_media.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/add_to_media.c
+
+CMakeFiles/builder.dir/src/add_to_media.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/add_to_media.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/add_to_media.c > CMakeFiles/builder.dir/src/add_to_media.c.i
+
+CMakeFiles/builder.dir/src/add_to_media.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/add_to_media.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/add_to_media.c -o CMakeFiles/builder.dir/src/add_to_media.c.s
+
+CMakeFiles/builder.dir/src/zoom.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/zoom.c.o: ../src/zoom.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/builder.dir/src/zoom.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/zoom.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/zoom.c
+
+CMakeFiles/builder.dir/src/zoom.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/zoom.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/zoom.c > CMakeFiles/builder.dir/src/zoom.c.i
+
+CMakeFiles/builder.dir/src/zoom.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/zoom.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/zoom.c -o CMakeFiles/builder.dir/src/zoom.c.s
+
+CMakeFiles/builder.dir/src/textures.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/textures.c.o: ../src/textures.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/builder.dir/src/textures.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/textures.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/textures.c
+
+CMakeFiles/builder.dir/src/textures.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/textures.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/textures.c > CMakeFiles/builder.dir/src/textures.c.i
+
+CMakeFiles/builder.dir/src/textures.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/textures.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/textures.c -o CMakeFiles/builder.dir/src/textures.c.s
+
+CMakeFiles/builder.dir/src/useful.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/useful.c.o: ../src/useful.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/builder.dir/src/useful.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/useful.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/useful.c
+
+CMakeFiles/builder.dir/src/useful.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/useful.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/useful.c > CMakeFiles/builder.dir/src/useful.c.i
+
+CMakeFiles/builder.dir/src/useful.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/useful.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/useful.c -o CMakeFiles/builder.dir/src/useful.c.s
+
+CMakeFiles/builder.dir/src/move.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/move.c.o: ../src/move.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/builder.dir/src/move.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/move.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/move.c
+
+CMakeFiles/builder.dir/src/move.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/move.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/move.c > CMakeFiles/builder.dir/src/move.c.i
+
+CMakeFiles/builder.dir/src/move.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/move.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/move.c -o CMakeFiles/builder.dir/src/move.c.s
+
+CMakeFiles/builder.dir/src/edit_menu.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/edit_menu.c.o: ../src/edit_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/builder.dir/src/edit_menu.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/edit_menu.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_menu.c
+
+CMakeFiles/builder.dir/src/edit_menu.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/edit_menu.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_menu.c > CMakeFiles/builder.dir/src/edit_menu.c.i
+
+CMakeFiles/builder.dir/src/edit_menu.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/edit_menu.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_menu.c -o CMakeFiles/builder.dir/src/edit_menu.c.s
+
+CMakeFiles/builder.dir/src/values.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/values.c.o: ../src/values.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/builder.dir/src/values.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/values.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/values.c
+
+CMakeFiles/builder.dir/src/values.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/values.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/values.c > CMakeFiles/builder.dir/src/values.c.i
+
+CMakeFiles/builder.dir/src/values.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/values.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/values.c -o CMakeFiles/builder.dir/src/values.c.s
+
+CMakeFiles/builder.dir/src/init_editor_buttons.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/init_editor_buttons.c.o: ../src/init_editor_buttons.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/builder.dir/src/init_editor_buttons.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/init_editor_buttons.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/init_editor_buttons.c
+
+CMakeFiles/builder.dir/src/init_editor_buttons.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/init_editor_buttons.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/init_editor_buttons.c > CMakeFiles/builder.dir/src/init_editor_buttons.c.i
+
+CMakeFiles/builder.dir/src/init_editor_buttons.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/init_editor_buttons.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/init_editor_buttons.c -o CMakeFiles/builder.dir/src/init_editor_buttons.c.s
+
+CMakeFiles/builder.dir/src/edit_walls.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/edit_walls.c.o: ../src/edit_walls.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/builder.dir/src/edit_walls.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/edit_walls.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_walls.c
+
+CMakeFiles/builder.dir/src/edit_walls.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/edit_walls.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_walls.c > CMakeFiles/builder.dir/src/edit_walls.c.i
+
+CMakeFiles/builder.dir/src/edit_walls.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/edit_walls.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_walls.c -o CMakeFiles/builder.dir/src/edit_walls.c.s
+
+CMakeFiles/builder.dir/src/items.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/items.c.o: ../src/items.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/builder.dir/src/items.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/items.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/items.c
+
+CMakeFiles/builder.dir/src/items.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/items.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/items.c > CMakeFiles/builder.dir/src/items.c.i
+
+CMakeFiles/builder.dir/src/items.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/items.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/items.c -o CMakeFiles/builder.dir/src/items.c.s
+
+CMakeFiles/builder.dir/src/sel_item.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/sel_item.c.o: ../src/sel_item.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/builder.dir/src/sel_item.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/sel_item.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/sel_item.c
+
+CMakeFiles/builder.dir/src/sel_item.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/sel_item.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/sel_item.c > CMakeFiles/builder.dir/src/sel_item.c.i
+
+CMakeFiles/builder.dir/src/sel_item.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/sel_item.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/sel_item.c -o CMakeFiles/builder.dir/src/sel_item.c.s
+
+CMakeFiles/builder.dir/src/fill_grid.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/fill_grid.c.o: ../src/fill_grid.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/builder.dir/src/fill_grid.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/fill_grid.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/fill_grid.c
+
+CMakeFiles/builder.dir/src/fill_grid.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/fill_grid.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/fill_grid.c > CMakeFiles/builder.dir/src/fill_grid.c.i
+
+CMakeFiles/builder.dir/src/fill_grid.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/fill_grid.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/fill_grid.c -o CMakeFiles/builder.dir/src/fill_grid.c.s
+
+CMakeFiles/builder.dir/src/grid_main.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/grid_main.c.o: ../src/grid_main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/builder.dir/src/grid_main.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/grid_main.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/grid_main.c
+
+CMakeFiles/builder.dir/src/grid_main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/grid_main.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/grid_main.c > CMakeFiles/builder.dir/src/grid_main.c.i
+
+CMakeFiles/builder.dir/src/grid_main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/grid_main.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/grid_main.c -o CMakeFiles/builder.dir/src/grid_main.c.s
+
+CMakeFiles/builder.dir/src/find_in_media.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/find_in_media.c.o: ../src/find_in_media.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/builder.dir/src/find_in_media.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/find_in_media.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/find_in_media.c
+
+CMakeFiles/builder.dir/src/find_in_media.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/find_in_media.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/find_in_media.c > CMakeFiles/builder.dir/src/find_in_media.c.i
+
+CMakeFiles/builder.dir/src/find_in_media.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/find_in_media.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/find_in_media.c -o CMakeFiles/builder.dir/src/find_in_media.c.s
+
+CMakeFiles/builder.dir/src/sector_logic.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/sector_logic.c.o: ../src/sector_logic.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/builder.dir/src/sector_logic.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/sector_logic.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/sector_logic.c
+
+CMakeFiles/builder.dir/src/sector_logic.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/sector_logic.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/sector_logic.c > CMakeFiles/builder.dir/src/sector_logic.c.i
+
+CMakeFiles/builder.dir/src/sector_logic.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/sector_logic.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/sector_logic.c -o CMakeFiles/builder.dir/src/sector_logic.c.s
+
+CMakeFiles/builder.dir/src/delete_world.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/delete_world.c.o: ../src/delete_world.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/builder.dir/src/delete_world.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/delete_world.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_world.c
+
+CMakeFiles/builder.dir/src/delete_world.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/delete_world.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_world.c > CMakeFiles/builder.dir/src/delete_world.c.i
+
+CMakeFiles/builder.dir/src/delete_world.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/delete_world.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_world.c -o CMakeFiles/builder.dir/src/delete_world.c.s
+
+CMakeFiles/builder.dir/src/delete_sector.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/delete_sector.c.o: ../src/delete_sector.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/builder.dir/src/delete_sector.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/delete_sector.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_sector.c
+
+CMakeFiles/builder.dir/src/delete_sector.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/delete_sector.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_sector.c > CMakeFiles/builder.dir/src/delete_sector.c.i
+
+CMakeFiles/builder.dir/src/delete_sector.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/delete_sector.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_sector.c -o CMakeFiles/builder.dir/src/delete_sector.c.s
+
+CMakeFiles/builder.dir/src/validate_media.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/validate_media.c.o: ../src/validate_media.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/builder.dir/src/validate_media.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/validate_media.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/validate_media.c
+
+CMakeFiles/builder.dir/src/validate_media.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/validate_media.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/validate_media.c > CMakeFiles/builder.dir/src/validate_media.c.i
+
+CMakeFiles/builder.dir/src/validate_media.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/validate_media.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/validate_media.c -o CMakeFiles/builder.dir/src/validate_media.c.s
+
+CMakeFiles/builder.dir/src/file_fun.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/file_fun.c.o: ../src/file_fun.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/builder.dir/src/file_fun.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/file_fun.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/file_fun.c
+
+CMakeFiles/builder.dir/src/file_fun.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/file_fun.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/file_fun.c > CMakeFiles/builder.dir/src/file_fun.c.i
+
+CMakeFiles/builder.dir/src/file_fun.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/file_fun.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/file_fun.c -o CMakeFiles/builder.dir/src/file_fun.c.s
+
+CMakeFiles/builder.dir/src/memory_fun.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/memory_fun.c.o: ../src/memory_fun.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/builder.dir/src/memory_fun.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/memory_fun.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/memory_fun.c
+
+CMakeFiles/builder.dir/src/memory_fun.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/memory_fun.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/memory_fun.c > CMakeFiles/builder.dir/src/memory_fun.c.i
+
+CMakeFiles/builder.dir/src/memory_fun.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/memory_fun.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/memory_fun.c -o CMakeFiles/builder.dir/src/memory_fun.c.s
+
+CMakeFiles/builder.dir/src/line_math.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/line_math.c.o: ../src/line_math.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/builder.dir/src/line_math.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/line_math.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/line_math.c
+
+CMakeFiles/builder.dir/src/line_math.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/line_math.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/line_math.c > CMakeFiles/builder.dir/src/line_math.c.i
+
+CMakeFiles/builder.dir/src/line_math.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/line_math.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/line_math.c -o CMakeFiles/builder.dir/src/line_math.c.s
+
+CMakeFiles/builder.dir/src/vec_ops.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/vec_ops.c.o: ../src/vec_ops.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/builder.dir/src/vec_ops.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/vec_ops.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/vec_ops.c
+
+CMakeFiles/builder.dir/src/vec_ops.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/vec_ops.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/vec_ops.c > CMakeFiles/builder.dir/src/vec_ops.c.i
+
+CMakeFiles/builder.dir/src/vec_ops.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/vec_ops.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/vec_ops.c -o CMakeFiles/builder.dir/src/vec_ops.c.s
+
+CMakeFiles/builder.dir/src/render_btn.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/render_btn.c.o: ../src/render_btn.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/builder.dir/src/render_btn.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/render_btn.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/render_btn.c
+
+CMakeFiles/builder.dir/src/render_btn.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/render_btn.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/render_btn.c > CMakeFiles/builder.dir/src/render_btn.c.i
+
+CMakeFiles/builder.dir/src/render_btn.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/render_btn.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/render_btn.c -o CMakeFiles/builder.dir/src/render_btn.c.s
+
+CMakeFiles/builder.dir/src/manage_btn.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/manage_btn.c.o: ../src/manage_btn.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/builder.dir/src/manage_btn.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/manage_btn.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/manage_btn.c
+
+CMakeFiles/builder.dir/src/manage_btn.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/manage_btn.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/manage_btn.c > CMakeFiles/builder.dir/src/manage_btn.c.i
+
+CMakeFiles/builder.dir/src/manage_btn.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/manage_btn.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/manage_btn.c -o CMakeFiles/builder.dir/src/manage_btn.c.s
+
+CMakeFiles/builder.dir/src/delete_vector.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/delete_vector.c.o: ../src/delete_vector.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/builder.dir/src/delete_vector.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/delete_vector.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_vector.c
+
+CMakeFiles/builder.dir/src/delete_vector.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/delete_vector.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_vector.c > CMakeFiles/builder.dir/src/delete_vector.c.i
+
+CMakeFiles/builder.dir/src/delete_vector.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/delete_vector.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_vector.c -o CMakeFiles/builder.dir/src/delete_vector.c.s
+
+CMakeFiles/builder.dir/src/add_door.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/add_door.c.o: ../src/add_door.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/builder.dir/src/add_door.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/add_door.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/add_door.c
+
+CMakeFiles/builder.dir/src/add_door.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/add_door.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/add_door.c > CMakeFiles/builder.dir/src/add_door.c.i
+
+CMakeFiles/builder.dir/src/add_door.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/add_door.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/add_door.c -o CMakeFiles/builder.dir/src/add_door.c.s
+
+CMakeFiles/builder.dir/src/sort.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/sort.c.o: ../src/sort.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/builder.dir/src/sort.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/sort.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/sort.c
+
+CMakeFiles/builder.dir/src/sort.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/sort.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/sort.c > CMakeFiles/builder.dir/src/sort.c.i
+
+CMakeFiles/builder.dir/src/sort.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/sort.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/sort.c -o CMakeFiles/builder.dir/src/sort.c.s
+
+CMakeFiles/builder.dir/src/get_input.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/get_input.c.o: ../src/get_input.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/builder.dir/src/get_input.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/get_input.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/get_input.c
+
+CMakeFiles/builder.dir/src/get_input.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/get_input.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/get_input.c > CMakeFiles/builder.dir/src/get_input.c.i
+
+CMakeFiles/builder.dir/src/get_input.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/get_input.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/get_input.c -o CMakeFiles/builder.dir/src/get_input.c.s
+
+CMakeFiles/builder.dir/src/drawing.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/drawing.c.o: ../src/drawing.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/builder.dir/src/drawing.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/drawing.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/drawing.c
+
+CMakeFiles/builder.dir/src/drawing.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/drawing.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/drawing.c > CMakeFiles/builder.dir/src/drawing.c.i
+
+CMakeFiles/builder.dir/src/drawing.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/drawing.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/drawing.c -o CMakeFiles/builder.dir/src/drawing.c.s
+
+CMakeFiles/builder.dir/src/states.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/states.c.o: ../src/states.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/builder.dir/src/states.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/states.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/states.c
+
+CMakeFiles/builder.dir/src/states.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/states.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/states.c > CMakeFiles/builder.dir/src/states.c.i
+
+CMakeFiles/builder.dir/src/states.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/states.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/states.c -o CMakeFiles/builder.dir/src/states.c.s
+
+CMakeFiles/builder.dir/src/get_sec_v.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/get_sec_v.c.o: ../src/get_sec_v.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/builder.dir/src/get_sec_v.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/get_sec_v.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/get_sec_v.c
+
+CMakeFiles/builder.dir/src/get_sec_v.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/get_sec_v.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/get_sec_v.c > CMakeFiles/builder.dir/src/get_sec_v.c.i
+
+CMakeFiles/builder.dir/src/get_sec_v.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/get_sec_v.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/get_sec_v.c -o CMakeFiles/builder.dir/src/get_sec_v.c.s
+
+CMakeFiles/builder.dir/src/get_sec_items.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/get_sec_items.c.o: ../src/get_sec_items.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/builder.dir/src/get_sec_items.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/get_sec_items.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/get_sec_items.c
+
+CMakeFiles/builder.dir/src/get_sec_items.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/get_sec_items.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/get_sec_items.c > CMakeFiles/builder.dir/src/get_sec_items.c.i
+
+CMakeFiles/builder.dir/src/get_sec_items.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/get_sec_items.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/get_sec_items.c -o CMakeFiles/builder.dir/src/get_sec_items.c.s
+
+CMakeFiles/builder.dir/src/select_lit.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/select_lit.c.o: ../src/select_lit.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/builder.dir/src/select_lit.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/select_lit.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/select_lit.c
+
+CMakeFiles/builder.dir/src/select_lit.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/select_lit.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/select_lit.c > CMakeFiles/builder.dir/src/select_lit.c.i
+
+CMakeFiles/builder.dir/src/select_lit.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/select_lit.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/select_lit.c -o CMakeFiles/builder.dir/src/select_lit.c.s
+
+CMakeFiles/builder.dir/src/char_ops.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/char_ops.c.o: ../src/char_ops.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/builder.dir/src/char_ops.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/char_ops.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/char_ops.c
+
+CMakeFiles/builder.dir/src/char_ops.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/char_ops.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/char_ops.c > CMakeFiles/builder.dir/src/char_ops.c.i
+
+CMakeFiles/builder.dir/src/char_ops.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/char_ops.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/char_ops.c -o CMakeFiles/builder.dir/src/char_ops.c.s
+
+CMakeFiles/builder.dir/src/add_sector.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/add_sector.c.o: ../src/add_sector.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/builder.dir/src/add_sector.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/add_sector.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/add_sector.c
+
+CMakeFiles/builder.dir/src/add_sector.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/add_sector.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/add_sector.c > CMakeFiles/builder.dir/src/add_sector.c.i
+
+CMakeFiles/builder.dir/src/add_sector.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/add_sector.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/add_sector.c -o CMakeFiles/builder.dir/src/add_sector.c.s
+
+CMakeFiles/builder.dir/src/texture_edit.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/texture_edit.c.o: ../src/texture_edit.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/builder.dir/src/texture_edit.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/texture_edit.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/texture_edit.c
+
+CMakeFiles/builder.dir/src/texture_edit.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/texture_edit.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/texture_edit.c > CMakeFiles/builder.dir/src/texture_edit.c.i
+
+CMakeFiles/builder.dir/src/texture_edit.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/texture_edit.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/texture_edit.c -o CMakeFiles/builder.dir/src/texture_edit.c.s
+
+CMakeFiles/builder.dir/src/edit_world.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/edit_world.c.o: ../src/edit_world.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/builder.dir/src/edit_world.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/edit_world.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_world.c
+
+CMakeFiles/builder.dir/src/edit_world.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/edit_world.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_world.c > CMakeFiles/builder.dir/src/edit_world.c.i
+
+CMakeFiles/builder.dir/src/edit_world.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/edit_world.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/edit_world.c -o CMakeFiles/builder.dir/src/edit_world.c.s
+
+CMakeFiles/builder.dir/src/editor_render.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/editor_render.c.o: ../src/editor_render.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/builder.dir/src/editor_render.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/editor_render.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/editor_render.c
+
+CMakeFiles/builder.dir/src/editor_render.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/editor_render.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/editor_render.c > CMakeFiles/builder.dir/src/editor_render.c.i
+
+CMakeFiles/builder.dir/src/editor_render.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/editor_render.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/editor_render.c -o CMakeFiles/builder.dir/src/editor_render.c.s
+
+CMakeFiles/builder.dir/src/editor_update.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/editor_update.c.o: ../src/editor_update.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/builder.dir/src/editor_update.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/editor_update.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/editor_update.c
+
+CMakeFiles/builder.dir/src/editor_update.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/editor_update.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/editor_update.c > CMakeFiles/builder.dir/src/editor_update.c.i
+
+CMakeFiles/builder.dir/src/editor_update.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/editor_update.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/editor_update.c -o CMakeFiles/builder.dir/src/editor_update.c.s
+
+CMakeFiles/builder.dir/src/render_items.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/render_items.c.o: ../src/render_items.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/builder.dir/src/render_items.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/render_items.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/render_items.c
+
+CMakeFiles/builder.dir/src/render_items.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/render_items.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/render_items.c > CMakeFiles/builder.dir/src/render_items.c.i
+
+CMakeFiles/builder.dir/src/render_items.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/render_items.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/render_items.c -o CMakeFiles/builder.dir/src/render_items.c.s
+
+CMakeFiles/builder.dir/src/move_item.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/move_item.c.o: ../src/move_item.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/builder.dir/src/move_item.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/move_item.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/move_item.c
+
+CMakeFiles/builder.dir/src/move_item.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/move_item.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/move_item.c > CMakeFiles/builder.dir/src/move_item.c.i
+
+CMakeFiles/builder.dir/src/move_item.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/move_item.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/move_item.c -o CMakeFiles/builder.dir/src/move_item.c.s
+
+CMakeFiles/builder.dir/src/render_elements.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/render_elements.c.o: ../src/render_elements.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/builder.dir/src/render_elements.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/render_elements.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/render_elements.c
+
+CMakeFiles/builder.dir/src/render_elements.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/render_elements.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/render_elements.c > CMakeFiles/builder.dir/src/render_elements.c.i
+
+CMakeFiles/builder.dir/src/render_elements.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/render_elements.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/render_elements.c -o CMakeFiles/builder.dir/src/render_elements.c.s
+
+CMakeFiles/builder.dir/src/move_player.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/move_player.c.o: ../src/move_player.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/builder.dir/src/move_player.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/move_player.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/move_player.c
+
+CMakeFiles/builder.dir/src/move_player.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/move_player.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/move_player.c > CMakeFiles/builder.dir/src/move_player.c.i
+
+CMakeFiles/builder.dir/src/move_player.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/move_player.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/move_player.c -o CMakeFiles/builder.dir/src/move_player.c.s
+
+CMakeFiles/builder.dir/src/move_vector.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/move_vector.c.o: ../src/move_vector.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/builder.dir/src/move_vector.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/move_vector.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/move_vector.c
+
+CMakeFiles/builder.dir/src/move_vector.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/move_vector.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/move_vector.c > CMakeFiles/builder.dir/src/move_vector.c.i
+
+CMakeFiles/builder.dir/src/move_vector.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/move_vector.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/move_vector.c -o CMakeFiles/builder.dir/src/move_vector.c.s
+
+CMakeFiles/builder.dir/src/update_sec.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/update_sec.c.o: ../src/update_sec.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/builder.dir/src/update_sec.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/update_sec.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/update_sec.c
+
+CMakeFiles/builder.dir/src/update_sec.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/update_sec.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/update_sec.c > CMakeFiles/builder.dir/src/update_sec.c.i
+
+CMakeFiles/builder.dir/src/update_sec.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/update_sec.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/update_sec.c -o CMakeFiles/builder.dir/src/update_sec.c.s
+
+CMakeFiles/builder.dir/src/render_grid_iso.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/render_grid_iso.c.o: ../src/render_grid_iso.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/builder.dir/src/render_grid_iso.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/render_grid_iso.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/render_grid_iso.c
+
+CMakeFiles/builder.dir/src/render_grid_iso.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/render_grid_iso.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/render_grid_iso.c > CMakeFiles/builder.dir/src/render_grid_iso.c.i
+
+CMakeFiles/builder.dir/src/render_grid_iso.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/render_grid_iso.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/render_grid_iso.c -o CMakeFiles/builder.dir/src/render_grid_iso.c.s
+
+CMakeFiles/builder.dir/src/render_grid_elems.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/render_grid_elems.c.o: ../src/render_grid_elems.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/builder.dir/src/render_grid_elems.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/render_grid_elems.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/render_grid_elems.c
+
+CMakeFiles/builder.dir/src/render_grid_elems.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/render_grid_elems.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/render_grid_elems.c > CMakeFiles/builder.dir/src/render_grid_elems.c.i
+
+CMakeFiles/builder.dir/src/render_grid_elems.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/render_grid_elems.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/render_grid_elems.c -o CMakeFiles/builder.dir/src/render_grid_elems.c.s
+
+CMakeFiles/builder.dir/src/delete_useless.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/delete_useless.c.o: ../src/delete_useless.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/builder.dir/src/delete_useless.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/delete_useless.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_useless.c
+
+CMakeFiles/builder.dir/src/delete_useless.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/delete_useless.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_useless.c > CMakeFiles/builder.dir/src/delete_useless.c.i
+
+CMakeFiles/builder.dir/src/delete_useless.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/delete_useless.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/delete_useless.c -o CMakeFiles/builder.dir/src/delete_useless.c.s
+
+CMakeFiles/builder.dir/src/replace.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/replace.c.o: ../src/replace.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/builder.dir/src/replace.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/replace.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/replace.c
+
+CMakeFiles/builder.dir/src/replace.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/replace.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/replace.c > CMakeFiles/builder.dir/src/replace.c.i
+
+CMakeFiles/builder.dir/src/replace.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/replace.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/replace.c -o CMakeFiles/builder.dir/src/replace.c.s
+
+CMakeFiles/builder.dir/src/validate_clockwise.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/validate_clockwise.c.o: ../src/validate_clockwise.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/builder.dir/src/validate_clockwise.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/validate_clockwise.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/validate_clockwise.c
+
+CMakeFiles/builder.dir/src/validate_clockwise.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/validate_clockwise.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/validate_clockwise.c > CMakeFiles/builder.dir/src/validate_clockwise.c.i
+
+CMakeFiles/builder.dir/src/validate_clockwise.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/validate_clockwise.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/validate_clockwise.c -o CMakeFiles/builder.dir/src/validate_clockwise.c.s
+
+CMakeFiles/builder.dir/src/write_section.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/write_section.c.o: ../src/write_section.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/builder.dir/src/write_section.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/write_section.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/write_section.c
+
+CMakeFiles/builder.dir/src/write_section.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/write_section.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/write_section.c > CMakeFiles/builder.dir/src/write_section.c.i
+
+CMakeFiles/builder.dir/src/write_section.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/write_section.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/write_section.c -o CMakeFiles/builder.dir/src/write_section.c.s
+
+CMakeFiles/builder.dir/src/write_level.c.o: CMakeFiles/builder.dir/flags.make
+CMakeFiles/builder.dir/src/write_level.c.o: ../src/write_level.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/builder.dir/src/write_level.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/builder.dir/src/write_level.c.o   -c /Users/mshpakov/Desktop/doom-nukem-builder/src/write_level.c
+
+CMakeFiles/builder.dir/src/write_level.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/builder.dir/src/write_level.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshpakov/Desktop/doom-nukem-builder/src/write_level.c > CMakeFiles/builder.dir/src/write_level.c.i
+
+CMakeFiles/builder.dir/src/write_level.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/builder.dir/src/write_level.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshpakov/Desktop/doom-nukem-builder/src/write_level.c -o CMakeFiles/builder.dir/src/write_level.c.s
 
 # Object files for target builder
 builder_OBJECTS = \
-"CMakeFiles/builder.dir/add_door.c.o" \
-"CMakeFiles/builder.dir/add_to_media.c.o" \
-"CMakeFiles/builder.dir/delete_sector.c.o" \
-"CMakeFiles/builder.dir/delete_vector.c.o" \
-"CMakeFiles/builder.dir/delete_world.c.o" \
-"CMakeFiles/builder.dir/drawing.c.o" \
-"CMakeFiles/builder.dir/edit_door.c.o" \
-"CMakeFiles/builder.dir/edit_menu.c.o" \
-"CMakeFiles/builder.dir/edit_walls.c.o" \
-"CMakeFiles/builder.dir/editor.c.o" \
-"CMakeFiles/builder.dir/file_fun.c.o" \
-"CMakeFiles/builder.dir/fill_grid.c.o" \
-"CMakeFiles/builder.dir/fill_polygon.c.o" \
-"CMakeFiles/builder.dir/find_in_media.c.o" \
-"CMakeFiles/builder.dir/get_assets.c.o" \
-"CMakeFiles/builder.dir/get_input.c.o" \
-"CMakeFiles/builder.dir/get_next_line.c.o" \
-"CMakeFiles/builder.dir/get_sec_items.c.o" \
-"CMakeFiles/builder.dir/get_sec_v.c.o" \
-"CMakeFiles/builder.dir/grid_main.c.o" \
-"CMakeFiles/builder.dir/init_editor_buttons.c.o" \
-"CMakeFiles/builder.dir/items.c.o" \
-"CMakeFiles/builder.dir/levels.c.o" \
-"CMakeFiles/builder.dir/line_math.c.o" \
-"CMakeFiles/builder.dir/main.c.o" \
-"CMakeFiles/builder.dir/main_menu.c.o" \
-"CMakeFiles/builder.dir/manage_btn.c.o" \
-"CMakeFiles/builder.dir/math.c.o" \
-"CMakeFiles/builder.dir/memory_fun.c.o" \
-"CMakeFiles/builder.dir/modes.c.o" \
-"CMakeFiles/builder.dir/move.c.o" \
-"CMakeFiles/builder.dir/prog.c.o" \
-"CMakeFiles/builder.dir/render.c.o" \
-"CMakeFiles/builder.dir/render_btn.c.o" \
-"CMakeFiles/builder.dir/render_grid.c.o" \
-"CMakeFiles/builder.dir/rewrite.c.o" \
-"CMakeFiles/builder.dir/sdl_fun.c.o" \
-"CMakeFiles/builder.dir/sector_logic.c.o" \
-"CMakeFiles/builder.dir/sel_item.c.o" \
-"CMakeFiles/builder.dir/sort.c.o" \
-"CMakeFiles/builder.dir/states.c.o" \
-"CMakeFiles/builder.dir/textures.c.o" \
-"CMakeFiles/builder.dir/useful.c.o" \
-"CMakeFiles/builder.dir/validate_media.c.o" \
-"CMakeFiles/builder.dir/values.c.o" \
-"CMakeFiles/builder.dir/vec_ops.c.o" \
-"CMakeFiles/builder.dir/zoom.c.o"
+"CMakeFiles/builder.dir/src/sdl_fun.c.o" \
+"CMakeFiles/builder.dir/src/main_menu.c.o" \
+"CMakeFiles/builder.dir/src/main.c.o" \
+"CMakeFiles/builder.dir/src/levels.c.o" \
+"CMakeFiles/builder.dir/src/get_assets.c.o" \
+"CMakeFiles/builder.dir/src/get_next_line.c.o" \
+"CMakeFiles/builder.dir/src/render.c.o" \
+"CMakeFiles/builder.dir/src/modes.c.o" \
+"CMakeFiles/builder.dir/src/math.c.o" \
+"CMakeFiles/builder.dir/src/rewrite.c.o" \
+"CMakeFiles/builder.dir/src/render_grid.c.o" \
+"CMakeFiles/builder.dir/src/fill_polygon.c.o" \
+"CMakeFiles/builder.dir/src/editor.c.o" \
+"CMakeFiles/builder.dir/src/prog.c.o" \
+"CMakeFiles/builder.dir/src/add_to_media.c.o" \
+"CMakeFiles/builder.dir/src/zoom.c.o" \
+"CMakeFiles/builder.dir/src/textures.c.o" \
+"CMakeFiles/builder.dir/src/useful.c.o" \
+"CMakeFiles/builder.dir/src/move.c.o" \
+"CMakeFiles/builder.dir/src/edit_menu.c.o" \
+"CMakeFiles/builder.dir/src/values.c.o" \
+"CMakeFiles/builder.dir/src/init_editor_buttons.c.o" \
+"CMakeFiles/builder.dir/src/edit_walls.c.o" \
+"CMakeFiles/builder.dir/src/items.c.o" \
+"CMakeFiles/builder.dir/src/sel_item.c.o" \
+"CMakeFiles/builder.dir/src/fill_grid.c.o" \
+"CMakeFiles/builder.dir/src/grid_main.c.o" \
+"CMakeFiles/builder.dir/src/find_in_media.c.o" \
+"CMakeFiles/builder.dir/src/sector_logic.c.o" \
+"CMakeFiles/builder.dir/src/delete_world.c.o" \
+"CMakeFiles/builder.dir/src/delete_sector.c.o" \
+"CMakeFiles/builder.dir/src/validate_media.c.o" \
+"CMakeFiles/builder.dir/src/file_fun.c.o" \
+"CMakeFiles/builder.dir/src/memory_fun.c.o" \
+"CMakeFiles/builder.dir/src/line_math.c.o" \
+"CMakeFiles/builder.dir/src/vec_ops.c.o" \
+"CMakeFiles/builder.dir/src/render_btn.c.o" \
+"CMakeFiles/builder.dir/src/manage_btn.c.o" \
+"CMakeFiles/builder.dir/src/delete_vector.c.o" \
+"CMakeFiles/builder.dir/src/add_door.c.o" \
+"CMakeFiles/builder.dir/src/sort.c.o" \
+"CMakeFiles/builder.dir/src/get_input.c.o" \
+"CMakeFiles/builder.dir/src/drawing.c.o" \
+"CMakeFiles/builder.dir/src/states.c.o" \
+"CMakeFiles/builder.dir/src/get_sec_v.c.o" \
+"CMakeFiles/builder.dir/src/get_sec_items.c.o" \
+"CMakeFiles/builder.dir/src/select_lit.c.o" \
+"CMakeFiles/builder.dir/src/char_ops.c.o" \
+"CMakeFiles/builder.dir/src/add_sector.c.o" \
+"CMakeFiles/builder.dir/src/texture_edit.c.o" \
+"CMakeFiles/builder.dir/src/edit_world.c.o" \
+"CMakeFiles/builder.dir/src/editor_render.c.o" \
+"CMakeFiles/builder.dir/src/editor_update.c.o" \
+"CMakeFiles/builder.dir/src/render_items.c.o" \
+"CMakeFiles/builder.dir/src/move_item.c.o" \
+"CMakeFiles/builder.dir/src/render_elements.c.o" \
+"CMakeFiles/builder.dir/src/move_player.c.o" \
+"CMakeFiles/builder.dir/src/move_vector.c.o" \
+"CMakeFiles/builder.dir/src/update_sec.c.o" \
+"CMakeFiles/builder.dir/src/render_grid_iso.c.o" \
+"CMakeFiles/builder.dir/src/render_grid_elems.c.o" \
+"CMakeFiles/builder.dir/src/delete_useless.c.o" \
+"CMakeFiles/builder.dir/src/replace.c.o" \
+"CMakeFiles/builder.dir/src/validate_clockwise.c.o" \
+"CMakeFiles/builder.dir/src/write_section.c.o" \
+"CMakeFiles/builder.dir/src/write_level.c.o"
 
 # External object files for target builder
 builder_EXTERNAL_OBJECTS =
 
-builder: CMakeFiles/builder.dir/add_door.c.o
-builder: CMakeFiles/builder.dir/add_to_media.c.o
-builder: CMakeFiles/builder.dir/delete_sector.c.o
-builder: CMakeFiles/builder.dir/delete_vector.c.o
-builder: CMakeFiles/builder.dir/delete_world.c.o
-builder: CMakeFiles/builder.dir/drawing.c.o
-builder: CMakeFiles/builder.dir/edit_door.c.o
-builder: CMakeFiles/builder.dir/edit_menu.c.o
-builder: CMakeFiles/builder.dir/edit_walls.c.o
-builder: CMakeFiles/builder.dir/editor.c.o
-builder: CMakeFiles/builder.dir/file_fun.c.o
-builder: CMakeFiles/builder.dir/fill_grid.c.o
-builder: CMakeFiles/builder.dir/fill_polygon.c.o
-builder: CMakeFiles/builder.dir/find_in_media.c.o
-builder: CMakeFiles/builder.dir/get_assets.c.o
-builder: CMakeFiles/builder.dir/get_input.c.o
-builder: CMakeFiles/builder.dir/get_next_line.c.o
-builder: CMakeFiles/builder.dir/get_sec_items.c.o
-builder: CMakeFiles/builder.dir/get_sec_v.c.o
-builder: CMakeFiles/builder.dir/grid_main.c.o
-builder: CMakeFiles/builder.dir/init_editor_buttons.c.o
-builder: CMakeFiles/builder.dir/items.c.o
-builder: CMakeFiles/builder.dir/levels.c.o
-builder: CMakeFiles/builder.dir/line_math.c.o
-builder: CMakeFiles/builder.dir/main.c.o
-builder: CMakeFiles/builder.dir/main_menu.c.o
-builder: CMakeFiles/builder.dir/manage_btn.c.o
-builder: CMakeFiles/builder.dir/math.c.o
-builder: CMakeFiles/builder.dir/memory_fun.c.o
-builder: CMakeFiles/builder.dir/modes.c.o
-builder: CMakeFiles/builder.dir/move.c.o
-builder: CMakeFiles/builder.dir/prog.c.o
-builder: CMakeFiles/builder.dir/render.c.o
-builder: CMakeFiles/builder.dir/render_btn.c.o
-builder: CMakeFiles/builder.dir/render_grid.c.o
-builder: CMakeFiles/builder.dir/rewrite.c.o
-builder: CMakeFiles/builder.dir/sdl_fun.c.o
-builder: CMakeFiles/builder.dir/sector_logic.c.o
-builder: CMakeFiles/builder.dir/sel_item.c.o
-builder: CMakeFiles/builder.dir/sort.c.o
-builder: CMakeFiles/builder.dir/states.c.o
-builder: CMakeFiles/builder.dir/textures.c.o
-builder: CMakeFiles/builder.dir/useful.c.o
-builder: CMakeFiles/builder.dir/validate_media.c.o
-builder: CMakeFiles/builder.dir/values.c.o
-builder: CMakeFiles/builder.dir/vec_ops.c.o
-builder: CMakeFiles/builder.dir/zoom.c.o
+builder: CMakeFiles/builder.dir/src/sdl_fun.c.o
+builder: CMakeFiles/builder.dir/src/main_menu.c.o
+builder: CMakeFiles/builder.dir/src/main.c.o
+builder: CMakeFiles/builder.dir/src/levels.c.o
+builder: CMakeFiles/builder.dir/src/get_assets.c.o
+builder: CMakeFiles/builder.dir/src/get_next_line.c.o
+builder: CMakeFiles/builder.dir/src/render.c.o
+builder: CMakeFiles/builder.dir/src/modes.c.o
+builder: CMakeFiles/builder.dir/src/math.c.o
+builder: CMakeFiles/builder.dir/src/rewrite.c.o
+builder: CMakeFiles/builder.dir/src/render_grid.c.o
+builder: CMakeFiles/builder.dir/src/fill_polygon.c.o
+builder: CMakeFiles/builder.dir/src/editor.c.o
+builder: CMakeFiles/builder.dir/src/prog.c.o
+builder: CMakeFiles/builder.dir/src/add_to_media.c.o
+builder: CMakeFiles/builder.dir/src/zoom.c.o
+builder: CMakeFiles/builder.dir/src/textures.c.o
+builder: CMakeFiles/builder.dir/src/useful.c.o
+builder: CMakeFiles/builder.dir/src/move.c.o
+builder: CMakeFiles/builder.dir/src/edit_menu.c.o
+builder: CMakeFiles/builder.dir/src/values.c.o
+builder: CMakeFiles/builder.dir/src/init_editor_buttons.c.o
+builder: CMakeFiles/builder.dir/src/edit_walls.c.o
+builder: CMakeFiles/builder.dir/src/items.c.o
+builder: CMakeFiles/builder.dir/src/sel_item.c.o
+builder: CMakeFiles/builder.dir/src/fill_grid.c.o
+builder: CMakeFiles/builder.dir/src/grid_main.c.o
+builder: CMakeFiles/builder.dir/src/find_in_media.c.o
+builder: CMakeFiles/builder.dir/src/sector_logic.c.o
+builder: CMakeFiles/builder.dir/src/delete_world.c.o
+builder: CMakeFiles/builder.dir/src/delete_sector.c.o
+builder: CMakeFiles/builder.dir/src/validate_media.c.o
+builder: CMakeFiles/builder.dir/src/file_fun.c.o
+builder: CMakeFiles/builder.dir/src/memory_fun.c.o
+builder: CMakeFiles/builder.dir/src/line_math.c.o
+builder: CMakeFiles/builder.dir/src/vec_ops.c.o
+builder: CMakeFiles/builder.dir/src/render_btn.c.o
+builder: CMakeFiles/builder.dir/src/manage_btn.c.o
+builder: CMakeFiles/builder.dir/src/delete_vector.c.o
+builder: CMakeFiles/builder.dir/src/add_door.c.o
+builder: CMakeFiles/builder.dir/src/sort.c.o
+builder: CMakeFiles/builder.dir/src/get_input.c.o
+builder: CMakeFiles/builder.dir/src/drawing.c.o
+builder: CMakeFiles/builder.dir/src/states.c.o
+builder: CMakeFiles/builder.dir/src/get_sec_v.c.o
+builder: CMakeFiles/builder.dir/src/get_sec_items.c.o
+builder: CMakeFiles/builder.dir/src/select_lit.c.o
+builder: CMakeFiles/builder.dir/src/char_ops.c.o
+builder: CMakeFiles/builder.dir/src/add_sector.c.o
+builder: CMakeFiles/builder.dir/src/texture_edit.c.o
+builder: CMakeFiles/builder.dir/src/edit_world.c.o
+builder: CMakeFiles/builder.dir/src/editor_render.c.o
+builder: CMakeFiles/builder.dir/src/editor_update.c.o
+builder: CMakeFiles/builder.dir/src/render_items.c.o
+builder: CMakeFiles/builder.dir/src/move_item.c.o
+builder: CMakeFiles/builder.dir/src/render_elements.c.o
+builder: CMakeFiles/builder.dir/src/move_player.c.o
+builder: CMakeFiles/builder.dir/src/move_vector.c.o
+builder: CMakeFiles/builder.dir/src/update_sec.c.o
+builder: CMakeFiles/builder.dir/src/render_grid_iso.c.o
+builder: CMakeFiles/builder.dir/src/render_grid_elems.c.o
+builder: CMakeFiles/builder.dir/src/delete_useless.c.o
+builder: CMakeFiles/builder.dir/src/replace.c.o
+builder: CMakeFiles/builder.dir/src/validate_clockwise.c.o
+builder: CMakeFiles/builder.dir/src/write_section.c.o
+builder: CMakeFiles/builder.dir/src/write_level.c.o
 builder: CMakeFiles/builder.dir/build.make
 builder: libft.a
-builder: /usr/lib/x86_64-linux-gnu/libSDL2.so
-builder: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
-builder: /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
 builder: CMakeFiles/builder.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Linking C executable builder"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Linking C executable builder"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/builder.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -787,6 +1069,6 @@ CMakeFiles/builder.dir/clean:
 .PHONY : CMakeFiles/builder.dir/clean
 
 CMakeFiles/builder.dir/depend:
-	cd /home/moosh/CLionProjects/builder/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/moosh/CLionProjects/builder /home/moosh/CLionProjects/builder /home/moosh/CLionProjects/builder/cmake-build-debug /home/moosh/CLionProjects/builder/cmake-build-debug /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/mshpakov/Desktop/doom-nukem-builder /Users/mshpakov/Desktop/doom-nukem-builder /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/builder.dir/depend
 
