@@ -821,5 +821,8 @@ void					fun_fun(short *wall_id_done, int *f_s_l, t_world *world\
 , t_grid *grid);
 void					done_condition(t_grid *grid, int *tab, short done);
 void					set_min1(int *one, int *two);
+void					update_min_max(t_vec *min, t_vec *max, t_vec p);
+t_vec					transform_to_grid(t_vec old, t_grid *grid);
+t_vec					transform_to_screen(t_vec old, t_grid *grid);
 
 #endif

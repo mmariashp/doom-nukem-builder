@@ -126,7 +126,8 @@ SRC =   sdl_fun.c \
         init_world.c \
         read_line.c \
         drawing_help.c \
-        edit_walls_help.c
+        edit_walls_help.c \
+        grid_ops.c
 
 OBJ =	$(SRC:.c=.o)
 

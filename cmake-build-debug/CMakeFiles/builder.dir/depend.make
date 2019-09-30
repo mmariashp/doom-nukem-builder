@@ -150,6 +150,11 @@ CMakeFiles/builder.dir/src/grid_main.c.o: ../src/builder.h
 CMakeFiles/builder.dir/src/grid_main.c.o: ../src/get_next_line.h
 CMakeFiles/builder.dir/src/grid_main.c.o: ../src/grid_main.c
 
+CMakeFiles/builder.dir/src/grid_ops.c.o: ../libft/libft.h
+CMakeFiles/builder.dir/src/grid_ops.c.o: ../src/builder.h
+CMakeFiles/builder.dir/src/grid_ops.c.o: ../src/get_next_line.h
+CMakeFiles/builder.dir/src/grid_ops.c.o: ../src/grid_ops.c
+
 CMakeFiles/builder.dir/src/identify.c.o: ../libft/libft.h
 CMakeFiles/builder.dir/src/identify.c.o: ../src/builder.h
 CMakeFiles/builder.dir/src/identify.c.o: ../src/get_next_line.h

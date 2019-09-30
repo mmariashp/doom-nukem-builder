@@ -77,6 +77,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/src/read_line.c.o"
   "CMakeFiles/builder.dir/src/drawing_help.c.o"
   "CMakeFiles/builder.dir/src/edit_walls_help.c.o"
+  "CMakeFiles/builder.dir/src/grid_ops.c.o"
   "builder.pdb"
   "builder"
 )

@@ -2782,6 +2782,33 @@ src/grid_main.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/grid_main.c.s
 .PHONY : src/grid_main.c.s
 
+src/grid_ops.o: src/grid_ops.c.o
+
+.PHONY : src/grid_ops.o
+
+# target to build an object file
+src/grid_ops.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/grid_ops.c.o
+.PHONY : src/grid_ops.c.o
+
+src/grid_ops.i: src/grid_ops.c.i
+
+.PHONY : src/grid_ops.i
+
+# target to preprocess a source file
+src/grid_ops.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/grid_ops.c.i
+.PHONY : src/grid_ops.c.i
+
+src/grid_ops.s: src/grid_ops.c.s
+
+.PHONY : src/grid_ops.s
+
+# target to generate assembly for a file
+src/grid_ops.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/grid_ops.c.s
+.PHONY : src/grid_ops.c.s
+
 src/identify.o: src/identify.c.o
 
 .PHONY : src/identify.o
@@ -4382,6 +4409,9 @@ help:
 	@echo "... src/grid_main.o"
 	@echo "... src/grid_main.i"
 	@echo "... src/grid_main.s"
+	@echo "... src/grid_ops.o"
+	@echo "... src/grid_ops.i"
+	@echo "... src/grid_ops.s"
 	@echo "... src/identify.o"
 	@echo "... src/identify.i"
 	@echo "... src/identify.s"

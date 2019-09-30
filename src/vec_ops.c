@@ -33,3 +33,14 @@ unsigned short			vec_same(t_vec one, t_vec two)
 		return (TRUE);
 	return (FALSE);
 }
+
+void					update_min_max(t_vec *min, t_vec *max, t_vec p)
+{
+	if (min && max)
+	{
+		min->x = get_min(min->x, p.x);
+		min->y = get_min(min->y, p.y);
+		max->x = get_max(max->x, p.x);
+		max->y = get_max(max->y, p.y);
+	}
+}

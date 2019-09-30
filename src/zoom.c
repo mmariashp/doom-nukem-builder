@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "builder.h"
 
 void					get_min_scl(float *res_min_scl)
@@ -39,15 +38,16 @@ float					get_scl_to_sector(int size, int max_w, int max_h)
     return (scl);
 }
 
-void					zoom_displace(int *gridx, int *gridy, t_vec p, float old_scl, float new_scl)
+void					zoom_displace(t_vec *grid_p, t_vec p, float old_scl,\
+float new_scl)
 {
 	float				mapx;
 	float				mapy;
 
-	mapx = (float)(p.x - *gridx) / old_scl;
-	mapy = (float)(p.y - *gridy) / old_scl;
-	*gridx = (int)(p.x - (mapx * new_scl));
-	*gridy = (int)(p.y - (mapy * new_scl));
+	mapx = (float)(p.x - grid_p->x) / old_scl;
+	mapy = (float)(p.y - grid_p->y) / old_scl;
+	grid_p->x = (int)(p.x - (mapx * new_scl));
+	grid_p->y = (int)(p.y - (mapy * new_scl));
 }
 
 void					zoom_grid(t_prog *prog, t_vec mouse, t_grid *grid)
@@ -55,6 +55,7 @@ void					zoom_grid(t_prog *prog, t_vec mouse, t_grid *grid)
 	float				new;
 	static float		min_scl = 1;
 	float 				old_scl;
+	t_vec				p;
 
 	if (!prog || !grid)
 		return ;
@@ -65,7 +66,10 @@ void					zoom_grid(t_prog *prog, t_vec mouse, t_grid *grid)
 			get_min_scl(&min_scl);
 		new = grid->scl + grid->scl * 0.3f * prog->zoom;
 		grid->scl = clamp_f(new, min_scl, 100);
-		zoom_displace(&grid->box.x, &grid->box.y, mouse, old_scl, grid->scl );
+		p = (t_vec){ grid->box.x, grid->box.y };
+		zoom_displace(&p, mouse, old_scl, grid->scl);
+		grid->box.x = p.x;
+		grid->box.y = p.y;
 		prog->redraw = 1;
 	}
 	prog->zoom = 0;
@@ -75,16 +79,18 @@ void                    highlight_sec_nod(t_vec *p, int n_w, t_grid *grid)
 {
     int                 i;
 
-    i = 0;
-    while (i < n_w)
+    i = -1;
+    while (++i < n_w)
     {
-        if (p[i].x >= 0 && p[i].x < GRID_SIZE && p[i].y >= 0 && p[i].y < GRID_SIZE)
+        if (ingrid(p[i]))
             grid->nod[p[i].x][p[i].y] = NODE_SEC;
-        i++;
     }
 }
 
-void                    zoom_to_sector(t_sec *sector, t_vec *vecs, t_grid *grid, t_prog *prog)
+
+
+void                    zoom_to_sector(t_sec *sector, t_vec *vecs, t_grid \
+*grid, t_prog *prog)
 {
     int					i;
     t_vec				p[sector->n_w];
@@ -93,37 +99,25 @@ void                    zoom_to_sector(t_sec *sector, t_vec *vecs, t_grid *grid,
     t_vec             center;
     static t_vec      desired = { W_W * 0.3, W_H * 0.5 };
     int                 n;
+	t_vec				tmp;
 
     if (!prog || !vecs)
         return ;
-    max.x = 0;
-    min.x = GRID_SIZE;
-    max.y = 0;
-    min.y = GRID_SIZE;
     i = -1;
-    while (++i < sector->n_v)
-    {
-        p[i] = vecs[sector->v[i]];
-        draw_node(p[i], 15, BABY_PINK, prog->screen);
-        if (p[i].x < min.x)
-            min.x = p[i].x;
-        if (p[i].x > max.x)
-            max.x = p[i].x;
-        if (p[i].y < min.y)
-            min.y = p[i].y;
-        if (p[i].y > max.y)
-            max.y = p[i].y;
-    }
+	while (++i < sector->n_v)
+		p[i] = vecs[sector->v[i]];
+    bounding_box(&min, &max, p, sector->n_v);
     highlight_sec_nod((t_vec *)p, sector->n_w, grid);
     n = get_max(max.x - min.x, max.y - min.y);
-    min.x = (int)(grid->box.x + min.x * grid->scl);
-    min.y = (int)(grid->box.y + min.y * grid->scl);
-    max.x = (int)(grid->box.x + max.x * grid->scl);
-    max.y = (int)(grid->box.y + max.y * grid->scl);
+    min = transform_to_screen(min, grid);
+	max = transform_to_screen(max, grid);
     center = (t_vec){ min.x + (max.x - min.x) / 2, min.y + (max.y - min.y) / 2 };
     grid->box.x = (grid->box.x - center.x) + desired.x;
     grid->box.y = (grid->box.y - center.y) + desired.y;
-    zoom_displace(&grid->box.x, &grid->box.y, desired, grid->scl, get_scl_to_sector(n, W_W * 0.6, W_H * 0.6) );
+	tmp = (t_vec){ grid->box.x, grid->box.y };
+    zoom_displace(&tmp, desired, grid->scl, get_scl_to_sector(n, W_W * 0.6, W_H * 0.6) );
+	grid->box.x = tmp.x;
+	grid->box.y = tmp.y;
     grid->scl = get_scl_to_sector(n, W_W * 0.6, W_H * 0.6);
 }
 
@@ -135,6 +129,7 @@ void                    zoom_to_wall(t_vec v1, t_vec v2, t_grid *grid, t_prog *p
 	t_vec             center;
 	static t_vec      desired = { W_W * 0.3, W_H * 0.5 };
 	int                 n;
+	t_vec				tmp;
 
 	if (!prog || !grid)
 		return ;
@@ -142,38 +137,20 @@ void                    zoom_to_wall(t_vec v1, t_vec v2, t_grid *grid, t_prog *p
 	min.x = GRID_SIZE;
 	max.y = 0;
 	min.y = GRID_SIZE;
-
-		p[0] = v1;
-		draw_node(p[0], 15, BABY_PINK, prog->screen);
-		if (p[0].x < min.x)
-			min.x = p[0].x;
-		if (p[0].x > max.x)
-			max.x = p[0].x;
-		if (p[0].y < min.y)
-			min.y = p[0].y;
-		if (p[0].y > max.y)
-			max.y = p[0].y;
-
-	p[1] = v2;
-	draw_node(p[1], 15, BABY_PINK, prog->screen);
-	if (p[1].x < min.x)
-		min.x = p[1].x;
-	if (p[1].x > max.x)
-		max.x = p[1].x;
-	if (p[1].y < min.y)
-		min.y = p[1].y;
-	if (p[1].y > max.y)
-		max.y = p[1].y;
-
+	draw_node((p[0] = v1), 15, BABY_PINK, prog->screen);
+	update_min_max(&min, &max, p[0]);
+	draw_node((p[1] = v2), 15, BABY_PINK, prog->screen);
+	update_min_max(&min, &max, p[1]);
 	n = get_max(max.x - min.x, max.y - min.y);
-	min.x = (int)(grid->box.x + min.x * grid->scl);
-	min.y = (int)(grid->box.y + min.y * grid->scl);
-	max.x = (int)(grid->box.x + max.x * grid->scl);
-	max.y = (int)(grid->box.y + max.y * grid->scl);
+	min = transform_to_screen(min, grid);
+	max = transform_to_screen(max, grid);
 	center = (t_vec){ min.x + (max.x - min.x) / 2, min.y + (max.y - min.y) / 2 };
 	grid->box.x = (grid->box.x - center.x) + desired.x;
 	grid->box.y = (grid->box.y - center.y) + desired.y;
-	zoom_displace(&grid->box.x, &grid->box.y, desired, grid->scl, get_scl_to_sector(n, W_W * 0.6, W_H * 0.6) );
+	tmp = (t_vec){ grid->box.x, grid->box.y };
+	zoom_displace(&tmp, desired, grid->scl, get_scl_to_sector(n, W_W * 0.6, W_H * 0.6) );
+	grid->box.x = tmp.x;
+	grid->box.y = tmp.y;
 	grid->scl = get_scl_to_sector(n, W_W * 0.6, W_H * 0.6);
 }
 
@@ -185,6 +162,7 @@ void                    zoom_to_map(int n_v, t_vec *v, t_grid *grid)
     t_vec             max;
     t_vec             center;
     static t_vec      desired = { W_W / 2, W_H / 2 };
+	t_vec				tmp;
 
     i = 0;
     max.x = 0;
@@ -192,25 +170,16 @@ void                    zoom_to_map(int n_v, t_vec *v, t_grid *grid)
     max.y = 0;
     min.y = GRID_SIZE;
     while (i < n_v)
-    {
-        if (v[i].x < min.x)
-            min.x = v[i].x;
-        if (v[i].x > max.x)
-            max.x = v[i].x;
-        if (v[i].y < min.y)
-            min.y = v[i].y;
-        if (v[i].y > max.y)
-            max.y = v[i].y;
-        i++;
-    }
+		update_min_max(&min, &max, v[i++]);
     n = get_max(max.x - min.x, max.y - min.y);
-    min.x = (int)(grid->box.x + min.x * grid->scl);
-    min.y = (int)(grid->box.y + min.y * grid->scl);
-    max.x = (int)(grid->box.x + max.x * grid->scl);
-    max.y = (int)(grid->box.y + max.y * grid->scl);
+	min = transform_to_screen(min, grid);
+	max = transform_to_screen(max, grid);
     center = (t_vec){ min.x + (max.x - min.x) / 2, min.y + (max.y - min.y) / 2 };
     grid->box.x = (grid->box.x - center.x) + desired.x;
     grid->box.y = (grid->box.y - center.y) + desired.y;
-    zoom_displace(&grid->box.x, &grid->box.y, desired, grid->scl, get_scl_to_sector(n, W_W * 0.9, W_H * 0.9) );
+	tmp = (t_vec){ grid->box.x, grid->box.y };
+    zoom_displace(&tmp, desired, grid->scl, get_scl_to_sector(n, W_W * 0.9, W_H * 0.9) );
+	grid->box.x = tmp.x;
+	grid->box.y = tmp.y;
     grid->scl = get_scl_to_sector(n, W_W * 0.9, W_H * 0.9);
 }

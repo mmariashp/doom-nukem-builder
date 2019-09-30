@@ -150,6 +150,11 @@ CMakeFiles/builder.dir/src/grid_main.c.o
  /home/moosh/CLionProjects/builder/src/builder.h
  /home/moosh/CLionProjects/builder/src/get_next_line.h
  /home/moosh/CLionProjects/builder/src/grid_main.c
+CMakeFiles/builder.dir/src/grid_ops.c.o
+ /home/moosh/CLionProjects/builder/libft/libft.h
+ /home/moosh/CLionProjects/builder/src/builder.h
+ /home/moosh/CLionProjects/builder/src/get_next_line.h
+ /home/moosh/CLionProjects/builder/src/grid_ops.c
 CMakeFiles/builder.dir/src/identify.c.o
  /home/moosh/CLionProjects/builder/libft/libft.h
  /home/moosh/CLionProjects/builder/src/builder.h

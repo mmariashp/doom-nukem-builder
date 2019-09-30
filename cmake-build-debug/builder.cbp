@@ -418,6 +418,9 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/src/grid_main.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/src/grid_ops.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/src/identify.c">
 			<Option target="builder"/>
 		</Unit>

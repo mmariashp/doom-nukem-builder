@@ -36,12 +36,7 @@ void					bounding_box(t_vec *min, t_vec *max, t_vec *p, \
 	*max = (t_vec){ 0, 0 };
 	i = -1;
 	while (++i < n_p)
-	{
-		min->x = p[i].x < min->x ? p[i].x : min->x;
-		max->x = p[i].x > max->x ? p[i].x : max->x;
-		min->y = p[i].y < min->y ? p[i].y : min->y;
-		max->y = p[i].y > max->y ? p[i].y : max->y;
-	}
+		update_min_max(min, max, p[i]);
 	min->x = clamp(min->x, 0, W_W);
 	max->x = clamp(max->x, 0, W_W);
 	min->y = clamp(min->y, 0, W_H);
