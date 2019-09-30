@@ -82,7 +82,7 @@ t_sec *s)
 		v[1] = tmp_op(g->box.x, g->box.y, vd[1], g->scl);
 		v[2] = tmp_op(g->box.x, g->box.y, vd[2], g->scl);
 		v[3] = tmp_op(g->box.x, g->box.y, vd[3], g->scl);
-		color = w.walls[s->s_walls[i]].type == WALL_EMPTY ? GREEN : WHITE;
+		color = w.walls[s->s_walls[i]].type == WALL_EMPTY ? EMPTY_WALL_CLR : FULL_WALL_CLR;
 		draw_thick_line((t_line){ v[0], v[1] }, color, WALL_R, screen);
 		draw_thick_line((t_line){ v[2], v[3] }, color, WALL_R, screen);
 		draw_thick_line((t_line){ v[0], v[2] }, color, WALL_R, screen);

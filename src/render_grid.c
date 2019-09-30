@@ -70,23 +70,23 @@ unsigned short			fill_sector(t_world world, t_grid *grid, int **screen, \
 int sec)
 {
 	int					i;
-	int					j;
 	int					color;
 	int					st;
 	t_vec				p[MAX_SEC_WALLS];
 
-	j = sec;
 	st = select_it(1, ST_SEL, -1);
-	if (world.sec[j].n_v < 3)
+	if (world.sec[sec].n_v < 3)
 		return (FALSE);
 	i = -1;
-	while (++i < world.sec[j].n_v)
-		p[i] = transform_to_screen(world.vecs[world.sec[j].v[i]], grid);
-	color = world.sec[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : \
+	while (++i < world.sec[sec].n_v)
+		p[i] = transform_to_screen(world.vecs[world.sec[sec].v[i]], grid);
+	color = world.sec[sec].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : \
 	CONCAVE_COLOR;
 	if ((st == SEC_SEARCH || st == SEC_EDIT) && sec == lit_it(1, S_SELECT, 0))
 		color = ACTIVE_SEC_COLOR;
-	return (fill_polygon(p, world.sec[j].n_v, screen, color));
+	if (world.sec[sec].is_door == TRUE)
+		color = DOOR_COLOR;
+	return (fill_polygon(p, world.sec[sec].n_v, screen, color));
 }
 
 void					drawing_nodes(t_grid *grid, int **screen, t_vec mouse)

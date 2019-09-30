@@ -56,9 +56,8 @@ SDL_Texture **t)
 	t_vec				p;
 	t_rec				b;
 
-	if (!m || !m->worlds || !m->it_f || !g )
+	if (!m || !m->worlds || !m->it_f || !g)
 		return ;
-
 	s = 0;
 	while (s < m->worlds[m->w].n_s)
 	{

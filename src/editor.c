@@ -33,7 +33,8 @@ void					r_editor(t_sdl *sdl, t_grid *g, t_media *m, t_prog *p)
 	else
 		render_grid(m->worlds[m->w], g, p, sdl->mouse);
 	render_screen(sdl->rend, p->screen);
-	draw_itms(sdl->rend, m, g, p->t);
+	if (p->btn_on != ISO_BTN)
+		draw_itms(sdl->rend, m, g, p->t);
 	if (s == SEC_EDIT)
 		render_item_info(m, sdl, &p->modes[p->m_id], p->t);
 	if (s == SEC_EDIT || s == WALL_EDIT)
