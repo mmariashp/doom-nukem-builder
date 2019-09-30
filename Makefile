@@ -23,8 +23,8 @@ DEFRULE =	all
 NAME =		builder
 
 # Directories
-SRCDIR =	./
-OBJDIR =	obj
+SRCDIR =	./src
+OBJDIR =	./obj
 UNAME_S := $(shell uname -s)
 FT_INC =	-I libft/
 
@@ -49,13 +49,13 @@ ifeq ($(UNAME_S),Linux)
 endif
 
 # Sources
-SRC =   main.c \
-        sdl_fun.c \
+SRC =   sdl_fun.c \
         main_menu.c \
+        main.c \
         levels.c \
         get_assets.c \
         get_next_line.c \
-        render.c  \
+        render.c \
         modes.c \
         math.c \
         rewrite.c \
@@ -71,7 +71,6 @@ SRC =   main.c \
         edit_menu.c \
         values.c \
         init_editor_buttons.c \
-        edit_door.c \
         edit_walls.c \
         items.c \
         sel_item.c \
@@ -89,12 +88,45 @@ SRC =   main.c \
         render_btn.c \
         manage_btn.c \
         delete_vector.c \
-        get_input.c \
         add_door.c \
         sort.c \
+        get_input.c \
         drawing.c \
+        states.c \
         get_sec_v.c \
-        get_sec_items.c
+        get_sec_items.c \
+        select_lit.c \
+        char_ops.c \
+        add_sector.c \
+        texture_edit.c \
+        edit_world.c \
+        editor_render.c \
+        editor_update.c \
+        render_items.c \
+        move_item.c \
+        render_elements.c \
+        move_player.c \
+        move_vector.c \
+        update_sec.c \
+        render_grid_iso.c \
+        render_grid_elems.c \
+        delete_useless.c \
+        replace.c \
+        validate_clockwise.c \
+        write_section.c \
+        write_level.c \
+        identify.c \
+        read_assets_help.c \
+        get_map.c \
+        section.c \
+        free_media.c \
+        update_media_sect.c \
+        read_levels.c \
+        get_map_elems.c \
+        init_world.c \
+        read_line.c \
+        drawing_help.c \
+        edit_walls_help.c
 
 OBJ =	$(SRC:.c=.o)
 
