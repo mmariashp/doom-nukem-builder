@@ -331,6 +331,9 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/src/add_to_media.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/src/btn_press.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/src/builder.h">
 			<Option target="builder"/>
 		</Unit>
@@ -347,6 +350,9 @@
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/src/delete_world.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/src/distribute_btns.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/src/drawing.c">

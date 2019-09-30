@@ -62,7 +62,7 @@ void					wall_search_st(t_prog *prog, t_vec node, \
 				select_it(0, ST_SEL, WALL_EDIT);
 				if (within((v1 = world->walls[w].v1), -1, world->n_v) &&
 					within((v2 = world->walls[w].v2), -1, world->n_v))
-					zoom_to_wall(world->vecs[v1], world->vecs[v2], grid, prog);
+						zoom_to_box(grid, (t_vec[2]){ world->vecs[v1], world->vecs[v2] }, 2);
 			}
 		}
 		prog->redraw = 1;
@@ -72,6 +72,7 @@ void					sec_search_st(t_prog *prog, t_vec mouse, \
 											t_grid *grid, t_world *world)
 {
 	int 				sec;
+	t_vec				*p;
 
 	if (!prog || !world)
 		return ;
@@ -80,7 +81,12 @@ void					sec_search_st(t_prog *prog, t_vec mouse, \
 	{
 		select_it(0, S_SELECT, sec);
 		select_it(0, ST_SEL, SEC_EDIT);
-		zoom_to_sector(&world->sec[sec], world->vecs, grid, prog);
+		p = make_vec_tab(&world->sec[sec], world->vecs, world->n_v);
+		if (p)
+		{
+			zoom_to_box(grid, make_vec_tab(&world->sec[sec], world->vecs, world->n_v), world->sec[sec].n_v);
+			free(p);
+		}
 	}
 	prog->redraw = 1;
 }

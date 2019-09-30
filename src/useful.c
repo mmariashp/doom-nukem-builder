@@ -30,7 +30,7 @@ void					bounding_box(t_vec *min, t_vec *max, t_vec *p, \
 		return ;
 	*min = (t_vec){ 0, 0 };
 	*max = (t_vec){ W_W, W_H };
-	if (!p || n_p < 3)
+	if (!p)
 		return ;
 	*min = (t_vec){ W_W, W_H };
 	*max = (t_vec){ 0, 0 };
@@ -76,4 +76,42 @@ unsigned short			mouse_over(t_rec box, t_vec mouse)
 	if (mouse.y <= box.y || mouse.y >= box.y + box.h)
 		return (FALSE);
 	return (TRUE);
+}
+
+void                    highlight_sec_nod(t_vec *p, int n_w, t_grid *grid)
+{
+	int                 i;
+
+	i = -1;
+	while (++i < n_w)
+	{
+		if (ingrid(p[i]))
+			grid->nod[p[i].x][p[i].y] = NODE_SEC;
+	}
+}
+
+void					get_min_scl(float *res_min_scl)
+{
+	static int 			min_size = -1;
+	static float		min_scl = 1;
+
+	if (min_size == -1)
+	{
+		if (W_H < W_W)
+			min_size = W_H / 2;
+		else
+			min_size = W_W / 2;
+		min_scl = (float)min_size / GRID_SIZE;
+	}
+	*res_min_scl = min_scl;
+}
+
+float					get_scl_to_sector(int size, int max_w, int max_h)
+{
+	float               scl;
+	int                 box;
+
+	box = get_min(max_w, max_h);
+	scl = (float)box / size;
+	return (scl);
 }

@@ -49,12 +49,29 @@ t_grid					*get_grid(void)
 void					grid_re(t_grid *grid, t_media *media, int state,
 																	int sector)
 {
+	t_vec				*p;
+	int					i;
+
 	if (!grid || !media || !media->worlds || !media->worlds[media->w].sec)
 		return ;
 	clean_grid(grid);
 	fill_grid_walls(&media->worlds[media->w], grid);
 	fill_grid(media->worlds[media->w].n_v,\
 	media->worlds[media->w].vecs, grid);
+	sector = select_it(1, S_SELECT, -1);
 	if (state == SEC_EDIT && within(sector, -1, media->worlds[media->w].n_s))
-		fill_grid_items(&media->worlds[media->w].sec[sector], grid);
+	{
+		p = make_vec_tab(&media->worlds[media->w].sec[sector], media->worlds[media->w].vecs, media->worlds[media->w].n_v);
+		if (p)
+		{
+			highlight_sec_nod(p, media->worlds[media->w].n_v, grid);
+			free(p);
+		}
+	}
+	i = 0;
+	while (i < media->worlds[media->w].n_s)
+	{
+		fill_grid_items(&media->worlds[media->w].sec[i], grid);
+		i++;
+	}
 }

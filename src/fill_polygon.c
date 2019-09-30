@@ -73,8 +73,7 @@ int						get_inter_x(int *inter_x, t_vec *p, int n_p, int y)
 	return (n_interx);
 }
 
-unsigned short			fill_polygon(t_vec *p, int n_p, int **screen,
-																	int color)
+unsigned short			fill_polygon(t_vec *p, int n_p, int **screen, int color)
 {
 	int					n_ix;
 	int					ix[MAX_SEC_WALLS];

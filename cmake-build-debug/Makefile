@@ -2053,6 +2053,33 @@ src/add_to_media.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_to_media.c.s
 .PHONY : src/add_to_media.c.s
 
+src/btn_press.o: src/btn_press.c.o
+
+.PHONY : src/btn_press.o
+
+# target to build an object file
+src/btn_press.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press.c.o
+.PHONY : src/btn_press.c.o
+
+src/btn_press.i: src/btn_press.c.i
+
+.PHONY : src/btn_press.i
+
+# target to preprocess a source file
+src/btn_press.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press.c.i
+.PHONY : src/btn_press.c.i
+
+src/btn_press.s: src/btn_press.c.s
+
+.PHONY : src/btn_press.s
+
+# target to generate assembly for a file
+src/btn_press.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press.c.s
+.PHONY : src/btn_press.c.s
+
 src/char_ops.o: src/char_ops.c.o
 
 .PHONY : src/char_ops.o
@@ -2187,6 +2214,33 @@ src/delete_world.s: src/delete_world.c.s
 src/delete_world.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_world.c.s
 .PHONY : src/delete_world.c.s
+
+src/distribute_btns.o: src/distribute_btns.c.o
+
+.PHONY : src/distribute_btns.o
+
+# target to build an object file
+src/distribute_btns.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/distribute_btns.c.o
+.PHONY : src/distribute_btns.c.o
+
+src/distribute_btns.i: src/distribute_btns.c.i
+
+.PHONY : src/distribute_btns.i
+
+# target to preprocess a source file
+src/distribute_btns.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/distribute_btns.c.i
+.PHONY : src/distribute_btns.c.i
+
+src/distribute_btns.s: src/distribute_btns.c.s
+
+.PHONY : src/distribute_btns.s
+
+# target to generate assembly for a file
+src/distribute_btns.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/distribute_btns.c.s
+.PHONY : src/distribute_btns.c.s
 
 src/drawing.o: src/drawing.c.o
 
@@ -4328,6 +4382,9 @@ help:
 	@echo "... src/add_to_media.o"
 	@echo "... src/add_to_media.i"
 	@echo "... src/add_to_media.s"
+	@echo "... src/btn_press.o"
+	@echo "... src/btn_press.i"
+	@echo "... src/btn_press.s"
 	@echo "... src/char_ops.o"
 	@echo "... src/char_ops.i"
 	@echo "... src/char_ops.s"
@@ -4343,6 +4400,9 @@ help:
 	@echo "... src/delete_world.o"
 	@echo "... src/delete_world.i"
 	@echo "... src/delete_world.s"
+	@echo "... src/distribute_btns.o"
+	@echo "... src/distribute_btns.i"
+	@echo "... src/distribute_btns.s"
 	@echo "... src/drawing.o"
 	@echo "... src/drawing.i"
 	@echo "... src/drawing.s"

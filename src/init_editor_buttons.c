@@ -31,7 +31,7 @@ void					get_sec_boxes(t_mode *m)
 	box = layout(2, 6);
 	box.w *= 1.27;
 	box.h *= 1.19;
-	distribute_btn_h(m->btn, B_COIN, B_LIGHT + 1, box, 8);
+	distribute_btn_h(m->btn, (t_vec){ B_COIN, B_LIGHT + 1 }, box, 8);
 }
 
 void					init_sec_btn(t_mode *m)
@@ -85,7 +85,7 @@ void					init_wall_btn(t_mode *m)
 	m->btn[DESELECT_BTN].box = (t_rec){ m->btn[DESELECT_BTN].box.x +\
 	m->btn[DESELECT_BTN].box.w, m->btn[DESELECT_BTN].box.y, 30, 30 };
 	m->btn[WT_EDIT_BTN].box = layout(6, 1);
-	m->btn[W_PORTAL_BTN].box = layout(6, 2);
+	m->btn[PORT_BTN].box = layout(6, 2);
 }
 
 void					init_regular_btn(t_mode *m)
@@ -102,7 +102,7 @@ void					init_regular_btn(t_mode *m)
 
 	if (!m || !m->btn)
 		return ;
-	distribute_btn_h(m->btn, 0, (n = 11), box, 3);
+	distribute_btn_h(m->btn, (t_vec){ 0, (n = 11) }, box, 3);
 	i = -1;
 	while (++i < m->n_btn)
 	{

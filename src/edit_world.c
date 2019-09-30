@@ -19,7 +19,7 @@ void					edit_wall_type(int btn_on, t_world *world)
 	if (!world || \
 	!within((wall = select_it(1, W_SELECT, -1)), -1, world->n_w))
 		return ;
-	if (btn_on == W_PORTAL_BTN)
+	if (btn_on == PORT_BTN)
 	{
 		if (world->walls[wall].type != WALL_FILLED)
 			world->walls[wall].type = WALL_FILLED;

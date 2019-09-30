@@ -42,8 +42,7 @@ void					fill_grid(int n_v, t_vec *vecs, t_grid *grid)
 	i = 0;
 	while (i < n_v)
 	{
-		if (within(vecs[i].x, -1, GRID_SIZE) &&
-		within(vecs[i].y, -1, GRID_SIZE))
+		if (ingrid(vecs[i]))
 			grid->nod[vecs[i].x][vecs[i].y] = NODE_FULL;
 		i++;
 	}
@@ -61,7 +60,7 @@ void					fill_grid_items(t_sec *sector, t_grid *grid)
 	{
 		p = sector->items[i].p;
 		if (within(p.x, -1, GRID_SIZE) && within(p.y, -1, GRID_SIZE) &&
-		grid->nod[p.x][p.y] == NODE_EMPTY)
+		(grid->nod[p.x][p.y] == NODE_EMPTY || grid->nod[p.x][p.y] == (signed char)(-10 - i)))
 			grid->nod[p.x][p.y] = (signed char)(-10 - i);
 		else
 			delete_item(sector, i--);

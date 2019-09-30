@@ -31,11 +31,11 @@ void					render_grid_nod(int **screen, t_grid *g)
 			!within(n.y, -1, W_H))
 				continue ;
 			if (g->nod[x][y] == NODE_FULL)
-				draw_node(n, radius, BROWN, screen);
+				draw_node(n, radius, FULL_COLOR, screen);
 			else if (g->nod[x][y] == NODE_SEC)
-				draw_node(n, radius, YELLOW, screen);
+				draw_node(n, radius, SEC_NOD_COLOR, screen);
 			else if (!screen[n.x][n.y])
-				draw_node(n, radius, DARK_GRAY, screen);
+				draw_node(n, radius, EMPTY_COLOR, screen);
 		}
 	}
 }
@@ -76,16 +76,12 @@ int sec)
 	t_vec				p[MAX_SEC_WALLS];
 
 	j = sec;
-	st = select_it(1, S_SELECT, -1);
+	st = select_it(1, ST_SEL, -1);
 	if (world.sec[j].n_v < 3)
 		return (FALSE);
 	i = -1;
 	while (++i < world.sec[j].n_v)
-	{
-		p[i] = world.vecs[world.sec[j].v[i]];
-		p[i].x = (int)(grid->box.x + p[i].x * grid->scl);
-		p[i].y = (int)(grid->box.y + p[i].y * grid->scl);
-	}
+		p[i] = transform_to_screen(world.vecs[world.sec[j].v[i]], grid);
 	color = world.sec[j].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : \
 	CONCAVE_COLOR;
 	if ((st == SEC_SEARCH || st == SEC_EDIT) && sec == lit_it(1, S_SELECT, 0))
@@ -104,13 +100,11 @@ void					drawing_nodes(t_grid *grid, int **screen, t_vec mouse)
 	radius = grid->box.w * 0.001;
 	if (grid->p[0].x != -1 && grid->p[0].y != -1)
 	{
-		node.x = (int)(grid->box.x + grid->p[0].x * grid->scl);
-		node.y = (int)(grid->box.y + grid->p[0].y * grid->scl);
+		node = transform_to_screen(grid->p[0], grid);
 		draw_node(node, radius, BABY_PINK, screen);
 		if (grid->p[1].x != -1 && grid->p[1].y != -1)
 		{
-			node2.x = (int)(grid->box.x + grid->p[1].x * grid->scl);
-			node2.y = (int)(grid->box.y + grid->p[1].y * grid->scl);
+			node2 = transform_to_screen(grid->p[1], grid);
 			draw_node(node2, radius, BABY_PINK, screen);
 			draw_line2((t_line){ node, node2 }, BABY_PINK, screen);
 		}

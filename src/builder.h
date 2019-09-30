@@ -86,6 +86,10 @@
 
 # define TMP_COLOR				SOFT_PURPLE
 
+# define EMPTY_COLOR			DARK_GRAY
+# define FULL_COLOR				BROWN
+# define SEC_NOD_COLOR			NAVY
+
 /*
 ** STR = PRINTS OUT NAME OF MACRO; XSTR = PRINTS OUT VALUE OF MACRO
 */
@@ -245,8 +249,7 @@
 # define B_LIGHT			17
 
 # define WT_EDIT_BTN		1
-# define W_PORTAL_BTN		2
-# define W_DOOR_BTN			3
+# define PORT_BTN			2
 
 # define GRID_SIZE			150
 
@@ -570,8 +573,6 @@ unsigned short			btn_light(t_vec mouse, t_btn *btn, int n_btn, t_prog \
 unsigned short			btn_refresh(t_prog *prog, int state);
 t_btn					*init_btn(int n_btn);
 void					free_btn(t_btn *btn, int n);
-unsigned short			distribute_btn_h(t_btn *btn, int from, int to, t_rec \
-box, int padding);
 void					get_btn(int state, t_mode *mode);
 
 void					change_heights(int b, t_sec *sec);
@@ -579,11 +580,6 @@ void					edit_wall_type(int btn_on, t_world *world);
 void					prep_texture_edit(t_world *world, t_prog *prog,\
 int n_t);
 void					zoom_grid(t_prog *prog, t_vec mouse, t_grid *grid);
-void					zoom_to_sector(t_sec *sector, t_vec *vecs, t_grid \
-*grid, t_prog *prog);
-void					zoom_to_map(int n_v, t_vec *v, t_grid *grid);
-void					zoom_to_wall(t_vec v1, t_vec v2, t_grid *grid, t_prog \
-*prog);
 
 void					move_grid_drag(t_prog *prog, t_vec mouse, t_grid *grid);
 unsigned short			move_grid_keys(t_prog *prog, t_grid *grid);
@@ -824,5 +820,17 @@ void					set_min1(int *one, int *two);
 void					update_min_max(t_vec *min, t_vec *max, t_vec p);
 t_vec					transform_to_grid(t_vec old, t_grid *grid);
 t_vec					transform_to_screen(t_vec old, t_grid *grid);
+void                    highlight_sec_nod(t_vec *p, int n_w, t_grid *grid);
+void					zoom_to_box(t_grid *grid, t_vec *vecs, int n_vecs);
+t_vec					*make_vec_tab(t_sec *sector, t_vec *vecs, int n_vecs);
+float					get_scl_to_sector(int size, int max_w, int max_h);
+void					get_min_scl(float *res_min_scl);
+void					edit_mng_btn(t_prog *prog, t_media *m, t_grid *grid, \
+int s);
+unsigned short			distribute_btn_grid(t_btn *btn, t_vec from_to, t_rec box);
+unsigned short			distribute_btn_v(t_btn *btn, t_vec from_to, t_rec box, int padding);
+unsigned short			distribute_btn_h(t_btn *btn, t_vec from_to, t_rec box, int padding);
+
+
 
 #endif

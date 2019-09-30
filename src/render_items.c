@@ -56,23 +56,28 @@ SDL_Texture **t)
 	t_vec				p;
 	t_rec				b;
 
-	if (!m || !m->worlds || !m->it_f || !g || !within((s = select_it(1, \
-	S_SELECT, -1)), -1, m->worlds[m->w].n_s) || m->worlds[m->w].sec[s\
-	].n_it < 1 || !m->worlds[m->w].sec[s].items)
+	if (!m || !m->worlds || !m->it_f || !g )
 		return ;
-	b = (t_rec){ 0, 0, g->box.w * 0.009, g->box.w * 0.009 };
-	i = -1;
-	while (++i < m->worlds[m->w].sec[s].n_it)
+
+	s = 0;
+	while (s < m->worlds[m->w].n_s)
 	{
-		if (ingrid((p = m->worlds[m->w].sec[s].items[i].p)) && nod_in_sec(p,\
-		&m->worlds[m->w]) == s && g->nod[p.x][p.y] == (signed char)(-10 - i)
-		&& within((id = m->worlds[m->w].sec[s].items[i].id), -1, m->n_itf))
+		b = (t_rec){ 0, 0, g->box.w * 0.009, g->box.w * 0.009 };
+		i = -1;
+		while (++i < m->worlds[m->w].sec[s].n_it)
 		{
-			p = get_p(g, m->worlds[m->w].sec[s].items[i].p);
-			draw_item(m->it_f[id].type, (b = (t_rec){ p.x - b.w / 2, p.y - b.h \
+			if (ingrid((p = m->worlds[m->w].sec[s].items[i].p)) && nod_in_sec(p,\
+		&m->worlds[m->w]) == s && g->nod[p.x][p.y] == (signed char)(-10 - i)
+				&& within((id = m->worlds[m->w].sec[s].items[i].id), -1, m->n_itf))
+			{
+				p = get_p(g, m->worlds[m->w].sec[s].items[i].p);
+				draw_item(m->it_f[id].type, (b = (t_rec){ p.x - b.w / 2, p.y - b.h \
 			/ 2, b.w, b.h }), r, t);
+			}
+			else
+				delete_item(&m->worlds[m->w].sec[s], i--);
 		}
-		else
-			delete_item(&m->worlds[m->w].sec[s], i--);
+		s++;
 	}
+
 }

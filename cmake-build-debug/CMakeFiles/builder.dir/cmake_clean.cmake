@@ -78,6 +78,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/src/drawing_help.c.o"
   "CMakeFiles/builder.dir/src/edit_walls_help.c.o"
   "CMakeFiles/builder.dir/src/grid_ops.c.o"
+  "CMakeFiles/builder.dir/src/btn_press.c.o"
+  "CMakeFiles/builder.dir/src/distribute_btns.c.o"
   "builder.pdb"
   "builder"
 )

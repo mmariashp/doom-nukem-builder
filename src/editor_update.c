@@ -40,7 +40,7 @@ unsigned short			open_level(t_media *media, t_prog *prog, t_grid *grid)
 		media->n_worlds++;
 	}
 	else if (media->worlds[w].n_s > 0)
-		zoom_to_map(media->worlds[w].n_v, media->worlds[w].vecs, grid);
+		zoom_to_box(grid, media->worlds[media->w].vecs, media->worlds[media->w].n_v);
 	fill_grid(media->worlds[w].n_v, media->worlds[w].vecs, grid);
 	upd_sec(media->worlds[w].sec, media->worlds[w].walls, \
 	media->worlds[w].vecs, media->worlds[w].n_s);

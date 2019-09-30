@@ -44,3 +44,26 @@ void					update_min_max(t_vec *min, t_vec *max, t_vec p)
 		max->y = get_max(max->y, p.y);
 	}
 }
+
+t_vec					*make_vec_tab(t_sec *sector, t_vec *vecs, int n_vecs)
+{
+	int 				i;
+	t_vec				*tab;
+
+	if (sector && sector->v && vecs && sector->n_v > 0)
+	{
+		if (!(tab = ft_memalloc(sizeof(t_vec) * sector->n_v)))
+			return (NULL);
+		i = 0;
+		while (i < sector->n_v)
+		{
+			if (within(i, -1, n_vecs))
+				tab[i] = vecs[sector->v[i]];
+			else
+				tab[i] = (t_vec){ 0, 0 };
+			i++;
+		}
+		return (tab);
+	}
+	return (NULL);
+}

@@ -15,9 +15,16 @@
 t_vec_d					make_iso(t_vec v, int z)
 {
 	t_vec_d				res;
+	static double 		cos_iso = 0;
+	static double 		sin_iso = 0;
 
-	res.x = (v.x - v.y) * cos(0.523599);
-	res.y = -z + (v.x + v.y) * sin(0.523599);
+	if (!cos_iso)
+	{
+		cos_iso = cos(0.523599);
+		sin_iso = cos(0.523599);
+	}
+	res.x = (v.x - v.y) * cos_iso;
+	res.y = -z + (v.x + v.y) * sin_iso;
 	return (res);
 }
 

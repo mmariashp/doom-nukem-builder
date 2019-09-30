@@ -127,7 +127,9 @@ SRC =   sdl_fun.c \
         read_line.c \
         drawing_help.c \
         edit_walls_help.c \
-        grid_ops.c
+        grid_ops.c \
+        btn_press.c \
+        distribute_btns.c
 
 OBJ =	$(SRC:.c=.o)
 

@@ -16,6 +16,11 @@ CMakeFiles/builder.dir/src/add_to_media.c.o: ../src/add_to_media.c
 CMakeFiles/builder.dir/src/add_to_media.c.o: ../src/builder.h
 CMakeFiles/builder.dir/src/add_to_media.c.o: ../src/get_next_line.h
 
+CMakeFiles/builder.dir/src/btn_press.c.o: ../libft/libft.h
+CMakeFiles/builder.dir/src/btn_press.c.o: ../src/btn_press.c
+CMakeFiles/builder.dir/src/btn_press.c.o: ../src/builder.h
+CMakeFiles/builder.dir/src/btn_press.c.o: ../src/get_next_line.h
+
 CMakeFiles/builder.dir/src/char_ops.c.o: ../libft/libft.h
 CMakeFiles/builder.dir/src/char_ops.c.o: ../src/builder.h
 CMakeFiles/builder.dir/src/char_ops.c.o: ../src/char_ops.c
@@ -40,6 +45,11 @@ CMakeFiles/builder.dir/src/delete_world.c.o: ../libft/libft.h
 CMakeFiles/builder.dir/src/delete_world.c.o: ../src/builder.h
 CMakeFiles/builder.dir/src/delete_world.c.o: ../src/delete_world.c
 CMakeFiles/builder.dir/src/delete_world.c.o: ../src/get_next_line.h
+
+CMakeFiles/builder.dir/src/distribute_btns.c.o: ../libft/libft.h
+CMakeFiles/builder.dir/src/distribute_btns.c.o: ../src/builder.h
+CMakeFiles/builder.dir/src/distribute_btns.c.o: ../src/distribute_btns.c
+CMakeFiles/builder.dir/src/distribute_btns.c.o: ../src/get_next_line.h
 
 CMakeFiles/builder.dir/src/drawing.c.o: ../libft/libft.h
 CMakeFiles/builder.dir/src/drawing.c.o: ../src/builder.h

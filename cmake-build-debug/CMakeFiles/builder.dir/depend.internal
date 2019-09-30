@@ -16,6 +16,11 @@ CMakeFiles/builder.dir/src/add_to_media.c.o
  /home/moosh/CLionProjects/builder/src/add_to_media.c
  /home/moosh/CLionProjects/builder/src/builder.h
  /home/moosh/CLionProjects/builder/src/get_next_line.h
+CMakeFiles/builder.dir/src/btn_press.c.o
+ /home/moosh/CLionProjects/builder/libft/libft.h
+ /home/moosh/CLionProjects/builder/src/btn_press.c
+ /home/moosh/CLionProjects/builder/src/builder.h
+ /home/moosh/CLionProjects/builder/src/get_next_line.h
 CMakeFiles/builder.dir/src/char_ops.c.o
  /home/moosh/CLionProjects/builder/libft/libft.h
  /home/moosh/CLionProjects/builder/src/builder.h
@@ -40,6 +45,11 @@ CMakeFiles/builder.dir/src/delete_world.c.o
  /home/moosh/CLionProjects/builder/libft/libft.h
  /home/moosh/CLionProjects/builder/src/builder.h
  /home/moosh/CLionProjects/builder/src/delete_world.c
+ /home/moosh/CLionProjects/builder/src/get_next_line.h
+CMakeFiles/builder.dir/src/distribute_btns.c.o
+ /home/moosh/CLionProjects/builder/libft/libft.h
+ /home/moosh/CLionProjects/builder/src/builder.h
+ /home/moosh/CLionProjects/builder/src/distribute_btns.c
  /home/moosh/CLionProjects/builder/src/get_next_line.h
 CMakeFiles/builder.dir/src/drawing.c.o
  /home/moosh/CLionProjects/builder/libft/libft.h
