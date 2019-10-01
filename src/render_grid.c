@@ -58,7 +58,7 @@ int wall)
 		v2.y = (int)(grid->box.y + v2.y * grid->scl);
 		if (i == wall)
 			draw_thick_line((t_line){ v1, v2 }, NAVY, LIT_WALL_R, screen);
-		if (world.walls[i].type == WALL_EMPTY)
+		else if (world.walls[i].type == WALL_EMPTY)
 			draw_thick_line((t_line){ v1, v2 }, GREEN, WALL_R, screen);
 		else if (world.walls[i].type == WALL_FILLED)
 			draw_thick_line((t_line){ v1, v2 }, WHITE, WALL_R, screen);

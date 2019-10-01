@@ -69,8 +69,11 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *m,
 	if ((state = select_it(1, ST_SEL, -1)) == SEC_SEARCH)
 		sec_search_st(prog, sdl->mouse, grid, &m->worlds[m->w]);
 	else if (state == WALL_SEARCH && mouse_over(grid->box, sdl->mouse))
-		wall_search_st(prog, find_node(sdl->mouse.x, sdl->mouse.y, grid), \
+		wall_search_st(prog, sdl->mouse, \
 		grid, &m->worlds[m->w]);
+//	else if (state == WALL_SEARCH && mouse_over(grid->box, sdl->mouse))
+//		wall_search_st(prog, find_node(sdl->mouse.x, sdl->mouse.y, grid),
+//		grid, &m->worlds[m->w]);
 	else if (state == SEC_EDIT)
 		sec_edit_st(prog, sdl->mouse, grid, m);
 	else

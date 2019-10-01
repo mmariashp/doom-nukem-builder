@@ -29,6 +29,29 @@ char					*del_char(char *input)
 	return (new);
 }
 
+char					*add_char(char *input, char to_add)
+{
+	size_t				i;
+	size_t 				j;
+	char				*new;
+
+	if (!input)
+		i = 0;
+	else
+		i = ft_strlen(input);
+	if (!(new = ft_strnew(sizeof(char) * (i + 1))))
+		return (NULL);
+	j = 0;
+	while (j < i && input[j])
+	{
+		new[j] = input[j];
+		j++;
+	}
+	new[j++] = to_add;
+	new[j] = '\0';
+	return (new);
+}
+
 char					*get_input(char *init, char change)
 {
 	static char			*input = NULL;
@@ -42,13 +65,15 @@ char					*get_input(char *init, char change)
 	}
 	if (ft_isalnum(change))
 	{
-		if ((tmp = ft_strdup(input)))
-		{
-			if (input)
-				free(input);
-			input = ft_strjoin(tmp, &change);
+		if (input)
+			tmp = ft_strdup(input);
+		else
+			tmp = NULL;
+		if (input)
+			free(input);
+		input = add_char(tmp, change);
+		if (tmp)
 			free(tmp);
-		}
 	}
 	else if (input && change == 8)
 		input = del_char(input);

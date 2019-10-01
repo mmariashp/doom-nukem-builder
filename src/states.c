@@ -37,6 +37,97 @@ void					setup_door(t_world *world)
 	}
 }
 
+//private int FindLineCircleIntersections(
+//		float cx, float cy, float radius,
+//		PointF point1, PointF point2,
+//		out PointF intersection1, out PointF intersection2)
+//{
+//	float dx, dy, A, B, C, det, t;
+//
+//	dx = point2.X - point1.X;
+//	dy = point2.Y - point1.Y;
+//
+//	A = dx * dx + dy * dy;
+//	B = 2 * (dx * (point1.X - cx) + dy * (point1.Y - cy));
+//	C = (point1.X - cx) * (point1.X - cx) +
+//		(point1.Y - cy) * (point1.Y - cy) -
+//		radius * radius;
+//
+//	det = B * B - 4 * A * C;
+//	if ((A <= 0.0000001) || (det < 0))
+//	{
+//		// No real solutions.
+//		intersection1 = new PointF(float.NaN, float.NaN);
+//		intersection2 = new PointF(float.NaN, float.NaN);
+//		return 0;
+//	}
+//	else if (det == 0)
+//	{
+//		// One solution.
+//		t = -B / (2 * A);
+//		intersection1 =
+//				new PointF(point1.X + t * dx, point1.Y + t * dy);
+//		intersection2 = new PointF(float.NaN, float.NaN);
+//		return 1;
+//	}
+//	else
+//	{
+//		// Two solutions.
+//		t = (float)((-B + Math.Sqrt(det)) / (2 * A));
+//		intersection1 =
+//				new PointF(point1.X + t * dx, point1.Y + t * dy);
+//		t = (float)((-B - Math.Sqrt(det)) / (2 * A));
+//		intersection2 =
+//				new PointF(point1.X + t * dx, point1.Y + t * dy);
+//		return 2;
+//	}
+//}
+
+unsigned short			circle_inter_line(t_vec mouse, int radius, t_line line)
+{
+	float dx, dy, A, B, C, det;
+
+	dx = line.p1.x - line.p0.x;
+	dy = line.p1.y - line.p0.y;
+
+	A = dx * dx + dy * dy;
+	B = 2 * (dx * (line.p0.x - mouse.x) + dy * (line.p0.y - mouse.y));
+	C = (line.p0.x - mouse.x) * (line.p0.x - mouse.x) +
+		(line.p0.y - mouse.y) * (line.p0.y - mouse.y) -
+		radius * radius;
+
+	det = B * B - 4 * A * C;
+	if (A <= 0.0000001 || det < 0 || (!within(mouse.x, get_min(line.p0.x, line.p1.x), \
+	get_max(line.p0.x, line.p1.x)) && !within(mouse.y, get_min(line.p0.y, line.p1.y), \
+	get_max(line.p0.y, line.p1.y))))
+	{
+//		// No real solutions.
+//		intersection1 = new PointF(float.NaN, float.NaN);
+//		intersection2 = new PointF(float.NaN, float.NaN);
+		return 0;
+	}
+	else if (det == 0)
+	{
+//		// One solution.
+//		t = -B / (2 * A);
+//		intersection1 =
+//				new PointF(point1.X + t * dx, point1.Y + t * dy);
+//		intersection2 = new PointF(float.NaN, float.NaN);
+		return 1;
+	}
+	else
+	{
+//		// Two solutions.
+//		t = (float)((-B + Math.Sqrt(det)) / (2 * A));
+//		intersection1 =
+//				new PointF(point1.X + t * dx, point1.Y + t * dy);
+//		t = (float)((-B - Math.Sqrt(det)) / (2 * A));
+//		intersection2 =
+//				new PointF(point1.X + t * dx, point1.Y + t * dy);
+		return 2;
+	}
+}
+
 void					wall_search_st(t_prog *prog, t_vec node, \
 											t_grid *grid, t_world *world)
 {
@@ -46,27 +137,64 @@ void					wall_search_st(t_prog *prog, t_vec node, \
 
 	if (!prog || !world || !grid)
 		return ;
-	if (within(node.x, -1, GRID_SIZE) && within(node.y, -1, GRID_SIZE))
+	w = -1;
+	if (mouse_over((t_rec){ 0, 0, W_W, W_H }, node))
 	{
-		w = lit_it(0, W_SELECT, grid->nod[node.x][node.y]);
-		if ((prog->click.x || prog->click.y) && within(w, -1, world->n_w))
+		if (prog->screen[node.x][node.y] == WHITE)
 		{
-			select_it(0, W_SELECT, w);
-			if (prog->btn_on == DOOR_ADD_BTN)
+			int i = 0;
+			while (i < world->n_w)
 			{
-				add_door(world, w, grid);
-				setup_door(world);
-			}
-			else
-			{
-				select_it(0, ST_SEL, WALL_EDIT);
-				if (within((v1 = world->walls[w].v1), -1, world->n_v) &&
-					within((v2 = world->walls[w].v2), -1, world->n_v))
-						zoom_to_box(grid, (t_vec[2]){ world->vecs[v1], world->vecs[v2] }, 2);
+				if (circle_inter_line(node, 15, \
+				(t_line){ transform_to_screen(world->vecs[world->walls[i].v1], grid),
+			  transform_to_screen(world->vecs[world->walls[i].v2], grid) }))
+				{
+					w = lit_it(0, W_SELECT, i);
+//					printf("intersects with wall n %d\n", i);
+					break ;
+				}
+				i++;
 			}
 		}
-		prog->redraw = 1;
 	}
+	if ((prog->click.x || prog->click.y) && within(w, -1, world->n_w))
+	{
+		select_it(0, W_SELECT, w);
+		if (prog->btn_on == DOOR_ADD_BTN)
+		{
+			add_door(world, w, grid);
+			setup_door(world);
+		}
+		else
+		{
+			select_it(0, ST_SEL, WALL_EDIT);
+			if (within((v1 = world->walls[w].v1), -1, world->n_v) &&
+				within((v2 = world->walls[w].v2), -1, world->n_v))
+					zoom_to_box(grid, (t_vec[2]){ world->vecs[v1], world->vecs[v2] }, 2);
+		}
+	}
+	prog->redraw = 1;
+//	if (within(node.x, -1, GRID_SIZE) && within(node.y, -1, GRID_SIZE))
+//	{
+//		w = lit_it(0, W_SELECT, grid->nod[node.x][node.y]);
+//		if ((prog->click.x || prog->click.y) && within(w, -1, world->n_w))
+//		{
+//			select_it(0, W_SELECT, w);
+//			if (prog->btn_on == DOOR_ADD_BTN)
+//			{
+//				add_door(world, w, grid);
+//				setup_door(world);
+//			}
+//			else
+//			{
+//				select_it(0, ST_SEL, WALL_EDIT);
+//				if (within((v1 = world->walls[w].v1), -1, world->n_v) &&
+//					within((v2 = world->walls[w].v2), -1, world->n_v))
+//						zoom_to_box(grid, (t_vec[2]){ world->vecs[v1], world->vecs[v2] }, 2);
+//			}
+//		}
+//		prog->redraw = 1;
+//	}
 }
 void					sec_search_st(t_prog *prog, t_vec mouse, \
 											t_grid *grid, t_world *world)
