@@ -37,12 +37,14 @@ void					read_section_names(char *line, t_section *s)
 		return ;
 	if (s->id == 2)
 	{
-		while (*line && !ft_isalpha(*line) && *line != '(')
+		while (*line && !ft_isalpha(*line))
 			line++;
 		if (!(s->extra = (int *)realloc_tab(s->extra, sizeof(int) * (s->n_files\
-		+ 1), sizeof(int) * s->n_files)) || !(s->extra[s->n_files] = \
-		read_item_type(line)) || !(line = ft_strchr(line, ')')))
+		+ 1), sizeof(int) * s->n_files)) || (s->extra[s->n_files] = \
+		read_item_type(line)) == -1)
 			return ;
+		while (*line && (ft_isalpha(*line) || *line == '_'))
+			line++;
 	}
 	while (*line && !ft_isalpha(*line))
 		line++;

@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "builder.h"
 
-void					render_item_icons(t_prog *prog, t_media *media, SDL_Renderer *rend)
+void					render_item_icons(t_prog *prog, t_media *media, \
+SDL_Renderer *rend)
 {
 	int 				i;
 	t_rec				box;
@@ -31,7 +31,8 @@ void					render_item_icons(t_prog *prog, t_media *media, SDL_Renderer *rend)
 	}
 }
 
-void					r_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
+void					r_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, \
+t_prog *prog)
 {
 	if (!sdl || !media || !grid || prog->redraw == 0)
 		return ;
@@ -43,7 +44,8 @@ void					r_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	prog->redraw = 1;
 }
 
-unsigned short			u_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
+unsigned short			u_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, \
+t_prog *prog)
 {
 	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->m_id].btn)
 		return (FAIL);
@@ -54,13 +56,15 @@ unsigned short			u_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *pr
 		prog->last = prog->m_id;
 		return (SUCCESS);
 	}
-	if (btn_light(sdl->mouse, prog->modes[prog->m_id].btn, prog->modes[prog->m_id].n_btn, prog) == SUCCESS) // when mouse is over a button
+	if (btn_light(sdl->mouse, prog->modes[prog->m_id].btn, \
+	prog->modes[prog->m_id].n_btn, prog) == SUCCESS)
 		return (SUCCESS);
 	prog->btn_lit = -1;
 	return (SUCCESS);
 }
 
-int						i_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
+int						i_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, \
+t_prog *prog)
 {
 	int					quit;
 	SDL_Event			event;
@@ -71,42 +75,19 @@ int						i_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, t_prog *prog)
 	while(SDL_PollEvent(&event))
 	{
 		SDL_GetMouseState(&sdl->mouse.x, &sdl->mouse.y);
-		if (event.type == SDL_QUIT)
+		if (event.type == SDL_QUIT || (event.type == SDL_KEYUP &&
+									   event.key.keysym.sym == SDLK_ESCAPE))
+			return (TRUE);
+		if(event.type == SDL_MOUSEBUTTONDOWN && prog->btn_lit != -1)
 		{
-			quit = TRUE;
-			break ;
+			select_it(0, SEL_I_SELECT, prog->btn_lit);
+			turn_btns_off(prog);
+			prog->last = prog->m_id;
+			prog->m_id = MODE_EDITOR;
+			prog->click = (t_vec){ 0, 0 };
+			return (quit);
 		}
-		else if (event.type == SDL_KEYUP || event.type == SDL_KEYDOWN)
-		{
-			if (event.key.keysym.sym == SDLK_ESCAPE)
-			{
-				quit = TRUE;
-				break ;
-			}
-		}
-		if( event.type == SDL_MOUSEMOTION || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP )
-		{
-			if(event.type == SDL_MOUSEBUTTONDOWN)
-			{
-				if (prog->btn_lit != -1)
-				{
-					select_it(0, SEL_I_SELECT, prog->btn_lit);
-					int i = 0;
-					while (i < prog->modes[prog->m_id].n_btn)
-					{
-						prog->modes[prog->m_id].btn[i].vis_lit_on[1] = FALSE;
-						prog->modes[prog->m_id].btn[i].vis_lit_on[2] = FALSE;
-						i++;
-					}
-					prog->last = prog->m_id;
-					prog->m_id = MODE_EDITOR;
 
-					prog->click.x = 0;
-					prog->click.y = 0;
-					return (quit);
-				}
-			}
-		}
 	}
 	return (quit);
 }

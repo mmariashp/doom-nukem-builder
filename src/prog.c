@@ -35,12 +35,12 @@ SDL_Texture				**get_prog_txtr(SDL_Renderer *rend)
 	SDL_Texture			**t;
 	char				*tmp;
 	static char			s[N_TXTR][30] = { "rct_g", "rct_g_l", "rct_y", \
-	"rct_y_l", "panel", "panel_l", "yes", "no", "move", "move_l", "draw", \
+	"rct_y_l", "panel", "panel_l", "add_map", "add_map_l", "yes", "no", "move", "move_l", "draw", \
 	"draw_l", "dist", "dist_l", "iso", "iso_l", "sec", "sec_l", "wall",\
 	"wall_l", "d_add", "d_add_l", "d_del", "d_del_l", "player", "player_l", \
 	"save", "save_l", "exit", "exit_l", "back", "back_l", "del", "del_l", \
 	"edit", "edit_l", "up", "up_l", "down", "down_l", "coin", "key", "object", \
-	"enemy", "super", "hp", "ammo", "light", "door" };
+	"enemy", "super", "hp", "ammo", "weapon", "light", "door" };
 
 	if (!rend || !(t = ft_memalloc(sizeof(SDL_Texture *) * N_TXTR)))
 		return (NULL);

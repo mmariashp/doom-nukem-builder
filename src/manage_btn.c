@@ -75,6 +75,7 @@ void					turn_btns_off(t_prog *prog)
 		i = 0;
 		while (i < prog->modes[prog->m_id].n_btn)
 		{
+			prog->modes[prog->m_id].btn[i].vis_lit_on[1] = FALSE;
 			prog->modes[prog->m_id].btn[i].vis_lit_on[2] = FALSE;
 			i++;
 		}

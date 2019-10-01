@@ -37,6 +37,7 @@ char					*write_typ(int type)
 													"TYPE: super_bonus", \
 													"TYPE: health", \
 													"TYPE: ammo", \
+													"TYPE: weapon", \
 													"TYPE: light" };
 
 	if (within(type, -1, TOTAL_TYPES))

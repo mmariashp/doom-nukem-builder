@@ -130,19 +130,27 @@ unsigned short			levels_btn(t_btn *btn, t_world *worlds, int n_worlds)
 	s = NULL;
 	while (i < n_levels)
 	{
-		tmp = ft_itoa(i);
-		s = ft_strjoin(tmp, ". ");
-		free(tmp);
-		if (s)
+		if (i == n_worlds)
 		{
-			if (i == n_worlds)
-				btn[i].text = ft_strjoin(s, " ADD LEVEL");
-			else if (i < n_worlds)
-				btn[i].text = ft_strjoin(s, worlds[i].name);
-			free(s);
+			btn[i].text = NULL;
+			btn[i].reg_i = TXTR_ADD_MAP;
+			btn[i].lit_i = TXTR_ADD_MAP_L;
+			btn[i].box.x += (btn[i].box.w - btn[i].box.h) / 2;
+			btn[i].box.w = btn[i].box.h;
 		}
-		btn[i].reg_i = TXTR_RECG;
-		btn[i].lit_i = TXTR_RECG_L;
+		else
+		{
+			tmp = ft_itoa(i);
+			s = ft_strjoin(tmp, ". ");
+			free(tmp);
+			if (s)
+			{
+				btn[i].text = ft_strjoin(s, worlds[i].name);
+				free(s);
+			}
+			btn[i].reg_i = TXTR_RECG;
+			btn[i].lit_i = TXTR_RECG_L;
+		}
 		i++;
 	}
 	int j = 0;
@@ -166,25 +174,19 @@ unsigned short			levels_btn(t_btn *btn, t_world *worlds, int n_worlds)
 	return (SUCCESS);
 }
 
-unsigned short			textures_btn(t_btn *btn, t_texture *textures, int n_t)
+unsigned short			textures_btn(t_btn *btn, int n_t)
 {
-    t_rec				box;
     int 				i;
 
-    if (!btn || !textures)
-        return (FAIL);
-    box.w = W_W * 0.9;
-    box.h = W_H * 0.9;
-    box.x = (W_W  - box.w) / 2;
-    box.y = (W_H  - box.h) / 2;
-    distribute_btn_grid(btn, (t_vec){ 0, n_t }, box);
-    i = 0;
-    while (i < n_t)
+    if (!btn || n_t < 1)
+    	return (FAIL);
+    get_txtr_btn_boxes(btn, n_t, 0);
+    i = -1;
+    while (++i < n_t)
     {
         btn[i].vis_lit_on[0] = TRUE;
-		btn[i].reg_i = TXTR_RECG;
+		btn[i].reg_i = TXTR_PANEL_GR;
 		btn[i].lit_i = TXTR_RECG_L;
-        i++;
     }
     return (SUCCESS);
 }
@@ -196,10 +198,9 @@ unsigned short			sel_item_btn(t_btn *btn, t_it_f *it_f, int n_itf)
 
 	if (!btn || !it_f)
 		return (FAIL);
-	if (n_itf > 25)
-		button_box = (t_rec){ W_W * 0.1, W_H * 0.05, W_W * 0.4, W_H * 0.9 / 25 };
-	else
-		button_box = (t_rec){ W_W * 0.3, (W_H - (W_H * 0.9 / 25) * n_itf) / 2, W_W * 0.4, W_H * 0.9 / 25 };
+	button_box = n_itf > 25 ? (t_rec){ W_W * 0.1, W_H * 0.05, W_W * 0.4,\
+	W_H * 0.9 / 25 } : (t_rec){ W_W * 0.3, (W_H - (W_H * 0.9 / 25) * n_itf)\
+	/ 2, W_W * 0.4, W_H * 0.9 / 25 };
 	i = -1;
 	while (++i < n_itf)
 	{
@@ -259,7 +260,7 @@ void					get_loop_fun(t_mode *modes, t_media *media)
 	modes[MODE_TEXTURES].n_btn = media->n_t;
 	modes[MODE_MAIN_MENU].n_btn = N_MM_BTNS;
 	modes[MODE_LEVELS].n_btn = (media->n_worlds + 1) * 3;
-	modes[MODE_EDITOR].n_btn = 18;
+	modes[MODE_EDITOR].n_btn = TOTAL_EDITOR_BTNS;
 	modes[MODE_SEL_ITEM].n_btn = media->n_itf;
 }
 
@@ -283,7 +284,7 @@ unsigned short			init_modes(t_media *media, t_prog *prog)
 	}
 	main_menu_btn(prog->modes[MODE_MAIN_MENU].btn);
 	levels_btn(prog->modes[MODE_LEVELS].btn, media->worlds, media->n_worlds);
-    textures_btn(prog->modes[MODE_TEXTURES].btn, media->txtr, media->n_t);
+    textures_btn(prog->modes[MODE_TEXTURES].btn, media->n_t);
 	sel_item_btn(prog->modes[MODE_SEL_ITEM].btn, media->it_f, media->n_itf);
 	return (SUCCESS);
 }

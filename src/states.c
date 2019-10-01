@@ -91,6 +91,25 @@ void					sec_search_st(t_prog *prog, t_vec mouse, \
 	prog->redraw = 1;
 }
 
+unsigned short			check_for_light(t_media *media, int id, int sec)
+{
+	int 				i;
+
+	i = 0;
+	if (id != LIGHT)
+		return (TRUE);
+	while (i < media->worlds[media->w].sec[sec].n_it)
+	{
+		if (within(media->worlds[media->w].sec[sec].items[i].id, -1, media->n_itf))
+		{
+			if (media->it_f[media->worlds[media->w].sec[sec].items[i].id].type == LIGHT)
+				return (FALSE);
+		}
+		i++;
+	}
+	return (TRUE);
+}
+
 void					sec_edit_st(t_prog *prog, t_vec mouse, \
 												t_grid *grid, t_media *media)
 {
@@ -104,7 +123,7 @@ void					sec_edit_st(t_prog *prog, t_vec mouse, \
 		if (prog->btn_on == -1)
 			move_item(prog, mouse, grid, \
 			&media->worlds[media->w].sec[sector]);
-		else if (prog->click.x || prog->click.y)
+		else if ((prog->click.x || prog->click.y) && check_for_light(media, prog->btn_on - B_COIN, sector))
 			add_item(find_def_item(prog->btn_on - B_COIN, media->it_f, \
 			media->n_itf), mouse, grid, \
 			&media->worlds[media->w].sec[sector]);

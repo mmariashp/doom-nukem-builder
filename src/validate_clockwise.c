@@ -32,19 +32,28 @@ int						*reverse_order(int *p, int n_p)
 	return (NULL);
 }
 
-void					make_continuous(t_sec *sec, t_world *world)
+void					make_continuous(t_sec *sec, t_world *world, int sec_no)
 {
 	int					i;
 	int					j;
+	static char			tab[MAX_N_WALLS] = { 0 };
 
 	if (!world || !sec || !world->walls || !sec->s_walls || !sec->v)
 		return ;
+	if (sec_no == 0)
+	{
+		ft_memset(tab, '0', sizeof(char) * MAX_N_WALLS);
+	}
 	i = 0;
 	j = 0;
 	while (j < sec->n_w)
 	{
-		world->walls[sec->s_walls[j]].v1 = sec->v[i];
-		world->walls[sec->s_walls[j]].v2 = sec->v[(i + 1) % sec->n_v];
+		if (tab[sec->s_walls[j]] == '0')
+		{
+			world->walls[sec->s_walls[j]].v1 = sec->v[i];
+			world->walls[sec->s_walls[j]].v2 = sec->v[(i + 1) % sec->n_v];
+			tab[sec->s_walls[j]] = '1';
+		}
 		j++;
 		i++;
 	}
@@ -75,5 +84,5 @@ void					validate_clockwise(t_world *world, int sec)
 		free(world->sec[sec].v);
 		get_sec_v(&world->sec[sec], world->walls);
 	}
-	make_continuous(&world->sec[sec], world);
+	make_continuous(&world->sec[sec], world, sec);
 }

@@ -56,7 +56,7 @@ unsigned short max)
 int						read_item_type(char *line)
 {
 	static char			types[TOTAL_TYPES][12] = { "coin", "key", "object",\
-						"enemy", "super_bonus", "health", "ammo", "light" };
+	"enemy", "super_bonus", "health", "ammo", "gun", "light" };
 	int					res;
 
 	while (*line && !ft_isalpha(*line))
@@ -70,5 +70,5 @@ int						read_item_type(char *line)
 				return (res);
 		}
 	}
-	return (0);
+	return (-1);
 }

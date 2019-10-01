@@ -144,7 +144,7 @@
 # define WALL_EMPTY				0
 # define WALL_FILLED			1
 
-# define ASSET_FILE             "./asset_paths.txt"
+# define ASSET_FILE             "./game_info.txt"
 
 # define REGION_INSIDE      (int)0
 # define REGION_LEFT        (int)1
@@ -175,51 +175,54 @@
 # define TXTR_RECY_L		3
 # define TXTR_PANEL_GR		4
 # define TXTR_PANEL_GR_L	5
-# define TXTR_YES			6
-# define TXTR_NO			7
-# define TXTR_MOVE			8
-# define TXTR_MOVE_L		9
-# define TXTR_DRAW			10
-# define TXTR_DRAW_L		11
-# define TXTR_DISTORT		12
-# define TXTR_DISTORT_L		13
-# define TXTR_ISO			14
-# define TXTR_ISO_L			15
-# define TXTR_SEC			16
-# define TXTR_SEC_L			17
-# define TXTR_WALL			18
-# define TXTR_WALL_L		19
-# define TXTR_DOOR_ADD		20
-# define TXTR_DOOR_ADD_L	21
-# define TXTR_DOOR_DEL		22
-# define TXTR_DOOR_DEL_L	23
-# define TXTR_PLAYER		24
-# define TXTR_PLAYER_L		25
-# define TXTR_SAVE			26
-# define TXTR_SAVE_L		27
-# define TXTR_EXIT			28
-# define TXTR_EXIT_L		29
-# define TXTR_BACK			30
-# define TXTR_BACK_L		31
-# define TXTR_DEL			32
-# define TXTR_DEL_L			33
-# define TXTR_EDIT			34
-# define TXTR_EDIT_L		35
-# define TXTR_UP			36
-# define TXTR_UP_L			37
-# define TXTR_DOWN			38
-# define TXTR_DOWN_L		39
-# define TXTR_COIN			40
-# define TXTR_KEY			41
-# define TXTR_OBJECT		42
-# define TXTR_ENEMY			43
-# define TXTR_SUPER			44
-# define TXTR_HEALTH		45
-# define TXTR_AMMO			46
-# define TXTR_LIGHT			47
-# define TXTR_DOOR			48
+# define TXTR_ADD_MAP		6
+# define TXTR_ADD_MAP_L		7
+# define TXTR_YES			8
+# define TXTR_NO			9
+# define TXTR_MOVE			10
+# define TXTR_MOVE_L		11
+# define TXTR_DRAW			12
+# define TXTR_DRAW_L		13
+# define TXTR_DISTORT		14
+# define TXTR_DISTORT_L		15
+# define TXTR_ISO			16
+# define TXTR_ISO_L			17
+# define TXTR_SEC			18
+# define TXTR_SEC_L			19
+# define TXTR_WALL			20
+# define TXTR_WALL_L		21
+# define TXTR_DOOR_ADD		22
+# define TXTR_DOOR_ADD_L	23
+# define TXTR_DOOR_DEL		24
+# define TXTR_DOOR_DEL_L	25
+# define TXTR_PLAYER		26
+# define TXTR_PLAYER_L		27
+# define TXTR_SAVE			28
+# define TXTR_SAVE_L		29
+# define TXTR_EXIT			30
+# define TXTR_EXIT_L		31
+# define TXTR_BACK			32
+# define TXTR_BACK_L		33
+# define TXTR_DEL			34
+# define TXTR_DEL_L			35
+# define TXTR_EDIT			36
+# define TXTR_EDIT_L		37
+# define TXTR_UP			38
+# define TXTR_UP_L			39
+# define TXTR_DOWN			40
+# define TXTR_DOWN_L		41
+# define TXTR_COIN			42
+# define TXTR_KEY			43
+# define TXTR_OBJECT		44
+# define TXTR_ENEMY			45
+# define TXTR_SUPER			46
+# define TXTR_HEALTH		47
+# define TXTR_AMMO			48
+# define TXTR_WEAPON		49
+# define TXTR_LIGHT			50
+# define TXTR_DOOR			51
 
-# define N_TXTR				49
+# define N_TXTR				52
 
 # define DRAG_BTN			0
 # define DISTORT_BTN		1
@@ -250,7 +253,10 @@
 # define B_SUPER_BONUS		14
 # define B_HEALTH			15
 # define B_AMMO				16
-# define B_LIGHT			17
+# define B_WEAPON			17
+# define B_LIGHT			18
+
+# define TOTAL_EDITOR_BTNS	19
 
 # define WT_EDIT_BTN		1
 # define PORT_BTN			2
@@ -294,8 +300,9 @@
 # define SUPER_BONUS		4
 # define HEALTH				5
 # define AMMO				6
-# define LIGHT				7
-# define TOTAL_TYPES		8
+# define WEAPON				7
+# define LIGHT				8
+# define TOTAL_TYPES		9
 
 typedef struct				s_rgb
 {
@@ -834,7 +841,7 @@ int s);
 unsigned short			distribute_btn_grid(t_btn *btn, t_vec from_to, t_rec box);
 unsigned short			distribute_btn_v(t_btn *btn, t_vec from_to, t_rec box, int padding);
 unsigned short			distribute_btn_h(t_btn *btn, t_vec from_to, t_rec box, int padding);
-
+void					get_txtr_btn_boxes(t_btn *btn, int n_t, int scroll);
 
 
 #endif

@@ -14,14 +14,12 @@
 
 void					write_item_type(int type, int fd)
 {
-	static char			types[TOTAL_TYPES][12] = { "coin", "key", "object",\
-						"enemy", "super_bonus", "health", "ammo", "light" };
+	static char			types[TOTAL_TYPES][12] = { "coin ", "key ", "object ",\
+	"enemy ", "super_bonus ", "health ", "ammo ", "gun ", "light " };
 
 	if (type >= 0 && type < TOTAL_TYPES)
 	{
-		ft_putstr_fd("(", fd);
 		ft_putstr_fd(types[type], fd);
-		ft_putstr_fd(") ", fd);
 	}
 }
 
