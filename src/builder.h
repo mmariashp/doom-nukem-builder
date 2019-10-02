@@ -112,9 +112,7 @@
 # define LEVELS					"Levels"
 # define TEXTURES				"Textures"
 # define ITEMS					"Items"
-# define SOUNDS					"Sounds"
-# define FONTS					"Fonts"
-# define TOTAL_SECTIONS			5
+# define TOTAL_SECTIONS			3
 
 # define MAX_LEVELS				5
 
@@ -497,15 +495,11 @@ typedef struct				s_media
 	char					paths[TOTAL_SECTIONS][20];
 	char					extensions[TOTAL_SECTIONS][10];
 	t_texture				*txtr;
-	char					**fonts;
-	char					**sounds;
 	t_world					*worlds;
 	t_it_f					*it_f;
 	short unsigned			n_itf;
 	short unsigned			n_worlds;
 	short unsigned			n_t;
-	short unsigned			n_fonts;
-	short unsigned			n_sounds;
 }							t_media;
 
 typedef struct				s_mode

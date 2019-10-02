@@ -69,41 +69,12 @@ void					free_media_worlds(t_media *media)
 	}
 }
 
-void					free_media_sounds(t_media *media)
-{
-	int					i;
-
-	if (media && media->sounds)
-	{
-		i = -1;
-		while (++i < media->n_sounds)
-		{
-			if (media->sounds[i])
-				free(media->sounds[i]);
-		}
-		free(media->sounds);
-	}
-}
-
 void					free_media(t_media *media)
 {
-	int					i;
-
 	if (!media)
 		return ;
 	free_media_worlds(media);
 	free_media_txtr(media);
-	free_media_sounds(media);
-	if (media->fonts)
-	{
-		i = -1;
-		while (++i < media->n_fonts)
-		{
-			if (media->fonts[i])
-				free(media->fonts[i]);
-		}
-		free(media->fonts);
-	}
 	free_media_itf(media);
 	ft_memdel((void **)&media);
 }

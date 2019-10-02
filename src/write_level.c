@@ -54,7 +54,7 @@ void					write_sector(t_sec sec, int fd)
 {
 	if (sec.is_door)
 		ft_putstr_fd("door ", fd);
-	ft_putstr_fd("fl(", fd);
+	ft_putstr_fd("floor(", fd);
 	ft_putnbr_fd(sec.fl, fd);
 	ft_putstr_fd(" ", fd);
 	ft_putnbr_fd(sec.fl_t, fd);

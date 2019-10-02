@@ -14,7 +14,7 @@
 
 void					write_item_type(int type, int fd)
 {
-	static char			types[TOTAL_TYPES][12] = { "coin ", "key ", "object ",\
+	static char			types[TOTAL_TYPES][13] = { "coin ", "key ", "object ",\
 	"enemy ", "super_bonus ", "health ", "ammo ", "gun ", "light " };
 
 	if (type >= 0 && type < TOTAL_TYPES)
@@ -33,10 +33,6 @@ int						get_n_files(int section, t_media *media)
 			return (media->n_t);
 		else if (section == 2)
 			return (media->n_itf);
-		else if (section == 3)
-			return (media->n_sounds);
-		else if (section == 4)
-			return (media->n_fonts);
 	}
 	return (-1);
 }
@@ -56,10 +52,6 @@ void					write_file(int section, int i, int fd, t_media *media)
 		write_item_type(media->it_f[i].type, fd);
 		ft_putstr_fd(media->it_f[i].name, fd);
 	}
-	else if (section == 3 && media->sounds && media->sounds[i])
-		ft_putstr_fd(media->sounds[i], fd);
-	else if (section == 4 && media->fonts && media->fonts[i])
-		ft_putstr_fd(media->fonts[i], fd);
 	ft_putchar_fd('\n', fd);
 }
 
@@ -67,7 +59,7 @@ void					write_head(int line, t_media *media, int section, \
 int fd)
 {
 	static char			title[TOTAL_SECTIONS][9] = { "Levels", "Textures", \
-	"Items", "Sounds", "Fonts" };
+	"Items" };
 	static char			prefix[5][13] = { "#", "Path: ", "Extension: ",\
 	"File Names: ", "###" };
 

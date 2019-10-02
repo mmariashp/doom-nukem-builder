@@ -1,6 +1,6 @@
-Count Vectors: 47
-Count Walls: 66
-Count Sectors: 19
+Count Vectors: 49
+Count Walls: 69
+Count Sectors: 20
 
 Vectors
 0) 54,9
@@ -50,6 +50,8 @@ Vectors
 44) 70,28
 45) 80,28
 46) 80,44
+47) 70,27
+48) 80,27
 
 Walls
 0) 1-0 filled 0
@@ -95,7 +97,7 @@ Walls
 40) 23-26 filled 0
 41) 28-27 filled 0
 42) 29-28 filled 0
-43) 30-29 filled 0
+43) 30-29 empty 13
 44) 31-30 filled 0
 45) 26-31 filled 0
 46) 32-29 filled 0
@@ -115,32 +117,36 @@ Walls
 60) 42-43 empty 0
 61) 38-42 filled 0
 62) 42-44 filled 0
-63) 44-45 filled 0
+63) 44-45 empty 0
 64) 45-46 filled 0
 65) 46-43 filled 0
+66) 48-45 filled 0
+67) 47-48 empty 0
+68) 44-47 filled 0
 
 Sectors
-0) fl(20 0) ceil(40 0) walls '2 3 4 1 ' items ''
-1) fl(18 0) ceil(38 0) walls '5 6 7 3 ' items ''
-2) fl(16 13) ceil(36 0) walls '8 9 10 11 6 ' items '(53,20 3)(59,20 7)(56,21 17)'
-3) fl(14 0) ceil(34 0) walls '12 13 7 11 ' items ''
-4) fl(12 0) ceil(32 0) walls '14 15 4 13 ' items ''
-5) fl(10 0) ceil(30 0) walls '16 17 18 15 ' items '(53,14 0)'
-6) fl(8 0) ceil(28 0) walls '19 20 21 17 ' items ''
-7) fl(6 0) ceil(26 0) walls '22 23 24 20 ' items ''
-8) fl(4 0) ceil(24 0) walls '25 26 27 28 0 23 ' items ''
-9) fl(2 0) ceil(22 0) walls '29 30 31 28 ' items '(62,12 0)(61,14 0)'
-10) fl(22 10) ceil(42 7) walls '0 33 1 18 21 24 ' items '(58,13 1)(58,11 5)'
-11) fl(1 12) ceil(2 20) walls '37 36 32 35 8 5 34 30 ' items ''
-12) door fl(0 0) ceil(0 0) walls '40 39 38 32 ' items ''
-13) fl(10 0) ceil(0 0) walls '39 45 44 43 42 41 ' items '(60,34 3)(60,29 4)(62,27 4)(62,31 2)'
-14) fl(0 0) ceil(20 0) walls '43 50 49 48 47 46 ' items '(66,40 3)(61,41 5)'
-15) door fl(0 0) ceil(20 0) walls '49 51 52 53 ' items ''
-16) fl(0 13) ceil(20 13) walls '54 55 56 57 58 52 ' items '(72,43 0)(71,40 16)'
-17) door fl(0 0) ceil(0 0) walls '61 60 59 55 ' items ''
-18) fl(0 13) ceil(48 0) walls '62 63 64 65 60 ' items '(77,35 6)(77,32 0)(72,34 0)(73,30 3)'
+0) floor(20 0) ceil(40 0) walls '2 3 4 1 ' items ''
+1) floor(18 0) ceil(38 0) walls '5 6 7 3 ' items ''
+2) floor(16 13) ceil(36 0) walls '8 9 10 11 6 ' items '(53,20 3)(59,20 7)(56,21 17)'
+3) floor(14 0) ceil(34 0) walls '12 13 7 11 ' items ''
+4) floor(12 0) ceil(32 0) walls '14 15 4 13 ' items ''
+5) floor(10 0) ceil(30 0) walls '16 17 18 15 ' items '(53,14 0)'
+6) floor(8 0) ceil(28 0) walls '19 20 21 17 ' items ''
+7) floor(6 0) ceil(26 0) walls '22 23 24 20 ' items ''
+8) floor(4 0) ceil(24 0) walls '25 26 27 28 0 23 ' items ''
+9) floor(2 0) ceil(22 0) walls '29 30 31 28 ' items '(62,12 0)(61,14 0)'
+10) floor(22 10) ceil(46 7) walls '0 33 1 18 21 24 ' items '(58,13 1)(58,11 5)'
+11) floor(1 12) ceil(2 20) walls '37 36 32 35 8 5 34 30 ' items ''
+12) door floor(0 0) ceil(0 0) walls '40 39 38 32 ' items ''
+13) floor(10 0) ceil(0 0) walls '39 45 44 43 42 41 ' items '(60,34 3)(60,29 4)(62,27 4)(62,31 2)'
+14) floor(0 0) ceil(20 0) walls '43 50 49 48 47 46 ' items '(66,40 3)(61,41 5)'
+15) door floor(0 0) ceil(20 0) walls '49 51 52 53 ' items ''
+16) floor(0 13) ceil(20 13) walls '54 55 56 57 58 52 ' items '(72,43 0)(71,40 16)'
+17) door floor(0 0) ceil(0 0) walls '61 60 59 55 ' items ''
+18) floor(0 13) ceil(48 0) walls '62 63 64 65 60 ' items '(77,35 6)(77,32 0)(72,34 0)(73,30 3)(78,38 2)'
+19) door floor(0 0) ceil(0 0) walls '68 67 66 63 ' items ''
 
 Player
 0) 56,12 (sector: 10) start
-1) 74,33 (sector: 18) end
+1) 74,34 (sector: 18) end
 

@@ -184,7 +184,6 @@ void					sec_edit_st(t_prog *prog, t_vec mouse, \
 		prog->redraw = 1;
 		if (!(within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1)))
 		{
-			printf("turn off\n");
 			turn_btns_off(prog);
 			prog->click = (t_vec){ 0, 0 };
 		}

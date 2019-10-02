@@ -21,14 +21,10 @@ t_media					*init_media(void)
 	media->w = -1;
 	media->txtr = NULL;
 	media->it_f = NULL;
-	media->fonts = NULL;
-	media->sounds = NULL;
 	media->worlds = NULL;
 	media->n_itf = 0;
 	media->n_worlds = 0;
 	media->n_t = 0;
-	media->n_fonts = 0;
-	media->n_sounds = 0;
 	return (media);
 }
 

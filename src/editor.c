@@ -97,7 +97,6 @@ int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media,
 		else if (e.type == SDL_MOUSEBUTTONDOWN)
 		{
 			prog->click = sdl->mouse;
-			printf("here\n");
 			int state = select_it(1, ST_SEL, -1);
 			if (!(state == SEC_EDIT && (within(prog->btn_lit, F_UP_BTN - 1, C_DOWN_BTN + 1) ||
 					within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1))))
@@ -108,7 +107,7 @@ int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media,
 			return (return_to_levels(prog, media));
 		else if (e.type == SDL_MOUSEBUTTONUP)
 		{
-			if (select_it(1, ST_SEL, -1) == SEC_EDIT)
+			if (select_it(1, ST_SEL, -1) == SEC_EDIT && within(prog->btn_lit, F_UP_BTN - 1, C_DOWN_BTN + 1))
 				turn_btns_off(prog);
 			prog->click = (t_vec){ 0, 0 };
 		}

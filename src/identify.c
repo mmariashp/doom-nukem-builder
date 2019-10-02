@@ -55,7 +55,7 @@ char					*identify_path(const char *line)
 short					identify_section(const char *line)
 {
 	static const char	sections[TOTAL_SECTIONS][16] = { LEVELS, TEXTURES, \
-						ITEMS, SOUNDS, FONTS};
+						ITEMS };
 	short				id;
 	short				i;
 

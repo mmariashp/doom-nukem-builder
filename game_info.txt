@@ -1,10 +1,10 @@
 #Levels
 Path: ./media/maps/
-Extension: .txt
+Extension: 
 File Names: 
-0) fortress
-1) dungeon
-2) tower
+0) fortress.txt
+1) dungeon.txt
+2) new
 ###
 
 #Textures
@@ -41,6 +41,20 @@ File Names:
 27) Tr-wood4.png
 28) Tr-wood7.png
 29) Wall_exterior_wood_02.png
+30) warrning_wall.jpg
+31) electro_wall2.jpg
+32) meta_wall3.jpg
+33) electro_wall.jpg
+34) wall2.jpg
+35) strong_door.jpg
+36) metal_wall.jpg
+37) simple_wall.jpg
+38) new_door.jpg
+39) doors.jpg
+40) cude_wall.jpg
+41) iluminator.jpg
+42) meta_wall3.jpg
+43) window1.png
 ###
 
 #Items
@@ -49,7 +63,7 @@ Extension:
 File Names: 
 0) coin coin
 1) key old_key
-2) super_bonus health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health
+2) super_bonus bonus
 3) enemy demon
 4) enemy imp
 5) light burning_barrel
@@ -68,17 +82,5 @@ File Names:
 18) object dead_man
 19) object broken_tree
 20) object broken_tree_two
-###
-
-#Sounds
-Path: ./media/sounds/
-Extension: .wav
-File Names: 
-###
-
-#Fonts
-Path: ./media/fonts/
-Extension: .ttf
-File Names: 
 ###
 

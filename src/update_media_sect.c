@@ -12,49 +12,6 @@
 
 #include "builder.h"
 
-unsigned				read_fonts(t_media *media, t_section *section)
-{
-	short				i;
-
-	if (!media || !section || !section->tab || media->fonts)
-		return (FAIL);
-	i = 0;
-	if (!(media->fonts = (char **)ft_memalloc(sizeof(char *) * \
-	section->n_files)))
-		return (FAIL);
-	media->n_fonts = section->n_files;
-	ft_bzero(media->fonts, sizeof(char *) * section->n_files);
-	while (i < section->n_files)
-	{
-		if (!(media->fonts[i] = ft_strdup(section->tab[i])))
-			return (FAIL);
-		ft_bzero(media->fonts[i], sizeof(char *) * section->n_files);
-		i++;
-	}
-	return (SUCCESS);
-}
-
-unsigned				read_sounds(t_media *media, t_section *section)
-{
-	short				i;
-
-	if (!media || !section || !section->tab || media->sounds)
-		return (FAIL);
-	if (!(media->sounds = (char **)ft_memalloc(sizeof(char *) * \
-	section->n_files)))
-		return (FAIL);
-	media->n_sounds = section->n_files;
-	ft_bzero(media->sounds, sizeof(char *) * section->n_files);
-	i = -1;
-	while (++i < section->n_files)
-	{
-		if (!(media->sounds[i] = ft_strdup(section->tab[i])))
-			return (FAIL);
-		ft_bzero(media->sounds[i], sizeof(media->sounds[i]));
-	}
-	return (SUCCESS);
-}
-
 unsigned				read_textures(t_media *media, t_section *section)
 {
 	short				i;
@@ -110,7 +67,7 @@ unsigned				read_it_f(t_media *media, t_section *sect)
 unsigned				update_media(t_media *media, t_section *section)
 {
 	static unsigned		(*update_section[])(t_media*, t_section*) = { \
-	read_levels, read_textures, read_it_f, read_sounds, read_fonts };
+	read_levels, read_textures, read_it_f };
 
 	if (!media || !section)
 		return (FAIL);
