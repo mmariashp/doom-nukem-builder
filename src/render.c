@@ -87,16 +87,16 @@ void				    get_rgb(unsigned char *r, unsigned char *g, unsigned char *b, int co
 //	}
 //}
 
-void					draw_dot2(int x, int y, int color, int **screen)
+void					draw_dot2(int x, int y, t_screen s, t_screen **screen)
 {
-	unsigned char r;
-	unsigned char g;
-	unsigned char b;
 
 	if (x >= 0 && x < W_W && y >= 0 && y < W_H)
 	{
-		get_rgb(&r, &g, &b, color);
-		screen[x][y] = color;
+		if (s.color == EMPTY_COLOR && screen[x][y].color != 0)
+			return ;
+		if (s.color == EMPTY_WALL_CLR && screen[x][y].color != 0)
+			return ;
+		screen[x][y] = s;
 	}
 }
 
@@ -218,7 +218,7 @@ int                     clip_line(t_line *l) //Cohen-Sutherland algorithm
 	return (accept);
 }
 
-void					draw_circle_fill2(t_vec c, int radius, int color, int **screen)
+void					draw_circle_fill2(t_vec c, int radius,t_screen s, t_screen **screen)
 {
 	t_vec				p;
 	t_vec				d;
@@ -230,13 +230,13 @@ void					draw_circle_fill2(t_vec c, int radius, int color, int **screen)
 	{
 		for (int i = c.x - p.x; i <= c.x + p.x; i++)
 		{
-			draw_dot2(i, c.y + p.y, color, screen);
-			draw_dot2(i, c.y - p.y, color, screen);
+			draw_dot2(i, c.y + p.y, s, screen);
+			draw_dot2(i, c.y - p.y, s, screen);
 		}
 		for (int i = c.x - p.y; i <= c.x + p.y; i++)
 		{
-			draw_dot2(i, c.y + p.x, color, screen);
-			draw_dot2(i, c.y - p.x, color, screen);
+			draw_dot2(i, c.y + p.x, s, screen);
+			draw_dot2(i, c.y - p.x, s, screen);
 		}
 		p.y++;
 		radiusError += d.y;
@@ -250,7 +250,7 @@ void					draw_circle_fill2(t_vec c, int radius, int color, int **screen)
 	}
 }
 
-void				    draw_line2(t_line l, int color, int **screen)
+void				    draw_line2(t_line l, t_screen s, t_screen **screen)
 {
 	int				len;
 	int				i_value;
@@ -267,12 +267,12 @@ void				    draw_line2(t_line l, int color, int **screen)
 	{
 		i = -i_value;
 		while ((i += i_value) != len)
-			draw_dot2(l.p0.x + (int)(i / d), l.p0.y + i, color, screen);
+			draw_dot2(l.p0.x + (int)(i / d), l.p0.y + i, s, screen);
 		return ;
 	}
 	i = -i_value;
 	while ((i += i_value) != len)
-		draw_dot2(l.p0.x + i, l.p0.y + (int)(i / d), color, screen);
+		draw_dot2(l.p0.x + i, l.p0.y + (int)(i / d), s, screen);
 }
 
 void				    draw_line(t_line l, int color, SDL_Renderer *rend)
@@ -374,7 +374,7 @@ void					draw_circle_fill(t_vec c, int radius, int color, SDL_Renderer *rend)
 	}
 }
 
-void				    draw_thick_line(t_line l, int color, int r, int **screen)
+void				    draw_thick_line(t_line l, t_screen s, int r, t_screen **screen)
 {
 	int				len;
 	int				i_value;
@@ -391,10 +391,10 @@ void				    draw_thick_line(t_line l, int color, int r, int **screen)
 	{
 		i = -i_value;
 		while ((i += i_value) != len)
-			draw_circle_fill2((t_vec){ l.p0.x + (int)(i / d), l.p0.y + i }, r, color, screen);
+			draw_circle_fill2((t_vec){ l.p0.x + (int)(i / d), l.p0.y + i }, r, s, screen);
 		return ;
 	}
 	i = -i_value;
 	while ((i += i_value) != len)
-		draw_circle_fill2((t_vec){ l.p0.x + i, l.p0.y + (int)(i / d) }, r, color, screen);
+		draw_circle_fill2((t_vec){ l.p0.x + i, l.p0.y + (int)(i / d) }, r, s, screen);
 }

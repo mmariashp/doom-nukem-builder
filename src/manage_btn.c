@@ -90,7 +90,10 @@ void					turn_btn_on(t_prog *prog, t_grid *grid)
 	if (within(prog->btn_on, -1, prog->modes[prog->m_id].n_btn) == TRUE)
 		prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
 	prog->btn_on = prog->btn_lit;
-	prog->click = (t_vec){ 0, 0 };
+	if (!(prog->m_id == MODE_EDITOR &&
+	select_it(1, ST_SEL, -1) == SEC_EDIT &&
+	within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1)))
+		prog->click = (t_vec){ 0, 0 };
 	prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
 	vec_set(grid->p, -1, -1, 2);
 	prog->redraw = 1;

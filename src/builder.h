@@ -93,6 +93,7 @@
 
 # define FULL_WALL_CLR			WHITE
 # define EMPTY_WALL_CLR			GREEN
+# define LIT_WALL_CLR			NAVY
 
 /*
 ** STR = PRINTS OUT NAME OF MACRO; XSTR = PRINTS OUT VALUE OF MACRO
@@ -267,14 +268,6 @@
 # define SEC_CONCAVE_CLOSED	0
 # define SEC_OPEN			-1
 
-# define WALL_R				1
-# define LIT_WALL_R			4
-
-# define F_ZOOM				0
-# define F_MOVE_GRID		1
-# define F_SELECT_NODE		2
-# define F_REDRAW			3
-
 # define FC_SELECT			0
 # define W_SELECT			1
 # define S_SELECT			2
@@ -303,6 +296,13 @@
 # define WEAPON				7
 # define LIGHT				8
 # define TOTAL_TYPES		9
+
+# define SCREEN_EMPTY		0
+# define SCREEN_NODE		1
+# define SCREEN_WALL		2
+# define SCREEN_SECTOR		3
+# define SCREEN_PL_START	4
+# define SCREEN_PL_END		5
 
 typedef struct				s_rgb
 {
@@ -386,9 +386,16 @@ typedef struct				s_sdl
 	TTF_Font				*font;
 }							t_sdl;
 
+typedef struct				s_screen
+{
+	int 					color;
+	char 					is;
+	unsigned short			n;
+}							t_screen;
+
 typedef struct				s_prog
 {
-	int						**screen;
+	t_screen				**screen;
 	int						m_id;
 	int						last;
 	char					redraw;
@@ -617,21 +624,21 @@ t_vec mouse);
 void					render_grid_iso(t_world world, t_grid *grid, \
 t_prog *prog);
 
-void					draw_dot2(int x, int y, int color, int **screen);
-void					draw_line2(t_line l, int color, int **screen);
-void					draw_circle_fill2(t_vec c, int radius, int color, \
-int **screen);
-void					draw_node(t_vec c, int r, int color, int **screen);
-void					draw_thick_line(t_line l, int color, int r, \
-int **screen);
+void					draw_dot2(int x, int y, t_screen s, t_screen **screen);
+void					draw_line2(t_line l, t_screen s, t_screen **screen);
+void					draw_circle_fill2(t_vec c, int radius, t_screen s, \
+t_screen **screen);
+void					draw_node(t_vec c, int r, t_screen s, t_screen **screen);
+void					draw_thick_line(t_line l, t_screen s, int r, \
+t_screen **screen);
 
-unsigned short			fill_polygon(t_vec *p, int n_p, int **screen, \
+unsigned short			fill_polygon(t_vec *p, int n_p, t_screen **screen, \
 int color);
 
 void					free_prog(t_prog *prog);
 t_prog					*get_prog(SDL_Renderer *rend);
 
-void					render_screen(SDL_Renderer *rend, int **screen);
+void					render_screen(SDL_Renderer *rend, t_screen **screen);
 
 void					add_to_media(t_grid *grid, t_world *world);
 unsigned short			add_world(t_world **worlds, short n_worlds, char *ext,\
@@ -786,8 +793,8 @@ unsigned short			return_to_levels(t_prog *prog, t_media *media);
 void					draw_itms(SDL_Renderer *rend, t_media *media, t_grid \
 *grid, SDL_Texture **t);
 unsigned short			ingrid(t_vec p);
-void					clean_screen(int **screen);
-void					place_player(t_world world, t_grid *grid, int **screen,\
+void					clean_screen(t_screen **screen);
+void					place_player(t_world world, t_grid *grid, t_screen **screen,\
 int radius);
 
 void					delete_double_walls(t_world *world);

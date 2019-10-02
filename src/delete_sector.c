@@ -53,6 +53,7 @@ void					copy_sector(t_sec *new, t_sec *old)
 	new->n_w = old->n_w;
 	new->n_v = old->n_v;
 	new->status = old->status;
+	new->is_door = old->is_door;
 	free_sector(old);
 }
 

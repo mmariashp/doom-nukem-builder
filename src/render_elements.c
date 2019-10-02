@@ -72,7 +72,7 @@ SDL_Renderer *rend)
 	SDL_RenderCopy(rend, t, NULL, &rect);
 }
 
-void					render_screen(SDL_Renderer *rend, int **screen)
+void					render_screen(SDL_Renderer *rend, t_screen **screen)
 {
 	int					x;
 	int					y;
@@ -83,8 +83,8 @@ void					render_screen(SDL_Renderer *rend, int **screen)
 		y = 0;
 		while (y < W_H)
 		{
-			if (screen[x][y] != 0)
-				draw_dot(x, y, screen[x][y], rend);
+			if (screen[x][y].color != 0)
+				draw_dot(x, y, screen[x][y].color, rend);
 			y++;
 		}
 		x++;

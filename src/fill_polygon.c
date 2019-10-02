@@ -12,7 +12,7 @@
 
 #include "builder.h"
 
-void					replace_color(int **screen, int to_replace, int new)
+void					replace_color(t_screen **screen, int to_replace, int new)
 {
 	int					i;
 	int					j;
@@ -24,11 +24,11 @@ void					replace_color(int **screen, int to_replace, int new)
 	{
 		j = -1;
 		while (++j < W_H)
-			screen[i][j] = screen[i][j] == to_replace ? new : screen[i][j];
+			screen[i][j].color = screen[i][j].color == to_replace ? new : screen[i][j].color;
 	}
 }
 
-unsigned short			fill_row(int x_from, int x_to, int y, int **screen)
+unsigned short			fill_row(int x_from, int x_to, int y, t_screen **screen)
 {
 	unsigned short		overlay;
 
@@ -37,13 +37,13 @@ unsigned short			fill_row(int x_from, int x_to, int y, int **screen)
 		return (overlay);
 	while (x_from < x_to)
 	{
-		if (screen[x_from][y] == 0)
-			screen[x_from][y] = TMP_COLOR;
-		else if (screen[x_from][y] == CONVEX_COLOR || \
-		screen[x_from][y] == CONCAVE_COLOR || \
-		screen[x_from][y] == ACTIVE_SEC_COLOR || screen[x_from][y] == DOOR_COLOR)
+		if (screen[x_from][y].color == 0)
+			screen[x_from][y].color = TMP_COLOR;
+		else if (screen[x_from][y].color == CONVEX_COLOR || \
+		screen[x_from][y].color == CONCAVE_COLOR || \
+		screen[x_from][y].color == ACTIVE_SEC_COLOR || screen[x_from][y].color == DOOR_COLOR)
 		{
-			screen[x_from][y] = YELLOW;
+			screen[x_from][y].color = YELLOW;
 			overlay = TRUE;
 		}
 		x_from++;
@@ -73,7 +73,7 @@ int						get_inter_x(int *inter_x, t_vec *p, int n_p, int y)
 	return (n_interx);
 }
 
-unsigned short			fill_polygon(t_vec *p, int n_p, int **screen, int color)
+unsigned short			fill_polygon(t_vec *p, int n_p, t_screen **screen, int color)
 {
 	int					n_ix;
 	int					ix[MAX_SEC_WALLS];

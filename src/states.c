@@ -4,8 +4,12 @@
 void					normal_st(t_prog *prog, t_vec mouse, t_grid *grid, \
 																t_world *world)
 {
-	if (!prog)
+	if (!prog || select_it(1, ST_SEL, -1) != NORMAL)
 		return ;
+	select_it(0, W_SELECT, -1);
+	lit_it(0, W_SELECT, -1);
+	select_it(0, S_SELECT, -1);
+	lit_it(0, S_SELECT, -1);
 	if (prog->btn_on == DRAW_BTN)
 	{
 		drawing(world, prog, grid, mouse);
@@ -36,52 +40,6 @@ void					setup_door(t_world *world)
 			world->walls[world->sec[world->n_s - 1].s_walls[2]].type = WALL_EMPTY;
 	}
 }
-
-//private int FindLineCircleIntersections(
-//		float cx, float cy, float radius,
-//		PointF point1, PointF point2,
-//		out PointF intersection1, out PointF intersection2)
-//{
-//	float dx, dy, A, B, C, det, t;
-//
-//	dx = point2.X - point1.X;
-//	dy = point2.Y - point1.Y;
-//
-//	A = dx * dx + dy * dy;
-//	B = 2 * (dx * (point1.X - cx) + dy * (point1.Y - cy));
-//	C = (point1.X - cx) * (point1.X - cx) +
-//		(point1.Y - cy) * (point1.Y - cy) -
-//		radius * radius;
-//
-//	det = B * B - 4 * A * C;
-//	if ((A <= 0.0000001) || (det < 0))
-//	{
-//		// No real solutions.
-//		intersection1 = new PointF(float.NaN, float.NaN);
-//		intersection2 = new PointF(float.NaN, float.NaN);
-//		return 0;
-//	}
-//	else if (det == 0)
-//	{
-//		// One solution.
-//		t = -B / (2 * A);
-//		intersection1 =
-//				new PointF(point1.X + t * dx, point1.Y + t * dy);
-//		intersection2 = new PointF(float.NaN, float.NaN);
-//		return 1;
-//	}
-//	else
-//	{
-//		// Two solutions.
-//		t = (float)((-B + Math.Sqrt(det)) / (2 * A));
-//		intersection1 =
-//				new PointF(point1.X + t * dx, point1.Y + t * dy);
-//		t = (float)((-B - Math.Sqrt(det)) / (2 * A));
-//		intersection2 =
-//				new PointF(point1.X + t * dx, point1.Y + t * dy);
-//		return 2;
-//	}
-//}
 
 unsigned short			circle_inter_line(t_vec mouse, int radius, t_line line)
 {
@@ -140,61 +98,26 @@ void					wall_search_st(t_prog *prog, t_vec node, \
 	w = -1;
 	if (mouse_over((t_rec){ 0, 0, W_W, W_H }, node))
 	{
-		if (prog->screen[node.x][node.y] == WHITE)
+		if (prog->screen[node.x][node.y].is == SCREEN_WALL)
+			w = lit_it(0, W_SELECT, prog->screen[node.x][node.y].n);
+		if ((prog->click.x || prog->click.y) && within(w, -1, world->n_w))
 		{
-			int i = 0;
-			while (i < world->n_w)
+			select_it(0, W_SELECT, w);
+			if (prog->btn_on == DOOR_ADD_BTN)
 			{
-				if (circle_inter_line(node, 15, \
-				(t_line){ transform_to_screen(world->vecs[world->walls[i].v1], grid),
-			  transform_to_screen(world->vecs[world->walls[i].v2], grid) }))
-				{
-					w = lit_it(0, W_SELECT, i);
-//					printf("intersects with wall n %d\n", i);
-					break ;
-				}
-				i++;
+				add_door(world, w, grid);
+				setup_door(world);
+			}
+			else
+			{
+				select_it(0, ST_SEL, WALL_EDIT);
+				if (within((v1 = world->walls[w].v1), -1, world->n_v) &&
+					within((v2 = world->walls[w].v2), -1, world->n_v))
+						zoom_to_box(grid, (t_vec[2]){ world->vecs[v1], world->vecs[v2] }, 2);
 			}
 		}
+		prog->redraw = 1;
 	}
-	if ((prog->click.x || prog->click.y) && within(w, -1, world->n_w))
-	{
-		select_it(0, W_SELECT, w);
-		if (prog->btn_on == DOOR_ADD_BTN)
-		{
-			add_door(world, w, grid);
-			setup_door(world);
-		}
-		else
-		{
-			select_it(0, ST_SEL, WALL_EDIT);
-			if (within((v1 = world->walls[w].v1), -1, world->n_v) &&
-				within((v2 = world->walls[w].v2), -1, world->n_v))
-					zoom_to_box(grid, (t_vec[2]){ world->vecs[v1], world->vecs[v2] }, 2);
-		}
-	}
-	prog->redraw = 1;
-//	if (within(node.x, -1, GRID_SIZE) && within(node.y, -1, GRID_SIZE))
-//	{
-//		w = lit_it(0, W_SELECT, grid->nod[node.x][node.y]);
-//		if ((prog->click.x || prog->click.y) && within(w, -1, world->n_w))
-//		{
-//			select_it(0, W_SELECT, w);
-//			if (prog->btn_on == DOOR_ADD_BTN)
-//			{
-//				add_door(world, w, grid);
-//				setup_door(world);
-//			}
-//			else
-//			{
-//				select_it(0, ST_SEL, WALL_EDIT);
-//				if (within((v1 = world->walls[w].v1), -1, world->n_v) &&
-//					within((v2 = world->walls[w].v2), -1, world->n_v))
-//						zoom_to_box(grid, (t_vec[2]){ world->vecs[v1], world->vecs[v2] }, 2);
-//			}
-//		}
-//		prog->redraw = 1;
-//	}
 }
 void					sec_search_st(t_prog *prog, t_vec mouse, \
 											t_grid *grid, t_world *world)
@@ -258,9 +181,13 @@ void					sec_edit_st(t_prog *prog, t_vec mouse, \
 	}
 	if (prog->btn_on != -1 && (prog->click.x || prog->click.y))
 	{
-		turn_btns_off(prog);
 		prog->redraw = 1;
-		prog->click = (t_vec){ 0, 0 };
+		if (!(within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1)))
+		{
+			printf("turn off\n");
+			turn_btns_off(prog);
+			prog->click = (t_vec){ 0, 0 };
+		}
 	}
 	upd_sec(media->worlds[media->w].sec, media->worlds[media->w].walls,\
 	media->worlds[media->w].vecs, media->worlds[media->w].n_s);

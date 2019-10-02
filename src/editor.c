@@ -69,17 +69,15 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *m,
 	if ((state = select_it(1, ST_SEL, -1)) == SEC_SEARCH)
 		sec_search_st(prog, sdl->mouse, grid, &m->worlds[m->w]);
 	else if (state == WALL_SEARCH && mouse_over(grid->box, sdl->mouse))
-		wall_search_st(prog, sdl->mouse, \
-		grid, &m->worlds[m->w]);
-//	else if (state == WALL_SEARCH && mouse_over(grid->box, sdl->mouse))
-//		wall_search_st(prog, find_node(sdl->mouse.x, sdl->mouse.y, grid),
-//		grid, &m->worlds[m->w]);
+		wall_search_st(prog, sdl->mouse, grid, &m->worlds[m->w]);
 	else if (state == SEC_EDIT)
 		sec_edit_st(prog, sdl->mouse, grid, m);
 	else
 		normal_st(prog, sdl->mouse, grid, &m->worlds[m->w]);
 	return (SUCCESS);
 }
+
+//int 					height_change()
 
 int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media,
 		t_prog *prog)
@@ -99,13 +97,22 @@ int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media,
 		else if (e.type == SDL_MOUSEBUTTONDOWN)
 		{
 			prog->click = sdl->mouse;
-			break ;
+			printf("here\n");
+			int state = select_it(1, ST_SEL, -1);
+			if (!(state == SEC_EDIT && (within(prog->btn_lit, F_UP_BTN - 1, C_DOWN_BTN + 1) ||
+					within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1))))
+				break ;
 		}
 		else if (e.type == SDL_MOUSEBUTTONUP && select_it(1, ST_SEL, -1)\
 		== NORMAL && prog->btn_lit == BACK_BTN)
 			return (return_to_levels(prog, media));
 		else if (e.type == SDL_MOUSEBUTTONUP)
+		{
+			if (select_it(1, ST_SEL, -1) == SEC_EDIT)
+				turn_btns_off(prog);
 			prog->click = (t_vec){ 0, 0 };
+		}
+
 	}
 	return (FALSE);
 }

@@ -16,7 +16,7 @@ unsigned				read_levels(t_media *m, t_section *s)
 {
 	short				i;
 
-	if (!m || !s || !s->tab || s->n_files < 1 || s->n_files > MAX_LEVELS ||
+	if (!m || !s || !s->tab || !within(s->n_files, 0, MAX_LEVELS) ||
 	!(m->worlds = (t_world *)ft_memalloc(sizeof(t_world) * s->n_files)))
 		return (FAIL);
 	ft_bzero(m->worlds, sizeof(t_world) * (m->n_worlds = s->n_files));
@@ -34,6 +34,8 @@ unsigned				read_levels(t_media *m, t_section *s)
 		m->worlds[i].n_s = 0;
 		m->worlds[i].n_v = 0;
 		m->worlds[i].n_w = 0;
+		m->worlds[i].p_start = (t_vec){ 5, 10 };
+		m->worlds[i].p_end = (t_vec){ 10, 10 };
 		if (!m->worlds[i].full_p || !m->worlds[i].name || \
 		get_map(&m->worlds[i], i) == FAIL)
 			return (FAIL);

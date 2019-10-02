@@ -46,10 +46,10 @@ File Names:
 #Items
 Path: ./media/items/
 Extension: 
-File Names:
+File Names: 
 0) coin coin
 1) key old_key
-2) super_bonus health
+2) super_bonus health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health health
 3) enemy demon
 4) enemy imp
 5) light burning_barrel

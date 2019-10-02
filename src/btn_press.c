@@ -59,8 +59,8 @@ t_media *media, t_grid *grid)
 	else if (within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1))
 	{
 		change_heights(prog->btn_on, world->sec);
-		prog->btn_lit = -1;
-		turn_btns_off(prog);
+//		prog->btn_lit = -1;
+//		turn_btns_off(prog);
 	}
 	else if (prog->btn_on == B_ITEM_EDIT)
 		item_edit(prog, world, media->n_itf);
@@ -82,6 +82,7 @@ int s)
 		{
 			select_it(0, ST_SEL, WALL_SEARCH);
 			select_it(0, W_SELECT, -1);
+			lit_it(0, W_SELECT, -1);
 		}
 	}
 	else if ((s == SEC_EDIT && (prog->btn_on == FT_EDIT_BTN || prog->btn_on ==\
@@ -113,10 +114,8 @@ int state)
 		select_it(0, ST_SEL, state);
 	}
 	else if (state == SEC_EDIT || state == WALL_EDIT)
-	{
 		edit_mng_btn(prog, media, grid, state);
-
-	}
-	prog->click = (t_vec){ 0, 0 };
+	if (!(state == SEC_EDIT && within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1)))
+		prog->click = (t_vec){ 0, 0 };
 	return (SUCCESS);
 }

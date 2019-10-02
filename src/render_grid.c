@@ -12,12 +12,13 @@
 
 #include "builder.h"
 
-void					render_grid_nod(int **screen, t_grid *g)
+void					render_grid_nod(t_screen **screen, t_grid *g)
 {
 	int					x;
 	int					y;
 	t_vec				n;
 	int					radius;
+	t_screen			s;
 
 	radius = g->box.w * 0.001;
 	y = -1;
@@ -30,43 +31,48 @@ void					render_grid_nod(int **screen, t_grid *g)
 			if (!within((n.x = (int)(g->box.x + (x * g->scl))), -1, W_W) ||
 			!within(n.y, -1, W_H))
 				continue ;
-			if (g->nod[x][y] == NODE_FULL)
-				draw_node(n, radius, FULL_COLOR, screen);
-			else if (g->nod[x][y] == NODE_SEC)
-				draw_node(n, radius, SEC_NOD_COLOR, screen);
-			else if (!screen[n.x][n.y])
-				draw_node(n, radius, EMPTY_COLOR, screen);
+			s = (t_screen){ FULL_COLOR, SCREEN_NODE, 0 };
+			if (g->nod[x][y] == NODE_SEC)
+				s.color = SEC_NOD_COLOR;
+			else if (g->nod[x][y] != NODE_FULL)
+				s.color = EMPTY_COLOR;
+			draw_node(n, radius, s, screen);
 		}
 	}
 }
 
-void					draw_walls(t_world world, t_grid *grid, int **screen, \
-int wall)
+void					draw_walls(t_world world, t_grid *grid, \
+t_screen **screen, int wall)
 {
 	int					i;
 	t_vec				v1;
 	t_vec				v2;
+	t_screen			s;
+	int 				r;
 
 	i = 0;
+	r = (int)(0.2f * grid->scl);
 	while (i < world.n_w)
 	{
-		v1 = world.vecs[world.walls[i].v1];
-		v2 = world.vecs[world.walls[i].v2];
-		v1.x = (int)(grid->box.x + v1.x * grid->scl);
-		v1.y = (int)(grid->box.y + v1.y * grid->scl);
-		v2.x = (int)(grid->box.x + v2.x * grid->scl);
-		v2.y = (int)(grid->box.y + v2.y * grid->scl);
+		v1 = transform_to_screen(world.vecs[world.walls[i].v1], grid);
+		v2 = transform_to_screen(world.vecs[world.walls[i].v2], grid);
+		s = (t_screen){ FULL_WALL_CLR, SCREEN_WALL, i };
 		if (i == wall)
-			draw_thick_line((t_line){ v1, v2 }, NAVY, LIT_WALL_R, screen);
+			s.color = LIT_WALL_CLR;
 		else if (world.walls[i].type == WALL_EMPTY)
-			draw_thick_line((t_line){ v1, v2 }, GREEN, WALL_R, screen);
-		else if (world.walls[i].type == WALL_FILLED)
-			draw_thick_line((t_line){ v1, v2 }, WHITE, WALL_R, screen);
+			s.color = EMPTY_WALL_CLR;
+		draw_thick_line((t_line){ v1, v2 }, s, r, screen);
+//		if (i == wall)
+//			draw_thick_line((t_line){ v1, v2 }, NAVY, LIT_WALL_R, screen);
+//		else if (world.walls[i].type == WALL_EMPTY)
+//			draw_thick_line((t_line){ v1, v2 }, GREEN, WALL_R, screen);
+//		else if (world.walls[i].type == WALL_FILLED)
+//			draw_thick_line((t_line){ v1, v2 }, WHITE, WALL_R, screen);
 		i++;
 	}
 }
 
-unsigned short			fill_sector(t_world world, t_grid *grid, int **screen, \
+unsigned short			fill_sector(t_world world, t_grid *grid, t_screen **screen, \
 int sec)
 {
 	int					i;
@@ -89,27 +95,29 @@ int sec)
 	return (fill_polygon(p, world.sec[sec].n_v, screen, color));
 }
 
-void					drawing_nodes(t_grid *grid, int **screen, t_vec mouse)
+void					drawing_nodes(t_grid *grid, t_screen **screen, t_vec mouse)
 {
 	int					radius;
 	t_vec				node;
 	t_vec				node2;
+	t_screen			s;
 
 	if (!grid || !screen)
 		return ;
 	radius = grid->box.w * 0.001;
+	s = (t_screen){ BABY_PINK, SCREEN_EMPTY, 0 };
 	if (grid->p[0].x != -1 && grid->p[0].y != -1)
 	{
 		node = transform_to_screen(grid->p[0], grid);
-		draw_node(node, radius, BABY_PINK, screen);
+		draw_node(node, radius, s, screen);
 		if (grid->p[1].x != -1 && grid->p[1].y != -1)
 		{
 			node2 = transform_to_screen(grid->p[1], grid);
-			draw_node(node2, radius, BABY_PINK, screen);
-			draw_line2((t_line){ node, node2 }, BABY_PINK, screen);
+			draw_node(node2, radius, s, screen);
+			draw_line2((t_line){ node, node2 }, s, screen);
 		}
 		else
-			draw_line2((t_line){ node, mouse }, BABY_PINK, screen);
+			draw_line2((t_line){ node, mouse }, s, screen);
 	}
 }
 

@@ -55,7 +55,6 @@ void					grid_re(t_grid *grid, t_media *media, int state,
 	if (!grid || !media || !media->worlds || !media->worlds[media->w].sec)
 		return ;
 	clean_grid(grid);
-	fill_grid_walls(&media->worlds[media->w], grid);
 	fill_grid(media->worlds[media->w].n_v,\
 	media->worlds[media->w].vecs, grid);
 	sector = select_it(1, S_SELECT, -1);
