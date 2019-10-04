@@ -1,4 +1,4 @@
-/opt/clion-2019.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/moosh/CLionProjects/builder
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/mshpakov/Desktop/doom-nukem-builder
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/moosh/CLionProjects/builder/cmake-build-debug
+-- Build files have been written to: /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug

@@ -63,7 +63,7 @@ void					grid_re(t_grid *grid, t_media *media, int state,
 		p = make_vec_tab(&media->worlds[media->w].sec[sector], media->worlds[media->w].vecs, media->worlds[media->w].n_v);
 		if (p)
 		{
-			highlight_sec_nod(p, media->worlds[media->w].n_v, grid);
+			highlight_sec_nod(p, media->worlds[media->w].sec[sector].n_v, grid);
 			free(p);
 		}
 	}

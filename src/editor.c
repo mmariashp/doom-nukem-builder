@@ -77,8 +77,6 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *m,
 	return (SUCCESS);
 }
 
-//int 					height_change()
-
 int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media,
 		t_prog *prog)
 {

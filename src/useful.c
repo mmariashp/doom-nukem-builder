@@ -83,6 +83,8 @@ void                    highlight_sec_nod(t_vec *p, int n_w, t_grid *grid)
 	int                 i;
 
 	i = -1;
+	if (!p && !grid)
+        return ;
 	while (++i < n_w)
 	{
 		if (ingrid(p[i]))

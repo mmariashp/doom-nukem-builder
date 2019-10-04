@@ -189,7 +189,7 @@ ft:
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@echo -e "--$(LOG_CLEAR)$(LOG_VIOLET)$(NAME)$(LOG_NOCOLOR)........................... $(LOG_YELLOW)$<$(LOG_NOCOLOR)$(LOG_UP)"
-	@$(CC) $(CFLAGS) $(OTHER_FLAGS) -c -o $@ $^ $(FLAG_F) $(SDL2_INC) $(SDL2_FLAGS)
+	@$(CC) $(CFLAGS) $(OTHER_FLAGS) -c -o $@ $^ $(FLAG_F) $(FT_INC) $(SDL2_INC) $(SDL2_FLAGS)
 
 $(OBJDIR):
 	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(LOG_YELLOW)$(NAME)$(LOG_NOCOLOR)"

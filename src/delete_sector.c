@@ -31,9 +31,8 @@ void					copy_sector(t_sec *new, t_sec *old)
 {
 	int					i;
 
-	if (!old || !new || !(new->s_walls = \
-	ft_memalloc(sizeof(int) * old->n_w)) || !(new->v = \
-	ft_memalloc(sizeof(int) * old->n_v)) || !(new->items = \
+	if (!old || !new || !(new->s_walls = ft_memalloc(sizeof(int) * old->n_w)) ||
+	!(new->v = ft_memalloc(sizeof(int) * old->n_v)) || !(new->items = \
 	ft_memalloc(sizeof(t_item) * old->n_it)))
 		return ;
 	i = -1;

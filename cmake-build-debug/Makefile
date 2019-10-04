@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/clion-2019.2/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /opt/clion-2019.2/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/moosh/CLionProjects/builder
+CMAKE_SOURCE_DIR = /Users/mshpakov/Desktop/doom-nukem-builder
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/moosh/CLionProjects/builder/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/moosh/CLionProjects/builder/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ft
-
-# Build rule for target.
-ft: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ft
-.PHONY : ft
-
-# fast build rule for target.
-ft/fast:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
-.PHONY : ft/fast
-
-#=============================================================================
 # Target rules for targets named builder
 
 # Build rule for target.
@@ -135,6 +122,19 @@ builder: cmake_check_build_system
 builder/fast:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/build
 .PHONY : builder/fast
+
+#=============================================================================
+# Target rules for targets named ft
+
+# Build rule for target.
+ft: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ft
+.PHONY : ft
+
+# fast build rule for target.
+ft/fast:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
+.PHONY : ft/fast
 
 libft/ft_abs_cut.o: libft/ft_abs_cut.c.o
 
@@ -4167,8 +4167,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ft"
 	@echo "... builder"
+	@echo "... ft"
 	@echo "... libft/ft_abs_cut.o"
 	@echo "... libft/ft_abs_cut.i"
 	@echo "... libft/ft_abs_cut.s"

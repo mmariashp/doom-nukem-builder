@@ -1,0 +1,839 @@
+Norme: ./src/add_sector.c
+Norme: ./src/add_to_media.c
+Norme: ./src/char_ops.c
+Norme: ./src/delete_sector.c
+Error (line 30): function copy_sector has 26 lines
+Norme: ./src/btn_press.c
+Error (line 65): function edit_mng_btn has 26 lines
+Norme: ./src/delete_useless.c
+Norme: ./src/delete_world.c
+Norme: ./src/add_door.c
+Norme: ./src/delete_vector.c
+Norme: ./src/distribute_btns.c
+Error: file must end with a single empty line
+Error (line 19, col 4): bad spacing
+Error (line 43, col 4): bad spacing
+Error (line 46, col 23): missing space around >=
+Error (line 48, col 39): missing space around -
+Error (line 51, col 10): missing space around <
+Error (line 63): declarations in get_good_size are bad aligned
+Error (line 67, col 7): bad spacing
+Error (line 68, col 7): bad spacing
+Error (line 79): must begin only by tabulations
+Error (line 87, col 4): bad spacing
+Error (line 111, col 0): no newline after block
+Norme: ./src/drawing.c
+Norme: ./src/builder.h
+Error: global scope bad aligned
+Error (line 21): wrong number of spaces in preprocessor indentation
+Error (line 22): wrong number of spaces in preprocessor indentation
+Error (line 23): wrong number of spaces in preprocessor indentation
+Error (line 25): wrong number of spaces in preprocessor indentation
+Error (line 27): wrong number of spaces in preprocessor indentation
+Error (line 28): wrong number of spaces in preprocessor indentation
+Error (line 29): wrong number of spaces in preprocessor indentation
+Error (line 30): wrong number of spaces in preprocessor indentation
+Error (line 32): wrong number of spaces in preprocessor indentation
+Error (line 45): wrong number of spaces in preprocessor indentation
+Error (line 46): wrong number of spaces in preprocessor indentation
+Error (line 48): wrong number of spaces in preprocessor indentation
+Error (line 49): wrong number of spaces in preprocessor indentation
+Error (line 389, col 4): bad spacing
+Error (line 390, col 5): bad spacing
+Error (line 625): line has 82 characters
+Error (line 791): line has 86 characters
+Error (line 835, col 4): bad spacing
+Error (line 842): line has 83 characters
+Error (line 843): line has 93 characters
+Error (line 844): line has 93 characters
+Error (line 847): multiple empty lines
+Norme: ./src/edit_walls_help.c
+Error: file must end with a single empty line
+Error (line 23): multiple empty lines
+Norme: ./src/edit_menu.c
+Norme: ./src/edit_walls.c
+Error (line 45): function add_to_array has 31 lines
+Error (line 102): function delete_wall has 28 lines
+Error (line 108): line has 116 characters
+Norme: ./src/drawing_help.c
+Norme: ./src/edit_world.c
+Norme: ./src/file_fun.c
+Norme: ./src/editor_update.c
+Error (line 43): line has 86 characters
+Norme: ./src/fill_grid.c
+Error (line 63): line has 94 characters
+Norme: ./src/editor_render.c
+Error (line 15): declarations in place_player_icons are bad aligned
+Norme: ./src/find_in_media.c
+Norme: ./src/editor.c
+Error (line 80): function i_editor has 32 lines
+Error (line 80): declarations in i_editor must be at the top of the function
+Error (line 80): declarations must be followed by one empty line in i_editor
+Error (line 98, col 7): state is instanciated during declaration
+Error (line 99): line has 95 characters
+Error (line 108): line has 109 characters
+Error (line 112): Empty line
+Error (line 113, col 1): no empty line before block
+Norme: ./src/free_media.c
+Norme: ./src/get_input.c
+Error (line 35, col 7): bad spacing
+Error (line 55): function get_input has 26 lines
+Norme: ./src/fill_polygon.c
+Error (line 15): line has 82 characters
+Error (line 27): line has 94 characters
+Error (line 44): line has 94 characters
+Error (line 76): line has 86 characters
+Norme: ./src/get_assets.c
+Norme: ./src/get_next_line.h
+Norme: ./src/get_map.c
+Error (line 51): function read_map has 29 lines
+Norme: ./src/get_next_line.c
+Error: file must end with a single empty line
+Error (line 93, col 0): no newline after block
+Norme: ./src/get_sec_v.c
+Error: file must end with a single empty line
+Error: 42 header not at top of the file
+Error (line 4): Space before function name
+Error (line 4, col 3): bad spacing
+Error (line 6, col 4): bad spacing
+Error (line 17): Bad spacing for argument sec
+Error (line 19, col 4): bad spacing
+Error (line 20, col 4): bad spacing
+Error (line 44): Space before function name
+Error (line 44, col 3): bad spacing
+Error (line 47, col 4): bad spacing
+Error (line 62): Space before function name
+Error (line 62, col 3): bad spacing
+Error (line 67, col 0): no newline after block
+Norme: ./src/get_sec_items.c
+Error: file must end with a single empty line
+Error: 42 header not at top of the file
+Error (line 33): function get_sec_items has 35 lines
+Error (line 33): Space before function name
+Error (line 33, col 3): bad spacing
+Error (line 38): 2 assignations
+Error (line 70, col 0): no newline after block
+Norme: ./src/get_map_elems.c
+Error (line 67): 2 assignations
+Norme: ./src/grid_ops.c
+Error: file must end with a single empty line
+Error (line 31, col 0): no newline after block
+Norme: ./src/identify.c
+Norme: ./src/init_world.c
+Norme: ./src/grid_main.c
+Error (line 63): line has 123 characters
+Norme: ./src/items.c
+Norme: ./src/main.c
+Error (line 36): bad spacing after load_sdl_media
+Error (line 54): multiple empty lines
+Error (line 55): multiple empty lines
+Error (line 56): multiple empty lines
+Error (line 57): bad spacing before main
+Error (line 57): function main has 35 lines
+Error (line 79): line has 89 characters
+Norme: ./src/init_editor_buttons.c
+Error (line 39): line has 93 characters
+Error (line 41): line has 90 characters
+Error (line 43): line has 89 characters
+Error (line 67): line has 95 characters
+Error (line 69): line has 96 characters
+Error (line 94): line has 89 characters
+Error (line 97): line has 95 characters
+Norme: ./src/main_menu.c
+Error (line 15): declarations in render_alien are bad aligned
+Error (line 15): declarations in render_alien must be at the top of the function
+Error (line 15): declarations must be followed by one empty line in render_alien
+Error (line 17, col 12): bad spacing
+Error (line 34, col 11): bad spacing
+Error (line 35, col 5): j is instanciated during declaration
+Error (line 39): line has 108 characters
+Error (line 39, col 99): bad spacing
+Error (line 53): C++ comment
+Error (line 54): C++ comment
+Error (line 55): C++ comment
+Error (line 56): C++ comment
+Error (line 57): C++ comment
+Error (line 58): C++ comment
+Error (line 59): C++ comment
+Error (line 60): C++ comment
+Norme: ./src/math.c
+Error: 8 functions in the file
+Error (line 13): multiple empty lines
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16, col 3): bad spacing
+Error (line 18): must begin only by tabulations
+Error (line 18): bad indentation
+Error (line 19): must begin only by tabulations
+Error (line 19): bad indentation
+Error (line 20): must begin only by tabulations
+Error (line 20): bad indentation
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23, col 3): bad spacing
+Error (line 25): must begin only by tabulations
+Error (line 25): bad indentation
+Error (line 26): must begin only by tabulations
+Error (line 26): bad indentation
+Error (line 27): must begin only by tabulations
+Error (line 27): bad indentation
+Norme: ./src/memory_fun.c
+Norme: ./src/line_math.c
+Error: file must end with a single empty line
+Error: global scope bad aligned
+Error: 6 functions in the file
+Error (line 24): declarations in lines_intersect are bad aligned
+Error (line 125, col 0): no newline after block
+Norme: ./src/manage_btn.c
+Error: file must end with a single empty line
+Error (line 17, col 4): bad spacing
+Error (line 70, col 4): bad spacing
+Error (line 123): multiple empty lines
+Norme: ./src/levels.c
+Norme: ./src/move.c
+Norme: ./src/move_player.c
+Norme: ./src/move_item.c
+Norme: ./src/move_vector.c
+Norme: ./src/read_assets_help.c
+Norme: ./src/read_levels.c
+Error (line 15): function read_levels has 27 lines
+Norme: ./src/prog.c
+Error (line 32): function get_prog_txtr has 27 lines
+Error (line 38): line has 100 characters
+Error (line 97): line has 82 characters
+Norme: ./src/render_btn.c
+Norme: ./src/render_elements.c
+Norme: ./src/modes.c
+Error: global scope bad aligned
+Error: 11 functions in the file
+Error (line 30, col 4): bad spacing
+Error (line 50, col 4): bad spacing
+Error (line 64): declarations in init_btn are bad aligned
+Error (line 66, col 4): bad spacing
+Error (line 92, col 4): bad spacing
+Error (line 96): must begin only by tabulations
+Error (line 96): bad indentation
+Error (line 97): must begin only by tabulations
+Error (line 97): bad indentation
+Error (line 98, col 13): bad spacing
+Error (line 99, col 13): bad spacing
+Error (line 113): function levels_btn has 60 lines
+Error (line 113): declarations in levels_btn are bad aligned
+Error (line 113): declarations in levels_btn must be at the top of the function
+Error (line 113): declarations must be followed by one empty line in levels_btn
+Error (line 113, col 9): levels_btn has 7 variables
+Error (line 116, col 4): bad spacing
+Error (line 118, col 5): bad spacing
+Error (line 119, col 4): bad spacing
+Error (line 119, col 9): n_levels is instanciated during declaration
+Error (line 120, col 4): bad spacing
+Error (line 120, col 9): n_btn is instanciated during declaration
+Error (line 126, col 13): bad spacing
+Error (line 127, col 13): bad spacing
+Error (line 156, col 5): j is instanciated during declaration
+Error (line 179): must begin only by tabulations
+Error (line 179): bad indentation
+Error (line 179, col 7): bad spacing
+Error (line 181): must begin only by tabulations
+Error (line 181): bad indentation
+Error (line 182): must begin only by tabulations
+Error (line 182): bad indentation
+Error (line 183): must begin only by tabulations
+Error (line 183): bad indentation
+Error (line 184): must begin only by tabulations
+Error (line 184): bad indentation
+Error (line 185): must begin only by tabulations
+Error (line 185): bad indentation
+Error (line 186): must begin only by tabulations
+Error (line 186): bad indentation
+Error (line 187): must begin only by tabulations
+Error (line 187): bad indentation
+Error (line 190): must begin only by tabulations
+Error (line 190): bad indentation
+Error (line 191): must begin only by tabulations
+Error (line 191): bad indentation
+Error (line 197, col 4): bad spacing
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223): Space before function name
+Error (line 223, col 4): bad spacing
+Error (line 227): must begin only by tabulations
+Error (line 227): bad indentation
+Error (line 228): must begin only by tabulations
+Error (line 228): bad indentation
+Error (line 229): must begin only by tabulations
+Error (line 229): bad indentation
+Error (line 231): must begin only by tabulations
+Error (line 231): bad indentation
+Error (line 232): must begin only by tabulations
+Error (line 232): bad indentation
+Error (line 233): must begin only by tabulations
+Error (line 233): bad indentation
+Error (line 234): must begin only by tabulations
+Error (line 234): bad indentation
+Error (line 235): must begin only by tabulations
+Error (line 235): bad indentation
+Error (line 269, col 4): bad spacing
+Error (line 287): must begin only by tabulations
+Error (line 287): bad indentation
+Norme: ./src/render_grid_elems.c
+Error (line 20): line has 83 characters
+Error (line 27): line has 86 characters
+Norme: ./src/render_grid.c
+Error (line 44): function draw_walls has 26 lines
+Error (line 51, col 4): bad spacing
+Error (line 65): C++ comment
+Error (line 66): C++ comment
+Error (line 67): C++ comment
+Error (line 68): C++ comment
+Error (line 69): C++ comment
+Error (line 70): C++ comment
+Error (line 75): line has 86 characters
+Error (line 98): line has 84 characters
+Norme: ./src/read_line.c
+Norme: ./src/replace.c
+Norme: ./src/render_items.c
+Error (line 50): function draw_itms has 29 lines
+Error (line 68): line has 82 characters
+Error (line 70): line has 84 characters
+Error (line 73): line has 85 characters
+Error (line 81): Empty line
+Error (line 82, col 0): no empty line before block
+Norme: ./src/sdl_fun.c
+Warning: /Users/mshpakov/Desktop/doom-nukem-builder/src/sdl_fun.c may not compile or is invalid for some reasons.
+Norme: ./src/render_grid_iso.c
+Error (line 18, col 14): bad spacing
+Error (line 19, col 14): bad spacing
+Error (line 66): function draw_walls_iso has 29 lines
+Error (line 66): line has 82 characters
+Error (line 66, col 0): draw_walls_iso has 6 variables
+Error (line 74, col 4): bad spacing
+Error (line 88): line has 92 characters
+Norme: ./src/section.c
+Norme: ./src/sector_logic.c
+Error (line 13): multiple empty lines
+Error (line 18, col 4): bad spacing
+Error (line 19, col 4): bad spacing
+Error (line 25, col 1): missing space after while
+Error (line 27, col 65): space before )
+Error (line 29): line has 90 characters
+Error (line 37): function nod_in_sec has 31 lines
+Error (line 37): Space before function name
+Error (line 37, col 3): bad spacing
+Error (line 39, col 4): bad spacing
+Error (line 41, col 4): bad spacing
+Error (line 42, col 4): bad spacing
+Error (line 72): Space before function name
+Error (line 72, col 3): bad spacing
+Error (line 82): Space before function name
+Error (line 82): declarations in sec_is_convex are bad aligned
+Error (line 82, col 14): bad spacing
+Error (line 97): 2 assignations
+Error (line 99): 2 assignations
+Norme: ./src/select_lit.c
+Norme: ./src/sel_item.c
+Error (line 18, col 4): bad spacing
+Error (line 75, col 1): missing space after while
+Error (line 79): must begin only by tabulations
+Error (line 81, col 2): missing space after if
+Error (line 90): Empty line
+Error (line 91, col 1): no empty line before block
+Norme: ./src/sort.c
+Error (line 17, col 4): bad spacing
+Error (line 18, col 4): bad spacing
+Error (line 19, col 4): bad spacing
+Error (line 45, col 4): bad spacing
+Norme: ./src/render.c
+Error: 15 functions in the file
+Error (line 13): multiple empty lines
+Error (line 20): line has 98 characters
+Error (line 21): line has 98 characters
+Error (line 22): line has 114 characters
+Error (line 23): line has 114 characters
+Error (line 26): line has 99 characters
+Error (line 26): declarations must be followed by one empty line in render_txtr_box
+Error (line 28, col 12): rect is instanciated during declaration
+Error (line 34): Space before function name
+Error (line 34): Space before function name
+Error (line 34): Space before function name
+Error (line 34): Space before function name
+Error (line 34): line has 97 characters
+Error (line 34, col 4): bad spacing
+Error (line 43): line has 82 characters
+Error (line 43): C++ comment
+Error (line 44): C++ comment
+Error (line 45): C++ comment
+Error (line 46): C++ comment
+Error (line 47): C++ comment
+Error (line 48): C++ comment
+Error (line 49): line has 102 characters
+Error (line 49): C++ comment
+Error (line 50): C++ comment
+Error (line 51): C++ comment
+Error (line 52): C++ comment
+Error (line 53): C++ comment
+Error (line 54): C++ comment
+Error (line 55): C++ comment
+Error (line 56): C++ comment
+Error (line 57): C++ comment
+Error (line 58): C++ comment
+Error (line 59): C++ comment
+Error (line 60): C++ comment
+Error (line 61): C++ comment
+Error (line 62): C++ comment
+Error (line 63): C++ comment
+Error (line 64): C++ comment
+Error (line 65): C++ comment
+Error (line 66): C++ comment
+Error (line 67): C++ comment
+Error (line 68): C++ comment
+Error (line 69): C++ comment
+Error (line 70): C++ comment
+Error (line 71): C++ comment
+Error (line 72): C++ comment
+Error (line 73): C++ comment
+Error (line 74): C++ comment
+Error (line 75): C++ comment
+Error (line 76): C++ comment
+Error (line 77): C++ comment
+Error (line 78): C++ comment
+Error (line 79): C++ comment
+Error (line 80): C++ comment
+Error (line 81): C++ comment
+Error (line 82): C++ comment
+Error (line 83): C++ comment
+Error (line 84): C++ comment
+Error (line 85): C++ comment
+Error (line 86): C++ comment
+Error (line 87): C++ comment
+Error (line 88): C++ comment
+Error (line 92): Empty line
+Error (line 118): Space before function name
+Error (line 118): Space before function name
+Error (line 118): Space before function name
+Error (line 118): Space before function name
+Error (line 118, col 4): bad spacing
+Error (line 129): Space before function name
+Error (line 129): Space before function name
+Error (line 129): Space before function name
+Error (line 129): Space before function name
+Error (line 129, col 4): bad spacing
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): Space before function name
+Error (line 146): declarations in computeCode must be at the top of the function
+Error (line 146, col 0): computeCode not unixcase
+Error (line 146, col 3): bad spacing
+Error (line 148): C++ comment
+Error (line 148): bad indentation
+Error (line 149, col 4): bad spacing
+Error (line 149, col 17): code is instanciated during declaration
+Error (line 151): missing newline after if
+Error (line 151): C++ comment
+Error (line 153): missing newline after if
+Error (line 153): C++ comment
+Error (line 155): missing newline after if
+Error (line 155): C++ comment
+Error (line 157): missing newline after if
+Error (line 157): C++ comment
+Error (line 162): function clip_line has 55 lines
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): Space before function name
+Error (line 162): C++ comment
+Error (line 162): declarations in clip_line must be at the top of the function
+Error (line 162): declarations must be followed by one empty line in clip_line
+Error (line 162, col 0): clip_line has 6 variables
+Error (line 162, col 3): bad spacing
+Error (line 164, col 5): code1 is instanciated during declaration
+Error (line 165, col 5): code2 is instanciated during declaration
+Error (line 166, col 5): accept is instanciated during declaration
+Error (line 177, col 6): bad spacing
+Error (line 178, col 9): bad spacing
+Error (line 178, col 11): x is instanciated during declaration
+Error (line 179, col 10): y is instanciated during declaration
+Error (line 186): line has 91 characters
+Error (line 191): line has 89 characters
+Error (line 196): line has 91 characters
+Error (line 201): line has 89 characters
+Error (line 221): function draw_circle_fill2 has 28 lines
+Error (line 221): line has 93 characters
+Error (line 221): declarations in draw_circle_fill2 must be at the top of the function
+Error (line 221): declarations must be followed by one empty line in draw_circle_fill2
+Error (line 221, col 46): bad character after ,
+Error (line 225, col 9): radiusError not unixcase
+Error (line 225, col 9): radiusError is instanciated during declaration
+Error (line 231): for detected
+Error (line 231): 2 instructions
+Error (line 231, col 11): i is instanciated during declaration
+Error (line 236): for detected
+Error (line 236): 2 instructions
+Error (line 236, col 11): i is instanciated during declaration
+Error (line 253): Space before function name
+Error (line 253): Space before function name
+Error (line 253): Space before function name
+Error (line 253): Space before function name
+Error (line 253, col 4): bad spacing
+Error (line 278): bad spacing after draw_line
+Error (line 278): Space before function name
+Error (line 278): Space before function name
+Error (line 278): Space before function name
+Error (line 278): Space before function name
+Error (line 278, col 4): bad spacing
+Error (line 303): multiple empty lines
+Error (line 304): C++ comment
+Error (line 305): C++ comment
+Error (line 306): C++ comment
+Error (line 307): C++ comment
+Error (line 308): C++ comment
+Error (line 310): function draw_line_grid has 31 lines
+Error (line 310): Space before function name
+Error (line 310): Space before function name
+Error (line 310): Space before function name
+Error (line 310): Space before function name
+Error (line 310): line has 96 characters
+Error (line 310): declarations in draw_line_grid must be at the top of the function
+Error (line 310): declarations must be followed by one empty line in draw_line_grid
+Error (line 310, col 0): draw_line_grid has 8 variables
+Error (line 310, col 4): bad spacing
+Error (line 312): must begin only by tabulations
+Error (line 312): bad indentation
+Error (line 313): must begin only by tabulations
+Error (line 313): bad indentation
+Error (line 314): must begin only by tabulations
+Error (line 314): bad indentation
+Error (line 315): must begin only by tabulations
+Error (line 315): bad indentation
+Error (line 317): must begin only by tabulations
+Error (line 317): bad indentation
+Error (line 318): must begin only by tabulations
+Error (line 318): bad indentation
+Error (line 319): must begin only by tabulations
+Error (line 319): bad indentation
+Error (line 320): must begin only by tabulations
+Error (line 320): bad indentation
+Error (line 321): must begin only by tabulations
+Error (line 321): bad indentation
+Error (line 322): must begin only by tabulations
+Error (line 322): bad indentation
+Error (line 323): must begin only by tabulations
+Error (line 323): bad indentation
+Error (line 324): must begin only by tabulations
+Error (line 324): bad indentation
+Error (line 325): must begin only by tabulations
+Error (line 325): bad indentation
+Error (line 326): must begin only by tabulations
+Error (line 326): bad indentation
+Error (line 327): must begin only by tabulations
+Error (line 327): bad indentation
+Error (line 328): must begin only by tabulations
+Error (line 328): bad indentation
+Error (line 328, col 16): x is instanciated during declaration
+Error (line 329): must begin only by tabulations
+Error (line 329): bad indentation
+Error (line 329, col 16): y is instanciated during declaration
+Error (line 330): must begin only by tabulations
+Error (line 330): bad indentation
+Error (line 331): must begin only by tabulations
+Error (line 331): bad indentation
+Error (line 332): must begin only by tabulations
+Error (line 332): bad indentation
+Error (line 333): must begin only by tabulations
+Error (line 333): bad indentation
+Error (line 334): must begin only by tabulations
+Error (line 334): bad indentation
+Error (line 335): must begin only by tabulations
+Error (line 335): bad indentation
+Error (line 336): must begin only by tabulations
+Error (line 336): bad indentation
+Error (line 337): must begin only by tabulations
+Error (line 337): bad indentation
+Error (line 338): must begin only by tabulations
+Error (line 338): bad indentation
+Error (line 338, col 12): x is instanciated during declaration
+Error (line 339): must begin only by tabulations
+Error (line 339): bad indentation
+Error (line 339, col 12): y is instanciated during declaration
+Error (line 340): must begin only by tabulations
+Error (line 340): bad indentation
+Error (line 341): must begin only by tabulations
+Error (line 341): bad indentation
+Error (line 342): must begin only by tabulations
+Error (line 342): bad indentation
+Error (line 345): function draw_circle_fill has 28 lines
+Error (line 345): line has 93 characters
+Error (line 345): declarations in draw_circle_fill must be at the top of the function
+Error (line 345): declarations must be followed by one empty line in draw_circle_fill
+Error (line 349, col 9): radiusError not unixcase
+Error (line 349, col 9): radiusError is instanciated during declaration
+Error (line 355): for detected
+Error (line 355): 2 instructions
+Error (line 355, col 11): i is instanciated during declaration
+Error (line 360): for detected
+Error (line 360): 2 instructions
+Error (line 360, col 11): i is instanciated during declaration
+Error (line 377): Space before function name
+Error (line 377): Space before function name
+Error (line 377): Space before function name
+Error (line 377): Space before function name
+Error (line 377): line has 88 characters
+Error (line 377, col 4): bad spacing
+Error (line 394): line has 91 characters
+Error (line 399): line has 87 characters
+Norme: ./src/rewrite.c
+Norme: ./src/texture_edit.c
+Norme: ./src/update_sec.c
+Norme: ./src/update_media_sect.c
+Norme: ./src/textures.c
+Error (line 17, col 12): bad spacing
+Error (line 20, col 11): bad spacing
+Error (line 47, col 4): bad spacing
+Error (line 61): line has 85 characters
+Error (line 61, col 36): bad character after ,
+Error (line 72): must begin only by tabulations
+Error (line 72): bad indentation
+Error (line 73): must begin only by tabulations
+Error (line 73): bad indentation
+Error (line 74): must begin only by tabulations
+Error (line 74): bad indentation
+Error (line 75): must begin only by tabulations
+Error (line 75): bad indentation
+Error (line 76): must begin only by tabulations
+Error (line 76): bad indentation
+Error (line 77): must begin only by tabulations
+Error (line 77): bad indentation
+Error (line 78): must begin only by tabulations
+Error (line 79): must begin only by tabulations
+Error (line 79): bad indentation
+Error (line 80): must begin only by tabulations
+Error (line 80): bad indentation
+Error (line 86): must begin only by tabulations
+Error (line 86): bad indentation
+Error (line 87): must begin only by tabulations
+Error (line 87): bad indentation
+Error (line 88): must begin only by tabulations
+Error (line 88): bad indentation
+Error (line 89): must begin only by tabulations
+Error (line 90): must begin only by tabulations
+Error (line 90): bad indentation
+Error (line 91): must begin only by tabulations
+Error (line 92): must begin only by tabulations
+Error (line 92): bad indentation
+Error (line 93): must begin only by tabulations
+Error (line 93): bad indentation
+Error (line 100): must begin only by tabulations
+Error (line 100): bad indentation
+Error (line 102): must begin only by tabulations
+Error (line 102): bad indentation
+Error (line 103): must begin only by tabulations
+Error (line 103): bad indentation
+Error (line 104): must begin only by tabulations
+Error (line 104): bad indentation
+Error (line 104, col 4): missing space after while
+Error (line 105): must begin only by tabulations
+Error (line 105): bad indentation
+Error (line 106): must begin only by tabulations
+Error (line 106): bad indentation
+Error (line 108): must begin only by tabulations
+Error (line 112, col 2): missing space after if
+Error (line 122): must begin only by tabulations
+Error (line 122): bad indentation
+Error (line 123): must begin only by tabulations
+Error (line 123): bad indentation
+Norme: ./src/validate_clockwise.c
+Norme: ./src/useful.c
+Error: file must end with a single empty line
+Error: 8 functions in the file
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81): Space before function name
+Error (line 81, col 4): bad spacing
+Error (line 83, col 4): bad spacing
+Error (line 87): must begin only by tabulations
+Error (line 87): bad indentation
+Error (line 97, col 11): bad spacing
+Error (line 113, col 6): bad spacing
+Error (line 114, col 4): bad spacing
+Error (line 119, col 0): no newline after block
+Norme: ./src/vec_ops.c
+Error: file must end with a single empty line
+Error (line 50, col 4): bad spacing
+Error (line 69, col 0): no newline after block
+Norme: ./src/states.c
+Error: file must end with a single empty line
+Error: 42 header not at top of the file
+Error: 7 functions in the file
+Error (line 18, col 38): space before )
+Error (line 23, col 37): space before )
+Error (line 35): line has 91 characters
+Error (line 38): line has 83 characters
+Error (line 40): line has 83 characters
+Error (line 44): function circle_inter_line has 41 lines
+Error (line 44, col 9): circle_inter_line has 6 variables
+Error (line 46): multiple declarations
+Error (line 46, col 15): A not unixcase
+Error (line 46, col 18): B not unixcase
+Error (line 46, col 21): C not unixcase
+Error (line 50): Empty line
+Error (line 56): Empty line
+Error (line 58): line has 88 characters
+Error (line 59): line has 88 characters
+Error (line 62): C++ comment
+Error (line 63): C++ comment
+Error (line 64): C++ comment
+Error (line 65, col 9): missing parentheses in return statement
+Error (line 69): C++ comment
+Error (line 70): C++ comment
+Error (line 71): C++ comment
+Error (line 72): C++ comment
+Error (line 73): C++ comment
+Error (line 74, col 9): missing parentheses in return statement
+Error (line 78): C++ comment
+Error (line 79): C++ comment
+Error (line 80): C++ comment
+Error (line 81): C++ comment
+Error (line 82): C++ comment
+Error (line 83): C++ comment
+Error (line 84): C++ comment
+Error (line 85, col 9): missing parentheses in return statement
+Error (line 89): bad spacing after wall_search_st
+Error (line 89): function wall_search_st has 29 lines
+Error (line 94, col 4): bad spacing
+Error (line 116): line has 94 characters
+Error (line 116): bad indentation
+Error (line 122): bad spacing before sec_search_st
+Error (line 125, col 4): bad spacing
+Error (line 138): line has 109 characters
+Error (line 147, col 4): bad spacing
+Error (line 154): line has 84 characters
+Error (line 156): line has 89 characters
+Error (line 164): function sec_edit_st has 26 lines
+Error (line 167, col 4): bad spacing
+Error (line 177): line has 108 characters
+Error (line 193, col 0): no newline after block
+Norme: ./src/validate_media.c
+Norme: ./src/write_section.c
+Norme: ./src/zoom.c
+Warning: /Users/mshpakov/Desktop/doom-nukem-builder/src/zoom.c may not compile or is invalid for some reasons.
+Norme: ./src/values.c
+Norme: ./src/write_level.c
+Error: file must end with a single empty line
+Error (line 17, col 4): bad spacing
+Error (line 36): Space before function name
+Error (line 36, col 3): bad spacing
+Error (line 38, col 4): bad spacing
+Error (line 53): declarations in write_sector must be at the top of the function
+Error (line 53): declarations must be followed by one empty line in write_sector
+Error (line 66, col 5): j is instanciated during declaration
+Error (line 78): function write_tmp has 27 lines
+Error (line 81, col 5): bad spacing
+Error (line 109): function write_level_section has 28 lines
+Error (line 141): multiple empty lines

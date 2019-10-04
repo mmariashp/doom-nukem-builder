@@ -51,6 +51,9 @@ unsigned				load_sdl_media(t_media *media, t_sdl *sdl)
 	return (SUCCESS);
 }
 
+
+
+
 int						main(void)
 {
 	t_sdl				*sdl;
