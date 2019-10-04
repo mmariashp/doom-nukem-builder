@@ -77,6 +77,22 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *m,
 	return (SUCCESS);
 }
 
+unsigned short			btn_down(t_prog *prog, t_vec mouse)
+{
+	int 				state;
+
+	if (prog)
+	{
+		prog->click = mouse;
+		state = select_it(1, ST_SEL, -1);
+		if (!(state == SEC_EDIT &&
+		(within(prog->btn_lit, F_UP_BTN - 1, C_DOWN_BTN + 1) ||
+		within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1))))
+			return (TRUE);
+	}
+	return (FALSE);
+}
+
 int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media,
 		t_prog *prog)
 {
@@ -92,20 +108,15 @@ int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media,
 			prog->move = get_arrow_input(e.key.keysym.sym, prog->move);
 		else if (e.type == SDL_MOUSEWHEEL && e.wheel.y)
 			prog->zoom += e.wheel.y > 0 ? SCROLL_UP : SCROLL_DOWN;
-		else if (e.type == SDL_MOUSEBUTTONDOWN)
-		{
-			prog->click = sdl->mouse;
-			int state = select_it(1, ST_SEL, -1);
-			if (!(state == SEC_EDIT && (within(prog->btn_lit, F_UP_BTN - 1, C_DOWN_BTN + 1) ||
-					within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1))))
-				break ;
-		}
+		else if (e.type == SDL_MOUSEBUTTONDOWN && btn_down(prog, sdl->mouse))
+			break ;
 		else if (e.type == SDL_MOUSEBUTTONUP && select_it(1, ST_SEL, -1)\
 		== NORMAL && prog->btn_lit == BACK_BTN)
 			return (return_to_levels(prog, media));
 		else if (e.type == SDL_MOUSEBUTTONUP)
 		{
-			if (select_it(1, ST_SEL, -1) == SEC_EDIT && within(prog->btn_lit, F_UP_BTN - 1, C_DOWN_BTN + 1))
+			if (select_it(1, ST_SEL, -1) == SEC_EDIT && within(prog->btn_lit,\
+			F_UP_BTN - 1, C_DOWN_BTN + 1))
 				turn_btns_off(prog);
 			prog->click = (t_vec){ 0, 0 };
 		}

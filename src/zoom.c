@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 12:04:41 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/26 12:04:43 by mshpakov         ###   ########.fr       */
+/*   Created: 2019/10/04 17:06:36 by mshpakov          #+#    #+#             */
+/*   Updated: 2019/10/04 17:06:39 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ float new_scl)
 
 void					zoom_grid(t_prog *prog, t_vec mouse, t_grid *grid)
 {
+	static float		min_scl = 1.f;
 	float				new;
-	static float		min_scl = 1;
 	float 				old_scl;
 
 	if (!prog || !grid)

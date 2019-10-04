@@ -70,16 +70,14 @@ int s)
 	{
 		zoom_to_box(grid, m->worlds[m->w].vecs, m->worlds[m->w].n_v);
 		if (s == SEC_EDIT)
-		{
 			select_it(0, ST_SEL, SEC_SEARCH);
-			select_it(0, S_SELECT, -1);
-		}
 		else
 		{
 			select_it(0, ST_SEL, WALL_SEARCH);
 			select_it(0, W_SELECT, -1);
-			lit_it(0, W_SELECT, -1);
 		}
+		select_it(0, S_SELECT, -1);
+		lit_it(0, W_SELECT, -1);
 	}
 	else if ((s == SEC_EDIT && (prog->btn_on == FT_EDIT_BTN || prog->btn_on ==\
 	CT_EDIT_BTN)) || (s == WALL_EDIT && prog->btn_on == WT_EDIT_BTN))

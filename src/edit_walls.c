@@ -48,7 +48,6 @@ int to_add, int find)
 	int					j;
 	int					i;
 	int					*new;
-	int					new_size;
 
 	if (!old_array || !size)
 		return (NULL);
@@ -61,20 +60,18 @@ int to_add, int find)
 	}
 	if (j == 0)
 		return (old_array);
-	new_size = *size + 1;
-	if (!(new = (int *)malloc(sizeof(int) * new_size)))
+	if (!(new = (int *)malloc(sizeof(int) * (*size + 1))))
 		return (NULL);
 	set_min1(&i, &j);
-	while (++i < new_size && ++j < *size)
+	*size = *size + 1;
+	while (++i < *size && ++j < *size - 1)
 	{
-		if ((new[i] = old_array[j]) == find)
-		{
-			new[i] = to_add;
-			new[++i] = find;
-		}
+		if ((new[i] = old_array[j]) != find)
+			continue ;
+		new[i] = to_add;
+		new[++i] = find;
 	}
 	free(old_array);
-	*size = new_size;
 	return (new);
 }
 
@@ -99,14 +96,15 @@ unsigned short			remove_wall_in_ss(t_world *world, int to_remove)
 	return (SUCCESS);
 }
 
-void					delete_wall(int id, t_world *world)
+t_wall					*get_less_wall_cpy(int id, t_world *world)
 {
 	t_wall				*new;
 	int					i;
 	int					j;
 
-	if (!world || !within(id, -1, world->n_w) || !(new = (t_wall *)ft_memalloc(sizeof(t_wall) * (world->n_w - 1))))
-		return ;
+	if (!world || !within(id, -1, world->n_w) ||
+	!(new = (t_wall *)ft_memalloc(sizeof(t_wall) * (world->n_w - 1))))
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (j < world->n_w && i < world->n_w - 1)
@@ -116,6 +114,17 @@ void					delete_wall(int id, t_world *world)
 		new[i++] = world->walls[j++];
 	}
 	world->n_w--;
+	return (new);
+}
+
+void					delete_wall(int id, t_world *world)
+{
+	t_wall				*new;
+	int					i;
+	int					j;
+
+	if (!world || !(new = get_less_wall_cpy(id, world)))
+		return ;
 	free(world->walls);
 	world->walls = new;
 	remove_wall_in_ss(world, id);

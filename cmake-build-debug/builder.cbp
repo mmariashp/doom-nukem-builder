@@ -473,6 +473,9 @@
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/math.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/math_ops.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/memory_fun.c">
 			<Option target="builder"/>
 		</Unit>

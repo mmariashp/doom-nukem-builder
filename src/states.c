@@ -32,91 +32,73 @@ void					setup_door(t_world *world)
 {
 	if (!world || world->n_s < 2)
 		return ;
-	if (world->sec[world->n_s - 1].is_door == TRUE && world->sec[world->n_s - 1].n_w == 4)
+	if (world->sec[world->n_s - 1].is_door == TRUE && 
+	world->sec[world->n_s - 1].n_w == 4)
 	{
 		if (within(world->sec[world->n_s - 1].s_walls[0], -1, world->n_w))
-			world->walls[world->sec[world->n_s - 1].s_walls[0]].type = WALL_EMPTY;
+			world->walls[world->sec[world->n_s - 1].s_walls[0]].type = \
+			WALL_EMPTY;
 		if (within(world->sec[world->n_s - 1].s_walls[2], -1, world->n_w))
-			world->walls[world->sec[world->n_s - 1].s_walls[2]].type = WALL_EMPTY;
+			world->walls[world->sec[world->n_s - 1].s_walls[2]].type = \
+			WALL_EMPTY;
 	}
 }
 
 unsigned short			circle_inter_line(t_vec mouse, int radius, t_line line)
 {
-	float dx, dy, A, B, C, det;
+	t_vec_f				d;
+	float				a;
+	float				b;
+	float				c;
+	float				det;
 
-	dx = line.p1.x - line.p0.x;
-	dy = line.p1.y - line.p0.y;
+	d.x = line.p1.x - line.p0.x;
+	d.y = line.p1.y - line.p0.y;
 
-	A = dx * dx + dy * dy;
-	B = 2 * (dx * (line.p0.x - mouse.x) + dy * (line.p0.y - mouse.y));
-	C = (line.p0.x - mouse.x) * (line.p0.x - mouse.x) +
+	a = d.x * d.x + d.y * d.y;
+	b = 2 * (d.x * (line.p0.x - mouse.x) + d.y * (line.p0.y - mouse.y));
+	c = (line.p0.x - mouse.x) * (line.p0.x - mouse.x) +
 		(line.p0.y - mouse.y) * (line.p0.y - mouse.y) -
 		radius * radius;
-
-	det = B * B - 4 * A * C;
-	if (A <= 0.0000001 || det < 0 || (!within(mouse.x, get_min(line.p0.x, line.p1.x), \
-	get_max(line.p0.x, line.p1.x)) && !within(mouse.y, get_min(line.p0.y, line.p1.y), \
+	det = b * b - 4 * a * c;
+	if (a <= 0.0000001 || det < 0 || (!within(mouse.x, \
+	get_min(line.p0.x, line.p1.x), get_max(line.p0.x, line.p1.x)) && 
+	!within(mouse.y, get_min(line.p0.y, line.p1.y), \
 	get_max(line.p0.y, line.p1.y))))
-	{
-//		// No real solutions.
-//		intersection1 = new PointF(float.NaN, float.NaN);
-//		intersection2 = new PointF(float.NaN, float.NaN);
-		return 0;
-	}
+		return (0);
 	else if (det == 0)
-	{
-//		// One solution.
-//		t = -B / (2 * A);
-//		intersection1 =
-//				new PointF(point1.X + t * dx, point1.Y + t * dy);
-//		intersection2 = new PointF(float.NaN, float.NaN);
-		return 1;
-	}
+		return (1);
 	else
-	{
-//		// Two solutions.
-//		t = (float)((-B + Math.Sqrt(det)) / (2 * A));
-//		intersection1 =
-//				new PointF(point1.X + t * dx, point1.Y + t * dy);
-//		t = (float)((-B - Math.Sqrt(det)) / (2 * A));
-//		intersection2 =
-//				new PointF(point1.X + t * dx, point1.Y + t * dy);
-		return 2;
-	}
+		return (2);
 }
 
 void					wall_search_st(t_prog *prog, t_vec node, \
-											t_grid *grid, t_world *world)
+											t_grid *g, t_world *world)
 {
 	int					v1;
 	int					v2;
 	int 				w;
 
-	if (!prog || !world || !grid)
+	if (!prog || !world || !g || !(mouse_over((t_rec){ 0, 0, W_W, W_H }, node)))
 		return ;
-	w = -1;
-	if (mouse_over((t_rec){ 0, 0, W_W, W_H }, node))
+	w = prog->screen[node.x][node.y].is == SCREEN_WALL ? lit_it(0, W_SELECT, \
+	prog->screen[node.x][node.y].n) : -1;
+	prog->redraw = 1;
+	if (!((prog->click.x || prog->click.y) && within(w, -1, world->n_w)))
+		return ;
+	select_it(0, W_SELECT, w);
+	if (prog->btn_on == DOOR_ADD_BTN)
 	{
-		if (prog->screen[node.x][node.y].is == SCREEN_WALL)
-			w = lit_it(0, W_SELECT, prog->screen[node.x][node.y].n);
-		if ((prog->click.x || prog->click.y) && within(w, -1, world->n_w))
-		{
-			select_it(0, W_SELECT, w);
-			if (prog->btn_on == DOOR_ADD_BTN)
-			{
-				add_door(world, w, grid);
-				setup_door(world);
-			}
-			else
-			{
-				select_it(0, ST_SEL, WALL_EDIT);
-				if (within((v1 = world->walls[w].v1), -1, world->n_v) &&
-					within((v2 = world->walls[w].v2), -1, world->n_v))
-						zoom_to_box(grid, (t_vec[2]){ world->vecs[v1], world->vecs[v2] }, 2);
-			}
-		}
-		prog->redraw = 1;
+		add_door(world, w, g);
+		setup_door(world);
+	}
+	else
+	{
+		select_it(0, ST_SEL, WALL_EDIT);
+		if (within((v1 = world->walls[w].v1), -1, world->n_v) &&
+			within((v2 = world->walls[w].v2), -1, world->n_v))
+			zoom_to_box(g, (t_vec[2]){ world->vecs[v1], \
+						world->vecs[v2] }, 2);
 	}
 }
 void					sec_search_st(t_prog *prog, t_vec mouse, \
@@ -169,24 +151,23 @@ void					sec_edit_st(t_prog *prog, t_vec mouse, \
 	if (!prog)
 		return ;
 	sector = select_it(1, S_SELECT, -1);
+	prog->redraw = 1;
 	if (mouse_in_stor(mouse, &media->worlds[media->w], grid) == sector)
 	{
 		if (prog->btn_on == -1)
 			move_item(prog, mouse, grid, \
 			&media->worlds[media->w].sec[sector]);
-		else if ((prog->click.x || prog->click.y) && check_for_light(media, prog->btn_on - B_COIN, sector))
+		else if ((prog->click.x || prog->click.y) && \
+		check_for_light(media, prog->btn_on - B_COIN, sector))
 			add_item(find_def_item(prog->btn_on - B_COIN, media->it_f, \
 			media->n_itf), mouse, grid, \
 			&media->worlds[media->w].sec[sector]);
 	}
-	if (prog->btn_on != -1 && (prog->click.x || prog->click.y))
+	if (prog->btn_on != -1 && (prog->click.x || prog->click.y) &&
+	!(within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1)))
 	{
-		prog->redraw = 1;
-		if (!(within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1)))
-		{
-			turn_btns_off(prog);
-			prog->click = (t_vec){ 0, 0 };
-		}
+		turn_btns_off(prog);
+		prog->click = (t_vec){ 0, 0 };
 	}
 	upd_sec(media->worlds[media->w].sec, media->worlds[media->w].walls,\
 	media->worlds[media->w].vecs, media->worlds[media->w].n_s);

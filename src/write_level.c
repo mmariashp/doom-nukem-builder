@@ -14,7 +14,7 @@
 
 void					write_items(t_sec sector, int fd)
 {
-	int 				i;
+	int					i;
 
 	if (sector.items && sector.n_it > 0)
 	{
@@ -33,9 +33,9 @@ void					write_items(t_sec sector, int fd)
 	}
 }
 
-int 					get_n_sect(int section, t_world world)
+int						get_n_sect(int section, t_world world)
 {
-	int 				n;
+	int					n;
 
 	if (section == 0)
 		n = world.n_v;
@@ -52,6 +52,8 @@ int 					get_n_sect(int section, t_world world)
 
 void					write_sector(t_sec sec, int fd)
 {
+	int					j;
+
 	if (sec.is_door)
 		ft_putstr_fd("door ", fd);
 	ft_putstr_fd("floor(", fd);
@@ -63,22 +65,21 @@ void					write_sector(t_sec sec, int fd)
 	ft_putstr_fd(" ", fd);
 	ft_putnbr_fd(sec.ceil_t, fd);
 	ft_putstr_fd(") walls '", fd);
-	int j = 0;
-	while (j < sec.n_w)
+	j = -1;
+	while (++j < sec.n_w)
 	{
 		ft_putnbr_fd(sec.s_walls[j], fd);
 		ft_putstr_fd(" ", fd);
-		j++;
 	}
 	ft_putstr_fd("' items '", fd);
 	write_items(sec, fd);
-	ft_putendl_fd("'", fd);
+	ft_putstr_fd("'", fd);
 }
 
 void					write_tmp(int section, int fd, int i, t_world world)
 {
 	t_vec				tmp;
-	char 				del;
+	char				del;
 
 	tmp = (t_vec){ 0, 0 };
 	if (section == 2)
@@ -93,27 +94,24 @@ void					write_tmp(int section, int fd, int i, t_world world)
 	ft_putnbr_fd(tmp.x, fd);
 	ft_putchar_fd(del, fd);
 	ft_putnbr_fd(tmp.y, fd);
-	if (section == 0)
-		ft_putchar_fd('\n', fd);
-	else if (section == 3)
+	if (section == 3)
 	{
 		ft_putstr_fd(" (sector: ", fd);
 		ft_putnbr_fd(nod_in_sec(tmp, &world), fd);
 		if (i == 0)
-			ft_putendl_fd(") start", fd);
+			ft_putstr_fd(") start", fd);
 		else
-			ft_putendl_fd(") end", fd);
+			ft_putstr_fd(") end", fd);
 	}
 }
 
 unsigned short			write_level_section(int fd, t_world world, int section)
 {
-	static char			title[4][9] = { "Vectors", "Walls", "Sectors", \
-	"Player" };
+	static char			t[4][9] = { "Vectors", "Walls", "Sectors", "Player" };
 	unsigned short		i;
 	int					n;
 
-	ft_putendl_fd(title[section], fd);
+	ft_putendl_fd(t[section], fd);
 	if ((n = get_n_sect(section, world)) == -1)
 		return (FAIL);
 	i = -1;
@@ -124,18 +122,14 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 		write_tmp(section, fd, i, world);
 		if (section == 1)
 		{
-			if (world.walls[i].type == WALL_FILLED)
-				ft_putstr_fd(" filled ", fd);
-			else if (world.walls[i].type == WALL_EMPTY)
-				ft_putstr_fd(" empty ", fd);
+			ft_putstr_fd(world.walls[i].type == WALL_FILLED ? " filled " : \
+			" empty", fd);
 			ft_putnbr_fd(world.walls[i].txtr, fd);
-			ft_putchar_fd('\n', fd);
 		}
 		else if (section == 2 && world.sec)
 			write_sector(world.sec[i], fd);
+		ft_putchar_fd('\n', fd);
 	}
 	ft_putchar_fd('\n', fd);
 	return (SUCCESS);
 }
-
-

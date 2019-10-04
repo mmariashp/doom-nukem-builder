@@ -32,7 +32,7 @@ char					*del_char(char *input)
 char					*add_char(char *input, char to_add)
 {
 	size_t				i;
-	size_t 				j;
+	size_t				j;
 	char				*new;
 
 	if (!input)
@@ -65,10 +65,7 @@ char					*get_input(char *init, char change)
 	}
 	if (ft_isalnum(change))
 	{
-		if (input)
-			tmp = ft_strdup(input);
-		else
-			tmp = NULL;
+		tmp = input ? ft_strdup(input) : NULL;
 		if (input)
 			free(input);
 		input = add_char(tmp, change);

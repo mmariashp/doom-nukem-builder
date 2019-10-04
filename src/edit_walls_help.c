@@ -19,5 +19,3 @@ void					set_min1(int *one, int *two)
 	if (two)
 		*two = -1;
 }
-
-

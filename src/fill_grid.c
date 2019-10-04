@@ -60,7 +60,8 @@ void					fill_grid_items(t_sec *sector, t_grid *grid)
 	{
 		p = sector->items[i].p;
 		if (within(p.x, -1, GRID_SIZE) && within(p.y, -1, GRID_SIZE) &&
-		(grid->nod[p.x][p.y] == NODE_EMPTY || grid->nod[p.x][p.y] == (signed char)(-10 - i)))
+		(grid->nod[p.x][p.y] == NODE_EMPTY || grid->nod[p.x][p.y] == \
+		(signed char)(-10 - i)))
 			grid->nod[p.x][p.y] = (signed char)(-10 - i);
 		else
 			delete_item(sector, i--);

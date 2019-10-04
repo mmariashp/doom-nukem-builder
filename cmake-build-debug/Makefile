@@ -3133,6 +3133,33 @@ src/math.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/math.c.s
 .PHONY : src/math.c.s
 
+src/math_ops.o: src/math_ops.c.o
+
+.PHONY : src/math_ops.o
+
+# target to build an object file
+src/math_ops.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/math_ops.c.o
+.PHONY : src/math_ops.c.o
+
+src/math_ops.i: src/math_ops.c.i
+
+.PHONY : src/math_ops.i
+
+# target to preprocess a source file
+src/math_ops.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/math_ops.c.i
+.PHONY : src/math_ops.c.i
+
+src/math_ops.s: src/math_ops.c.s
+
+.PHONY : src/math_ops.s
+
+# target to generate assembly for a file
+src/math_ops.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/math_ops.c.s
+.PHONY : src/math_ops.c.s
+
 src/memory_fun.o: src/memory_fun.c.o
 
 .PHONY : src/memory_fun.o
@@ -4502,6 +4529,9 @@ help:
 	@echo "... src/math.o"
 	@echo "... src/math.i"
 	@echo "... src/math.s"
+	@echo "... src/math_ops.o"
+	@echo "... src/math_ops.i"
+	@echo "... src/math_ops.s"
 	@echo "... src/memory_fun.o"
 	@echo "... src/memory_fun.i"
 	@echo "... src/memory_fun.s"

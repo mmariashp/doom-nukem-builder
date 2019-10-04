@@ -47,6 +47,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/main_menu.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/main_menu.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/manage_btn.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/manage_btn.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/math.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/math.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/src/math_ops.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/math_ops.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/memory_fun.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/memory_fun.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/modes.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/modes.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/move.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/move.c.o"

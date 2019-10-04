@@ -16,7 +16,7 @@ unsigned short			distribute_btn_h(t_btn *btn, t_vec from_to, t_rec box,\
 int padding)
 {
 	t_vec				b;
-	int 				x;
+	int					x;
 	unsigned short		i;
 
 	if (!btn)
@@ -40,15 +40,15 @@ unsigned short			distribute_btn_v(t_btn *btn, t_vec from_to, t_rec box,\
 int padding)
 {
 	t_vec				b;
-	int 				y;
+	int					y;
 	unsigned short		i;
 
-	if (!btn || from_to.x >=from_to.y)
+	if (!btn || from_to.x >= from_to.y)
 		return (FAIL);
-	b = (t_vec){ box.w, box.h / (from_to.y- from_to.x) - padding };
+	b = (t_vec){ box.w, box.h / (from_to.y - from_to.x) - padding };
 	y = box.y;
 	i = from_to.x;
-	while (i <from_to.y)
+	while (i < from_to.y)
 	{
 		btn[i].box.w = b.x;
 		btn[i].box.h = b.y;
@@ -62,10 +62,10 @@ int padding)
 
 int						get_good_size(int w, int h, int n)
 {
-	t_vec_d			tmp;
-	t_vec_d			size;
-	double 				w_h;
-	double 				h_w;
+	t_vec_d				tmp;
+	t_vec_d				size;
+	double				w_h;
+	double				h_w;
 
 	if (!w || !h || !n)
 		return (0);
@@ -75,8 +75,8 @@ int						get_good_size(int w, int h, int n)
 	size.x = floor(tmp.x * h_w) * tmp.x < n ? h / ceil(tmp.x * h_w) : w / tmp.x;
 	if (!tmp.y)
 		return (0);
-	size.y = floor(tmp.y * w_h) * tmp.y < n ? w / ceil(w * tmp.y / h) :
-			 h / tmp.y;
+	size.y = floor(tmp.y * w_h) * tmp.y < n ? w / ceil(w * tmp.y / h) : \
+	h / tmp.y;
 	return (get_max((int)size.x, (int)size.y));
 }
 
@@ -84,7 +84,7 @@ unsigned short			distribute_btn_grid(t_btn *btn, t_vec from_to, \
 t_rec box)
 {
 	t_vec				b;
-	int 				y;
+	int					y;
 	unsigned short		i;
 	int					x;
 

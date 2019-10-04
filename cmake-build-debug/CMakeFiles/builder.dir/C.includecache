@@ -56,7 +56,19 @@ sys/types.h
 ../libft/libft.h
 /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
 
-/Users/mshpakov/Desktop/doom-nukem-builder/src/grid_main.c
+/Users/mshpakov/Desktop/doom-nukem-builder/src/math.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/src/math_ops.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/src/states.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/src/write_level.c
 builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 

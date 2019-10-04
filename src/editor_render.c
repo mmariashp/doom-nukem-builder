@@ -16,7 +16,7 @@ void					place_player_icons(t_world world, t_grid *grid, \
 t_sdl *sdl)
 {
 	t_vec				node;
-	t_txtb			tb;
+	t_txtb				tb;
 
 	node.x = (int)(grid->box.x + world.p_start.x * grid->scl);
 	node.y = (int)(grid->box.y + world.p_start.y * grid->scl);
