@@ -16,7 +16,8 @@ unsigned				read_textures(t_media *media, t_section *section)
 {
 	short				i;
 
-	if (!media || !section || !section->tab || !(media->txtr = \
+	if (!media || !section || !section->tab || !(within(section->n_files, \
+	MIN_N_TXTRS, MAX_N_TXTRS)) || !(media->txtr = \
 	(t_texture *)ft_memalloc(sizeof(t_texture) * section->n_files)))
 		return (FAIL);
 	media->n_t = section->n_files;

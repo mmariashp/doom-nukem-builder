@@ -40,7 +40,7 @@ void					r_editor(t_sdl *sdl, t_grid *g, t_media *m, t_prog *p)
 	if (s == SEC_EDIT || s == WALL_EDIT)
 		render_edit_menu(sdl, m, p, &m->worlds[m->w]);
 	render_btns(p, sdl);
-	if (s == NORMAL && p->btn_on == PLAYER_BTN)
+	if (s == NORMAL && p->btn_on == PLR_BTN)
 		place_player_icons(m->worlds[m->w], g, sdl);
 	if (s == WALL_SEARCH && p->btn_on == DOOR_ADD_BTN && p->btn_lit == -1)
 		render_cursor(sdl->rend, sdl->mouse, p->t, TXTR_DOOR);
@@ -79,7 +79,7 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *m,
 
 unsigned short			btn_down(t_prog *prog, t_vec mouse)
 {
-	int 				state;
+	int					state;
 
 	if (prog)
 	{
@@ -110,17 +110,15 @@ int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media,
 			prog->zoom += e.wheel.y > 0 ? SCROLL_UP : SCROLL_DOWN;
 		else if (e.type == SDL_MOUSEBUTTONDOWN && btn_down(prog, sdl->mouse))
 			break ;
-		else if (e.type == SDL_MOUSEBUTTONUP && select_it(1, ST_SEL, -1)\
-		== NORMAL && prog->btn_lit == BACK_BTN)
-			return (return_to_levels(prog, media));
 		else if (e.type == SDL_MOUSEBUTTONUP)
 		{
+			if (select_it(1, ST_SEL, -1) == NORMAL && prog->btn_lit == BACK_BTN)
+				return (return_to_levels(prog, media));
 			if (select_it(1, ST_SEL, -1) == SEC_EDIT && within(prog->btn_lit,\
 			F_UP_BTN - 1, C_DOWN_BTN + 1))
 				turn_btns_off(prog);
 			prog->click = (t_vec){ 0, 0 };
 		}
-
 	}
 	return (FALSE);
 }

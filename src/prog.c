@@ -87,14 +87,14 @@ unsigned short			init_prog_values(t_prog *prog, SDL_Renderer *rend)
 {
 	int					k;
 
-	if (!prog)
-		return (FAIL);
-	if (!(prog->screen = (t_screen **)ft_memalloc(sizeof(t_screen *) * W_W)))
+	if (!prog || !(prog->screen = \
+	(t_screen **)ft_memalloc(sizeof(t_screen *) * W_W)))
 		return (FAIL);
 	k = -1;
 	while (++k < W_W)
 	{
-		if (!(prog->screen[k] = (t_screen *)ft_memalloc(sizeof(t_screen) * W_H)))
+		if (!(prog->screen[k] = \
+		(t_screen *)ft_memalloc(sizeof(t_screen) * W_H)))
 			return (FAIL);
 		ft_bzero(prog->screen[k], sizeof(t_screen) * W_H);
 	}

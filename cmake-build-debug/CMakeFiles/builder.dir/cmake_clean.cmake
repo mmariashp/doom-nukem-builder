@@ -81,6 +81,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/src/btn_press.c.o"
   "CMakeFiles/builder.dir/src/distribute_btns.c.o"
   "CMakeFiles/builder.dir/src/math_ops.c.o"
+  "CMakeFiles/builder.dir/src/levels_btn.c.o"
+  "CMakeFiles/builder.dir/src/btn_main.c.o"
+  "CMakeFiles/builder.dir/src/mode_btn.c.o"
   "builder.pdb"
   "builder"
 )

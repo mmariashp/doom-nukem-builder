@@ -5,6 +5,7 @@ File Names:
 0) fortress.txt
 1) dungeon.txt
 2) new
+3) throneroom
 ###
 
 #Textures

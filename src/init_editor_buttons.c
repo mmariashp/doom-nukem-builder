@@ -36,20 +36,20 @@ void					get_sec_boxes(t_mode *m)
 
 void					init_sec_btn(t_mode *m)
 {
-	static int			reg[TOTAL_EDITOR_BTNS] = { TXTR_BACK, TXTR_DEL, TXTR_UP, TXTR_DOWN,\
-	TXTR_UP, TXTR_DOWN, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT, TXTR_DEL, TXTR_COIN, \
-	TXTR_KEY, TXTR_OBJECT, TXTR_ENEMY, TXTR_SUPER, TXTR_HEALTH, TXTR_AMMO, TXTR_WEAPON, \
-	TXTR_LIGHT };
-	static int			lit[TOTAL_EDITOR_BTNS] = { TXTR_BACK_L, TXTR_DEL_L, TXTR_UP_L, \
-	TXTR_DOWN_L, TXTR_UP_L, TXTR_DOWN_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L,\
-	TXTR_DEL_L, TXTR_COIN, TXTR_KEY, TXTR_OBJECT, TXTR_ENEMY, TXTR_SUPER, \
-	TXTR_HEALTH, TXTR_AMMO, TXTR_WEAPON, TXTR_LIGHT };
+	static int			reg[TOT_EDIT_BTNS] = { TXTR_BACK, TXTR_DEL, TXTR_UP, \
+	TXTR_DOWN, TXTR_UP, TXTR_DOWN, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT, TXTR_DEL, \
+	TXTR_COIN, TXTR_KEY, TXTR_OBJECT, TXTR_ENEMY, TXTR_SUPER, TXTR_HEALTH, \
+	TXTR_AMMO, TXTR_WEAPON, TXTR_LIGHT };
+	static int			lit[TOT_EDIT_BTNS] = { TXTR_BACK_L, TXTR_DEL_L, \
+	TXTR_UP_L, TXTR_DOWN_L, TXTR_UP_L, TXTR_DOWN_L, TXTR_EDIT_L, TXTR_EDIT_L, \
+	TXTR_EDIT_L, TXTR_DEL_L, TXTR_COIN, TXTR_KEY, TXTR_OBJECT, TXTR_ENEMY, \
+	TXTR_SUPER, TXTR_HEALTH, TXTR_AMMO, TXTR_WEAPON, TXTR_LIGHT };
 	int					i;
 	int					n;
 
 	if (!m || !m->btn)
 		return ;
-	n = TOTAL_EDITOR_BTNS;
+	n = TOT_EDIT_BTNS;
 	i = -1;
 	while (++i < m->n_btn)
 	{
@@ -64,10 +64,10 @@ void					init_sec_btn(t_mode *m)
 
 void					init_wall_btn(t_mode *m)
 {
-	static int			reg[TOTAL_EDITOR_BTNS] = { TXTR_BACK, TXTR_EDIT, TXTR_EDIT, 0, 0, 0, \
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	static int			lit[TOTAL_EDITOR_BTNS] = { TXTR_BACK_L, TXTR_EDIT, TXTR_EDIT_L, 0, 0, \
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	static int			reg[TOT_EDIT_BTNS] = { TXTR_BACK, TXTR_EDIT, TXTR_EDIT,\
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	static int			lit[TOT_EDIT_BTNS] = { TXTR_BACK_L, TXTR_EDIT, \
+	TXTR_EDIT_L, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	int					i;
 	int					n;
 
@@ -91,12 +91,12 @@ void					init_wall_btn(t_mode *m)
 void					init_regular_btn(t_mode *m)
 {
 	static t_rec		box = { 10, 0, W_H * 0.07 * 11, W_H * 0.07};
-	static int			reg[TOTAL_EDITOR_BTNS] = { TXTR_MOVE, TXTR_DISTORT, TXTR_DRAW, \
-	TXTR_SEC, TXTR_WALL, TXTR_DOOR_ADD, TXTR_DOOR_DEL, TXTR_PLAYER, TXTR_ISO, \
-	TXTR_SAVE, TXTR_EXIT, 0, 0, 0, 0, 0, 0, 0, 0 };
-	static int			lit[TOTAL_EDITOR_BTNS] = { TXTR_MOVE_L, TXTR_DISTORT_L, TXTR_DRAW_L, \
-	TXTR_SEC_L, TXTR_WALL_L, TXTR_DOOR_ADD_L, TXTR_DOOR_DEL_L, TXTR_PLAYER_L, \
-	TXTR_ISO_L, TXTR_SAVE_L, TXTR_EXIT_L, 0, 0, 0, 0, 0, 0, 0, 0 };
+	static int			reg[TOT_EDIT_BTNS] = { TXTR_MOVE, TXTR_DISTORT, \
+	TXTR_DRAW, TXTR_SEC, TXTR_WALL, TXTR_DOOR_ADD, TXTR_DOOR_DEL, TXTR_PLR, \
+	TXTR_ISO, TXTR_SAVE, TXTR_EXIT, 0, 0, 0, 0, 0, 0, 0, 0 };
+	static int			lit[TOT_EDIT_BTNS] = { TXTR_MOVE_L, TXTR_DISTORT_L, \
+	TXTR_DRAW_L, TXTR_SEC_L, TXTR_WALL_L, TXTR_DOOR_ADD_L, TXTR_DOOR_DEL_L, \
+	TXTR_PLR_L, TXTR_ISO_L, TXTR_SAVE_L, TXTR_EXIT_L, 0, 0, 0, 0, 0, 0, 0, 0 };
 	int					i;
 	int					n;
 

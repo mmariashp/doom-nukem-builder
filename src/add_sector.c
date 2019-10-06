@@ -31,8 +31,8 @@ unsigned short			add_sector(t_sec **sec, short n_s)
 	(*sec)[n_s].items = NULL;
 	(*sec)[n_s].fl = 0;
 	(*sec)[n_s].ceil = 20;
-	(*sec)[n_s].fl_t = 0;
-	(*sec)[n_s].ceil_t = 0;
+	(*sec)[n_s].fl_t = DEFAULT_FLR_T;
+	(*sec)[n_s].ceil_t = DEFAULT_CEIL_T;
 	(*sec)[n_s].n_w = 0;
 	(*sec)[n_s].n_it = 0;
 	(*sec)[n_s].n_v = 0;

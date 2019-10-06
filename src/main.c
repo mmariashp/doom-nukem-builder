@@ -51,9 +51,6 @@ unsigned				load_sdl_media(t_media *media, t_sdl *sdl)
 	return (SUCCESS);
 }
 
-
-
-
 int						main(void)
 {
 	t_sdl				*sdl;
@@ -61,25 +58,13 @@ int						main(void)
 	t_prog				*prog;
 
 	prog = NULL;
-	if (!(media = get_assets()))
+	if (!(media = get_assets()) || !(sdl = get_sdl()) ||
+	!(prog = get_prog(sdl->rend)) || load_sdl_media(media, sdl) == FAIL)
 	{
-		ft_putstr("\x1b[32mMedia NULL, Returning fail from main.\x1b[0m\n");
-		system("leaks -q builder");
-		return (FAIL);
-	}
-	if (!(sdl = get_sdl()))
-	{
-		ft_putstr("\x1b[32mSdl NULL, Returning fail from main.\x1b[0m\n");
-		free_media(media);
-		system("leaks -q builder");
-		return (FAIL);
-	}
-	if (!(prog = get_prog(sdl->rend)) || load_sdl_media(media, sdl) == FAIL)
-	{
-		ft_putstr("\x1b[32mCouldn't load textures, Returning fail from main.\x1b[0m\n");
 		free_media(media);
 		free_prog(prog);
 		free_sdl(sdl);
+		ft_putstr("\x1b[32mReturning fail from main.\x1b[0m\n");
 		system("leaks -q builder");
 		return (FAIL);
 	}

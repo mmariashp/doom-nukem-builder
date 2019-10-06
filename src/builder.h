@@ -119,7 +119,7 @@
 # define R_VECTORS				1
 # define R_WALLS				2
 # define R_SECS					3
-# define R_PLAYER				4
+# define R_PLR				4
 
 # define MIN_VERTEX_ID			0
 # define MAX_VERTEX_ID			200
@@ -130,7 +130,8 @@
 # define MIN_N_SECS				1
 # define MAX_N_SECS				50
 
-# define MAX_N_TXTRS			50
+# define MIN_N_TXTRS			5
+# define MAX_N_TXTRS			80
 
 # define MIN_HEIGHT				-100
 # define MAX_HEIGHT				100
@@ -194,8 +195,8 @@
 # define TXTR_DOOR_ADD_L	23
 # define TXTR_DOOR_DEL		24
 # define TXTR_DOOR_DEL_L	25
-# define TXTR_PLAYER		26
-# define TXTR_PLAYER_L		27
+# define TXTR_PLR		26
+# define TXTR_PLR_L		27
 # define TXTR_SAVE			28
 # define TXTR_SAVE_L		29
 # define TXTR_EXIT			30
@@ -230,7 +231,7 @@
 # define WALL_BTN			4
 # define DOOR_ADD_BTN		5
 # define DOOR_DEL_BTN		6
-# define PLAYER_BTN			7
+# define PLR_BTN			7
 # define ISO_BTN			8
 # define SAVE_BTN			9
 # define BACK_BTN			10
@@ -255,7 +256,7 @@
 # define B_WEAPON			17
 # define B_LIGHT			18
 
-# define TOTAL_EDITOR_BTNS	19
+# define TOT_EDIT_BTNS	19
 
 # define WT_EDIT_BTN		1
 # define PORT_BTN			2
@@ -301,6 +302,14 @@
 # define SCREEN_SECTOR		3
 # define SCREEN_PL_START	4
 # define SCREEN_PL_END		5
+
+# define DEFAULT_WALL_T		0
+# define DEFAULT_FLR_T		1
+# define DEFAULT_CEIL_T		2
+# define DEFAULT_DOOR_T		3
+# define DEFAULT_TRAN_T		4
+
+
 
 typedef struct				s_rgb
 {
@@ -843,6 +852,12 @@ unsigned short			distribute_btn_grid(t_btn *btn, t_vec from_to, t_rec box);
 unsigned short			distribute_btn_v(t_btn *btn, t_vec from_to, t_rec box, int padding);
 unsigned short			distribute_btn_h(t_btn *btn, t_vec from_to, t_rec box, int padding);
 void					get_txtr_btn_boxes(t_btn *btn, int n_t, int scroll);
+unsigned short			add_wall_door(t_wall **walls, short n_w, int one, \
+int two);
+unsigned short			levels_btn(t_btn *btn, t_world *worlds, int n_worlds);
+unsigned short			sel_item_btn(t_btn *btn, t_it_f *it_f, int n_itf);
+unsigned short			textures_btn(t_btn *btn, int n_t);
+unsigned short			main_menu_btn(t_btn *btn);
 
 
 #endif

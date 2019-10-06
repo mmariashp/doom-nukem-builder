@@ -61,16 +61,16 @@ unsigned short max_txtr)
 int						get_s_walls(t_sec *s, char *l, int n_w)
 {
 	int					*walls;
-	unsigned short		c;
 	int					i;
 
-	if (!n_w || !s || !(l = ft_strchr(l, '\'')) || !within((c = count_w(\
-	l, n_w)), 2, 127) || !(walls = (int *)ft_memalloc(sizeof(int) * c)))
+	if (!n_w || !s || !(l = ft_strchr(l, '\'')) ||
+	!within((s->n_w = count_w(l, n_w)), 2, 127))
 		return (FAIL);
-	s->n_w = c;
-	ft_bzero(walls, sizeof(int) * c);
+	if (!(walls = (int *)ft_memalloc(sizeof(int) * s->n_w)))
+		return (FAIL);
+	ft_bzero(walls, sizeof(int) * s->n_w);
 	i = 0;
-	while (*(++l) && *l != '\'' && i < c)
+	while (*(++l) && *l != '\'' && i < s->n_w)
 	{
 		if (ft_isdigit(*l))
 		{

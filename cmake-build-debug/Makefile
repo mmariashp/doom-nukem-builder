@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /opt/clion-2019.2/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /opt/clion-2019.2/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/mshpakov/Desktop/doom-nukem-builder
+CMAKE_SOURCE_DIR = /home/moosh/CLionProjects/builder
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug
+CMAKE_BINARY_DIR = /home/moosh/CLionProjects/builder/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named builder
-
-# Build rule for target.
-builder: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 builder
-.PHONY : builder
-
-# fast build rule for target.
-builder/fast:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/build
-.PHONY : builder/fast
-
-#=============================================================================
 # Target rules for targets named ft
 
 # Build rule for target.
@@ -135,6 +122,19 @@ ft: cmake_check_build_system
 ft/fast:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
 .PHONY : ft/fast
+
+#=============================================================================
+# Target rules for targets named builder
+
+# Build rule for target.
+builder: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 builder
+.PHONY : builder
+
+# fast build rule for target.
+builder/fast:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/build
+.PHONY : builder/fast
 
 libft/ft_abs_cut.o: libft/ft_abs_cut.c.o
 
@@ -2053,6 +2053,33 @@ src/add_to_media.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_to_media.c.s
 .PHONY : src/add_to_media.c.s
 
+src/btn_main.o: src/btn_main.c.o
+
+.PHONY : src/btn_main.o
+
+# target to build an object file
+src/btn_main.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_main.c.o
+.PHONY : src/btn_main.c.o
+
+src/btn_main.i: src/btn_main.c.i
+
+.PHONY : src/btn_main.i
+
+# target to preprocess a source file
+src/btn_main.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_main.c.i
+.PHONY : src/btn_main.c.i
+
+src/btn_main.s: src/btn_main.c.s
+
+.PHONY : src/btn_main.s
+
+# target to generate assembly for a file
+src/btn_main.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_main.c.s
+.PHONY : src/btn_main.c.s
+
 src/btn_press.o: src/btn_press.c.o
 
 .PHONY : src/btn_press.o
@@ -2998,6 +3025,33 @@ src/levels.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/levels.c.s
 .PHONY : src/levels.c.s
 
+src/levels_btn.o: src/levels_btn.c.o
+
+.PHONY : src/levels_btn.o
+
+# target to build an object file
+src/levels_btn.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/levels_btn.c.o
+.PHONY : src/levels_btn.c.o
+
+src/levels_btn.i: src/levels_btn.c.i
+
+.PHONY : src/levels_btn.i
+
+# target to preprocess a source file
+src/levels_btn.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/levels_btn.c.i
+.PHONY : src/levels_btn.c.i
+
+src/levels_btn.s: src/levels_btn.c.s
+
+.PHONY : src/levels_btn.s
+
+# target to generate assembly for a file
+src/levels_btn.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/levels_btn.c.s
+.PHONY : src/levels_btn.c.s
+
 src/line_math.o: src/line_math.c.o
 
 .PHONY : src/line_math.o
@@ -3186,6 +3240,33 @@ src/memory_fun.s: src/memory_fun.c.s
 src/memory_fun.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/memory_fun.c.s
 .PHONY : src/memory_fun.c.s
+
+src/mode_btn.o: src/mode_btn.c.o
+
+.PHONY : src/mode_btn.o
+
+# target to build an object file
+src/mode_btn.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/mode_btn.c.o
+.PHONY : src/mode_btn.c.o
+
+src/mode_btn.i: src/mode_btn.c.i
+
+.PHONY : src/mode_btn.i
+
+# target to preprocess a source file
+src/mode_btn.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/mode_btn.c.i
+.PHONY : src/mode_btn.c.i
+
+src/mode_btn.s: src/mode_btn.c.s
+
+.PHONY : src/mode_btn.s
+
+# target to generate assembly for a file
+src/mode_btn.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/mode_btn.c.s
+.PHONY : src/mode_btn.c.s
 
 src/modes.o: src/modes.c.o
 
@@ -4194,8 +4275,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... builder"
 	@echo "... ft"
+	@echo "... builder"
 	@echo "... libft/ft_abs_cut.o"
 	@echo "... libft/ft_abs_cut.i"
 	@echo "... libft/ft_abs_cut.s"
@@ -4409,6 +4490,9 @@ help:
 	@echo "... src/add_to_media.o"
 	@echo "... src/add_to_media.i"
 	@echo "... src/add_to_media.s"
+	@echo "... src/btn_main.o"
+	@echo "... src/btn_main.i"
+	@echo "... src/btn_main.s"
 	@echo "... src/btn_press.o"
 	@echo "... src/btn_press.i"
 	@echo "... src/btn_press.s"
@@ -4514,6 +4598,9 @@ help:
 	@echo "... src/levels.o"
 	@echo "... src/levels.i"
 	@echo "... src/levels.s"
+	@echo "... src/levels_btn.o"
+	@echo "... src/levels_btn.i"
+	@echo "... src/levels_btn.s"
 	@echo "... src/line_math.o"
 	@echo "... src/line_math.i"
 	@echo "... src/line_math.s"
@@ -4535,6 +4622,9 @@ help:
 	@echo "... src/memory_fun.o"
 	@echo "... src/memory_fun.i"
 	@echo "... src/memory_fun.s"
+	@echo "... src/mode_btn.o"
+	@echo "... src/mode_btn.i"
+	@echo "... src/mode_btn.s"
 	@echo "... src/modes.o"
 	@echo "... src/modes.i"
 	@echo "... src/modes.s"

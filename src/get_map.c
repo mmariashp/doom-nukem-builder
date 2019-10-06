@@ -67,19 +67,14 @@ unsigned short world_no, int ret)
 			return (FAIL);
 		else if (i_st[0] == 2 && init_sec(line, world) == FAIL)
 			return (FAIL);
-		else if (ft_isdigit(line[0]) && i_st[1] > 0 && i_st[1] < 6)
-		{
-			if (read_line(line, i_st[1], world, world_no) == FAIL)
-				return (FAIL);
-		}
-		else
+		else if (!(ft_isdigit(line[0]) && i_st[1] > 0 && i_st[1] < 6))
 			i_st[1] = get_status_read(line, i_st[1]);
+		else if (read_line(line, i_st[1], world, world_no) == FAIL)
+			return (FAIL);
 		ft_strdel(&line);
 	}
 	ft_strdel(&line);
-	if (ret == -1)
-		return (FAIL);
-	return (SUCCESS);
+	return (ret == -1 ? FAIL : SUCCESS);
 }
 
 unsigned				get_map(t_world *world, unsigned short world_no)

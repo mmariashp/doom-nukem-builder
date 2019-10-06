@@ -14,7 +14,7 @@
 
 unsigned short			btn_refresh(t_prog *prog, int state)
 {
-	int 				on;
+	int					on;
 
 	if (!prog)
 		return (FAIL);
@@ -67,7 +67,7 @@ t_prog *prog)
 
 void					turn_btns_off(t_prog *prog)
 {
-	int 				i;
+	int					i;
 
 	if (prog->modes && prog->modes[prog->m_id].btn && \
 	prog->modes[prog->m_id].n_btn > 0)
@@ -119,5 +119,3 @@ t_vec mouse)
 	}
 	return (3);
 }
-
-

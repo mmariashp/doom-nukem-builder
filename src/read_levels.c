@@ -12,6 +12,20 @@
 
 #include "builder.h"
 
+void					fill_values(t_world *world)
+{
+	if (!world)
+		return ;
+	world->sec = NULL;
+	world->walls = NULL;
+	world->vecs = NULL;
+	world->n_s = 0;
+	world->n_v = 0;
+	world->n_w = 0;
+	world->p_start = (t_vec){ 5, 10 };
+	world->p_end = (t_vec){ 10, 10 };
+}
+
 unsigned				read_levels(t_media *m, t_section *s)
 {
 	short				i;
@@ -28,15 +42,8 @@ unsigned				read_levels(t_media *m, t_section *s)
 		ft_bzero(&m->worlds[i], sizeof(t_world));
 		m->worlds[i].full_p = ft_strdup(s->tab[i]);
 		m->worlds[i].name = ft_strdup(s->names[i]);
-		m->worlds[i].sec = NULL;
-		m->worlds[i].walls = NULL;
-		m->worlds[i].vecs = NULL;
-		m->worlds[i].n_s = 0;
-		m->worlds[i].n_v = 0;
-		m->worlds[i].n_w = 0;
-		m->worlds[i].p_start = (t_vec){ 5, 10 };
-		m->worlds[i].p_end = (t_vec){ 10, 10 };
-		if (!m->worlds[i].full_p || !m->worlds[i].name || \
+		fill_values(&m->worlds[i]);
+		if (!m->worlds[i].full_p || !m->worlds[i].name ||
 		get_map(&m->worlds[i], i) == FAIL)
 			return (FAIL);
 	}

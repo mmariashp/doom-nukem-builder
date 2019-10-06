@@ -103,9 +103,9 @@ t_world *w, unsigned short w_no)
 		w->vecs[vwsp[0]++] = (t_vec){ clamp(p.x, 0, 150), clamp(p.y, 0, 150) };
 	if (s == R_WALLS && vwsp[1] < w->n_w && read_into_w(p, w, vwsp, l) == FAIL)
 		return (FAIL);
-	if (s == R_PLAYER && vwsp[3]++ == 0)
+	if (s == R_PLR && vwsp[3]++ == 0)
 		w->p_start = p;
-	else if (s == R_PLAYER)
+	else if (s == R_PLR)
 		w->p_end = p;
 	return (SUCCESS);
 }

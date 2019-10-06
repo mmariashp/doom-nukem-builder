@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_sec_v.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/28 16:45:37 by mshpakov          #+#    #+#             */
+/*   Updated: 2019/09/28 16:45:38 by mshpakov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "builder.h"
 
-int 					exists_in_array(int const *array, int n, int number)
+int						exists_in_array(int const *array, int n, int number)
 {
-	int 				i;
+	int					i;
 
 	i = 0;
 	while (i < n)
@@ -16,8 +27,8 @@ int 					exists_in_array(int const *array, int n, int number)
 
 void					sort_tmp(int *tmp, int n, t_sec	*sec)
 {
-	int 				i;
-	int 				j;
+	int					i;
+	int					j;
 
 	if (!tmp)
 		return ;
@@ -41,10 +52,10 @@ void					sort_tmp(int *tmp, int n, t_sec	*sec)
 	}
 }
 
-int 					fill_sector_v(t_sec *sec, t_wall *walls, int n, int i)
+int						fill_sector_v(t_sec *sec, t_wall *walls, int n, int i)
 {
 	int					j;
-	int 				tmp[n];
+	int					tmp[n];
 
 	if (!sec || !walls || !sec->s_walls)
 		return (FAIL);
@@ -59,7 +70,7 @@ int 					fill_sector_v(t_sec *sec, t_wall *walls, int n, int i)
 	return (SUCCESS);
 }
 
-int 					get_sec_v(t_sec *sector, t_wall *walls)
+int						get_sec_v(t_sec *sector, t_wall *walls)
 {
 	if (!sector || !walls)
 		return (FAIL);

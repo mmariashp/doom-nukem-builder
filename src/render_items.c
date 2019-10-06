@@ -65,9 +65,10 @@ SDL_Texture **t)
 		i = -1;
 		while (++i < m->worlds[m->w].sec[s].n_it)
 		{
-			if (ingrid((p = m->worlds[m->w].sec[s].items[i].p)) && nod_in_sec(p,\
-		&m->worlds[m->w]) == s && g->nod[p.x][p.y] == (signed char)(-10 - i)
-				&& within((id = m->worlds[m->w].sec[s].items[i].id), -1, m->n_itf))
+//			draw_or_del_it(m->worlds[m->w].sec[s].items[i])
+			if (ingrid((p = m->worlds[m->w].sec[s].items[i].p)) && nod_in_sec(p\
+			,&m->worlds[m->w]) == s && g->nod[p.x][p.y] == (signed char)(-10 - \
+			i) && within((id = m->worlds[m->w].sec[s].items[i].id), -1, m->n_itf))
 			{
 				p = get_p(g, m->worlds[m->w].sec[s].items[i].p);
 				draw_item(m->it_f[id].type, (b = (t_rec){ p.x - b.w / 2, p.y - b.h \
@@ -78,5 +79,4 @@ SDL_Texture **t)
 		}
 		s++;
 	}
-
 }

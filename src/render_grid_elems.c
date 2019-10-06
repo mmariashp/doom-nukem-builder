@@ -17,15 +17,16 @@ void					draw_node(t_vec c, int r, t_screen s, t_screen **screen)
 	draw_circle_fill2(c, r, s, screen);
 }
 
-void					draw_player(t_vec c, int r, t_screen s, t_screen **screen)
+void					draw_player(t_vec c, int r, t_screen s, \
+t_screen **screen)
 {
 	draw_circle_fill2(c, r * 1.5, s, screen);
 	draw_circle_fill2(c, r, s, screen);
 	draw_circle_fill2(c, r * 0.5, s, screen);
 }
 
-void					place_player(t_world world, t_grid *grid, t_screen **screen,\
-int radius)
+void					place_player(t_world world, t_grid *grid, \
+t_screen **screen, int radius)
 {
 	t_vec				node;
 	t_screen			s;

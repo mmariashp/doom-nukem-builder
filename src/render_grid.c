@@ -48,7 +48,7 @@ t_screen **screen, int wall)
 	t_vec				v1;
 	t_vec				v2;
 	t_screen			s;
-	int 				r;
+	int					r;
 
 	i = 0;
 	r = (int)(0.2f * grid->scl);
@@ -62,18 +62,12 @@ t_screen **screen, int wall)
 		else if (world.walls[i].type == WALL_EMPTY)
 			s.color = EMPTY_WALL_CLR;
 		draw_thick_line((t_line){ v1, v2 }, s, r, screen);
-//		if (i == wall)
-//			draw_thick_line((t_line){ v1, v2 }, NAVY, LIT_WALL_R, screen);
-//		else if (world.walls[i].type == WALL_EMPTY)
-//			draw_thick_line((t_line){ v1, v2 }, GREEN, WALL_R, screen);
-//		else if (world.walls[i].type == WALL_FILLED)
-//			draw_thick_line((t_line){ v1, v2 }, WHITE, WALL_R, screen);
 		i++;
 	}
 }
 
-unsigned short			fill_sector(t_world world, t_grid *grid, t_screen **screen, \
-int sec)
+unsigned short			fill_sector(t_world world, t_grid *grid, \
+t_screen **screen, int sec)
 {
 	int					i;
 	int					color;
@@ -95,7 +89,8 @@ int sec)
 	return (fill_polygon(p, world.sec[sec].n_v, screen, color));
 }
 
-void					drawing_nodes(t_grid *grid, t_screen **screen, t_vec mouse)
+void					drawing_nodes(t_grid *grid, t_screen **screen, \
+t_vec mouse)
 {
 	int					radius;
 	t_vec				node;

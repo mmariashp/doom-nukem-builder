@@ -105,7 +105,7 @@ add_executable(${PROJECT_NAME}
 		src/init_world.c
 		src/read_line.c
 		src/drawing_help.c
-		src/edit_walls_help.c src/grid_ops.c src/btn_press.c src/distribute_btns.c src/math_ops.c)
+		src/edit_walls_help.c src/grid_ops.c src/btn_press.c src/distribute_btns.c src/math_ops.c src/levels_btn.c src/btn_main.c src/mode_btn.c)
 
 set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror ")
 #set(GCC_COVERAGE_COMPILE_FLAGS "-fsanitize=\"address\" -g -fno-omit-frame-pointer")

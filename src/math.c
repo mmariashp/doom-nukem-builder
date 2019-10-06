@@ -14,16 +14,16 @@
 
 int						get_max(int one, int two)
 {
-    if (one > two)
-        return (one);
-    return (two);
+	if (one > two)
+		return (one);
+	return (two);
 }
 
 int						get_min(int one, int two)
 {
-    if (one < two)
-        return (one);
-    return (two);
+	if (one < two)
+		return (one);
+	return (two);
 }
 
 int						clamp(int n, int min, int max)

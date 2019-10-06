@@ -21,9 +21,9 @@ float					get_slope(t_vec p1, t_vec p2)
 	return ((float)(p2.y - p1.y) / (p2.x - p1.x));
 }
 
-t_vec_f				lines_intersect(t_line a, t_line b, unsigned short *i)
+t_vec_f					lines_intersect(t_line a, t_line b, unsigned short *i)
 {
-	t_vec_f			res;
+	t_vec_f				res;
 	t_vec				s1;
 	t_vec				s2;
 	float				s;

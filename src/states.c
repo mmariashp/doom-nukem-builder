@@ -20,7 +20,7 @@ void					normal_st(t_prog *prog, t_vec mouse, t_grid *grid, \
 		move_vector(prog, mouse, grid, world);
 		upd_sec(world->sec, world->walls, world->vecs, world->n_s);
 	}
-	else if (prog->btn_on == PLAYER_BTN )
+	else if (prog->btn_on == PLR_BTN )
 		move_player(prog, mouse, grid, world);
 	else if (prog->btn_on == DRAG_BTN && (prog->click.x || prog->click.y))
 		move_grid_drag(prog, mouse, grid);

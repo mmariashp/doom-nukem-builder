@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_sec_items.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/27 20:05:25 by mshpakov          #+#    #+#             */
+/*   Updated: 2019/09/27 20:05:27 by mshpakov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "builder.h"
 
-unsigned short			count_items(char const *s)
+unsigned short			count_it(char const *s)
 {
 	unsigned short		count;
 	unsigned short		nb;
@@ -30,41 +41,38 @@ unsigned short			count_items(char const *s)
 	return (count);
 }
 
-int 					get_sec_items(t_sec *sec, char *l)
+int						get_sec_items(t_sec *s, char *l)
 {
 	t_item				*items;
 	int					i;
 
-	if (!sec || !l || !(l = ft_strchr(l, '\'')) || (sec->n_it = \
-	count_items(l++)) > MAX_SEC_ITEMS || !(items = (t_item *)ft_memalloc(\
-	sizeof(t_item) * sec->n_it)))
+	if (!s || !l || !(l = ft_strchr(l, '\'')) || (s->n_it = count_it(l++)) > 20)
+		return (FAIL);
+	if (!(items = (t_item *)ft_memalloc(sizeof(t_item) * s->n_it)))
 		return (FAIL);
 	i = 0;
-	while (*l && *l != '\'' && i < sec->n_it)
+	while (*l && *l != '\'' && i < s->n_it)
 	{
-		if (*l == '(')
+		if (*l == '(' && ++l)
 		{
-			if (!++l)
-				break ;
 			items[i].p.x = clamp(ft_atoi(l), 0, GRID_SIZE - 1);
 			if (!(l = ft_strchr(l, ',')) || !++l)
 				break ;
 			items[i].p.y = clamp(ft_atoi(l), 0, GRID_SIZE - 1);
 			if (!(l = ft_strchr(l, ' ')) || !++l)
 				break ;
-			items[i].id = clamp(ft_atoi(l), 0, MAX_ITEMFULL - 1);
+			items[i++].id = clamp(ft_atoi(l), 0, MAX_ITEMFULL - 1);
 			if (!(l = ft_strchr(l, ')')))
 				break ;
-			i++;
 		}
 		l++;
 	}
-	if (i != sec->n_it)
+	if (i != s->n_it)
 	{
-		sec->n_it = 0;
+		s->n_it = 0;
 		free(items);
 		return (FAIL);
 	}
-	sec->items = items;
+	s->items = items;
 	return (SUCCESS);
 }

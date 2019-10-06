@@ -60,7 +60,8 @@ void					grid_re(t_grid *grid, t_media *media, int state,
 	sector = select_it(1, S_SELECT, -1);
 	if (state == SEC_EDIT && within(sector, -1, media->worlds[media->w].n_s))
 	{
-		p = make_vec_tab(&media->worlds[media->w].sec[sector], media->worlds[media->w].vecs, media->worlds[media->w].n_v);
+		p = make_vec_tab(&media->worlds[media->w].sec[sector], \
+		media->worlds[media->w].vecs, media->worlds[media->w].n_v);
 		if (p)
 		{
 			highlight_sec_nod(p, media->worlds[media->w].sec[sector].n_v, grid);
