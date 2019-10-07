@@ -566,6 +566,9 @@
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/select_lit.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/settings.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/Users/mshpakov/Desktop/doom-nukem-builder/src/sort.c">
 			<Option target="builder"/>
 		</Unit>

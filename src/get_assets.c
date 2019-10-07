@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 12:05:08 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/26 12:05:10 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/07 16:43:35 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,13 @@ t_media *media)
 	if (line[0] == '#' && section->id == -1)
 	{
 		section->id = identify_section(line);
-		if (section->tab || !(section->tab = \
-		(char **)ft_memalloc(sizeof(char *))) || !(section->names = \
-		(char **)ft_memalloc(sizeof(char *))))
-			return (exit_read_assets(section, line, media));
+		if (section->tab)
+			free_tab((void **)section->tab, sizeof(section->tab));
+		if (section->names)
+			free_tab((void **)section->tab, sizeof(section->tab));
+		section->tab = NULL;
+		section->names = NULL;
+		section->extra = NULL;
 	}
 	else if (ft_isdigit(line[0]) && section->id >= 0 && section->path)
 		read_section_names(line, section);
@@ -79,7 +82,7 @@ t_media					*read_assets(int fd)
 		{
 			if (!ft_strcmp(line, "###"))
 			{
-				if (update_media(media, &s) == FAIL || !refresh_section(&s))
+				if (s.id == -1 || update_media(media, &s) == FAIL || !refresh_section(&s))
 					return (exit_read_assets(&s, line, media));
 			}
 			else if (read_title(line, &s, media) == NULL)

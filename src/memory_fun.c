@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 12:04:23 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/26 12:04:25 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/07 16:58:44 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 void					*realloc_tab(void *old_tab, size_t new_size, \
 size_t old_size)
 {
-	void				*new_tab;
 	size_t				i;
 	size_t				n;
 	unsigned char		*new;
 	unsigned char		*old;
 
-	if ((new_tab = (void *)ft_memalloc(new_size)))
+	if ((new = (void *)ft_memalloc(new_size)))
 	{
-		new = (unsigned char *)new_tab;
+		ft_bzero(new, new_size);
 		old = (unsigned char *)old_tab;
-		ft_bzero(new_tab, new_size);
 		i = 0;
 		n = get_min(old_size, new_size);
 		while (i < n)
@@ -36,8 +34,8 @@ size_t old_size)
 	}
 	if (old_tab)
 		free(old_tab);
-	if (new_tab)
-		return (new_tab);
+	if (new)
+		return ((void *)new);
 	return (NULL);
 }
 

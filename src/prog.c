@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 17:58:28 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/28 17:58:29 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/07 15:50:15 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,16 @@ char 					*get_txtr_name(int i)
 	"edit_l", "up", "up_l", "down", "down_l", "coin", "key", "obj", \
 	"enemy", "sup", "hp", "ammo", "weap", "light", "door" };
 
-	if ((tmp = get_full_p(s[i], ".png", "./buttons/")))
-		return (tmp);
-	else
-		return (NULL);
+	if (within(i, -1, N_TXTR))
+	{
+		if ((tmp = get_full_p(s[i], ".png", "./buttons/")))
+			return (tmp);
+		else
+		{
+			return (NULL);
+		}
+	}
+	return (NULL);
 }
 
 SDL_Texture				**get_prog_txtr(SDL_Renderer *rend)
@@ -99,7 +105,7 @@ unsigned short			init_prog_values(t_prog *prog, SDL_Renderer *rend)
 {
 	int					k;
 
-	if (!prog || !(prog->screen = \
+	if (!rend || !prog || !(prog->screen = \
 	(t_scr **)ft_memalloc(sizeof(t_scr *) * W_W)))
 		return (FAIL);
 	k = -1;
@@ -134,6 +140,7 @@ t_prog					*get_prog(SDL_Renderer *rend)
 	if (init_prog_values(prog, rend) == FAIL)
 	{
 		free_prog(prog);
+		ft_putstr("\x1b[32mFailed to init program values.\x1b[0m\n");
 		return (NULL);
 	}
 	return (prog);

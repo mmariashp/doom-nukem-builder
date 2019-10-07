@@ -87,6 +87,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/src/check_for_light.c.o"
   "CMakeFiles/builder.dir/src/clip_line.c.o"
   "CMakeFiles/builder.dir/src/draw_line.c.o"
+  "CMakeFiles/builder.dir/src/settings.c.o"
   "builder.pdb"
   "builder"
 )

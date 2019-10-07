@@ -78,6 +78,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/sector_logic.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/sector_logic.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/sel_item.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/sel_item.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/select_lit.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/select_lit.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/src/settings.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/settings.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/sort.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/sort.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/states.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/states.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/src/texture_edit.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/builder.dir/src/texture_edit.c.o"

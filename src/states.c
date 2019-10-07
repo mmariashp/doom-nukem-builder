@@ -90,6 +90,7 @@ void					sec_search_st(t_prog *prog, t_vec mouse, \
 {
 	int					sec;
 	t_vec				*p;
+	t_vec				*tab;
 
 	if (!prog || !world)
 		return ;
@@ -101,9 +102,14 @@ void					sec_search_st(t_prog *prog, t_vec mouse, \
 		p = make_vec_tab(&world->sec[sec], world->vecs, world->n_v);
 		if (p)
 		{
-			zoom_to_box(grid, make_vec_tab(&world->sec[sec], \
-			world->vecs, world->n_v), world->sec[sec].n_v);
+			tab = make_vec_tab(&world->sec[sec], world->vecs, world->n_v);
+			if (tab)
+			{
+				zoom_to_box(grid, tab, world->sec[sec].n_v);
+				free(tab);
+			}
 			free(p);
+
 		}
 	}
 	prog->redraw = 1;

@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 20:10:58 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/28 20:10:59 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/07 19:28:09 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,66 @@ unsigned short			sel_item_btn(t_btn *btn, t_it_f *it_f, int n_itf)
 			button_box.x = W_W * 0.5;
 			button_box.y = W_H * 0.05;
 		}
+	}
+	return (SUCCESS);
+}
+
+t_rec					settings_boxes(int h_box_val_btn, int id)
+{
+	static t_rec		box1 = { W_W * 0.1, W_H * 0.3, W_W * 0.4, W_H * 0.6 };
+	static t_rec		box2 = { W_W * 0.5, W_H * 0.3, W_W * 0.4, W_H * 0.6 };
+	static t_vec		h_val_btn[4] = { { W_W * 0.3, W_H * 0.1 }, \
+	{ W_W * 0.32, W_H * 0.05 }, { W_H * 0.05, W_H * 0.05 }, \
+	{ W_H * 0.025, W_H * 0.025 } };
+	t_rec				res;
+
+	res = (t_rec){ 0, 0, 0, 0 };
+	if (h_box_val_btn == 0)
+	{
+		if (id == 0)
+			res = (t_rec){ box1.x, box1.y - h_val_btn[0].y * 2, h_val_btn[0].x, h_val_btn[0].y };
+		else if (id == 1)
+			res = (t_rec){ box1.x, box1.y - h_val_btn[0].y, h_val_btn[0].x, h_val_btn[0].y };
+		else if (id == 2)
+			res = (t_rec){ box2.x, box2.y - h_val_btn[0].y, h_val_btn[0].x, h_val_btn[0].y };
+	}
+	else if (h_box_val_btn == 1)
+		res = id == 0 ? box1 : box2;
+	else if (h_box_val_btn == 2)
+	{
+		if (id < 5)
+			res = (t_rec){ box1.x + 5, box1.y + box2.h * 0.1 + h_val_btn[1].y * id, h_val_btn[1].x, h_val_btn[1].y };
+		else
+			res = (t_rec){ box2.x + 5, box2.y + box2.h * 0.1 + h_val_btn[1].y * (id - 5), h_val_btn[1].x, h_val_btn[1].y };
+	}
+	else if (h_box_val_btn == 3)
+	{
+		if (id == 0)
+			res = (t_rec){ W_W * 0.9, W_H * 0.1, h_val_btn[2].x, h_val_btn[2].y };
+		else if (id < 6)
+			res = (t_rec){ box1.x + h_val_btn[1].x, box1.y + box2.h * 0.1 + h_val_btn[2].y * (id - 1), h_val_btn[2].x, h_val_btn[2].y };
+		else
+			res = (t_rec){ box2.x + h_val_btn[1].x, box2.y + box2.h * 0.1 + h_val_btn[3].y * (id - 6), h_val_btn[3].x, h_val_btn[3].y };
+	}
+	return (res);
+}
+
+unsigned short			settings_btn(t_btn *btn, int n)
+{
+	int					i;
+	static int			reg[10] = { TXTR_BACK, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT, TXTR_UP, TXTR_DOWN, TXTR_UP, TXTR_DOWN  };
+	static int			lit[10] = { TXTR_BACK_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_UP_L, TXTR_DOWN_L, TXTR_UP_L, TXTR_DOWN_L };
+
+	if (!btn)
+		return (FAIL);
+	i = -1;
+	while (++i < n)
+	{
+		btn[i].box = settings_boxes(3, i);
+		btn[i].vis_lit_on[0] = TRUE;
+		btn[i].reg_i = reg[i];
+		btn[i].lit_i = lit[i];
+		btn[i].text = NULL;
 	}
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 21:30:46 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 21:30:48 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/07 19:33:11 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,12 +160,13 @@
 # define MENU_TXT_H			25
 # define MAX_MENU_TXT_W		200
 
-# define N_MODES			5
+# define N_MODES			6
 # define MODE_MAIN_MENU		0
 # define MODE_LEVELS		1
 # define MODE_EDITOR		2
 # define MODE_TEXTURES		3
 # define MODE_SEL_ITEM		4
+# define MODE_SETTINGS		5
 
 # define N_MM_BTNS			2
 
@@ -230,7 +231,7 @@
 # define SEC_BTN			3
 # define WALL_BTN			4
 # define DOOR_ADD_BTN		5
-# define DOOR_DEL_BTN		6
+# define SETTINGS_BTN		6
 # define PLR_BTN			7
 # define ISO_BTN			8
 # define SAVE_BTN			9
@@ -566,6 +567,13 @@ t_prog *prog);
 void					r_sel_item(t_sdl *sdl, t_grid *grid, t_media *media, \
 t_prog *prog);
 
+void					r_settings(t_sdl *sdl, t_grid *grid, t_media *media, \
+t_prog *prog);
+unsigned short			u_settings(t_sdl *sdl, t_grid *grid, t_media *media, \
+t_prog *prog);
+int						i_settings(t_sdl *sdl, t_grid *grid, t_media *media, \
+t_prog *prog);
+
 t_media					*get_assets(void);
 void					free_media(t_media *media);
 
@@ -859,5 +867,11 @@ unsigned short			main_menu_btn(t_btn *btn);
 void					set_false(char *one, char *two);
 unsigned short			check_for_light(t_media *media, int id, int sec);
 int						clip_line(t_line *l);
+unsigned short			settings_btn(t_btn *btn, int n);
+t_rec					settings_boxes(int h_box_val_btn, int id);
+int 					default_texture(char set_get, char of_what, \
+int world_no, int value);
+int 					default_heights(char set_get, char of_what, \
+int world_no, int value);
 
 #endif

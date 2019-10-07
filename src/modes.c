@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 20:10:58 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/28 20:10:59 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/07 18:40:42 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,11 @@ void					get_loop_fun(t_mode *modes, t_media *media)
 	modes[MODE_SEL_ITEM].input = &i_sel_item;
 	modes[MODE_SEL_ITEM].update = &u_sel_item;
 	modes[MODE_SEL_ITEM].render = &r_sel_item;
+	modes[MODE_SETTINGS].input = &i_settings;
+	modes[MODE_SETTINGS].update = &u_settings;
+	modes[MODE_SETTINGS].render = &r_settings;
 	modes[MODE_MAIN_MENU].n_btn = N_MM_BTNS;
 	modes[MODE_LEVELS].n_btn = (media->n_worlds + 1) * 3;
-	modes[MODE_EDITOR].n_btn = 8;
 	modes[MODE_TEXTURES].n_btn = media->n_t;
 	modes[MODE_MAIN_MENU].n_btn = N_MM_BTNS;
 	modes[MODE_LEVELS].n_btn = (media->n_worlds + 1) * 3;
@@ -94,6 +96,7 @@ unsigned short			init_modes(t_media *media, t_prog *prog)
 		return (FAIL);
 	ft_bzero(prog->modes, sizeof(t_mode) * N_MODES);
 	get_loop_fun(prog->modes, media);
+	prog->modes[MODE_SETTINGS].n_btn = 10;
 	i = 0;
 	while (i < N_MODES)
 	{
@@ -107,5 +110,6 @@ unsigned short			init_modes(t_media *media, t_prog *prog)
 	levels_btn(prog->modes[MODE_LEVELS].btn, media->worlds, media->n_worlds);
 	textures_btn(prog->modes[MODE_TEXTURES].btn, media->n_t);
 	sel_item_btn(prog->modes[MODE_SEL_ITEM].btn, media->it_f, media->n_itf);
+	settings_btn(prog->modes[MODE_SETTINGS].btn, prog->modes[MODE_SETTINGS].n_btn);
 	return (SUCCESS);
 }

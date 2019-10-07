@@ -3970,6 +3970,33 @@ src/select_lit.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/select_lit.c.s
 .PHONY : src/select_lit.c.s
 
+src/settings.o: src/settings.c.o
+
+.PHONY : src/settings.o
+
+# target to build an object file
+src/settings.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings.c.o
+.PHONY : src/settings.c.o
+
+src/settings.i: src/settings.c.i
+
+.PHONY : src/settings.i
+
+# target to preprocess a source file
+src/settings.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings.c.i
+.PHONY : src/settings.c.i
+
+src/settings.s: src/settings.c.s
+
+.PHONY : src/settings.s
+
+# target to generate assembly for a file
+src/settings.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings.c.s
+.PHONY : src/settings.c.s
+
 src/sort.o: src/sort.c.o
 
 .PHONY : src/sort.o
@@ -4784,6 +4811,9 @@ help:
 	@echo "... src/select_lit.o"
 	@echo "... src/select_lit.i"
 	@echo "... src/select_lit.s"
+	@echo "... src/settings.o"
+	@echo "... src/settings.i"
+	@echo "... src/settings.s"
 	@echo "... src/sort.o"
 	@echo "... src/sort.i"
 	@echo "... src/sort.s"

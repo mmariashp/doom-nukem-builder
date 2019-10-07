@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/28 20:10:12 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/28 20:10:14 by mshpakov         ###   ########.fr       */
+/*   Created: 2019/10/07 14:23:41 by mshpakov          #+#    #+#             */
+/*   Updated: 2019/10/07 16:53:25 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void					free_sdl(t_sdl *sdl)
 	quit_sdl();
 }
 
-SDL_Texture             *load_texture(char *name, SDL_Renderer *rend, t_vec *size)
+SDL_Texture				*load_texture(char *name, SDL_Renderer *rend, \
+t_vec *size)
 {
 	SDL_Texture			*texture;
 	SDL_Surface			*image;
@@ -56,7 +57,7 @@ SDL_Texture             *load_texture(char *name, SDL_Renderer *rend, t_vec *siz
 		return (NULL);
 	}
 	if (size)
-	    *size = (t_vec){ image->w, image->h };
+		*size = (t_vec){ image->w, image->h };
 	texture = SDL_CreateTextureFromSurface(rend, image);
 	SDL_FreeSurface(image);
 	if (!texture)
@@ -72,20 +73,23 @@ int						start_sdl(t_sdl *sdl)
 	int					img_flag;
 
 	img_flag = IMG_INIT_PNG;
-	if(SDL_Init(SDL_INIT_VIDEO) != 0)
-		return(FAIL);
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+	{
+		ft_putendl(SDL_GetError());
+		return (FAIL);
+	}
 	if (!(IMG_Init(img_flag) & img_flag))
 		return (FAIL);
 	if (TTF_Init() != 0)
-		return(FAIL);
+		return (FAIL);
 	if (!(sdl->window = SDL_CreateWindow(WIN_NAME, SDL_WINDOWPOS_CENTERED, \
 	SDL_WINDOWPOS_CENTERED, W_W, W_H, SDL_WINDOW_SHOWN | \
 	SDL_WINDOW_MOUSE_FOCUS)))
-		return(FAIL);
+		return (FAIL);
 	if (!(sdl->rend = SDL_CreateRenderer(sdl->window, -1, \
 	SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)))
-		return(FAIL);
-	if (!(sdl->font = TTF_OpenFont( FONT_NAME, 30 )))
+		return (FAIL);
+	if (!(sdl->font = TTF_OpenFont(FONT_NAME, 30)))
 		return (FAIL);
 	SDL_SetRenderDrawColor(sdl->rend, 0xFF, 0xFF, 0xFF, 0xFF);
 	return (SUCCESS);
@@ -98,7 +102,6 @@ t_sdl					*get_sdl(void)
 	if (!(sdl = (t_sdl*)ft_memalloc(sizeof(t_sdl))))
 		return (NULL);
 	ft_bzero(sdl, sizeof(t_sdl));
-	*sdl = (t_sdl){ };
 	sdl->window = NULL;
 	sdl->rend = NULL;
 	sdl->mouse = (t_vec){ 0, 0 };

@@ -91,6 +91,16 @@ int s)
 		sec_edit_mng_btn(prog, &m->worlds[m->w], m, grid);
 }
 
+void					prep_settings(t_prog *prog, t_grid *grid, t_media *media)
+{
+	if (!prog || !grid || !media)
+		return ;
+	turn_btns_off(prog);
+	prog->btn_lit = -1;
+	prog->last = MODE_EDITOR;
+	prog->m_id = MODE_SETTINGS;
+}
+
 unsigned short			btn_press(t_prog *prog, t_grid *grid, t_media *media, \
 int state)
 {
@@ -101,6 +111,8 @@ int state)
 		return (SUCCESS);
 	if (state == NORMAL || state == SEC_SEARCH || state == WALL_SEARCH)
 	{
+		if (prog->btn_on == SETTINGS_BTN)
+			prep_settings(prog, grid, media);
 		select_it(0, LAST_ST_SEL, state);
 		state = prog->btn_on == SEC_BTN ? SEC_SEARCH : NORMAL;
 		state = prog->btn_on == WALL_BTN || prog->btn_on == DOOR_ADD_BTN ? \

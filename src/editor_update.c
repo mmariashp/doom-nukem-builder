@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 12:51:56 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 12:52:00 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/07 19:19:06 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ unsigned short			open_level(t_media *media, t_prog *prog, t_grid *grid)
 	upd_sec(media->worlds[w].sec, media->worlds[w].walls, \
 	media->worlds[w].vecs, media->worlds[w].n_s);
 	prog->redraw = 1;
+	default_texture(0, -1, media->w, -1);
+	default_heights(0, -1, media->w, -1);
 	return (SUCCESS);
 }
 

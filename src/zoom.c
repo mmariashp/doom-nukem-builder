@@ -6,14 +6,15 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 17:06:36 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/04 17:06:39 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/07 17:21:00 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builder.h"
 
-void					zoom_displace(t_rec *grid_b, t_vec p, float old_scl,\
-float new_scl)
+void					zoom_displace(t_rec *grid_b, t_vec p,
+										float old_scl,
+										float new_scl)
 {
 	float				mapx;
 	float				mapy;
@@ -28,7 +29,7 @@ void					zoom_grid(t_prog *prog, t_vec mouse, t_grid *grid)
 {
 	static float		min_scl = 1.f;
 	float				new;
-	float 				old_scl;
+	float				old_scl;
 
 	if (!prog || !grid)
 		return ;
@@ -47,11 +48,15 @@ void					zoom_grid(t_prog *prog, t_vec mouse, t_grid *grid)
 
 void					update_zoom_scale(t_grid *grid, t_vec desired, int n)
 {
-	float 				tmp_scale;
+	float				tmp_scale;
+	int					a;
+	int					b;
 
 	if (!grid)
 		return ;
-	tmp_scale = get_scl_to_sector(n, W_W * 0.6, W_H * 0.6);
+	a = W_W * 0.6;
+	b = W_H * 0.6;
+	tmp_scale = get_scl_to_sector(n, a, b);
 	zoom_displace(&grid->box, desired, grid->scl, tmp_scale);
 	grid->scl = tmp_scale;
 }

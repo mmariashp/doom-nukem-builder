@@ -78,7 +78,7 @@ unsigned short			mouse_over(t_rec box, t_vec mouse)
 	return (TRUE);
 }
 
-void                    highlight_sec_nod(t_vec *p, int n_w, t_grid *grid)
+void					highlight_sec_nod(t_vec *p, int n_w, t_grid *grid)
 {
 	int                 i;
 

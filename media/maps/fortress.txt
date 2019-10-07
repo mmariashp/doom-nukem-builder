@@ -143,7 +143,7 @@ Sectors
 15) door floor(0 0) ceil(20 0) walls '49 51 52 53 ' items ''
 16) floor(0 13) ceil(20 13) walls '54 55 56 57 58 52 ' items '(72,43 0)(71,40 16)'
 17) door floor(0 0) ceil(0 0) walls '61 60 59 55 ' items ''
-18) floor(0 13) ceil(48 0) walls '62 63 64 65 60 ' items '(77,35 6)(77,32 0)(72,34 0)(73,30 3)(78,38 2)(78,30 16)(75,35 7)'
+18) floor(0 13) ceil(48 0) walls '62 63 64 65 60 ' items '(77,35 6)(77,32 0)(72,34 0)(73,30 3)(78,38 2)(78,30 16)(75,35 7)(75,32 2)'
 19) door floor(0 0) ceil(0 0) walls '68 67 66 63 ' items ''
 
 Player

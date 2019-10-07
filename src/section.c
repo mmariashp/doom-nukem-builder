@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 18:32:35 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 18:32:36 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/07 17:09:58 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,14 @@ unsigned short			free_section(t_section *section)
 		free_tab((void **)section->tab, section->n_files);
 	if (section->names && section->n_files)
 		free_tab((void **)section->names, section->n_files);
+	if (section->extra)
+		free(section->extra);
 	section->path = NULL;
 	section->extension = NULL;
 	section->tab = NULL;
 	section->n_files = 0;
 	section->names = NULL;
+	section->extra = NULL;
 	return (TRUE);
 }
 
