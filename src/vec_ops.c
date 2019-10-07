@@ -47,7 +47,7 @@ void					update_min_max(t_vec *min, t_vec *max, t_vec p)
 
 t_vec					*make_vec_tab(t_sec *sector, t_vec *vecs, int n_vecs)
 {
-	int 				i;
+	int					i;
 	t_vec				*tab;
 
 	if (sector && sector->v && vecs && sector->n_v > 0)

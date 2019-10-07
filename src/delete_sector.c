@@ -27,13 +27,31 @@ void					free_sector(t_sec *sector)
 	sector->items = NULL;
 }
 
+void					copy_sec_values(t_sec *new, t_sec *old)
+{
+	if (new && old)
+	{
+		new->fl = old->fl;
+		new->ceil = old->ceil;
+		new->fl_t = old->fl_t;
+		new->ceil_t = old->ceil_t;
+		new->n_it = old->n_it;
+		new->n_w = old->n_w;
+		new->n_v = old->n_v;
+		new->status = old->status;
+		new->is_door = old->is_door;
+	}
+}
+
 void					copy_sector(t_sec *new, t_sec *old)
 {
 	int					i;
 
-	if (!old || !new || !(new->s_walls = ft_memalloc(sizeof(int) * old->n_w)) ||
-	!(new->v = ft_memalloc(sizeof(int) * old->n_v)) || !(new->items = \
-	ft_memalloc(sizeof(t_item) * old->n_it)))
+	if (!old || !new || !(new->s_walls = ft_memalloc(sizeof(int) * old->n_w)))
+		return ;
+	if (!(new->v = ft_memalloc(sizeof(int) * old->n_v)))
+		return ;
+	if (!(new->items = ft_memalloc(sizeof(t_item) * old->n_it)))
 		return ;
 	i = -1;
 	while (new->s_walls && ++i < old->n_w)
@@ -44,15 +62,7 @@ void					copy_sector(t_sec *new, t_sec *old)
 	i = -1;
 	while (new->items && ++i < old->n_it)
 		new->items[i] = old->items[i];
-	new->fl = old->fl;
-	new->ceil = old->ceil;
-	new->fl_t = old->fl_t;
-	new->ceil_t = old->ceil_t;
-	new->n_it = old->n_it;
-	new->n_w = old->n_w;
-	new->n_v = old->n_v;
-	new->status = old->status;
-	new->is_door = old->is_door;
+	copy_sec_values(new, old);
 	free_sector(old);
 }
 

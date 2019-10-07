@@ -15,8 +15,8 @@
 t_vec_d					make_iso(t_vec v, int z)
 {
 	t_vec_d				res;
-	static double 		cos_iso = 0;
-	static double 		sin_iso = 0;
+	static double		cos_iso = 0;
+	static double		sin_iso = 0;
 
 	if (!cos_iso)
 	{
@@ -29,7 +29,7 @@ t_vec_d					make_iso(t_vec v, int z)
 }
 
 unsigned short			fill_sector_iso(t_world world, t_grid *grid, \
-t_screen **screen, int sec)
+t_scr **screen, int sec)
 {
 	int					i;
 	int					j;
@@ -53,7 +53,7 @@ t_screen **screen, int sec)
 	return (fill_polygon(p, world.sec[j].n_v, screen, color));
 }
 
-t_vec					tmp_op(int onex, int oney, t_vec_d two, float three)
+t_vec					t_op(int onex, int oney, t_vec_d two, float three)
 {
 	int					x;
 	int					y;
@@ -63,37 +63,33 @@ t_vec					tmp_op(int onex, int oney, t_vec_d two, float three)
 	return ((t_vec){ x, y });
 }
 
-void					draw_walls_iso(t_world w, t_grid *g, t_screen **screen, \
-t_sec *s)
+void					draw_walls_iso(t_world w, t_grid *g, t_scr **s,\
+t_sec *sec)
 {
 	int					i;
 	t_vec				v[4];
-	t_vec_d				vd[4];
-	int					color;
-	t_screen			scr;
-	int 				r;
+	int					c;
+	int					r;
 
 	i = -1;
 	r = (int)(0.1f * g->scl);
-	while (++i < s->n_w)
+	while (++i < sec->n_w)
 	{
-		vd[0] = make_iso(w.vecs[w.walls[s->s_walls[i]].v1], s->fl);
-		vd[1] = make_iso(w.vecs[w.walls[s->s_walls[i]].v2], s->fl);
-		vd[2] = make_iso(w.vecs[w.walls[s->s_walls[i]].v1], s->ceil);
-		vd[3] = make_iso(w.vecs[w.walls[s->s_walls[i]].v2], s->ceil);
-		v[0] = tmp_op(g->box.x, g->box.y, vd[0], g->scl);
-		v[1] = tmp_op(g->box.x, g->box.y, vd[1], g->scl);
-		v[2] = tmp_op(g->box.x, g->box.y, vd[2], g->scl);
-		v[3] = tmp_op(g->box.x, g->box.y, vd[3], g->scl);
-		color = w.walls[s->s_walls[i]].type == WALL_EMPTY ? EMPTY_WALL_CLR : FULL_WALL_CLR;
-		scr = (t_screen){ color, SCREEN_WALL, i };
-		draw_thick_line((t_line){ v[0], v[1] }, scr, r, screen);
-		draw_thick_line((t_line){ v[2], v[3] }, scr, r, screen);
-		draw_thick_line((t_line){ v[0], v[2] }, scr, r, screen);
-		draw_thick_line((t_line){ v[1], v[3] }, scr, r, screen);
-		scr.color = DARK_GRAY;
-		draw_thick_line((t_line){ v[0], v[3] }, scr, r, screen);
-		draw_thick_line((t_line){ v[1], v[2] }, scr, r, screen);
+		v[0] = t_op(g->box.x, g->box.y, \
+		make_iso(w.vecs[w.walls[sec->s_walls[i]].v1], sec->fl), g->scl);
+		v[1] = t_op(g->box.x, g->box.y, \
+		make_iso(w.vecs[w.walls[sec->s_walls[i]].v2], sec->fl), g->scl);
+		v[2] = t_op(g->box.x, g->box.y, \
+		make_iso(w.vecs[w.walls[sec->s_walls[i]].v1], sec->ceil), g->scl);
+		v[3] = t_op(g->box.x, g->box.y, \
+		make_iso(w.vecs[w.walls[sec->s_walls[i]].v2], sec->ceil), g->scl);
+		c = w.walls[sec->s_walls[i]].type == 0 ? EMPTY_W_CLR : FULL_W_CLR;
+		thick_line((t_line){ v[0], v[1] }, (t_scr){ c, SCR_WALL, i }, r, s);
+		thick_line((t_line){ v[2], v[3] }, (t_scr){ c, SCR_WALL, i }, r, s);
+		thick_line((t_line){ v[0], v[2] }, (t_scr){ c, SCR_WALL, i }, r, s);
+		thick_line((t_line){ v[1], v[3] }, (t_scr){ c, SCR_WALL, i }, r, s);
+		thick_line((t_line){ v[0], v[3] }, (t_scr){ GRAY, SCR_WALL, i }, r, s);
+		thick_line((t_line){ v[1], v[2] }, (t_scr){ GRAY, SCR_WALL, i }, r, s);
 	}
 }
 

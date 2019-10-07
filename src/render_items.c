@@ -47,36 +47,40 @@ t_vec					get_p(t_grid *g, t_vec items_p)
 	return (p);
 }
 
+t_rec					get_it_box(t_rec b, t_vec p)
+{
+	t_rec				b1;
+
+	b1 = (t_rec){ p.x - b.w / 2, p.y - b.h / 2, b.w, b.h };
+	return (b1);
+}
+
 void					draw_itms(SDL_Renderer *r, t_media *m, t_grid *g, \
 SDL_Texture **t)
 {
-	int					s;
-	int					i;
-	int					id;
+	int					s_i_id[3];
 	t_vec				p;
 	t_rec				b;
 
 	if (!m || !m->worlds || !m->it_f || !g)
 		return ;
-	s = 0;
-	while (s < m->worlds[m->w].n_s)
+	s_i_id[0] = -1;
+	while (++s_i_id[0] < m->worlds[m->w].n_s)
 	{
 		b = (t_rec){ 0, 0, g->box.w * 0.009, g->box.w * 0.009 };
-		i = -1;
-		while (++i < m->worlds[m->w].sec[s].n_it)
+		s_i_id[1] = -1;
+		while (++s_i_id[1] < m->worlds[m->w].sec[s_i_id[0]].n_it)
 		{
-//			draw_or_del_it(m->worlds[m->w].sec[s].items[i])
-			if (ingrid((p = m->worlds[m->w].sec[s].items[i].p)) && nod_in_sec(p\
-			,&m->worlds[m->w]) == s && g->nod[p.x][p.y] == (signed char)(-10 - \
-			i) && within((id = m->worlds[m->w].sec[s].items[i].id), -1, m->n_itf))
+			if (ingrid((p = m->worlds[m->w].sec[s_i_id[0]].items[s_i_id[1]].p))
+			&& nod_in_sec(p, &m->worlds[m->w]) == s_i_id[0] && g->nod[p.x][p.y]\
+			== (signed char)(-10 - s_i_id[1]) && within((s_i_id[2] = \
+			m->worlds[m->w].sec[s_i_id[0]].items[s_i_id[1]].id), -1, m->n_itf))
 			{
-				p = get_p(g, m->worlds[m->w].sec[s].items[i].p);
-				draw_item(m->it_f[id].type, (b = (t_rec){ p.x - b.w / 2, p.y - b.h \
-			/ 2, b.w, b.h }), r, t);
+				p = get_p(g, m->worlds[m->w].sec[s_i_id[0]].items[s_i_id[1]].p);
+				draw_item(m->it_f[s_i_id[2]].type, get_it_box(b, p), r, t);
 			}
 			else
-				delete_item(&m->worlds[m->w].sec[s], i--);
+				delete_item(&m->worlds[m->w].sec[s_i_id[0]], s_i_id[1]--);
 		}
-		s++;
 	}
 }

@@ -14,13 +14,13 @@
 
 void					render_alien(SDL_Renderer *rend)
 {
-	static char 		files[1][30] = { "./buttons/maptools.png" };
+	static char			files[1][30] = { "./buttons/maptools.png" };
 	SDL_Texture			*alien;
 	t_vec				size;
 
 	alien = load_texture(files[0], rend, &size);
 	SDL_RenderCopy(rend, alien, NULL, &(SDL_Rect){ (W_W - size.x * 3) / 2, \
-	100, size.x * 3, size.y * 3  });
+	100, size.x * 3, size.y * 3 });
 	SDL_DestroyTexture(alien);
 }
 

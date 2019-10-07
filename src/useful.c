@@ -117,3 +117,60 @@ float					get_scl_to_sector(int size, int max_w, int max_h)
 	scl = (float)box / size;
 	return (scl);
 }
+
+void					set_false(char *one, char *two)
+{
+	if (one)
+		*one = FALSE;
+	if (two)
+		*two = FALSE;
+}
+
+unsigned short			circle_inter_line(t_vec mouse, int radius, t_line line)
+{
+	t_vec_f				d;
+	float				a;
+	float				b;
+	float				c;
+	float				det;
+
+	d.x = line.p1.x - line.p0.x;
+	d.y = line.p1.y - line.p0.y;
+
+	a = d.x * d.x + d.y * d.y;
+	b = 2 * (d.x * (line.p0.x - mouse.x) + d.y * (line.p0.y - mouse.y));
+	c = (line.p0.x - mouse.x) * (line.p0.x - mouse.x) +
+		(line.p0.y - mouse.y) * (line.p0.y - mouse.y) -
+		radius * radius;
+	det = b * b - 4 * a * c;
+	if (a <= 0.0000001 || det < 0 || (!within(mouse.x, \
+	get_min(line.p0.x, line.p1.x), get_max(line.p0.x, line.p1.x)) &&
+									  !within(mouse.y, get_min(line.p0.y, line.p1.y), \
+	get_max(line.p0.y, line.p1.y))))
+		return (0);
+	else if (det == 0)
+		return (1);
+	else
+		return (2);
+}
+
+void				    swap_ints(int *one, int *two)
+{
+	int				swap;
+
+	if (!one || !two)
+		return ;
+	swap = *one;
+	*one = *two;
+	*two = swap;
+}
+
+void				    get_rgb(unsigned char *r, unsigned char *g, \
+unsigned char *b, int color)
+{
+	if (!r || !g || !b)
+		return ;
+	*r = (unsigned char)((color >> 16) & 0xFF);
+	*g = (unsigned char)((color >> 8) & 0xFF);
+	*b = (unsigned char)(color & 0xFF);
+}

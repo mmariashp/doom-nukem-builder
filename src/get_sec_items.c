@@ -41,6 +41,19 @@ unsigned short			count_it(char const *s)
 	return (count);
 }
 
+unsigned short			exit_sec_items(int i, t_item *items, t_sec *s)
+{
+	if (i != s->n_it)
+	{
+		s->n_it = 0;
+		if (items)
+			free(items);
+		return (FAIL);
+	}
+	s->items = items;
+	return (SUCCESS);
+}
+
 int						get_sec_items(t_sec *s, char *l)
 {
 	t_item				*items;
@@ -67,12 +80,5 @@ int						get_sec_items(t_sec *s, char *l)
 		}
 		l++;
 	}
-	if (i != s->n_it)
-	{
-		s->n_it = 0;
-		free(items);
-		return (FAIL);
-	}
-	s->items = items;
-	return (SUCCESS);
+	return (exit_sec_items(i, items, s));
 }

@@ -25,7 +25,7 @@ int						exists_in_array(int const *array, int n, int number)
 	return (FALSE);
 }
 
-void					sort_tmp(int *tmp, int n, t_sec	*sec)
+void					sort_tmp(int *tmp, int n, t_sec *sec)
 {
 	int					i;
 	int					j;

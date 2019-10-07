@@ -12,13 +12,13 @@
 
 #include "builder.h"
 
-void					render_grid_nod(t_screen **screen, t_grid *g)
+void					render_grid_nod(t_scr **screen, t_grid *g)
 {
 	int					x;
 	int					y;
 	t_vec				n;
 	int					radius;
-	t_screen			s;
+	t_scr				s;
 
 	radius = g->box.w * 0.001;
 	y = -1;
@@ -31,7 +31,7 @@ void					render_grid_nod(t_screen **screen, t_grid *g)
 			if (!within((n.x = (int)(g->box.x + (x * g->scl))), -1, W_W) ||
 			!within(n.y, -1, W_H))
 				continue ;
-			s = (t_screen){ FULL_COLOR, SCREEN_NODE, 0 };
+			s = (t_scr){ FULL_COLOR, SCREEN_NODE, 0 };
 			if (g->nod[x][y] == NODE_SEC)
 				s.color = SEC_NOD_COLOR;
 			else if (g->nod[x][y] != NODE_FULL)
@@ -42,12 +42,12 @@ void					render_grid_nod(t_screen **screen, t_grid *g)
 }
 
 void					draw_walls(t_world world, t_grid *grid, \
-t_screen **screen, int wall)
+t_scr **screen, int wall)
 {
 	int					i;
 	t_vec				v1;
 	t_vec				v2;
-	t_screen			s;
+	t_scr				s;
 	int					r;
 
 	i = 0;
@@ -56,18 +56,18 @@ t_screen **screen, int wall)
 	{
 		v1 = transform_to_screen(world.vecs[world.walls[i].v1], grid);
 		v2 = transform_to_screen(world.vecs[world.walls[i].v2], grid);
-		s = (t_screen){ FULL_WALL_CLR, SCREEN_WALL, i };
+		s = (t_scr){ FULL_W_CLR, SCR_WALL, i };
 		if (i == wall)
 			s.color = LIT_WALL_CLR;
 		else if (world.walls[i].type == WALL_EMPTY)
-			s.color = EMPTY_WALL_CLR;
-		draw_thick_line((t_line){ v1, v2 }, s, r, screen);
+			s.color = EMPTY_W_CLR;
+		thick_line((t_line){ v1, v2 }, s, r, screen);
 		i++;
 	}
 }
 
 unsigned short			fill_sector(t_world world, t_grid *grid, \
-t_screen **screen, int sec)
+t_scr **screen, int sec)
 {
 	int					i;
 	int					color;
@@ -89,18 +89,18 @@ t_screen **screen, int sec)
 	return (fill_polygon(p, world.sec[sec].n_v, screen, color));
 }
 
-void					drawing_nodes(t_grid *grid, t_screen **screen, \
+void					drawing_nodes(t_grid *grid, t_scr **screen, \
 t_vec mouse)
 {
 	int					radius;
 	t_vec				node;
 	t_vec				node2;
-	t_screen			s;
+	t_scr				s;
 
 	if (!grid || !screen)
 		return ;
 	radius = grid->box.w * 0.001;
-	s = (t_screen){ BABY_PINK, SCREEN_EMPTY, 0 };
+	s = (t_scr){ BABY_PINK, SCREEN_EMPTY, 0 };
 	if (grid->p[0].x != -1 && grid->p[0].y != -1)
 	{
 		node = transform_to_screen(grid->p[0], grid);

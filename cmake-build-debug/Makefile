@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/clion-2019.2/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /opt/clion-2019.2/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/moosh/CLionProjects/builder
+CMAKE_SOURCE_DIR = /Users/mshpakov/Desktop/doom-nukem-builder
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/moosh/CLionProjects/builder/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/moosh/CLionProjects/builder/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ft
-
-# Build rule for target.
-ft: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ft
-.PHONY : ft
-
-# fast build rule for target.
-ft/fast:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
-.PHONY : ft/fast
-
-#=============================================================================
 # Target rules for targets named builder
 
 # Build rule for target.
@@ -135,6 +122,19 @@ builder: cmake_check_build_system
 builder/fast:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/build
 .PHONY : builder/fast
+
+#=============================================================================
+# Target rules for targets named ft
+
+# Build rule for target.
+ft: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ft
+.PHONY : ft
+
+# fast build rule for target.
+ft/fast:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
+.PHONY : ft/fast
 
 libft/ft_abs_cut.o: libft/ft_abs_cut.c.o
 
@@ -2134,6 +2134,60 @@ src/char_ops.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/char_ops.c.s
 .PHONY : src/char_ops.c.s
 
+src/check_for_light.o: src/check_for_light.c.o
+
+.PHONY : src/check_for_light.o
+
+# target to build an object file
+src/check_for_light.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/check_for_light.c.o
+.PHONY : src/check_for_light.c.o
+
+src/check_for_light.i: src/check_for_light.c.i
+
+.PHONY : src/check_for_light.i
+
+# target to preprocess a source file
+src/check_for_light.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/check_for_light.c.i
+.PHONY : src/check_for_light.c.i
+
+src/check_for_light.s: src/check_for_light.c.s
+
+.PHONY : src/check_for_light.s
+
+# target to generate assembly for a file
+src/check_for_light.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/check_for_light.c.s
+.PHONY : src/check_for_light.c.s
+
+src/clip_line.o: src/clip_line.c.o
+
+.PHONY : src/clip_line.o
+
+# target to build an object file
+src/clip_line.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/clip_line.c.o
+.PHONY : src/clip_line.c.o
+
+src/clip_line.i: src/clip_line.c.i
+
+.PHONY : src/clip_line.i
+
+# target to preprocess a source file
+src/clip_line.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/clip_line.c.i
+.PHONY : src/clip_line.c.i
+
+src/clip_line.s: src/clip_line.c.s
+
+.PHONY : src/clip_line.s
+
+# target to generate assembly for a file
+src/clip_line.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/clip_line.c.s
+.PHONY : src/clip_line.c.s
+
 src/delete_sector.o: src/delete_sector.c.o
 
 .PHONY : src/delete_sector.o
@@ -2268,6 +2322,33 @@ src/distribute_btns.s: src/distribute_btns.c.s
 src/distribute_btns.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/distribute_btns.c.s
 .PHONY : src/distribute_btns.c.s
+
+src/draw_line.o: src/draw_line.c.o
+
+.PHONY : src/draw_line.o
+
+# target to build an object file
+src/draw_line.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/draw_line.c.o
+.PHONY : src/draw_line.c.o
+
+src/draw_line.i: src/draw_line.c.i
+
+.PHONY : src/draw_line.i
+
+# target to preprocess a source file
+src/draw_line.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/draw_line.c.i
+.PHONY : src/draw_line.c.i
+
+src/draw_line.s: src/draw_line.c.s
+
+.PHONY : src/draw_line.s
+
+# target to generate assembly for a file
+src/draw_line.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/draw_line.c.s
+.PHONY : src/draw_line.c.s
 
 src/drawing.o: src/drawing.c.o
 
@@ -4275,8 +4356,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ft"
 	@echo "... builder"
+	@echo "... ft"
 	@echo "... libft/ft_abs_cut.o"
 	@echo "... libft/ft_abs_cut.i"
 	@echo "... libft/ft_abs_cut.s"
@@ -4499,6 +4580,12 @@ help:
 	@echo "... src/char_ops.o"
 	@echo "... src/char_ops.i"
 	@echo "... src/char_ops.s"
+	@echo "... src/check_for_light.o"
+	@echo "... src/check_for_light.i"
+	@echo "... src/check_for_light.s"
+	@echo "... src/clip_line.o"
+	@echo "... src/clip_line.i"
+	@echo "... src/clip_line.s"
 	@echo "... src/delete_sector.o"
 	@echo "... src/delete_sector.i"
 	@echo "... src/delete_sector.s"
@@ -4514,6 +4601,9 @@ help:
 	@echo "... src/distribute_btns.o"
 	@echo "... src/distribute_btns.i"
 	@echo "... src/distribute_btns.s"
+	@echo "... src/draw_line.o"
+	@echo "... src/draw_line.i"
+	@echo "... src/draw_line.s"
 	@echo "... src/drawing.o"
 	@echo "... src/drawing.i"
 	@echo "... src/drawing.s"

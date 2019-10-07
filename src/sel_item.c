@@ -15,7 +15,7 @@
 void					render_item_icons(t_prog *prog, t_media *media, \
 SDL_Renderer *rend)
 {
-	int 				i;
+	int					i;
 	t_rec				box;
 
 	if (!rend || !media || !prog)
@@ -72,13 +72,13 @@ t_prog *prog)
 	quit = FALSE;
 	if (!sdl || !media || !grid)
 		return (TRUE);
-	while(SDL_PollEvent(&event))
+	while (SDL_PollEvent(&event))
 	{
 		SDL_GetMouseState(&sdl->mouse.x, &sdl->mouse.y);
 		if (event.type == SDL_QUIT || (event.type == SDL_KEYUP &&
-									   event.key.keysym.sym == SDLK_ESCAPE))
+		event.key.keysym.sym == SDLK_ESCAPE))
 			return (TRUE);
-		if(event.type == SDL_MOUSEBUTTONDOWN && prog->btn_lit != -1)
+		if (event.type == SDL_MOUSEBUTTONDOWN && prog->btn_lit != -1)
 		{
 			select_it(0, SEL_I_SELECT, prog->btn_lit);
 			turn_btns_off(prog);
@@ -87,7 +87,6 @@ t_prog *prog)
 			prog->click = (t_vec){ 0, 0 };
 			return (quit);
 		}
-
 	}
 	return (quit);
 }

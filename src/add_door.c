@@ -127,8 +127,9 @@ void					add_door(t_world *w, int wall, t_grid *g)
 	if (add_vec(&w->vecs, (v[2] = w->n_v++), g, 0) == SUCCESS && add_vec(\
 	&w->vecs, (v[3] = w->n_v++), g, 1) == SUCCESS && add_wall(&w->walls, (\
 	w->sec[w->n_s].s_walls[1] = w->n_w++), v[1], v[3]) \
-	== SUCCESS && add_wall_door(&w->walls, (w->sec[w->n_s].s_walls[2] = w->n_w++),\
-	v[3], v[2]) == SUCCESS && add_wall(&w->walls, (w->sec[w->n_s].s_walls[3] =\
-	w->n_w++), v[2], (v[0] = w->walls[wall].v1)) == SUCCESS)
+	== SUCCESS && add_wall_door(&w->walls, (w->sec[w->n_s].s_walls[2] = \
+	w->n_w++), v[3], v[2]) == SUCCESS && add_wall(&w->walls, \
+	(w->sec[w->n_s].s_walls[3] = w->n_w++), v[2], (v[0] = w->walls[wall].v1)) \
+	== SUCCESS)
 		get_sec_v(&w->sec[w->n_s++], w->walls);
 }

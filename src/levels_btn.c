@@ -16,7 +16,7 @@ void					get_lev_btn(t_btn *btn, int i, int n_worlds, \
 t_world *worlds)
 {
 	char				*s;
-	char 				*tmp;
+	char				*tmp;
 
 	s = NULL;
 	if (!worlds || !btn)
@@ -60,10 +60,10 @@ void					get_ed_del_btn(t_btn *btn, t_btn *btn1, t_btn *btnj)
 unsigned short			levels_btn(t_btn *btn, t_world *worlds, int n_worlds)
 {
 	t_rec				box;
-	int 				i;
+	int					i;
 	int					j;
-	int 				n_levels;
-	int 				n_btn;
+	int					n_levels;
+	int					n_btn;
 
 	if (!btn || !worlds)
 		return (FAIL);
@@ -71,8 +71,8 @@ unsigned short			levels_btn(t_btn *btn, t_world *worlds, int n_worlds)
 	n_btn = n_levels * 3 - 2;
 	box.w = W_W / 4;
 	box.h = (box.w + 20) * n_levels / 3;
-	box.x = (W_W  - box.w) / 2;
-	box.y = (W_H  - box.h) / 2;
+	box.x = (W_W - box.w) / 2;
+	box.y = (W_H - box.h) / 2;
 	distribute_btn_v(btn, (t_vec){ 0, n_levels }, box, 20);
 	i = -1;
 	while (++i < n_levels)

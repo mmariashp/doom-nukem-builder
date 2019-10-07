@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "builder.h"
 
 void					quit_sdl(void)
@@ -51,7 +50,6 @@ SDL_Texture             *load_texture(char *name, SDL_Renderer *rend, t_vec *siz
 
 	if (!name || !rend)
 		return (NULL);
-	texture = NULL;
 	if (!(image = IMG_Load(name)))
 	{
 		ft_putendl(IMG_GetError());

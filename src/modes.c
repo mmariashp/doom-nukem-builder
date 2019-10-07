@@ -41,19 +41,19 @@ void					free_modes(t_mode *modes)
 	modes = NULL;
 }
 
-void                    refresh_level_list(t_media *media, t_mode *mode)
+void					refresh_level_list(t_media *media, t_mode *mode)
 {
 	if (!media || !mode)
 		return ;
-    if (mode->n_btn == media->n_worlds + 1)
-        return ;
-    if (mode->btn)
+	if (mode->n_btn == media->n_worlds + 1)
+		return ;
+	if (mode->btn)
 		free_btn(mode->btn, mode->n_btn);
-    mode->n_btn = (media->n_worlds + 1) * 3;
-    mode->btn = init_btn(mode->n_btn);
-    if (!mode->btn)
-        return ;
-    levels_btn(mode->btn, media->worlds, media->n_worlds);
+	mode->n_btn = (media->n_worlds + 1) * 3;
+	mode->btn = init_btn(mode->n_btn);
+	if (!mode->btn)
+		return ;
+	levels_btn(mode->btn, media->worlds, media->n_worlds);
 }
 
 void					get_loop_fun(t_mode *modes, t_media *media)
@@ -87,7 +87,7 @@ void					get_loop_fun(t_mode *modes, t_media *media)
 
 unsigned short			init_modes(t_media *media, t_prog *prog)
 {
-	int 				i;
+	int					i;
 
 	if (!media || !prog || !(prog->modes = \
 	(t_mode *)ft_memalloc(sizeof(t_mode) * N_MODES)))
@@ -105,7 +105,7 @@ unsigned short			init_modes(t_media *media, t_prog *prog)
 	}
 	main_menu_btn(prog->modes[MODE_MAIN_MENU].btn);
 	levels_btn(prog->modes[MODE_LEVELS].btn, media->worlds, media->n_worlds);
-    textures_btn(prog->modes[MODE_TEXTURES].btn, media->n_t);
+	textures_btn(prog->modes[MODE_TEXTURES].btn, media->n_t);
 	sel_item_btn(prog->modes[MODE_SEL_ITEM].btn, media->it_f, media->n_itf);
 	return (SUCCESS);
 }

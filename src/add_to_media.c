@@ -26,7 +26,8 @@ unsigned short			add_vec(t_vec **vecs, short n_v, t_grid *grid,
 	return (SUCCESS);
 }
 
-unsigned short			add_wall_door(t_wall **walls, short n_w, int one, int two)
+unsigned short			add_wall_door(t_wall **walls, short n_w, int one, \
+int two)
 {
 	*walls = (t_wall *)realloc_tab(*walls, sizeof(t_wall) * (n_w + 1), \
 	sizeof(t_wall) * n_w);

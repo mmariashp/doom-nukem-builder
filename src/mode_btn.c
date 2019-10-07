@@ -21,8 +21,8 @@ unsigned short			main_menu_btn(t_btn *btn)
 		return (FAIL);
 	box.w = W_W / 4;
 	box.h = (box.w + 20) * N_MM_BTNS / 3;
-	box.x = (W_W  - box.w) / 2;
-	box.y = (W_H  - box.h) / 2;
+	box.x = (W_W - box.w) / 2;
+	box.y = (W_H - box.h) / 2;
 	distribute_btn_v(btn, (t_vec){ 0, N_MM_BTNS }, box, 20);
 	i = 0;
 	while (i < N_MM_BTNS)
@@ -38,7 +38,7 @@ unsigned short			main_menu_btn(t_btn *btn)
 
 unsigned short			textures_btn(t_btn *btn, int n_t)
 {
-	int 				i;
+	int					i;
 
 	if (!btn || n_t < 1)
 		return (FAIL);
@@ -56,7 +56,7 @@ unsigned short			textures_btn(t_btn *btn, int n_t)
 unsigned short			sel_item_btn(t_btn *btn, t_it_f *it_f, int n_itf)
 {
 	t_rec				button_box;
-	int 				i;
+	int					i;
 
 	if (!btn || !it_f)
 		return (FAIL);

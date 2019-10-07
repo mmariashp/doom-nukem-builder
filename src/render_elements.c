@@ -72,7 +72,7 @@ SDL_Renderer *rend)
 	SDL_RenderCopy(rend, t, NULL, &rect);
 }
 
-void					render_screen(SDL_Renderer *rend, t_screen **screen)
+void					render_screen(SDL_Renderer *rend, t_scr **screen)
 {
 	int					x;
 	int					y;

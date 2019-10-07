@@ -42,39 +42,6 @@ int *new_size, int to_remove)
 	return (new);
 }
 
-int						*add_to_array(int *old_array, unsigned short *size, \
-int to_add, int find)
-{
-	int					j;
-	int					i;
-	int					*new;
-
-	if (!old_array || !size)
-		return (NULL);
-	i = -1;
-	j = 0;
-	while (++i < *size)
-	{
-		if (old_array[i] == find)
-			j++;
-	}
-	if (j == 0)
-		return (old_array);
-	if (!(new = (int *)malloc(sizeof(int) * (*size + 1))))
-		return (NULL);
-	set_min1(&i, &j);
-	*size = *size + 1;
-	while (++i < *size && ++j < *size - 1)
-	{
-		if ((new[i] = old_array[j]) != find)
-			continue ;
-		new[i] = to_add;
-		new[++i] = find;
-	}
-	free(old_array);
-	return (new);
-}
-
 unsigned short			remove_wall_in_ss(t_world *world, int to_remove)
 {
 	int					i;

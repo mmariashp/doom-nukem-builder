@@ -58,6 +58,7 @@ int						main(void)
 	t_prog				*prog;
 
 	prog = NULL;
+	sdl = NULL;
 	if (!(media = get_assets()) || !(sdl = get_sdl()) ||
 	!(prog = get_prog(sdl->rend)) || load_sdl_media(media, sdl) == FAIL)
 	{

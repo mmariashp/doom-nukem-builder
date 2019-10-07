@@ -12,7 +12,7 @@
 
 #include "builder.h"
 
-void					replace_color(t_screen **screen, int to_replace, \
+void					replace_color(t_scr **screen, int to_replace, \
 int new)
 {
 	int					i;
@@ -30,7 +30,7 @@ int new)
 	}
 }
 
-unsigned short			fill_row(int x_from, int x_to, int y, t_screen **screen)
+unsigned short			fill_row(int x_from, int x_to, int y, t_scr **screen)
 {
 	unsigned short		overlay;
 
@@ -76,7 +76,7 @@ int						get_inter_x(int *inter_x, t_vec *p, int n_p, int y)
 	return (n_interx);
 }
 
-unsigned short			fill_polygon(t_vec *p, int n_p, t_screen **screen, \
+unsigned short			fill_polygon(t_vec *p, int n_p, t_scr **screen, \
 int color)
 {
 	int					n_ix;

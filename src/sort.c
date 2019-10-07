@@ -14,9 +14,9 @@
 
 void					bubble_sort(int *tab, int n)
 {
-	int 				i;
-	int 				lim;
-	int 				swap;
+	int					i;
+	int					lim;
+	int					swap;
 
 	if (!tab)
 		return ;
@@ -42,7 +42,7 @@ void					pair_sort(int *a, int n)
 	int					one;
 	int					prev;
 	int					next;
-	int 				count;
+	int					count;
 
 	count = -1;
 	while (++count < n)

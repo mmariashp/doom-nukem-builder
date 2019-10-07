@@ -91,8 +91,8 @@
 # define FULL_COLOR				BROWN
 # define SEC_NOD_COLOR			NAVY
 
-# define FULL_WALL_CLR			WHITE
-# define EMPTY_WALL_CLR			GREEN
+# define FULL_W_CLR			WHITE
+# define EMPTY_W_CLR			GREEN
 # define LIT_WALL_CLR			NAVY
 
 /*
@@ -146,11 +146,11 @@
 
 # define ASSET_FILE             "./game_info.txt"
 
-# define REGION_INSIDE      (int)0
-# define REGION_LEFT        (int)1
-# define REGION_RIGHT       (int)2
-# define REGION_BOTTOM      (int)4
-# define REGION_TOP         (int)8
+# define REG_IN      (int)0
+# define REG_LEFT        (int)1
+# define REG_RIGHT       (int)2
+# define REG_BOTTOM      (int)4
+# define REG_TOP         (int)8
 
 # define NODE_EMPTY			-1
 # define NODE_FULL			-2
@@ -298,7 +298,7 @@
 
 # define SCREEN_EMPTY		0
 # define SCREEN_NODE		1
-# define SCREEN_WALL		2
+# define SCR_WALL		2
 # define SCREEN_SECTOR		3
 # define SCREEN_PL_START	4
 # define SCREEN_PL_END		5
@@ -309,8 +309,6 @@
 # define DEFAULT_DOOR_T		3
 # define DEFAULT_TRAN_T		4
 
-
-
 typedef struct				s_rgb
 {
 	unsigned char			r;
@@ -318,19 +316,19 @@ typedef struct				s_rgb
 	unsigned char			b;
 }							t_rgb;
 
-typedef struct				s_vec2d
+typedef struct				s_vec
 {
 	int						x;
 	int						y;
 }							t_vec;
 
-typedef struct				s_vecd2_d
+typedef struct				s_vec_d
 {
 	double					x;
 	double					y;
 }							t_vec_d;
 
-typedef struct				s_vecd2_f
+typedef struct				s_vec_f
 {
 	float					x;
 	float					y;
@@ -360,7 +358,7 @@ typedef struct				s_rec
 	int						h;
 }							t_rec;
 
-typedef struct				s_textbox
+typedef struct				s_txtb
 {
 	t_rec					box;
 	char					h_center;
@@ -375,7 +373,7 @@ typedef struct				s_grid
 	t_vec					p[2];
 }							t_grid;
 
-typedef struct				s_button
+typedef struct				s_btn
 {
 	char					vis_lit_on[3];
 	t_rec					box;
@@ -393,16 +391,16 @@ typedef struct				s_sdl
 	TTF_Font				*font;
 }							t_sdl;
 
-typedef struct				s_screen
+typedef struct				s_scr
 {
-	int 					color;
-	char 					is;
+	int						color;
+	char					is;
 	unsigned short			n;
-}							t_screen;
+}							t_scr;
 
 typedef struct				s_prog
 {
-	t_screen				**screen;
+	t_scr					**screen;
 	int						m_id;
 	int						last;
 	char					redraw;
@@ -430,7 +428,7 @@ typedef struct				s_item
 	int						id;
 }							t_item;
 
-typedef struct				s_sector
+typedef struct				s_sec
 {
 	int						*s_walls;
 	int						*v;
@@ -627,21 +625,21 @@ t_vec mouse);
 void					render_grid_iso(t_world world, t_grid *grid, \
 t_prog *prog);
 
-void					draw_dot2(int x, int y, t_screen s, t_screen **screen);
-void					draw_line2(t_line l, t_screen s, t_screen **screen);
-void					draw_circle_fill2(t_vec c, int radius, t_screen s, \
-t_screen **screen);
-void					draw_node(t_vec c, int r, t_screen s, t_screen **screen);
-void					draw_thick_line(t_line l, t_screen s, int r, \
-t_screen **screen);
+void					draw_dot2(int x, int y, t_scr s, t_scr **screen);
+void					draw_line2(t_line l, t_scr s, t_scr **screen);
+void					draw_circle_fill2(t_vec c, int radius, t_scr s, \
+t_scr **screen);
+void					draw_node(t_vec c, int r, t_scr s, t_scr **screen);
+void					thick_line(t_line l, t_scr s, int r, \
+t_scr **screen);
 
-unsigned short			fill_polygon(t_vec *p, int n_p, t_screen **screen, \
+unsigned short			fill_polygon(t_vec *p, int n_p, t_scr **screen, \
 int color);
 
 void					free_prog(t_prog *prog);
 t_prog					*get_prog(SDL_Renderer *rend);
 
-void					render_screen(SDL_Renderer *rend, t_screen **screen);
+void					render_screen(SDL_Renderer *rend, t_scr **screen);
 
 void					add_to_media(t_grid *grid, t_world *world);
 unsigned short			add_world(t_world **worlds, short n_worlds, char *ext,\
@@ -692,7 +690,7 @@ short					find_vec(t_vec *vecs, t_vec p, int n);
 short					find_wall(short one, short two, t_wall *walls, \
 short n_w);
 
-unsigned short			dot_inside_sector(int x, int y, t_vec *p, int n);
+unsigned short			dot_in_sector(int x, int y, t_vec *p, int n);
 int						nod_in_sec(t_vec grid_p, t_world *world);
 int						mouse_in_stor(t_vec p, t_world *world, t_grid *grid);
 int						sector_closed(int *tmp, int n);
@@ -796,9 +794,9 @@ unsigned short			return_to_levels(t_prog *prog, t_media *media);
 void					draw_itms(SDL_Renderer *rend, t_media *media, t_grid \
 *grid, SDL_Texture **t);
 unsigned short			ingrid(t_vec p);
-void					clean_screen(t_screen **screen);
-void					place_player(t_world world, t_grid *grid, t_screen **screen,\
-int radius);
+void					clean_screen(t_scr **screen);
+void					place_player(t_world world, t_grid *grid, \
+t_scr **screen, int radius);
 
 void					delete_double_walls(t_world *world);
 void					delete_unused_walls(t_world *world);
@@ -839,18 +837,18 @@ void					fun_fun(short *wall_id_done, int *f_s_l, t_world *world\
 void					done_condition(t_grid *grid, int *tab, short done);
 void					set_min1(int *one, int *two);
 void					update_min_max(t_vec *min, t_vec *max, t_vec p);
-t_vec					transform_to_grid(t_vec old, t_grid *grid);
 t_vec					transform_to_screen(t_vec old, t_grid *grid);
-void                    highlight_sec_nod(t_vec *p, int n_w, t_grid *grid);
+void					highlight_sec_nod(t_vec *p, int n_w, t_grid *grid);
 void					zoom_to_box(t_grid *grid, t_vec *vecs, int n_vecs);
 t_vec					*make_vec_tab(t_sec *sector, t_vec *vecs, int n_vecs);
 float					get_scl_to_sector(int size, int max_w, int max_h);
 void					get_min_scl(float *res_min_scl);
 void					edit_mng_btn(t_prog *prog, t_media *m, t_grid *grid, \
 int s);
-unsigned short			distribute_btn_grid(t_btn *btn, t_vec from_to, t_rec box);
-unsigned short			distribute_btn_v(t_btn *btn, t_vec from_to, t_rec box, int padding);
-unsigned short			distribute_btn_h(t_btn *btn, t_vec from_to, t_rec box, int padding);
+unsigned short			distribute_btn_v(t_btn *btn, t_vec from_to, t_rec box, \
+int padding);
+unsigned short			distribute_btn_h(t_btn *btn, t_vec from_to, t_rec box, \
+int padding);
 void					get_txtr_btn_boxes(t_btn *btn, int n_t, int scroll);
 unsigned short			add_wall_door(t_wall **walls, short n_w, int one, \
 int two);
@@ -858,6 +856,8 @@ unsigned short			levels_btn(t_btn *btn, t_world *worlds, int n_worlds);
 unsigned short			sel_item_btn(t_btn *btn, t_it_f *it_f, int n_itf);
 unsigned short			textures_btn(t_btn *btn, int n_t);
 unsigned short			main_menu_btn(t_btn *btn);
-
+void					set_false(char *one, char *two);
+unsigned short			check_for_light(t_media *media, int id, int sec);
+int						clip_line(t_line *l);
 
 #endif

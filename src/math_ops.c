@@ -31,3 +31,12 @@ t_vec					scl(t_vec vec, int scl)
 {
 	return ((t_vec){ vec.x * scl, vec.y * scl });
 }
+
+float					get_slope(t_vec p1, t_vec p2)
+{
+	if (p2.x == p1.x)
+		return (20000);
+	if (p2.y == p1.y)
+		return (0);
+	return ((float)(p2.y - p1.y) / (p2.x - p1.x));
+}
