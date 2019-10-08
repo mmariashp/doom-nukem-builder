@@ -12,55 +12,113 @@
 
 #include "builder.h"
 
-int 					default_heights(char set_get, char of_what, \
-int world_no, int value)
+int 					default_heights(char set_get, char of_what, int value)
 {
-	static int 			t[2][MAX_LEVELS] = { { 0 } };
+	static int 			t[2] = { 0 };
 
-	if (set_get == 1 && within(world_no, -1, MAX_LEVELS) &&
-		within(of_what, -1, 2))
-		return (t[(int)of_what][world_no]);
-	else if (set_get == 0 && within(world_no, -1, MAX_LEVELS))
+	if (set_get == 1 && within(of_what, -1, 2))
+		return (t[(int)of_what]);
+	else if (set_get == 0)
 	{
 		if (within(of_what, -1, 2))
 		{
-			t[(int)of_what][world_no] = value;
-			return (t[(int)of_what][world_no]);
+			t[(int)of_what] = value;
+			return (t[(int)of_what]);
 		}
 		else
 		{
-			t[0][world_no] = 0;
-			t[1][world_no] = 20;
+			t[0] = 0;
+			t[1] = 20;
 		}
 	}
 	return (-1);
 }
 
-int 					default_texture(char set_get, char of_what, \
-int world_no, int value)
+int 					default_texture(char set_get, char of_what, int value)
 {
-	static int 			t[5][MAX_LEVELS] = { { 0 } };
+	static int 			t[5] = { 0 };
 
-	if (set_get == 1 && within(world_no, -1, MAX_LEVELS) &&
-		within(of_what, -1, 5))
-		return (t[(int)of_what][world_no]);
-	else if (set_get == 0 && within(world_no, -1, MAX_LEVELS))
+	if (set_get == 1 && within(of_what, -1, 5))
+		return (t[(int)of_what]);
+	else if (set_get == 0)
 	{
 		if (within(of_what, -1, 5))
 		{
-			t[(int)of_what][world_no] = value;
-			return (t[(int)of_what][world_no]);
+			t[(int)of_what] = value;
+			return (t[(int)of_what]);
 		}
 		else
 		{
-			t[0][world_no] = DEFAULT_WALL_T;
-			t[1][world_no] = DEFAULT_FLR_T;
-			t[2][world_no] = DEFAULT_CEIL_T;
-			t[3][world_no] = DEFAULT_DOOR_T;
-			t[4][world_no] = DEFAULT_TRAN_T;
+			t[0] = DEFAULT_WALL_T;
+			t[1] = DEFAULT_FLR_T;
+			t[2] = DEFAULT_CEIL_T;
+			t[3] = DEFAULT_DOOR_T;
+			t[4] = DEFAULT_TRAN_T;
 		}
 	}
 	return (-1);
+}
+
+unsigned short			edit_def_texture(int n_t, t_texture *txtr)
+{
+	int					of_what;
+	int					texture;
+
+	if (!txtr)
+		return (FAIL);
+
+	if (within((texture = select_it(1, T_SELECT, -1)), -1, n_t) &&
+	within((of_what = select_it(1, DEF_T_SELECT, -1)), -1, 5))
+		default_texture(0, (char)of_what, texture);
+	return (SUCCESS);
+}
+
+void					change_def_textures(t_prog *prog, int n_t)
+{
+	int					t;
+	int					of_what;
+
+	if (!prog || !prog->modes)
+		return ;
+	of_what = prog->btn_on - 1;
+	select_it(0, DEF_T_SELECT, of_what);
+	t = default_texture(1, (char)of_what, -1);
+	turn_btns_off(prog);
+	prog->btn_lit = -1;
+	prog->last = MODE_SETTINGS;
+	prog->m_id = MODE_TEXTURES;
+	if (within(t, -1, get_min(n_t, prog->modes[prog->m_id].n_btn)))
+	{
+		prog->modes[prog->m_id].btn[t].vis_lit_on[2] = TRUE;
+		select_it(0, T_SELECT, (prog->btn_on = t));
+	}
+}
+
+void					change_def_heights(int b)
+{
+	int					f_shift;
+	int					c_shift;
+	int 				floor;
+	int 				ceil;
+
+	f_shift = 0;
+	c_shift = 0;
+	floor = default_heights(1, 0, -1);
+	ceil = default_heights(1, 1, -1);
+	if (b == S_F_UP_BTN)
+		f_shift++;
+	else if (b == S_F_DOWN_BTN)
+		f_shift--;
+	else if (b == S_C_UP_BTN)
+		c_shift++;
+	else if (b == S_C_DOWN_BTN)
+		c_shift--;
+	floor += f_shift;
+	ceil += c_shift;
+	floor = clamp(floor, MIN_HEIGHT, MAX_HEIGHT);
+	ceil = clamp(ceil, MIN_HEIGHT, MAX_HEIGHT);
+	default_heights(0, 0, floor);
+	default_heights(0, 1, ceil);
 }
 
 void					render_defaults(t_sdl *sdl, t_media *media)
@@ -75,7 +133,7 @@ void					render_defaults(t_sdl *sdl, t_media *media)
 	i = -1;
 	while (++i < 5)
 	{
-		t = default_texture(1, i, media->w, -1);
+		t = default_texture(1, i, -1);
 		tmp = settings_boxes(3, i + 1);
 		tmp.x -= tmp.w * 1.1;
 		SDL_RenderCopy(sdl->rend, media->txtr[t].sdl_t, NULL, \
@@ -83,7 +141,7 @@ void					render_defaults(t_sdl *sdl, t_media *media)
 	}
 	while (i < 7)
 	{
-		t = default_heights(1, i - 5, media->w, -1);
+		t = default_heights(1, i - 5, -1);
 		tmp = settings_boxes(2, i);
 		tmp.x += tmp.w * 0.8;
 		tmp.w = tmp.h;
@@ -135,8 +193,12 @@ t_prog *prog)
 unsigned short			u_settings(t_sdl *sdl, t_grid *grid, t_media *media, \
 t_prog *prog)
 {
+	int					tmp2;
+
 	if (!sdl || !grid || !media || !prog->modes || !prog->modes[prog->m_id].btn)
 		return (FAIL);
+	if (prog->last == MODE_TEXTURES)
+		edit_def_texture(media->n_t, media->txtr);
 	if (prog->m_id != prog->last)
 	{
 		prog->click = (t_vec){ 0, 0 };
@@ -144,9 +206,9 @@ t_prog *prog)
 		prog->last = prog->m_id;
 		return (SUCCESS);
 	}
-	if (btn_light(sdl->mouse, prog->modes[prog->m_id].btn, \
-	prog->modes[prog->m_id].n_btn, prog) == SUCCESS)
-		return (SUCCESS);
+	if ((tmp2 = manage_btn(media, prog, grid, sdl->mouse)) < 2)
+		return (tmp2);
+	prog->last = prog->m_id;
 	prog->btn_lit = -1;
 	return (SUCCESS);
 }
@@ -166,7 +228,9 @@ t_prog *prog)
 		if (event.type == SDL_QUIT || (event.type == SDL_KEYUP &&
 									   event.key.keysym.sym == SDLK_ESCAPE))
 			return (TRUE);
-		if (event.type == SDL_MOUSEBUTTONDOWN && prog->btn_lit != -1)
+		else if (event.type == SDL_MOUSEBUTTONDOWN)
+			prog->click = sdl->mouse;
+		else if (event.type == SDL_MOUSEBUTTONUP && prog->btn_on == S_BACK_BTN)
 		{
 			turn_btns_off(prog);
 			prog->last = prog->m_id;

@@ -46,8 +46,6 @@ unsigned short			open_level(t_media *media, t_prog *prog, t_grid *grid)
 	upd_sec(media->worlds[w].sec, media->worlds[w].walls, \
 	media->worlds[w].vecs, media->worlds[w].n_s);
 	prog->redraw = 1;
-	default_texture(0, -1, media->w, -1);
-	default_heights(0, -1, media->w, -1);
 	return (SUCCESS);
 }
 

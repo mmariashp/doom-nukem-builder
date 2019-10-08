@@ -54,6 +54,8 @@ void					refresh_level_list(t_media *media, t_mode *mode)
 	if (!mode->btn)
 		return ;
 	levels_btn(mode->btn, media->worlds, media->n_worlds);
+	default_texture(0, -1, -1);
+	default_heights(0, -1, -1);
 }
 
 void					get_loop_fun(t_mode *modes, t_media *media)
@@ -108,6 +110,8 @@ unsigned short			init_modes(t_media *media, t_prog *prog)
 	}
 	main_menu_btn(prog->modes[MODE_MAIN_MENU].btn);
 	levels_btn(prog->modes[MODE_LEVELS].btn, media->worlds, media->n_worlds);
+	default_texture(0, -1, -1);
+	default_heights(0, -1, -1);
 	textures_btn(prog->modes[MODE_TEXTURES].btn, media->n_t);
 	sel_item_btn(prog->modes[MODE_SEL_ITEM].btn, media->it_f, media->n_itf);
 	settings_btn(prog->modes[MODE_SETTINGS].btn, prog->modes[MODE_SETTINGS].n_btn);

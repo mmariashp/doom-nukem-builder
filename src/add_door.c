@@ -90,10 +90,10 @@ unsigned short			add_dsec(t_sec **sec, short n_s, int wall)
 		return (FAIL);
 	(*sec)[n_s].s_walls = NULL;
 	(*sec)[n_s].items = NULL;
-	(*sec)[n_s].fl = 0;
-	(*sec)[n_s].ceil = 0;
-	(*sec)[n_s].fl_t = DEFAULT_FLR_T;
-	(*sec)[n_s].ceil_t = DEFAULT_CEIL_T;
+	(*sec)[n_s].fl = default_heights(1, 0, -1);
+	(*sec)[n_s].ceil = default_heights(1, 1, -1);;
+	(*sec)[n_s].fl_t = (short)default_texture(1, DEFAULT_FLR_T, -1);
+	(*sec)[n_s].ceil_t = (short)default_texture(1, DEFAULT_DOOR_T, -1);
 	(*sec)[n_s].n_w = 4;
 	(*sec)[n_s].n_it = 0;
 	(*sec)[n_s].n_v = 4;
@@ -123,7 +123,7 @@ void					add_door(t_world *w, int wall, t_grid *g)
 	g->p[0] = p[2];
 	g->p[1] = p[3];
 	v[1] = w->walls[wall].v2;
-	w->walls[wall].txtr = DEFAULT_DOOR_T;
+	w->walls[wall].txtr = default_texture(1, DEFAULT_DOOR_T, -1);
 	if (add_vec(&w->vecs, (v[2] = w->n_v++), g, 0) == SUCCESS && add_vec(\
 	&w->vecs, (v[3] = w->n_v++), g, 1) == SUCCESS && add_wall(&w->walls, (\
 	w->sec[w->n_s].s_walls[1] = w->n_w++), v[1], v[3]) \
@@ -132,4 +132,6 @@ void					add_door(t_world *w, int wall, t_grid *g)
 	(w->sec[w->n_s].s_walls[3] = w->n_w++), v[2], (v[0] = w->walls[wall].v1)) \
 	== SUCCESS)
 		get_sec_v(&w->sec[w->n_s++], w->walls);
+	else
+		return ;
 }

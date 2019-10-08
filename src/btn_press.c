@@ -91,7 +91,8 @@ int s)
 		sec_edit_mng_btn(prog, &m->worlds[m->w], m, grid);
 }
 
-void					prep_settings(t_prog *prog, t_grid *grid, t_media *media)
+void					prep_settings(t_prog *prog, t_grid *grid, \
+t_media *media)
 {
 	if (!prog || !grid || !media)
 		return ;
@@ -99,6 +100,14 @@ void					prep_settings(t_prog *prog, t_grid *grid, t_media *media)
 	prog->btn_lit = -1;
 	prog->last = MODE_EDITOR;
 	prog->m_id = MODE_SETTINGS;
+}
+
+void					settings_mng_btn(t_prog *prog, t_media *media)
+{
+	if (within(prog->btn_on, S_F_UP_BTN - 1, S_C_DOWN_BTN + 1))
+		change_def_heights(prog->btn_on);
+	else if (within(prog->btn_on, S_WT_BTN - 1, S_TT_BTN + 1))
+		change_def_textures(prog, media->n_t);
 }
 
 unsigned short			btn_press(t_prog *prog, t_grid *grid, t_media *media, \
@@ -109,7 +118,9 @@ int state)
 	turn_btn_on(prog, grid);
 	if (prog->m_id == MODE_LEVELS)
 		return (SUCCESS);
-	if (state == NORMAL || state == SEC_SEARCH || state == WALL_SEARCH)
+	else if (prog->m_id == MODE_SETTINGS)
+		settings_mng_btn(prog, media);
+	else if (state == NORMAL || state == SEC_SEARCH || state == WALL_SEARCH)
 	{
 		if (prog->btn_on == SETTINGS_BTN)
 			prep_settings(prog, grid, media);

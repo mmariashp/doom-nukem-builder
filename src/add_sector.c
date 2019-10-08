@@ -29,10 +29,10 @@ unsigned short			add_sector(t_sec **sec, short n_s)
 		return (FAIL);
 	(*sec)[n_s].s_walls = NULL;
 	(*sec)[n_s].items = NULL;
-	(*sec)[n_s].fl = 0;
-	(*sec)[n_s].ceil = 20;
-	(*sec)[n_s].fl_t = DEFAULT_FLR_T;
-	(*sec)[n_s].ceil_t = DEFAULT_CEIL_T;
+	(*sec)[n_s].fl = default_heights(1, 0, -1);
+	(*sec)[n_s].ceil = default_heights(1, 1, -1);
+	(*sec)[n_s].fl_t = default_texture(1, DEFAULT_FLR_T, -1);
+	(*sec)[n_s].ceil_t = default_texture(1, DEFAULT_CEIL_T, -1);
 	(*sec)[n_s].n_w = 0;
 	(*sec)[n_s].n_it = 0;
 	(*sec)[n_s].n_v = 0;

@@ -115,8 +115,7 @@ t_prog *prog)
 			select_it(0, T_SELECT, prog->btn_lit);
 			turn_btns_off(prog);
 			prog->zoom = 0;
-			prog->last = prog->m_id;
-			prog->m_id = MODE_EDITOR;
+			swap_ints(&prog->last, &prog->m_id);
 			prog->click = (t_vec){ 0, 0 };
 			break ;
 		}

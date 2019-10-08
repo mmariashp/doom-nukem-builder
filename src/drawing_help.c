@@ -23,7 +23,7 @@ void					done_condition(t_grid *grid, int *tab, short done)
 	}
 }
 
-void					fun_fun(short *wall_id_done, int *f_s_l, \
+void					existing_vec(short *wall_id_done, int *f_s_l, \
 t_world *world, t_grid *grid)
 {
 	if (wall_id_done[1] == f_s_l[0])
@@ -41,8 +41,8 @@ t_world *world, t_grid *grid)
 		world->n_w);
 }
 
-unsigned short			fun2(t_world *world, t_grid *grid, short *wall_id_done,\
-int *f_s_l)
+unsigned short			add_media_elements(t_world *world, t_grid *grid, \
+short *wall_id_done, int *f_s_l)
 {
 	if (wall_id_done[0] == -1 && add_wall(&world->walls, \
 	(wall_id_done[0] = world->n_w++), f_s_l[2], wall_id_done[1]) == FAIL)

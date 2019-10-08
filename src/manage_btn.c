@@ -114,7 +114,7 @@ t_vec mouse)
 	prog->modes[prog->m_id].n_btn, prog) == SUCCESS)
 	{
 		prog->redraw = 1;
-		if (prog->m_id == MODE_EDITOR)
+		if (prog->m_id == MODE_EDITOR || prog->m_id == MODE_SETTINGS)
 			return (SUCCESS);
 	}
 	return (3);

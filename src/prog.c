@@ -35,7 +35,7 @@ char 					*get_txtr_name(int i)
 	static char			s[N_TXTR][30] = { "rctg", "rctg_l", "rcty", "rcty_l", \
 	"pan", "pan_l", "add", "add_l", "yes", "no", "move", "move_l", "draw", \
 	"draw_l", "dist", "dist_l", "iso", "iso_l", "sec", "sec_l", "wall", \
-	"wall_l", "dadd", "dadd_l", "ddel", "ddel_l", "plr", "plr_l", "save", \
+	"wall_l", "dadd", "dadd_l", "sett", "sett_l", "plr", "plr_l", "save", \
 	"save_l", "exit", "exit_l", "back", "back_l", "del", "del_l", "edit", \
 	"edit_l", "up", "up_l", "down", "down_l", "coin", "key", "obj", \
 	"enemy", "sup", "hp", "ammo", "weap", "light", "door" };

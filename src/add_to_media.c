@@ -34,7 +34,7 @@ int two)
 	if (!*walls)
 		return (FAIL);
 	(*walls)[n_w].type = WALL_FILLED;
-	(*walls)[n_w].txtr = DEFAULT_DOOR_T;
+	(*walls)[n_w].txtr = default_texture(1, DEFAULT_DOOR_T, -1);
 	(*walls)[n_w].v1 = one;
 	(*walls)[n_w].v2 = two;
 	return (SUCCESS);
@@ -47,7 +47,7 @@ unsigned short			add_wall(t_wall **walls, short n_w, int one, int two)
 	if (!*walls)
 		return (FAIL);
 	(*walls)[n_w].type = WALL_FILLED;
-	(*walls)[n_w].txtr = DEFAULT_WALL_T;
+	(*walls)[n_w].txtr = default_texture(1, DEFAULT_WALL_T, -1);
 	(*walls)[n_w].v1 = one;
 	(*walls)[n_w].v2 = two;
 	return (SUCCESS);

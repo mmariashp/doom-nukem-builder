@@ -257,10 +257,23 @@
 # define B_WEAPON			17
 # define B_LIGHT			18
 
-# define TOT_EDIT_BTNS	19
+# define TOT_EDIT_BTNS		19
 
 # define WT_EDIT_BTN		1
 # define PORT_BTN			2
+
+# define S_BACK_BTN			0
+# define S_WT_BTN			1
+# define S_FT_BTN			2
+# define S_CT_BTN			3
+# define S_DT_BTN			4
+# define S_TT_BTN			5
+# define S_F_UP_BTN			6
+# define S_F_DOWN_BTN		7
+# define S_C_UP_BTN			8
+# define S_C_DOWN_BTN		9
+
+# define TOT_SETTINGS_BTNS	10
 
 # define GRID_SIZE			150
 
@@ -277,6 +290,7 @@
 # define LAST_ST_SEL		6
 # define WORLD_SELECT		7
 # define I_SELECT			8
+# define DEF_T_SELECT		9
 
 # define NORMAL				-1
 # define SEC_SEARCH			0
@@ -649,7 +663,6 @@ t_prog					*get_prog(SDL_Renderer *rend);
 
 void					render_screen(SDL_Renderer *rend, t_scr **screen);
 
-void					add_to_media(t_grid *grid, t_world *world);
 unsigned short			add_world(t_world **worlds, short n_worlds, char *ext,\
 char *path);
 
@@ -770,7 +783,8 @@ void					switch_mode(t_prog *prog, int new_m_id, int new_state);
 void					drawing(t_world *world, t_prog *prog, t_grid *grid, \
 t_vec mouse);
 unsigned short			already_in_sector(int id, int *vecs, int n_v);
-unsigned short			can_place_vec(t_vec v, t_world world, t_grid *grid);
+unsigned short			can_place_vec(t_vec v, t_world world, t_grid *grid, \
+int wall);
 unsigned short			add_secwall(int **secwalls, short n_swalls, int wall);
 unsigned short			add_sector_v(int **v, short n_v, int id);
 
@@ -838,9 +852,9 @@ unsigned short			init_sec(char *line, t_world *world);
 unsigned short			init_walls(char *line, t_world *world);
 unsigned				read_line(char *str, unsigned short status, t_world \
 *world, unsigned short world_no);
-unsigned short			fun2(t_world *world, t_grid *grid, short *wall_id_done,\
-int *f_s_l);
-void					fun_fun(short *wall_id_done, int *f_s_l, t_world *world\
+unsigned short			add_media_elements(t_world *world, t_grid *grid, \
+short *wall_id_done, int *f_s_l);
+void					existing_vec(short *wall_id_done, int *f_s_l, t_world *world\
 , t_grid *grid);
 void					done_condition(t_grid *grid, int *tab, short done);
 void					set_min1(int *one, int *two);
@@ -869,9 +883,12 @@ unsigned short			check_for_light(t_media *media, int id, int sec);
 int						clip_line(t_line *l);
 unsigned short			settings_btn(t_btn *btn, int n);
 t_rec					settings_boxes(int h_box_val_btn, int id);
-int 					default_texture(char set_get, char of_what, \
-int world_no, int value);
-int 					default_heights(char set_get, char of_what, \
-int world_no, int value);
+void					change_def_heights(int b);
+void					change_def_textures(t_prog *prog, int n_t);
+unsigned short			edit_def_texture(int n_t, t_texture *txtr);
+int 					default_texture(char set_get, char of_what, int value);
+int 					default_heights(char set_get, char of_what, int value);
+void					add_to_media(t_grid *grid, t_world *world, int wall);
+void					make_continuous(t_sec *sec, t_world *world, int sec_no);
 
 #endif
