@@ -136,7 +136,8 @@ SRC =   sdl_fun.c \
         btn_main.c \
         clip_line.c \
         check_for_light.c \
-        draw_line.c
+        draw_line.c \
+        settings.c
 
 OBJ =	$(SRC:.c=.o)
 

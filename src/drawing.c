@@ -12,30 +12,34 @@
 
 #include "builder.h"
 
-//j = -1;
-//while (++j < w->sec[i].n_w)
-//{
-//if (w->sec[i].s_walls[j] != wall)
-//continue ;
-//add_secwall(&w->sec[i].s_walls, w->sec[i].n_w++, new_id);
-//if ((prv_nxt[0] = j - 1) < 0)
-//prv_nxt[0] = w->sec[i].n_w - 1;
-//if ((prv_nxt[1] = j + 1) >= w->sec[i].n_w)
-//prv_nxt[1] = 0;
-//if (w->walls[w->sec[i].s_walls[prv_nxt[0]]].v1 != w->walls[w->sec[
-//			i].s_walls[j]].v1 &&
-//w->walls[w->sec[i].s_walls[prv_nxt[0]]].v2 !=
-//			w->walls[w->sec[i].s_walls[j]].v1)
-//swap_ints(&w->sec[i].s_walls[prv_nxt[0]],
-//				&w->sec[i].s_walls[w->sec[i].n_w - 1]);
-//else
-//swap_ints(&w->sec[i].s_walls[prv_nxt[1]],
-//				&w->sec[i].s_walls[w->sec[i].n_w - 1]);
-//get_sec_v(&w->sec[i], w->walls);
-//break ;
-//}
+void					break_in_prev(int *s_walls, int n, int prev)
+{
+	int 				new;
+	int 				tmp[n];
+	int					k;
 
-void					add_broken_secwall(t_world *w, int wall, int new_id)
+	new = n - 1;
+	int i = 0;
+	while (i < n)
+	{
+		tmp[i] = s_walls[i];
+		i++;
+	}
+	i = 0;
+	while (i < prev)
+		i++;
+	s_walls[i++] = tmp[new];
+	while (i < n)
+	{
+		k = i - 1;
+		if (k < 0)
+			k = n - 1;
+		s_walls[i++] = tmp[k];
+	}
+}
+
+void					add_broken_secwall(t_world *w, int wall, int new_id, \
+int s)
 {
 	int 				i;
 	int 				j;
@@ -46,6 +50,8 @@ void					add_broken_secwall(t_world *w, int wall, int new_id)
 	i = -1;
 	while (++i < w->n_s)
 	{
+		if (i == s)
+			continue ;
 		j = -1;
 		while (++j < w->sec[i].n_w)
 		{
@@ -60,11 +66,13 @@ void					add_broken_secwall(t_world *w, int wall, int new_id)
 					i].s_walls[j]].v1 &&
 				w->walls[w->sec[i].s_walls[prv_nxt[0]]].v2 !=
 				w->walls[w->sec[i].s_walls[j]].v1)
-				swap_ints(&w->sec[i].s_walls[prv_nxt[0]],
-						  &w->sec[i].s_walls[w->sec[i].n_w - 1]);
+			{
+				break_in_prev(w->sec[i].s_walls, w->sec[i].n_w, prv_nxt[0]);
+			}
 			else
-				swap_ints(&w->sec[i].s_walls[prv_nxt[1]],
-						  &w->sec[i].s_walls[w->sec[i].n_w - 1]);
+			{
+				break_in_prev(w->sec[i].s_walls, w->sec[i].n_w, prv_nxt[1]);
+			}
 			if (w->sec[i].v)
 				free(w->sec[i].v);
 			get_sec_v(&w->sec[i], w->walls);
@@ -75,7 +83,7 @@ void					add_broken_secwall(t_world *w, int wall, int new_id)
 	}
 }
 
-unsigned short			break_wall(t_world *world, int vec_id, int wall)
+unsigned short			break_wall(t_world *world, int vec_id, int wall, int s)
 {
 	int					two;
 	int 				new_id;
@@ -89,7 +97,7 @@ unsigned short			break_wall(t_world *world, int vec_id, int wall)
 	new_id = world->n_w;
 	world->walls[wall].v2 = vec_id;
 	world->n_w++;
-	add_broken_secwall(world, wall, new_id);
+	add_broken_secwall(world, wall, new_id, s);
 	return (SUCCESS);
 }
 
@@ -110,7 +118,7 @@ int wall)
 		if (add_vec(&w->vecs, (id = w->n_v++), g, 0) == FAIL)
 			return (-1);
 		if (wall != -1)
-			break_wall(w, id, wall);
+			break_wall(w, id, wall, -1);
 	}
 	if (id == -1)
 	{
@@ -166,7 +174,7 @@ void					add_to_media(t_grid *grid, t_world *world, int wall)
 		== FAIL)
 			return ;
 		if (wall != -1)
-			break_wall(world, wall_id_done[1], wall);
+			break_wall(world, wall_id_done[1], wall, f_s_l[1]);
 	}
 	if (add_media_elements(world, grid, wall_id_done, f_s_l) == FAIL)
 		return ;
