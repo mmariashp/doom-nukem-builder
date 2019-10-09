@@ -1,5 +1,6 @@
 #Levels
 Path: Maps/
+File Names:
 0) map_one
 1) map_three
 2) super
@@ -153,3 +154,22 @@ Path: textures/
 42) meta_wall3.jpg
 43) window1.png
 ###
+
+0) harry/BookShelfWalnut1.jpg
+1) mortalkombat/DARKPRISON_017.png
+6) mortalkombat/DARKPRISON_006.png
+2) harry/CaveRock.jpg
+3) harry/0gate2_D.jpg
+4) harry/ylwstntrim.jpg
+
+lava
+1) harry/MLava.jpg
+caverock
+2) harry/CaveRock.jpg
+gate door
+3) harry/0gate2_D.jpg
+floor
+1) doommobile/WTEX104.png
+tunnel wall
+6) mortalkombat/DARKPRISON_017.png
+cube wall

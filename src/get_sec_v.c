@@ -34,7 +34,6 @@ void					sort_tmp(int *tmp, int n, t_sec *sec)
 		return ;
 	pair_sort(tmp, n);
 	sec->status = !sector_closed(tmp, n) ? SEC_OPEN : SEC_CONCAVE_CLOSED;
-	printf("status = %d\n", sec->status);
 	i = -1;
 	j = 0;
 	while (++i < n)

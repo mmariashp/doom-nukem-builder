@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 17:10:42 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 17:10:43 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:42:29 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void					write_file(int section, int i, int fd, t_media *media)
 void					write_head(int line, t_media *media, int section, \
 int fd)
 {
-	static char			title[TOTAL_SECTIONS][9] = { "Levels", "Textures", \
+	static char			title[TOTAL_SECTIONS][11] = { "Levels", "Textures ", \
 	"Items" };
 	static char			prefix[5][13] = { "#", "Path: ", "Extension: ",\
 	"File Names: ", "###" };
@@ -67,7 +67,11 @@ int fd)
 		return ;
 	ft_putstr_fd(prefix[line], fd);
 	if (line == 0 && title[section])
+	{
 		ft_putstr_fd(title[section], fd);
+		if (section == 1)
+			ft_putnbr_fd(media->n_t, fd);
+	}
 	else if (line == 1 && media->paths[section])
 		ft_putstr_fd(media->paths[section], fd);
 	else if (line == 2 && media->extensions[section])
@@ -88,7 +92,7 @@ unsigned short			write_section(int fd, t_media *media, int section)
 		write_head(line, media, section, fd);
 	if ((n_files = get_n_files(section, media)) == -1)
 		return (FAIL);
-	n_files = clamp(n_files, 0, 50);
+	n_files = clamp(n_files, 0, 300);
 	i = -1;
 	while (++i < n_files)
 		write_file(section, i, fd, media);

@@ -123,7 +123,7 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 		if (section == 1)
 		{
 			ft_putstr_fd(world.walls[i].type == WALL_FILLED ? " filled " : \
-			" empty", fd);
+			" empty ", fd);
 			ft_putnbr_fd(world.walls[i].txtr, fd);
 		}
 		else if (section == 2 && world.sec)

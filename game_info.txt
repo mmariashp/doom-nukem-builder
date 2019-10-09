@@ -2,20 +2,19 @@
 Path: ./media/maps/
 Extension: 
 File Names: 
-0) fortress.txt
-1) dungeon.txt
-2) new
-3) throneroom
+0) map_one
+1) throneroom
+2) new_map.txt
 ###
 
-#Textures
+#Textures 57
 Path: ./media/textures/
 Extension: 
 File Names: 
-0) AgoraAera.png
+0) ShanConc01.png
 1) AgoraBasRelief.png
 2) Autel.png
-3) Braises.png
+3) Mlava.jpg
 4) Ca_ship_front1.png
 5) Ca_ship_front.png
 6) Ca_ship_top.png
@@ -29,12 +28,12 @@ File Names:
 14) FumDallage04.png
 15) FumDallage05.png
 16) FumPanneauDeco.png
-17) Fy-os_panneau.png
+17) CaveRock.jpg
 18) FyrCityBasReliefEntree.png
 19) FyrosInsideWall02.png
 20) Fy_uk_store.png
 21) G_caisseBonus.png
-22) G_carrelage.png
+22) BookShelfWalnut1.jpg
 23) Ground_lava_rock.png
 24) G_toit-tower.png
 25) Magasin4b.png
@@ -56,6 +55,19 @@ File Names:
 41) iluminator.jpg
 42) meta_wall3.jpg
 43) window1.png
+44) computer.png
+45) dig_galaxy.png
+46) dying_star.png
+47) electro_panel.png
+48) evil_planet.png
+49) ship_door.png
+50) ship_door2.png
+51) archplacehold2.jpg
+52) WTEX104.png
+53) WTEX169.png
+54) DARKPRISON_017.png
+55) DARKPRISON_005.png
+56) gate2_D.png
 ###
 
 #Items
@@ -83,5 +95,13 @@ File Names:
 18) object dead_man
 19) object broken_tree
 20) object broken_tree_two
+21) enemy hell_king
+22) object box
+23) object bones
+24) object radio
+25) object skull
+26) object pool_blood
+27) light candle
+28) light strange_light
 ###
 

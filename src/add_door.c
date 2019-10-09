@@ -91,7 +91,7 @@ unsigned short			add_dsec(t_sec **sec, short n_s, int wall)
 	(*sec)[n_s].s_walls = NULL;
 	(*sec)[n_s].items = NULL;
 	(*sec)[n_s].fl = default_heights(1, 0, -1);
-	(*sec)[n_s].ceil = default_heights(1, 1, -1);;
+	(*sec)[n_s].ceil = default_heights(1, 0, -1);
 	(*sec)[n_s].fl_t = (short)default_texture(1, DEFAULT_FLR_T, -1);
 	(*sec)[n_s].ceil_t = (short)default_texture(1, DEFAULT_DOOR_T, -1);
 	(*sec)[n_s].n_w = 4;

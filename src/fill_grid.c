@@ -12,27 +12,6 @@
 
 #include "builder.h"
 
-void					fill_grid_walls(t_world *world, t_grid *grid)
-{
-	int					wall_i;
-	int					v1;
-	int					v2;
-
-	if (!world || !world->walls || !world->vecs || !grid || world->n_w < 1 ||
-	world->n_v < 2 || world->n_w >= MAX_N_WALLS)
-		return ;
-	wall_i = 0;
-	while (wall_i < world->n_w)
-	{
-		v1 = world->walls[wall_i].v1;
-		v2 = world->walls[wall_i].v2;
-		if (v1 >= 0 && v1 < world->n_v && v2 >= 0 && v2 < world->n_v)
-			draw_line_grid((t_line){ world->vecs[v1], world->vecs[v2] },
-					(signed char)wall_i, grid->nod);
-		wall_i++;
-	}
-}
-
 void					fill_grid(int n_v, t_vec *vecs, t_grid *grid)
 {
 	int					i;

@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 18:26:51 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 18:26:53 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/09 17:10:17 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,19 @@ unsigned short world_no, int ret)
 	while ((ret = get_next_line(fd, &(line))) == 1)
 	{
 		if (++i_st[0] == 0 && init_vec(line, world) == FAIL)
-			return (FAIL);
+			break ;
 		else if (i_st[0] == 1 && init_walls(line, world) == FAIL)
-			return (FAIL);
+			break ;
 		else if (i_st[0] == 2 && init_sec(line, world) == FAIL)
-			return (FAIL);
+			break ;
 		else if (!(ft_isdigit(line[0]) && i_st[1] > 0 && i_st[1] < 6))
 			i_st[1] = get_status_read(line, i_st[1]);
 		else if (read_line(line, i_st[1], world, world_no) == FAIL)
-			return (FAIL);
+			break ;
 		ft_strdel(&line);
 	}
 	ft_strdel(&line);
-	return (ret == -1 ? FAIL : SUCCESS);
+	return (ret != 0 ? FAIL : SUCCESS);
 }
 
 unsigned				get_map(t_world *world, unsigned short world_no)

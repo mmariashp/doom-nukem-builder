@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 12:05:08 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/07 16:43:35 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:11:30 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_media					*read_assets(int fd)
 		{
 			if (!ft_strcmp(line, "###"))
 			{
+				printf("will update section %d\n", s.id);
 				if (s.id == -1 || update_media(media, &s) == FAIL || !refresh_section(&s))
 					return (exit_read_assets(&s, line, media));
 			}

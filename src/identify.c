@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 18:22:50 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 18:22:52 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:23:19 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ short					identify_section(const char *line)
 	i = -1;
 	while (id == -1 && ++i < TOTAL_SECTIONS)
 	{
-		if (!(ft_strcasecmp(line, sections[i])))
+		if (ft_tolower(line[0]) == ft_tolower(sections[i][0]))
 			id = i;
 	}
 	return (id);

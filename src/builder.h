@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 21:30:46 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/07 19:33:11 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/09 17:04:23 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,16 +119,16 @@
 # define R_VECTORS				1
 # define R_WALLS				2
 # define R_SECS					3
-# define R_PLR				4
+# define R_PLR					4
 
 # define MIN_VERTEX_ID			0
 # define MAX_VERTEX_ID			200
 
 # define MIN_N_WALLS			0
-# define MAX_N_WALLS			127
+# define MAX_N_WALLS			300
 
 # define MIN_N_SECS				1
-# define MAX_N_SECS				50
+# define MAX_N_SECS				150
 
 # define MIN_N_TXTRS			5
 # define MAX_N_TXTRS			80
@@ -136,9 +136,9 @@
 # define MIN_HEIGHT				-100
 # define MAX_HEIGHT				100
 
-# define MAX_SEC_WALLS			30
+# define MAX_SEC_WALLS			40
 
-# define MAX_SEC_ITEMS			20
+# define MAX_SEC_ITEMS			40
 # define MAX_ITEMFULL			50
 
 # define WALL_EMPTY				0
