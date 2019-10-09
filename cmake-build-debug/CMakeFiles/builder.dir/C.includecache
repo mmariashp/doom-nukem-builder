@@ -14,6 +14,10 @@ string.h
 unistd.h
 -
 
+/Users/mshpakov/Desktop/doom-nukem-builder/src/add_door.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+
 /Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 ../libft/libft.h
 /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
@@ -59,6 +63,10 @@ builder.h
 /Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
 ../libft/libft.h
 /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
+
+/Users/mshpakov/Desktop/doom-nukem-builder/src/read_line.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
 
 /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
 SDL_main.h

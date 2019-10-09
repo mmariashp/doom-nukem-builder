@@ -7,7 +7,7 @@ File Names:
 2) new_map.txt
 ###
 
-#Textures 57
+#Textures 64
 Path: ./media/textures/
 Extension: 
 File Names: 
@@ -68,6 +68,13 @@ File Names:
 54) DARKPRISON_017.png
 55) DARKPRISON_005.png
 56) gate2_D.png
+57) WTEX062.png
+58) WTEX094.png
+59) WTEX091.png
+60) WTEX077.png
+61) WTEX056.png
+62) CR_floor_new2.jpg
+63) WTEX170.png
 ###
 
 #Items

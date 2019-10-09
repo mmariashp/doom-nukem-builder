@@ -1,6 +1,6 @@
-Count Vectors: 81
-Count Walls: 126
-Count Sectors: 46
+Count Vectors: 98
+Count Walls: 148
+Count Sectors: 51
 
 Vectors
 0) 47,21
@@ -25,243 +25,287 @@ Vectors
 19) 64,21
 20) 45,43
 21) 52,43
-22) 64,31
-23) 73,22
-24) 23,34
-25) 23,43
-26) 45,9
-27) 52,9
-28) 23,9
-29) 23,20
-30) 73,21
-31) 73,9
-32) 52,44
-33) 45,44
-34) 45,50
-35) 52,50
-36) 45,54
-37) 52,54
-38) 45,58
-39) 52,58
-40) 45,62
-41) 52,62
-42) 52,63
-43) 45,63
-44) 40,63
-45) 40,76
-46) 57,76
-47) 57,63
-48) 21,20
-49) 15,20
-50) 15,34
-51) 21,34
-52) 15,11
-53) 21,11
-54) 15,43
-55) 21,43
-56) 57,38
-57) 57,41
-58) 60,41
-59) 60,38
-60) 61,34
-61) 61,37
-62) 64,37
-63) 64,34
-64) 65,33
-65) 65,30
-66) 68,30
-67) 68,33
-68) 69,26
-69) 69,29
-70) 72,29
-71) 72,26
-72) 73,26
-73) 73,43
-74) 72,43
-75) 69,30
-76) 69,43
-77) 57,43
-78) 69,41
-79) 68,41
-80) 64,41
+22) 73,24
+23) 23,34
+24) 23,43
+25) 45,5
+26) 52,5
+27) 23,5
+28) 23,20
+29) 73,21
+30) 73,5
+31) 52,44
+32) 45,44
+33) 45,50
+34) 52,50
+35) 45,54
+36) 52,54
+37) 45,58
+38) 52,58
+39) 45,62
+40) 52,62
+41) 52,63
+42) 45,63
+43) 40,63
+44) 40,76
+45) 57,76
+46) 57,63
+47) 21,20
+48) 15,20
+49) 15,34
+50) 21,34
+51) 15,11
+52) 21,11
+53) 15,43
+54) 21,43
+55) 53,39
+56) 58,43
+57) 58,40
+58) 55,37
+59) 57,34
+60) 60,33
+61) 63,36
+62) 62,38
+63) 62,32
+64) 64,34
+65) 66,34
+66) 68,32
+67) 65,29
+68) 62,30
+69) 66,27
+70) 69,27
+71) 71,30
+72) 74,25
+73) 73,30
+74) 73,43
+75) 77,25
+76) 80,27
+77) 80,30
+78) 75,37
+79) 79,37
+80) 75,38
+81) 79,38
+82) 75,46
+83) 78,49
+84) 87,49
+85) 90,46
+86) 90,38
+87) 72,30
+88) 88,30
+89) 89,32
+90) 90,35
+91) 80,29
+92) 85,23
+93) 87,22
+94) 90,25
+95) 86,16
+96) 83,24
+97) 82,17
 
 Walls
-0) 1-0 empty 2
-1) 2-1 empty 2
-2) 3-2 empty 2
-3) 0-3 empty 2
+0) 1-0 empty 60
+1) 2-1 empty 60
+2) 3-2 empty 60
+3) 0-3 empty 60
 4) 0-4 empty 54
-5) 4-5 empty 2
+5) 4-5 empty 60
 6) 5-3 empty 54
 7) 6-2 empty 54
-8) 5-6 empty 2
+8) 5-6 empty 60
 9) 7-1 empty 54
-10) 6-7 empty 2
-11) 7-4 empty 2
+10) 6-7 empty 60
+11) 7-4 empty 60
 12) 4-8 empty 54
-13) 8-9 empty 2
+13) 8-9 empty 60
 14) 9-5 empty 54
-15) 10-8 empty 2
+15) 10-8 empty 60
 16) 7-10 empty 54
-17) 9-11 empty 2
+17) 9-11 empty 60
 18) 11-6 empty 54
-19) 11-10 empty 2
-20) 13-12 empty 6
-21) 14-13 empty 6
-22) 15-14 empty 6
-23) 12-15 empty 6
-24) 17-16 empty 6
-25) 18-17 empty 6
-26) 19-18 empty 6
-27) 16-19 empty 6
+19) 11-10 empty 60
+20) 13-12 empty 62
+21) 14-13 empty 62
+22) 15-14 empty 62
+23) 12-15 empty 62
+24) 17-16 empty 62
+25) 18-17 empty 62
+26) 19-18 empty 62
+27) 16-19 empty 62
 28) 15-8 empty 54
 29) 10-14 empty 54
 30) 9-19 empty 54
 31) 16-11 empty 54
 32) 20-10 empty 54
 33) 21-20 empty 56
-34) 11-21 empty 54
-35) 22-60 empty 5
-36) 23-68 empty 5
-37) 17-23 empty 54
-38) 25-24 filled 5
-39) 20-25 filled 5
-40) 24-13 empty 54
-41) 8-26 empty 54
-42) 26-27 filled 5
-43) 27-9 empty 54
-44) 28-26 filled 5
-45) 29-28 filled 5
-46) 12-29 empty 54
-47) 24-29 empty 9
-48) 30-23 filled 5
-49) 18-30 empty 54
-50) 27-31 filled 5
-51) 31-30 filled 5
-52) 33-20 empty 56
-53) 32-33 empty 56
-54) 21-32 filled 56
-55) 34-33 filled 54
-56) 35-34 empty 54
-57) 32-35 filled 54
-58) 36-34 filled 54
-59) 37-36 empty 54
-60) 35-37 filled 54
-61) 38-36 filled 54
-62) 39-38 empty 54
-63) 37-39 filled 54
-64) 40-38 filled 54
-65) 41-40 empty 56
-66) 39-41 filled 54
-67) 43-40 filled 54
-68) 42-43 empty 56
-69) 41-42 filled 54
-70) 44-43 filled 54
-71) 45-44 filled 54
-72) 46-45 filled 54
-73) 47-46 filled 56
-74) 42-47 filled 54
-75) 48-29 filled 5
-76) 49-48 empty 5
-77) 50-49 filled 5
-78) 51-50 empty 5
-79) 24-51 filled 5
-80) 49-52 filled 54
-81) 52-53 filled 54
-82) 53-48 filled 54
-83) 54-50 filled 54
-84) 55-54 filled 54
-85) 51-55 filled 54
-86) 56-21 empty 54
-87) 57-56 empty 54
-88) 58-57 empty 54
-89) 59-58 empty 54
-90) 56-59 empty 54
-91) 60-56 empty 54
-92) 61-60 empty 54
-93) 62-61 empty 54
-94) 63-62 empty 54
-95) 60-63 empty 54
-96) 65-22 empty 54
-97) 64-65 empty 54
-98) 65-66 empty 54
-99) 66-67 empty 54
-100) 67-64 empty 54
-101) 68-65 empty 54
-102) 69-68 empty 54
-103) 70-69 empty 54
-104) 71-70 empty 54
-105) 68-71 empty 54
-106) 23-72 filled 54
-107) 72-71 empty 54
-108) 72-73 filled 54
-109) 73-74 filled 54
-110) 74-70 empty 54
-111) 69-75 empty 54
-112) 75-66 empty 54
-113) 74-76 filled 54
-114) 76-78 empty 54
-115) 64-63 empty 54
-116) 61-59 empty 54
-117) 57-77 empty 54
-118) 77-21 filled 54
-119) 78-75 empty 54
-120) 78-79 empty 54
-121) 79-80 empty 54
-122) 79-67 empty 54
-123) 80-58 empty 54
-124) 80-62 empty 54
-125) 76-77 filled 54
+34) 11-55 empty 54
+35) 22-17 empty 54
+36) 24-23 filled 17
+37) 20-24 filled 17
+38) 23-13 empty 54
+39) 8-25 empty 54
+40) 25-26 filled 17
+41) 26-9 empty 54
+42) 27-25 filled 17
+43) 28-27 filled 17
+44) 12-28 empty 54
+45) 23-28 empty 17
+46) 29-22 filled 17
+47) 18-29 empty 54
+48) 26-30 filled 17
+49) 30-29 filled 17
+50) 32-20 filled 56
+51) 31-32 empty 56
+52) 21-31 filled 56
+53) 33-32 filled 62
+54) 34-33 empty 63
+55) 31-34 filled 62
+56) 35-33 filled 62
+57) 36-35 empty 63
+58) 34-36 filled 62
+59) 37-35 filled 62
+60) 38-37 empty 63
+61) 36-38 filled 54
+62) 39-37 filled 62
+63) 40-39 empty 56
+64) 38-40 filled 62
+65) 42-39 filled 54
+66) 41-42 empty 56
+67) 40-41 filled 54
+68) 43-42 filled 61
+69) 44-43 filled 60
+70) 45-44 filled 60
+71) 46-45 filled 56
+72) 41-46 filled 61
+73) 47-28 filled 17
+74) 48-47 empty 5
+75) 49-48 filled 17
+76) 50-49 empty 5
+77) 23-50 filled 17
+78) 48-51 filled 17
+79) 51-52 filled 17
+80) 52-47 filled 17
+81) 53-49 filled 17
+82) 54-53 filled 17
+83) 50-54 filled 17
+84) 55-21 empty 0
+85) 56-21 filled 17
+86) 57-56 empty 17
+87) 58-57 empty 17
+88) 55-58 empty 63
+89) 58-59 empty 63
+90) 59-60 empty 63
+91) 60-61 empty 17
+92) 61-62 empty 17
+93) 62-57 empty 17
+94) 64-63 empty 17
+95) 65-64 empty 17
+96) 66-65 empty 17
+97) 67-66 empty 17
+98) 68-67 empty 17
+99) 63-68 empty 17
+100) 67-69 empty 17
+101) 69-70 empty 17
+102) 70-71 empty 17
+103) 71-66 empty 17
+104) 70-72 empty 17
+105) 72-73 empty 17
+106) 73-87 filled 17
+107) 22-72 filled 17
+108) 69-17 empty 17
+109) 68-11 empty 17
+110) 11-59 empty 17
+111) 63-60 empty 63
+112) 64-61 empty 17
+113) 74-56 filled 17
+114) 62-74 empty 17
+115) 65-74 empty 17
+116) 72-75 filled 17
+117) 75-76 filled 17
+118) 76-91 filled 17
+119) 77-73 empty 17
+120) 78-73 filled 17
+121) 79-78 empty 56
+122) 77-79 filled 17
+123) 79-81 filled 17
+124) 81-80 empty 56
+125) 80-78 filled 17
+126) 82-80 filled 17
+127) 83-82 filled 17
+128) 84-83 filled 17
+129) 85-84 filled 17
+130) 86-85 filled 17
+131) 81-86 empty 17
+132) 87-71 empty 0
+133) 74-87 filled 17
+134) 73-74 filled 0
+135) 77-88 empty 0
+136) 88-89 filled 0
+137) 89-90 filled 0
+138) 90-86 filled 0
+139) 91-77 filled 0
+140) 76-96 filled 0
+141) 92-93 empty 0
+142) 93-94 filled 0
+143) 94-88 filled 0
+144) 95-93 filled 0
+145) 96-92 empty 0
+146) 96-97 filled 0
+147) 97-95 filled 0
 
 Sectors
-0) floor(24 1) ceil(65 2) walls '3 2 1 0 ' items ''
-1) floor(20 1) ceil(65 2) walls '4 5 6 3 ' items ''
-2) floor(20 1) ceil(65 2) walls '6 8 7 2 ' items ''
-3) floor(20 1) ceil(65 2) walls '7 10 9 1 ' items ''
-4) floor(20 1) ceil(65 2) walls '0 9 11 4 ' items ''
-5) floor(16 1) ceil(65 2) walls '12 13 14 5 ' items ''
-6) floor(16 1) ceil(65 2) walls '11 16 15 12 ' items '(44,23 15)'
-7) floor(16 1) ceil(65 2) walls '17 18 8 14 ' items '(53,23 15)'
-8) floor(16 1) ceil(65 2) walls '19 16 10 18 ' items ''
-9) floor(12 1) ceil(12 2) walls '23 22 21 20 ' items ''
-10) floor(12 1) ceil(6 2) walls '27 26 25 24 ' items ''
-11) floor(0 8) ceil(65 2) walls '28 15 29 22 ' items '(37,22 15)'
-12) floor(0 8) ceil(65 2) walls '27 31 17 30 ' items '(60,22 15)'
-13) floor(12 1) ceil(65 2) walls '19 34 33 32 ' items '(44,29 15)(53,29 15)'
-14) floor(0 8) ceil(65 2) walls '34 31 24 37 36 101 96 35 91 86 ' items '(59,31 15)(65,26 5)'
-15) floor(0 8) ceil(65 2) walls '40 21 29 32 39 38 ' items '(33,33 15)(42,29 15)'
-16) floor(0 8) ceil(65 2) walls '41 42 43 13 ' items ''
-17) floor(0 8) ceil(65 2) walls '41 28 23 46 45 44 ' items ''
-18) floor(0 8) ceil(65 2) walls '20 40 47 46 ' items ''
-19) floor(0 8) ceil(65 2) walls '49 48 37 25 ' items ''
-20) floor(0 8) ceil(65 2) walls '50 51 49 26 30 43 ' items ''
-21) door floor(12 56) ceil(12 56) walls '54 53 52 33 ' items ''
-22) floor(12 1) ceil(32 2) walls '53 57 56 55 ' items '(47,46 1)(51,47 15)'
-23) floor(14 1) ceil(34 2) walls '56 60 59 58 ' items ''
-24) floor(16 1) ceil(36 2) walls '59 63 62 61 ' items ''
-25) floor(18 1) ceil(38 2) walls '62 66 65 64 ' items ''
-26) door floor(18 1) ceil(18 2) walls '69 68 67 65 ' items ''
-27) floor(18 1) ceil(38 2) walls '68 74 73 72 71 70 ' items '(53,68 1)(42,65 15)(55,65 15)'
-28) floor(10 8) ceil(65 2) walls '47 79 78 77 76 75 ' items '(21,24 15)(21,30 15)'
-29) floor(28 8) ceil(65 2) walls '80 81 82 76 ' items ''
-30) floor(28 8) ceil(65 2) walls '78 85 84 83 ' items ''
-31) floor(12 1) ceil(65 2) walls '90 89 88 87 ' items ''
-32) floor(12 1) ceil(65 2) walls '95 94 93 92 ' items ''
-33) floor(12 1) ceil(65 2) walls '97 98 99 100 ' items ''
-34) floor(12 1) ceil(65 2) walls '105 104 103 102 ' items ''
-35) floor(0 8) ceil(65 2) walls '106 107 105 36 ' items ''
-36) floor(0 8) ceil(65 2) walls '108 109 110 104 107 ' items ''
-37) floor(0 8) ceil(65 2) walls '102 111 112 98 101 ' items ''
-38) floor(0 8) ceil(65 2) walls '103 110 113 114 119 111 ' items ''
-39) floor(0 8) ceil(65 2) walls '97 115 95 35 96 ' items ''
-40) floor(0 8) ceil(65 2) walls '92 116 90 91 ' items ''
-41) floor(0 8) ceil(65 2) walls '87 117 118 86 ' items ''
-42) floor(0 8) ceil(65 2) walls '119 120 122 99 112 ' items ''
-43) floor(0 8) ceil(65 2) walls '121 124 94 115 100 122 ' items ''
-44) floor(0 8) ceil(65 2) walls '124 123 89 116 93 ' items ''
-45) floor(0 8) ceil(65 2) walls '125 117 88 123 121 120 114 ' items ''
+0) floor(38 52) ceil(94 58) walls '3 2 1 0 ' items ''
+1) floor(34 52) ceil(94 58) walls '4 5 6 3 ' items ''
+2) floor(34 52) ceil(94 58) walls '6 8 7 2 ' items ''
+3) floor(34 52) ceil(94 58) walls '7 10 9 1 ' items ''
+4) floor(34 52) ceil(94 58) walls '0 9 11 4 ' items ''
+5) floor(30 52) ceil(94 58) walls '12 13 14 5 ' items ''
+6) floor(30 52) ceil(94 58) walls '11 16 15 12 ' items '(44,23 15)'
+7) floor(30 52) ceil(94 58) walls '17 18 8 14 ' items '(53,23 15)'
+8) floor(30 52) ceil(94 58) walls '19 16 10 18 ' items ''
+9) floor(85 53) ceil(85 17) walls '23 22 21 20 ' items ''
+10) floor(85 53) ceil(85 17) walls '27 26 25 24 ' items ''
+11) floor(0 3) ceil(85 17) walls '28 15 29 22 ' items '(37,22 15)'
+12) floor(0 3) ceil(85 17) walls '27 31 17 30 ' items '(60,22 15)'
+13) floor(18 53) ceil(85 17) walls '19 34 84 33 32 ' items '(44,29 15)(53,29 15)'
+14) floor(0 3) ceil(85 17) walls '38 21 29 32 37 36 ' items '(33,33 15)(42,29 15)'
+15) floor(0 3) ceil(85 17) walls '39 40 41 13 ' items ''
+16) floor(0 3) ceil(85 17) walls '39 28 23 44 43 42 ' items ''
+17) floor(0 3) ceil(85 17) walls '20 38 45 44 ' items ''
+18) floor(0 3) ceil(85 17) walls '47 46 35 25 ' items ''
+19) floor(0 3) ceil(85 17) walls '48 49 47 26 30 41 ' items ''
+20) door floor(18 56) ceil(18 56) walls '52 51 50 33 ' items ''
+21) floor(18 53) ceil(60 60) walls '51 55 54 53 ' items '(47,46 1)(51,47 15)'
+22) floor(22 53) ceil(52 60) walls '54 58 57 56 ' items ''
+23) floor(26 53) ceil(60 60) walls '57 61 60 59 ' items ''
+24) floor(30 53) ceil(60 60) walls '60 64 63 62 ' items ''
+25) door floor(34 56) ceil(34 56) walls '67 66 65 63 ' items ''
+26) floor(34 59) ceil(64 60) walls '66 72 71 70 69 68 ' items '(53,68 1)(42,65 15)(55,65 15)'
+27) floor(0 3) ceil(85 17) walls '45 77 76 75 74 73 ' items '(21,24 15)(21,30 15)'
+28) floor(28 3) ceil(85 17) walls '78 79 80 74 ' items ''
+29) floor(28 3) ceil(85 17) walls '76 83 82 81 ' items ''
+30) floor(16 53) ceil(85 17) walls '84 88 87 86 85 ' items ''
+31) floor(16 53) ceil(85 17) walls '89 90 91 92 93 87 ' items ''
+32) floor(16 53) ceil(85 17) walls '99 98 97 96 95 94 ' items ''
+33) floor(16 53) ceil(85 17) walls '100 101 102 103 97 ' items ''
+34) floor(16 53) ceil(85 17) walls '104 105 106 132 102 ' items ''
+35) floor(0 3) ceil(85 17) walls '107 104 101 108 35 ' items '(69,25 27)'
+36) floor(0 3) ceil(85 17) walls '108 100 98 109 31 24 ' items ''
+37) floor(0 3) ceil(85 17) walls '34 110 89 88 ' items ''
+38) floor(0 3) ceil(85 17) walls '110 109 99 111 90 ' items ''
+39) floor(0 3) ceil(85 17) walls '94 112 91 111 ' items ''
+40) floor(0 3) ceil(85 17) walls '93 114 113 86 ' items ''
+41) floor(0 3) ceil(85 17) walls '115 114 92 112 95 ' items '(65,36 27)'
+42) floor(16 53) ceil(59 17) walls '116 117 118 139 119 105 ' items ''
+43) floor(16 53) ceil(85 17) walls '119 122 121 120 ' items '(75,31 1)'
+44) door floor(16 53) ceil(16 56) walls '121 123 124 125 ' items ''
+45) floor(16 53) ceil(85 17) walls '124 131 130 129 128 127 126 ' items '(83,40 15)'
+46) floor(0 1) ceil(20 2) walls '106 134 133 ' items ''
+47) floor(0 3) ceil(85 17) walls '133 115 96 103 132 ' items ''
+48) floor(16 53) ceil(85 17) walls '123 122 135 136 137 138 131 ' items ''
+49) floor(16 53) ceil(85 17) walls '118 140 145 141 142 143 135 139 ' items ''
+50) floor(16 53) ceil(85 17) walls '144 141 145 146 147 ' items ''
 
 Player
-0) 49,70 (sector: 27) start
+0) 49,70 (sector: 26) start
 1) 49,22 (sector: 0) end
 
