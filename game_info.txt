@@ -7,14 +7,14 @@ File Names:
 2) new_map.txt
 ###
 
-#Textures 64
+#Textures 67
 Path: ./media/textures/
 Extension: 
 File Names: 
 0) ShanConc01.png
 1) AgoraBasRelief.png
 2) Autel.png
-3) Mlava.jpg
+3) MLava.jpg
 4) Ca_ship_front1.png
 5) Ca_ship_front.png
 6) Ca_ship_top.png
@@ -73,8 +73,11 @@ File Names:
 59) WTEX091.png
 60) WTEX077.png
 61) WTEX056.png
-62) CR_floor_new2.jpg
+62) CR_floor_new2.png
 63) WTEX170.png
+64) arch1.png
+65) cob-web2.png
+66) Wintest2.png
 ###
 
 #Items
