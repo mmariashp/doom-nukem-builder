@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 18:54:43 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/28 18:54:45 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/11 13:46:18 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,32 +50,88 @@ int s)
 	i = -1;
 	while (++i < w->n_s)
 	{
+//		printf("checking sector %d\n", i);
 		if (i == s)
+		{
+//			printf("SKIPPING\n");
 			continue ;
+		}
 		j = -1;
 		while (++j < w->sec[i].n_w)
 		{
 			if (w->sec[i].s_walls[j] != wall)
 				continue ;
+//			printf("secwall %d = %d; (WALL is %d)\nsector walls were:\n", j, w->sec[i].s_walls[j], wall);
+//			int k = 0;
+//			while (k < w->sec[i].n_w)
+//			{
+//				printf("%d, ", w->sec[i].s_walls[k]);
+//				k++;
+//			}
+//			printf("\n");
+//			printf("sector vecs were:\n");
+//			k = 0;
+//			while (k < w->sec[i].n_v)
+//			{
+//				printf("%d, ", w->sec[i].v[k]);
+//				k++;
+//			}
+//			printf("\n");
+
 			add_secwall(&w->sec[i].s_walls, w->sec[i].n_w++, new_id);
+
+//			printf("AFTER ADD SECWALL walls:\n");
+//			k = 0;
+//			while (k < w->sec[i].n_w)
+//			{
+//				printf("%d, ", w->sec[i].s_walls[k]);
+//				k++;
+//			}
+//			printf("\n");
+
 			if ((prv_nxt[0] = j - 1) < 0)
-				prv_nxt[0] = w->sec[i].n_w - 1;
+				prv_nxt[0] = w->sec[i].n_w - 2;
 			if ((prv_nxt[1] = j + 1) >= w->sec[i].n_w)
 				prv_nxt[1] = 0;
+
+//			printf("prvnxt %d: %d-%d ; %d: %d-%d\n", prv_nxt[0], w->walls[w->sec[i].s_walls[prv_nxt[0]]].v1, w->walls[w->sec[i].s_walls[prv_nxt[0]]].v2,
+//					prv_nxt[1] , w->walls[w->sec[i].s_walls[prv_nxt[1]]].v1, w->walls[w->sec[i].s_walls[prv_nxt[1]]].v2);
+//			printf("points to compare: %d,%d\n", w->walls[w->sec[i].s_walls[j]].v1, w->walls[w->sec[i].s_walls[j]].v2);
+
 			if (w->walls[w->sec[i].s_walls[prv_nxt[0]]].v1 != w->walls[w->sec[
 					i].s_walls[j]].v1 &&
 				w->walls[w->sec[i].s_walls[prv_nxt[0]]].v2 !=
 				w->walls[w->sec[i].s_walls[j]].v1)
 			{
+//				printf("will put new wall before, prev= %d\n", w->sec[i].s_walls[prv_nxt[0]]);
 				break_in_prev(w->sec[i].s_walls, w->sec[i].n_w, prv_nxt[0]);
 			}
 			else
 			{
+//				printf("will put new wall after, prev= %d\n", w->sec[i].s_walls[prv_nxt[1]]);
 				break_in_prev(w->sec[i].s_walls, w->sec[i].n_w, prv_nxt[1]);
 			}
+//			printf("AFTER BREAK IN walls:\n");
+//			k = 0;
+//			while (k < w->sec[i].n_w)
+//			{
+//				printf("%d, ", w->sec[i].s_walls[k]);
+//				k++;
+//			}
+//			printf("\n");
 			if (w->sec[i].v)
 				free(w->sec[i].v);
 			get_sec_v(&w->sec[i], w->walls);
+
+//			printf("sector vecs are now:\n");
+//			k = 0;
+//			while (k < w->sec[i].n_v)
+//			{
+//				printf("%d, ", w->sec[i].v[k]);
+//				k++;
+//			}
+//			printf("\n");
+
 			make_continuous(&w->sec[i], w, i);
 			validate_clockwise(w, i);
 			break ;
@@ -83,19 +139,21 @@ int s)
 	}
 }
 
-unsigned short			break_wall(t_world *world, int vec_id, int wall, int s)
+unsigned short			break_wall(t_world *world, int vec, int wall, int s)
 {
 	int					two;
 	int 				new_id;
 
-	if (!world || !within(wall, -1, world->n_w) ||
-	!within(vec_id, -1, world->n_v))
+	if (!world || !within(wall, -1, world->n_w) || !within(vec, -1, world->n_v))
 		return (FAIL);
+	printf("wall points %d-%d\n", world->walls[wall].v1, world->walls[wall].v2);
 	two = world->walls[wall].v2;
-	if (add_wall(&world->walls, world->n_w, vec_id, two) == FAIL)
+	if (add_wall(&world->walls, world->n_w, vec, two) == FAIL)
 		return (FAIL);
+	printf("new wall points %d-%d\n", world->walls[world->n_w].v1, world->walls[world->n_w].v2);
 	new_id = world->n_w;
-	world->walls[wall].v2 = vec_id;
+	world->walls[wall].v2 = vec;
+	printf("updated old wall points %d-%d\n", world->walls[wall].v1, world->walls[wall].v2);
 	world->n_w++;
 	add_broken_secwall(world, wall, new_id, s);
 	return (SUCCESS);
@@ -118,7 +176,10 @@ int wall)
 		if (add_vec(&w->vecs, (id = w->n_v++), g, 0) == FAIL)
 			return (-1);
 		if (wall != -1)
+		{
+			printf("breaking wall %d, sector = %d\n", wall, -1);
 			break_wall(w, id, wall, -1);
+		}
 	}
 	if (id == -1)
 	{
@@ -174,7 +235,10 @@ void					add_to_media(t_grid *grid, t_world *world, int wall)
 		== FAIL)
 			return ;
 		if (wall != -1)
+		{
+			printf("breaking wall %d, sector = %d\n", wall, f_s_l[1]);
 			break_wall(world, wall_id_done[1], wall, f_s_l[1]);
+		}
 	}
 	if (add_media_elements(world, grid, wall_id_done, f_s_l) == FAIL)
 		return ;
