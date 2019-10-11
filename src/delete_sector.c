@@ -39,7 +39,9 @@ void					copy_sec_values(t_sec *new, t_sec *old)
 		new->n_w = old->n_w;
 		new->n_v = old->n_v;
 		new->status = old->status;
-		new->is_door = old->is_door;
+		new->type[0] = old->type[0];
+		new->type[1] = old->type[1];
+		new->type[2] = old->type[2];
 	}
 }
 

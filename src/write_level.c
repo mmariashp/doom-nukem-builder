@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 17:16:37 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 17:16:38 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:26:55 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,14 @@ void					write_sector(t_sec sec, int fd)
 {
 	int					j;
 
-	if (sec.is_door)
+	if (sec.type[0] == door)
 		ft_putstr_fd("door ", fd);
+	else if (sec.type[0] == elevator)
+		ft_putstr_fd("lift ", fd);
+	if (sec.type[1] == skybox)
+		ft_putstr_fd("uncovered ", fd);
+	if (sec.type[2] == unsafe)
+		ft_putstr_fd("murderous ", fd);
 	ft_putstr_fd("floor(", fd);
 	ft_putnbr_fd(sec.fl, fd);
 	ft_putstr_fd(" ", fd);
@@ -122,8 +128,14 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 		write_tmp(section, fd, i, world);
 		if (section == 1)
 		{
-			ft_putstr_fd(world.walls[i].type == WALL_FILLED ? " filled " : \
-			" empty ", fd);
+			if (world.walls[i].type == filled)
+				ft_putstr_fd(" filled ", fd);
+			else if (world.walls[i].type == empty)
+				ft_putstr_fd(" empty ", fd);
+			else if (world.walls[i].type == window)
+				ft_putstr_fd(" window ", fd);
+			else if (world.walls[i].type == transparent)
+				ft_putstr_fd(" transparent ", fd);
 			ft_putnbr_fd(world.walls[i].txtr, fd);
 		}
 		else if (section == 2 && world.sec)

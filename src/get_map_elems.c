@@ -116,8 +116,12 @@ void					get_walls(t_wall *wall, char *line, t_vec p)
 	wall->v2 = p.y;
 	while (*line && !ft_isalpha(*line))
 		line++;
-	wall->type = WALL_EMPTY;
+	wall->type = empty;
 	if (*line == 'f' || *line == 'F')
-		wall->type = WALL_FILLED;
+		wall->type = filled;
+	else if (*line == 't' || *line == 'T')
+		wall->type = transparent;
+	else if (*line == 'w' || *line == 'W')
+		wall->type = window;
 	wall->txtr = get_wall_txtr(line, 0, MAX_N_TXTRS);
 }

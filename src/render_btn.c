@@ -61,7 +61,7 @@ void					render_btns(t_prog *prog, t_sdl *sdl)
 			if (prog->m_id == MODE_EDITOR &&
 			(prog->modes[prog->m_id].btn[i].vis_lit_on[1] ||
 			prog->modes[prog->m_id].btn[i].vis_lit_on[2]) &&
-			state == SEC_EDIT && i > B_ITEM_DEL)
+			state == SEC_EDIT && i > B_ITEM_DEL && i < B_NORM)
 				render_btn_big(&prog->modes[prog->m_id].btn[i], sdl, prog->t);
 			else
 				render_btn(&prog->modes[prog->m_id].btn[i], sdl, prog->t);

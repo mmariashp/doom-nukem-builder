@@ -21,10 +21,14 @@ void					edit_wall_type(int btn_on, t_world *world)
 		return ;
 	if (btn_on == PORT_BTN)
 	{
-		if (world->walls[wall].type != WALL_FILLED)
-			world->walls[wall].type = WALL_FILLED;
-		else if (world->walls[wall].type == WALL_FILLED)
-			world->walls[wall].type = WALL_EMPTY;
+		if (world->walls[wall].type == filled)
+			world->walls[wall].type = empty;
+		else if (world->walls[wall].type == empty)
+			world->walls[wall].type = window;
+		else if (world->walls[wall].type == window)
+			world->walls[wall].type = transparent;
+		else if (world->walls[wall].type == transparent)
+			world->walls[wall].type = filled;
 	}
 }
 

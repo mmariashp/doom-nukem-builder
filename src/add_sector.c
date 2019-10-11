@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 12:23:47 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 12:23:49 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:26:21 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ unsigned short			add_sector(t_sec **sec, short n_s)
 	(*sec)[n_s].n_w = 0;
 	(*sec)[n_s].n_it = 0;
 	(*sec)[n_s].n_v = 0;
-	(*sec)[n_s].is_door = FALSE;
+	(*sec)[n_s].type[0] = normal;
+	(*sec)[n_s].type[1] = ceiling;
+	(*sec)[n_s].type[2] = safe;
 	(*sec)[n_s].status = SEC_CONVEX_CLOSED;
 	return (SUCCESS);
 }

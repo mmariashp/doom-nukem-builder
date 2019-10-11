@@ -8,7 +8,7 @@ File Names:
 3) new_level_0
 ###
 
-#Textures 67
+#Textures 69
 Path: ./media/textures/
 Extension: 
 File Names: 
@@ -79,6 +79,8 @@ File Names:
 64) arch1.png
 65) cob-web2.png
 66) Wintest2.png
+67) WTEX030.png
+68) WTEX033.png
 ###
 
 #Items
@@ -100,7 +102,7 @@ File Names:
 12) ammo pistolet_ammo
 13) ammo shotgun_ammo
 14) ammo plasmagun_ammo
-15) light torch
+15) light ceil_light
 16) object tree_one
 17) object tree_two
 18) object dead_man
@@ -112,7 +114,10 @@ File Names:
 24) object radio
 25) object skull
 26) object pool_blood
-27) light candle
+27) light ceil_light
 28) light strange_light
+29) light candle
+30) light largefire
+31) coin pentagram
 ###
 

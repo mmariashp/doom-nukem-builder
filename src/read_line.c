@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 19:38:13 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/09 17:09:24 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:26:55 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ unsigned *vwsp, char *line)
 		ft_putchar('\n');
 		return (FAIL);
 	}
-	if (world->walls[vwsp[1]].type == WALL_FILLED && \
+	if (world->walls[vwsp[1]].type == filled && \
 	world->walls[vwsp[1]].txtr == -1)
 	{
 		ft_putstr("Incorrect wall texture for wall ");
@@ -65,11 +65,36 @@ unsigned *vwsp, char *line)
 	world->sec[vwsp[2]].n_w = 0;
 	world->sec[vwsp[2]].n_v = 0;
 	world->sec[vwsp[2]].status = 0;
-	world->sec[vwsp[2]].is_door = FALSE;
+	world->sec[vwsp[2]].type[0] = normal;
+	world->sec[vwsp[2]].type[1] = ceiling;
+	world->sec[vwsp[2]].type[2] = safe;
 	while (line && *line != 'f')
 	{
-		if (*line++ == 'd')
-			world->sec[vwsp[2]].is_door = TRUE;
+		if (*line == 'd')
+		{
+			world->sec[vwsp[2]].type[0] = door;
+			while (line && ft_isalpha(*line))
+				line++;
+		}
+		else if (*line == 'l')
+		{
+			world->sec[vwsp[2]].type[0] = elevator;
+			while (line && ft_isalpha(*line))
+				line++;
+		}
+		else if (*line == 'u')
+		{
+			world->sec[vwsp[2]].type[1] = skybox;
+			while (line && ft_isalpha(*line))
+				line++;
+		}
+		else if (*line == 'm')
+		{
+			world->sec[vwsp[2]].type[2] = unsafe;
+			while (line && ft_isalpha(*line))
+				line++;
+		}
+		line++;
 	}
 	if (get_sec_fl_ceil(&world->sec[vwsp[2]], line) == FAIL || \
 	!(line = ft_strchr(line, 'w')) || get_s_walls(&world->sec[vwsp[2]], \

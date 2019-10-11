@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 20:10:32 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 16:40:47 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:26:07 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,12 @@ t_scr **screen, int wall)
 		s = (t_scr){ FULL_W_CLR, SCR_WALL, i };
 		if (i == wall)
 			s.color = LIT_WALL_CLR;
-		else if (world.walls[i].type == WALL_EMPTY)
+		else if (world.walls[i].type == empty)
 			s.color = EMPTY_W_CLR;
+		else if (world.walls[i].type == window)
+			s.color = WINDOW_W_CLR;
+		else if (world.walls[i].type == transparent)
+			s.color = TRANSPARENT_W_CLR;
 		thick_line((t_line){ v1, v2 }, s, r, screen);
 		i++;
 	}
@@ -84,8 +88,10 @@ t_scr **screen, int sec)
 	CONCAVE_COLOR;
 	if ((st == SEC_SEARCH || st == SEC_EDIT) && sec == lit_it(1, S_SELECT, 0))
 		color = ACTIVE_SEC_COLOR;
-	if (world.sec[sec].is_door == TRUE)
+	if (world.sec[sec].type[0] == door)
 		color = DOOR_COLOR;
+	else if (world.sec[sec].type[0] == elevator)
+		color = ELEV_COLOR;
 	return (fill_polygon(p, world.sec[sec].n_v, screen, color));
 }
 

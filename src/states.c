@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 13:10:10 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/07 13:10:12 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:25:56 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ void					setup_door(t_world *world)
 {
 	if (!world || world->n_s < 2)
 		return ;
-	if (world->sec[world->n_s - 1].is_door == TRUE &&
+	if (world->sec[world->n_s - 1].type[0] == door &&
 	world->sec[world->n_s - 1].n_w == 4)
 	{
 		if (within(world->sec[world->n_s - 1].s_walls[0], -1, world->n_w))
 			world->walls[world->sec[world->n_s - 1].s_walls[0]].type = \
-			WALL_EMPTY;
+			empty;
 		if (within(world->sec[world->n_s - 1].s_walls[2], -1, world->n_w))
 			world->walls[world->sec[world->n_s - 1].s_walls[2]].type = \
-			WALL_EMPTY;
+			empty;
 	}
 }
 

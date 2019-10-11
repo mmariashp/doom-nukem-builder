@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 16:07:04 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/28 16:07:06 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:26:21 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,14 @@ unsigned short			add_dsec(t_sec **sec, short n_s, int wall)
 	(*sec)[n_s].items = NULL;
 	(*sec)[n_s].fl = default_heights(1, 0, -1);
 	(*sec)[n_s].ceil = default_heights(1, 0, -1);
-	(*sec)[n_s].fl_t = (short)default_texture(1, DEFAULT_FLR_T, -1);
+	(*sec)[n_s].fl_t = (short)default_texture(1, DEFAULT_DOOR_T, -1);
 	(*sec)[n_s].ceil_t = (short)default_texture(1, DEFAULT_DOOR_T, -1);
 	(*sec)[n_s].n_w = 4;
 	(*sec)[n_s].n_it = 0;
 	(*sec)[n_s].n_v = 4;
-	(*sec)[n_s].is_door = TRUE;
+	(*sec)[n_s].type[0] = door;
+	(*sec)[n_s].type[1] = ceiling;
+	(*sec)[n_s].type[2] = safe;
 	(*sec)[n_s].status = SEC_CONVEX_CLOSED;
 	if (!((*sec)[n_s].s_walls = ft_memalloc(sizeof(int) * (*sec)[n_s].n_w)))
 		return (FAIL);
@@ -134,4 +136,6 @@ void					add_door(t_world *w, int wall, t_grid *g)
 		get_sec_v(&w->sec[w->n_s++], w->walls);
 	else
 		return ;
+	w->walls[w->n_w - 1].txtr = (short)default_texture(1, DEFAULT_DOOR_T, -1);
+	w->walls[w->n_w - 3].txtr = (short)default_texture(1, DEFAULT_DOOR_T, -1);
 }

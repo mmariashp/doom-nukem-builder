@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 21:30:46 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/09 17:04:23 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:35:02 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@
 # define CONCAVE_COLOR			0xDA4302
 # define ACTIVE_SEC_COLOR		0x3949AB
 # define DOOR_COLOR				ORANGE
+# define ELEV_COLOR				BABY_PINK
 
 # define TMP_COLOR				SOFT_PURPLE
 
@@ -91,8 +92,10 @@
 # define FULL_COLOR				BROWN
 # define SEC_NOD_COLOR			NAVY
 
-# define FULL_W_CLR			WHITE
+# define FULL_W_CLR				WHITE
 # define EMPTY_W_CLR			GREEN
+# define WINDOW_W_CLR			RED
+# define TRANSPARENT_W_CLR		PURPLE
 # define LIT_WALL_CLR			NAVY
 
 /*
@@ -140,9 +143,6 @@
 
 # define MAX_SEC_ITEMS			40
 # define MAX_ITEMFULL			50
-
-# define WALL_EMPTY				0
-# define WALL_FILLED			1
 
 # define ASSET_FILE             "./game_info.txt"
 
@@ -222,8 +222,22 @@
 # define TXTR_WEAPON		49
 # define TXTR_LIGHT			50
 # define TXTR_DOOR			51
+# define TXTR_NORM			52
+# define TXTR_NORM_L		53
+# define TXTR_DSEC			54
+# define TXTR_DSEC_L		55
+# define TXTR_ELEV			56
+# define TXTR_ELEV_L		57
+# define TXTR_CEIL			58
+# define TXTR_CEIL_L		59
+# define TXTR_SKY			60
+# define TXTR_SKY_L			61
+# define TXTR_FL_SAFE		62
+# define TXTR_FL_SAFE_L		63
+# define TXTR_FL_UNSAFE		64
+# define TXTR_FL_UNSAFE_L	65
 
-# define N_TXTR				52
+# define N_TXTR				66
 
 # define DRAG_BTN			0
 # define DISTORT_BTN		1
@@ -256,8 +270,15 @@
 # define B_AMMO				16
 # define B_WEAPON			17
 # define B_LIGHT			18
+# define B_NORM				19
+# define B_DSEC				20
+# define B_ELEV				21
+# define B_CEIL				22
+# define B_SKY				23
+# define B_FL_SAFE			24
+# define B_FL_UNSAFE		25
 
-# define TOT_EDIT_BTNS		19
+# define TOT_EDIT_BTNS		26
 
 # define WT_EDIT_BTN		1
 # define PORT_BTN			2
@@ -323,6 +344,33 @@
 # define DEFAULT_CEIL_T		2
 # define DEFAULT_DOOR_T		3
 # define DEFAULT_TRAN_T		4
+
+enum						e_sec_type
+{
+	normal,
+	door,
+	elevator
+};
+
+enum						e_sec_ceil
+{
+	ceiling,
+	skybox
+};
+
+enum						e_sec_floor
+{
+	safe,
+	unsafe
+};
+
+enum						e_wall_type
+{
+	filled,
+	empty,
+	window,
+	transparent
+};
 
 typedef struct				s_rgb
 {
@@ -456,7 +504,7 @@ typedef struct				s_sec
 	unsigned short			n_w;
 	unsigned short			n_v;
 	char					status;
-	char					is_door;
+	char 					type[3];
 }							t_sec;
 
 typedef struct				s_sound

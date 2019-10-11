@@ -89,7 +89,7 @@ t_value					*get_wall_val(int *n, t_wall *wall)
 		return (NULL);
 	*n = nb;
 	new[1].t_id = wall->txtr;
-	new[2].t_id = wall->type != WALL_FILLED ? TXTR_YES : TXTR_NO;
+	new[2].t_id = wall->type != filled ? TXTR_YES : TXTR_NO;
 	new[1].m_p = 0;
 	new[2].m_p = 1;
 	return (new);
