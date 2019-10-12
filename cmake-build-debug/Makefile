@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /opt/clion-2019.2/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /opt/clion-2019.2/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/mshpakov/Desktop/doom-nukem-builder
+CMAKE_SOURCE_DIR = /home/moosh/CLionProjects/builder
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug
+CMAKE_BINARY_DIR = /home/moosh/CLionProjects/builder/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named builder
-
-# Build rule for target.
-builder: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 builder
-.PHONY : builder
-
-# fast build rule for target.
-builder/fast:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/build
-.PHONY : builder/fast
-
-#=============================================================================
 # Target rules for targets named ft
 
 # Build rule for target.
@@ -135,6 +122,19 @@ ft: cmake_check_build_system
 ft/fast:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
 .PHONY : ft/fast
+
+#=============================================================================
+# Target rules for targets named builder
+
+# Build rule for target.
+builder: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 builder
+.PHONY : builder
+
+# fast build rule for target.
+builder/fast:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/build
+.PHONY : builder/fast
 
 libft/ft_abs_cut.o: libft/ft_abs_cut.c.o
 
@@ -1999,6 +1999,33 @@ src/add_door.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_door.c.s
 .PHONY : src/add_door.c.s
 
+src/add_door_help.o: src/add_door_help.c.o
+
+.PHONY : src/add_door_help.o
+
+# target to build an object file
+src/add_door_help.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_door_help.c.o
+.PHONY : src/add_door_help.c.o
+
+src/add_door_help.i: src/add_door_help.c.i
+
+.PHONY : src/add_door_help.i
+
+# target to preprocess a source file
+src/add_door_help.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_door_help.c.i
+.PHONY : src/add_door_help.c.i
+
+src/add_door_help.s: src/add_door_help.c.s
+
+.PHONY : src/add_door_help.s
+
+# target to generate assembly for a file
+src/add_door_help.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_door_help.c.s
+.PHONY : src/add_door_help.c.s
+
 src/add_sector.o: src/add_sector.c.o
 
 .PHONY : src/add_sector.o
@@ -2053,6 +2080,33 @@ src/add_to_media.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_to_media.c.s
 .PHONY : src/add_to_media.c.s
 
+src/break_wall.o: src/break_wall.c.o
+
+.PHONY : src/break_wall.o
+
+# target to build an object file
+src/break_wall.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/break_wall.c.o
+.PHONY : src/break_wall.c.o
+
+src/break_wall.i: src/break_wall.c.i
+
+.PHONY : src/break_wall.i
+
+# target to preprocess a source file
+src/break_wall.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/break_wall.c.i
+.PHONY : src/break_wall.c.i
+
+src/break_wall.s: src/break_wall.c.s
+
+.PHONY : src/break_wall.s
+
+# target to generate assembly for a file
+src/break_wall.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/break_wall.c.s
+.PHONY : src/break_wall.c.s
+
 src/btn_main.o: src/btn_main.c.o
 
 .PHONY : src/btn_main.o
@@ -2106,6 +2160,33 @@ src/btn_press.s: src/btn_press.c.s
 src/btn_press.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press.c.s
 .PHONY : src/btn_press.c.s
+
+src/btn_press_settings.o: src/btn_press_settings.c.o
+
+.PHONY : src/btn_press_settings.o
+
+# target to build an object file
+src/btn_press_settings.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press_settings.c.o
+.PHONY : src/btn_press_settings.c.o
+
+src/btn_press_settings.i: src/btn_press_settings.c.i
+
+.PHONY : src/btn_press_settings.i
+
+# target to preprocess a source file
+src/btn_press_settings.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press_settings.c.i
+.PHONY : src/btn_press_settings.c.i
+
+src/btn_press_settings.s: src/btn_press_settings.c.s
+
+.PHONY : src/btn_press_settings.s
+
+# target to generate assembly for a file
+src/btn_press_settings.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press_settings.c.s
+.PHONY : src/btn_press_settings.c.s
 
 src/char_ops.o: src/char_ops.c.o
 
@@ -2754,6 +2835,33 @@ src/get_assets.s: src/get_assets.c.s
 src/get_assets.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_assets.c.s
 .PHONY : src/get_assets.c.s
+
+src/get_boxes.o: src/get_boxes.c.o
+
+.PHONY : src/get_boxes.o
+
+# target to build an object file
+src/get_boxes.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_boxes.c.o
+.PHONY : src/get_boxes.c.o
+
+src/get_boxes.i: src/get_boxes.c.i
+
+.PHONY : src/get_boxes.i
+
+# target to preprocess a source file
+src/get_boxes.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_boxes.c.i
+.PHONY : src/get_boxes.c.i
+
+src/get_boxes.s: src/get_boxes.c.s
+
+.PHONY : src/get_boxes.s
+
+# target to generate assembly for a file
+src/get_boxes.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_boxes.c.s
+.PHONY : src/get_boxes.c.s
 
 src/get_input.o: src/get_input.c.o
 
@@ -4078,6 +4186,33 @@ src/texture_edit.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/texture_edit.c.s
 .PHONY : src/texture_edit.c.s
 
+src/texture_name.o: src/texture_name.c.o
+
+.PHONY : src/texture_name.o
+
+# target to build an object file
+src/texture_name.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/texture_name.c.o
+.PHONY : src/texture_name.c.o
+
+src/texture_name.i: src/texture_name.c.i
+
+.PHONY : src/texture_name.i
+
+# target to preprocess a source file
+src/texture_name.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/texture_name.c.i
+.PHONY : src/texture_name.c.i
+
+src/texture_name.s: src/texture_name.c.s
+
+.PHONY : src/texture_name.s
+
+# target to generate assembly for a file
+src/texture_name.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/texture_name.c.s
+.PHONY : src/texture_name.c.s
+
 src/textures.o: src/textures.c.o
 
 .PHONY : src/textures.o
@@ -4383,8 +4518,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... builder"
 	@echo "... ft"
+	@echo "... builder"
 	@echo "... libft/ft_abs_cut.o"
 	@echo "... libft/ft_abs_cut.i"
 	@echo "... libft/ft_abs_cut.s"
@@ -4592,18 +4727,27 @@ help:
 	@echo "... src/add_door.o"
 	@echo "... src/add_door.i"
 	@echo "... src/add_door.s"
+	@echo "... src/add_door_help.o"
+	@echo "... src/add_door_help.i"
+	@echo "... src/add_door_help.s"
 	@echo "... src/add_sector.o"
 	@echo "... src/add_sector.i"
 	@echo "... src/add_sector.s"
 	@echo "... src/add_to_media.o"
 	@echo "... src/add_to_media.i"
 	@echo "... src/add_to_media.s"
+	@echo "... src/break_wall.o"
+	@echo "... src/break_wall.i"
+	@echo "... src/break_wall.s"
 	@echo "... src/btn_main.o"
 	@echo "... src/btn_main.i"
 	@echo "... src/btn_main.s"
 	@echo "... src/btn_press.o"
 	@echo "... src/btn_press.i"
 	@echo "... src/btn_press.s"
+	@echo "... src/btn_press_settings.o"
+	@echo "... src/btn_press_settings.i"
+	@echo "... src/btn_press_settings.s"
 	@echo "... src/char_ops.o"
 	@echo "... src/char_ops.i"
 	@echo "... src/char_ops.s"
@@ -4676,6 +4820,9 @@ help:
 	@echo "... src/get_assets.o"
 	@echo "... src/get_assets.i"
 	@echo "... src/get_assets.s"
+	@echo "... src/get_boxes.o"
+	@echo "... src/get_boxes.i"
+	@echo "... src/get_boxes.s"
 	@echo "... src/get_input.o"
 	@echo "... src/get_input.i"
 	@echo "... src/get_input.s"
@@ -4823,6 +4970,9 @@ help:
 	@echo "... src/texture_edit.o"
 	@echo "... src/texture_edit.i"
 	@echo "... src/texture_edit.s"
+	@echo "... src/texture_name.o"
+	@echo "... src/texture_name.i"
+	@echo "... src/texture_name.s"
 	@echo "... src/textures.o"
 	@echo "... src/textures.i"
 	@echo "... src/textures.s"

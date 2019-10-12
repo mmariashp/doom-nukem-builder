@@ -8,7 +8,7 @@ File Names:
 3) new_level_0
 ###
 
-#Textures 69
+#Textures 70
 Path: ./media/textures/
 Extension: 
 File Names: 
@@ -69,18 +69,19 @@ File Names:
 54) DARKPRISON_017.png
 55) DARKPRISON_005.png
 56) gate2_D.png
-57) WTEX062.png
-58) WTEX094.png
-59) WTEX091.png
-60) WTEX077.png
-61) WTEX056.png
-62) CR_floor_new2.png
-63) WTEX170.png
-64) arch1.png
-65) cob-web2.png
-66) Wintest2.png
-67) WTEX030.png
-68) WTEX033.png
+57) horizont.png
+58) WTEX062.png
+59) WTEX094.png
+60) WTEX091.png
+61) WTEX077.png
+62) WTEX056.png
+63) CR_floor_new2.png
+64) WTEX170.png
+65) arch1.png
+66) cob-web2.png
+67) Wintest2.png
+68) WTEX030.png
+69) WTEX033.png
 ###
 
 #Items
@@ -119,5 +120,6 @@ File Names:
 29) light candle
 30) light largefire
 31) coin pentagram
+32) light firewall
 ###
 

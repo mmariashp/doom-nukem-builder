@@ -3,6 +3,7 @@ Count Walls: 239
 Count Sectors: 70
 
 Vectors
+
 0) 53,1
 1) 66,1
 2) 66,3
@@ -171,8 +172,8 @@ Vectors
 165) 110,65
 166) 122,65
 167) 122,75
-
 Walls
+
 0) 0-1 filled 43
 1) 1-2 empty 43
 2) 2-3 empty 43
@@ -412,8 +413,8 @@ Walls
 236) 165-166 filled 42
 237) 166-167 filled 42
 238) 167-162 filled 42
-
 Sectors
+
 0) floor(6 47) ceil(15 33) walls '0 1 2 3 ' items '(61,2 24)'
 1) floor(5 44) ceil(15 33) walls '4 5 6 1 ' items ''
 2) floor(5 44) ceil(15 33) walls '7 8 9 5 ' items ''
@@ -484,8 +485,7 @@ Sectors
 67) floor(47 5) ceil(61 41) walls '223 224 225 226 227 228 229 221 ' items '(116,83 27)'
 68) door floor(20 5) ceil(42 49) walls '232 231 230 226 ' items ''
 69) floor(20 5) ceil(42 4) walls '233 234 235 236 237 238 231 ' items ''
-
 Player
+
 0) 58,5 (sector: 7) start
 1) 112,72 (sector: 69) end
-

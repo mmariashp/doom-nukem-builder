@@ -22,7 +22,7 @@ unsigned short			main_menu_btn(t_btn *btn)
 	box.w = W_W / 4;
 	box.h = (box.w + 20) * N_MM_BTNS / 3;
 	box.x = (W_W - box.w) / 2;
-	box.y = (W_H - box.h) / 2;
+	box.y = (W_H - box.h) / 2 + W_H * 0.1;
 	distribute_btn_v(btn, (t_vec){ 0, N_MM_BTNS }, box, 20);
 	i = 0;
 	while (i < N_MM_BTNS)
@@ -82,51 +82,43 @@ unsigned short			sel_item_btn(t_btn *btn, t_it_f *it_f, int n_itf)
 	return (SUCCESS);
 }
 
-t_rec					settings_boxes(int h_box_val_btn, int id)
+t_rec					settings_boxes(int h_b_v_btn, int i)
 {
-	static t_rec		box1 = { W_W * 0.1, W_H * 0.3, W_W * 0.4, W_H * 0.6 };
-	static t_rec		box2 = { W_W * 0.5, W_H * 0.3, W_W * 0.4, W_H * 0.6 };
-	static t_vec		h_val_btn[4] = { { W_W * 0.3, W_H * 0.1 }, \
-	{ W_W * 0.32, W_H * 0.05 }, { W_H * 0.05, W_H * 0.05 }, \
-	{ W_H * 0.025, W_H * 0.025 } };
+	static t_rec		b1 = { W_W * 0.1, W_H * 0.3, W_W * 0.4, W_H * 0.6 };
+	static t_rec		b2 = { W_W * 0.5, W_H * 0.3, W_W * 0.4, W_H * 0.6 };
+	static t_vec		p[4] = { { W_W * 0.3, W_H * 0.1 }, { W_W * 0.32, W_H * \
+	0.05 }, { W_H * 0.05, W_H * 0.05 }, { W_H * 0.025, W_H * 0.025 } };
 	t_rec				res;
 
-	res = (t_rec){ 0, 0, 0, 0 };
-	if (h_box_val_btn == 0)
+	if (h_b_v_btn == 0)
 	{
-		if (id == 0)
-			res = (t_rec){ box1.x, box1.y - h_val_btn[0].y * 2, h_val_btn[0].x, h_val_btn[0].y };
-		else if (id == 1)
-			res = (t_rec){ box1.x, box1.y - h_val_btn[0].y, h_val_btn[0].x, h_val_btn[0].y };
-		else if (id == 2)
-			res = (t_rec){ box2.x, box2.y - h_val_btn[0].y, h_val_btn[0].x, h_val_btn[0].y };
+		res = (t_rec){ b1.x, b1.y, p[0].x, p[0].y };
+		res.x = i == 2 ? b2.x : b1.x;
+		res.y = i == 2 ? b2.y : b1.y;
+		res.y -= i == 0 ? p[0].y * 2 : p[0].y;
+		return (res);
 	}
-	else if (h_box_val_btn == 1)
-		res = id == 0 ? box1 : box2;
-	else if (h_box_val_btn == 2)
-	{
-		if (id < 5)
-			res = (t_rec){ box1.x + 5, box1.y + box2.h * 0.1 + h_val_btn[1].y * id, h_val_btn[1].x, h_val_btn[1].y };
-		else
-			res = (t_rec){ box2.x + 5, box2.y + box2.h * 0.1 + h_val_btn[1].y * (id - 5), h_val_btn[1].x, h_val_btn[1].y };
-	}
-	else if (h_box_val_btn == 3)
-	{
-		if (id == 0)
-			res = (t_rec){ W_W * 0.9, W_H * 0.1, h_val_btn[2].x, h_val_btn[2].y };
-		else if (id < 6)
-			res = (t_rec){ box1.x + h_val_btn[1].x, box1.y + box2.h * 0.1 + h_val_btn[2].y * (id - 1), h_val_btn[2].x, h_val_btn[2].y };
-		else
-			res = (t_rec){ box2.x + h_val_btn[1].x, box2.y + box2.h * 0.1 + h_val_btn[3].y * (id - 6), h_val_btn[3].x, h_val_btn[3].y };
-	}
-	return (res);
+	else if (h_b_v_btn == 1)
+		return (i == 0 ? b1 : b2);
+	else if (h_b_v_btn == 2)
+		return (i < 5 ? (t_rec){ b1.x + 5, b1.y + b2.h * 0.1 + p[1].y * i, \
+		p[1].x, p[1].y } : (t_rec){ b2.x + 5, b2.y + b2.h * 0.1 + p[1].y * \
+		(i - 5), p[1].x, p[1].y });
+	else if (i < 6)
+		return (!i ? (t_rec){ W_W * 0.9, W_H * 0.1, p[2].x, p[2].y } : (t_rec)\
+		{ b1.x + p[1].x, b1.y + b2.h * 0.1 + p[2].y * --i, p[2].x, p[2].y });
+	return ((t_rec){ b2.x + p[1].x, b2.y + b2.h * 0.1 + p[3].y * (i - 6), \
+	p[3].x, p[3].y });
 }
 
 unsigned short			settings_btn(t_btn *btn, int n)
 {
 	int					i;
-	static int			reg[10] = { TXTR_BACK, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT, TXTR_UP, TXTR_DOWN, TXTR_UP, TXTR_DOWN  };
-	static int			lit[10] = { TXTR_BACK_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_UP_L, TXTR_DOWN_L, TXTR_UP_L, TXTR_DOWN_L };
+	static int			reg[10] = { TXTR_BACK, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT,\
+	TXTR_EDIT, TXTR_EDIT, TXTR_UP, TXTR_DOWN, TXTR_UP, TXTR_DOWN  };
+	static int			lit[10] = { TXTR_BACK_L, TXTR_EDIT_L, TXTR_EDIT_L, \
+	TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_UP_L, TXTR_DOWN_L, TXTR_UP_L, \
+	TXTR_DOWN_L };
 
 	if (!btn)
 		return (FAIL);

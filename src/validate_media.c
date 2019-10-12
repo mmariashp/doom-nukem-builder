@@ -126,9 +126,6 @@ void					validate_media(t_media *media)
 	i = 0;
 	while (i < media->n_worlds)
 	{
-		ft_putstr("\033[1;35m");
-		printf("level %d validation \n", i);
-		ft_putstr("\x1b[0m");
 		validate_textures(&media->worlds[i], media->n_t);
 		validate_items(&media->worlds[i], media->n_itf);
 		validate_sectors(&media->worlds[i]);

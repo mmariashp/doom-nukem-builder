@@ -49,11 +49,11 @@ int 					default_texture(char set_get, char of_what, int value)
 		}
 		else
 		{
-			t[0] = DEFAULT_WALL_T;
-			t[1] = DEFAULT_FLR_T;
-			t[2] = DEFAULT_CEIL_T;
-			t[3] = DEFAULT_DOOR_T;
-			t[4] = DEFAULT_TRAN_T;
+			t[0] = def_wall_t;
+			t[1] = def_floor_t;
+			t[2] = def_ceil_t;
+			t[3] = def_door_t;
+			t[4] = def_tran_t;
 		}
 	}
 	return (-1);

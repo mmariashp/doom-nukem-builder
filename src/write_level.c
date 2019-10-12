@@ -16,6 +16,7 @@ void					write_items(t_sec sector, int fd)
 {
 	int					i;
 
+	ft_putstr_fd("' items '", fd);
 	if (sector.items && sector.n_it > 0)
 	{
 		i = 0;
@@ -31,6 +32,7 @@ void					write_items(t_sec sector, int fd)
 			i++;
 		}
 	}
+	ft_putstr_fd("'", fd);
 }
 
 int						get_n_sect(int section, t_world world)
@@ -60,9 +62,7 @@ void					write_sector(t_sec sec, int fd)
 		ft_putstr_fd("lift ", fd);
 	if (sec.type[1] == skybox)
 		ft_putstr_fd("uncovered ", fd);
-	if (sec.type[2] == unsafe)
-		ft_putstr_fd("murderous ", fd);
-	ft_putstr_fd("floor(", fd);
+	ft_putstr_fd(sec.type[2] == unsafe ? "murderous floor(" : "floor(", fd);
 	ft_putnbr_fd(sec.fl, fd);
 	ft_putstr_fd(" ", fd);
 	ft_putnbr_fd(sec.fl_t, fd);
@@ -77,9 +77,7 @@ void					write_sector(t_sec sec, int fd)
 		ft_putnbr_fd(sec.s_walls[j], fd);
 		ft_putstr_fd(" ", fd);
 	}
-	ft_putstr_fd("' items '", fd);
 	write_items(sec, fd);
-	ft_putstr_fd("'", fd);
 }
 
 void					write_tmp(int section, int fd, int i, t_world world)
@@ -87,14 +85,13 @@ void					write_tmp(int section, int fd, int i, t_world world)
 	t_vec				tmp;
 	char				del;
 
-	tmp = (t_vec){ 0, 0 };
+	ft_putnbr_fd(i, fd);
+	ft_putstr_fd(") ", fd);
 	if (section == 2)
 		return ;
-	if (section == 0)
-		tmp = (t_vec){ world.vecs[i].x, world.vecs[i].y };
-	else if (section == 1)
-		tmp = (t_vec){ world.walls[i].v1, world.walls[i].v2 };
-	else if (section == 3)
+	tmp = !section ? (t_vec){ world.vecs[i].x, world.vecs[i].y } : \
+	(t_vec){ world.walls[i].v1, world.walls[i].v2 };
+	if (section == 3)
 		tmp = i == 0 ? world.p_start : world.p_end;
 	del = section == 1 ? '-' : ',';
 	ft_putnbr_fd(tmp.x, fd);
@@ -118,13 +115,10 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 	int					n;
 
 	ft_putendl_fd(t[section], fd);
-	if ((n = get_n_sect(section, world)) == -1)
-		return (FAIL);
+	n = get_n_sect(section, world);
 	i = -1;
 	while (++i < n)
 	{
-		ft_putnbr_fd(i, fd);
-		ft_putstr_fd(") ", fd);
 		write_tmp(section, fd, i, world);
 		if (section == 1)
 		{

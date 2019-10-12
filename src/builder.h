@@ -196,8 +196,8 @@
 # define TXTR_DOOR_ADD_L	23
 # define TXTR_DOOR_DEL		24
 # define TXTR_DOOR_DEL_L	25
-# define TXTR_PLR		26
-# define TXTR_PLR_L		27
+# define TXTR_PLR			26
+# define TXTR_PLR_L			27
 # define TXTR_SAVE			28
 # define TXTR_SAVE_L		29
 # define TXTR_EXIT			30
@@ -334,16 +334,19 @@
 
 # define SCREEN_EMPTY		0
 # define SCREEN_NODE		1
-# define SCR_WALL		2
+# define SCR_WALL			2
 # define SCREEN_SECTOR		3
 # define SCREEN_PL_START	4
 # define SCREEN_PL_END		5
 
-# define DEFAULT_WALL_T		0
-# define DEFAULT_FLR_T		1
-# define DEFAULT_CEIL_T		2
-# define DEFAULT_DOOR_T		3
-# define DEFAULT_TRAN_T		4
+enum						e_default_txtr
+{
+	def_wall_t,
+	def_floor_t,
+	def_ceil_t,
+	def_door_t,
+	def_tran_t
+};
 
 enum						e_sec_type
 {
@@ -479,8 +482,8 @@ typedef struct				s_prog
 
 typedef struct				s_wall
 {
-	int						v1;
-	int						v2;
+	unsigned short			v1;
+	unsigned short			v2;
 	signed char				type;
 	short					txtr;
 }							t_wall;
@@ -831,7 +834,7 @@ void					switch_mode(t_prog *prog, int new_m_id, int new_state);
 void					drawing(t_world *world, t_prog *prog, t_grid *grid, \
 t_vec mouse);
 unsigned short			already_in_sector(int id, int *vecs, int n_v);
-unsigned short			can_place_vec(t_vec v, t_world world, t_grid *grid, \
+unsigned short			can_place_v(t_vec v, t_world world, t_grid *grid, \
 int wall);
 unsigned short			add_secwall(int **secwalls, short n_swalls, int wall);
 unsigned short			add_sector_v(int **v, short n_v, int id);
@@ -845,7 +848,7 @@ t_world *world);
 void					sec_edit_st(t_prog *prog, t_vec mouse, t_grid *grid, \
 t_media *media);
 
-int						get_sec_items(t_sec *sec, char *l);
+int						s_items(t_sec *sec, char *l);
 char					*get_name(int i);
 unsigned short			edit_texture(int fl_ceil, int n_t, t_texture *txtr, \
 t_world *world);
@@ -892,9 +895,9 @@ unsigned short			free_section(t_section *section);
 unsigned short			refresh_section(t_section *section);
 unsigned				update_media(t_media *media, t_section *section);
 unsigned				read_levels(t_media *media, t_section *section);
-int						get_s_walls(t_sec *sector, char *line, int n_w);
+int						s_walls(t_sec *sector, char *line, int n_w);
 void					get_walls(t_wall *wall, char *line, t_vec p);
-int						get_sec_fl_ceil(t_sec *sector, char *line);
+int						fl_ceil(t_sec *sector, char *line);
 unsigned short			init_vec(char *line, t_world *world);
 unsigned short			init_sec(char *line, t_world *world);
 unsigned short			init_walls(char *line, t_world *world);
@@ -938,5 +941,14 @@ int 					default_texture(char set_get, char of_what, int value);
 int 					default_heights(char set_get, char of_what, int value);
 void					add_to_media(t_grid *grid, t_world *world, int wall);
 void					make_continuous(t_sec *sec, t_world *world, int sec_no);
+unsigned short			will_inter(t_world *world, t_vec one, t_vec two);
+void					get_new_p(t_vec *new, t_grid *grid, t_world *world);
+char 					*get_txtr_name(int i);
+void					settings_mng_btn(t_prog *prog, t_media *media);
+void					prep_settings(t_prog *prog, t_grid *grid, \
+t_media *media);
+unsigned short			break_wall(t_world *world, int vec, int wall, int s);
+void					get_sec_boxes(t_mode *m);
+t_rec					sec_descr_boxes(int row, int col);
 
 #endif

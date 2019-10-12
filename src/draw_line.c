@@ -54,39 +54,6 @@ void					draw_line2(t_line l, t_scr s, t_scr **screen)
 		draw_dot2(l.p0.x + i, l.p0.y + (int)(i / d), s, screen);
 }
 
-void					draw_line_grid(t_line l, char c, \
-signed char nod[GRID_SIZE][GRID_SIZE])
-{
-	int				len;
-	int				i_value;
-	double			d;
-	int				i;
-	t_vec			p;
-
-	if (!clip_line(&l))
-		return ;
-	get_len(&d, &len, &i, l);
-	i_value = len < 0 ? -1 : 1;
-	if (!nod || d == 0)
-		return ;
-	if (i)
-	{
-		i = -i_value;
-		while ((i += i_value) != len)
-		{
-			if (ingrid((p = (t_vec){ l.p0.x + (int)(i / d), l.p0.y + i })))
-				nod[p.x][p.y] = c;
-		}
-		return ;
-	}
-	i = -i_value;
-	while ((i += i_value) != len)
-	{
-		if (ingrid((p = (t_vec){ l.p0.x + i, l.p0.y + (int)(i / d) })))
-			nod[p.x][p.y] = c;
-	}
-}
-
 void					thick_line(t_line l, t_scr s, int r, t_scr **screen)
 {
 	int				len;
@@ -94,11 +61,11 @@ void					thick_line(t_line l, t_scr s, int r, t_scr **screen)
 	double			d;
 	int				i;
 
-	if (!clip_line(&l))
+	if (!clip_line(&l) || !screen)
 		return ;
 	get_len(&d, &len, &i, l);
 	i_value = len < 0 ? -1 : 1;
-	if (!screen || d == 0)
+	if (d == 0)
 		return ;
 	if (i)
 	{

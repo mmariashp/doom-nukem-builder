@@ -31,8 +31,8 @@ unsigned short			add_sector(t_sec **sec, short n_s)
 	(*sec)[n_s].items = NULL;
 	(*sec)[n_s].fl = default_heights(1, 0, -1);
 	(*sec)[n_s].ceil = default_heights(1, 1, -1);
-	(*sec)[n_s].fl_t = default_texture(1, DEFAULT_FLR_T, -1);
-	(*sec)[n_s].ceil_t = default_texture(1, DEFAULT_CEIL_T, -1);
+	(*sec)[n_s].fl_t = default_texture(1, def_floor_t, -1);
+	(*sec)[n_s].ceil_t = default_texture(1, def_ceil_t, -1);
 	(*sec)[n_s].n_w = 0;
 	(*sec)[n_s].n_it = 0;
 	(*sec)[n_s].n_v = 0;

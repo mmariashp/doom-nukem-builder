@@ -88,6 +88,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/src/clip_line.c.o"
   "CMakeFiles/builder.dir/src/draw_line.c.o"
   "CMakeFiles/builder.dir/src/settings.c.o"
+  "CMakeFiles/builder.dir/src/add_door_help.c.o"
+  "CMakeFiles/builder.dir/src/texture_name.c.o"
+  "CMakeFiles/builder.dir/src/btn_press_settings.c.o"
+  "CMakeFiles/builder.dir/src/break_wall.c.o"
+  "CMakeFiles/builder.dir/src/get_boxes.c.o"
   "builder.pdb"
   "builder"
 )

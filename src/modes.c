@@ -81,9 +81,7 @@ void					get_loop_fun(t_mode *modes, t_media *media)
 	modes[MODE_SETTINGS].update = &u_settings;
 	modes[MODE_SETTINGS].render = &r_settings;
 	modes[MODE_MAIN_MENU].n_btn = N_MM_BTNS;
-	modes[MODE_LEVELS].n_btn = (media->n_worlds + 1) * 3;
 	modes[MODE_TEXTURES].n_btn = media->n_t;
-	modes[MODE_MAIN_MENU].n_btn = N_MM_BTNS;
 	modes[MODE_LEVELS].n_btn = (media->n_worlds + 1) * 3;
 	modes[MODE_EDITOR].n_btn = TOT_EDIT_BTNS;
 	modes[MODE_SEL_ITEM].n_btn = media->n_itf;
@@ -99,14 +97,13 @@ unsigned short			init_modes(t_media *media, t_prog *prog)
 	ft_bzero(prog->modes, sizeof(t_mode) * N_MODES);
 	get_loop_fun(prog->modes, media);
 	prog->modes[MODE_SETTINGS].n_btn = 10;
-	i = 0;
-	while (i < N_MODES)
+	i = -1;
+	while (++i < N_MODES)
 	{
 		prog->modes[i].btn = NULL;
 		if (prog->modes[i].n_btn > 0 && !(prog->modes[i].btn = \
 		init_btn(prog->modes[i].n_btn)))
 			return (FAIL);
-		i++;
 	}
 	main_menu_btn(prog->modes[MODE_MAIN_MENU].btn);
 	levels_btn(prog->modes[MODE_LEVELS].btn, media->worlds, media->n_worlds);
@@ -114,6 +111,7 @@ unsigned short			init_modes(t_media *media, t_prog *prog)
 	default_heights(0, -1, -1);
 	textures_btn(prog->modes[MODE_TEXTURES].btn, media->n_t);
 	sel_item_btn(prog->modes[MODE_SEL_ITEM].btn, media->it_f, media->n_itf);
-	settings_btn(prog->modes[MODE_SETTINGS].btn, prog->modes[MODE_SETTINGS].n_btn);
+	settings_btn(prog->modes[MODE_SETTINGS].btn, \
+	prog->modes[MODE_SETTINGS].n_btn);
 	return (SUCCESS);
 }

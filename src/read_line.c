@@ -51,56 +51,51 @@ unsigned *vwsp, char *line)
 	return (SUCCESS);
 }
 
-unsigned short			read_into_secs(t_world *world, \
-unsigned *vwsp, char *line)
+void 					get_sec_type(char l, char type[3])
 {
-	world->sec[vwsp[2]].items = NULL;
-	world->sec[vwsp[2]].s_walls = NULL;
-	world->sec[vwsp[2]].v = NULL;
-	world->sec[vwsp[2]].fl = 0;
-	world->sec[vwsp[2]].ceil = 0;
-	world->sec[vwsp[2]].fl_t = 0;
-	world->sec[vwsp[2]].ceil_t = 0;
-	world->sec[vwsp[2]].n_it = 0;
-	world->sec[vwsp[2]].n_w = 0;
-	world->sec[vwsp[2]].n_v = 0;
-	world->sec[vwsp[2]].status = 0;
-	world->sec[vwsp[2]].type[0] = normal;
-	world->sec[vwsp[2]].type[1] = ceiling;
-	world->sec[vwsp[2]].type[2] = safe;
-	while (line && *line != 'f')
+	if (l == 'd')
 	{
-		if (*line == 'd')
-		{
-			world->sec[vwsp[2]].type[0] = door;
-			while (line && ft_isalpha(*line))
-				line++;
-		}
-		else if (*line == 'l')
-		{
-			world->sec[vwsp[2]].type[0] = elevator;
-			while (line && ft_isalpha(*line))
-				line++;
-		}
-		else if (*line == 'u')
-		{
-			world->sec[vwsp[2]].type[1] = skybox;
-			while (line && ft_isalpha(*line))
-				line++;
-		}
-		else if (*line == 'm')
-		{
-			world->sec[vwsp[2]].type[2] = unsafe;
-			while (line && ft_isalpha(*line))
-				line++;
-		}
-		line++;
+		type[0] = door;
 	}
-	if (get_sec_fl_ceil(&world->sec[vwsp[2]], line) == FAIL || \
-	!(line = ft_strchr(line, 'w')) || get_s_walls(&world->sec[vwsp[2]], \
-	line, world->n_w) == FAIL || !(line = ft_strchr(line, 'i')))
-		return (FAIL);
-	if (get_sec_items(&world->sec[vwsp[2]++], line) == FAIL)
+	else if (l == 'l')
+	{
+		type[0] = elevator;
+	}
+	else if (l == 'u')
+	{
+		type[1] = skybox;
+	}
+	else if (l == 'm')
+	{
+		type[2] = unsafe;
+	}
+}
+
+unsigned short			read_into_secs(t_world *w, unsigned *s, char *l)
+{
+	w->sec[*s].items = NULL;
+	w->sec[*s].s_walls = NULL;
+	w->sec[*s].v = NULL;
+	w->sec[*s].fl = 0;
+	w->sec[*s].ceil = 0;
+	w->sec[*s].fl_t = 0;
+	w->sec[*s].ceil_t = 0;
+	w->sec[*s].n_it = 0;
+	w->sec[*s].n_w = 0;
+	w->sec[*s].n_v = 0;
+	w->sec[*s].status = 0;
+	w->sec[*s].type[0] = normal;
+	w->sec[*s].type[1] = ceiling;
+	w->sec[*s].type[2] = safe;
+	while (l && *l != 'f')
+	{
+		get_sec_type(*l, w->sec[*s].type);
+		while (l && ft_isalpha(*l))
+			l++;
+		l++;
+	}
+	if (fl_ceil(&w->sec[*s], l) || !(l = ft_strchr(l, 'w')) || s_walls(&w->sec[\
+	*s], l, w->n_w) || !(l = ft_strchr(l, 'i')) || s_items(&w->sec[(*s)++], l))
 		return (FAIL);
 	return (SUCCESS);
 }
@@ -118,7 +113,7 @@ t_world *w, unsigned short w_no)
 	if (!l || !w || !s || !(l = ft_strchr(l, ')')))
 		return (FAIL);
 	if (l++ && s == R_SECS && vwsp[2] < w->n_s)
-		return (read_into_secs(w, vwsp, l));
+		return (read_into_secs(w, &vwsp[2], l));
 	sep = s == R_WALLS ? '-' : ',';
 	p.x = ft_atoi(l);
 	if (!(l = ft_strchr(l, sep)))

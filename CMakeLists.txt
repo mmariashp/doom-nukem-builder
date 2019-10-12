@@ -116,7 +116,7 @@ add_executable(${PROJECT_NAME}
 		src/check_for_light.c
 		src/clip_line.c
 		src/draw_line.c
-		src/settings.c)
+		src/settings.c src/add_door_help.c src/texture_name.c src/btn_press_settings.c src/break_wall.c src/get_boxes.c)
 
 set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror ")
 #set(GCC_COVERAGE_COMPILE_FLAGS "-fsanitize=\"address\" -g -fno-omit-frame-pointer")

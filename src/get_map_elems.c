@@ -58,7 +58,7 @@ unsigned short max_txtr)
 	return (SUCCESS);
 }
 
-int						get_s_walls(t_sec *s, char *l, int n_w)
+int						s_walls(t_sec *s, char *l, int n_w)
 {
 	int					*walls;
 	int					i;
@@ -87,7 +87,7 @@ int						get_s_walls(t_sec *s, char *l, int n_w)
 	return (SUCCESS);
 }
 
-int						get_sec_fl_ceil(t_sec *sector, char *line)
+int						fl_ceil(t_sec *sector, char *line)
 {
 	if (!sector || !line)
 		return (FAIL);

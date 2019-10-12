@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_sec_items.c                                    :+:      :+:    :+:   */
+/*   s_items.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -54,7 +54,7 @@ unsigned short			exit_sec_items(int i, t_item *items, t_sec *s)
 	return (SUCCESS);
 }
 
-int						get_sec_items(t_sec *s, char *l)
+int						s_items(t_sec *s, char *l)
 {
 	t_item				*items;
 	int					i;

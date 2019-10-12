@@ -137,7 +137,11 @@ SRC =   sdl_fun.c \
         clip_line.c \
         check_for_light.c \
         draw_line.c \
-        settings.c
+        settings.c \
+        add_door_help.c \
+        texture_name.c \
+        btn_press_settings.c \
+        get_boxes.c
 
 OBJ =	$(SRC:.c=.o)
 

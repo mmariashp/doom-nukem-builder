@@ -70,10 +70,8 @@ void					validate_clockwise(t_world *world, int sec)
 		return ;
 	i = 0;
 	sum = 0;
-	ft_putendl("CLOCKWISE VALIDATION");
 	while (i < world->sec[sec].n_v)
 	{
-		printf("vec %d = %d,%d\n", i, world->vecs[world->sec[sec].v[i]].x, world->vecs[world->sec[sec].v[i]].y);
 		one = world->vecs[world->sec[sec].v[i]];
 		two = world->vecs[world->sec[sec].v[(i + 1) % world->sec[sec].n_v]];
 		sum += (two.x - one.x) * (one.y + two.y);
@@ -81,9 +79,6 @@ void					validate_clockwise(t_world *world, int sec)
 	}
 	if (sum > 0)
 	{
-		ft_putstr("Sector ");
-		ft_putnbr(sec);
-		ft_putendl(" is counterclockwise");
 		world->sec[sec].s_walls = reverse_order(world->sec[sec].s_walls, \
 		world->sec[sec].n_w);
 		free(world->sec[sec].v);

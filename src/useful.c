@@ -58,7 +58,7 @@ unsigned short			already_in_sector(int id, int *vecs, int n_v)
 	return (FALSE);
 }
 
-unsigned short			can_place_vec(t_vec v, t_world world, t_grid *grid, \
+unsigned short			can_place_v(t_vec v, t_world world, t_grid *grid, \
 int wall)
 {
 	if (!within(v.x, -1, GRID_SIZE) || !within(v.y, -1, GRID_SIZE))
