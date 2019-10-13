@@ -72,9 +72,9 @@ t_media					*read_assets(int fd)
 	t_section			s;
 	int					ret;
 	char				*line;
-	t_media				*media;
+	t_media				*m;
 
-	if (!(media = init_media()) || !empty_sect(&s))
+	if (!(m = init_media()) || !empty_sect(&s))
 		return (NULL);
 	while ((ret = get_next_line(fd, &(line))) == 1)
 	{
@@ -82,18 +82,18 @@ t_media					*read_assets(int fd)
 		{
 			if (!ft_strcmp(line, "###"))
 			{
-				if (s.id == -1 || update_media(media, &s) == FAIL || !refresh_section(&s))
-					return (exit_read_assets(&s, line, media));
+				if (s.id == -1 || update_media(m, &s) || !refresh_section(&s))
+					return (exit_read_assets(&s, line, m));
 			}
-			else if (read_title(line, &s, media) == NULL)
+			else if (read_title(line, &s, m) == NULL)
 				return (NULL);
 		}
 		ft_strdel(&line);
 	}
 	if (ret == -1 || !free_section(&s))
-		return (exit_read_assets(&s, line, media));
+		return (exit_read_assets(&s, line, m));
 	ft_strdel(&line);
-	return (media);
+	return (m);
 }
 
 t_media					*get_assets(void)

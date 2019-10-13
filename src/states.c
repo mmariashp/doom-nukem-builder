@@ -109,7 +109,6 @@ void					sec_search_st(t_prog *prog, t_vec mouse, \
 				free(tab);
 			}
 			free(p);
-
 		}
 	}
 	prog->redraw = 1;

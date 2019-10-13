@@ -19,7 +19,7 @@ t_rec					sec_descr_boxes(int row, int col)
 	W_W * 0.60 + W_W * 0.22 };
 	static int			y[3] = { W_H * 0.53, W_H * 0.57, W_H * 0.61 };
 
-	return((t_rec){ x[col % 3], y[row % 3], size.x, size.y });
+	return ((t_rec){ x[col % 3], y[row % 3], size.x, size.y });
 }
 
 void					get_sec_boxes(t_mode *m)

@@ -90,7 +90,7 @@ void					drawing(t_world *world, t_prog *prog, t_grid *grid, \
 t_vec mouse)
 {
 	unsigned short		vis;
-	int 				wall;
+	int					wall;
 
 	wall = -1;
 	if (!world || !prog || !prog->modes || !grid ||

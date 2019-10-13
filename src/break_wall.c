@@ -14,12 +14,13 @@
 
 void					break_in(int *s_walls, int n, int prev)
 {
-	int 				new;
-	int 				tmp[n];
+	int					new;
+	int					tmp[n];
 	int					k;
+	int 				i;
 
 	new = n - 1;
-	int i = 0;
+	i = 0;
 	while (i < n)
 	{
 		tmp[i] = s_walls[i];
@@ -41,8 +42,8 @@ void					break_in(int *s_walls, int n, int prev)
 void					add_broken_secwall(t_world *w, int wall, int new_id, \
 int i)
 {
-	int 				j;
-	int 				pn[2];
+	int					j;
+	int					pn[2];
 
 	j = -1;
 	while (++j < w->sec[i].n_w)
@@ -71,7 +72,7 @@ int i)
 void					break_secwall(t_world *w, int wall, int new_id, \
 int s)
 {
-	int 				i;
+	int					i;
 
 	if (!w || !w->sec || !w->walls)
 		return ;
@@ -87,7 +88,7 @@ int s)
 unsigned short			break_wall(t_world *world, int vec, int wall, int s)
 {
 	int					two;
-	int 				new_id;
+	int					new_id;
 
 	if (!world || !within(wall, -1, world->n_w) || !within(vec, -1, world->n_v))
 		return (FAIL);

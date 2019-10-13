@@ -115,7 +115,7 @@ unsigned short			settings_btn(t_btn *btn, int n)
 {
 	int					i;
 	static int			reg[10] = { TXTR_BACK, TXTR_EDIT, TXTR_EDIT, TXTR_EDIT,\
-	TXTR_EDIT, TXTR_EDIT, TXTR_UP, TXTR_DOWN, TXTR_UP, TXTR_DOWN  };
+	TXTR_EDIT, TXTR_EDIT, TXTR_UP, TXTR_DOWN, TXTR_UP, TXTR_DOWN };
 	static int			lit[10] = { TXTR_BACK_L, TXTR_EDIT_L, TXTR_EDIT_L, \
 	TXTR_EDIT_L, TXTR_EDIT_L, TXTR_EDIT_L, TXTR_UP_L, TXTR_DOWN_L, TXTR_UP_L, \
 	TXTR_DOWN_L };

@@ -8,7 +8,7 @@ File Names:
 3) new_level_0
 ###
 
-#Textures 70
+#Textures 71
 Path: ./media/textures/
 Extension: 
 File Names: 
@@ -82,6 +82,7 @@ File Names:
 67) Wintest2.png
 68) WTEX030.png
 69) WTEX033.png
+70) hellcave2.png
 ###
 
 #Items

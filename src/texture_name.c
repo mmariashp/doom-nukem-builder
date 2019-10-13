@@ -12,7 +12,7 @@
 
 #include "builder.h"
 
-char 					*get_txtr_name(int i)
+char					*get_txtr_name(int i)
 {
 	char				*tmp;
 	static char			s[N_TXTR][30] = { "rctg", "rctg_l", "rcty", "rcty_l", \

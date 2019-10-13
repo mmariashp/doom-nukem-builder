@@ -12,7 +12,7 @@
 
 #include "builder.h"
 
-int 					default_heights(char set_get, char of_what, int value)
+int						default_heights(char set_get, char of_what, int value)
 {
 	static int 			t[2] = { 0 };
 
@@ -34,9 +34,9 @@ int 					default_heights(char set_get, char of_what, int value)
 	return (-1);
 }
 
-int 					default_texture(char set_get, char of_what, int value)
+int						default_texture(char set_get, char of_what, int value)
 {
-	static int 			t[5] = { 0 };
+	static int			t[5] = { 0 };
 
 	if (set_get == 1 && within(of_what, -1, 5))
 		return (t[(int)of_what]);
@@ -66,7 +66,6 @@ unsigned short			edit_def_texture(int n_t, t_texture *txtr)
 
 	if (!txtr)
 		return (FAIL);
-
 	if (within((texture = select_it(1, T_SELECT, -1)), -1, n_t) &&
 	within((of_what = select_it(1, DEF_T_SELECT, -1)), -1, 5))
 		default_texture(0, (char)of_what, texture);
@@ -98,8 +97,8 @@ void					change_def_heights(int b)
 {
 	int					f_shift;
 	int					c_shift;
-	int 				floor;
-	int 				ceil;
+	int					floor;
+	int					ceil;
 
 	f_shift = 0;
 	c_shift = 0;
@@ -123,43 +122,38 @@ void					change_def_heights(int b)
 
 void					render_defaults(t_sdl *sdl, t_media *media)
 {
-	int 				i;
-	int 				t;
+	int					i;
 	t_rec				tmp;
-	char 				*str;
+	char				*str;
 
 	if (!sdl || !media)
 		return ;
 	i = -1;
 	while (++i < 5)
 	{
-		t = default_texture(1, i, -1);
 		tmp = settings_boxes(3, i + 1);
 		tmp.x -= tmp.w * 1.1;
-		SDL_RenderCopy(sdl->rend, media->txtr[t].sdl_t, NULL, \
-		&(SDL_Rect){ tmp.x, tmp.y, tmp.w, tmp.h });
+		SDL_RenderCopy(sdl->rend, media->txtr[default_texture(1, i, -1)].sdl_t,\
+		NULL, &(SDL_Rect){ tmp.x, tmp.y, tmp.w, tmp.h });
 	}
 	while (i < 7)
 	{
-		t = default_heights(1, i - 5, -1);
-		tmp = settings_boxes(2, i);
+		tmp = settings_boxes(2, i++);
 		tmp.x += tmp.w * 0.8;
 		tmp.w = tmp.h;
-		str = ft_itoa(t);
-		if (str)
+		if ((str = ft_itoa(default_heights(1, i - 5, -1))))
 		{
 			write_txt(str, sdl, (t_txtb){ tmp, TRUE, ED_CLR });
 			free(str);
 		}
-		i++;
 	}
 }
 
 void					render_settings_layout(t_sdl *sdl, t_prog *prog)
 {
-	int 				i;
-	static char 		h[3][20] = { "DEFAULT VALUES", "TEXTURES", "HEIGHTS" };
-	static char 		v[7][20] = { "wall", "floor", "ceiling", "door", \
+	int					i;
+	static char			h[3][20] = { "DEFAULT VALUES", "TEXTURES", "HEIGHTS" };
+	static char			v[7][20] = { "wall", "floor", "ceiling", "door", \
 	"transparent wall", "floor", "ceiling" };
 	t_rec				tmp;
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_items.c                                    :+:      :+:    :+:   */
+/*   get_sec_items.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "builder.h"
 
-unsigned short			count_it(char const *s)
+unsigned short			count_it(char const *s, unsigned short *n)
 {
 	unsigned short		count;
 	unsigned short		nb;
@@ -38,7 +38,7 @@ unsigned short			count_it(char const *s)
 				return (0);
 		}
 	}
-	return (count);
+	return (*n = count);
 }
 
 unsigned short			exit_sec_items(int i, t_item *items, t_sec *s)
@@ -59,7 +59,7 @@ int						s_items(t_sec *s, char *l)
 	t_item				*items;
 	int					i;
 
-	if (!s || !l || !(l = ft_strchr(l, '\'')) || (s->n_it = count_it(l++)) > 20)
+	if (!s || !l || !(l = ft_strchr(l, '\'')) || count_it(l++, &s->n_it) > 20)
 		return (FAIL);
 	if (!(items = (t_item *)ft_memalloc(sizeof(t_item) * s->n_it)))
 		return (FAIL);

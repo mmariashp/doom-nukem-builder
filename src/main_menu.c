@@ -17,7 +17,7 @@ void					render_alien(SDL_Renderer *rend)
 	static char			files[1][30] = { "./buttons/maptools.png" };
 	SDL_Texture			*alien;
 	t_vec				size;
-	float 				ratio;
+	float				ratio;
 
 	alien = load_texture(files[0], rend, &size);
 	ratio = (float)size.x / size.y;

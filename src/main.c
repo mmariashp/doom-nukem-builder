@@ -59,8 +59,16 @@ int						main(void)
 
 	prog = NULL;
 	sdl = NULL;
-	if (!(media = get_assets()) || !(sdl = get_sdl()) ||
-	!(prog = get_prog(sdl->rend)) || load_sdl_media(media, sdl) == FAIL)
+	if (!(media = get_assets()) || !(sdl = get_sdl()))
+	{
+		free_media(media);
+		free_prog(prog);
+		free_sdl(sdl);
+		ft_putstr("\x1b[32mReturning fail from main.\x1b[0m\n");
+		system("leaks -q builder");
+		return (FAIL);
+	}
+	if (!(prog = get_prog(sdl->rend)) || load_sdl_media(media, sdl) == FAIL)
 	{
 		free_media(media);
 		free_prog(prog);

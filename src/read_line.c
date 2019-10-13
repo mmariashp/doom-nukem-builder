@@ -51,7 +51,7 @@ unsigned *vwsp, char *line)
 	return (SUCCESS);
 }
 
-void 					get_sec_type(char l, char type[3])
+void					get_sec_type(char l, char type[3])
 {
 	if (l == 'd')
 	{

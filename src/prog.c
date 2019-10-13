@@ -35,7 +35,6 @@ SDL_Texture				**get_prog_txtr(SDL_Renderer *rend)
 	SDL_Texture			**t;
 	char				*tmp;
 
-
 	if (!rend || !(t = ft_memalloc(sizeof(SDL_Texture *) * N_TXTR)))
 		return (NULL);
 	i = -1;

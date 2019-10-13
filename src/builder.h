@@ -125,10 +125,10 @@
 # define R_PLR					4
 
 # define MIN_VERTEX_ID			0
-# define MAX_VERTEX_ID			200
+# define MAX_VERTEX_ID			400
 
 # define MIN_N_WALLS			0
-# define MAX_N_WALLS			300
+# define MAX_N_WALLS			400
 
 # define MIN_N_SECS				1
 # define MAX_N_SECS				150
@@ -146,11 +146,11 @@
 
 # define ASSET_FILE             "./game_info.txt"
 
-# define REG_IN      (int)0
-# define REG_LEFT        (int)1
-# define REG_RIGHT       (int)2
-# define REG_BOTTOM      (int)4
-# define REG_TOP         (int)8
+# define REG_IN      			(int)0
+# define REG_LEFT        		(int)1
+# define REG_RIGHT       		(int)2
+# define REG_BOTTOM      		(int)4
+# define REG_TOP         		(int)8
 
 # define NODE_EMPTY			-1
 # define NODE_FULL			-2

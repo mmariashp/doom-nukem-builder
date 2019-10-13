@@ -29,7 +29,7 @@ void					place_player(t_world world, t_grid *grid, \
 t_scr **screen, int radius)
 {
 	t_vec				node;
-	t_scr			s;
+	t_scr				s;
 
 	s = (t_scr){ RED, SCREEN_PL_START, 0 };
 	node.x = (int)((float)grid->box.x + (float)world.p_start.x * grid->scl);
