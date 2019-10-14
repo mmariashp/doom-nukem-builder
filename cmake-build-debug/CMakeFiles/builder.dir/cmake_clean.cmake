@@ -93,6 +93,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/src/btn_press_settings.c.o"
   "CMakeFiles/builder.dir/src/break_wall.c.o"
   "CMakeFiles/builder.dir/src/get_boxes.c.o"
+  "CMakeFiles/builder.dir/src/map_useful.c.o"
+  "CMakeFiles/builder.dir/src/settings_help.c.o"
   "builder.pdb"
   "builder"
 )

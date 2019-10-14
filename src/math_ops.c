@@ -12,19 +12,18 @@
 
 #include "builder.h"
 
-t_vec					add(t_vec one, t_vec two)
+unsigned short			within(int value, int min, int max)
 {
-	return ((t_vec){ one.x + two.x, one.y + two.y });
+	if (value <= min)
+		return (FALSE);
+	if (value >= max)
+		return (FALSE);
+	return (TRUE);
 }
 
 t_vec					sub_one_from_two(t_vec one, t_vec two)
 {
 	return ((t_vec){ two.x - one.x, two.y - one.y });
-}
-
-t_vec					mult(t_vec one, t_vec two)
-{
-	return ((t_vec){ one.x * two.x, one.y * two.y });
 }
 
 t_vec					scl(t_vec vec, int scl)

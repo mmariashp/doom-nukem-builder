@@ -142,7 +142,9 @@ SRC =   sdl_fun.c \
         texture_name.c \
         btn_press_settings.c \
         get_boxes.c \
-        break_wall.c
+        break_wall.c \
+        map_useful.c \
+        settings_help.c
 
 OBJ =	$(SRC:.c=.o)
 

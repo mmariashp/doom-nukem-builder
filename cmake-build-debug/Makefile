@@ -3349,6 +3349,33 @@ src/manage_btn.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/manage_btn.c.s
 .PHONY : src/manage_btn.c.s
 
+src/map_useful.o: src/map_useful.c.o
+
+.PHONY : src/map_useful.o
+
+# target to build an object file
+src/map_useful.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/map_useful.c.o
+.PHONY : src/map_useful.c.o
+
+src/map_useful.i: src/map_useful.c.i
+
+.PHONY : src/map_useful.i
+
+# target to preprocess a source file
+src/map_useful.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/map_useful.c.i
+.PHONY : src/map_useful.c.i
+
+src/map_useful.s: src/map_useful.c.s
+
+.PHONY : src/map_useful.s
+
+# target to generate assembly for a file
+src/map_useful.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/map_useful.c.s
+.PHONY : src/map_useful.c.s
+
 src/math.o: src/math.c.o
 
 .PHONY : src/math.o
@@ -4104,6 +4131,33 @@ src/settings.s: src/settings.c.s
 src/settings.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings.c.s
 .PHONY : src/settings.c.s
+
+src/settings_help.o: src/settings_help.c.o
+
+.PHONY : src/settings_help.o
+
+# target to build an object file
+src/settings_help.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings_help.c.o
+.PHONY : src/settings_help.c.o
+
+src/settings_help.i: src/settings_help.c.i
+
+.PHONY : src/settings_help.i
+
+# target to preprocess a source file
+src/settings_help.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings_help.c.i
+.PHONY : src/settings_help.c.i
+
+src/settings_help.s: src/settings_help.c.s
+
+.PHONY : src/settings_help.s
+
+# target to generate assembly for a file
+src/settings_help.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings_help.c.s
+.PHONY : src/settings_help.c.s
 
 src/sort.o: src/sort.c.o
 
@@ -4877,6 +4931,9 @@ help:
 	@echo "... src/manage_btn.o"
 	@echo "... src/manage_btn.i"
 	@echo "... src/manage_btn.s"
+	@echo "... src/map_useful.o"
+	@echo "... src/map_useful.i"
+	@echo "... src/map_useful.s"
 	@echo "... src/math.o"
 	@echo "... src/math.i"
 	@echo "... src/math.s"
@@ -4961,6 +5018,9 @@ help:
 	@echo "... src/settings.o"
 	@echo "... src/settings.i"
 	@echo "... src/settings.s"
+	@echo "... src/settings_help.o"
+	@echo "... src/settings_help.i"
+	@echo "... src/settings_help.s"
 	@echo "... src/sort.o"
 	@echo "... src/sort.i"
 	@echo "... src/sort.s"

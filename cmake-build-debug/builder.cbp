@@ -481,6 +481,9 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/src/manage_btn.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/src/map_useful.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/src/math.c">
 			<Option target="builder"/>
 		</Unit>
@@ -563,6 +566,9 @@
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/src/settings.c">
+			<Option target="builder"/>
+		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/src/settings_help.c">
 			<Option target="builder"/>
 		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/src/sort.c">
