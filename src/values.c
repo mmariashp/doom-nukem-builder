@@ -16,7 +16,7 @@ void					render_values(t_value *v, t_sdl *sdl, t_prog *p, \
 t_media *m)
 {
 	int					i;
-	t_rec				box;
+	t_rec				b;
 	int					st;
 
 	if (!v || !sdl || !p || !p->t || !m || !m->txtr)
@@ -30,15 +30,15 @@ t_media *m)
 			rend_box((layout(2, (char)i)), p->t[TXTR_RECG_L], sdl->rend);
 		else if (within(TXTR_RECG, -1, N_TXTR) && p->t[TXTR_RECG])
 			rend_box((layout(2, (char)i)), p->t[TXTR_RECG], sdl->rend);
-		write_txt(lines(st, i), sdl, (t_txtb){ layout(2, (char)i), 0, ED_CLR });
-		box = layout(5, (char)i);
-		write_txt(v[i].text, sdl, (t_txtb){ box, 0, ED_CLR });
-		box.w = box.h;
-		if (!v[i].m_p && within(v[i].t_id, -1, m->n_t) &&
-		m->txtr[v[i].t_id].sdl_t)
-			rend_box(box, m->txtr[v[i].t_id].sdl_t, sdl->rend);
-		else if (v[i].m_p && within(v[i].t_id, -1, N_TXTR) && p->t[v[i].t_id])
-			rend_box(box, p->t[v[i].t_id], sdl->rend);
+		write_txt(lines(st, i, select_it(1, W_SELECT, 0) > 0 ?\
+		m->worlds[m->w].walls[select_it(1, W_SELECT, 0)].type : 0), sdl, \
+		(t_txtb){ layout(2, (char)i), 0, ED_CLR });
+		write_txt(v[i].text, sdl, (t_txtb){ (b = layout(5, i)), 0, ED_CLR });
+		b.w = b.h;
+		if (!v[i].m_p && within(v[i].t, -1, m->n_t) && m->txtr[v[i].t].sdl_t)
+			rend_box(b, m->txtr[v[i].t].sdl_t, sdl->rend);
+		else if (v[i].m_p && within(v[i].t, -1, N_TXTR) && p->t[v[i].t])
+			rend_box(b, p->t[v[i].t], sdl->rend);
 	}
 }
 
@@ -54,7 +54,7 @@ t_value					*init_values(int n)
 	while (i < n)
 	{
 		new[i].text = NULL;
-		new[i].t_id = -1;
+		new[i].t = -1;
 		new[i].m_p = 0;
 		i++;
 	}

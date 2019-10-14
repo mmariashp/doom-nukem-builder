@@ -141,7 +141,8 @@ SRC =   sdl_fun.c \
         add_door_help.c \
         texture_name.c \
         btn_press_settings.c \
-        get_boxes.c
+        get_boxes.c \
+        break_wall.c
 
 OBJ =	$(SRC:.c=.o)
 

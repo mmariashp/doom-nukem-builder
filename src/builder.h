@@ -587,7 +587,7 @@ typedef struct				s_mode
 typedef struct				s_value
 {
 	char					*text;
-	int						t_id;
+	int						t;
 	char					m_p;
 }							t_value;
 
@@ -728,7 +728,7 @@ void					rend_box(t_rec box, SDL_Texture *t, SDL_Renderer *rend);
 
 unsigned short			add_wall(t_wall **walls, short n_w, int one, int two);
 
-char					*lines(int id, int i);
+char					*lines(int id, int i, int w_type);
 void					render_edit_menu(t_sdl *sdl, t_media *media, t_prog \
 *prog, t_world *w);
 t_rec					layout(char i, char n);

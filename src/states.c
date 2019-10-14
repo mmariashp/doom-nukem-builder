@@ -114,8 +114,33 @@ void					sec_search_st(t_prog *prog, t_vec mouse, \
 	prog->redraw = 1;
 }
 
+void					light_sec_types(t_sec sec, t_prog *prog)
+{
+	prog->modes[prog->m_id].btn[B_NORM].vis_lit_on[1] = FALSE;
+	prog->modes[prog->m_id].btn[B_DSEC].vis_lit_on[1] = FALSE;
+	prog->modes[prog->m_id].btn[B_ELEV].vis_lit_on[1] = FALSE;
+	prog->modes[prog->m_id].btn[B_CEIL].vis_lit_on[1] = FALSE;
+	prog->modes[prog->m_id].btn[B_SKY].vis_lit_on[1] = FALSE;
+	prog->modes[prog->m_id].btn[B_FL_SAFE].vis_lit_on[1] = FALSE;
+	prog->modes[prog->m_id].btn[B_FL_UNSAFE].vis_lit_on[1] = FALSE;
+	if (sec.type[0] == normal)
+		prog->modes[prog->m_id].btn[B_NORM].vis_lit_on[1] = TRUE;
+	else if (sec.type[0] == door)
+		prog->modes[prog->m_id].btn[B_DSEC].vis_lit_on[1] = TRUE;
+	else if (sec.type[0] == elevator)
+		prog->modes[prog->m_id].btn[B_ELEV].vis_lit_on[1] = TRUE;
+	if (sec.type[1] == ceiling)
+		prog->modes[prog->m_id].btn[B_CEIL].vis_lit_on[1] = TRUE;
+	else if (sec.type[1] == skybox)
+		prog->modes[prog->m_id].btn[B_SKY].vis_lit_on[1] = TRUE;
+	if (sec.type[1] == safe)
+		prog->modes[prog->m_id].btn[B_FL_SAFE].vis_lit_on[1] = TRUE;
+	else if (sec.type[1] == unsafe)
+		prog->modes[prog->m_id].btn[B_FL_UNSAFE].vis_lit_on[1] = TRUE;
+}
+
 void					sec_edit_st(t_prog *prog, t_vec mouse, \
-												t_grid *grid, t_media *media)
+												t_grid *grid, t_media *m)
 {
 	int					sector;
 
@@ -123,16 +148,14 @@ void					sec_edit_st(t_prog *prog, t_vec mouse, \
 		return ;
 	sector = select_it(1, S_SELECT, -1);
 	prog->redraw = 1;
-	if (mouse_in_stor(mouse, &media->worlds[media->w], grid) == sector)
+	if (mouse_in_stor(mouse, &m->worlds[m->w], grid) == sector)
 	{
 		if (prog->btn_on == -1)
-			move_item(prog, mouse, grid, \
-			&media->worlds[media->w].sec[sector]);
+			move_item(prog, mouse, grid, &m->worlds[m->w].sec[sector]);
 		else if ((prog->click.x || prog->click.y) && \
-		check_for_light(media, prog->btn_on - B_COIN, sector))
-			add_item(find_def_item(prog->btn_on - B_COIN, media->it_f, \
-			media->n_itf), mouse, grid, \
-			&media->worlds[media->w].sec[sector]);
+		check_for_light(m, prog->btn_on - B_COIN, sector))
+			add_item(find_def_item(prog->btn_on - B_COIN, m->it_f, \
+			m->n_itf), mouse, grid, &m->worlds[m->w].sec[sector]);
 	}
 	if (prog->btn_on != -1 && (prog->click.x || prog->click.y) &&
 	!(within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1)))
@@ -140,6 +163,7 @@ void					sec_edit_st(t_prog *prog, t_vec mouse, \
 		turn_btns_off(prog);
 		prog->click = (t_vec){ 0, 0 };
 	}
-	upd_sec(media->worlds[media->w].sec, media->worlds[media->w].walls,\
-	media->worlds[media->w].vecs, media->worlds[media->w].n_s);
+	upd_sec(m->worlds[m->w].sec, m->worlds[m->w].walls,\
+	m->worlds[m->w].vecs, m->worlds[m->w].n_s);
+	light_sec_types(m->worlds[m->w].sec[sector], prog);
 }
