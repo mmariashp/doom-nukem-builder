@@ -12,7 +12,6 @@
 
 #include "builder.h"
 
-
 unsigned short			already_in_sector(int id, int *vecs, int n_v)
 {
 	int					i;
@@ -50,7 +49,7 @@ unsigned short			mouse_over(t_rec box, t_vec mouse)
 
 void					highlight_sec_nod(t_vec *p, int n_w, t_grid *grid)
 {
-	int                 i;
+	int					i;
 
 	i = -1;
 	if (!p && !grid)
@@ -64,8 +63,8 @@ void					highlight_sec_nod(t_vec *p, int n_w, t_grid *grid)
 
 float					get_scl_to_sector(int size, int max_w, int max_h)
 {
-	float               scl;
-	int                 box;
+	float				scl;
+	int					box;
 
 	box = get_min(max_w, max_h);
 	scl = (float)box / size;

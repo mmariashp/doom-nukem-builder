@@ -35,7 +35,7 @@ void					bounding_box(t_vec *min, t_vec *max, t_vec *p, int n_p)
 
 void					get_min_scl(float *res_min_scl)
 {
-	static int 			min_size = -1;
+	static int			min_size = -1;
 	static float		min_scl = 1;
 
 	if (min_size == -1)
@@ -57,9 +57,9 @@ void					set_false(char *one, char *two)
 		*two = FALSE;
 }
 
-void				    swap_ints(int *one, int *two)
+void					swap_ints(int *one, int *two)
 {
-	int				swap;
+	int					swap;
 
 	if (!one || !two)
 		return ;
@@ -68,7 +68,7 @@ void				    swap_ints(int *one, int *two)
 	*two = swap;
 }
 
-void				    get_rgb(unsigned char *r, unsigned char *g, \
+void					get_rgb(unsigned char *r, unsigned char *g, \
 unsigned char *b, int color)
 {
 	if (!r || !g || !b)

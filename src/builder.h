@@ -442,6 +442,7 @@ typedef struct				s_grid
 typedef struct				s_btn
 {
 	char					vis_lit_on[3];
+	char					fake_lit;
 	t_rec					box;
 	int						text_color;
 	char					*text;
@@ -950,5 +951,7 @@ t_media *media);
 unsigned short			break_wall(t_world *world, int vec, int wall, int s);
 void					get_sec_boxes(t_mode *m);
 t_rec					sec_descr_boxes(int row, int col);
+void					light_sec_types(t_sec sec, t_prog *prog);
+void					write_wall_type(int type, int fd);
 
 #endif

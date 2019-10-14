@@ -3241,6 +3241,33 @@ src/levels_btn.c.s:
 	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/levels_btn.c.s
 .PHONY : src/levels_btn.c.s
 
+src/light_sec_type.o: src/light_sec_type.c.o
+
+.PHONY : src/light_sec_type.o
+
+# target to build an object file
+src/light_sec_type.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/light_sec_type.c.o
+.PHONY : src/light_sec_type.c.o
+
+src/light_sec_type.i: src/light_sec_type.c.i
+
+.PHONY : src/light_sec_type.i
+
+# target to preprocess a source file
+src/light_sec_type.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/light_sec_type.c.i
+.PHONY : src/light_sec_type.c.i
+
+src/light_sec_type.s: src/light_sec_type.c.s
+
+.PHONY : src/light_sec_type.s
+
+# target to generate assembly for a file
+src/light_sec_type.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/light_sec_type.c.s
+.PHONY : src/light_sec_type.c.s
+
 src/line_math.o: src/line_math.c.o
 
 .PHONY : src/line_math.o
@@ -4919,6 +4946,9 @@ help:
 	@echo "... src/levels_btn.o"
 	@echo "... src/levels_btn.i"
 	@echo "... src/levels_btn.s"
+	@echo "... src/light_sec_type.o"
+	@echo "... src/light_sec_type.i"
+	@echo "... src/light_sec_type.s"
 	@echo "... src/line_math.o"
 	@echo "... src/line_math.i"
 	@echo "... src/line_math.s"

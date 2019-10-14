@@ -364,7 +364,7 @@ Walls
 212) 141-138 empty 63
 213) 142-141 filled 63
 214) 42-142 filled 63
-215) 143-24 filled 0
+215) 143-24 filled 17
 216) 141-143 filled 17
 
 Sectors
@@ -419,12 +419,12 @@ Sectors
 48) floor(20 53) ceil(85 17) walls '47 141 140 139 ' items '(69,4 3)'
 49) floor(22 53) ceil(85 17) walls '141 40 145 144 143 142 ' items '(49,3 3)(47,3 12)'
 50) murderous floor(0 3) ceil(85 17) walls '148 42 39 28 23 43 147 146 ' items ''
-51) floor(20 13) ceil(85 14) walls '156 155 154 168 166 153 152 197 186 151 150 149 ' items '(112,36 27)'
+51) floor(20 13) ceil(85 14) walls '156 155 154 168 166 153 152 197 186 151 150 149 ' items '(112,36 27)(111,44 1)'
 52) floor(16 27) ceil(50 17) walls '156 159 158 157 ' items ''
 53) floor(12 53) ceil(50 17) walls '129 161 160 203 ' items ''
 54) floor(8 3) ceil(50 17) walls '162 163 161 137 ' items '(87,37 32)'
 55) floor(12 27) ceil(50 17) walls '164 158 165 163 ' items ''
-56) floor(20 61) ceil(85 61) walls '167 170 175 168 169 139 ' items ''
+56) door floor(20 61) ceil(20 61) walls '167 170 175 168 169 139 ' items ''
 57) floor(20 61) ceil(85 61) walls '171 172 173 174 176 170 ' items '(86,7 30)'
 58) floor(0 3) ceil(85 61) walls '175 176 174 178 177 166 ' items '(110,28 30)(100,19 20)'
 59) floor(0 3) ceil(85 61) walls '172 171 167 180 179 ' items '(80,4 30)'

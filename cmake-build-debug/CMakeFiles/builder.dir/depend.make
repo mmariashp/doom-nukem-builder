@@ -255,6 +255,11 @@ CMakeFiles/builder.dir/src/manage_btn.c.o: ../src/builder.h
 CMakeFiles/builder.dir/src/manage_btn.c.o: ../src/get_next_line.h
 CMakeFiles/builder.dir/src/manage_btn.c.o: ../src/manage_btn.c
 
+CMakeFiles/builder.dir/src/map_useful.c.o: ../libft/libft.h
+CMakeFiles/builder.dir/src/map_useful.c.o: ../src/builder.h
+CMakeFiles/builder.dir/src/map_useful.c.o: ../src/get_next_line.h
+CMakeFiles/builder.dir/src/map_useful.c.o: ../src/map_useful.c
+
 CMakeFiles/builder.dir/src/math.c.o: ../libft/libft.h
 CMakeFiles/builder.dir/src/math.c.o: ../src/builder.h
 CMakeFiles/builder.dir/src/math.c.o: ../src/get_next_line.h
@@ -394,6 +399,11 @@ CMakeFiles/builder.dir/src/settings.c.o: ../libft/libft.h
 CMakeFiles/builder.dir/src/settings.c.o: ../src/builder.h
 CMakeFiles/builder.dir/src/settings.c.o: ../src/get_next_line.h
 CMakeFiles/builder.dir/src/settings.c.o: ../src/settings.c
+
+CMakeFiles/builder.dir/src/settings_help.c.o: ../libft/libft.h
+CMakeFiles/builder.dir/src/settings_help.c.o: ../src/builder.h
+CMakeFiles/builder.dir/src/settings_help.c.o: ../src/get_next_line.h
+CMakeFiles/builder.dir/src/settings_help.c.o: ../src/settings_help.c
 
 CMakeFiles/builder.dir/src/sort.c.o: ../libft/libft.h
 CMakeFiles/builder.dir/src/sort.c.o: ../src/builder.h

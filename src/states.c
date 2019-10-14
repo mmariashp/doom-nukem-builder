@@ -114,31 +114,6 @@ void					sec_search_st(t_prog *prog, t_vec mouse, \
 	prog->redraw = 1;
 }
 
-void					light_sec_types(t_sec sec, t_prog *prog)
-{
-	prog->modes[prog->m_id].btn[B_NORM].vis_lit_on[1] = FALSE;
-	prog->modes[prog->m_id].btn[B_DSEC].vis_lit_on[1] = FALSE;
-	prog->modes[prog->m_id].btn[B_ELEV].vis_lit_on[1] = FALSE;
-	prog->modes[prog->m_id].btn[B_CEIL].vis_lit_on[1] = FALSE;
-	prog->modes[prog->m_id].btn[B_SKY].vis_lit_on[1] = FALSE;
-	prog->modes[prog->m_id].btn[B_FL_SAFE].vis_lit_on[1] = FALSE;
-	prog->modes[prog->m_id].btn[B_FL_UNSAFE].vis_lit_on[1] = FALSE;
-	if (sec.type[0] == normal)
-		prog->modes[prog->m_id].btn[B_NORM].vis_lit_on[1] = TRUE;
-	else if (sec.type[0] == door)
-		prog->modes[prog->m_id].btn[B_DSEC].vis_lit_on[1] = TRUE;
-	else if (sec.type[0] == elevator)
-		prog->modes[prog->m_id].btn[B_ELEV].vis_lit_on[1] = TRUE;
-	if (sec.type[1] == ceiling)
-		prog->modes[prog->m_id].btn[B_CEIL].vis_lit_on[1] = TRUE;
-	else if (sec.type[1] == skybox)
-		prog->modes[prog->m_id].btn[B_SKY].vis_lit_on[1] = TRUE;
-	if (sec.type[1] == safe)
-		prog->modes[prog->m_id].btn[B_FL_SAFE].vis_lit_on[1] = TRUE;
-	else if (sec.type[1] == unsafe)
-		prog->modes[prog->m_id].btn[B_FL_UNSAFE].vis_lit_on[1] = TRUE;
-}
-
 void					sec_edit_st(t_prog *prog, t_vec mouse, \
 												t_grid *grid, t_media *m)
 {

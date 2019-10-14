@@ -469,6 +469,9 @@
 		<Unit filename="/home/moosh/CLionProjects/builder/src/levels_btn.c">
 			<Option target="builder"/>
 		</Unit>
+		<Unit filename="/home/moosh/CLionProjects/builder/src/light_sec_type.c">
+			<Option target="builder"/>
+		</Unit>
 		<Unit filename="/home/moosh/CLionProjects/builder/src/line_math.c">
 			<Option target="builder"/>
 		</Unit>

@@ -59,9 +59,7 @@ t_prog *prog)
 		{
 			if (btn[i].vis_lit_on[1] == TRUE)
 				prog->redraw = 1;
-			if (!(prog->m_id == MODE_EDITOR && select_it(1, ST_SEL, 0) == SEC_EDIT
-			&& within(i, B_NORM - 1, B_FL_UNSAFE + 1)))
-				btn[i].vis_lit_on[1] = FALSE;
+			btn[i].vis_lit_on[1] = FALSE;
 		}
 	}
 	return (res);

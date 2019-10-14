@@ -51,6 +51,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/moosh/CLionProjects/builder/src/items.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/src/items.c.o"
   "/home/moosh/CLionProjects/builder/src/levels.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/src/levels.c.o"
   "/home/moosh/CLionProjects/builder/src/levels_btn.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/src/levels_btn.c.o"
+  "/home/moosh/CLionProjects/builder/src/light_sec_type.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/src/light_sec_type.c.o"
   "/home/moosh/CLionProjects/builder/src/line_math.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/src/line_math.c.o"
   "/home/moosh/CLionProjects/builder/src/main.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/src/main.c.o"
   "/home/moosh/CLionProjects/builder/src/main_menu.c" "/home/moosh/CLionProjects/builder/cmake-build-debug/CMakeFiles/builder.dir/src/main_menu.c.o"

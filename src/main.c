@@ -57,12 +57,10 @@ int						main(void)
 	t_media				*media;
 	t_prog				*prog;
 
-	prog = NULL;
 	sdl = NULL;
 	if (!(media = get_assets()) || !(sdl = get_sdl()))
 	{
 		free_media(media);
-		free_prog(prog);
 		free_sdl(sdl);
 		ft_putstr("\x1b[32mReturning fail from main.\x1b[0m\n");
 		system("leaks -q builder");

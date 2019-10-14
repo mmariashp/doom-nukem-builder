@@ -255,6 +255,11 @@ CMakeFiles/builder.dir/src/manage_btn.c.o
  /home/moosh/CLionProjects/builder/src/builder.h
  /home/moosh/CLionProjects/builder/src/get_next_line.h
  /home/moosh/CLionProjects/builder/src/manage_btn.c
+CMakeFiles/builder.dir/src/map_useful.c.o
+ /home/moosh/CLionProjects/builder/libft/libft.h
+ /home/moosh/CLionProjects/builder/src/builder.h
+ /home/moosh/CLionProjects/builder/src/get_next_line.h
+ /home/moosh/CLionProjects/builder/src/map_useful.c
 CMakeFiles/builder.dir/src/math.c.o
  /home/moosh/CLionProjects/builder/libft/libft.h
  /home/moosh/CLionProjects/builder/src/builder.h
@@ -395,6 +400,11 @@ CMakeFiles/builder.dir/src/settings.c.o
  /home/moosh/CLionProjects/builder/src/builder.h
  /home/moosh/CLionProjects/builder/src/get_next_line.h
  /home/moosh/CLionProjects/builder/src/settings.c
+CMakeFiles/builder.dir/src/settings_help.c.o
+ /home/moosh/CLionProjects/builder/libft/libft.h
+ /home/moosh/CLionProjects/builder/src/builder.h
+ /home/moosh/CLionProjects/builder/src/get_next_line.h
+ /home/moosh/CLionProjects/builder/src/settings_help.c
 CMakeFiles/builder.dir/src/sort.c.o
  /home/moosh/CLionProjects/builder/libft/libft.h
  /home/moosh/CLionProjects/builder/src/builder.h

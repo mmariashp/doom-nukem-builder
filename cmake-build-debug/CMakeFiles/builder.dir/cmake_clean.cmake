@@ -95,6 +95,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/builder.dir/src/get_boxes.c.o"
   "CMakeFiles/builder.dir/src/map_useful.c.o"
   "CMakeFiles/builder.dir/src/settings_help.c.o"
+  "CMakeFiles/builder.dir/src/light_sec_type.c.o"
   "builder.pdb"
   "builder"
 )

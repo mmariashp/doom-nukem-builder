@@ -122,14 +122,7 @@ unsigned short			write_level_section(int fd, t_world world, int section)
 		write_tmp(section, fd, i, world);
 		if (section == 1)
 		{
-			if (world.walls[i].type == filled)
-				ft_putstr_fd(" filled ", fd);
-			else if (world.walls[i].type == empty)
-				ft_putstr_fd(" empty ", fd);
-			else if (world.walls[i].type == window)
-				ft_putstr_fd(" window ", fd);
-			else if (world.walls[i].type == transparent)
-				ft_putstr_fd(" transparent ", fd);
+			write_wall_type(world.walls[i].type, fd);
 			ft_putnbr_fd(world.walls[i].txtr, fd);
 		}
 		else if (section == 2 && world.sec)

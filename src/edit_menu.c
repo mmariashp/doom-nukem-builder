@@ -43,13 +43,12 @@ char					*lines(int id, int i, int w_type)
 {
 	static short		n_s_lines = 6;
 	static short		n_w_lines = 4;
-	static char			sector_lines[6][20] = { "SEC ", "Floor height ", \
+	static char			s_lines[6][20] = { "SECTOR ", "Floor height ", \
 	"Ceiling height ", "Floor texture ", "Ceiling texture ", "Items" };
-	static char			wall_lines[4][20] = { "WALL ", "Texture ",\
-	"Portal ", "Door " };
+	static char			w_lines[3][20] = { "WALL ", "Texture ", "Portal " };
 
 	if (id == SEC_EDIT && within(i, -1, n_s_lines))
-		return (sector_lines[i]);
+		return (s_lines[i]);
 	else if (id == WALL_EDIT && within(i, -1, n_w_lines))
 	{
 		if (i == 2)
@@ -63,7 +62,7 @@ char					*lines(int id, int i, int w_type)
 			if (w_type == transparent)
 				return ("TRANSPARENT");
 		}
-		return (wall_lines[i]);
+		return (w_lines[i]);
 	}
 	else
 		return (NULL);

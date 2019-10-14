@@ -17,7 +17,7 @@ void					break_in(int *s_walls, int n, int prev)
 	int					new;
 	int					tmp[n];
 	int					k;
-	int 				i;
+	int					i;
 
 	new = n - 1;
 	i = 0;

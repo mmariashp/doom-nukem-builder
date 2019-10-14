@@ -23,8 +23,8 @@ void					render_btn(t_btn *btn, t_sdl *sdl, SDL_Texture **t)
 	else if ((btn->vis_lit_on[1] == TRUE || btn->vis_lit_on[2] == TRUE) &&
 	within(btn->lit_i, -1, N_TXTR) && t[btn->lit_i])
 	{
-		SDL_RenderCopy(sdl->rend, t[btn->lit_i], NULL,
-				&(SDL_Rect){ btn->box.x, btn->box.y, btn->box.w, btn->box.h });
+		SDL_RenderCopy(sdl->rend, t[btn->lit_i], NULL,\
+		&(SDL_Rect){ btn->box.x, btn->box.y, btn->box.w, btn->box.h });
 	}
 	if (btn->text)
 	{
@@ -45,6 +45,31 @@ void					render_btn_big(t_btn *btn, t_sdl *sdl, SDL_Texture **t)
 		btn->box.y - btn->box.h * 0.3, btn->box.w * 1.3, btn->box.h * 1.3 });
 }
 
+void					render_btn2(t_btn *btn, t_sdl *sdl, SDL_Texture **t)
+{
+	if (!btn || !sdl || !sdl->rend || !t)
+		return ;
+	if (btn->vis_lit_on[1] == FALSE && btn->vis_lit_on[2] == FALSE &&
+	btn->fake_lit == FALSE &&
+		within(btn->reg_i, -1, N_TXTR) && t[btn->reg_i])
+		SDL_RenderCopy(sdl->rend, t[btn->reg_i], NULL, &(SDL_Rect){ btn->box.x,\
+		btn->box.y, btn->box.w, btn->box.h });
+	else if ((btn->vis_lit_on[1] == TRUE || btn->vis_lit_on[2] == TRUE ||
+	btn->fake_lit == TRUE) && within(btn->lit_i, -1, N_TXTR) && t[btn->lit_i])
+	{
+		SDL_RenderCopy(sdl->rend, t[btn->lit_i], NULL,\
+		&(SDL_Rect){ btn->box.x, btn->box.y, btn->box.w, btn->box.h });
+	}
+	if (btn->text)
+	{
+		if (btn->vis_lit_on[1] == TRUE)
+			write_txt(btn->text, sdl, (t_txtb){ btn->box, TRUE, LIT_COLOR });
+		else
+			write_txt(btn->text, sdl, (t_txtb){ btn->box, TRUE, \
+			btn->text_color });
+	}
+}
+
 void					render_btns(t_prog *prog, t_sdl *sdl)
 {
 	short				i;
@@ -63,6 +88,9 @@ void					render_btns(t_prog *prog, t_sdl *sdl)
 			prog->modes[prog->m_id].btn[i].vis_lit_on[2]) &&
 			state == SEC_EDIT && i > B_ITEM_DEL && i < B_NORM)
 				render_btn_big(&prog->modes[prog->m_id].btn[i], sdl, prog->t);
+			else if (prog->m_id == MODE_EDITOR && state == SEC_EDIT &&
+			i >= B_NORM)
+				render_btn2(&prog->modes[prog->m_id].btn[i], sdl, prog->t);
 			else
 				render_btn(&prog->modes[prog->m_id].btn[i], sdl, prog->t);
 		}

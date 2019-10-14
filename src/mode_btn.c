@@ -106,7 +106,7 @@ t_rec					settings_boxes(int h_b_v_btn, int i)
 		(i - 5), p[1].x, p[1].y });
 	else if (i < 6)
 		return (!i ? (t_rec){ W_W * 0.9, W_H * 0.1, p[2].x, p[2].y } : (t_rec)\
-		{ b1.x + p[1].x, b1.y + b2.h * 0.1 + p[2].y * --i, p[2].x, p[2].y });
+		{ b1.x + p[1].x, b1.y + b2.h * 0.1 + p[2].y * (--i), p[2].x, p[2].y });
 	return ((t_rec){ b2.x + p[1].x, b2.y + b2.h * 0.1 + p[3].y * (i - 6), \
 	p[3].x, p[3].y });
 }

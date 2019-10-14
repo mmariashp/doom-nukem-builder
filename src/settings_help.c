@@ -14,7 +14,7 @@
 
 int						default_heights(char set_get, char of_what, int value)
 {
-	static int 			t[2] = { 0 };
+	static int			t[2] = { 0 };
 
 	if (set_get == 1 && within(of_what, -1, 2))
 		return (t[(int)of_what]);

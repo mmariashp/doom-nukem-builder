@@ -112,7 +112,7 @@ t_prog *prog)
 	{
 		SDL_GetMouseState(&sdl->mouse.x, &sdl->mouse.y);
 		if (event.type == SDL_QUIT || (event.type == SDL_KEYUP &&
-									   event.key.keysym.sym == SDLK_ESCAPE))
+		event.key.keysym.sym == SDLK_ESCAPE))
 			return (TRUE);
 		else if (event.type == SDL_MOUSEBUTTONDOWN)
 			prog->click = sdl->mouse;

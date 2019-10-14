@@ -12,6 +12,18 @@
 
 #include "builder.h"
 
+void					write_wall_type(int type, int fd)
+{
+	if (type == filled)
+		ft_putstr_fd(" filled ", fd);
+	else if (type == empty)
+		ft_putstr_fd(" empty ", fd);
+	else if (type == window)
+		ft_putstr_fd(" window ", fd);
+	else if (type == transparent)
+		ft_putstr_fd(" transparent ", fd);
+}
+
 unsigned short			write_assets(int fd, t_media *media)
 {
 	int i;

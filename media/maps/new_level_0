@@ -214,7 +214,7 @@ Walls
 Sectors
 0) floor(0 1) ceil(20 2) walls '0 1 57 4 2 3 5 10 ' items ''
 1) murderous floor(0 1) ceil(20 2) walls '8 7 12 6 9 3 ' items ''
-2) lift uncovered floor(0 1) ceil(20 2) walls '13 11 14 15 16 ' items ''
+2) lift floor(0 1) ceil(20 2) walls '13 11 14 15 16 ' items ''
 3) floor(0 1) ceil(20 2) walls '17 23 18 19 20 28 25 ' items ''
 4) uncovered floor(0 1) ceil(20 2) walls '21 22 24 17 ' items ''
 5) floor(0 1) ceil(20 2) walls '28 29 27 26 ' items ''

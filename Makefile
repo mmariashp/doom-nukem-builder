@@ -144,7 +144,8 @@ SRC =   sdl_fun.c \
         get_boxes.c \
         break_wall.c \
         map_useful.c \
-        settings_help.c
+        settings_help.c \
+        light_sec_types.c
 
 OBJ =	$(SRC:.c=.o)
 

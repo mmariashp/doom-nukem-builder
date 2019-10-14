@@ -37,6 +37,35 @@ void					item_edit(t_prog *prog, t_world *world, int n_itf)
 	prog->redraw = 0;
 }
 
+void					sec_type_change(t_prog *prog, t_world *world)
+{
+	int 				sector;
+
+	sector = select_it(1, S_SELECT, 0);
+	if (!prog || !world || !within(sector, -1, world->n_s))
+		return ;
+	if (prog->btn_on == B_NORM)
+		world->sec[sector].type[0] = normal;
+	else if (prog->btn_on == B_DSEC)
+		world->sec[sector].type[0] = door;
+	else if (prog->btn_on == B_ELEV)
+		world->sec[sector].type[0] = elevator;
+	else if (prog->btn_on == B_CEIL)
+		world->sec[sector].type[1] = ceiling;
+	else if (prog->btn_on == B_SKY)
+		world->sec[sector].type[1] = skybox;
+	else if (prog->btn_on == B_FL_SAFE)
+		world->sec[sector].type[2] = safe;
+	else if (prog->btn_on == B_FL_UNSAFE)
+		world->sec[sector].type[2] = unsafe;
+	if (world->sec[sector].type[0] != normal)
+	{
+		world->sec[sector].type[1] = ceiling;
+		world->sec[sector].type[2] = safe;
+	}
+	light_sec_types(world->sec[sector], prog);
+}
+
 void					sec_edit_mng_btn(t_prog *prog, t_world *world, \
 t_media *media, t_grid *grid)
 {
@@ -60,6 +89,8 @@ t_media *media, t_grid *grid)
 		change_heights(prog->btn_on, world->sec);
 	else if (prog->btn_on == B_ITEM_EDIT)
 		item_edit(prog, world, media->n_itf);
+	else if (prog->btn_on >= B_NORM)
+		sec_type_change(prog, world);
 }
 
 void					edit_mng_btn(t_prog *prog, t_media *m, t_grid *grid, \
