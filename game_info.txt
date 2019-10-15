@@ -90,7 +90,7 @@ File Names:
 1) key old_key
 2) super_bonus bonus
 3) enemy demon
-4) enemy imp
+4) enemy new_demon
 5) light burning_barrel
 6) light lantern
 7) health big_medkit
@@ -119,5 +119,6 @@ File Names:
 30) light largefire
 31) coin pentagram
 32) light firewall
+33) enemy afrit
 ###
 
