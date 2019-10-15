@@ -3,34 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tbujalo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/29 12:50:44 by mshpakov          #+#    #+#             */
-/*   Updated: 2018/10/29 12:50:45 by mshpakov         ###   ########.fr       */
+/*   Created: 2018/10/28 13:28:08 by tbujalo           #+#    #+#             */
+/*   Updated: 2018/11/04 16:45:58 by tbujalo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strnstr(const char *hay, const char *need, size_t len)
+char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
-	size_t i;
-	size_t nlen;
+	char	*st1;
+	char	*st2;
+	size_t	l;
 
-	nlen = ft_strlen(need);
-	i = len - nlen + 1;
-	if (!*need)
-		return ((char *)hay);
-	if (!*hay)
-		return (NULL);
-	while (*hay && (int)i-- > 0)
+	if (!*s2 || (ft_strcmp(s1, s2)) == 0)
+		return ((char*)s1);
+	while (*s1 && len)
 	{
-		if (*hay == *need)
+		st1 = (char*)s1;
+		st2 = (char*)s2;
+		l = len--;
+		while (*st1 == *st2 && *st2 && *st1 && l)
 		{
-			if (ft_strncmp(hay, need, nlen) == 0)
-				return ((char *)hay);
+			l--;
+			st1++;
+			st2++;
 		}
-		hay++;
+		if (!*st2)
+			return ((char*)s1);
+		s1++;
 	}
 	return (NULL);
 }

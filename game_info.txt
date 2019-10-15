@@ -1,10 +1,8 @@
 #Levels
 Path: ./media/maps/
 Extension: 
-File Names: 
-0) map_one
+File Names:
 1) throneroom
-2) new_map.txt
 ###
 
 #Textures 71
@@ -85,7 +83,7 @@ File Names:
 ###
 
 #Items
-Path: ./media/items/
+Path: ./media/textures/
 Extension: 
 File Names: 
 0) coin coin

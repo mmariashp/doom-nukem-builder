@@ -980,8 +980,8 @@ typedef unsigned short GLhalf;
 #define GL_UNSIGNED_INT_SAMPLER_2D_ARRAY  0x8DD7
 #define GL_QUERY_WAIT                     0x8E13
 #define GL_QUERY_NO_WAIT                  0x8E14
-#define GL_QUERY_BY_REG_WAIT           0x8E15
-#define GL_QUERY_BY_REG_NO_WAIT        0x8E16
+#define GL_QUERY_BY_REGION_WAIT           0x8E15
+#define GL_QUERY_BY_REGION_NO_WAIT        0x8E16
 #define GL_BUFFER_ACCESS_FLAGS            0x911F
 #define GL_BUFFER_MAP_LENGTH              0x9120
 #define GL_BUFFER_MAP_OFFSET              0x9121
@@ -8527,8 +8527,8 @@ GLAPI void APIENTRY glBlendBarrierNV (void);
 #define GL_NV_conditional_render 1
 #define GL_QUERY_WAIT_NV                  0x8E13
 #define GL_QUERY_NO_WAIT_NV               0x8E14
-#define GL_QUERY_BY_REG_WAIT_NV        0x8E15
-#define GL_QUERY_BY_REG_NO_WAIT_NV     0x8E16
+#define GL_QUERY_BY_REGION_WAIT_NV        0x8E15
+#define GL_QUERY_BY_REGION_NO_WAIT_NV     0x8E16
 typedef void (APIENTRYP PFNGLBEGINCONDITIONALRENDERNVPROC) (GLuint id, GLenum mode);
 typedef void (APIENTRYP PFNGLENDCONDITIONALRENDERNVPROC) (void);
 #ifdef GL_GLEXT_PROTOTYPES

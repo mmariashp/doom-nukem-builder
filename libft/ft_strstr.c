@@ -3,27 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tbujalo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/29 12:50:31 by mshpakov          #+#    #+#             */
-/*   Updated: 2018/10/29 12:50:32 by mshpakov         ###   ########.fr       */
+/*   Created: 2018/10/26 18:22:24 by tbujalo           #+#    #+#             */
+/*   Updated: 2018/10/29 13:42:20 by tbujalo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strstr(const char *hay, const char *need)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	if (!*need)
-		return ((char *)hay);
-	while (*hay)
+	char	*st1;
+	char	*st2;
+
+	if (!*s2)
+		return ((char*)s1);
+	while (*s1)
 	{
-		if (*hay == *need)
+		st1 = (char*)s1;
+		st2 = (char*)s2;
+		while (*st1 == *st2 && *st1 && *st2)
 		{
-			if (ft_strncmp(hay, need, ft_strlen(need)) == 0)
-				return ((char *)hay);
+			st1++;
+			st2++;
 		}
-		hay++;
+		if (!*st2)
+			return ((char*)s1);
+		s1++;
 	}
 	return (NULL);
 }

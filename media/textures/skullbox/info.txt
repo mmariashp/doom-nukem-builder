@@ -2,10 +2,10 @@ Properties{
 size 18x18
 }
 waiting{
-textures/skullbox/tile000.png
-textures/skullbox/tile001.png
-textures/skullbox/tile002.png
-textures/skullbox/tile003.png
+media/textures/skullbox/tile000.png
+media/textures/skullbox/tile001.png
+media/textures/skullbox/tile002.png
+media/textures/skullbox/tile003.png
 }
 walk{
 }

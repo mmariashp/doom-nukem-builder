@@ -2,7 +2,7 @@ Properties{
 size 5x20
 }
 waiting{
-textures/bones/bones.png
+media/textures/bones/bones.png
 }
 walk{
 }

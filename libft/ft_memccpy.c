@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   memccpy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tbujalo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/29 19:01:52 by mshpakov          #+#    #+#             */
-/*   Updated: 2018/10/29 19:01:54 by mshpakov         ###   ########.fr       */
+/*   Created: 2018/10/29 18:13:17 by tbujalo           #+#    #+#             */
+/*   Updated: 2018/10/29 19:21:15 by tbujalo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,14 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char a;
-	unsigned char *d;
-	const unsigned char *s;
+	char			*d;
+	unsigned char	*s;
 
-	a = (unsigned char)c;
-	d = (unsigned char *)dst;
-	s = (const unsigned char *)src;
-	if (n == 0)
-		return (NULL);
-	while (n-- > 0)
-	{
-		*d = *s;
-		if (*s == a)
-			return (__extension__(++dst));
-		d++;
-		s++;
-		__extension__(dst++);
-	}
+	d = dst;
+	s = (unsigned char*)src;
+	if (n)
+		while (n--)
+			if ((*d++ = *s++) == (char)c)
+				return (d);
 	return (NULL);
 }

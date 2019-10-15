@@ -80,7 +80,7 @@ extern DECLSPEC SDL_Window * SDLCALL SDL_GetMouseFocus(void);
  *  \brief Retrieve the current state of the mouse.
  *
  *  The current button state is returned as a button bitmask, which can
- *  be tested using the SDL_BTN(X) macros, and x and y are set to the
+ *  be tested using the SDL_BUTTON(X) macros, and x and y are set to the
  *  mouse cursor position relative to the focus window for the currently
  *  selected mouse.  You can pass NULL for either x or y.
  */
@@ -105,7 +105,7 @@ extern DECLSPEC Uint32 SDLCALL SDL_GetMouseState(int *x, int *y);
  *
  *  \param x Returns the current X coord, relative to the desktop. Can be NULL.
  *  \param y Returns the current Y coord, relative to the desktop. Can be NULL.
- *  \return The current button state as a bitmask, which can be tested using the SDL_BTN(X) macros.
+ *  \return The current button state as a bitmask, which can be tested using the SDL_BUTTON(X) macros.
  *
  *  \sa SDL_GetMouseState
  */
@@ -115,7 +115,7 @@ extern DECLSPEC Uint32 SDLCALL SDL_GetGlobalMouseState(int *x, int *y);
  *  \brief Retrieve the relative state of the mouse.
  *
  *  The current button state is returned as a button bitmask, which can
- *  be tested using the SDL_BTN(X) macros, and x and y are set to the
+ *  be tested using the SDL_BUTTON(X) macros, and x and y are set to the
  *  mouse deltas since the last call to SDL_GetRelativeMouseState().
  */
 extern DECLSPEC Uint32 SDLCALL SDL_GetRelativeMouseState(int *x, int *y);
@@ -273,22 +273,22 @@ extern DECLSPEC void SDLCALL SDL_FreeCursor(SDL_Cursor * cursor);
 extern DECLSPEC int SDLCALL SDL_ShowCursor(int toggle);
 
 /**
- *  Used as a mask when testing btn in btntate.
+ *  Used as a mask when testing buttons in buttonstate.
  *   - Button 1:  Left mouse button
  *   - Button 2:  Middle mouse button
  *   - Button 3:  Right mouse button
  */
-#define SDL_BTN(X)       (1 << ((X)-1))
-#define SDL_BTN_LEFT     1
-#define SDL_BTN_MIDDLE   2
-#define SDL_BTN_RIGHT    3
-#define SDL_BTN_X1       4
-#define SDL_BTN_X2       5
-#define SDL_BTN_LMASK    SDL_BTN(SDL_BTN_LEFT)
-#define SDL_BTN_MMASK    SDL_BTN(SDL_BTN_MIDDLE)
-#define SDL_BTN_RMASK    SDL_BTN(SDL_BTN_RIGHT)
-#define SDL_BTN_X1MASK   SDL_BTN(SDL_BTN_X1)
-#define SDL_BTN_X2MASK   SDL_BTN(SDL_BTN_X2)
+#define SDL_BUTTON(X)       (1 << ((X)-1))
+#define SDL_BUTTON_LEFT     1
+#define SDL_BUTTON_MIDDLE   2
+#define SDL_BUTTON_RIGHT    3
+#define SDL_BUTTON_X1       4
+#define SDL_BUTTON_X2       5
+#define SDL_BUTTON_LMASK    SDL_BUTTON(SDL_BUTTON_LEFT)
+#define SDL_BUTTON_MMASK    SDL_BUTTON(SDL_BUTTON_MIDDLE)
+#define SDL_BUTTON_RMASK    SDL_BUTTON(SDL_BUTTON_RIGHT)
+#define SDL_BUTTON_X1MASK   SDL_BUTTON(SDL_BUTTON_X1)
+#define SDL_BUTTON_X2MASK   SDL_BUTTON(SDL_BUTTON_X2)
 
 
 /* Ends C function definitions when using C++ */

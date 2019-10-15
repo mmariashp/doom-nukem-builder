@@ -3,41 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tbujalo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 17:43:43 by mshpakov          #+#    #+#             */
-/*   Updated: 2018/11/06 17:43:45 by mshpakov         ###   ########.fr       */
+/*   Created: 2018/10/29 15:03:48 by tbujalo           #+#    #+#             */
+/*   Updated: 2018/11/01 14:13:12 by tbujalo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
 
-char	*ft_itoa(int n)
+static char		*get_array_rev(char *nbr, int size)
 {
-	int		i;
-	int		j;
-	char	*str;
+	char	*ret;
+	int		p;
 
-	i = n;
-	j = 1;
-	while ((i = i / 10))
-		j++;
-	if (n < 0)
-		j++;
-	if (!(str = (char *)malloc(sizeof(char) * ((size_t)j + 1UL))))
-		return (NULL);
-	i = 0;
-	if (n < 0)
-		str[i++] = '-';
-	if (n == -2147483648)
-		str[i++] = '2';
-	n = ft_abs_cut(n);
-	str[j] = '\0';
-	while (--j >= i)
+	p = 0;
+	ret = 0;
+	if ((ret = (char*)malloc(sizeof(char) * size + 1)))
 	{
-		str[j] = n % 10 + '0';
-		n = n / 10;
+		while (size--)
+			ret[p++] = nbr[size];
+		ret[p] = '\0';
 	}
-	return (str);
+	return (ret);
+}
+
+static char		*check_zero(int n)
+{
+	char	*r;
+
+	r = (char*)malloc(2);
+	if (n == 0)
+		r[0] = '0';
+	r[1] = '\0';
+	return (r);
+}
+
+char			*ft_itoa(int nbr)
+{
+	char		arr[100];
+	int			m;
+	int			size;
+	long int	n;
+
+	size = 0;
+	m = 1;
+	if ((n = nbr) != 0)
+	{
+		if (n < 0)
+		{
+			m = -1;
+			n *= -1;
+		}
+		while (n > 0)
+		{
+			arr[size++] = n % 10 + '0';
+			n = (n - n % 10) / 10;
+		}
+		if (m == -1)
+			arr[size++] = '-';
+		return (get_array_rev(arr, size));
+	}
+	return (check_zero(n));
 }

@@ -3,40 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tbujalo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/27 14:23:34 by mshpakov          #+#    #+#             */
-/*   Updated: 2018/10/27 14:23:36 by mshpakov         ###   ########.fr       */
+/*   Created: 2018/10/28 14:43:26 by tbujalo           #+#    #+#             */
+/*   Updated: 2019/01/22 21:00:57 by tbujalo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int		ft_atoi(const char *nbr)
 {
-	unsigned long int	r;
-	int					m;
-	unsigned long int	l;
+	int		m;
+	int		c;
+	int		res;
 
-	r = 0;
 	m = 1;
-	l = 922337203685477580;
-	while (ft_isspace(*str) == 1)
-		str++;
-	if (*str == '+' && *(str + 1) != '-')
-		str++;
-	if (*str == '-' && *(str - 1) != '+')
+	res = 0;
+	c = 0;
+	while (*nbr == ' ' || *nbr == '\t' || *nbr == '\f' ||
+			*nbr == '\r' || *nbr == '\n' || *nbr == '\v')
+		nbr++;
+	if (*nbr == '-' || *nbr == '+')
 	{
-		m = -1;
-		str++;
+		if (*nbr == '-')
+			m = -1;
+		nbr++;
 	}
-	while (*str != '\0' && ft_isdigit(*str) == 1)
-	{
-		if ((r > l || (r == l && (*str - '0') > 7)) && m == 1)
-			return (-1);
-		else if ((r > l || (r == l && (*str - '0') > 8)) && m == -1)
-			return (0);
-		r = r * 10 + (__typeof__(r))(*str++ - 48);
-	}
-	return ((int)((long)m * (long)r));
+	while (*nbr >= '0' && *nbr <= '9' && c++ < 19)
+		res = (res * 10) + (*nbr++ - '0');
+	if (c >= 19)
+		res = -1;
+	if (c >= 19 && m == -1)
+		res = 0;
+	return (res * m);
 }

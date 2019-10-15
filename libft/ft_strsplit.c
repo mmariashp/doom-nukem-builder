@@ -3,35 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tbujalo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 11:23:44 by mshpakov          #+#    #+#             */
-/*   Updated: 2018/11/05 11:23:46 by mshpakov         ###   ########.fr       */
+/*   Created: 2018/10/30 17:00:13 by tbujalo           #+#    #+#             */
+/*   Updated: 2018/11/09 15:55:47 by tbujalo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_strsplit(char const *s, char c)
+static int	w_c(const char *s, char c)
 {
-	char	**a;
-	int		j;
+	int		wc;
 
-	j = -1;
-	if (!s || !(a = (char **)malloc(sizeof(s) * (ft_count_words(s, c) + 1))))
-		return (NULL);
+	wc = 0;
 	while (*s)
 	{
-		while (*s && *s == c)
+		if (*s == c)
 			s++;
-		if (*s && *s != c)
+		else
 		{
-			if (!(a[++j] = ft_strsub(s, 0, ft_strulen(s, c))))
-				return (NULL);
-			while (*s && *s != c)
+			wc++;
+			while (*s != c && *s)
 				s++;
 		}
 	}
-	a[++j] = NULL;
-	return (a);
+	return (wc);
+}
+
+static char	*get_word(const char *str, int *si, int end)
+{
+	char	*ret;
+	int		i;
+	int		size;
+
+	size = *si;
+	i = 0;
+	ret = (char*)malloc(sizeof(char) * size + 1);
+	while (size)
+		ret[i++] = str[end - size--];
+	ret[i] = '\0';
+	*si = 0;
+	return (ret);
+}
+
+char		**ft_strsplit(char const *s, char c)
+{
+	char	**array;
+	int		i;
+	int		j;
+	int		lenw;
+
+	j = 0;
+	lenw = 0;
+	i = 0;
+	if (!s || !c || !(array = (char**)malloc(sizeof(char*) * w_c(s, c) + 1)))
+		return (NULL);
+	while (s[i] && j < w_c(s, c))
+	{
+		while (s[i] == c && s[i])
+			i++;
+		while (s[i] != c && s[i])
+		{
+			i++;
+			lenw++;
+		}
+		array[j++] = get_word(s, &lenw, i);
+	}
+	array[j] = 0;
+	return (array);
 }
