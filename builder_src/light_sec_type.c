@@ -31,8 +31,8 @@ void					light_sec_types(t_sec sec, t_prog *prog)
 		prog->modes[prog->m_id].btn[B_CEIL].fake_lit = TRUE;
 	else if (sec.type[1] == skybox)
 		prog->modes[prog->m_id].btn[B_SKY].fake_lit = TRUE;
-	if (sec.type[1] == safe)
+	if (sec.type[2] == safe)
 		prog->modes[prog->m_id].btn[B_FL_SAFE].fake_lit = TRUE;
-	else if (sec.type[1] == unsafe)
+	else if (sec.type[2] == unsafe)
 		prog->modes[prog->m_id].btn[B_FL_UNSAFE].fake_lit = TRUE;
 }
