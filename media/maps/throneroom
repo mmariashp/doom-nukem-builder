@@ -1,6 +1,6 @@
-Count Vectors: 217
-Count Walls: 329
-Count Sectors: 111
+Count Vectors: 218
+Count Walls: 331
+Count Sectors: 112
 
 Vectors
 0) 47,21
@@ -220,6 +220,7 @@ Vectors
 214) 45,73
 215) 53,73
 216) 78,77
+217) 41,2
 
 Walls
 0) 1-0 empty 61
@@ -367,7 +368,7 @@ Walls
 142) 93-92 filled 17
 143) 94-93 filled 17
 144) 95-94 filled 17
-145) 25-95 filled 17
+145) 25-95 empty 17
 146) 98-97 filled 17
 147) 27-98 filled 17
 148) 97-25 filled 17
@@ -543,14 +544,16 @@ Walls
 318) 204-210 filled 62
 319) 210-211 filled 62
 320) 211-209 filled 62
-321) 209-213 filled 3
+321) 209-213 filled 56
 322) 213-212 empty 56
-323) 212-208 filled 3
+323) 212-208 filled 56
 324) 214-43 filled 62
 325) 213-214 filled 62
 326) 215-214 empty 62
 327) 215-212 filled 62
 328) 216-183 empty 62
+329) 217-95 filled 17
+330) 97-217 filled 17
 
 Sectors
 0) floor(38 63) ceil(94 59) walls '3 2 1 0 ' items ''
@@ -578,7 +581,7 @@ Sectors
 22) floor(26 63) ceil(60 61) walls '56 60 59 58 ' items ''
 23) floor(30 63) ceil(60 61) walls '59 63 62 61 ' items ''
 24) door floor(34 56) ceil(34 56) walls '66 65 64 62 ' items ''
-25) floor(34 60) ceil(64 61) walls '65 71 70 69 326 324 68 67 209 ' items '(42,65 15)(55,65 15)(45,67 9)'
+25) floor(34 60) ceil(64 61) walls '65 71 70 69 326 324 68 67 209 ' items '(42,65 15)(55,65 15)(45,67 9)(52,68 12)'
 26) murderous floor(0 3) ceil(20 17) walls '44 76 75 74 73 72 ' items ''
 27) floor(0 3) ceil(85 17) walls '77 78 79 73 ' items '(18,19 32)'
 28) floor(0 3) ceil(85 17) walls '75 82 81 80 ' items '(18,35 32)'
@@ -602,8 +605,8 @@ Sectors
 46) murderous floor(0 3) ceil(85 17) walls '132 114 95 102 131 ' items ''
 47) murderous floor(0 3) ceil(85 17) walls '122 121 134 135 136 137 130 ' items '(82,34 15)'
 48) floor(20 53) ceil(85 17) walls '47 141 140 139 ' items '(69,4 3)'
-49) floor(22 53) ceil(85 17) walls '141 40 145 144 143 142 ' items '(49,3 3)(47,3 12)'
-50) murderous floor(0 3) ceil(85 17) walls '148 42 39 28 23 43 147 146 ' items ''
+49) floor(22 53) ceil(85 17) walls '141 40 145 144 143 142 ' items '(49,3 15)(47,3 12)'
+50) murderous floor(0 3) ceil(85 17) walls '148 42 39 28 23 43 147 146 ' items '(34,13 3)'
 51) floor(20 13) ceil(85 14) walls '156 155 154 168 166 153 152 197 186 151 150 149 ' items '(112,36 27)(108,51 18)(102,55 29)'
 52) floor(16 27) ceil(50 17) walls '156 159 158 157 ' items ''
 53) floor(12 53) ceil(50 17) walls '129 161 160 203 ' items ''
@@ -661,9 +664,10 @@ Sectors
 105) murderous floor(0 3) ceil(50 61) walls '313 304 312 311 ' items ''
 106) floor(30 10) ceil(50 61) walls '308 317 316 315 312 307 310 314 ' items '(62,79 1)(67,78 29)(67,84 29)'
 107) murderous floor(0 1) ceil(20 2) walls '318 319 320 317 ' items ''
-108) door floor(30 3) ceil(30 3) walls '316 321 322 323 ' items ''
+108) door floor(30 56) ceil(30 56) walls '316 321 322 323 ' items ''
 109) floor(30 1) ceil(50 2) walls '325 326 327 322 ' items ''
 110) murderous floor(0 3) ceil(50 61) walls '294 297 262 328 ' items ''
+111) floor(22 53) ceil(85 17) walls '145 148 330 329 ' items '(42,5 3)'
 
 Player
 0) 127,53 (sector: 73) start

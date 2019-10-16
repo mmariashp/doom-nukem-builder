@@ -56,29 +56,29 @@ unsigned short			exit_sec_items(int i, t_item *items, t_sec *s)
 
 int						s_items(t_sec *s, char *l)
 {
-	t_item				*items;
+	t_item				*its;
 	int					i;
 
-	if (!s || !l || !(l = ft_strchr(l, '\'')) || count_it(l++, &s->n_it) > 20)
-		return (FAIL);
-	if (!(items = (t_item *)ft_memalloc(sizeof(t_item) * s->n_it)))
+	if (!s || !l || !(l = ft_strchr(l, '\'')) ||
+	count_it(l++, &s->n_it) > MAX_SEC_ITEMS ||
+	!(its = (t_item *)ft_memalloc(sizeof(t_item) * s->n_it)))
 		return (FAIL);
 	i = 0;
 	while (*l && *l != '\'' && i < s->n_it)
 	{
 		if (*l == '(' && ++l)
 		{
-			items[i].p.x = clamp(ft_atoi(l), 0, GRID_SIZE - 1);
+			its[i].p.x = clamp(ft_atoi(l), 0, GRID_SIZE - 1);
 			if (!(l = ft_strchr(l, ',')) || !++l)
 				break ;
-			items[i].p.y = clamp(ft_atoi(l), 0, GRID_SIZE - 1);
+			its[i].p.y = clamp(ft_atoi(l), 0, GRID_SIZE - 1);
 			if (!(l = ft_strchr(l, ' ')) || !++l)
 				break ;
-			items[i++].id = clamp(ft_atoi(l), 0, MAX_ITEMFULL - 1);
+			its[i++].id = clamp(ft_atoi(l), 0, MAX_ITEMFULL - 1);
 			if (!(l = ft_strchr(l, ')')))
 				break ;
 		}
 		l++;
 	}
-	return (exit_sec_items(i, items, s));
+	return (exit_sec_items(i, its, s));
 }

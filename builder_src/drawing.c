@@ -109,7 +109,7 @@ t_vec mouse)
 		add_to_media(grid, world, wall);
 	vis = grid->p[0].x != -1 ? FALSE : TRUE;
 	wall = 0;
-	while (wall < TOT_EDIT_BTNS)
+	while (wall < prog->modes[prog->m_id].n_btn && wall < TOT_EDIT_BTNS)
 		prog->modes[prog->m_id].btn[wall++].vis_lit_on[0] = vis;
 	prog->click = (t_vec){ 0, 0 };
 }

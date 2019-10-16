@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 17:10:42 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/09 16:42:29 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 18:15:24 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ void					write_file(int section, int i, int fd, t_media *media)
 		ft_putstr_fd(media->txtr[i].name, fd);
 	else if (section == 2 && media->it_f && media->it_f[i].name)
 	{
-		write_item_type(media->it_f[i].type, fd);
+		if (!ft_strcmp("jetpack", media->it_f[i].name))
+			ft_putstr_fd("objectjetpack ", fd);
+		else
+			write_item_type(media->it_f[i].type, fd);
 		ft_putstr_fd(media->it_f[i].name, fd);
 	}
 	ft_putchar_fd('\n', fd);
