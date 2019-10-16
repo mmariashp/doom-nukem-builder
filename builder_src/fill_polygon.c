@@ -85,7 +85,7 @@ int color)
 	t_vec				minmax_p[3];
 	unsigned short		o;
 
-	if (!p || !screen)
+	if (!p || !screen || n_p >= MAX_SEC_WALLS)
 		return (FALSE);
 	o = FALSE;
 	bounding_box(&minmax_p[0], &minmax_p[1], p, n_p);

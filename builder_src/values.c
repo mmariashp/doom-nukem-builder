@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 20:08:58 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/28 20:09:00 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:40:37 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ t_media *m)
 		return ;
 	i = -1;
 	p->n = clamp(p->n, 0, 255);
-	st = select_it(1, ST_SEL, 0);
+	st = select_it(1, st_select, 0);
 	while (++i < p->n)
 	{
 		if (!i && within(TXTR_RECG_L, -1, N_TXTR) && p->t[TXTR_RECG_L])
 			rend_box((layout(2, (char)i)), p->t[TXTR_RECG_L], sdl->rend);
 		else if (within(TXTR_RECG, -1, N_TXTR) && p->t[TXTR_RECG])
 			rend_box((layout(2, (char)i)), p->t[TXTR_RECG], sdl->rend);
-		write_txt(lines(st, i, select_it(1, W_SELECT, 0) > 0 ?\
-		m->worlds[m->w].walls[select_it(1, W_SELECT, 0)].type : 0), sdl, \
+		write_txt(lines(st, i, select_it(1, w_select, 0) > 0 ?\
+		m->worlds[m->w].walls[select_it(1, w_select, 0)].type : 0), sdl, \
 		(t_txtb){ layout(2, (char)i), 0, ED_CLR });
 		write_txt(v[i].text, sdl, (t_txtb){ (b = layout(5, i)), 0, ED_CLR });
 		b.w = b.h;

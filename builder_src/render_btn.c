@@ -76,7 +76,7 @@ void					render_btns(t_prog *prog, t_sdl *sdl)
 	short				state;
 
 	i = 0;
-	state = select_it(1, ST_SEL, -1);
+	state = select_it(1, st_select, -1);
 	if (!prog || !prog->modes[prog->m_id].btn || !sdl)
 		return ;
 	while (i < prog->modes[prog->m_id].n_btn)

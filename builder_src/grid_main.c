@@ -57,7 +57,7 @@ void					grid_re(t_grid *grid, t_media *media, int state,
 	clean_grid(grid);
 	fill_grid(media->worlds[media->w].n_v,\
 	media->worlds[media->w].vecs, grid);
-	sector = select_it(1, S_SELECT, -1);
+	sector = select_it(1, s_select, -1);
 	if (state == SEC_EDIT && within(sector, -1, media->worlds[media->w].n_s))
 	{
 		p = make_vec_tab(&media->worlds[media->w].sec[sector], \

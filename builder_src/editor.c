@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 12:04:56 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/26 12:04:58 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:41:16 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void					r_editor(t_sdl *sdl, t_grid *g, t_media *m, t_prog *p)
 	if (!sdl || !m || !g || !p->redraw)
 		return ;
 	sdl_render_prep(sdl->rend);
-	grid_re(g, m, (s = select_it(1, ST_SEL, 0)), select_it(1, S_SELECT, 0));
+	grid_re(g, m, (s = select_it(1, st_select, 0)), select_it(1, s_select, 0));
 	if (s == NORMAL && p->btn_on == ISO_BTN)
 		render_grid_iso(m->worlds[m->w], g, p);
 	else
@@ -57,16 +57,16 @@ unsigned short			u_editor(t_sdl *sdl, t_grid *grid, t_media *m,
 	if (!sdl || !m || !grid || !prog)
 		return (FAIL);
 	if (prog->last != prog->m_id)
-		return (mode_change(prog, m, grid, select_it(1, FC_SELECT, -1)));
+		return (mode_change(prog, m, grid, select_it(1, fc_select, -1)));
 	if (prog->zoom != 0)
 		zoom_grid(prog, sdl->mouse, grid);
 	if (prog->move.x || prog->move.y)
 		return (move_grid_keys(prog, grid));
-	if (select_it(1, ST_SEL, -1) == NORMAL && prog->btn_on == SAVE_BTN)
+	if (select_it(1, st_select, -1) == NORMAL && prog->btn_on == SAVE_BTN)
 		return (save_media(m, prog));
 	if ((tmp = manage_btn(m, prog, grid, sdl->mouse)) < 2)
 		return (tmp);
-	if ((state = select_it(1, ST_SEL, -1)) == SEC_SEARCH)
+	if ((state = select_it(1, st_select, -1)) == SEC_SEARCH)
 		sec_search_st(prog, sdl->mouse, grid, &m->worlds[m->w]);
 	else if (state == WALL_SEARCH && mouse_over(grid->box, sdl->mouse))
 		wall_search_st(prog, sdl->mouse, grid, &m->worlds[m->w]);
@@ -84,7 +84,7 @@ unsigned short			btn_down(t_prog *prog, t_vec mouse)
 	if (prog)
 	{
 		prog->click = mouse;
-		state = select_it(1, ST_SEL, -1);
+		state = select_it(1, st_select, -1);
 		if (!(state == SEC_EDIT &&
 		(within(prog->btn_lit, F_UP_BTN - 1, C_DOWN_BTN + 1) ||
 		within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1))))
@@ -94,30 +94,30 @@ unsigned short			btn_down(t_prog *prog, t_vec mouse)
 }
 
 int						i_editor(t_sdl *sdl, t_grid *grid, t_media *media,
-		t_prog *prog)
+		t_prog *p)
 {
 	SDL_Event			e;
 
-	while (sdl && media && grid && prog && SDL_PollEvent(&e))
+	while (sdl && media && grid && p && SDL_PollEvent(&e))
 	{
 		SDL_GetMouseState(&sdl->mouse.x, &sdl->mouse.y);
 		if (e.type == SDL_QUIT || (e.type == SDL_KEYUP &&
 		e.key.keysym.sym == SDLK_ESCAPE))
 			return (TRUE);
 		else if (e.type == SDL_KEYUP || e.type == SDL_KEYDOWN)
-			prog->move = get_arrow_input(e.key.keysym.sym, prog->move);
+			p->move = get_arrow_input(e.key.keysym.sym, p->move);
 		else if (e.type == SDL_MOUSEWHEEL && e.wheel.y)
-			prog->zoom += e.wheel.y > 0 ? SCROLL_UP : SCROLL_DOWN;
-		else if (e.type == SDL_MOUSEBUTTONDOWN && btn_down(prog, sdl->mouse))
+			p->zoom += e.wheel.y > 0 ? SCROLL_UP : SCROLL_DOWN;
+		else if (e.type == SDL_MOUSEBUTTONDOWN && btn_down(p, sdl->mouse))
 			break ;
 		else if (e.type == SDL_MOUSEBUTTONUP)
 		{
-			if (select_it(1, ST_SEL, -1) == NORMAL && prog->btn_lit == BACK_BTN)
-				return (return_to_levels(prog, media));
-			if (select_it(1, ST_SEL, -1) == SEC_EDIT && within(prog->btn_lit,\
+			if (select_it(1, st_select, -1) == NORMAL && p->btn_lit == BACK_BTN)
+				return (return_to_levels(p, media));
+			if (select_it(1, st_select, -1) == SEC_EDIT && within(p->btn_lit,\
 			F_UP_BTN - 1, C_DOWN_BTN + 1))
-				turn_btns_off(prog);
-			prog->click = (t_vec){ 0, 0 };
+				turn_btns_off(p);
+			p->click = (t_vec){ 0, 0 };
 		}
 	}
 	return (FALSE);

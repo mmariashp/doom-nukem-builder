@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 20:05:25 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/15 14:08:16 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:30:19 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_media *media)
 
 void					settings_mng_btn(t_prog *prog, t_media *media)
 {
+	if (!prog || !media)
+		return ;
 	if (within(prog->btn_on, S_F_UP_BTN - 1, S_C_DOWN_BTN + 1))
 		change_def_heights(prog->btn_on);
 	else if (within(prog->btn_on, S_WT_BTN - 1, S_TT_BTN + 1))

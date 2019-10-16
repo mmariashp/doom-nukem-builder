@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 21:30:46 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/15 14:36:03 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:43:08 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,17 +284,6 @@
 # define SEC_CONCAVE_CLOSED			0
 # define SEC_OPEN					-1
 
-# define FC_SELECT					0
-# define W_SELECT					1
-# define S_SELECT					2
-# define T_SELECT					3
-# define SEL_I_SELECT				4
-# define ST_SEL						5
-# define LAST_ST_SEL				6
-# define WORLD_SELECT				7
-# define I_SELECT					8
-# define DEF_T_SELECT				9
-
 # define NORMAL						-1
 # define SEC_SEARCH					0
 # define SEC_EDIT					1
@@ -313,6 +302,20 @@
 # define WEAPON						7
 # define LIGHT						8
 # define TOTAL_TYPES				9
+
+enum						e_select
+{
+	fc_select,
+	w_select,
+	s_select,
+	t_select,
+	sel_i_select,
+	st_select,
+	last_select,
+	world_select,
+	i_select,
+	def_t_select
+};
 
 enum						e_modes
 {
@@ -579,8 +582,8 @@ int							start_sdl(t_sdl *sdl);
 t_sdl						*get_sdl(void);
 SDL_Texture					*load_texture(char *name, SDL_Renderer *rend, \
 t_vec *size);
-void						free_sdl(t_sdl *sdl);
-void						quit_sdl(void);
+void						free_sdl(t_sdl *sdl, char proper);
+void						quit_sdl(char proper);
 
 void						r_mainmenu(t_sdl *sdl, t_grid *grid, t_media *media,
 							t_prog *prog);

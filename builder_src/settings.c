@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 17:32:09 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/15 14:08:16 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:35:51 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void					render_defaults(t_sdl *sdl, t_media *media)
 		tmp = settings_boxes(2, i++);
 		tmp.x += tmp.w * 0.8;
 		tmp.w = tmp.h;
-		if ((str = ft_itoa(default_heights(1, i - 5, -1))))
+		if ((str = ft_itoa(default_heights(1, i - 6, -1))))
 		{
 			write_txt(str, sdl, (t_txtb){ tmp, TRUE, ED_CLR });
 			free(str);

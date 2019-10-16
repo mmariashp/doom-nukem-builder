@@ -136,32 +136,2597 @@ ft/fast:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/build
 .PHONY : ft/fast
 
-libft/ft_abs_cut.o: libft/ft_abs_cut.c.o
+builder_src/add_door.o: builder_src/add_door.c.o
 
-.PHONY : libft/ft_abs_cut.o
+.PHONY : builder_src/add_door.o
 
 # target to build an object file
-libft/ft_abs_cut.c.o:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_abs_cut.c.o
-.PHONY : libft/ft_abs_cut.c.o
+builder_src/add_door.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_door.c.o
+.PHONY : builder_src/add_door.c.o
 
-libft/ft_abs_cut.i: libft/ft_abs_cut.c.i
+builder_src/add_door.i: builder_src/add_door.c.i
 
-.PHONY : libft/ft_abs_cut.i
+.PHONY : builder_src/add_door.i
 
 # target to preprocess a source file
-libft/ft_abs_cut.c.i:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_abs_cut.c.i
-.PHONY : libft/ft_abs_cut.c.i
+builder_src/add_door.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_door.c.i
+.PHONY : builder_src/add_door.c.i
 
-libft/ft_abs_cut.s: libft/ft_abs_cut.c.s
+builder_src/add_door.s: builder_src/add_door.c.s
 
-.PHONY : libft/ft_abs_cut.s
+.PHONY : builder_src/add_door.s
 
 # target to generate assembly for a file
-libft/ft_abs_cut.c.s:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_abs_cut.c.s
-.PHONY : libft/ft_abs_cut.c.s
+builder_src/add_door.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_door.c.s
+.PHONY : builder_src/add_door.c.s
+
+builder_src/add_door_help.o: builder_src/add_door_help.c.o
+
+.PHONY : builder_src/add_door_help.o
+
+# target to build an object file
+builder_src/add_door_help.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_door_help.c.o
+.PHONY : builder_src/add_door_help.c.o
+
+builder_src/add_door_help.i: builder_src/add_door_help.c.i
+
+.PHONY : builder_src/add_door_help.i
+
+# target to preprocess a source file
+builder_src/add_door_help.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_door_help.c.i
+.PHONY : builder_src/add_door_help.c.i
+
+builder_src/add_door_help.s: builder_src/add_door_help.c.s
+
+.PHONY : builder_src/add_door_help.s
+
+# target to generate assembly for a file
+builder_src/add_door_help.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_door_help.c.s
+.PHONY : builder_src/add_door_help.c.s
+
+builder_src/add_sector.o: builder_src/add_sector.c.o
+
+.PHONY : builder_src/add_sector.o
+
+# target to build an object file
+builder_src/add_sector.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_sector.c.o
+.PHONY : builder_src/add_sector.c.o
+
+builder_src/add_sector.i: builder_src/add_sector.c.i
+
+.PHONY : builder_src/add_sector.i
+
+# target to preprocess a source file
+builder_src/add_sector.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_sector.c.i
+.PHONY : builder_src/add_sector.c.i
+
+builder_src/add_sector.s: builder_src/add_sector.c.s
+
+.PHONY : builder_src/add_sector.s
+
+# target to generate assembly for a file
+builder_src/add_sector.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_sector.c.s
+.PHONY : builder_src/add_sector.c.s
+
+builder_src/add_to_media.o: builder_src/add_to_media.c.o
+
+.PHONY : builder_src/add_to_media.o
+
+# target to build an object file
+builder_src/add_to_media.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_to_media.c.o
+.PHONY : builder_src/add_to_media.c.o
+
+builder_src/add_to_media.i: builder_src/add_to_media.c.i
+
+.PHONY : builder_src/add_to_media.i
+
+# target to preprocess a source file
+builder_src/add_to_media.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_to_media.c.i
+.PHONY : builder_src/add_to_media.c.i
+
+builder_src/add_to_media.s: builder_src/add_to_media.c.s
+
+.PHONY : builder_src/add_to_media.s
+
+# target to generate assembly for a file
+builder_src/add_to_media.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/add_to_media.c.s
+.PHONY : builder_src/add_to_media.c.s
+
+builder_src/break_wall.o: builder_src/break_wall.c.o
+
+.PHONY : builder_src/break_wall.o
+
+# target to build an object file
+builder_src/break_wall.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/break_wall.c.o
+.PHONY : builder_src/break_wall.c.o
+
+builder_src/break_wall.i: builder_src/break_wall.c.i
+
+.PHONY : builder_src/break_wall.i
+
+# target to preprocess a source file
+builder_src/break_wall.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/break_wall.c.i
+.PHONY : builder_src/break_wall.c.i
+
+builder_src/break_wall.s: builder_src/break_wall.c.s
+
+.PHONY : builder_src/break_wall.s
+
+# target to generate assembly for a file
+builder_src/break_wall.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/break_wall.c.s
+.PHONY : builder_src/break_wall.c.s
+
+builder_src/btn_main.o: builder_src/btn_main.c.o
+
+.PHONY : builder_src/btn_main.o
+
+# target to build an object file
+builder_src/btn_main.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/btn_main.c.o
+.PHONY : builder_src/btn_main.c.o
+
+builder_src/btn_main.i: builder_src/btn_main.c.i
+
+.PHONY : builder_src/btn_main.i
+
+# target to preprocess a source file
+builder_src/btn_main.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/btn_main.c.i
+.PHONY : builder_src/btn_main.c.i
+
+builder_src/btn_main.s: builder_src/btn_main.c.s
+
+.PHONY : builder_src/btn_main.s
+
+# target to generate assembly for a file
+builder_src/btn_main.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/btn_main.c.s
+.PHONY : builder_src/btn_main.c.s
+
+builder_src/btn_press.o: builder_src/btn_press.c.o
+
+.PHONY : builder_src/btn_press.o
+
+# target to build an object file
+builder_src/btn_press.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/btn_press.c.o
+.PHONY : builder_src/btn_press.c.o
+
+builder_src/btn_press.i: builder_src/btn_press.c.i
+
+.PHONY : builder_src/btn_press.i
+
+# target to preprocess a source file
+builder_src/btn_press.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/btn_press.c.i
+.PHONY : builder_src/btn_press.c.i
+
+builder_src/btn_press.s: builder_src/btn_press.c.s
+
+.PHONY : builder_src/btn_press.s
+
+# target to generate assembly for a file
+builder_src/btn_press.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/btn_press.c.s
+.PHONY : builder_src/btn_press.c.s
+
+builder_src/btn_press_settings.o: builder_src/btn_press_settings.c.o
+
+.PHONY : builder_src/btn_press_settings.o
+
+# target to build an object file
+builder_src/btn_press_settings.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/btn_press_settings.c.o
+.PHONY : builder_src/btn_press_settings.c.o
+
+builder_src/btn_press_settings.i: builder_src/btn_press_settings.c.i
+
+.PHONY : builder_src/btn_press_settings.i
+
+# target to preprocess a source file
+builder_src/btn_press_settings.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/btn_press_settings.c.i
+.PHONY : builder_src/btn_press_settings.c.i
+
+builder_src/btn_press_settings.s: builder_src/btn_press_settings.c.s
+
+.PHONY : builder_src/btn_press_settings.s
+
+# target to generate assembly for a file
+builder_src/btn_press_settings.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/btn_press_settings.c.s
+.PHONY : builder_src/btn_press_settings.c.s
+
+builder_src/char_ops.o: builder_src/char_ops.c.o
+
+.PHONY : builder_src/char_ops.o
+
+# target to build an object file
+builder_src/char_ops.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/char_ops.c.o
+.PHONY : builder_src/char_ops.c.o
+
+builder_src/char_ops.i: builder_src/char_ops.c.i
+
+.PHONY : builder_src/char_ops.i
+
+# target to preprocess a source file
+builder_src/char_ops.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/char_ops.c.i
+.PHONY : builder_src/char_ops.c.i
+
+builder_src/char_ops.s: builder_src/char_ops.c.s
+
+.PHONY : builder_src/char_ops.s
+
+# target to generate assembly for a file
+builder_src/char_ops.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/char_ops.c.s
+.PHONY : builder_src/char_ops.c.s
+
+builder_src/check_for_light.o: builder_src/check_for_light.c.o
+
+.PHONY : builder_src/check_for_light.o
+
+# target to build an object file
+builder_src/check_for_light.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/check_for_light.c.o
+.PHONY : builder_src/check_for_light.c.o
+
+builder_src/check_for_light.i: builder_src/check_for_light.c.i
+
+.PHONY : builder_src/check_for_light.i
+
+# target to preprocess a source file
+builder_src/check_for_light.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/check_for_light.c.i
+.PHONY : builder_src/check_for_light.c.i
+
+builder_src/check_for_light.s: builder_src/check_for_light.c.s
+
+.PHONY : builder_src/check_for_light.s
+
+# target to generate assembly for a file
+builder_src/check_for_light.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/check_for_light.c.s
+.PHONY : builder_src/check_for_light.c.s
+
+builder_src/clip_line.o: builder_src/clip_line.c.o
+
+.PHONY : builder_src/clip_line.o
+
+# target to build an object file
+builder_src/clip_line.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/clip_line.c.o
+.PHONY : builder_src/clip_line.c.o
+
+builder_src/clip_line.i: builder_src/clip_line.c.i
+
+.PHONY : builder_src/clip_line.i
+
+# target to preprocess a source file
+builder_src/clip_line.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/clip_line.c.i
+.PHONY : builder_src/clip_line.c.i
+
+builder_src/clip_line.s: builder_src/clip_line.c.s
+
+.PHONY : builder_src/clip_line.s
+
+# target to generate assembly for a file
+builder_src/clip_line.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/clip_line.c.s
+.PHONY : builder_src/clip_line.c.s
+
+builder_src/delete_sector.o: builder_src/delete_sector.c.o
+
+.PHONY : builder_src/delete_sector.o
+
+# target to build an object file
+builder_src/delete_sector.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_sector.c.o
+.PHONY : builder_src/delete_sector.c.o
+
+builder_src/delete_sector.i: builder_src/delete_sector.c.i
+
+.PHONY : builder_src/delete_sector.i
+
+# target to preprocess a source file
+builder_src/delete_sector.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_sector.c.i
+.PHONY : builder_src/delete_sector.c.i
+
+builder_src/delete_sector.s: builder_src/delete_sector.c.s
+
+.PHONY : builder_src/delete_sector.s
+
+# target to generate assembly for a file
+builder_src/delete_sector.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_sector.c.s
+.PHONY : builder_src/delete_sector.c.s
+
+builder_src/delete_useless.o: builder_src/delete_useless.c.o
+
+.PHONY : builder_src/delete_useless.o
+
+# target to build an object file
+builder_src/delete_useless.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_useless.c.o
+.PHONY : builder_src/delete_useless.c.o
+
+builder_src/delete_useless.i: builder_src/delete_useless.c.i
+
+.PHONY : builder_src/delete_useless.i
+
+# target to preprocess a source file
+builder_src/delete_useless.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_useless.c.i
+.PHONY : builder_src/delete_useless.c.i
+
+builder_src/delete_useless.s: builder_src/delete_useless.c.s
+
+.PHONY : builder_src/delete_useless.s
+
+# target to generate assembly for a file
+builder_src/delete_useless.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_useless.c.s
+.PHONY : builder_src/delete_useless.c.s
+
+builder_src/delete_vector.o: builder_src/delete_vector.c.o
+
+.PHONY : builder_src/delete_vector.o
+
+# target to build an object file
+builder_src/delete_vector.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_vector.c.o
+.PHONY : builder_src/delete_vector.c.o
+
+builder_src/delete_vector.i: builder_src/delete_vector.c.i
+
+.PHONY : builder_src/delete_vector.i
+
+# target to preprocess a source file
+builder_src/delete_vector.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_vector.c.i
+.PHONY : builder_src/delete_vector.c.i
+
+builder_src/delete_vector.s: builder_src/delete_vector.c.s
+
+.PHONY : builder_src/delete_vector.s
+
+# target to generate assembly for a file
+builder_src/delete_vector.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_vector.c.s
+.PHONY : builder_src/delete_vector.c.s
+
+builder_src/delete_world.o: builder_src/delete_world.c.o
+
+.PHONY : builder_src/delete_world.o
+
+# target to build an object file
+builder_src/delete_world.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_world.c.o
+.PHONY : builder_src/delete_world.c.o
+
+builder_src/delete_world.i: builder_src/delete_world.c.i
+
+.PHONY : builder_src/delete_world.i
+
+# target to preprocess a source file
+builder_src/delete_world.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_world.c.i
+.PHONY : builder_src/delete_world.c.i
+
+builder_src/delete_world.s: builder_src/delete_world.c.s
+
+.PHONY : builder_src/delete_world.s
+
+# target to generate assembly for a file
+builder_src/delete_world.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/delete_world.c.s
+.PHONY : builder_src/delete_world.c.s
+
+builder_src/distribute_btns.o: builder_src/distribute_btns.c.o
+
+.PHONY : builder_src/distribute_btns.o
+
+# target to build an object file
+builder_src/distribute_btns.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/distribute_btns.c.o
+.PHONY : builder_src/distribute_btns.c.o
+
+builder_src/distribute_btns.i: builder_src/distribute_btns.c.i
+
+.PHONY : builder_src/distribute_btns.i
+
+# target to preprocess a source file
+builder_src/distribute_btns.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/distribute_btns.c.i
+.PHONY : builder_src/distribute_btns.c.i
+
+builder_src/distribute_btns.s: builder_src/distribute_btns.c.s
+
+.PHONY : builder_src/distribute_btns.s
+
+# target to generate assembly for a file
+builder_src/distribute_btns.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/distribute_btns.c.s
+.PHONY : builder_src/distribute_btns.c.s
+
+builder_src/draw_line.o: builder_src/draw_line.c.o
+
+.PHONY : builder_src/draw_line.o
+
+# target to build an object file
+builder_src/draw_line.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/draw_line.c.o
+.PHONY : builder_src/draw_line.c.o
+
+builder_src/draw_line.i: builder_src/draw_line.c.i
+
+.PHONY : builder_src/draw_line.i
+
+# target to preprocess a source file
+builder_src/draw_line.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/draw_line.c.i
+.PHONY : builder_src/draw_line.c.i
+
+builder_src/draw_line.s: builder_src/draw_line.c.s
+
+.PHONY : builder_src/draw_line.s
+
+# target to generate assembly for a file
+builder_src/draw_line.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/draw_line.c.s
+.PHONY : builder_src/draw_line.c.s
+
+builder_src/drawing.o: builder_src/drawing.c.o
+
+.PHONY : builder_src/drawing.o
+
+# target to build an object file
+builder_src/drawing.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/drawing.c.o
+.PHONY : builder_src/drawing.c.o
+
+builder_src/drawing.i: builder_src/drawing.c.i
+
+.PHONY : builder_src/drawing.i
+
+# target to preprocess a source file
+builder_src/drawing.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/drawing.c.i
+.PHONY : builder_src/drawing.c.i
+
+builder_src/drawing.s: builder_src/drawing.c.s
+
+.PHONY : builder_src/drawing.s
+
+# target to generate assembly for a file
+builder_src/drawing.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/drawing.c.s
+.PHONY : builder_src/drawing.c.s
+
+builder_src/drawing_help.o: builder_src/drawing_help.c.o
+
+.PHONY : builder_src/drawing_help.o
+
+# target to build an object file
+builder_src/drawing_help.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/drawing_help.c.o
+.PHONY : builder_src/drawing_help.c.o
+
+builder_src/drawing_help.i: builder_src/drawing_help.c.i
+
+.PHONY : builder_src/drawing_help.i
+
+# target to preprocess a source file
+builder_src/drawing_help.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/drawing_help.c.i
+.PHONY : builder_src/drawing_help.c.i
+
+builder_src/drawing_help.s: builder_src/drawing_help.c.s
+
+.PHONY : builder_src/drawing_help.s
+
+# target to generate assembly for a file
+builder_src/drawing_help.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/drawing_help.c.s
+.PHONY : builder_src/drawing_help.c.s
+
+builder_src/edit_menu.o: builder_src/edit_menu.c.o
+
+.PHONY : builder_src/edit_menu.o
+
+# target to build an object file
+builder_src/edit_menu.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_menu.c.o
+.PHONY : builder_src/edit_menu.c.o
+
+builder_src/edit_menu.i: builder_src/edit_menu.c.i
+
+.PHONY : builder_src/edit_menu.i
+
+# target to preprocess a source file
+builder_src/edit_menu.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_menu.c.i
+.PHONY : builder_src/edit_menu.c.i
+
+builder_src/edit_menu.s: builder_src/edit_menu.c.s
+
+.PHONY : builder_src/edit_menu.s
+
+# target to generate assembly for a file
+builder_src/edit_menu.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_menu.c.s
+.PHONY : builder_src/edit_menu.c.s
+
+builder_src/edit_walls.o: builder_src/edit_walls.c.o
+
+.PHONY : builder_src/edit_walls.o
+
+# target to build an object file
+builder_src/edit_walls.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_walls.c.o
+.PHONY : builder_src/edit_walls.c.o
+
+builder_src/edit_walls.i: builder_src/edit_walls.c.i
+
+.PHONY : builder_src/edit_walls.i
+
+# target to preprocess a source file
+builder_src/edit_walls.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_walls.c.i
+.PHONY : builder_src/edit_walls.c.i
+
+builder_src/edit_walls.s: builder_src/edit_walls.c.s
+
+.PHONY : builder_src/edit_walls.s
+
+# target to generate assembly for a file
+builder_src/edit_walls.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_walls.c.s
+.PHONY : builder_src/edit_walls.c.s
+
+builder_src/edit_walls_help.o: builder_src/edit_walls_help.c.o
+
+.PHONY : builder_src/edit_walls_help.o
+
+# target to build an object file
+builder_src/edit_walls_help.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_walls_help.c.o
+.PHONY : builder_src/edit_walls_help.c.o
+
+builder_src/edit_walls_help.i: builder_src/edit_walls_help.c.i
+
+.PHONY : builder_src/edit_walls_help.i
+
+# target to preprocess a source file
+builder_src/edit_walls_help.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_walls_help.c.i
+.PHONY : builder_src/edit_walls_help.c.i
+
+builder_src/edit_walls_help.s: builder_src/edit_walls_help.c.s
+
+.PHONY : builder_src/edit_walls_help.s
+
+# target to generate assembly for a file
+builder_src/edit_walls_help.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_walls_help.c.s
+.PHONY : builder_src/edit_walls_help.c.s
+
+builder_src/edit_world.o: builder_src/edit_world.c.o
+
+.PHONY : builder_src/edit_world.o
+
+# target to build an object file
+builder_src/edit_world.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_world.c.o
+.PHONY : builder_src/edit_world.c.o
+
+builder_src/edit_world.i: builder_src/edit_world.c.i
+
+.PHONY : builder_src/edit_world.i
+
+# target to preprocess a source file
+builder_src/edit_world.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_world.c.i
+.PHONY : builder_src/edit_world.c.i
+
+builder_src/edit_world.s: builder_src/edit_world.c.s
+
+.PHONY : builder_src/edit_world.s
+
+# target to generate assembly for a file
+builder_src/edit_world.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/edit_world.c.s
+.PHONY : builder_src/edit_world.c.s
+
+builder_src/editor.o: builder_src/editor.c.o
+
+.PHONY : builder_src/editor.o
+
+# target to build an object file
+builder_src/editor.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/editor.c.o
+.PHONY : builder_src/editor.c.o
+
+builder_src/editor.i: builder_src/editor.c.i
+
+.PHONY : builder_src/editor.i
+
+# target to preprocess a source file
+builder_src/editor.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/editor.c.i
+.PHONY : builder_src/editor.c.i
+
+builder_src/editor.s: builder_src/editor.c.s
+
+.PHONY : builder_src/editor.s
+
+# target to generate assembly for a file
+builder_src/editor.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/editor.c.s
+.PHONY : builder_src/editor.c.s
+
+builder_src/editor_render.o: builder_src/editor_render.c.o
+
+.PHONY : builder_src/editor_render.o
+
+# target to build an object file
+builder_src/editor_render.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/editor_render.c.o
+.PHONY : builder_src/editor_render.c.o
+
+builder_src/editor_render.i: builder_src/editor_render.c.i
+
+.PHONY : builder_src/editor_render.i
+
+# target to preprocess a source file
+builder_src/editor_render.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/editor_render.c.i
+.PHONY : builder_src/editor_render.c.i
+
+builder_src/editor_render.s: builder_src/editor_render.c.s
+
+.PHONY : builder_src/editor_render.s
+
+# target to generate assembly for a file
+builder_src/editor_render.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/editor_render.c.s
+.PHONY : builder_src/editor_render.c.s
+
+builder_src/editor_update.o: builder_src/editor_update.c.o
+
+.PHONY : builder_src/editor_update.o
+
+# target to build an object file
+builder_src/editor_update.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/editor_update.c.o
+.PHONY : builder_src/editor_update.c.o
+
+builder_src/editor_update.i: builder_src/editor_update.c.i
+
+.PHONY : builder_src/editor_update.i
+
+# target to preprocess a source file
+builder_src/editor_update.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/editor_update.c.i
+.PHONY : builder_src/editor_update.c.i
+
+builder_src/editor_update.s: builder_src/editor_update.c.s
+
+.PHONY : builder_src/editor_update.s
+
+# target to generate assembly for a file
+builder_src/editor_update.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/editor_update.c.s
+.PHONY : builder_src/editor_update.c.s
+
+builder_src/file_fun.o: builder_src/file_fun.c.o
+
+.PHONY : builder_src/file_fun.o
+
+# target to build an object file
+builder_src/file_fun.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/file_fun.c.o
+.PHONY : builder_src/file_fun.c.o
+
+builder_src/file_fun.i: builder_src/file_fun.c.i
+
+.PHONY : builder_src/file_fun.i
+
+# target to preprocess a source file
+builder_src/file_fun.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/file_fun.c.i
+.PHONY : builder_src/file_fun.c.i
+
+builder_src/file_fun.s: builder_src/file_fun.c.s
+
+.PHONY : builder_src/file_fun.s
+
+# target to generate assembly for a file
+builder_src/file_fun.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/file_fun.c.s
+.PHONY : builder_src/file_fun.c.s
+
+builder_src/fill_grid.o: builder_src/fill_grid.c.o
+
+.PHONY : builder_src/fill_grid.o
+
+# target to build an object file
+builder_src/fill_grid.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/fill_grid.c.o
+.PHONY : builder_src/fill_grid.c.o
+
+builder_src/fill_grid.i: builder_src/fill_grid.c.i
+
+.PHONY : builder_src/fill_grid.i
+
+# target to preprocess a source file
+builder_src/fill_grid.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/fill_grid.c.i
+.PHONY : builder_src/fill_grid.c.i
+
+builder_src/fill_grid.s: builder_src/fill_grid.c.s
+
+.PHONY : builder_src/fill_grid.s
+
+# target to generate assembly for a file
+builder_src/fill_grid.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/fill_grid.c.s
+.PHONY : builder_src/fill_grid.c.s
+
+builder_src/fill_polygon.o: builder_src/fill_polygon.c.o
+
+.PHONY : builder_src/fill_polygon.o
+
+# target to build an object file
+builder_src/fill_polygon.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/fill_polygon.c.o
+.PHONY : builder_src/fill_polygon.c.o
+
+builder_src/fill_polygon.i: builder_src/fill_polygon.c.i
+
+.PHONY : builder_src/fill_polygon.i
+
+# target to preprocess a source file
+builder_src/fill_polygon.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/fill_polygon.c.i
+.PHONY : builder_src/fill_polygon.c.i
+
+builder_src/fill_polygon.s: builder_src/fill_polygon.c.s
+
+.PHONY : builder_src/fill_polygon.s
+
+# target to generate assembly for a file
+builder_src/fill_polygon.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/fill_polygon.c.s
+.PHONY : builder_src/fill_polygon.c.s
+
+builder_src/find_in_media.o: builder_src/find_in_media.c.o
+
+.PHONY : builder_src/find_in_media.o
+
+# target to build an object file
+builder_src/find_in_media.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/find_in_media.c.o
+.PHONY : builder_src/find_in_media.c.o
+
+builder_src/find_in_media.i: builder_src/find_in_media.c.i
+
+.PHONY : builder_src/find_in_media.i
+
+# target to preprocess a source file
+builder_src/find_in_media.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/find_in_media.c.i
+.PHONY : builder_src/find_in_media.c.i
+
+builder_src/find_in_media.s: builder_src/find_in_media.c.s
+
+.PHONY : builder_src/find_in_media.s
+
+# target to generate assembly for a file
+builder_src/find_in_media.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/find_in_media.c.s
+.PHONY : builder_src/find_in_media.c.s
+
+builder_src/free_media.o: builder_src/free_media.c.o
+
+.PHONY : builder_src/free_media.o
+
+# target to build an object file
+builder_src/free_media.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/free_media.c.o
+.PHONY : builder_src/free_media.c.o
+
+builder_src/free_media.i: builder_src/free_media.c.i
+
+.PHONY : builder_src/free_media.i
+
+# target to preprocess a source file
+builder_src/free_media.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/free_media.c.i
+.PHONY : builder_src/free_media.c.i
+
+builder_src/free_media.s: builder_src/free_media.c.s
+
+.PHONY : builder_src/free_media.s
+
+# target to generate assembly for a file
+builder_src/free_media.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/free_media.c.s
+.PHONY : builder_src/free_media.c.s
+
+builder_src/get_assets.o: builder_src/get_assets.c.o
+
+.PHONY : builder_src/get_assets.o
+
+# target to build an object file
+builder_src/get_assets.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_assets.c.o
+.PHONY : builder_src/get_assets.c.o
+
+builder_src/get_assets.i: builder_src/get_assets.c.i
+
+.PHONY : builder_src/get_assets.i
+
+# target to preprocess a source file
+builder_src/get_assets.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_assets.c.i
+.PHONY : builder_src/get_assets.c.i
+
+builder_src/get_assets.s: builder_src/get_assets.c.s
+
+.PHONY : builder_src/get_assets.s
+
+# target to generate assembly for a file
+builder_src/get_assets.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_assets.c.s
+.PHONY : builder_src/get_assets.c.s
+
+builder_src/get_boxes.o: builder_src/get_boxes.c.o
+
+.PHONY : builder_src/get_boxes.o
+
+# target to build an object file
+builder_src/get_boxes.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_boxes.c.o
+.PHONY : builder_src/get_boxes.c.o
+
+builder_src/get_boxes.i: builder_src/get_boxes.c.i
+
+.PHONY : builder_src/get_boxes.i
+
+# target to preprocess a source file
+builder_src/get_boxes.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_boxes.c.i
+.PHONY : builder_src/get_boxes.c.i
+
+builder_src/get_boxes.s: builder_src/get_boxes.c.s
+
+.PHONY : builder_src/get_boxes.s
+
+# target to generate assembly for a file
+builder_src/get_boxes.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_boxes.c.s
+.PHONY : builder_src/get_boxes.c.s
+
+builder_src/get_input.o: builder_src/get_input.c.o
+
+.PHONY : builder_src/get_input.o
+
+# target to build an object file
+builder_src/get_input.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_input.c.o
+.PHONY : builder_src/get_input.c.o
+
+builder_src/get_input.i: builder_src/get_input.c.i
+
+.PHONY : builder_src/get_input.i
+
+# target to preprocess a source file
+builder_src/get_input.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_input.c.i
+.PHONY : builder_src/get_input.c.i
+
+builder_src/get_input.s: builder_src/get_input.c.s
+
+.PHONY : builder_src/get_input.s
+
+# target to generate assembly for a file
+builder_src/get_input.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_input.c.s
+.PHONY : builder_src/get_input.c.s
+
+builder_src/get_map.o: builder_src/get_map.c.o
+
+.PHONY : builder_src/get_map.o
+
+# target to build an object file
+builder_src/get_map.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_map.c.o
+.PHONY : builder_src/get_map.c.o
+
+builder_src/get_map.i: builder_src/get_map.c.i
+
+.PHONY : builder_src/get_map.i
+
+# target to preprocess a source file
+builder_src/get_map.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_map.c.i
+.PHONY : builder_src/get_map.c.i
+
+builder_src/get_map.s: builder_src/get_map.c.s
+
+.PHONY : builder_src/get_map.s
+
+# target to generate assembly for a file
+builder_src/get_map.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_map.c.s
+.PHONY : builder_src/get_map.c.s
+
+builder_src/get_map_elems.o: builder_src/get_map_elems.c.o
+
+.PHONY : builder_src/get_map_elems.o
+
+# target to build an object file
+builder_src/get_map_elems.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_map_elems.c.o
+.PHONY : builder_src/get_map_elems.c.o
+
+builder_src/get_map_elems.i: builder_src/get_map_elems.c.i
+
+.PHONY : builder_src/get_map_elems.i
+
+# target to preprocess a source file
+builder_src/get_map_elems.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_map_elems.c.i
+.PHONY : builder_src/get_map_elems.c.i
+
+builder_src/get_map_elems.s: builder_src/get_map_elems.c.s
+
+.PHONY : builder_src/get_map_elems.s
+
+# target to generate assembly for a file
+builder_src/get_map_elems.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_map_elems.c.s
+.PHONY : builder_src/get_map_elems.c.s
+
+builder_src/get_sec_items.o: builder_src/get_sec_items.c.o
+
+.PHONY : builder_src/get_sec_items.o
+
+# target to build an object file
+builder_src/get_sec_items.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_sec_items.c.o
+.PHONY : builder_src/get_sec_items.c.o
+
+builder_src/get_sec_items.i: builder_src/get_sec_items.c.i
+
+.PHONY : builder_src/get_sec_items.i
+
+# target to preprocess a source file
+builder_src/get_sec_items.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_sec_items.c.i
+.PHONY : builder_src/get_sec_items.c.i
+
+builder_src/get_sec_items.s: builder_src/get_sec_items.c.s
+
+.PHONY : builder_src/get_sec_items.s
+
+# target to generate assembly for a file
+builder_src/get_sec_items.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_sec_items.c.s
+.PHONY : builder_src/get_sec_items.c.s
+
+builder_src/get_sec_v.o: builder_src/get_sec_v.c.o
+
+.PHONY : builder_src/get_sec_v.o
+
+# target to build an object file
+builder_src/get_sec_v.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_sec_v.c.o
+.PHONY : builder_src/get_sec_v.c.o
+
+builder_src/get_sec_v.i: builder_src/get_sec_v.c.i
+
+.PHONY : builder_src/get_sec_v.i
+
+# target to preprocess a source file
+builder_src/get_sec_v.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_sec_v.c.i
+.PHONY : builder_src/get_sec_v.c.i
+
+builder_src/get_sec_v.s: builder_src/get_sec_v.c.s
+
+.PHONY : builder_src/get_sec_v.s
+
+# target to generate assembly for a file
+builder_src/get_sec_v.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/get_sec_v.c.s
+.PHONY : builder_src/get_sec_v.c.s
+
+builder_src/grid_main.o: builder_src/grid_main.c.o
+
+.PHONY : builder_src/grid_main.o
+
+# target to build an object file
+builder_src/grid_main.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/grid_main.c.o
+.PHONY : builder_src/grid_main.c.o
+
+builder_src/grid_main.i: builder_src/grid_main.c.i
+
+.PHONY : builder_src/grid_main.i
+
+# target to preprocess a source file
+builder_src/grid_main.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/grid_main.c.i
+.PHONY : builder_src/grid_main.c.i
+
+builder_src/grid_main.s: builder_src/grid_main.c.s
+
+.PHONY : builder_src/grid_main.s
+
+# target to generate assembly for a file
+builder_src/grid_main.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/grid_main.c.s
+.PHONY : builder_src/grid_main.c.s
+
+builder_src/grid_ops.o: builder_src/grid_ops.c.o
+
+.PHONY : builder_src/grid_ops.o
+
+# target to build an object file
+builder_src/grid_ops.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/grid_ops.c.o
+.PHONY : builder_src/grid_ops.c.o
+
+builder_src/grid_ops.i: builder_src/grid_ops.c.i
+
+.PHONY : builder_src/grid_ops.i
+
+# target to preprocess a source file
+builder_src/grid_ops.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/grid_ops.c.i
+.PHONY : builder_src/grid_ops.c.i
+
+builder_src/grid_ops.s: builder_src/grid_ops.c.s
+
+.PHONY : builder_src/grid_ops.s
+
+# target to generate assembly for a file
+builder_src/grid_ops.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/grid_ops.c.s
+.PHONY : builder_src/grid_ops.c.s
+
+builder_src/identify.o: builder_src/identify.c.o
+
+.PHONY : builder_src/identify.o
+
+# target to build an object file
+builder_src/identify.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/identify.c.o
+.PHONY : builder_src/identify.c.o
+
+builder_src/identify.i: builder_src/identify.c.i
+
+.PHONY : builder_src/identify.i
+
+# target to preprocess a source file
+builder_src/identify.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/identify.c.i
+.PHONY : builder_src/identify.c.i
+
+builder_src/identify.s: builder_src/identify.c.s
+
+.PHONY : builder_src/identify.s
+
+# target to generate assembly for a file
+builder_src/identify.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/identify.c.s
+.PHONY : builder_src/identify.c.s
+
+builder_src/init_editor_buttons.o: builder_src/init_editor_buttons.c.o
+
+.PHONY : builder_src/init_editor_buttons.o
+
+# target to build an object file
+builder_src/init_editor_buttons.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/init_editor_buttons.c.o
+.PHONY : builder_src/init_editor_buttons.c.o
+
+builder_src/init_editor_buttons.i: builder_src/init_editor_buttons.c.i
+
+.PHONY : builder_src/init_editor_buttons.i
+
+# target to preprocess a source file
+builder_src/init_editor_buttons.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/init_editor_buttons.c.i
+.PHONY : builder_src/init_editor_buttons.c.i
+
+builder_src/init_editor_buttons.s: builder_src/init_editor_buttons.c.s
+
+.PHONY : builder_src/init_editor_buttons.s
+
+# target to generate assembly for a file
+builder_src/init_editor_buttons.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/init_editor_buttons.c.s
+.PHONY : builder_src/init_editor_buttons.c.s
+
+builder_src/init_world.o: builder_src/init_world.c.o
+
+.PHONY : builder_src/init_world.o
+
+# target to build an object file
+builder_src/init_world.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/init_world.c.o
+.PHONY : builder_src/init_world.c.o
+
+builder_src/init_world.i: builder_src/init_world.c.i
+
+.PHONY : builder_src/init_world.i
+
+# target to preprocess a source file
+builder_src/init_world.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/init_world.c.i
+.PHONY : builder_src/init_world.c.i
+
+builder_src/init_world.s: builder_src/init_world.c.s
+
+.PHONY : builder_src/init_world.s
+
+# target to generate assembly for a file
+builder_src/init_world.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/init_world.c.s
+.PHONY : builder_src/init_world.c.s
+
+builder_src/items.o: builder_src/items.c.o
+
+.PHONY : builder_src/items.o
+
+# target to build an object file
+builder_src/items.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/items.c.o
+.PHONY : builder_src/items.c.o
+
+builder_src/items.i: builder_src/items.c.i
+
+.PHONY : builder_src/items.i
+
+# target to preprocess a source file
+builder_src/items.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/items.c.i
+.PHONY : builder_src/items.c.i
+
+builder_src/items.s: builder_src/items.c.s
+
+.PHONY : builder_src/items.s
+
+# target to generate assembly for a file
+builder_src/items.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/items.c.s
+.PHONY : builder_src/items.c.s
+
+builder_src/levels.o: builder_src/levels.c.o
+
+.PHONY : builder_src/levels.o
+
+# target to build an object file
+builder_src/levels.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/levels.c.o
+.PHONY : builder_src/levels.c.o
+
+builder_src/levels.i: builder_src/levels.c.i
+
+.PHONY : builder_src/levels.i
+
+# target to preprocess a source file
+builder_src/levels.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/levels.c.i
+.PHONY : builder_src/levels.c.i
+
+builder_src/levels.s: builder_src/levels.c.s
+
+.PHONY : builder_src/levels.s
+
+# target to generate assembly for a file
+builder_src/levels.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/levels.c.s
+.PHONY : builder_src/levels.c.s
+
+builder_src/levels_btn.o: builder_src/levels_btn.c.o
+
+.PHONY : builder_src/levels_btn.o
+
+# target to build an object file
+builder_src/levels_btn.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/levels_btn.c.o
+.PHONY : builder_src/levels_btn.c.o
+
+builder_src/levels_btn.i: builder_src/levels_btn.c.i
+
+.PHONY : builder_src/levels_btn.i
+
+# target to preprocess a source file
+builder_src/levels_btn.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/levels_btn.c.i
+.PHONY : builder_src/levels_btn.c.i
+
+builder_src/levels_btn.s: builder_src/levels_btn.c.s
+
+.PHONY : builder_src/levels_btn.s
+
+# target to generate assembly for a file
+builder_src/levels_btn.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/levels_btn.c.s
+.PHONY : builder_src/levels_btn.c.s
+
+builder_src/light_sec_type.o: builder_src/light_sec_type.c.o
+
+.PHONY : builder_src/light_sec_type.o
+
+# target to build an object file
+builder_src/light_sec_type.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/light_sec_type.c.o
+.PHONY : builder_src/light_sec_type.c.o
+
+builder_src/light_sec_type.i: builder_src/light_sec_type.c.i
+
+.PHONY : builder_src/light_sec_type.i
+
+# target to preprocess a source file
+builder_src/light_sec_type.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/light_sec_type.c.i
+.PHONY : builder_src/light_sec_type.c.i
+
+builder_src/light_sec_type.s: builder_src/light_sec_type.c.s
+
+.PHONY : builder_src/light_sec_type.s
+
+# target to generate assembly for a file
+builder_src/light_sec_type.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/light_sec_type.c.s
+.PHONY : builder_src/light_sec_type.c.s
+
+builder_src/line_math.o: builder_src/line_math.c.o
+
+.PHONY : builder_src/line_math.o
+
+# target to build an object file
+builder_src/line_math.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/line_math.c.o
+.PHONY : builder_src/line_math.c.o
+
+builder_src/line_math.i: builder_src/line_math.c.i
+
+.PHONY : builder_src/line_math.i
+
+# target to preprocess a source file
+builder_src/line_math.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/line_math.c.i
+.PHONY : builder_src/line_math.c.i
+
+builder_src/line_math.s: builder_src/line_math.c.s
+
+.PHONY : builder_src/line_math.s
+
+# target to generate assembly for a file
+builder_src/line_math.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/line_math.c.s
+.PHONY : builder_src/line_math.c.s
+
+builder_src/main.o: builder_src/main.c.o
+
+.PHONY : builder_src/main.o
+
+# target to build an object file
+builder_src/main.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/main.c.o
+.PHONY : builder_src/main.c.o
+
+builder_src/main.i: builder_src/main.c.i
+
+.PHONY : builder_src/main.i
+
+# target to preprocess a source file
+builder_src/main.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/main.c.i
+.PHONY : builder_src/main.c.i
+
+builder_src/main.s: builder_src/main.c.s
+
+.PHONY : builder_src/main.s
+
+# target to generate assembly for a file
+builder_src/main.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/main.c.s
+.PHONY : builder_src/main.c.s
+
+builder_src/main_menu.o: builder_src/main_menu.c.o
+
+.PHONY : builder_src/main_menu.o
+
+# target to build an object file
+builder_src/main_menu.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/main_menu.c.o
+.PHONY : builder_src/main_menu.c.o
+
+builder_src/main_menu.i: builder_src/main_menu.c.i
+
+.PHONY : builder_src/main_menu.i
+
+# target to preprocess a source file
+builder_src/main_menu.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/main_menu.c.i
+.PHONY : builder_src/main_menu.c.i
+
+builder_src/main_menu.s: builder_src/main_menu.c.s
+
+.PHONY : builder_src/main_menu.s
+
+# target to generate assembly for a file
+builder_src/main_menu.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/main_menu.c.s
+.PHONY : builder_src/main_menu.c.s
+
+builder_src/manage_btn.o: builder_src/manage_btn.c.o
+
+.PHONY : builder_src/manage_btn.o
+
+# target to build an object file
+builder_src/manage_btn.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/manage_btn.c.o
+.PHONY : builder_src/manage_btn.c.o
+
+builder_src/manage_btn.i: builder_src/manage_btn.c.i
+
+.PHONY : builder_src/manage_btn.i
+
+# target to preprocess a source file
+builder_src/manage_btn.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/manage_btn.c.i
+.PHONY : builder_src/manage_btn.c.i
+
+builder_src/manage_btn.s: builder_src/manage_btn.c.s
+
+.PHONY : builder_src/manage_btn.s
+
+# target to generate assembly for a file
+builder_src/manage_btn.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/manage_btn.c.s
+.PHONY : builder_src/manage_btn.c.s
+
+builder_src/map_useful.o: builder_src/map_useful.c.o
+
+.PHONY : builder_src/map_useful.o
+
+# target to build an object file
+builder_src/map_useful.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/map_useful.c.o
+.PHONY : builder_src/map_useful.c.o
+
+builder_src/map_useful.i: builder_src/map_useful.c.i
+
+.PHONY : builder_src/map_useful.i
+
+# target to preprocess a source file
+builder_src/map_useful.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/map_useful.c.i
+.PHONY : builder_src/map_useful.c.i
+
+builder_src/map_useful.s: builder_src/map_useful.c.s
+
+.PHONY : builder_src/map_useful.s
+
+# target to generate assembly for a file
+builder_src/map_useful.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/map_useful.c.s
+.PHONY : builder_src/map_useful.c.s
+
+builder_src/math.o: builder_src/math.c.o
+
+.PHONY : builder_src/math.o
+
+# target to build an object file
+builder_src/math.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/math.c.o
+.PHONY : builder_src/math.c.o
+
+builder_src/math.i: builder_src/math.c.i
+
+.PHONY : builder_src/math.i
+
+# target to preprocess a source file
+builder_src/math.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/math.c.i
+.PHONY : builder_src/math.c.i
+
+builder_src/math.s: builder_src/math.c.s
+
+.PHONY : builder_src/math.s
+
+# target to generate assembly for a file
+builder_src/math.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/math.c.s
+.PHONY : builder_src/math.c.s
+
+builder_src/math_ops.o: builder_src/math_ops.c.o
+
+.PHONY : builder_src/math_ops.o
+
+# target to build an object file
+builder_src/math_ops.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/math_ops.c.o
+.PHONY : builder_src/math_ops.c.o
+
+builder_src/math_ops.i: builder_src/math_ops.c.i
+
+.PHONY : builder_src/math_ops.i
+
+# target to preprocess a source file
+builder_src/math_ops.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/math_ops.c.i
+.PHONY : builder_src/math_ops.c.i
+
+builder_src/math_ops.s: builder_src/math_ops.c.s
+
+.PHONY : builder_src/math_ops.s
+
+# target to generate assembly for a file
+builder_src/math_ops.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/math_ops.c.s
+.PHONY : builder_src/math_ops.c.s
+
+builder_src/memory_fun.o: builder_src/memory_fun.c.o
+
+.PHONY : builder_src/memory_fun.o
+
+# target to build an object file
+builder_src/memory_fun.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/memory_fun.c.o
+.PHONY : builder_src/memory_fun.c.o
+
+builder_src/memory_fun.i: builder_src/memory_fun.c.i
+
+.PHONY : builder_src/memory_fun.i
+
+# target to preprocess a source file
+builder_src/memory_fun.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/memory_fun.c.i
+.PHONY : builder_src/memory_fun.c.i
+
+builder_src/memory_fun.s: builder_src/memory_fun.c.s
+
+.PHONY : builder_src/memory_fun.s
+
+# target to generate assembly for a file
+builder_src/memory_fun.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/memory_fun.c.s
+.PHONY : builder_src/memory_fun.c.s
+
+builder_src/mode_btn.o: builder_src/mode_btn.c.o
+
+.PHONY : builder_src/mode_btn.o
+
+# target to build an object file
+builder_src/mode_btn.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/mode_btn.c.o
+.PHONY : builder_src/mode_btn.c.o
+
+builder_src/mode_btn.i: builder_src/mode_btn.c.i
+
+.PHONY : builder_src/mode_btn.i
+
+# target to preprocess a source file
+builder_src/mode_btn.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/mode_btn.c.i
+.PHONY : builder_src/mode_btn.c.i
+
+builder_src/mode_btn.s: builder_src/mode_btn.c.s
+
+.PHONY : builder_src/mode_btn.s
+
+# target to generate assembly for a file
+builder_src/mode_btn.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/mode_btn.c.s
+.PHONY : builder_src/mode_btn.c.s
+
+builder_src/modes.o: builder_src/modes.c.o
+
+.PHONY : builder_src/modes.o
+
+# target to build an object file
+builder_src/modes.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/modes.c.o
+.PHONY : builder_src/modes.c.o
+
+builder_src/modes.i: builder_src/modes.c.i
+
+.PHONY : builder_src/modes.i
+
+# target to preprocess a source file
+builder_src/modes.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/modes.c.i
+.PHONY : builder_src/modes.c.i
+
+builder_src/modes.s: builder_src/modes.c.s
+
+.PHONY : builder_src/modes.s
+
+# target to generate assembly for a file
+builder_src/modes.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/modes.c.s
+.PHONY : builder_src/modes.c.s
+
+builder_src/move.o: builder_src/move.c.o
+
+.PHONY : builder_src/move.o
+
+# target to build an object file
+builder_src/move.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move.c.o
+.PHONY : builder_src/move.c.o
+
+builder_src/move.i: builder_src/move.c.i
+
+.PHONY : builder_src/move.i
+
+# target to preprocess a source file
+builder_src/move.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move.c.i
+.PHONY : builder_src/move.c.i
+
+builder_src/move.s: builder_src/move.c.s
+
+.PHONY : builder_src/move.s
+
+# target to generate assembly for a file
+builder_src/move.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move.c.s
+.PHONY : builder_src/move.c.s
+
+builder_src/move_item.o: builder_src/move_item.c.o
+
+.PHONY : builder_src/move_item.o
+
+# target to build an object file
+builder_src/move_item.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move_item.c.o
+.PHONY : builder_src/move_item.c.o
+
+builder_src/move_item.i: builder_src/move_item.c.i
+
+.PHONY : builder_src/move_item.i
+
+# target to preprocess a source file
+builder_src/move_item.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move_item.c.i
+.PHONY : builder_src/move_item.c.i
+
+builder_src/move_item.s: builder_src/move_item.c.s
+
+.PHONY : builder_src/move_item.s
+
+# target to generate assembly for a file
+builder_src/move_item.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move_item.c.s
+.PHONY : builder_src/move_item.c.s
+
+builder_src/move_player.o: builder_src/move_player.c.o
+
+.PHONY : builder_src/move_player.o
+
+# target to build an object file
+builder_src/move_player.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move_player.c.o
+.PHONY : builder_src/move_player.c.o
+
+builder_src/move_player.i: builder_src/move_player.c.i
+
+.PHONY : builder_src/move_player.i
+
+# target to preprocess a source file
+builder_src/move_player.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move_player.c.i
+.PHONY : builder_src/move_player.c.i
+
+builder_src/move_player.s: builder_src/move_player.c.s
+
+.PHONY : builder_src/move_player.s
+
+# target to generate assembly for a file
+builder_src/move_player.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move_player.c.s
+.PHONY : builder_src/move_player.c.s
+
+builder_src/move_vector.o: builder_src/move_vector.c.o
+
+.PHONY : builder_src/move_vector.o
+
+# target to build an object file
+builder_src/move_vector.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move_vector.c.o
+.PHONY : builder_src/move_vector.c.o
+
+builder_src/move_vector.i: builder_src/move_vector.c.i
+
+.PHONY : builder_src/move_vector.i
+
+# target to preprocess a source file
+builder_src/move_vector.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move_vector.c.i
+.PHONY : builder_src/move_vector.c.i
+
+builder_src/move_vector.s: builder_src/move_vector.c.s
+
+.PHONY : builder_src/move_vector.s
+
+# target to generate assembly for a file
+builder_src/move_vector.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/move_vector.c.s
+.PHONY : builder_src/move_vector.c.s
+
+builder_src/prog.o: builder_src/prog.c.o
+
+.PHONY : builder_src/prog.o
+
+# target to build an object file
+builder_src/prog.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/prog.c.o
+.PHONY : builder_src/prog.c.o
+
+builder_src/prog.i: builder_src/prog.c.i
+
+.PHONY : builder_src/prog.i
+
+# target to preprocess a source file
+builder_src/prog.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/prog.c.i
+.PHONY : builder_src/prog.c.i
+
+builder_src/prog.s: builder_src/prog.c.s
+
+.PHONY : builder_src/prog.s
+
+# target to generate assembly for a file
+builder_src/prog.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/prog.c.s
+.PHONY : builder_src/prog.c.s
+
+builder_src/read_assets_help.o: builder_src/read_assets_help.c.o
+
+.PHONY : builder_src/read_assets_help.o
+
+# target to build an object file
+builder_src/read_assets_help.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/read_assets_help.c.o
+.PHONY : builder_src/read_assets_help.c.o
+
+builder_src/read_assets_help.i: builder_src/read_assets_help.c.i
+
+.PHONY : builder_src/read_assets_help.i
+
+# target to preprocess a source file
+builder_src/read_assets_help.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/read_assets_help.c.i
+.PHONY : builder_src/read_assets_help.c.i
+
+builder_src/read_assets_help.s: builder_src/read_assets_help.c.s
+
+.PHONY : builder_src/read_assets_help.s
+
+# target to generate assembly for a file
+builder_src/read_assets_help.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/read_assets_help.c.s
+.PHONY : builder_src/read_assets_help.c.s
+
+builder_src/read_levels.o: builder_src/read_levels.c.o
+
+.PHONY : builder_src/read_levels.o
+
+# target to build an object file
+builder_src/read_levels.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/read_levels.c.o
+.PHONY : builder_src/read_levels.c.o
+
+builder_src/read_levels.i: builder_src/read_levels.c.i
+
+.PHONY : builder_src/read_levels.i
+
+# target to preprocess a source file
+builder_src/read_levels.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/read_levels.c.i
+.PHONY : builder_src/read_levels.c.i
+
+builder_src/read_levels.s: builder_src/read_levels.c.s
+
+.PHONY : builder_src/read_levels.s
+
+# target to generate assembly for a file
+builder_src/read_levels.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/read_levels.c.s
+.PHONY : builder_src/read_levels.c.s
+
+builder_src/read_line.o: builder_src/read_line.c.o
+
+.PHONY : builder_src/read_line.o
+
+# target to build an object file
+builder_src/read_line.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/read_line.c.o
+.PHONY : builder_src/read_line.c.o
+
+builder_src/read_line.i: builder_src/read_line.c.i
+
+.PHONY : builder_src/read_line.i
+
+# target to preprocess a source file
+builder_src/read_line.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/read_line.c.i
+.PHONY : builder_src/read_line.c.i
+
+builder_src/read_line.s: builder_src/read_line.c.s
+
+.PHONY : builder_src/read_line.s
+
+# target to generate assembly for a file
+builder_src/read_line.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/read_line.c.s
+.PHONY : builder_src/read_line.c.s
+
+builder_src/render.o: builder_src/render.c.o
+
+.PHONY : builder_src/render.o
+
+# target to build an object file
+builder_src/render.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render.c.o
+.PHONY : builder_src/render.c.o
+
+builder_src/render.i: builder_src/render.c.i
+
+.PHONY : builder_src/render.i
+
+# target to preprocess a source file
+builder_src/render.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render.c.i
+.PHONY : builder_src/render.c.i
+
+builder_src/render.s: builder_src/render.c.s
+
+.PHONY : builder_src/render.s
+
+# target to generate assembly for a file
+builder_src/render.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render.c.s
+.PHONY : builder_src/render.c.s
+
+builder_src/render_btn.o: builder_src/render_btn.c.o
+
+.PHONY : builder_src/render_btn.o
+
+# target to build an object file
+builder_src/render_btn.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_btn.c.o
+.PHONY : builder_src/render_btn.c.o
+
+builder_src/render_btn.i: builder_src/render_btn.c.i
+
+.PHONY : builder_src/render_btn.i
+
+# target to preprocess a source file
+builder_src/render_btn.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_btn.c.i
+.PHONY : builder_src/render_btn.c.i
+
+builder_src/render_btn.s: builder_src/render_btn.c.s
+
+.PHONY : builder_src/render_btn.s
+
+# target to generate assembly for a file
+builder_src/render_btn.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_btn.c.s
+.PHONY : builder_src/render_btn.c.s
+
+builder_src/render_elements.o: builder_src/render_elements.c.o
+
+.PHONY : builder_src/render_elements.o
+
+# target to build an object file
+builder_src/render_elements.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_elements.c.o
+.PHONY : builder_src/render_elements.c.o
+
+builder_src/render_elements.i: builder_src/render_elements.c.i
+
+.PHONY : builder_src/render_elements.i
+
+# target to preprocess a source file
+builder_src/render_elements.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_elements.c.i
+.PHONY : builder_src/render_elements.c.i
+
+builder_src/render_elements.s: builder_src/render_elements.c.s
+
+.PHONY : builder_src/render_elements.s
+
+# target to generate assembly for a file
+builder_src/render_elements.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_elements.c.s
+.PHONY : builder_src/render_elements.c.s
+
+builder_src/render_grid.o: builder_src/render_grid.c.o
+
+.PHONY : builder_src/render_grid.o
+
+# target to build an object file
+builder_src/render_grid.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_grid.c.o
+.PHONY : builder_src/render_grid.c.o
+
+builder_src/render_grid.i: builder_src/render_grid.c.i
+
+.PHONY : builder_src/render_grid.i
+
+# target to preprocess a source file
+builder_src/render_grid.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_grid.c.i
+.PHONY : builder_src/render_grid.c.i
+
+builder_src/render_grid.s: builder_src/render_grid.c.s
+
+.PHONY : builder_src/render_grid.s
+
+# target to generate assembly for a file
+builder_src/render_grid.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_grid.c.s
+.PHONY : builder_src/render_grid.c.s
+
+builder_src/render_grid_elems.o: builder_src/render_grid_elems.c.o
+
+.PHONY : builder_src/render_grid_elems.o
+
+# target to build an object file
+builder_src/render_grid_elems.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_grid_elems.c.o
+.PHONY : builder_src/render_grid_elems.c.o
+
+builder_src/render_grid_elems.i: builder_src/render_grid_elems.c.i
+
+.PHONY : builder_src/render_grid_elems.i
+
+# target to preprocess a source file
+builder_src/render_grid_elems.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_grid_elems.c.i
+.PHONY : builder_src/render_grid_elems.c.i
+
+builder_src/render_grid_elems.s: builder_src/render_grid_elems.c.s
+
+.PHONY : builder_src/render_grid_elems.s
+
+# target to generate assembly for a file
+builder_src/render_grid_elems.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_grid_elems.c.s
+.PHONY : builder_src/render_grid_elems.c.s
+
+builder_src/render_grid_iso.o: builder_src/render_grid_iso.c.o
+
+.PHONY : builder_src/render_grid_iso.o
+
+# target to build an object file
+builder_src/render_grid_iso.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_grid_iso.c.o
+.PHONY : builder_src/render_grid_iso.c.o
+
+builder_src/render_grid_iso.i: builder_src/render_grid_iso.c.i
+
+.PHONY : builder_src/render_grid_iso.i
+
+# target to preprocess a source file
+builder_src/render_grid_iso.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_grid_iso.c.i
+.PHONY : builder_src/render_grid_iso.c.i
+
+builder_src/render_grid_iso.s: builder_src/render_grid_iso.c.s
+
+.PHONY : builder_src/render_grid_iso.s
+
+# target to generate assembly for a file
+builder_src/render_grid_iso.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_grid_iso.c.s
+.PHONY : builder_src/render_grid_iso.c.s
+
+builder_src/render_items.o: builder_src/render_items.c.o
+
+.PHONY : builder_src/render_items.o
+
+# target to build an object file
+builder_src/render_items.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_items.c.o
+.PHONY : builder_src/render_items.c.o
+
+builder_src/render_items.i: builder_src/render_items.c.i
+
+.PHONY : builder_src/render_items.i
+
+# target to preprocess a source file
+builder_src/render_items.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_items.c.i
+.PHONY : builder_src/render_items.c.i
+
+builder_src/render_items.s: builder_src/render_items.c.s
+
+.PHONY : builder_src/render_items.s
+
+# target to generate assembly for a file
+builder_src/render_items.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/render_items.c.s
+.PHONY : builder_src/render_items.c.s
+
+builder_src/replace.o: builder_src/replace.c.o
+
+.PHONY : builder_src/replace.o
+
+# target to build an object file
+builder_src/replace.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/replace.c.o
+.PHONY : builder_src/replace.c.o
+
+builder_src/replace.i: builder_src/replace.c.i
+
+.PHONY : builder_src/replace.i
+
+# target to preprocess a source file
+builder_src/replace.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/replace.c.i
+.PHONY : builder_src/replace.c.i
+
+builder_src/replace.s: builder_src/replace.c.s
+
+.PHONY : builder_src/replace.s
+
+# target to generate assembly for a file
+builder_src/replace.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/replace.c.s
+.PHONY : builder_src/replace.c.s
+
+builder_src/rewrite.o: builder_src/rewrite.c.o
+
+.PHONY : builder_src/rewrite.o
+
+# target to build an object file
+builder_src/rewrite.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/rewrite.c.o
+.PHONY : builder_src/rewrite.c.o
+
+builder_src/rewrite.i: builder_src/rewrite.c.i
+
+.PHONY : builder_src/rewrite.i
+
+# target to preprocess a source file
+builder_src/rewrite.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/rewrite.c.i
+.PHONY : builder_src/rewrite.c.i
+
+builder_src/rewrite.s: builder_src/rewrite.c.s
+
+.PHONY : builder_src/rewrite.s
+
+# target to generate assembly for a file
+builder_src/rewrite.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/rewrite.c.s
+.PHONY : builder_src/rewrite.c.s
+
+builder_src/sdl_fun.o: builder_src/sdl_fun.c.o
+
+.PHONY : builder_src/sdl_fun.o
+
+# target to build an object file
+builder_src/sdl_fun.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sdl_fun.c.o
+.PHONY : builder_src/sdl_fun.c.o
+
+builder_src/sdl_fun.i: builder_src/sdl_fun.c.i
+
+.PHONY : builder_src/sdl_fun.i
+
+# target to preprocess a source file
+builder_src/sdl_fun.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sdl_fun.c.i
+.PHONY : builder_src/sdl_fun.c.i
+
+builder_src/sdl_fun.s: builder_src/sdl_fun.c.s
+
+.PHONY : builder_src/sdl_fun.s
+
+# target to generate assembly for a file
+builder_src/sdl_fun.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sdl_fun.c.s
+.PHONY : builder_src/sdl_fun.c.s
+
+builder_src/section.o: builder_src/section.c.o
+
+.PHONY : builder_src/section.o
+
+# target to build an object file
+builder_src/section.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/section.c.o
+.PHONY : builder_src/section.c.o
+
+builder_src/section.i: builder_src/section.c.i
+
+.PHONY : builder_src/section.i
+
+# target to preprocess a source file
+builder_src/section.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/section.c.i
+.PHONY : builder_src/section.c.i
+
+builder_src/section.s: builder_src/section.c.s
+
+.PHONY : builder_src/section.s
+
+# target to generate assembly for a file
+builder_src/section.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/section.c.s
+.PHONY : builder_src/section.c.s
+
+builder_src/sector_logic.o: builder_src/sector_logic.c.o
+
+.PHONY : builder_src/sector_logic.o
+
+# target to build an object file
+builder_src/sector_logic.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sector_logic.c.o
+.PHONY : builder_src/sector_logic.c.o
+
+builder_src/sector_logic.i: builder_src/sector_logic.c.i
+
+.PHONY : builder_src/sector_logic.i
+
+# target to preprocess a source file
+builder_src/sector_logic.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sector_logic.c.i
+.PHONY : builder_src/sector_logic.c.i
+
+builder_src/sector_logic.s: builder_src/sector_logic.c.s
+
+.PHONY : builder_src/sector_logic.s
+
+# target to generate assembly for a file
+builder_src/sector_logic.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sector_logic.c.s
+.PHONY : builder_src/sector_logic.c.s
+
+builder_src/sel_item.o: builder_src/sel_item.c.o
+
+.PHONY : builder_src/sel_item.o
+
+# target to build an object file
+builder_src/sel_item.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sel_item.c.o
+.PHONY : builder_src/sel_item.c.o
+
+builder_src/sel_item.i: builder_src/sel_item.c.i
+
+.PHONY : builder_src/sel_item.i
+
+# target to preprocess a source file
+builder_src/sel_item.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sel_item.c.i
+.PHONY : builder_src/sel_item.c.i
+
+builder_src/sel_item.s: builder_src/sel_item.c.s
+
+.PHONY : builder_src/sel_item.s
+
+# target to generate assembly for a file
+builder_src/sel_item.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sel_item.c.s
+.PHONY : builder_src/sel_item.c.s
+
+builder_src/select_lit.o: builder_src/select_lit.c.o
+
+.PHONY : builder_src/select_lit.o
+
+# target to build an object file
+builder_src/select_lit.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/select_lit.c.o
+.PHONY : builder_src/select_lit.c.o
+
+builder_src/select_lit.i: builder_src/select_lit.c.i
+
+.PHONY : builder_src/select_lit.i
+
+# target to preprocess a source file
+builder_src/select_lit.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/select_lit.c.i
+.PHONY : builder_src/select_lit.c.i
+
+builder_src/select_lit.s: builder_src/select_lit.c.s
+
+.PHONY : builder_src/select_lit.s
+
+# target to generate assembly for a file
+builder_src/select_lit.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/select_lit.c.s
+.PHONY : builder_src/select_lit.c.s
+
+builder_src/settings.o: builder_src/settings.c.o
+
+.PHONY : builder_src/settings.o
+
+# target to build an object file
+builder_src/settings.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/settings.c.o
+.PHONY : builder_src/settings.c.o
+
+builder_src/settings.i: builder_src/settings.c.i
+
+.PHONY : builder_src/settings.i
+
+# target to preprocess a source file
+builder_src/settings.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/settings.c.i
+.PHONY : builder_src/settings.c.i
+
+builder_src/settings.s: builder_src/settings.c.s
+
+.PHONY : builder_src/settings.s
+
+# target to generate assembly for a file
+builder_src/settings.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/settings.c.s
+.PHONY : builder_src/settings.c.s
+
+builder_src/settings_help.o: builder_src/settings_help.c.o
+
+.PHONY : builder_src/settings_help.o
+
+# target to build an object file
+builder_src/settings_help.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/settings_help.c.o
+.PHONY : builder_src/settings_help.c.o
+
+builder_src/settings_help.i: builder_src/settings_help.c.i
+
+.PHONY : builder_src/settings_help.i
+
+# target to preprocess a source file
+builder_src/settings_help.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/settings_help.c.i
+.PHONY : builder_src/settings_help.c.i
+
+builder_src/settings_help.s: builder_src/settings_help.c.s
+
+.PHONY : builder_src/settings_help.s
+
+# target to generate assembly for a file
+builder_src/settings_help.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/settings_help.c.s
+.PHONY : builder_src/settings_help.c.s
+
+builder_src/sort.o: builder_src/sort.c.o
+
+.PHONY : builder_src/sort.o
+
+# target to build an object file
+builder_src/sort.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sort.c.o
+.PHONY : builder_src/sort.c.o
+
+builder_src/sort.i: builder_src/sort.c.i
+
+.PHONY : builder_src/sort.i
+
+# target to preprocess a source file
+builder_src/sort.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sort.c.i
+.PHONY : builder_src/sort.c.i
+
+builder_src/sort.s: builder_src/sort.c.s
+
+.PHONY : builder_src/sort.s
+
+# target to generate assembly for a file
+builder_src/sort.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/sort.c.s
+.PHONY : builder_src/sort.c.s
+
+builder_src/states.o: builder_src/states.c.o
+
+.PHONY : builder_src/states.o
+
+# target to build an object file
+builder_src/states.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/states.c.o
+.PHONY : builder_src/states.c.o
+
+builder_src/states.i: builder_src/states.c.i
+
+.PHONY : builder_src/states.i
+
+# target to preprocess a source file
+builder_src/states.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/states.c.i
+.PHONY : builder_src/states.c.i
+
+builder_src/states.s: builder_src/states.c.s
+
+.PHONY : builder_src/states.s
+
+# target to generate assembly for a file
+builder_src/states.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/states.c.s
+.PHONY : builder_src/states.c.s
+
+builder_src/texture_edit.o: builder_src/texture_edit.c.o
+
+.PHONY : builder_src/texture_edit.o
+
+# target to build an object file
+builder_src/texture_edit.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/texture_edit.c.o
+.PHONY : builder_src/texture_edit.c.o
+
+builder_src/texture_edit.i: builder_src/texture_edit.c.i
+
+.PHONY : builder_src/texture_edit.i
+
+# target to preprocess a source file
+builder_src/texture_edit.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/texture_edit.c.i
+.PHONY : builder_src/texture_edit.c.i
+
+builder_src/texture_edit.s: builder_src/texture_edit.c.s
+
+.PHONY : builder_src/texture_edit.s
+
+# target to generate assembly for a file
+builder_src/texture_edit.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/texture_edit.c.s
+.PHONY : builder_src/texture_edit.c.s
+
+builder_src/texture_name.o: builder_src/texture_name.c.o
+
+.PHONY : builder_src/texture_name.o
+
+# target to build an object file
+builder_src/texture_name.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/texture_name.c.o
+.PHONY : builder_src/texture_name.c.o
+
+builder_src/texture_name.i: builder_src/texture_name.c.i
+
+.PHONY : builder_src/texture_name.i
+
+# target to preprocess a source file
+builder_src/texture_name.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/texture_name.c.i
+.PHONY : builder_src/texture_name.c.i
+
+builder_src/texture_name.s: builder_src/texture_name.c.s
+
+.PHONY : builder_src/texture_name.s
+
+# target to generate assembly for a file
+builder_src/texture_name.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/texture_name.c.s
+.PHONY : builder_src/texture_name.c.s
+
+builder_src/textures.o: builder_src/textures.c.o
+
+.PHONY : builder_src/textures.o
+
+# target to build an object file
+builder_src/textures.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/textures.c.o
+.PHONY : builder_src/textures.c.o
+
+builder_src/textures.i: builder_src/textures.c.i
+
+.PHONY : builder_src/textures.i
+
+# target to preprocess a source file
+builder_src/textures.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/textures.c.i
+.PHONY : builder_src/textures.c.i
+
+builder_src/textures.s: builder_src/textures.c.s
+
+.PHONY : builder_src/textures.s
+
+# target to generate assembly for a file
+builder_src/textures.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/textures.c.s
+.PHONY : builder_src/textures.c.s
+
+builder_src/update_media_sect.o: builder_src/update_media_sect.c.o
+
+.PHONY : builder_src/update_media_sect.o
+
+# target to build an object file
+builder_src/update_media_sect.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/update_media_sect.c.o
+.PHONY : builder_src/update_media_sect.c.o
+
+builder_src/update_media_sect.i: builder_src/update_media_sect.c.i
+
+.PHONY : builder_src/update_media_sect.i
+
+# target to preprocess a source file
+builder_src/update_media_sect.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/update_media_sect.c.i
+.PHONY : builder_src/update_media_sect.c.i
+
+builder_src/update_media_sect.s: builder_src/update_media_sect.c.s
+
+.PHONY : builder_src/update_media_sect.s
+
+# target to generate assembly for a file
+builder_src/update_media_sect.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/update_media_sect.c.s
+.PHONY : builder_src/update_media_sect.c.s
+
+builder_src/update_sec.o: builder_src/update_sec.c.o
+
+.PHONY : builder_src/update_sec.o
+
+# target to build an object file
+builder_src/update_sec.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/update_sec.c.o
+.PHONY : builder_src/update_sec.c.o
+
+builder_src/update_sec.i: builder_src/update_sec.c.i
+
+.PHONY : builder_src/update_sec.i
+
+# target to preprocess a source file
+builder_src/update_sec.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/update_sec.c.i
+.PHONY : builder_src/update_sec.c.i
+
+builder_src/update_sec.s: builder_src/update_sec.c.s
+
+.PHONY : builder_src/update_sec.s
+
+# target to generate assembly for a file
+builder_src/update_sec.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/update_sec.c.s
+.PHONY : builder_src/update_sec.c.s
+
+builder_src/useful.o: builder_src/useful.c.o
+
+.PHONY : builder_src/useful.o
+
+# target to build an object file
+builder_src/useful.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/useful.c.o
+.PHONY : builder_src/useful.c.o
+
+builder_src/useful.i: builder_src/useful.c.i
+
+.PHONY : builder_src/useful.i
+
+# target to preprocess a source file
+builder_src/useful.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/useful.c.i
+.PHONY : builder_src/useful.c.i
+
+builder_src/useful.s: builder_src/useful.c.s
+
+.PHONY : builder_src/useful.s
+
+# target to generate assembly for a file
+builder_src/useful.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/useful.c.s
+.PHONY : builder_src/useful.c.s
+
+builder_src/validate_clockwise.o: builder_src/validate_clockwise.c.o
+
+.PHONY : builder_src/validate_clockwise.o
+
+# target to build an object file
+builder_src/validate_clockwise.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/validate_clockwise.c.o
+.PHONY : builder_src/validate_clockwise.c.o
+
+builder_src/validate_clockwise.i: builder_src/validate_clockwise.c.i
+
+.PHONY : builder_src/validate_clockwise.i
+
+# target to preprocess a source file
+builder_src/validate_clockwise.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/validate_clockwise.c.i
+.PHONY : builder_src/validate_clockwise.c.i
+
+builder_src/validate_clockwise.s: builder_src/validate_clockwise.c.s
+
+.PHONY : builder_src/validate_clockwise.s
+
+# target to generate assembly for a file
+builder_src/validate_clockwise.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/validate_clockwise.c.s
+.PHONY : builder_src/validate_clockwise.c.s
+
+builder_src/validate_media.o: builder_src/validate_media.c.o
+
+.PHONY : builder_src/validate_media.o
+
+# target to build an object file
+builder_src/validate_media.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/validate_media.c.o
+.PHONY : builder_src/validate_media.c.o
+
+builder_src/validate_media.i: builder_src/validate_media.c.i
+
+.PHONY : builder_src/validate_media.i
+
+# target to preprocess a source file
+builder_src/validate_media.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/validate_media.c.i
+.PHONY : builder_src/validate_media.c.i
+
+builder_src/validate_media.s: builder_src/validate_media.c.s
+
+.PHONY : builder_src/validate_media.s
+
+# target to generate assembly for a file
+builder_src/validate_media.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/validate_media.c.s
+.PHONY : builder_src/validate_media.c.s
+
+builder_src/values.o: builder_src/values.c.o
+
+.PHONY : builder_src/values.o
+
+# target to build an object file
+builder_src/values.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/values.c.o
+.PHONY : builder_src/values.c.o
+
+builder_src/values.i: builder_src/values.c.i
+
+.PHONY : builder_src/values.i
+
+# target to preprocess a source file
+builder_src/values.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/values.c.i
+.PHONY : builder_src/values.c.i
+
+builder_src/values.s: builder_src/values.c.s
+
+.PHONY : builder_src/values.s
+
+# target to generate assembly for a file
+builder_src/values.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/values.c.s
+.PHONY : builder_src/values.c.s
+
+builder_src/vec_ops.o: builder_src/vec_ops.c.o
+
+.PHONY : builder_src/vec_ops.o
+
+# target to build an object file
+builder_src/vec_ops.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/vec_ops.c.o
+.PHONY : builder_src/vec_ops.c.o
+
+builder_src/vec_ops.i: builder_src/vec_ops.c.i
+
+.PHONY : builder_src/vec_ops.i
+
+# target to preprocess a source file
+builder_src/vec_ops.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/vec_ops.c.i
+.PHONY : builder_src/vec_ops.c.i
+
+builder_src/vec_ops.s: builder_src/vec_ops.c.s
+
+.PHONY : builder_src/vec_ops.s
+
+# target to generate assembly for a file
+builder_src/vec_ops.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/vec_ops.c.s
+.PHONY : builder_src/vec_ops.c.s
+
+builder_src/write_level.o: builder_src/write_level.c.o
+
+.PHONY : builder_src/write_level.o
+
+# target to build an object file
+builder_src/write_level.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/write_level.c.o
+.PHONY : builder_src/write_level.c.o
+
+builder_src/write_level.i: builder_src/write_level.c.i
+
+.PHONY : builder_src/write_level.i
+
+# target to preprocess a source file
+builder_src/write_level.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/write_level.c.i
+.PHONY : builder_src/write_level.c.i
+
+builder_src/write_level.s: builder_src/write_level.c.s
+
+.PHONY : builder_src/write_level.s
+
+# target to generate assembly for a file
+builder_src/write_level.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/write_level.c.s
+.PHONY : builder_src/write_level.c.s
+
+builder_src/write_section.o: builder_src/write_section.c.o
+
+.PHONY : builder_src/write_section.o
+
+# target to build an object file
+builder_src/write_section.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/write_section.c.o
+.PHONY : builder_src/write_section.c.o
+
+builder_src/write_section.i: builder_src/write_section.c.i
+
+.PHONY : builder_src/write_section.i
+
+# target to preprocess a source file
+builder_src/write_section.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/write_section.c.i
+.PHONY : builder_src/write_section.c.i
+
+builder_src/write_section.s: builder_src/write_section.c.s
+
+.PHONY : builder_src/write_section.s
+
+# target to generate assembly for a file
+builder_src/write_section.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/write_section.c.s
+.PHONY : builder_src/write_section.c.s
+
+builder_src/zoom.o: builder_src/zoom.c.o
+
+.PHONY : builder_src/zoom.o
+
+# target to build an object file
+builder_src/zoom.c.o:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/zoom.c.o
+.PHONY : builder_src/zoom.c.o
+
+builder_src/zoom.i: builder_src/zoom.c.i
+
+.PHONY : builder_src/zoom.i
+
+# target to preprocess a source file
+builder_src/zoom.c.i:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/zoom.c.i
+.PHONY : builder_src/zoom.c.i
+
+builder_src/zoom.s: builder_src/zoom.c.s
+
+.PHONY : builder_src/zoom.s
+
+# target to generate assembly for a file
+builder_src/zoom.c.s:
+	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/builder_src/zoom.c.s
+.PHONY : builder_src/zoom.c.s
 
 libft/ft_atoi.o: libft/ft_atoi.c.o
 
@@ -216,60 +2781,6 @@ libft/ft_bzero.s: libft/ft_bzero.c.s
 libft/ft_bzero.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_bzero.c.s
 .PHONY : libft/ft_bzero.c.s
-
-libft/ft_count_words.o: libft/ft_count_words.c.o
-
-.PHONY : libft/ft_count_words.o
-
-# target to build an object file
-libft/ft_count_words.c.o:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_count_words.c.o
-.PHONY : libft/ft_count_words.c.o
-
-libft/ft_count_words.i: libft/ft_count_words.c.i
-
-.PHONY : libft/ft_count_words.i
-
-# target to preprocess a source file
-libft/ft_count_words.c.i:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_count_words.c.i
-.PHONY : libft/ft_count_words.c.i
-
-libft/ft_count_words.s: libft/ft_count_words.c.s
-
-.PHONY : libft/ft_count_words.s
-
-# target to generate assembly for a file
-libft/ft_count_words.c.s:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_count_words.c.s
-.PHONY : libft/ft_count_words.c.s
-
-libft/ft_digittoint.o: libft/ft_digittoint.c.o
-
-.PHONY : libft/ft_digittoint.o
-
-# target to build an object file
-libft/ft_digittoint.c.o:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_digittoint.c.o
-.PHONY : libft/ft_digittoint.c.o
-
-libft/ft_digittoint.i: libft/ft_digittoint.c.i
-
-.PHONY : libft/ft_digittoint.i
-
-# target to preprocess a source file
-libft/ft_digittoint.c.i:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_digittoint.c.i
-.PHONY : libft/ft_digittoint.c.i
-
-libft/ft_digittoint.s: libft/ft_digittoint.c.s
-
-.PHONY : libft/ft_digittoint.s
-
-# target to generate assembly for a file
-libft/ft_digittoint.c.s:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_digittoint.c.s
-.PHONY : libft/ft_digittoint.c.s
 
 libft/ft_isalnum.o: libft/ft_isalnum.c.o
 
@@ -379,33 +2890,6 @@ libft/ft_isdigit.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isdigit.c.s
 .PHONY : libft/ft_isdigit.c.s
 
-libft/ft_islower.o: libft/ft_islower.c.o
-
-.PHONY : libft/ft_islower.o
-
-# target to build an object file
-libft/ft_islower.c.o:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_islower.c.o
-.PHONY : libft/ft_islower.c.o
-
-libft/ft_islower.i: libft/ft_islower.c.i
-
-.PHONY : libft/ft_islower.i
-
-# target to preprocess a source file
-libft/ft_islower.c.i:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_islower.c.i
-.PHONY : libft/ft_islower.c.i
-
-libft/ft_islower.s: libft/ft_islower.c.s
-
-.PHONY : libft/ft_islower.s
-
-# target to generate assembly for a file
-libft/ft_islower.c.s:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_islower.c.s
-.PHONY : libft/ft_islower.c.s
-
 libft/ft_isprint.o: libft/ft_isprint.c.o
 
 .PHONY : libft/ft_isprint.o
@@ -433,114 +2917,6 @@ libft/ft_isprint.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isprint.c.s
 .PHONY : libft/ft_isprint.c.s
 
-libft/ft_isspace.o: libft/ft_isspace.c.o
-
-.PHONY : libft/ft_isspace.o
-
-# target to build an object file
-libft/ft_isspace.c.o:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isspace.c.o
-.PHONY : libft/ft_isspace.c.o
-
-libft/ft_isspace.i: libft/ft_isspace.c.i
-
-.PHONY : libft/ft_isspace.i
-
-# target to preprocess a source file
-libft/ft_isspace.c.i:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isspace.c.i
-.PHONY : libft/ft_isspace.c.i
-
-libft/ft_isspace.s: libft/ft_isspace.c.s
-
-.PHONY : libft/ft_isspace.s
-
-# target to generate assembly for a file
-libft/ft_isspace.c.s:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isspace.c.s
-.PHONY : libft/ft_isspace.c.s
-
-libft/ft_isupper.o: libft/ft_isupper.c.o
-
-.PHONY : libft/ft_isupper.o
-
-# target to build an object file
-libft/ft_isupper.c.o:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isupper.c.o
-.PHONY : libft/ft_isupper.c.o
-
-libft/ft_isupper.i: libft/ft_isupper.c.i
-
-.PHONY : libft/ft_isupper.i
-
-# target to preprocess a source file
-libft/ft_isupper.c.i:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isupper.c.i
-.PHONY : libft/ft_isupper.c.i
-
-libft/ft_isupper.s: libft/ft_isupper.c.s
-
-.PHONY : libft/ft_isupper.s
-
-# target to generate assembly for a file
-libft/ft_isupper.c.s:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isupper.c.s
-.PHONY : libft/ft_isupper.c.s
-
-libft/ft_iswhspace.o: libft/ft_iswhspace.c.o
-
-.PHONY : libft/ft_iswhspace.o
-
-# target to build an object file
-libft/ft_iswhspace.c.o:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_iswhspace.c.o
-.PHONY : libft/ft_iswhspace.c.o
-
-libft/ft_iswhspace.i: libft/ft_iswhspace.c.i
-
-.PHONY : libft/ft_iswhspace.i
-
-# target to preprocess a source file
-libft/ft_iswhspace.c.i:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_iswhspace.c.i
-.PHONY : libft/ft_iswhspace.c.i
-
-libft/ft_iswhspace.s: libft/ft_iswhspace.c.s
-
-.PHONY : libft/ft_iswhspace.s
-
-# target to generate assembly for a file
-libft/ft_iswhspace.c.s:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_iswhspace.c.s
-.PHONY : libft/ft_iswhspace.c.s
-
-libft/ft_isxdigit.o: libft/ft_isxdigit.c.o
-
-.PHONY : libft/ft_isxdigit.o
-
-# target to build an object file
-libft/ft_isxdigit.c.o:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isxdigit.c.o
-.PHONY : libft/ft_isxdigit.c.o
-
-libft/ft_isxdigit.i: libft/ft_isxdigit.c.i
-
-.PHONY : libft/ft_isxdigit.i
-
-# target to preprocess a source file
-libft/ft_isxdigit.c.i:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isxdigit.c.i
-.PHONY : libft/ft_isxdigit.c.i
-
-libft/ft_isxdigit.s: libft/ft_isxdigit.c.s
-
-.PHONY : libft/ft_isxdigit.s
-
-# target to generate assembly for a file
-libft/ft_isxdigit.c.s:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isxdigit.c.s
-.PHONY : libft/ft_isxdigit.c.s
-
 libft/ft_itoa.o: libft/ft_itoa.c.o
 
 .PHONY : libft/ft_itoa.o
@@ -567,6 +2943,33 @@ libft/ft_itoa.s: libft/ft_itoa.c.s
 libft/ft_itoa.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_itoa.c.s
 .PHONY : libft/ft_itoa.c.s
+
+libft/ft_list_size.o: libft/ft_list_size.c.o
+
+.PHONY : libft/ft_list_size.o
+
+# target to build an object file
+libft/ft_list_size.c.o:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_list_size.c.o
+.PHONY : libft/ft_list_size.c.o
+
+libft/ft_list_size.i: libft/ft_list_size.c.i
+
+.PHONY : libft/ft_list_size.i
+
+# target to preprocess a source file
+libft/ft_list_size.c.i:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_list_size.c.i
+.PHONY : libft/ft_list_size.c.i
+
+libft/ft_list_size.s: libft/ft_list_size.c.s
+
+.PHONY : libft/ft_list_size.s
+
+# target to generate assembly for a file
+libft/ft_list_size.c.s:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_list_size.c.s
+.PHONY : libft/ft_list_size.c.s
 
 libft/ft_lstadd.o: libft/ft_lstadd.c.o
 
@@ -1162,32 +3565,32 @@ libft/ft_putstr_fd.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_putstr_fd.c.s
 .PHONY : libft/ft_putstr_fd.c.s
 
-libft/ft_strcasecmp.o: libft/ft_strcasecmp.c.o
+libft/ft_sqrt.o: libft/ft_sqrt.c.o
 
-.PHONY : libft/ft_strcasecmp.o
+.PHONY : libft/ft_sqrt.o
 
 # target to build an object file
-libft/ft_strcasecmp.c.o:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strcasecmp.c.o
-.PHONY : libft/ft_strcasecmp.c.o
+libft/ft_sqrt.c.o:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_sqrt.c.o
+.PHONY : libft/ft_sqrt.c.o
 
-libft/ft_strcasecmp.i: libft/ft_strcasecmp.c.i
+libft/ft_sqrt.i: libft/ft_sqrt.c.i
 
-.PHONY : libft/ft_strcasecmp.i
+.PHONY : libft/ft_sqrt.i
 
 # target to preprocess a source file
-libft/ft_strcasecmp.c.i:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strcasecmp.c.i
-.PHONY : libft/ft_strcasecmp.c.i
+libft/ft_sqrt.c.i:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_sqrt.c.i
+.PHONY : libft/ft_sqrt.c.i
 
-libft/ft_strcasecmp.s: libft/ft_strcasecmp.c.s
+libft/ft_sqrt.s: libft/ft_sqrt.c.s
 
-.PHONY : libft/ft_strcasecmp.s
+.PHONY : libft/ft_sqrt.s
 
 # target to generate assembly for a file
-libft/ft_strcasecmp.c.s:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strcasecmp.c.s
-.PHONY : libft/ft_strcasecmp.c.s
+libft/ft_sqrt.c.s:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_sqrt.c.s
+.PHONY : libft/ft_sqrt.c.s
 
 libft/ft_strcat.o: libft/ft_strcat.c.o
 
@@ -1783,6 +4186,33 @@ libft/ft_strrchr.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strrchr.c.s
 .PHONY : libft/ft_strrchr.c.s
 
+libft/ft_strrev.o: libft/ft_strrev.c.o
+
+.PHONY : libft/ft_strrev.o
+
+# target to build an object file
+libft/ft_strrev.c.o:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strrev.c.o
+.PHONY : libft/ft_strrev.c.o
+
+libft/ft_strrev.i: libft/ft_strrev.c.i
+
+.PHONY : libft/ft_strrev.i
+
+# target to preprocess a source file
+libft/ft_strrev.c.i:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strrev.c.i
+.PHONY : libft/ft_strrev.c.i
+
+libft/ft_strrev.s: libft/ft_strrev.c.s
+
+.PHONY : libft/ft_strrev.s
+
+# target to generate assembly for a file
+libft/ft_strrev.c.s:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strrev.c.s
+.PHONY : libft/ft_strrev.c.s
+
 libft/ft_strsplit.o: libft/ft_strsplit.c.o
 
 .PHONY : libft/ft_strsplit.o
@@ -1891,33 +4321,6 @@ libft/ft_strtrim.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strtrim.c.s
 .PHONY : libft/ft_strtrim.c.s
 
-libft/ft_strulen.o: libft/ft_strulen.c.o
-
-.PHONY : libft/ft_strulen.o
-
-# target to build an object file
-libft/ft_strulen.c.o:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strulen.c.o
-.PHONY : libft/ft_strulen.c.o
-
-libft/ft_strulen.i: libft/ft_strulen.c.i
-
-.PHONY : libft/ft_strulen.i
-
-# target to preprocess a source file
-libft/ft_strulen.c.i:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strulen.c.i
-.PHONY : libft/ft_strulen.c.i
-
-libft/ft_strulen.s: libft/ft_strulen.c.s
-
-.PHONY : libft/ft_strulen.s
-
-# target to generate assembly for a file
-libft/ft_strulen.c.s:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strulen.c.s
-.PHONY : libft/ft_strulen.c.s
-
 libft/ft_tolower.o: libft/ft_tolower.c.o
 
 .PHONY : libft/ft_tolower.o
@@ -1972,2624 +4375,86 @@ libft/ft_toupper.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_toupper.c.s
 .PHONY : libft/ft_toupper.c.s
 
-src/add_door.o: src/add_door.c.o
+libft/ft_up_first_letter.o: libft/ft_up_first_letter.c.o
 
-.PHONY : src/add_door.o
+.PHONY : libft/ft_up_first_letter.o
 
 # target to build an object file
-src/add_door.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_door.c.o
-.PHONY : src/add_door.c.o
+libft/ft_up_first_letter.c.o:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_up_first_letter.c.o
+.PHONY : libft/ft_up_first_letter.c.o
 
-src/add_door.i: src/add_door.c.i
+libft/ft_up_first_letter.i: libft/ft_up_first_letter.c.i
 
-.PHONY : src/add_door.i
+.PHONY : libft/ft_up_first_letter.i
 
 # target to preprocess a source file
-src/add_door.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_door.c.i
-.PHONY : src/add_door.c.i
+libft/ft_up_first_letter.c.i:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_up_first_letter.c.i
+.PHONY : libft/ft_up_first_letter.c.i
 
-src/add_door.s: src/add_door.c.s
+libft/ft_up_first_letter.s: libft/ft_up_first_letter.c.s
 
-.PHONY : src/add_door.s
+.PHONY : libft/ft_up_first_letter.s
 
 # target to generate assembly for a file
-src/add_door.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_door.c.s
-.PHONY : src/add_door.c.s
+libft/ft_up_first_letter.c.s:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_up_first_letter.c.s
+.PHONY : libft/ft_up_first_letter.c.s
 
-src/add_door_help.o: src/add_door_help.c.o
+libft/ft_word_count.o: libft/ft_word_count.c.o
 
-.PHONY : src/add_door_help.o
+.PHONY : libft/ft_word_count.o
 
 # target to build an object file
-src/add_door_help.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_door_help.c.o
-.PHONY : src/add_door_help.c.o
+libft/ft_word_count.c.o:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_word_count.c.o
+.PHONY : libft/ft_word_count.c.o
 
-src/add_door_help.i: src/add_door_help.c.i
+libft/ft_word_count.i: libft/ft_word_count.c.i
 
-.PHONY : src/add_door_help.i
+.PHONY : libft/ft_word_count.i
 
 # target to preprocess a source file
-src/add_door_help.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_door_help.c.i
-.PHONY : src/add_door_help.c.i
+libft/ft_word_count.c.i:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_word_count.c.i
+.PHONY : libft/ft_word_count.c.i
 
-src/add_door_help.s: src/add_door_help.c.s
+libft/ft_word_count.s: libft/ft_word_count.c.s
 
-.PHONY : src/add_door_help.s
+.PHONY : libft/ft_word_count.s
 
 # target to generate assembly for a file
-src/add_door_help.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_door_help.c.s
-.PHONY : src/add_door_help.c.s
+libft/ft_word_count.c.s:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_word_count.c.s
+.PHONY : libft/ft_word_count.c.s
 
-src/add_sector.o: src/add_sector.c.o
+libft/get_next_line.o: libft/get_next_line.c.o
 
-.PHONY : src/add_sector.o
+.PHONY : libft/get_next_line.o
 
 # target to build an object file
-src/add_sector.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_sector.c.o
-.PHONY : src/add_sector.c.o
+libft/get_next_line.c.o:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/get_next_line.c.o
+.PHONY : libft/get_next_line.c.o
 
-src/add_sector.i: src/add_sector.c.i
+libft/get_next_line.i: libft/get_next_line.c.i
 
-.PHONY : src/add_sector.i
+.PHONY : libft/get_next_line.i
 
 # target to preprocess a source file
-src/add_sector.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_sector.c.i
-.PHONY : src/add_sector.c.i
+libft/get_next_line.c.i:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/get_next_line.c.i
+.PHONY : libft/get_next_line.c.i
 
-src/add_sector.s: src/add_sector.c.s
+libft/get_next_line.s: libft/get_next_line.c.s
 
-.PHONY : src/add_sector.s
+.PHONY : libft/get_next_line.s
 
 # target to generate assembly for a file
-src/add_sector.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_sector.c.s
-.PHONY : src/add_sector.c.s
-
-src/add_to_media.o: src/add_to_media.c.o
-
-.PHONY : src/add_to_media.o
-
-# target to build an object file
-src/add_to_media.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_to_media.c.o
-.PHONY : src/add_to_media.c.o
-
-src/add_to_media.i: src/add_to_media.c.i
-
-.PHONY : src/add_to_media.i
-
-# target to preprocess a source file
-src/add_to_media.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_to_media.c.i
-.PHONY : src/add_to_media.c.i
-
-src/add_to_media.s: src/add_to_media.c.s
-
-.PHONY : src/add_to_media.s
-
-# target to generate assembly for a file
-src/add_to_media.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/add_to_media.c.s
-.PHONY : src/add_to_media.c.s
-
-src/break_wall.o: src/break_wall.c.o
-
-.PHONY : src/break_wall.o
-
-# target to build an object file
-src/break_wall.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/break_wall.c.o
-.PHONY : src/break_wall.c.o
-
-src/break_wall.i: src/break_wall.c.i
-
-.PHONY : src/break_wall.i
-
-# target to preprocess a source file
-src/break_wall.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/break_wall.c.i
-.PHONY : src/break_wall.c.i
-
-src/break_wall.s: src/break_wall.c.s
-
-.PHONY : src/break_wall.s
-
-# target to generate assembly for a file
-src/break_wall.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/break_wall.c.s
-.PHONY : src/break_wall.c.s
-
-src/btn_main.o: src/btn_main.c.o
-
-.PHONY : src/btn_main.o
-
-# target to build an object file
-src/btn_main.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_main.c.o
-.PHONY : src/btn_main.c.o
-
-src/btn_main.i: src/btn_main.c.i
-
-.PHONY : src/btn_main.i
-
-# target to preprocess a source file
-src/btn_main.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_main.c.i
-.PHONY : src/btn_main.c.i
-
-src/btn_main.s: src/btn_main.c.s
-
-.PHONY : src/btn_main.s
-
-# target to generate assembly for a file
-src/btn_main.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_main.c.s
-.PHONY : src/btn_main.c.s
-
-src/btn_press.o: src/btn_press.c.o
-
-.PHONY : src/btn_press.o
-
-# target to build an object file
-src/btn_press.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press.c.o
-.PHONY : src/btn_press.c.o
-
-src/btn_press.i: src/btn_press.c.i
-
-.PHONY : src/btn_press.i
-
-# target to preprocess a source file
-src/btn_press.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press.c.i
-.PHONY : src/btn_press.c.i
-
-src/btn_press.s: src/btn_press.c.s
-
-.PHONY : src/btn_press.s
-
-# target to generate assembly for a file
-src/btn_press.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press.c.s
-.PHONY : src/btn_press.c.s
-
-src/btn_press_settings.o: src/btn_press_settings.c.o
-
-.PHONY : src/btn_press_settings.o
-
-# target to build an object file
-src/btn_press_settings.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press_settings.c.o
-.PHONY : src/btn_press_settings.c.o
-
-src/btn_press_settings.i: src/btn_press_settings.c.i
-
-.PHONY : src/btn_press_settings.i
-
-# target to preprocess a source file
-src/btn_press_settings.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press_settings.c.i
-.PHONY : src/btn_press_settings.c.i
-
-src/btn_press_settings.s: src/btn_press_settings.c.s
-
-.PHONY : src/btn_press_settings.s
-
-# target to generate assembly for a file
-src/btn_press_settings.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/btn_press_settings.c.s
-.PHONY : src/btn_press_settings.c.s
-
-src/char_ops.o: src/char_ops.c.o
-
-.PHONY : src/char_ops.o
-
-# target to build an object file
-src/char_ops.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/char_ops.c.o
-.PHONY : src/char_ops.c.o
-
-src/char_ops.i: src/char_ops.c.i
-
-.PHONY : src/char_ops.i
-
-# target to preprocess a source file
-src/char_ops.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/char_ops.c.i
-.PHONY : src/char_ops.c.i
-
-src/char_ops.s: src/char_ops.c.s
-
-.PHONY : src/char_ops.s
-
-# target to generate assembly for a file
-src/char_ops.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/char_ops.c.s
-.PHONY : src/char_ops.c.s
-
-src/check_for_light.o: src/check_for_light.c.o
-
-.PHONY : src/check_for_light.o
-
-# target to build an object file
-src/check_for_light.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/check_for_light.c.o
-.PHONY : src/check_for_light.c.o
-
-src/check_for_light.i: src/check_for_light.c.i
-
-.PHONY : src/check_for_light.i
-
-# target to preprocess a source file
-src/check_for_light.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/check_for_light.c.i
-.PHONY : src/check_for_light.c.i
-
-src/check_for_light.s: src/check_for_light.c.s
-
-.PHONY : src/check_for_light.s
-
-# target to generate assembly for a file
-src/check_for_light.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/check_for_light.c.s
-.PHONY : src/check_for_light.c.s
-
-src/clip_line.o: src/clip_line.c.o
-
-.PHONY : src/clip_line.o
-
-# target to build an object file
-src/clip_line.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/clip_line.c.o
-.PHONY : src/clip_line.c.o
-
-src/clip_line.i: src/clip_line.c.i
-
-.PHONY : src/clip_line.i
-
-# target to preprocess a source file
-src/clip_line.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/clip_line.c.i
-.PHONY : src/clip_line.c.i
-
-src/clip_line.s: src/clip_line.c.s
-
-.PHONY : src/clip_line.s
-
-# target to generate assembly for a file
-src/clip_line.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/clip_line.c.s
-.PHONY : src/clip_line.c.s
-
-src/delete_sector.o: src/delete_sector.c.o
-
-.PHONY : src/delete_sector.o
-
-# target to build an object file
-src/delete_sector.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_sector.c.o
-.PHONY : src/delete_sector.c.o
-
-src/delete_sector.i: src/delete_sector.c.i
-
-.PHONY : src/delete_sector.i
-
-# target to preprocess a source file
-src/delete_sector.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_sector.c.i
-.PHONY : src/delete_sector.c.i
-
-src/delete_sector.s: src/delete_sector.c.s
-
-.PHONY : src/delete_sector.s
-
-# target to generate assembly for a file
-src/delete_sector.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_sector.c.s
-.PHONY : src/delete_sector.c.s
-
-src/delete_useless.o: src/delete_useless.c.o
-
-.PHONY : src/delete_useless.o
-
-# target to build an object file
-src/delete_useless.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_useless.c.o
-.PHONY : src/delete_useless.c.o
-
-src/delete_useless.i: src/delete_useless.c.i
-
-.PHONY : src/delete_useless.i
-
-# target to preprocess a source file
-src/delete_useless.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_useless.c.i
-.PHONY : src/delete_useless.c.i
-
-src/delete_useless.s: src/delete_useless.c.s
-
-.PHONY : src/delete_useless.s
-
-# target to generate assembly for a file
-src/delete_useless.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_useless.c.s
-.PHONY : src/delete_useless.c.s
-
-src/delete_vector.o: src/delete_vector.c.o
-
-.PHONY : src/delete_vector.o
-
-# target to build an object file
-src/delete_vector.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_vector.c.o
-.PHONY : src/delete_vector.c.o
-
-src/delete_vector.i: src/delete_vector.c.i
-
-.PHONY : src/delete_vector.i
-
-# target to preprocess a source file
-src/delete_vector.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_vector.c.i
-.PHONY : src/delete_vector.c.i
-
-src/delete_vector.s: src/delete_vector.c.s
-
-.PHONY : src/delete_vector.s
-
-# target to generate assembly for a file
-src/delete_vector.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_vector.c.s
-.PHONY : src/delete_vector.c.s
-
-src/delete_world.o: src/delete_world.c.o
-
-.PHONY : src/delete_world.o
-
-# target to build an object file
-src/delete_world.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_world.c.o
-.PHONY : src/delete_world.c.o
-
-src/delete_world.i: src/delete_world.c.i
-
-.PHONY : src/delete_world.i
-
-# target to preprocess a source file
-src/delete_world.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_world.c.i
-.PHONY : src/delete_world.c.i
-
-src/delete_world.s: src/delete_world.c.s
-
-.PHONY : src/delete_world.s
-
-# target to generate assembly for a file
-src/delete_world.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/delete_world.c.s
-.PHONY : src/delete_world.c.s
-
-src/distribute_btns.o: src/distribute_btns.c.o
-
-.PHONY : src/distribute_btns.o
-
-# target to build an object file
-src/distribute_btns.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/distribute_btns.c.o
-.PHONY : src/distribute_btns.c.o
-
-src/distribute_btns.i: src/distribute_btns.c.i
-
-.PHONY : src/distribute_btns.i
-
-# target to preprocess a source file
-src/distribute_btns.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/distribute_btns.c.i
-.PHONY : src/distribute_btns.c.i
-
-src/distribute_btns.s: src/distribute_btns.c.s
-
-.PHONY : src/distribute_btns.s
-
-# target to generate assembly for a file
-src/distribute_btns.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/distribute_btns.c.s
-.PHONY : src/distribute_btns.c.s
-
-src/draw_line.o: src/draw_line.c.o
-
-.PHONY : src/draw_line.o
-
-# target to build an object file
-src/draw_line.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/draw_line.c.o
-.PHONY : src/draw_line.c.o
-
-src/draw_line.i: src/draw_line.c.i
-
-.PHONY : src/draw_line.i
-
-# target to preprocess a source file
-src/draw_line.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/draw_line.c.i
-.PHONY : src/draw_line.c.i
-
-src/draw_line.s: src/draw_line.c.s
-
-.PHONY : src/draw_line.s
-
-# target to generate assembly for a file
-src/draw_line.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/draw_line.c.s
-.PHONY : src/draw_line.c.s
-
-src/drawing.o: src/drawing.c.o
-
-.PHONY : src/drawing.o
-
-# target to build an object file
-src/drawing.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/drawing.c.o
-.PHONY : src/drawing.c.o
-
-src/drawing.i: src/drawing.c.i
-
-.PHONY : src/drawing.i
-
-# target to preprocess a source file
-src/drawing.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/drawing.c.i
-.PHONY : src/drawing.c.i
-
-src/drawing.s: src/drawing.c.s
-
-.PHONY : src/drawing.s
-
-# target to generate assembly for a file
-src/drawing.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/drawing.c.s
-.PHONY : src/drawing.c.s
-
-src/drawing_help.o: src/drawing_help.c.o
-
-.PHONY : src/drawing_help.o
-
-# target to build an object file
-src/drawing_help.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/drawing_help.c.o
-.PHONY : src/drawing_help.c.o
-
-src/drawing_help.i: src/drawing_help.c.i
-
-.PHONY : src/drawing_help.i
-
-# target to preprocess a source file
-src/drawing_help.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/drawing_help.c.i
-.PHONY : src/drawing_help.c.i
-
-src/drawing_help.s: src/drawing_help.c.s
-
-.PHONY : src/drawing_help.s
-
-# target to generate assembly for a file
-src/drawing_help.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/drawing_help.c.s
-.PHONY : src/drawing_help.c.s
-
-src/edit_menu.o: src/edit_menu.c.o
-
-.PHONY : src/edit_menu.o
-
-# target to build an object file
-src/edit_menu.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_menu.c.o
-.PHONY : src/edit_menu.c.o
-
-src/edit_menu.i: src/edit_menu.c.i
-
-.PHONY : src/edit_menu.i
-
-# target to preprocess a source file
-src/edit_menu.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_menu.c.i
-.PHONY : src/edit_menu.c.i
-
-src/edit_menu.s: src/edit_menu.c.s
-
-.PHONY : src/edit_menu.s
-
-# target to generate assembly for a file
-src/edit_menu.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_menu.c.s
-.PHONY : src/edit_menu.c.s
-
-src/edit_walls.o: src/edit_walls.c.o
-
-.PHONY : src/edit_walls.o
-
-# target to build an object file
-src/edit_walls.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_walls.c.o
-.PHONY : src/edit_walls.c.o
-
-src/edit_walls.i: src/edit_walls.c.i
-
-.PHONY : src/edit_walls.i
-
-# target to preprocess a source file
-src/edit_walls.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_walls.c.i
-.PHONY : src/edit_walls.c.i
-
-src/edit_walls.s: src/edit_walls.c.s
-
-.PHONY : src/edit_walls.s
-
-# target to generate assembly for a file
-src/edit_walls.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_walls.c.s
-.PHONY : src/edit_walls.c.s
-
-src/edit_walls_help.o: src/edit_walls_help.c.o
-
-.PHONY : src/edit_walls_help.o
-
-# target to build an object file
-src/edit_walls_help.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_walls_help.c.o
-.PHONY : src/edit_walls_help.c.o
-
-src/edit_walls_help.i: src/edit_walls_help.c.i
-
-.PHONY : src/edit_walls_help.i
-
-# target to preprocess a source file
-src/edit_walls_help.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_walls_help.c.i
-.PHONY : src/edit_walls_help.c.i
-
-src/edit_walls_help.s: src/edit_walls_help.c.s
-
-.PHONY : src/edit_walls_help.s
-
-# target to generate assembly for a file
-src/edit_walls_help.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_walls_help.c.s
-.PHONY : src/edit_walls_help.c.s
-
-src/edit_world.o: src/edit_world.c.o
-
-.PHONY : src/edit_world.o
-
-# target to build an object file
-src/edit_world.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_world.c.o
-.PHONY : src/edit_world.c.o
-
-src/edit_world.i: src/edit_world.c.i
-
-.PHONY : src/edit_world.i
-
-# target to preprocess a source file
-src/edit_world.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_world.c.i
-.PHONY : src/edit_world.c.i
-
-src/edit_world.s: src/edit_world.c.s
-
-.PHONY : src/edit_world.s
-
-# target to generate assembly for a file
-src/edit_world.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/edit_world.c.s
-.PHONY : src/edit_world.c.s
-
-src/editor.o: src/editor.c.o
-
-.PHONY : src/editor.o
-
-# target to build an object file
-src/editor.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/editor.c.o
-.PHONY : src/editor.c.o
-
-src/editor.i: src/editor.c.i
-
-.PHONY : src/editor.i
-
-# target to preprocess a source file
-src/editor.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/editor.c.i
-.PHONY : src/editor.c.i
-
-src/editor.s: src/editor.c.s
-
-.PHONY : src/editor.s
-
-# target to generate assembly for a file
-src/editor.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/editor.c.s
-.PHONY : src/editor.c.s
-
-src/editor_render.o: src/editor_render.c.o
-
-.PHONY : src/editor_render.o
-
-# target to build an object file
-src/editor_render.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/editor_render.c.o
-.PHONY : src/editor_render.c.o
-
-src/editor_render.i: src/editor_render.c.i
-
-.PHONY : src/editor_render.i
-
-# target to preprocess a source file
-src/editor_render.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/editor_render.c.i
-.PHONY : src/editor_render.c.i
-
-src/editor_render.s: src/editor_render.c.s
-
-.PHONY : src/editor_render.s
-
-# target to generate assembly for a file
-src/editor_render.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/editor_render.c.s
-.PHONY : src/editor_render.c.s
-
-src/editor_update.o: src/editor_update.c.o
-
-.PHONY : src/editor_update.o
-
-# target to build an object file
-src/editor_update.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/editor_update.c.o
-.PHONY : src/editor_update.c.o
-
-src/editor_update.i: src/editor_update.c.i
-
-.PHONY : src/editor_update.i
-
-# target to preprocess a source file
-src/editor_update.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/editor_update.c.i
-.PHONY : src/editor_update.c.i
-
-src/editor_update.s: src/editor_update.c.s
-
-.PHONY : src/editor_update.s
-
-# target to generate assembly for a file
-src/editor_update.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/editor_update.c.s
-.PHONY : src/editor_update.c.s
-
-src/file_fun.o: src/file_fun.c.o
-
-.PHONY : src/file_fun.o
-
-# target to build an object file
-src/file_fun.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/file_fun.c.o
-.PHONY : src/file_fun.c.o
-
-src/file_fun.i: src/file_fun.c.i
-
-.PHONY : src/file_fun.i
-
-# target to preprocess a source file
-src/file_fun.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/file_fun.c.i
-.PHONY : src/file_fun.c.i
-
-src/file_fun.s: src/file_fun.c.s
-
-.PHONY : src/file_fun.s
-
-# target to generate assembly for a file
-src/file_fun.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/file_fun.c.s
-.PHONY : src/file_fun.c.s
-
-src/fill_grid.o: src/fill_grid.c.o
-
-.PHONY : src/fill_grid.o
-
-# target to build an object file
-src/fill_grid.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/fill_grid.c.o
-.PHONY : src/fill_grid.c.o
-
-src/fill_grid.i: src/fill_grid.c.i
-
-.PHONY : src/fill_grid.i
-
-# target to preprocess a source file
-src/fill_grid.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/fill_grid.c.i
-.PHONY : src/fill_grid.c.i
-
-src/fill_grid.s: src/fill_grid.c.s
-
-.PHONY : src/fill_grid.s
-
-# target to generate assembly for a file
-src/fill_grid.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/fill_grid.c.s
-.PHONY : src/fill_grid.c.s
-
-src/fill_polygon.o: src/fill_polygon.c.o
-
-.PHONY : src/fill_polygon.o
-
-# target to build an object file
-src/fill_polygon.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/fill_polygon.c.o
-.PHONY : src/fill_polygon.c.o
-
-src/fill_polygon.i: src/fill_polygon.c.i
-
-.PHONY : src/fill_polygon.i
-
-# target to preprocess a source file
-src/fill_polygon.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/fill_polygon.c.i
-.PHONY : src/fill_polygon.c.i
-
-src/fill_polygon.s: src/fill_polygon.c.s
-
-.PHONY : src/fill_polygon.s
-
-# target to generate assembly for a file
-src/fill_polygon.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/fill_polygon.c.s
-.PHONY : src/fill_polygon.c.s
-
-src/find_in_media.o: src/find_in_media.c.o
-
-.PHONY : src/find_in_media.o
-
-# target to build an object file
-src/find_in_media.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/find_in_media.c.o
-.PHONY : src/find_in_media.c.o
-
-src/find_in_media.i: src/find_in_media.c.i
-
-.PHONY : src/find_in_media.i
-
-# target to preprocess a source file
-src/find_in_media.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/find_in_media.c.i
-.PHONY : src/find_in_media.c.i
-
-src/find_in_media.s: src/find_in_media.c.s
-
-.PHONY : src/find_in_media.s
-
-# target to generate assembly for a file
-src/find_in_media.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/find_in_media.c.s
-.PHONY : src/find_in_media.c.s
-
-src/free_media.o: src/free_media.c.o
-
-.PHONY : src/free_media.o
-
-# target to build an object file
-src/free_media.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/free_media.c.o
-.PHONY : src/free_media.c.o
-
-src/free_media.i: src/free_media.c.i
-
-.PHONY : src/free_media.i
-
-# target to preprocess a source file
-src/free_media.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/free_media.c.i
-.PHONY : src/free_media.c.i
-
-src/free_media.s: src/free_media.c.s
-
-.PHONY : src/free_media.s
-
-# target to generate assembly for a file
-src/free_media.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/free_media.c.s
-.PHONY : src/free_media.c.s
-
-src/get_assets.o: src/get_assets.c.o
-
-.PHONY : src/get_assets.o
-
-# target to build an object file
-src/get_assets.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_assets.c.o
-.PHONY : src/get_assets.c.o
-
-src/get_assets.i: src/get_assets.c.i
-
-.PHONY : src/get_assets.i
-
-# target to preprocess a source file
-src/get_assets.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_assets.c.i
-.PHONY : src/get_assets.c.i
-
-src/get_assets.s: src/get_assets.c.s
-
-.PHONY : src/get_assets.s
-
-# target to generate assembly for a file
-src/get_assets.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_assets.c.s
-.PHONY : src/get_assets.c.s
-
-src/get_boxes.o: src/get_boxes.c.o
-
-.PHONY : src/get_boxes.o
-
-# target to build an object file
-src/get_boxes.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_boxes.c.o
-.PHONY : src/get_boxes.c.o
-
-src/get_boxes.i: src/get_boxes.c.i
-
-.PHONY : src/get_boxes.i
-
-# target to preprocess a source file
-src/get_boxes.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_boxes.c.i
-.PHONY : src/get_boxes.c.i
-
-src/get_boxes.s: src/get_boxes.c.s
-
-.PHONY : src/get_boxes.s
-
-# target to generate assembly for a file
-src/get_boxes.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_boxes.c.s
-.PHONY : src/get_boxes.c.s
-
-src/get_input.o: src/get_input.c.o
-
-.PHONY : src/get_input.o
-
-# target to build an object file
-src/get_input.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_input.c.o
-.PHONY : src/get_input.c.o
-
-src/get_input.i: src/get_input.c.i
-
-.PHONY : src/get_input.i
-
-# target to preprocess a source file
-src/get_input.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_input.c.i
-.PHONY : src/get_input.c.i
-
-src/get_input.s: src/get_input.c.s
-
-.PHONY : src/get_input.s
-
-# target to generate assembly for a file
-src/get_input.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_input.c.s
-.PHONY : src/get_input.c.s
-
-src/get_map.o: src/get_map.c.o
-
-.PHONY : src/get_map.o
-
-# target to build an object file
-src/get_map.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map.c.o
-.PHONY : src/get_map.c.o
-
-src/get_map.i: src/get_map.c.i
-
-.PHONY : src/get_map.i
-
-# target to preprocess a source file
-src/get_map.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map.c.i
-.PHONY : src/get_map.c.i
-
-src/get_map.s: src/get_map.c.s
-
-.PHONY : src/get_map.s
-
-# target to generate assembly for a file
-src/get_map.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map.c.s
-.PHONY : src/get_map.c.s
-
-src/get_map_elems.o: src/get_map_elems.c.o
-
-.PHONY : src/get_map_elems.o
-
-# target to build an object file
-src/get_map_elems.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map_elems.c.o
-.PHONY : src/get_map_elems.c.o
-
-src/get_map_elems.i: src/get_map_elems.c.i
-
-.PHONY : src/get_map_elems.i
-
-# target to preprocess a source file
-src/get_map_elems.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map_elems.c.i
-.PHONY : src/get_map_elems.c.i
-
-src/get_map_elems.s: src/get_map_elems.c.s
-
-.PHONY : src/get_map_elems.s
-
-# target to generate assembly for a file
-src/get_map_elems.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_map_elems.c.s
-.PHONY : src/get_map_elems.c.s
-
-src/get_next_line.o: src/get_next_line.c.o
-
-.PHONY : src/get_next_line.o
-
-# target to build an object file
-src/get_next_line.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_next_line.c.o
-.PHONY : src/get_next_line.c.o
-
-src/get_next_line.i: src/get_next_line.c.i
-
-.PHONY : src/get_next_line.i
-
-# target to preprocess a source file
-src/get_next_line.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_next_line.c.i
-.PHONY : src/get_next_line.c.i
-
-src/get_next_line.s: src/get_next_line.c.s
-
-.PHONY : src/get_next_line.s
-
-# target to generate assembly for a file
-src/get_next_line.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_next_line.c.s
-.PHONY : src/get_next_line.c.s
-
-src/get_sec_items.o: src/get_sec_items.c.o
-
-.PHONY : src/get_sec_items.o
-
-# target to build an object file
-src/get_sec_items.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_sec_items.c.o
-.PHONY : src/get_sec_items.c.o
-
-src/get_sec_items.i: src/get_sec_items.c.i
-
-.PHONY : src/get_sec_items.i
-
-# target to preprocess a source file
-src/get_sec_items.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_sec_items.c.i
-.PHONY : src/get_sec_items.c.i
-
-src/get_sec_items.s: src/get_sec_items.c.s
-
-.PHONY : src/get_sec_items.s
-
-# target to generate assembly for a file
-src/get_sec_items.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_sec_items.c.s
-.PHONY : src/get_sec_items.c.s
-
-src/get_sec_v.o: src/get_sec_v.c.o
-
-.PHONY : src/get_sec_v.o
-
-# target to build an object file
-src/get_sec_v.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_sec_v.c.o
-.PHONY : src/get_sec_v.c.o
-
-src/get_sec_v.i: src/get_sec_v.c.i
-
-.PHONY : src/get_sec_v.i
-
-# target to preprocess a source file
-src/get_sec_v.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_sec_v.c.i
-.PHONY : src/get_sec_v.c.i
-
-src/get_sec_v.s: src/get_sec_v.c.s
-
-.PHONY : src/get_sec_v.s
-
-# target to generate assembly for a file
-src/get_sec_v.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/get_sec_v.c.s
-.PHONY : src/get_sec_v.c.s
-
-src/grid_main.o: src/grid_main.c.o
-
-.PHONY : src/grid_main.o
-
-# target to build an object file
-src/grid_main.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/grid_main.c.o
-.PHONY : src/grid_main.c.o
-
-src/grid_main.i: src/grid_main.c.i
-
-.PHONY : src/grid_main.i
-
-# target to preprocess a source file
-src/grid_main.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/grid_main.c.i
-.PHONY : src/grid_main.c.i
-
-src/grid_main.s: src/grid_main.c.s
-
-.PHONY : src/grid_main.s
-
-# target to generate assembly for a file
-src/grid_main.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/grid_main.c.s
-.PHONY : src/grid_main.c.s
-
-src/grid_ops.o: src/grid_ops.c.o
-
-.PHONY : src/grid_ops.o
-
-# target to build an object file
-src/grid_ops.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/grid_ops.c.o
-.PHONY : src/grid_ops.c.o
-
-src/grid_ops.i: src/grid_ops.c.i
-
-.PHONY : src/grid_ops.i
-
-# target to preprocess a source file
-src/grid_ops.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/grid_ops.c.i
-.PHONY : src/grid_ops.c.i
-
-src/grid_ops.s: src/grid_ops.c.s
-
-.PHONY : src/grid_ops.s
-
-# target to generate assembly for a file
-src/grid_ops.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/grid_ops.c.s
-.PHONY : src/grid_ops.c.s
-
-src/identify.o: src/identify.c.o
-
-.PHONY : src/identify.o
-
-# target to build an object file
-src/identify.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/identify.c.o
-.PHONY : src/identify.c.o
-
-src/identify.i: src/identify.c.i
-
-.PHONY : src/identify.i
-
-# target to preprocess a source file
-src/identify.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/identify.c.i
-.PHONY : src/identify.c.i
-
-src/identify.s: src/identify.c.s
-
-.PHONY : src/identify.s
-
-# target to generate assembly for a file
-src/identify.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/identify.c.s
-.PHONY : src/identify.c.s
-
-src/init_editor_buttons.o: src/init_editor_buttons.c.o
-
-.PHONY : src/init_editor_buttons.o
-
-# target to build an object file
-src/init_editor_buttons.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/init_editor_buttons.c.o
-.PHONY : src/init_editor_buttons.c.o
-
-src/init_editor_buttons.i: src/init_editor_buttons.c.i
-
-.PHONY : src/init_editor_buttons.i
-
-# target to preprocess a source file
-src/init_editor_buttons.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/init_editor_buttons.c.i
-.PHONY : src/init_editor_buttons.c.i
-
-src/init_editor_buttons.s: src/init_editor_buttons.c.s
-
-.PHONY : src/init_editor_buttons.s
-
-# target to generate assembly for a file
-src/init_editor_buttons.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/init_editor_buttons.c.s
-.PHONY : src/init_editor_buttons.c.s
-
-src/init_world.o: src/init_world.c.o
-
-.PHONY : src/init_world.o
-
-# target to build an object file
-src/init_world.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/init_world.c.o
-.PHONY : src/init_world.c.o
-
-src/init_world.i: src/init_world.c.i
-
-.PHONY : src/init_world.i
-
-# target to preprocess a source file
-src/init_world.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/init_world.c.i
-.PHONY : src/init_world.c.i
-
-src/init_world.s: src/init_world.c.s
-
-.PHONY : src/init_world.s
-
-# target to generate assembly for a file
-src/init_world.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/init_world.c.s
-.PHONY : src/init_world.c.s
-
-src/items.o: src/items.c.o
-
-.PHONY : src/items.o
-
-# target to build an object file
-src/items.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/items.c.o
-.PHONY : src/items.c.o
-
-src/items.i: src/items.c.i
-
-.PHONY : src/items.i
-
-# target to preprocess a source file
-src/items.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/items.c.i
-.PHONY : src/items.c.i
-
-src/items.s: src/items.c.s
-
-.PHONY : src/items.s
-
-# target to generate assembly for a file
-src/items.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/items.c.s
-.PHONY : src/items.c.s
-
-src/levels.o: src/levels.c.o
-
-.PHONY : src/levels.o
-
-# target to build an object file
-src/levels.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/levels.c.o
-.PHONY : src/levels.c.o
-
-src/levels.i: src/levels.c.i
-
-.PHONY : src/levels.i
-
-# target to preprocess a source file
-src/levels.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/levels.c.i
-.PHONY : src/levels.c.i
-
-src/levels.s: src/levels.c.s
-
-.PHONY : src/levels.s
-
-# target to generate assembly for a file
-src/levels.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/levels.c.s
-.PHONY : src/levels.c.s
-
-src/levels_btn.o: src/levels_btn.c.o
-
-.PHONY : src/levels_btn.o
-
-# target to build an object file
-src/levels_btn.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/levels_btn.c.o
-.PHONY : src/levels_btn.c.o
-
-src/levels_btn.i: src/levels_btn.c.i
-
-.PHONY : src/levels_btn.i
-
-# target to preprocess a source file
-src/levels_btn.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/levels_btn.c.i
-.PHONY : src/levels_btn.c.i
-
-src/levels_btn.s: src/levels_btn.c.s
-
-.PHONY : src/levels_btn.s
-
-# target to generate assembly for a file
-src/levels_btn.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/levels_btn.c.s
-.PHONY : src/levels_btn.c.s
-
-src/light_sec_type.o: src/light_sec_type.c.o
-
-.PHONY : src/light_sec_type.o
-
-# target to build an object file
-src/light_sec_type.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/light_sec_type.c.o
-.PHONY : src/light_sec_type.c.o
-
-src/light_sec_type.i: src/light_sec_type.c.i
-
-.PHONY : src/light_sec_type.i
-
-# target to preprocess a source file
-src/light_sec_type.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/light_sec_type.c.i
-.PHONY : src/light_sec_type.c.i
-
-src/light_sec_type.s: src/light_sec_type.c.s
-
-.PHONY : src/light_sec_type.s
-
-# target to generate assembly for a file
-src/light_sec_type.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/light_sec_type.c.s
-.PHONY : src/light_sec_type.c.s
-
-src/line_math.o: src/line_math.c.o
-
-.PHONY : src/line_math.o
-
-# target to build an object file
-src/line_math.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/line_math.c.o
-.PHONY : src/line_math.c.o
-
-src/line_math.i: src/line_math.c.i
-
-.PHONY : src/line_math.i
-
-# target to preprocess a source file
-src/line_math.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/line_math.c.i
-.PHONY : src/line_math.c.i
-
-src/line_math.s: src/line_math.c.s
-
-.PHONY : src/line_math.s
-
-# target to generate assembly for a file
-src/line_math.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/line_math.c.s
-.PHONY : src/line_math.c.s
-
-src/main.o: src/main.c.o
-
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/main.c.o
-.PHONY : src/main.c.o
-
-src/main.i: src/main.c.i
-
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/main.c.i
-.PHONY : src/main.c.i
-
-src/main.s: src/main.c.s
-
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/main.c.s
-.PHONY : src/main.c.s
-
-src/main_menu.o: src/main_menu.c.o
-
-.PHONY : src/main_menu.o
-
-# target to build an object file
-src/main_menu.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/main_menu.c.o
-.PHONY : src/main_menu.c.o
-
-src/main_menu.i: src/main_menu.c.i
-
-.PHONY : src/main_menu.i
-
-# target to preprocess a source file
-src/main_menu.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/main_menu.c.i
-.PHONY : src/main_menu.c.i
-
-src/main_menu.s: src/main_menu.c.s
-
-.PHONY : src/main_menu.s
-
-# target to generate assembly for a file
-src/main_menu.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/main_menu.c.s
-.PHONY : src/main_menu.c.s
-
-src/manage_btn.o: src/manage_btn.c.o
-
-.PHONY : src/manage_btn.o
-
-# target to build an object file
-src/manage_btn.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/manage_btn.c.o
-.PHONY : src/manage_btn.c.o
-
-src/manage_btn.i: src/manage_btn.c.i
-
-.PHONY : src/manage_btn.i
-
-# target to preprocess a source file
-src/manage_btn.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/manage_btn.c.i
-.PHONY : src/manage_btn.c.i
-
-src/manage_btn.s: src/manage_btn.c.s
-
-.PHONY : src/manage_btn.s
-
-# target to generate assembly for a file
-src/manage_btn.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/manage_btn.c.s
-.PHONY : src/manage_btn.c.s
-
-src/map_useful.o: src/map_useful.c.o
-
-.PHONY : src/map_useful.o
-
-# target to build an object file
-src/map_useful.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/map_useful.c.o
-.PHONY : src/map_useful.c.o
-
-src/map_useful.i: src/map_useful.c.i
-
-.PHONY : src/map_useful.i
-
-# target to preprocess a source file
-src/map_useful.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/map_useful.c.i
-.PHONY : src/map_useful.c.i
-
-src/map_useful.s: src/map_useful.c.s
-
-.PHONY : src/map_useful.s
-
-# target to generate assembly for a file
-src/map_useful.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/map_useful.c.s
-.PHONY : src/map_useful.c.s
-
-src/math.o: src/math.c.o
-
-.PHONY : src/math.o
-
-# target to build an object file
-src/math.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/math.c.o
-.PHONY : src/math.c.o
-
-src/math.i: src/math.c.i
-
-.PHONY : src/math.i
-
-# target to preprocess a source file
-src/math.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/math.c.i
-.PHONY : src/math.c.i
-
-src/math.s: src/math.c.s
-
-.PHONY : src/math.s
-
-# target to generate assembly for a file
-src/math.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/math.c.s
-.PHONY : src/math.c.s
-
-src/math_ops.o: src/math_ops.c.o
-
-.PHONY : src/math_ops.o
-
-# target to build an object file
-src/math_ops.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/math_ops.c.o
-.PHONY : src/math_ops.c.o
-
-src/math_ops.i: src/math_ops.c.i
-
-.PHONY : src/math_ops.i
-
-# target to preprocess a source file
-src/math_ops.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/math_ops.c.i
-.PHONY : src/math_ops.c.i
-
-src/math_ops.s: src/math_ops.c.s
-
-.PHONY : src/math_ops.s
-
-# target to generate assembly for a file
-src/math_ops.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/math_ops.c.s
-.PHONY : src/math_ops.c.s
-
-src/memory_fun.o: src/memory_fun.c.o
-
-.PHONY : src/memory_fun.o
-
-# target to build an object file
-src/memory_fun.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/memory_fun.c.o
-.PHONY : src/memory_fun.c.o
-
-src/memory_fun.i: src/memory_fun.c.i
-
-.PHONY : src/memory_fun.i
-
-# target to preprocess a source file
-src/memory_fun.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/memory_fun.c.i
-.PHONY : src/memory_fun.c.i
-
-src/memory_fun.s: src/memory_fun.c.s
-
-.PHONY : src/memory_fun.s
-
-# target to generate assembly for a file
-src/memory_fun.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/memory_fun.c.s
-.PHONY : src/memory_fun.c.s
-
-src/mode_btn.o: src/mode_btn.c.o
-
-.PHONY : src/mode_btn.o
-
-# target to build an object file
-src/mode_btn.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/mode_btn.c.o
-.PHONY : src/mode_btn.c.o
-
-src/mode_btn.i: src/mode_btn.c.i
-
-.PHONY : src/mode_btn.i
-
-# target to preprocess a source file
-src/mode_btn.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/mode_btn.c.i
-.PHONY : src/mode_btn.c.i
-
-src/mode_btn.s: src/mode_btn.c.s
-
-.PHONY : src/mode_btn.s
-
-# target to generate assembly for a file
-src/mode_btn.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/mode_btn.c.s
-.PHONY : src/mode_btn.c.s
-
-src/modes.o: src/modes.c.o
-
-.PHONY : src/modes.o
-
-# target to build an object file
-src/modes.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/modes.c.o
-.PHONY : src/modes.c.o
-
-src/modes.i: src/modes.c.i
-
-.PHONY : src/modes.i
-
-# target to preprocess a source file
-src/modes.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/modes.c.i
-.PHONY : src/modes.c.i
-
-src/modes.s: src/modes.c.s
-
-.PHONY : src/modes.s
-
-# target to generate assembly for a file
-src/modes.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/modes.c.s
-.PHONY : src/modes.c.s
-
-src/move.o: src/move.c.o
-
-.PHONY : src/move.o
-
-# target to build an object file
-src/move.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move.c.o
-.PHONY : src/move.c.o
-
-src/move.i: src/move.c.i
-
-.PHONY : src/move.i
-
-# target to preprocess a source file
-src/move.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move.c.i
-.PHONY : src/move.c.i
-
-src/move.s: src/move.c.s
-
-.PHONY : src/move.s
-
-# target to generate assembly for a file
-src/move.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move.c.s
-.PHONY : src/move.c.s
-
-src/move_item.o: src/move_item.c.o
-
-.PHONY : src/move_item.o
-
-# target to build an object file
-src/move_item.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move_item.c.o
-.PHONY : src/move_item.c.o
-
-src/move_item.i: src/move_item.c.i
-
-.PHONY : src/move_item.i
-
-# target to preprocess a source file
-src/move_item.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move_item.c.i
-.PHONY : src/move_item.c.i
-
-src/move_item.s: src/move_item.c.s
-
-.PHONY : src/move_item.s
-
-# target to generate assembly for a file
-src/move_item.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move_item.c.s
-.PHONY : src/move_item.c.s
-
-src/move_player.o: src/move_player.c.o
-
-.PHONY : src/move_player.o
-
-# target to build an object file
-src/move_player.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move_player.c.o
-.PHONY : src/move_player.c.o
-
-src/move_player.i: src/move_player.c.i
-
-.PHONY : src/move_player.i
-
-# target to preprocess a source file
-src/move_player.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move_player.c.i
-.PHONY : src/move_player.c.i
-
-src/move_player.s: src/move_player.c.s
-
-.PHONY : src/move_player.s
-
-# target to generate assembly for a file
-src/move_player.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move_player.c.s
-.PHONY : src/move_player.c.s
-
-src/move_vector.o: src/move_vector.c.o
-
-.PHONY : src/move_vector.o
-
-# target to build an object file
-src/move_vector.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move_vector.c.o
-.PHONY : src/move_vector.c.o
-
-src/move_vector.i: src/move_vector.c.i
-
-.PHONY : src/move_vector.i
-
-# target to preprocess a source file
-src/move_vector.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move_vector.c.i
-.PHONY : src/move_vector.c.i
-
-src/move_vector.s: src/move_vector.c.s
-
-.PHONY : src/move_vector.s
-
-# target to generate assembly for a file
-src/move_vector.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/move_vector.c.s
-.PHONY : src/move_vector.c.s
-
-src/prog.o: src/prog.c.o
-
-.PHONY : src/prog.o
-
-# target to build an object file
-src/prog.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/prog.c.o
-.PHONY : src/prog.c.o
-
-src/prog.i: src/prog.c.i
-
-.PHONY : src/prog.i
-
-# target to preprocess a source file
-src/prog.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/prog.c.i
-.PHONY : src/prog.c.i
-
-src/prog.s: src/prog.c.s
-
-.PHONY : src/prog.s
-
-# target to generate assembly for a file
-src/prog.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/prog.c.s
-.PHONY : src/prog.c.s
-
-src/read_assets_help.o: src/read_assets_help.c.o
-
-.PHONY : src/read_assets_help.o
-
-# target to build an object file
-src/read_assets_help.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_assets_help.c.o
-.PHONY : src/read_assets_help.c.o
-
-src/read_assets_help.i: src/read_assets_help.c.i
-
-.PHONY : src/read_assets_help.i
-
-# target to preprocess a source file
-src/read_assets_help.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_assets_help.c.i
-.PHONY : src/read_assets_help.c.i
-
-src/read_assets_help.s: src/read_assets_help.c.s
-
-.PHONY : src/read_assets_help.s
-
-# target to generate assembly for a file
-src/read_assets_help.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_assets_help.c.s
-.PHONY : src/read_assets_help.c.s
-
-src/read_levels.o: src/read_levels.c.o
-
-.PHONY : src/read_levels.o
-
-# target to build an object file
-src/read_levels.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_levels.c.o
-.PHONY : src/read_levels.c.o
-
-src/read_levels.i: src/read_levels.c.i
-
-.PHONY : src/read_levels.i
-
-# target to preprocess a source file
-src/read_levels.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_levels.c.i
-.PHONY : src/read_levels.c.i
-
-src/read_levels.s: src/read_levels.c.s
-
-.PHONY : src/read_levels.s
-
-# target to generate assembly for a file
-src/read_levels.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_levels.c.s
-.PHONY : src/read_levels.c.s
-
-src/read_line.o: src/read_line.c.o
-
-.PHONY : src/read_line.o
-
-# target to build an object file
-src/read_line.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_line.c.o
-.PHONY : src/read_line.c.o
-
-src/read_line.i: src/read_line.c.i
-
-.PHONY : src/read_line.i
-
-# target to preprocess a source file
-src/read_line.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_line.c.i
-.PHONY : src/read_line.c.i
-
-src/read_line.s: src/read_line.c.s
-
-.PHONY : src/read_line.s
-
-# target to generate assembly for a file
-src/read_line.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/read_line.c.s
-.PHONY : src/read_line.c.s
-
-src/render.o: src/render.c.o
-
-.PHONY : src/render.o
-
-# target to build an object file
-src/render.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render.c.o
-.PHONY : src/render.c.o
-
-src/render.i: src/render.c.i
-
-.PHONY : src/render.i
-
-# target to preprocess a source file
-src/render.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render.c.i
-.PHONY : src/render.c.i
-
-src/render.s: src/render.c.s
-
-.PHONY : src/render.s
-
-# target to generate assembly for a file
-src/render.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render.c.s
-.PHONY : src/render.c.s
-
-src/render_btn.o: src/render_btn.c.o
-
-.PHONY : src/render_btn.o
-
-# target to build an object file
-src/render_btn.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_btn.c.o
-.PHONY : src/render_btn.c.o
-
-src/render_btn.i: src/render_btn.c.i
-
-.PHONY : src/render_btn.i
-
-# target to preprocess a source file
-src/render_btn.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_btn.c.i
-.PHONY : src/render_btn.c.i
-
-src/render_btn.s: src/render_btn.c.s
-
-.PHONY : src/render_btn.s
-
-# target to generate assembly for a file
-src/render_btn.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_btn.c.s
-.PHONY : src/render_btn.c.s
-
-src/render_elements.o: src/render_elements.c.o
-
-.PHONY : src/render_elements.o
-
-# target to build an object file
-src/render_elements.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_elements.c.o
-.PHONY : src/render_elements.c.o
-
-src/render_elements.i: src/render_elements.c.i
-
-.PHONY : src/render_elements.i
-
-# target to preprocess a source file
-src/render_elements.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_elements.c.i
-.PHONY : src/render_elements.c.i
-
-src/render_elements.s: src/render_elements.c.s
-
-.PHONY : src/render_elements.s
-
-# target to generate assembly for a file
-src/render_elements.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_elements.c.s
-.PHONY : src/render_elements.c.s
-
-src/render_grid.o: src/render_grid.c.o
-
-.PHONY : src/render_grid.o
-
-# target to build an object file
-src/render_grid.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_grid.c.o
-.PHONY : src/render_grid.c.o
-
-src/render_grid.i: src/render_grid.c.i
-
-.PHONY : src/render_grid.i
-
-# target to preprocess a source file
-src/render_grid.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_grid.c.i
-.PHONY : src/render_grid.c.i
-
-src/render_grid.s: src/render_grid.c.s
-
-.PHONY : src/render_grid.s
-
-# target to generate assembly for a file
-src/render_grid.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_grid.c.s
-.PHONY : src/render_grid.c.s
-
-src/render_grid_elems.o: src/render_grid_elems.c.o
-
-.PHONY : src/render_grid_elems.o
-
-# target to build an object file
-src/render_grid_elems.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_grid_elems.c.o
-.PHONY : src/render_grid_elems.c.o
-
-src/render_grid_elems.i: src/render_grid_elems.c.i
-
-.PHONY : src/render_grid_elems.i
-
-# target to preprocess a source file
-src/render_grid_elems.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_grid_elems.c.i
-.PHONY : src/render_grid_elems.c.i
-
-src/render_grid_elems.s: src/render_grid_elems.c.s
-
-.PHONY : src/render_grid_elems.s
-
-# target to generate assembly for a file
-src/render_grid_elems.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_grid_elems.c.s
-.PHONY : src/render_grid_elems.c.s
-
-src/render_grid_iso.o: src/render_grid_iso.c.o
-
-.PHONY : src/render_grid_iso.o
-
-# target to build an object file
-src/render_grid_iso.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_grid_iso.c.o
-.PHONY : src/render_grid_iso.c.o
-
-src/render_grid_iso.i: src/render_grid_iso.c.i
-
-.PHONY : src/render_grid_iso.i
-
-# target to preprocess a source file
-src/render_grid_iso.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_grid_iso.c.i
-.PHONY : src/render_grid_iso.c.i
-
-src/render_grid_iso.s: src/render_grid_iso.c.s
-
-.PHONY : src/render_grid_iso.s
-
-# target to generate assembly for a file
-src/render_grid_iso.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_grid_iso.c.s
-.PHONY : src/render_grid_iso.c.s
-
-src/render_items.o: src/render_items.c.o
-
-.PHONY : src/render_items.o
-
-# target to build an object file
-src/render_items.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_items.c.o
-.PHONY : src/render_items.c.o
-
-src/render_items.i: src/render_items.c.i
-
-.PHONY : src/render_items.i
-
-# target to preprocess a source file
-src/render_items.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_items.c.i
-.PHONY : src/render_items.c.i
-
-src/render_items.s: src/render_items.c.s
-
-.PHONY : src/render_items.s
-
-# target to generate assembly for a file
-src/render_items.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/render_items.c.s
-.PHONY : src/render_items.c.s
-
-src/replace.o: src/replace.c.o
-
-.PHONY : src/replace.o
-
-# target to build an object file
-src/replace.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/replace.c.o
-.PHONY : src/replace.c.o
-
-src/replace.i: src/replace.c.i
-
-.PHONY : src/replace.i
-
-# target to preprocess a source file
-src/replace.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/replace.c.i
-.PHONY : src/replace.c.i
-
-src/replace.s: src/replace.c.s
-
-.PHONY : src/replace.s
-
-# target to generate assembly for a file
-src/replace.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/replace.c.s
-.PHONY : src/replace.c.s
-
-src/rewrite.o: src/rewrite.c.o
-
-.PHONY : src/rewrite.o
-
-# target to build an object file
-src/rewrite.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/rewrite.c.o
-.PHONY : src/rewrite.c.o
-
-src/rewrite.i: src/rewrite.c.i
-
-.PHONY : src/rewrite.i
-
-# target to preprocess a source file
-src/rewrite.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/rewrite.c.i
-.PHONY : src/rewrite.c.i
-
-src/rewrite.s: src/rewrite.c.s
-
-.PHONY : src/rewrite.s
-
-# target to generate assembly for a file
-src/rewrite.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/rewrite.c.s
-.PHONY : src/rewrite.c.s
-
-src/sdl_fun.o: src/sdl_fun.c.o
-
-.PHONY : src/sdl_fun.o
-
-# target to build an object file
-src/sdl_fun.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sdl_fun.c.o
-.PHONY : src/sdl_fun.c.o
-
-src/sdl_fun.i: src/sdl_fun.c.i
-
-.PHONY : src/sdl_fun.i
-
-# target to preprocess a source file
-src/sdl_fun.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sdl_fun.c.i
-.PHONY : src/sdl_fun.c.i
-
-src/sdl_fun.s: src/sdl_fun.c.s
-
-.PHONY : src/sdl_fun.s
-
-# target to generate assembly for a file
-src/sdl_fun.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sdl_fun.c.s
-.PHONY : src/sdl_fun.c.s
-
-src/section.o: src/section.c.o
-
-.PHONY : src/section.o
-
-# target to build an object file
-src/section.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/section.c.o
-.PHONY : src/section.c.o
-
-src/section.i: src/section.c.i
-
-.PHONY : src/section.i
-
-# target to preprocess a source file
-src/section.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/section.c.i
-.PHONY : src/section.c.i
-
-src/section.s: src/section.c.s
-
-.PHONY : src/section.s
-
-# target to generate assembly for a file
-src/section.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/section.c.s
-.PHONY : src/section.c.s
-
-src/sector_logic.o: src/sector_logic.c.o
-
-.PHONY : src/sector_logic.o
-
-# target to build an object file
-src/sector_logic.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sector_logic.c.o
-.PHONY : src/sector_logic.c.o
-
-src/sector_logic.i: src/sector_logic.c.i
-
-.PHONY : src/sector_logic.i
-
-# target to preprocess a source file
-src/sector_logic.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sector_logic.c.i
-.PHONY : src/sector_logic.c.i
-
-src/sector_logic.s: src/sector_logic.c.s
-
-.PHONY : src/sector_logic.s
-
-# target to generate assembly for a file
-src/sector_logic.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sector_logic.c.s
-.PHONY : src/sector_logic.c.s
-
-src/sel_item.o: src/sel_item.c.o
-
-.PHONY : src/sel_item.o
-
-# target to build an object file
-src/sel_item.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sel_item.c.o
-.PHONY : src/sel_item.c.o
-
-src/sel_item.i: src/sel_item.c.i
-
-.PHONY : src/sel_item.i
-
-# target to preprocess a source file
-src/sel_item.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sel_item.c.i
-.PHONY : src/sel_item.c.i
-
-src/sel_item.s: src/sel_item.c.s
-
-.PHONY : src/sel_item.s
-
-# target to generate assembly for a file
-src/sel_item.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sel_item.c.s
-.PHONY : src/sel_item.c.s
-
-src/select_lit.o: src/select_lit.c.o
-
-.PHONY : src/select_lit.o
-
-# target to build an object file
-src/select_lit.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/select_lit.c.o
-.PHONY : src/select_lit.c.o
-
-src/select_lit.i: src/select_lit.c.i
-
-.PHONY : src/select_lit.i
-
-# target to preprocess a source file
-src/select_lit.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/select_lit.c.i
-.PHONY : src/select_lit.c.i
-
-src/select_lit.s: src/select_lit.c.s
-
-.PHONY : src/select_lit.s
-
-# target to generate assembly for a file
-src/select_lit.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/select_lit.c.s
-.PHONY : src/select_lit.c.s
-
-src/settings.o: src/settings.c.o
-
-.PHONY : src/settings.o
-
-# target to build an object file
-src/settings.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings.c.o
-.PHONY : src/settings.c.o
-
-src/settings.i: src/settings.c.i
-
-.PHONY : src/settings.i
-
-# target to preprocess a source file
-src/settings.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings.c.i
-.PHONY : src/settings.c.i
-
-src/settings.s: src/settings.c.s
-
-.PHONY : src/settings.s
-
-# target to generate assembly for a file
-src/settings.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings.c.s
-.PHONY : src/settings.c.s
-
-src/settings_help.o: src/settings_help.c.o
-
-.PHONY : src/settings_help.o
-
-# target to build an object file
-src/settings_help.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings_help.c.o
-.PHONY : src/settings_help.c.o
-
-src/settings_help.i: src/settings_help.c.i
-
-.PHONY : src/settings_help.i
-
-# target to preprocess a source file
-src/settings_help.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings_help.c.i
-.PHONY : src/settings_help.c.i
-
-src/settings_help.s: src/settings_help.c.s
-
-.PHONY : src/settings_help.s
-
-# target to generate assembly for a file
-src/settings_help.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/settings_help.c.s
-.PHONY : src/settings_help.c.s
-
-src/sort.o: src/sort.c.o
-
-.PHONY : src/sort.o
-
-# target to build an object file
-src/sort.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sort.c.o
-.PHONY : src/sort.c.o
-
-src/sort.i: src/sort.c.i
-
-.PHONY : src/sort.i
-
-# target to preprocess a source file
-src/sort.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sort.c.i
-.PHONY : src/sort.c.i
-
-src/sort.s: src/sort.c.s
-
-.PHONY : src/sort.s
-
-# target to generate assembly for a file
-src/sort.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/sort.c.s
-.PHONY : src/sort.c.s
-
-src/states.o: src/states.c.o
-
-.PHONY : src/states.o
-
-# target to build an object file
-src/states.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/states.c.o
-.PHONY : src/states.c.o
-
-src/states.i: src/states.c.i
-
-.PHONY : src/states.i
-
-# target to preprocess a source file
-src/states.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/states.c.i
-.PHONY : src/states.c.i
-
-src/states.s: src/states.c.s
-
-.PHONY : src/states.s
-
-# target to generate assembly for a file
-src/states.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/states.c.s
-.PHONY : src/states.c.s
-
-src/texture_edit.o: src/texture_edit.c.o
-
-.PHONY : src/texture_edit.o
-
-# target to build an object file
-src/texture_edit.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/texture_edit.c.o
-.PHONY : src/texture_edit.c.o
-
-src/texture_edit.i: src/texture_edit.c.i
-
-.PHONY : src/texture_edit.i
-
-# target to preprocess a source file
-src/texture_edit.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/texture_edit.c.i
-.PHONY : src/texture_edit.c.i
-
-src/texture_edit.s: src/texture_edit.c.s
-
-.PHONY : src/texture_edit.s
-
-# target to generate assembly for a file
-src/texture_edit.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/texture_edit.c.s
-.PHONY : src/texture_edit.c.s
-
-src/texture_name.o: src/texture_name.c.o
-
-.PHONY : src/texture_name.o
-
-# target to build an object file
-src/texture_name.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/texture_name.c.o
-.PHONY : src/texture_name.c.o
-
-src/texture_name.i: src/texture_name.c.i
-
-.PHONY : src/texture_name.i
-
-# target to preprocess a source file
-src/texture_name.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/texture_name.c.i
-.PHONY : src/texture_name.c.i
-
-src/texture_name.s: src/texture_name.c.s
-
-.PHONY : src/texture_name.s
-
-# target to generate assembly for a file
-src/texture_name.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/texture_name.c.s
-.PHONY : src/texture_name.c.s
-
-src/textures.o: src/textures.c.o
-
-.PHONY : src/textures.o
-
-# target to build an object file
-src/textures.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/textures.c.o
-.PHONY : src/textures.c.o
-
-src/textures.i: src/textures.c.i
-
-.PHONY : src/textures.i
-
-# target to preprocess a source file
-src/textures.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/textures.c.i
-.PHONY : src/textures.c.i
-
-src/textures.s: src/textures.c.s
-
-.PHONY : src/textures.s
-
-# target to generate assembly for a file
-src/textures.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/textures.c.s
-.PHONY : src/textures.c.s
-
-src/update_media_sect.o: src/update_media_sect.c.o
-
-.PHONY : src/update_media_sect.o
-
-# target to build an object file
-src/update_media_sect.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/update_media_sect.c.o
-.PHONY : src/update_media_sect.c.o
-
-src/update_media_sect.i: src/update_media_sect.c.i
-
-.PHONY : src/update_media_sect.i
-
-# target to preprocess a source file
-src/update_media_sect.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/update_media_sect.c.i
-.PHONY : src/update_media_sect.c.i
-
-src/update_media_sect.s: src/update_media_sect.c.s
-
-.PHONY : src/update_media_sect.s
-
-# target to generate assembly for a file
-src/update_media_sect.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/update_media_sect.c.s
-.PHONY : src/update_media_sect.c.s
-
-src/update_sec.o: src/update_sec.c.o
-
-.PHONY : src/update_sec.o
-
-# target to build an object file
-src/update_sec.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/update_sec.c.o
-.PHONY : src/update_sec.c.o
-
-src/update_sec.i: src/update_sec.c.i
-
-.PHONY : src/update_sec.i
-
-# target to preprocess a source file
-src/update_sec.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/update_sec.c.i
-.PHONY : src/update_sec.c.i
-
-src/update_sec.s: src/update_sec.c.s
-
-.PHONY : src/update_sec.s
-
-# target to generate assembly for a file
-src/update_sec.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/update_sec.c.s
-.PHONY : src/update_sec.c.s
-
-src/useful.o: src/useful.c.o
-
-.PHONY : src/useful.o
-
-# target to build an object file
-src/useful.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/useful.c.o
-.PHONY : src/useful.c.o
-
-src/useful.i: src/useful.c.i
-
-.PHONY : src/useful.i
-
-# target to preprocess a source file
-src/useful.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/useful.c.i
-.PHONY : src/useful.c.i
-
-src/useful.s: src/useful.c.s
-
-.PHONY : src/useful.s
-
-# target to generate assembly for a file
-src/useful.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/useful.c.s
-.PHONY : src/useful.c.s
-
-src/validate_clockwise.o: src/validate_clockwise.c.o
-
-.PHONY : src/validate_clockwise.o
-
-# target to build an object file
-src/validate_clockwise.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/validate_clockwise.c.o
-.PHONY : src/validate_clockwise.c.o
-
-src/validate_clockwise.i: src/validate_clockwise.c.i
-
-.PHONY : src/validate_clockwise.i
-
-# target to preprocess a source file
-src/validate_clockwise.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/validate_clockwise.c.i
-.PHONY : src/validate_clockwise.c.i
-
-src/validate_clockwise.s: src/validate_clockwise.c.s
-
-.PHONY : src/validate_clockwise.s
-
-# target to generate assembly for a file
-src/validate_clockwise.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/validate_clockwise.c.s
-.PHONY : src/validate_clockwise.c.s
-
-src/validate_media.o: src/validate_media.c.o
-
-.PHONY : src/validate_media.o
-
-# target to build an object file
-src/validate_media.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/validate_media.c.o
-.PHONY : src/validate_media.c.o
-
-src/validate_media.i: src/validate_media.c.i
-
-.PHONY : src/validate_media.i
-
-# target to preprocess a source file
-src/validate_media.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/validate_media.c.i
-.PHONY : src/validate_media.c.i
-
-src/validate_media.s: src/validate_media.c.s
-
-.PHONY : src/validate_media.s
-
-# target to generate assembly for a file
-src/validate_media.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/validate_media.c.s
-.PHONY : src/validate_media.c.s
-
-src/values.o: src/values.c.o
-
-.PHONY : src/values.o
-
-# target to build an object file
-src/values.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/values.c.o
-.PHONY : src/values.c.o
-
-src/values.i: src/values.c.i
-
-.PHONY : src/values.i
-
-# target to preprocess a source file
-src/values.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/values.c.i
-.PHONY : src/values.c.i
-
-src/values.s: src/values.c.s
-
-.PHONY : src/values.s
-
-# target to generate assembly for a file
-src/values.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/values.c.s
-.PHONY : src/values.c.s
-
-src/vec_ops.o: src/vec_ops.c.o
-
-.PHONY : src/vec_ops.o
-
-# target to build an object file
-src/vec_ops.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/vec_ops.c.o
-.PHONY : src/vec_ops.c.o
-
-src/vec_ops.i: src/vec_ops.c.i
-
-.PHONY : src/vec_ops.i
-
-# target to preprocess a source file
-src/vec_ops.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/vec_ops.c.i
-.PHONY : src/vec_ops.c.i
-
-src/vec_ops.s: src/vec_ops.c.s
-
-.PHONY : src/vec_ops.s
-
-# target to generate assembly for a file
-src/vec_ops.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/vec_ops.c.s
-.PHONY : src/vec_ops.c.s
-
-src/write_level.o: src/write_level.c.o
-
-.PHONY : src/write_level.o
-
-# target to build an object file
-src/write_level.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/write_level.c.o
-.PHONY : src/write_level.c.o
-
-src/write_level.i: src/write_level.c.i
-
-.PHONY : src/write_level.i
-
-# target to preprocess a source file
-src/write_level.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/write_level.c.i
-.PHONY : src/write_level.c.i
-
-src/write_level.s: src/write_level.c.s
-
-.PHONY : src/write_level.s
-
-# target to generate assembly for a file
-src/write_level.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/write_level.c.s
-.PHONY : src/write_level.c.s
-
-src/write_section.o: src/write_section.c.o
-
-.PHONY : src/write_section.o
-
-# target to build an object file
-src/write_section.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/write_section.c.o
-.PHONY : src/write_section.c.o
-
-src/write_section.i: src/write_section.c.i
-
-.PHONY : src/write_section.i
-
-# target to preprocess a source file
-src/write_section.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/write_section.c.i
-.PHONY : src/write_section.c.i
-
-src/write_section.s: src/write_section.c.s
-
-.PHONY : src/write_section.s
-
-# target to generate assembly for a file
-src/write_section.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/write_section.c.s
-.PHONY : src/write_section.c.s
-
-src/zoom.o: src/zoom.c.o
-
-.PHONY : src/zoom.o
-
-# target to build an object file
-src/zoom.c.o:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/zoom.c.o
-.PHONY : src/zoom.c.o
-
-src/zoom.i: src/zoom.c.i
-
-.PHONY : src/zoom.i
-
-# target to preprocess a source file
-src/zoom.c.i:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/zoom.c.i
-.PHONY : src/zoom.c.i
-
-src/zoom.s: src/zoom.c.s
-
-.PHONY : src/zoom.s
-
-# target to generate assembly for a file
-src/zoom.c.s:
-	$(MAKE) -f CMakeFiles/builder.dir/build.make CMakeFiles/builder.dir/src/zoom.c.s
-.PHONY : src/zoom.c.s
+libft/get_next_line.c.s:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/get_next_line.c.s
+.PHONY : libft/get_next_line.c.s
 
 # Help Target
 help:
@@ -4601,21 +4466,300 @@ help:
 	@echo "... edit_cache"
 	@echo "... builder"
 	@echo "... ft"
-	@echo "... libft/ft_abs_cut.o"
-	@echo "... libft/ft_abs_cut.i"
-	@echo "... libft/ft_abs_cut.s"
+	@echo "... builder_src/add_door.o"
+	@echo "... builder_src/add_door.i"
+	@echo "... builder_src/add_door.s"
+	@echo "... builder_src/add_door_help.o"
+	@echo "... builder_src/add_door_help.i"
+	@echo "... builder_src/add_door_help.s"
+	@echo "... builder_src/add_sector.o"
+	@echo "... builder_src/add_sector.i"
+	@echo "... builder_src/add_sector.s"
+	@echo "... builder_src/add_to_media.o"
+	@echo "... builder_src/add_to_media.i"
+	@echo "... builder_src/add_to_media.s"
+	@echo "... builder_src/break_wall.o"
+	@echo "... builder_src/break_wall.i"
+	@echo "... builder_src/break_wall.s"
+	@echo "... builder_src/btn_main.o"
+	@echo "... builder_src/btn_main.i"
+	@echo "... builder_src/btn_main.s"
+	@echo "... builder_src/btn_press.o"
+	@echo "... builder_src/btn_press.i"
+	@echo "... builder_src/btn_press.s"
+	@echo "... builder_src/btn_press_settings.o"
+	@echo "... builder_src/btn_press_settings.i"
+	@echo "... builder_src/btn_press_settings.s"
+	@echo "... builder_src/char_ops.o"
+	@echo "... builder_src/char_ops.i"
+	@echo "... builder_src/char_ops.s"
+	@echo "... builder_src/check_for_light.o"
+	@echo "... builder_src/check_for_light.i"
+	@echo "... builder_src/check_for_light.s"
+	@echo "... builder_src/clip_line.o"
+	@echo "... builder_src/clip_line.i"
+	@echo "... builder_src/clip_line.s"
+	@echo "... builder_src/delete_sector.o"
+	@echo "... builder_src/delete_sector.i"
+	@echo "... builder_src/delete_sector.s"
+	@echo "... builder_src/delete_useless.o"
+	@echo "... builder_src/delete_useless.i"
+	@echo "... builder_src/delete_useless.s"
+	@echo "... builder_src/delete_vector.o"
+	@echo "... builder_src/delete_vector.i"
+	@echo "... builder_src/delete_vector.s"
+	@echo "... builder_src/delete_world.o"
+	@echo "... builder_src/delete_world.i"
+	@echo "... builder_src/delete_world.s"
+	@echo "... builder_src/distribute_btns.o"
+	@echo "... builder_src/distribute_btns.i"
+	@echo "... builder_src/distribute_btns.s"
+	@echo "... builder_src/draw_line.o"
+	@echo "... builder_src/draw_line.i"
+	@echo "... builder_src/draw_line.s"
+	@echo "... builder_src/drawing.o"
+	@echo "... builder_src/drawing.i"
+	@echo "... builder_src/drawing.s"
+	@echo "... builder_src/drawing_help.o"
+	@echo "... builder_src/drawing_help.i"
+	@echo "... builder_src/drawing_help.s"
+	@echo "... builder_src/edit_menu.o"
+	@echo "... builder_src/edit_menu.i"
+	@echo "... builder_src/edit_menu.s"
+	@echo "... builder_src/edit_walls.o"
+	@echo "... builder_src/edit_walls.i"
+	@echo "... builder_src/edit_walls.s"
+	@echo "... builder_src/edit_walls_help.o"
+	@echo "... builder_src/edit_walls_help.i"
+	@echo "... builder_src/edit_walls_help.s"
+	@echo "... builder_src/edit_world.o"
+	@echo "... builder_src/edit_world.i"
+	@echo "... builder_src/edit_world.s"
+	@echo "... builder_src/editor.o"
+	@echo "... builder_src/editor.i"
+	@echo "... builder_src/editor.s"
+	@echo "... builder_src/editor_render.o"
+	@echo "... builder_src/editor_render.i"
+	@echo "... builder_src/editor_render.s"
+	@echo "... builder_src/editor_update.o"
+	@echo "... builder_src/editor_update.i"
+	@echo "... builder_src/editor_update.s"
+	@echo "... builder_src/file_fun.o"
+	@echo "... builder_src/file_fun.i"
+	@echo "... builder_src/file_fun.s"
+	@echo "... builder_src/fill_grid.o"
+	@echo "... builder_src/fill_grid.i"
+	@echo "... builder_src/fill_grid.s"
+	@echo "... builder_src/fill_polygon.o"
+	@echo "... builder_src/fill_polygon.i"
+	@echo "... builder_src/fill_polygon.s"
+	@echo "... builder_src/find_in_media.o"
+	@echo "... builder_src/find_in_media.i"
+	@echo "... builder_src/find_in_media.s"
+	@echo "... builder_src/free_media.o"
+	@echo "... builder_src/free_media.i"
+	@echo "... builder_src/free_media.s"
+	@echo "... builder_src/get_assets.o"
+	@echo "... builder_src/get_assets.i"
+	@echo "... builder_src/get_assets.s"
+	@echo "... builder_src/get_boxes.o"
+	@echo "... builder_src/get_boxes.i"
+	@echo "... builder_src/get_boxes.s"
+	@echo "... builder_src/get_input.o"
+	@echo "... builder_src/get_input.i"
+	@echo "... builder_src/get_input.s"
+	@echo "... builder_src/get_map.o"
+	@echo "... builder_src/get_map.i"
+	@echo "... builder_src/get_map.s"
+	@echo "... builder_src/get_map_elems.o"
+	@echo "... builder_src/get_map_elems.i"
+	@echo "... builder_src/get_map_elems.s"
+	@echo "... builder_src/get_sec_items.o"
+	@echo "... builder_src/get_sec_items.i"
+	@echo "... builder_src/get_sec_items.s"
+	@echo "... builder_src/get_sec_v.o"
+	@echo "... builder_src/get_sec_v.i"
+	@echo "... builder_src/get_sec_v.s"
+	@echo "... builder_src/grid_main.o"
+	@echo "... builder_src/grid_main.i"
+	@echo "... builder_src/grid_main.s"
+	@echo "... builder_src/grid_ops.o"
+	@echo "... builder_src/grid_ops.i"
+	@echo "... builder_src/grid_ops.s"
+	@echo "... builder_src/identify.o"
+	@echo "... builder_src/identify.i"
+	@echo "... builder_src/identify.s"
+	@echo "... builder_src/init_editor_buttons.o"
+	@echo "... builder_src/init_editor_buttons.i"
+	@echo "... builder_src/init_editor_buttons.s"
+	@echo "... builder_src/init_world.o"
+	@echo "... builder_src/init_world.i"
+	@echo "... builder_src/init_world.s"
+	@echo "... builder_src/items.o"
+	@echo "... builder_src/items.i"
+	@echo "... builder_src/items.s"
+	@echo "... builder_src/levels.o"
+	@echo "... builder_src/levels.i"
+	@echo "... builder_src/levels.s"
+	@echo "... builder_src/levels_btn.o"
+	@echo "... builder_src/levels_btn.i"
+	@echo "... builder_src/levels_btn.s"
+	@echo "... builder_src/light_sec_type.o"
+	@echo "... builder_src/light_sec_type.i"
+	@echo "... builder_src/light_sec_type.s"
+	@echo "... builder_src/line_math.o"
+	@echo "... builder_src/line_math.i"
+	@echo "... builder_src/line_math.s"
+	@echo "... builder_src/main.o"
+	@echo "... builder_src/main.i"
+	@echo "... builder_src/main.s"
+	@echo "... builder_src/main_menu.o"
+	@echo "... builder_src/main_menu.i"
+	@echo "... builder_src/main_menu.s"
+	@echo "... builder_src/manage_btn.o"
+	@echo "... builder_src/manage_btn.i"
+	@echo "... builder_src/manage_btn.s"
+	@echo "... builder_src/map_useful.o"
+	@echo "... builder_src/map_useful.i"
+	@echo "... builder_src/map_useful.s"
+	@echo "... builder_src/math.o"
+	@echo "... builder_src/math.i"
+	@echo "... builder_src/math.s"
+	@echo "... builder_src/math_ops.o"
+	@echo "... builder_src/math_ops.i"
+	@echo "... builder_src/math_ops.s"
+	@echo "... builder_src/memory_fun.o"
+	@echo "... builder_src/memory_fun.i"
+	@echo "... builder_src/memory_fun.s"
+	@echo "... builder_src/mode_btn.o"
+	@echo "... builder_src/mode_btn.i"
+	@echo "... builder_src/mode_btn.s"
+	@echo "... builder_src/modes.o"
+	@echo "... builder_src/modes.i"
+	@echo "... builder_src/modes.s"
+	@echo "... builder_src/move.o"
+	@echo "... builder_src/move.i"
+	@echo "... builder_src/move.s"
+	@echo "... builder_src/move_item.o"
+	@echo "... builder_src/move_item.i"
+	@echo "... builder_src/move_item.s"
+	@echo "... builder_src/move_player.o"
+	@echo "... builder_src/move_player.i"
+	@echo "... builder_src/move_player.s"
+	@echo "... builder_src/move_vector.o"
+	@echo "... builder_src/move_vector.i"
+	@echo "... builder_src/move_vector.s"
+	@echo "... builder_src/prog.o"
+	@echo "... builder_src/prog.i"
+	@echo "... builder_src/prog.s"
+	@echo "... builder_src/read_assets_help.o"
+	@echo "... builder_src/read_assets_help.i"
+	@echo "... builder_src/read_assets_help.s"
+	@echo "... builder_src/read_levels.o"
+	@echo "... builder_src/read_levels.i"
+	@echo "... builder_src/read_levels.s"
+	@echo "... builder_src/read_line.o"
+	@echo "... builder_src/read_line.i"
+	@echo "... builder_src/read_line.s"
+	@echo "... builder_src/render.o"
+	@echo "... builder_src/render.i"
+	@echo "... builder_src/render.s"
+	@echo "... builder_src/render_btn.o"
+	@echo "... builder_src/render_btn.i"
+	@echo "... builder_src/render_btn.s"
+	@echo "... builder_src/render_elements.o"
+	@echo "... builder_src/render_elements.i"
+	@echo "... builder_src/render_elements.s"
+	@echo "... builder_src/render_grid.o"
+	@echo "... builder_src/render_grid.i"
+	@echo "... builder_src/render_grid.s"
+	@echo "... builder_src/render_grid_elems.o"
+	@echo "... builder_src/render_grid_elems.i"
+	@echo "... builder_src/render_grid_elems.s"
+	@echo "... builder_src/render_grid_iso.o"
+	@echo "... builder_src/render_grid_iso.i"
+	@echo "... builder_src/render_grid_iso.s"
+	@echo "... builder_src/render_items.o"
+	@echo "... builder_src/render_items.i"
+	@echo "... builder_src/render_items.s"
+	@echo "... builder_src/replace.o"
+	@echo "... builder_src/replace.i"
+	@echo "... builder_src/replace.s"
+	@echo "... builder_src/rewrite.o"
+	@echo "... builder_src/rewrite.i"
+	@echo "... builder_src/rewrite.s"
+	@echo "... builder_src/sdl_fun.o"
+	@echo "... builder_src/sdl_fun.i"
+	@echo "... builder_src/sdl_fun.s"
+	@echo "... builder_src/section.o"
+	@echo "... builder_src/section.i"
+	@echo "... builder_src/section.s"
+	@echo "... builder_src/sector_logic.o"
+	@echo "... builder_src/sector_logic.i"
+	@echo "... builder_src/sector_logic.s"
+	@echo "... builder_src/sel_item.o"
+	@echo "... builder_src/sel_item.i"
+	@echo "... builder_src/sel_item.s"
+	@echo "... builder_src/select_lit.o"
+	@echo "... builder_src/select_lit.i"
+	@echo "... builder_src/select_lit.s"
+	@echo "... builder_src/settings.o"
+	@echo "... builder_src/settings.i"
+	@echo "... builder_src/settings.s"
+	@echo "... builder_src/settings_help.o"
+	@echo "... builder_src/settings_help.i"
+	@echo "... builder_src/settings_help.s"
+	@echo "... builder_src/sort.o"
+	@echo "... builder_src/sort.i"
+	@echo "... builder_src/sort.s"
+	@echo "... builder_src/states.o"
+	@echo "... builder_src/states.i"
+	@echo "... builder_src/states.s"
+	@echo "... builder_src/texture_edit.o"
+	@echo "... builder_src/texture_edit.i"
+	@echo "... builder_src/texture_edit.s"
+	@echo "... builder_src/texture_name.o"
+	@echo "... builder_src/texture_name.i"
+	@echo "... builder_src/texture_name.s"
+	@echo "... builder_src/textures.o"
+	@echo "... builder_src/textures.i"
+	@echo "... builder_src/textures.s"
+	@echo "... builder_src/update_media_sect.o"
+	@echo "... builder_src/update_media_sect.i"
+	@echo "... builder_src/update_media_sect.s"
+	@echo "... builder_src/update_sec.o"
+	@echo "... builder_src/update_sec.i"
+	@echo "... builder_src/update_sec.s"
+	@echo "... builder_src/useful.o"
+	@echo "... builder_src/useful.i"
+	@echo "... builder_src/useful.s"
+	@echo "... builder_src/validate_clockwise.o"
+	@echo "... builder_src/validate_clockwise.i"
+	@echo "... builder_src/validate_clockwise.s"
+	@echo "... builder_src/validate_media.o"
+	@echo "... builder_src/validate_media.i"
+	@echo "... builder_src/validate_media.s"
+	@echo "... builder_src/values.o"
+	@echo "... builder_src/values.i"
+	@echo "... builder_src/values.s"
+	@echo "... builder_src/vec_ops.o"
+	@echo "... builder_src/vec_ops.i"
+	@echo "... builder_src/vec_ops.s"
+	@echo "... builder_src/write_level.o"
+	@echo "... builder_src/write_level.i"
+	@echo "... builder_src/write_level.s"
+	@echo "... builder_src/write_section.o"
+	@echo "... builder_src/write_section.i"
+	@echo "... builder_src/write_section.s"
+	@echo "... builder_src/zoom.o"
+	@echo "... builder_src/zoom.i"
+	@echo "... builder_src/zoom.s"
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"
 	@echo "... libft/ft_bzero.o"
 	@echo "... libft/ft_bzero.i"
 	@echo "... libft/ft_bzero.s"
-	@echo "... libft/ft_count_words.o"
-	@echo "... libft/ft_count_words.i"
-	@echo "... libft/ft_count_words.s"
-	@echo "... libft/ft_digittoint.o"
-	@echo "... libft/ft_digittoint.i"
-	@echo "... libft/ft_digittoint.s"
 	@echo "... libft/ft_isalnum.o"
 	@echo "... libft/ft_isalnum.i"
 	@echo "... libft/ft_isalnum.s"
@@ -4628,27 +4772,15 @@ help:
 	@echo "... libft/ft_isdigit.o"
 	@echo "... libft/ft_isdigit.i"
 	@echo "... libft/ft_isdigit.s"
-	@echo "... libft/ft_islower.o"
-	@echo "... libft/ft_islower.i"
-	@echo "... libft/ft_islower.s"
 	@echo "... libft/ft_isprint.o"
 	@echo "... libft/ft_isprint.i"
 	@echo "... libft/ft_isprint.s"
-	@echo "... libft/ft_isspace.o"
-	@echo "... libft/ft_isspace.i"
-	@echo "... libft/ft_isspace.s"
-	@echo "... libft/ft_isupper.o"
-	@echo "... libft/ft_isupper.i"
-	@echo "... libft/ft_isupper.s"
-	@echo "... libft/ft_iswhspace.o"
-	@echo "... libft/ft_iswhspace.i"
-	@echo "... libft/ft_iswhspace.s"
-	@echo "... libft/ft_isxdigit.o"
-	@echo "... libft/ft_isxdigit.i"
-	@echo "... libft/ft_isxdigit.s"
 	@echo "... libft/ft_itoa.o"
 	@echo "... libft/ft_itoa.i"
 	@echo "... libft/ft_itoa.s"
+	@echo "... libft/ft_list_size.o"
+	@echo "... libft/ft_list_size.i"
+	@echo "... libft/ft_list_size.s"
 	@echo "... libft/ft_lstadd.o"
 	@echo "... libft/ft_lstadd.i"
 	@echo "... libft/ft_lstadd.s"
@@ -4715,9 +4847,9 @@ help:
 	@echo "... libft/ft_putstr_fd.o"
 	@echo "... libft/ft_putstr_fd.i"
 	@echo "... libft/ft_putstr_fd.s"
-	@echo "... libft/ft_strcasecmp.o"
-	@echo "... libft/ft_strcasecmp.i"
-	@echo "... libft/ft_strcasecmp.s"
+	@echo "... libft/ft_sqrt.o"
+	@echo "... libft/ft_sqrt.i"
+	@echo "... libft/ft_sqrt.s"
 	@echo "... libft/ft_strcat.o"
 	@echo "... libft/ft_strcat.i"
 	@echo "... libft/ft_strcat.s"
@@ -4784,6 +4916,9 @@ help:
 	@echo "... libft/ft_strrchr.o"
 	@echo "... libft/ft_strrchr.i"
 	@echo "... libft/ft_strrchr.s"
+	@echo "... libft/ft_strrev.o"
+	@echo "... libft/ft_strrev.i"
+	@echo "... libft/ft_strrev.s"
 	@echo "... libft/ft_strsplit.o"
 	@echo "... libft/ft_strsplit.i"
 	@echo "... libft/ft_strsplit.s"
@@ -4796,306 +4931,21 @@ help:
 	@echo "... libft/ft_strtrim.o"
 	@echo "... libft/ft_strtrim.i"
 	@echo "... libft/ft_strtrim.s"
-	@echo "... libft/ft_strulen.o"
-	@echo "... libft/ft_strulen.i"
-	@echo "... libft/ft_strulen.s"
 	@echo "... libft/ft_tolower.o"
 	@echo "... libft/ft_tolower.i"
 	@echo "... libft/ft_tolower.s"
 	@echo "... libft/ft_toupper.o"
 	@echo "... libft/ft_toupper.i"
 	@echo "... libft/ft_toupper.s"
-	@echo "... src/add_door.o"
-	@echo "... src/add_door.i"
-	@echo "... src/add_door.s"
-	@echo "... src/add_door_help.o"
-	@echo "... src/add_door_help.i"
-	@echo "... src/add_door_help.s"
-	@echo "... src/add_sector.o"
-	@echo "... src/add_sector.i"
-	@echo "... src/add_sector.s"
-	@echo "... src/add_to_media.o"
-	@echo "... src/add_to_media.i"
-	@echo "... src/add_to_media.s"
-	@echo "... src/break_wall.o"
-	@echo "... src/break_wall.i"
-	@echo "... src/break_wall.s"
-	@echo "... src/btn_main.o"
-	@echo "... src/btn_main.i"
-	@echo "... src/btn_main.s"
-	@echo "... src/btn_press.o"
-	@echo "... src/btn_press.i"
-	@echo "... src/btn_press.s"
-	@echo "... src/btn_press_settings.o"
-	@echo "... src/btn_press_settings.i"
-	@echo "... src/btn_press_settings.s"
-	@echo "... src/char_ops.o"
-	@echo "... src/char_ops.i"
-	@echo "... src/char_ops.s"
-	@echo "... src/check_for_light.o"
-	@echo "... src/check_for_light.i"
-	@echo "... src/check_for_light.s"
-	@echo "... src/clip_line.o"
-	@echo "... src/clip_line.i"
-	@echo "... src/clip_line.s"
-	@echo "... src/delete_sector.o"
-	@echo "... src/delete_sector.i"
-	@echo "... src/delete_sector.s"
-	@echo "... src/delete_useless.o"
-	@echo "... src/delete_useless.i"
-	@echo "... src/delete_useless.s"
-	@echo "... src/delete_vector.o"
-	@echo "... src/delete_vector.i"
-	@echo "... src/delete_vector.s"
-	@echo "... src/delete_world.o"
-	@echo "... src/delete_world.i"
-	@echo "... src/delete_world.s"
-	@echo "... src/distribute_btns.o"
-	@echo "... src/distribute_btns.i"
-	@echo "... src/distribute_btns.s"
-	@echo "... src/draw_line.o"
-	@echo "... src/draw_line.i"
-	@echo "... src/draw_line.s"
-	@echo "... src/drawing.o"
-	@echo "... src/drawing.i"
-	@echo "... src/drawing.s"
-	@echo "... src/drawing_help.o"
-	@echo "... src/drawing_help.i"
-	@echo "... src/drawing_help.s"
-	@echo "... src/edit_menu.o"
-	@echo "... src/edit_menu.i"
-	@echo "... src/edit_menu.s"
-	@echo "... src/edit_walls.o"
-	@echo "... src/edit_walls.i"
-	@echo "... src/edit_walls.s"
-	@echo "... src/edit_walls_help.o"
-	@echo "... src/edit_walls_help.i"
-	@echo "... src/edit_walls_help.s"
-	@echo "... src/edit_world.o"
-	@echo "... src/edit_world.i"
-	@echo "... src/edit_world.s"
-	@echo "... src/editor.o"
-	@echo "... src/editor.i"
-	@echo "... src/editor.s"
-	@echo "... src/editor_render.o"
-	@echo "... src/editor_render.i"
-	@echo "... src/editor_render.s"
-	@echo "... src/editor_update.o"
-	@echo "... src/editor_update.i"
-	@echo "... src/editor_update.s"
-	@echo "... src/file_fun.o"
-	@echo "... src/file_fun.i"
-	@echo "... src/file_fun.s"
-	@echo "... src/fill_grid.o"
-	@echo "... src/fill_grid.i"
-	@echo "... src/fill_grid.s"
-	@echo "... src/fill_polygon.o"
-	@echo "... src/fill_polygon.i"
-	@echo "... src/fill_polygon.s"
-	@echo "... src/find_in_media.o"
-	@echo "... src/find_in_media.i"
-	@echo "... src/find_in_media.s"
-	@echo "... src/free_media.o"
-	@echo "... src/free_media.i"
-	@echo "... src/free_media.s"
-	@echo "... src/get_assets.o"
-	@echo "... src/get_assets.i"
-	@echo "... src/get_assets.s"
-	@echo "... src/get_boxes.o"
-	@echo "... src/get_boxes.i"
-	@echo "... src/get_boxes.s"
-	@echo "... src/get_input.o"
-	@echo "... src/get_input.i"
-	@echo "... src/get_input.s"
-	@echo "... src/get_map.o"
-	@echo "... src/get_map.i"
-	@echo "... src/get_map.s"
-	@echo "... src/get_map_elems.o"
-	@echo "... src/get_map_elems.i"
-	@echo "... src/get_map_elems.s"
-	@echo "... src/get_next_line.o"
-	@echo "... src/get_next_line.i"
-	@echo "... src/get_next_line.s"
-	@echo "... src/get_sec_items.o"
-	@echo "... src/get_sec_items.i"
-	@echo "... src/get_sec_items.s"
-	@echo "... src/get_sec_v.o"
-	@echo "... src/get_sec_v.i"
-	@echo "... src/get_sec_v.s"
-	@echo "... src/grid_main.o"
-	@echo "... src/grid_main.i"
-	@echo "... src/grid_main.s"
-	@echo "... src/grid_ops.o"
-	@echo "... src/grid_ops.i"
-	@echo "... src/grid_ops.s"
-	@echo "... src/identify.o"
-	@echo "... src/identify.i"
-	@echo "... src/identify.s"
-	@echo "... src/init_editor_buttons.o"
-	@echo "... src/init_editor_buttons.i"
-	@echo "... src/init_editor_buttons.s"
-	@echo "... src/init_world.o"
-	@echo "... src/init_world.i"
-	@echo "... src/init_world.s"
-	@echo "... src/items.o"
-	@echo "... src/items.i"
-	@echo "... src/items.s"
-	@echo "... src/levels.o"
-	@echo "... src/levels.i"
-	@echo "... src/levels.s"
-	@echo "... src/levels_btn.o"
-	@echo "... src/levels_btn.i"
-	@echo "... src/levels_btn.s"
-	@echo "... src/light_sec_type.o"
-	@echo "... src/light_sec_type.i"
-	@echo "... src/light_sec_type.s"
-	@echo "... src/line_math.o"
-	@echo "... src/line_math.i"
-	@echo "... src/line_math.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/main_menu.o"
-	@echo "... src/main_menu.i"
-	@echo "... src/main_menu.s"
-	@echo "... src/manage_btn.o"
-	@echo "... src/manage_btn.i"
-	@echo "... src/manage_btn.s"
-	@echo "... src/map_useful.o"
-	@echo "... src/map_useful.i"
-	@echo "... src/map_useful.s"
-	@echo "... src/math.o"
-	@echo "... src/math.i"
-	@echo "... src/math.s"
-	@echo "... src/math_ops.o"
-	@echo "... src/math_ops.i"
-	@echo "... src/math_ops.s"
-	@echo "... src/memory_fun.o"
-	@echo "... src/memory_fun.i"
-	@echo "... src/memory_fun.s"
-	@echo "... src/mode_btn.o"
-	@echo "... src/mode_btn.i"
-	@echo "... src/mode_btn.s"
-	@echo "... src/modes.o"
-	@echo "... src/modes.i"
-	@echo "... src/modes.s"
-	@echo "... src/move.o"
-	@echo "... src/move.i"
-	@echo "... src/move.s"
-	@echo "... src/move_item.o"
-	@echo "... src/move_item.i"
-	@echo "... src/move_item.s"
-	@echo "... src/move_player.o"
-	@echo "... src/move_player.i"
-	@echo "... src/move_player.s"
-	@echo "... src/move_vector.o"
-	@echo "... src/move_vector.i"
-	@echo "... src/move_vector.s"
-	@echo "... src/prog.o"
-	@echo "... src/prog.i"
-	@echo "... src/prog.s"
-	@echo "... src/read_assets_help.o"
-	@echo "... src/read_assets_help.i"
-	@echo "... src/read_assets_help.s"
-	@echo "... src/read_levels.o"
-	@echo "... src/read_levels.i"
-	@echo "... src/read_levels.s"
-	@echo "... src/read_line.o"
-	@echo "... src/read_line.i"
-	@echo "... src/read_line.s"
-	@echo "... src/render.o"
-	@echo "... src/render.i"
-	@echo "... src/render.s"
-	@echo "... src/render_btn.o"
-	@echo "... src/render_btn.i"
-	@echo "... src/render_btn.s"
-	@echo "... src/render_elements.o"
-	@echo "... src/render_elements.i"
-	@echo "... src/render_elements.s"
-	@echo "... src/render_grid.o"
-	@echo "... src/render_grid.i"
-	@echo "... src/render_grid.s"
-	@echo "... src/render_grid_elems.o"
-	@echo "... src/render_grid_elems.i"
-	@echo "... src/render_grid_elems.s"
-	@echo "... src/render_grid_iso.o"
-	@echo "... src/render_grid_iso.i"
-	@echo "... src/render_grid_iso.s"
-	@echo "... src/render_items.o"
-	@echo "... src/render_items.i"
-	@echo "... src/render_items.s"
-	@echo "... src/replace.o"
-	@echo "... src/replace.i"
-	@echo "... src/replace.s"
-	@echo "... src/rewrite.o"
-	@echo "... src/rewrite.i"
-	@echo "... src/rewrite.s"
-	@echo "... src/sdl_fun.o"
-	@echo "... src/sdl_fun.i"
-	@echo "... src/sdl_fun.s"
-	@echo "... src/section.o"
-	@echo "... src/section.i"
-	@echo "... src/section.s"
-	@echo "... src/sector_logic.o"
-	@echo "... src/sector_logic.i"
-	@echo "... src/sector_logic.s"
-	@echo "... src/sel_item.o"
-	@echo "... src/sel_item.i"
-	@echo "... src/sel_item.s"
-	@echo "... src/select_lit.o"
-	@echo "... src/select_lit.i"
-	@echo "... src/select_lit.s"
-	@echo "... src/settings.o"
-	@echo "... src/settings.i"
-	@echo "... src/settings.s"
-	@echo "... src/settings_help.o"
-	@echo "... src/settings_help.i"
-	@echo "... src/settings_help.s"
-	@echo "... src/sort.o"
-	@echo "... src/sort.i"
-	@echo "... src/sort.s"
-	@echo "... src/states.o"
-	@echo "... src/states.i"
-	@echo "... src/states.s"
-	@echo "... src/texture_edit.o"
-	@echo "... src/texture_edit.i"
-	@echo "... src/texture_edit.s"
-	@echo "... src/texture_name.o"
-	@echo "... src/texture_name.i"
-	@echo "... src/texture_name.s"
-	@echo "... src/textures.o"
-	@echo "... src/textures.i"
-	@echo "... src/textures.s"
-	@echo "... src/update_media_sect.o"
-	@echo "... src/update_media_sect.i"
-	@echo "... src/update_media_sect.s"
-	@echo "... src/update_sec.o"
-	@echo "... src/update_sec.i"
-	@echo "... src/update_sec.s"
-	@echo "... src/useful.o"
-	@echo "... src/useful.i"
-	@echo "... src/useful.s"
-	@echo "... src/validate_clockwise.o"
-	@echo "... src/validate_clockwise.i"
-	@echo "... src/validate_clockwise.s"
-	@echo "... src/validate_media.o"
-	@echo "... src/validate_media.i"
-	@echo "... src/validate_media.s"
-	@echo "... src/values.o"
-	@echo "... src/values.i"
-	@echo "... src/values.s"
-	@echo "... src/vec_ops.o"
-	@echo "... src/vec_ops.i"
-	@echo "... src/vec_ops.s"
-	@echo "... src/write_level.o"
-	@echo "... src/write_level.i"
-	@echo "... src/write_level.s"
-	@echo "... src/write_section.o"
-	@echo "... src/write_section.i"
-	@echo "... src/write_section.s"
-	@echo "... src/zoom.o"
-	@echo "... src/zoom.i"
-	@echo "... src/zoom.s"
+	@echo "... libft/ft_up_first_letter.o"
+	@echo "... libft/ft_up_first_letter.i"
+	@echo "... libft/ft_up_first_letter.s"
+	@echo "... libft/ft_word_count.o"
+	@echo "... libft/ft_word_count.i"
+	@echo "... libft/ft_word_count.s"
+	@echo "... libft/get_next_line.o"
+	@echo "... libft/get_next_line.i"
+	@echo "... libft/get_next_line.s"
 .PHONY : help
 
 

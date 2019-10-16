@@ -6,16 +6,10 @@
 
 #IncludeRegexTransform: 
 
-/Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
-stdlib.h
--
-string.h
--
-unistd.h
--
-
-/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/builder_src/builder.h
 SDL.h
+-
+SDL_mixer.h
 -
 SDL_image.h
 -
@@ -31,8 +25,6 @@ SDL2/SDL_mixer.h
 -
 ../libft/libft.h
 /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
-get_next_line.h
-/Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
 stdlib.h
 -
 stdio.h
@@ -52,17 +44,17 @@ sys/stat.h
 sys/types.h
 -
 
-/Users/mshpakov/Desktop/doom-nukem-builder/src/get_next_line.h
-../libft/libft.h
+/Users/mshpakov/Desktop/doom-nukem-builder/builder_src/get_map_elems.c
+builder.h
+/Users/mshpakov/Desktop/doom-nukem-builder/builder_src/builder.h
+
 /Users/mshpakov/Desktop/doom-nukem-builder/libft/libft.h
-
-/Users/mshpakov/Desktop/doom-nukem-builder/src/main_menu.c
-builder.h
-/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
-
-/Users/mshpakov/Desktop/doom-nukem-builder/src/texture_name.c
-builder.h
-/Users/mshpakov/Desktop/doom-nukem-builder/src/builder.h
+stdlib.h
+-
+unistd.h
+-
+string.h
+-
 
 /Users/mshpakov/Library/Frameworks/SDL2.framework/Headers/SDL.h
 SDL_main.h
@@ -666,6 +658,22 @@ close_code.h
 
 /Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers/SDL_image.h
 SDL2/SDL.h
+-
+SDL2/SDL_version.h
+-
+SDL2/begin_code.h
+-
+SDL2/close_code.h
+-
+
+/Users/mshpakov/Library/Frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h
+SDL2/SDL_stdinc.h
+-
+SDL2/SDL_rwops.h
+-
+SDL2/SDL_audio.h
+-
+SDL2/SDL_endian.h
 -
 SDL2/SDL_version.h
 -

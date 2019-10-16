@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 12:51:56 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/15 14:08:35 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:41:46 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int fl_ceil)
 {
 	if (!prog || !media || !grid)
 		return (FAIL);
-	select_it(0, LAST_ST_SEL, prog->last == mode_levels ? -2 : \
-	select_it(1, LAST_ST_SEL, 1));
+	select_it(0, last_select, prog->last == mode_levels ? -2 : \
+	select_it(1, last_select, 1));
 	if (prog->last == mode_levels)
 	{
 		prog->last = prog->m_id;

@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 12:32:09 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 12:32:10 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:41:03 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void					edit_wall_type(int btn_on, t_world *world)
 	int					wall;
 
 	if (!world || \
-	!within((wall = select_it(1, W_SELECT, -1)), -1, world->n_w))
+	!within((wall = select_it(1, w_select, -1)), -1, world->n_w))
 		return ;
 	if (btn_on == PORT_BTN)
 	{
@@ -41,9 +41,9 @@ t_world *world)
 
 	if (!it_f || !world)
 		return ;
-	sector = select_it(1, S_SELECT, -1);
-	item_i = select_it(1, I_SELECT, -1);
-	item_sel = select_it(1, SEL_I_SELECT, -1);
+	sector = select_it(1, s_select, -1);
+	item_i = select_it(1, i_select, -1);
+	item_sel = select_it(1, sel_i_select, -1);
 	if (within(sector, -1, world->n_s) && \
 		within(item_i, -1, world->sec[sector].n_it) && \
 		within(item_sel, -1, n_itf))
@@ -56,7 +56,7 @@ void					change_heights(int b, t_sec *sec)
 	int					f_shift;
 	int					c_shift;
 
-	s = select_it(1, S_SELECT, -1);
+	s = select_it(1, s_select, -1);
 	f_shift = 0;
 	c_shift = 0;
 	if (b == F_UP_BTN)

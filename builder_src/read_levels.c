@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 18:45:27 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 18:45:28 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:52:15 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,12 @@ unsigned				read_levels(t_media *m, t_section *s)
 		fill_values(&m->worlds[i]);
 		if (!m->worlds[i].full_p || !m->worlds[i].name ||
 		get_map(&m->worlds[i], i) == FAIL)
+		{
+			ft_putstr("\x1b[32mMap \x1b[0m");
+			ft_putnbr(i);
+			ft_putstr("\x1b[32m is not valid.\x1b[0m\n");
 			return (FAIL);
+		}
 	}
 	return (SUCCESS);
 }

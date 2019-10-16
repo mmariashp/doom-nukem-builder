@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 12:04:32 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/15 14:37:18 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:16:00 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void					game_loop(t_sdl *sdl, t_media *media, t_prog *prog)
 	t_grid				*grid;
 
 	grid = NULL;
-	select_it(0, FC_SELECT, 0);
+	select_it(0, fc_select, 0);
 	if (init_modes(media, prog) == FAIL || !(grid = get_grid()))
 	{
-		ft_putstr("\x1b[32mReturning fail from game loop.\x1b[0m\n");
+		ft_putendl("\x1b[32mReturning fail from game loop.\x1b[0m");
 		return ;
 	}
 	while (prog->modes[prog->m_id].input(sdl, grid, media, prog) == FALSE)
@@ -64,7 +64,7 @@ int						main(void)
 	!(prog = get_prog(sdl->rend)) || load_sdl_media(media, sdl) == FAIL)
 	{
 		free_media(media);
-		free_sdl(sdl);
+		free_sdl(sdl, FALSE);
 		free_prog(prog);
 		ft_putstr("\x1b[32mReturning fail from main.\x1b[0m\n");
 		system("leaks -q builder");
@@ -74,7 +74,7 @@ int						main(void)
 	free_prog(prog);
 	rewrite_media(media);
 	free_media(media);
-	free_sdl(sdl);
+	free_sdl(sdl, TRUE);
 	ft_putstr("\x1b[32mReturning success from main.\x1b[0m\n");
 	system("leaks -q builder");
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 12:33:38 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/29 12:33:39 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:40:45 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void					render_item_info(t_media *m, t_sdl *sdl, t_mode *mod,
 		return ;
 	mod->btn[B_ITEM_EDIT].vis_lit_on[0] = FALSE;
 	mod->btn[B_ITEM_DEL].vis_lit_on[0] = FALSE;
-	if (sdl && within((s = select_it(1, S_SELECT, 1)), -1, m->worlds[m->w\
-	].n_s) && within((id = select_it(1, I_SELECT, 1)), -1, m->worlds[m->w\
+	if (sdl && within((s = select_it(1, s_select, 1)), -1, m->worlds[m->w\
+	].n_s) && within((id = select_it(1, i_select, 1)), -1, m->worlds[m->w\
 	].sec[s].n_it) && within((id = m->worlds[m->w].sec[s].items[id].id), -1,\
 	m->n_itf) && within(TXTR_RECY, -1, N_TXTR) && t[TXTR_RECY] &&
 	(tmp = get_full_p(m->it_f[id].name, "\"", "Name: \"")))

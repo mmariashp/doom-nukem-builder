@@ -6,5 +6,5 @@ C_FLAGS =  -Wall -Wextra -Werror  -g   -F/Users/mshpakov/Library/Frameworks  -st
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/mshpakov/Library/Frameworks/SDL2.framework/Headers -I/Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers -I/Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers 
+C_INCLUDES = -I/Users/mshpakov/Library/Frameworks/SDL2.framework/Headers -I/Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers -I/Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers -I/Users/mshpakov/Library/Frameworks/SDL2_mixer.framework/Headers 
 

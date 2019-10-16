@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 17:32:09 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/15 14:08:35 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:40:53 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ unsigned short			edit_def_texture(int n_t, t_texture *txtr)
 
 	if (!txtr)
 		return (FAIL);
-	if (within((texture = select_it(1, T_SELECT, -1)), -1, n_t) &&
-		within((of_what = select_it(1, DEF_T_SELECT, -1)), -1, 5))
+	if (within((texture = select_it(1, t_select, -1)), -1, n_t) &&
+		within((of_what = select_it(1, def_t_select, -1)), -1, 5))
 		default_texture(0, (char)of_what, texture);
 	return (SUCCESS);
 }
@@ -80,7 +80,7 @@ void					change_def_textures(t_prog *prog, int n_t)
 	if (!prog || !prog->modes)
 		return ;
 	of_what = prog->btn_on - 1;
-	select_it(0, DEF_T_SELECT, of_what);
+	select_it(0, def_t_select, of_what);
 	t = default_texture(1, (char)of_what, -1);
 	turn_btns_off(prog);
 	prog->btn_lit = -1;
@@ -89,7 +89,7 @@ void					change_def_textures(t_prog *prog, int n_t)
 	if (within(t, -1, get_min(n_t, prog->modes[prog->m_id].n_btn)))
 	{
 		prog->modes[prog->m_id].btn[t].vis_lit_on[2] = TRUE;
-		select_it(0, T_SELECT, (prog->btn_on = t));
+		select_it(0, t_select, (prog->btn_on = t));
 	}
 }
 

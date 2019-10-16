@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 17:00:15 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/28 17:00:17 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:41:16 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void					r_levels(t_sdl *sdl, t_grid *grid, t_media *media,
 	SDL_SetRenderDrawColor(sdl->rend, 55, 55, 55, 255);
 	SDL_RenderClear(sdl->rend);
 	render_btns(prog, sdl);
-	if (select_it(1, ST_SEL, -1) == INP)
+	if (select_it(1, st_select, -1) == INP)
 	{
 		input = get_input(NULL, 0);
 		if (input)
@@ -65,7 +65,7 @@ unsigned short			rename_world(t_media *m, int world, t_prog *prog)
 
 	if (!m || !prog || !m->worlds)
 		return (FAIL);
-	if (!within(select_it(1, WORLD_SELECT, -1), -1, m->n_worlds))
+	if (!within(select_it(1, world_select, -1), -1, m->n_worlds))
 		return (SUCCESS);
 	new = get_input(NULL, 0);
 	if (new && (tmp = get_full_p(new, m->extensions[0], m->paths[0])))
@@ -82,7 +82,7 @@ unsigned short			rename_world(t_media *m, int world, t_prog *prog)
 		}
 		free(tmp);
 	}
-	select_it(0, WORLD_SELECT, -1);
+	select_it(0, world_select, -1);
 	refresh_level_list(m, &prog->modes[prog->m_id]);
 	return (SUCCESS);
 }
@@ -96,7 +96,7 @@ unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *m,
 
 	if (!sdl || !grid || !m || !prog->modes)
 		return (FAIL);
-	if (select_it(1, ST_SEL, -1) != NORMAL)
+	if (select_it(1, st_select, -1) != NORMAL)
 		return (SUCCESS);
 	if ((tmp2 = manage_btn(m, prog, grid, sdl->mouse)) < 2)
 		return (tmp2);
@@ -106,15 +106,15 @@ unsigned short			u_levels(t_sdl *sdl, t_grid *grid, t_media *m,
 		if (ed_del == 1)
 		{
 			delete_world(m, w);
-			select_it(0, WORLD_SELECT, -1);
+			select_it(0, world_select, -1);
 			refresh_level_list(m, &prog->modes[prog->m_id]);
 		}
-		else if (get_input(m->worlds[(select_it(0, WORLD_SELECT, w))].name, 0))
-			select_it(0, ST_SEL, INP);
+		else if (get_input(m->worlds[(select_it(0, world_select, w))].name, 0))
+			select_it(0, st_select, INP);
 		turn_btns_off(prog);
 		return (SUCCESS);
 	}
-	return (rename_world(m, select_it(1, WORLD_SELECT, -1), prog));
+	return (rename_world(m, select_it(1, world_select, -1), prog));
 }
 
 int						i_levels(t_sdl *sdl, t_grid *grid, t_media *med,
@@ -134,8 +134,8 @@ int						i_levels(t_sdl *sdl, t_grid *grid, t_media *med,
 		{
 			if (ft_isalnum(e.key.keysym.sym) || e.key.keysym.sym == 8)
 				get_input(NULL, e.key.keysym.sym);
-			if (e.key.keysym.sym == SDLK_RETURN && select_it(1, ST_SEL, INP))
-				select_it(0, ST_SEL, NORMAL);
+			if (e.key.keysym.sym == SDLK_RETURN && select_it(1, st_select, INP))
+				select_it(0, st_select, NORMAL);
 		}
 		else if (e.type == SDL_MOUSEBUTTONDOWN)
 			prog->click = sdl->mouse;

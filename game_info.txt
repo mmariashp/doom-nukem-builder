@@ -1,8 +1,10 @@
 #Levels
 Path: ./media/maps/
 Extension: 
-File Names:
-1) throneroom
+File Names: 
+0) throneroom
+1) new_level_0
+2) dungeon.txt
 ###
 
 #Textures 71

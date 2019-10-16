@@ -20,7 +20,7 @@ void					switch_mode(t_prog *prog, int new_m_id, int new_state)
 		prog->last = prog->m_id;
 		prog->m_id = new_m_id;
 		prog->btn_lit = -1;
-		select_it(0, ST_SEL, new_state);
+		select_it(0, st_select, new_state);
 		prog->click = (t_vec){ 0, 0 };
 	}
 }

@@ -80,7 +80,7 @@ t_prog *prog)
 			return (TRUE);
 		if (event.type == SDL_MOUSEBUTTONDOWN && prog->btn_lit != -1)
 		{
-			select_it(0, SEL_I_SELECT, prog->btn_lit);
+			select_it(0, sel_i_select, prog->btn_lit);
 			turn_btns_off(prog);
 			prog->last = prog->m_id;
 			prog->m_id = mode_editor;

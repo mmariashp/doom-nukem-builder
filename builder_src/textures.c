@@ -112,7 +112,7 @@ t_prog *prog)
 			prog->zoom += event.wheel.y > 0 ? SCROLL_UP : SCROLL_DOWN;
 		if (event.type == SDL_MOUSEBUTTONDOWN && prog->btn_lit != -1)
 		{
-			select_it(0, T_SELECT, prog->btn_lit);
+			select_it(0, t_select, prog->btn_lit);
 			turn_btns_off(prog);
 			prog->zoom = 0;
 			swap_ints(&prog->last, &prog->m_id);

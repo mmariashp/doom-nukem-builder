@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 20:05:25 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/15 14:08:16 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:41:46 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ unsigned short			btn_refresh(t_prog *prog, int state)
 	if (!prog)
 		return (FAIL);
 	on = prog->btn_on;
-	on = select_it(1, LAST_ST_SEL, -1) == WALL_EDIT ? WALL_BTN : on;
+	on = select_it(1, last_select, -1) == WALL_EDIT ? WALL_BTN : on;
 	get_btn(state, &prog->modes[prog->m_id]);
 	turn_btns_off(prog);
 	if (state == SEC_SEARCH)
@@ -30,7 +30,7 @@ unsigned short			btn_refresh(t_prog *prog, int state)
 		prog->btn_on = DRAG_BTN;
 	if (within(prog->btn_on, -1, prog->modes[prog->m_id].n_btn))
 		prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
-	select_it(0, LAST_ST_SEL, state);
+	select_it(0, last_select, state);
 	prog->redraw = 1;
 	return (SUCCESS);
 }
@@ -91,7 +91,7 @@ void					turn_btn_on(t_prog *prog, t_grid *grid)
 		prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = FALSE;
 	prog->btn_on = prog->btn_lit;
 	if (!(prog->m_id == mode_editor &&
-	select_it(1, ST_SEL, -1) == SEC_EDIT &&
+	select_it(1, st_select, -1) == SEC_EDIT &&
 	within(prog->btn_on, F_UP_BTN - 1, C_DOWN_BTN + 1)))
 		prog->click = (t_vec){ 0, 0 };
 	prog->modes[prog->m_id].btn[prog->btn_on].vis_lit_on[2] = TRUE;
@@ -104,9 +104,9 @@ t_vec mouse)
 {
 	int					state;
 
-	state = select_it(1, ST_SEL, -1);
+	state = select_it(1, st_select, -1);
 	if (prog->m_id == mode_editor &&
-	select_it(1, LAST_ST_SEL, -1) != state)
+	select_it(1, last_select, -1) != state)
 		return (btn_refresh(prog, state));
 	if (prog->btn_lit != -1 && (prog->click.x || prog->click.y))
 		return (btn_press(prog, grid, media, state));

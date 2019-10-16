@@ -4,22 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_abs_cut.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_abs_cut.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_atoi.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_atoi.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_bzero.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_bzero.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_count_words.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_count_words.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_digittoint.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_digittoint.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isalnum.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_isalnum.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isalpha.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_isalpha.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isascii.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_isascii.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isdigit.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_isdigit.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_islower.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_islower.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isprint.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_isprint.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isspace.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_isspace.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isupper.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_isupper.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_iswhspace.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_iswhspace.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_isxdigit.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_isxdigit.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_itoa.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_itoa.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_list_size.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_list_size.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_lstadd.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_lstadd.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_lstdel.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_lstdel.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_lstdelone.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_lstdelone.c.o"
@@ -42,7 +35,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_putnbr_fd.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_putnbr_fd.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_putstr.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_putstr.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_putstr_fd.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_putstr_fd.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strcasecmp.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strcasecmp.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_sqrt.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_sqrt.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strcat.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strcat.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strchr.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strchr.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strclr.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strclr.c.o"
@@ -65,13 +58,16 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strnew.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strnew.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strnstr.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strnstr.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strrchr.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strrchr.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strrev.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strrev.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strsplit.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strsplit.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strstr.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strstr.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strsub.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strsub.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strtrim.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strtrim.c.o"
-  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_strulen.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_strulen.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_tolower.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_tolower.c.o"
   "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_toupper.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_toupper.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_up_first_letter.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_up_first_letter.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/ft_word_count.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_word_count.c.o"
+  "/Users/mshpakov/Desktop/doom-nukem-builder/libft/get_next_line.c" "/Users/mshpakov/Desktop/doom-nukem-builder/cmake-build-debug/CMakeFiles/ft.dir/libft/get_next_line.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
@@ -80,6 +76,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "/Users/mshpakov/Library/Frameworks/SDL2.framework/Headers"
   "/Users/mshpakov/Library/Frameworks/SDL2_image.framework/Headers"
   "/Users/mshpakov/Library/Frameworks/SDL2_ttf.framework/Headers"
+  "/Users/mshpakov/Library/Frameworks/SDL2_mixer.framework/Headers"
   )
 
 # Targets to which this target links.

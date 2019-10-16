@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 13:10:10 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/11 17:25:56 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:40:45 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void					normal_st(t_prog *prog, t_vec mouse, t_grid *grid, \
 																t_world *world)
 {
-	if (!prog || select_it(1, ST_SEL, -1) != NORMAL)
+	if (!prog || select_it(1, st_select, -1) != NORMAL)
 		return ;
-	select_it(0, W_SELECT, -1);
-	lit_it(0, W_SELECT, -1);
-	select_it(0, S_SELECT, -1);
-	lit_it(0, S_SELECT, -1);
+	select_it(0, w_select, -1);
+	lit_it(0, w_select, -1);
+	select_it(0, s_select, -1);
+	lit_it(0, s_select, -1);
 	if (prog->btn_on == DRAW_BTN)
 	{
 		drawing(world, prog, grid, mouse);
@@ -64,12 +64,12 @@ void					wall_search_st(t_prog *prog, t_vec node, \
 
 	if (!prog || !world || !g || !(mouse_over((t_rec){ 0, 0, W_W, W_H }, node)))
 		return ;
-	w = prog->screen[node.x][node.y].is == screen_wall ? lit_it(0, W_SELECT, \
+	w = prog->screen[node.x][node.y].is == screen_wall ? lit_it(0, w_select, \
 	prog->screen[node.x][node.y].n) : -1;
 	prog->redraw = 1;
 	if (!((prog->click.x || prog->click.y) && within(w, -1, world->n_w)))
 		return ;
-	select_it(0, W_SELECT, w);
+	select_it(0, w_select, w);
 	if (prog->btn_on == DOOR_ADD_BTN)
 	{
 		add_door(world, w, g);
@@ -77,7 +77,7 @@ void					wall_search_st(t_prog *prog, t_vec node, \
 	}
 	else
 	{
-		select_it(0, ST_SEL, WALL_EDIT);
+		select_it(0, st_select, WALL_EDIT);
 		if (within((v1 = world->walls[w].v1), -1, world->n_v) &&
 			within((v2 = world->walls[w].v2), -1, world->n_v))
 			zoom_to_box(g, (t_vec[2]){ world->vecs[v1], \
@@ -94,11 +94,11 @@ void					sec_search_st(t_prog *prog, t_vec mouse, \
 
 	if (!prog || !world)
 		return ;
-	sec = lit_it(0, S_SELECT, mouse_in_stor(mouse, world, grid));
+	sec = lit_it(0, s_select, mouse_in_stor(mouse, world, grid));
 	if ((prog->click.x || prog->click.y) && within(sec, -1, world->n_s))
 	{
-		select_it(0, S_SELECT, sec);
-		select_it(0, ST_SEL, SEC_EDIT);
+		select_it(0, s_select, sec);
+		select_it(0, st_select, SEC_EDIT);
 		p = make_vec_tab(&world->sec[sec], world->vecs, world->n_v);
 		if (p)
 		{
@@ -121,7 +121,7 @@ void					sec_edit_st(t_prog *prog, t_vec mouse, \
 
 	if (!prog)
 		return ;
-	sector = select_it(1, S_SELECT, -1);
+	sector = select_it(1, s_select, -1);
 	prog->redraw = 1;
 	if (mouse_in_stor(mouse, &m->worlds[m->w], grid) == sector)
 	{

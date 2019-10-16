@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 20:12:33 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/09/28 20:12:35 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:40:45 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,11 @@ t_world *w)
 	int					s;
 
 	if (!w || !p || !sdl || !m || !m->txtr || !m->worlds ||
-	((s = select_it(1, ST_SEL, 0)) != 1 && s != 5))
+	((s = select_it(1, st_select, 0)) != 1 && s != 5))
 		return ;
 	val = NULL;
 	p->n = 0;
-	i = s == SEC_EDIT ? select_it(1, S_SELECT, -1) : select_it(1, W_SELECT, -1);
+	i = s == SEC_EDIT ? select_it(1, s_select, -1) : select_it(1, w_select, -1);
 	if (s == 1 && within(i, -1, w->n_s) && within(w->sec[i].fl_t, -1, m->n_t)
 	&& within(w->sec[i].ceil_t, -1, m->n_t))
 	{

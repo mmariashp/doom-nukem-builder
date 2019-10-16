@@ -6,21 +6,22 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:23:41 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/07 16:53:25 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:16:01 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builder.h"
 
-void					quit_sdl(void)
+void					quit_sdl(char proper)
 {
 	if (TTF_WasInit())
 		TTF_Quit();
 	IMG_Quit();
-	SDL_Quit();
+	if (proper == TRUE)
+		SDL_Quit();
 }
 
-void					free_sdl(t_sdl *sdl)
+void					free_sdl(t_sdl *sdl, char proper)
 {
 	if (!sdl)
 		return ;
@@ -40,7 +41,7 @@ void					free_sdl(t_sdl *sdl)
 	}
 	free(sdl);
 	sdl = NULL;
-	quit_sdl();
+	quit_sdl(proper);
 }
 
 SDL_Texture				*load_texture(char *name, SDL_Renderer *rend, \
@@ -108,7 +109,7 @@ t_sdl					*get_sdl(void)
 	if (start_sdl(sdl) == FAIL)
 	{
 		ft_putendl("couldn't start sdl");
-		free_sdl(sdl);
+		free_sdl(sdl, FALSE);
 		return (NULL);
 	}
 	return (sdl);

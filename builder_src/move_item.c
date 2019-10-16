@@ -64,7 +64,7 @@ t_sec *sector)
 				id = (g->nod[g->p[0].x][g->p[0].y] + 10) * (-1);
 			if (can_i_move(&id, sector, g))
 				move_grid_drag(prog, ms, g);
-			select_it(0, I_SELECT, id);
+			select_it(0, i_select, id);
 			to_erase = g->p[0];
 		}
 		else if (id >= 0 && ingrid(g->p[1] = find_node(ms.x, ms.y, g)))

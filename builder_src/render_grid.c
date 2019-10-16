@@ -6,7 +6,7 @@
 /*   By: mshpakov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 20:10:32 by mshpakov          #+#    #+#             */
-/*   Updated: 2019/10/15 14:11:14 by mshpakov         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:40:45 by mshpakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,15 @@ t_scr **screen, int sec)
 	int					st;
 	t_vec				p[MAX_SEC_WALLS];
 
-	st = select_it(1, ST_SEL, -1);
-	if (world.sec[sec].n_v < 3)
+	st = select_it(1, st_select, -1);
+	if (world.sec[sec].n_v < 3 || world.sec[sec].n_v >= MAX_SEC_WALLS)
 		return (FALSE);
 	i = -1;
 	while (++i < world.sec[sec].n_v)
 		p[i] = transform_to_screen(world.vecs[world.sec[sec].v[i]], grid);
 	color = world.sec[sec].status == SEC_CONVEX_CLOSED ? CONVEX_COLOR : \
 	CONCAVE_COLOR;
-	if ((st == SEC_SEARCH || st == SEC_EDIT) && sec == lit_it(1, S_SELECT, 0))
+	if ((st == SEC_SEARCH || st == SEC_EDIT) && sec == lit_it(1, s_select, 0))
 		color = ACTIVE_SEC_COLOR;
 	if (world.sec[sec].type[0] == door)
 		color = DOOR_COLOR;
@@ -136,12 +136,12 @@ t_vec mouse)
 	grid->box.h = GRID_SIZE * grid->scl;
 	clean_screen(prog->screen);
 	radius = grid->box.w * 0.001;
-	if ((wall = select_it(1, W_SELECT, -1)) == -1)
-		wall = lit_it(1, W_SELECT, -1);
+	if ((wall = select_it(1, w_select, -1)) == -1)
+		wall = lit_it(1, w_select, -1);
 	draw_walls(world, grid, prog->screen, wall);
 	render_grid_nod(prog->screen, grid);
 	place_player(world, grid, prog->screen, radius);
-	if (select_it(1, ST_SEL, -1) == NORMAL && prog->btn_on == DRAW_BTN)
+	if (select_it(1, st_select, -1) == NORMAL && prog->btn_on == DRAW_BTN)
 		drawing_nodes(grid, prog->screen, mouse);
 	k = -1;
 	overlay = FALSE;

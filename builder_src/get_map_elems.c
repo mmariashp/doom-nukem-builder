@@ -64,7 +64,7 @@ int						s_walls(t_sec *s, char *l, int n_w)
 	int					i;
 
 	if (!n_w || !s || !(l = ft_strchr(l, '\'')) ||
-	!within((s->n_w = count_w(l, n_w)), 2, 127))
+	!within((s->n_w = count_w(l, n_w)), -1, 127))
 		return (FAIL);
 	if (!(walls = (int *)ft_memalloc(sizeof(int) * s->n_w)))
 		return (FAIL);
