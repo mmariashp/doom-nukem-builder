@@ -91,8 +91,8 @@ File Names:
 0) coin coin
 1) key old_key
 2) super_bonus bonus
-3) enemy demon
-4) enemy new_demon
+3) enemy new_demon
+4) enemy imp
 5) light burning_barrel
 6) light lantern
 7) health big_medkit

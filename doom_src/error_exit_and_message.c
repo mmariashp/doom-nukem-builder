@@ -12,6 +12,17 @@
 
 #include "main_head.h"
 
+void				*error_free_t_sector(t_sector **sect,
+				char *message, char *line)
+{
+	if (sect && *sect)
+	{
+		delete_sectors(*sect);
+		*sect = NULL;
+	}
+	return (print_error_message_null(message, line));
+}
+
 int					print_error_message(char *mess, char *error_obj)
 {
 	ft_putstr("\x1b[31mError: \x1b[33m");
@@ -28,7 +39,8 @@ void				*print_error_message_null(char *mess, char *error_obj)
 	return (NULL);
 }
 
-void				*error_free_array_surf(SDL_Surface **array, unsigned size, char *message)
+void				*error_free_array_surf(SDL_Surface **array, unsigned size,
+					char *message)
 {
 	unsigned		i;
 

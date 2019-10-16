@@ -6,13 +6,13 @@
 /*   By: ohavryle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 17:17:25 by ohavryle          #+#    #+#             */
-/*   Updated: 2019/09/29 17:17:26 by ohavryle         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:42:13 by tbujalo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main_head.h"
 
-int				scaler_next(t_scaler *i)
+int					scaler_next(t_scaler *i)
 {
 	i->cache += i->fd;
 	while (i->cache >= i->ca)
@@ -23,15 +23,12 @@ int				scaler_next(t_scaler *i)
 	return (i->result);
 }
 
-void			apply_light(t_text_inf inf, float txty,
+static void			apply_light(t_text_inf inf, float txty,
 								int *pix, t_light *light)
 {
 	int			i;
 	float		dist_to_light;
-	Uint8		r;
-	Uint8		g;
-	Uint8		b;
-	Uint8		a;
+	SDL_Color	c;
 
 	if (txty < 0)
 		return ;
@@ -44,17 +41,17 @@ void			apply_light(t_text_inf inf, float txty,
 															/ light->max_dist;
 	}
 	SDL_GetRGBA(get_pixel(inf.image, inf.txtx, (int)txty % inf.image->h),
-											inf.image->format, &r, &g, &b, &a);
-	if (a)
-		*pix = SDL_MapRGB(inf.image->format, MIN(r * inf.brightness, 255),
-				MIN(g * inf.brightness, 255), MIN(b * inf.brightness, 255));
+						inf.image->format, &c.r, &c.g, &c.b, &c.a);
+	if (c.a)
+		*pix = SDL_MapRGB(inf.image->format, MIN(c.r * inf.brightness, 255),
+				MIN(c.g * inf.brightness, 255), MIN(c.b * inf.brightness, 255));
 }
 
-void			text_line(t_text_inf inf)
+void				text_line(t_text_inf inf)
 {
-	int			*pix;
-	t_light		*light;
-	int			y;
+	int				*pix;
+	t_light			*light;
+	int				y;
 
 	light = NULL;
 	if (!inf.surface || !inf.image || inf.image->w == 0 || inf.image->h == 0)

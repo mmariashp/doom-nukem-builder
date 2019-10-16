@@ -208,7 +208,13 @@ DOOM_SRC =			sdl_worker.c \
            			run_drawig_sectors.c \
            			free_and_exit.c \
            			calc_wall_helper.c \
-           			gun_animations.c
+           			gun_animations.c \
+           			run_drawing_thread.c \
+           			create_game.c \
+           			player_update_helper.c \
+           			interactions_helper.c \
+                    define_player_pos.c \
+                    wall_read_helper.c
 
 BUILDER_OBJ =       $(BUILDER_SRC:.c=.o)
 DOOM_OBJ =          $(DOOM_SRC:.c=.o)

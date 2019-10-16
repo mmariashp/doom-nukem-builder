@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_and_exit.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbujalo <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/15 16:04:57 by tbujalo           #+#    #+#             */
+/*   Updated: 2019/10/16 14:32:20 by tbujalo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "main_head.h"
 
-void				free_all(t_player **player, t_sdl **sdl,
+void			free_all(t_player **player, t_sdl **sdl,
 								t_read_holder *holder, t_pr *m)
 {
 	free_player(*player);

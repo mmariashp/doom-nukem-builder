@@ -19,7 +19,6 @@ t_light			*new_t_light(t_vector pos, float max_dist, t_sector *cur_sec)
 	new = NULL;
 	if ((new = (t_light*)malloc(sizeof(t_light))))
 	{
-	//	*new = (t_light){NULL};
 		ft_memset(new, 0, sizeof(t_light));
 		new->pos = pos;
 		new->max_dist = max_dist;
@@ -66,7 +65,7 @@ int				light_catch_sector(t_wall **walls, unsigned arr_size,
 	i = 0;
 	while (i < arr_size && (w = walls[i]))
 	{
-		if (find_dot_radius_intersect(light_pos, max_dist / 2, w->start, w->end))
+		if (find_dot_radius_intersect(light_pos, max_dist, w->start, w->end))
 			return (1);
 		i++;
 	}
@@ -78,28 +77,28 @@ void			fill_sectors_light_source(t_sector *sec,
 {
 	unsigned	i;
 	unsigned	j;
-	t_light		*source;
-	t_sector	*sectors;
+	t_light		*l;
+	t_sector	*s;
 
-	sectors = sec;
+	s = sec;
 	if (!sec || !light)
 		return ;
-	while (sectors)
+	while (s)
 	{
 		i = 0;
 		j = 0;
-		while (i < array_size && (source = light[i]))
+		while (i < array_size && (l = light[i]))
 		{
-			if (j < MAX_LIGHT_SRC && (dot_inside_sector(source->pos, sectors->wall, sectors->n_walls) ||
-				(light_catch_sector(sectors->portals, MAX_PORTALS, source->pos,
-					source->max_dist / 2))))
+			if (j < MAX_LIGHT_SRC && (dot_inside_sector(l->pos, s->wall,
+			s->n_walls) || (light_catch_sector(s->portals, MAX_PORTALS, l->pos,
+					l->max_dist / 2))))
 			{
-				sectors->sector_light[j] = source;
+				s->sector_light[j] = l;
 				j++;
 			}
 			i++;
 		}
-		sectors = sectors->next;
+		s = s->next;
 	}
 }
 

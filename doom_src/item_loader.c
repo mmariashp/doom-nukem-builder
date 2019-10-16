@@ -6,7 +6,7 @@
 /*   By: tbujalo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 06:15:19 by tbujalo           #+#    #+#             */
-/*   Updated: 2019/09/29 06:21:27 by tbujalo          ###   ########.fr       */
+/*   Updated: 2019/10/16 14:34:21 by tbujalo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static enum e_item_type	get_item_type(char *type)
 			ret = enemy;
 		else if (ft_strncmp("light", type, ft_strlen("light")) == 0)
 			ret = light;
+		else if (ft_strncmp("jetpack", type, ft_strlen("jetpack")) == 0)
+			ret = jetpack;
 	}
 	return (ret);
 }
@@ -62,10 +64,9 @@ static void				filed_t_animation(t_animation *anim, int fd)
 
 static void				read_properties(t_item *item, int fd)
 {
-	char				*line;	
+	char				*line;
 	t_vector			size;
 
-	size = (t_vector){};
 	while (get_next_line(fd, &line) > 0)
 	{
 		if (ft_strcmp(line, "}") == 0)
